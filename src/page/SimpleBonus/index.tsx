@@ -95,9 +95,9 @@ export const SimpleBonus = () => {
 
     useEffect(() => {
       
-        // const newUrl = `/home/online-casino/${data?.casino_name.replace(/\s/g, '')}/bonuses/${data?.bonus_type.replace(/\s/g, '')}`;
+        const newUrl = `/home/online-casino/${data?.casino_name.replace(/\s/g, '')}/bonuses/${data?.bonus_type.replace(/\s/g, '')}`;
       
-        // window.history.pushState({}, '', newUrl);
+        window.history.pushState({}, '', newUrl);
       }, [data]);
 
     return (
