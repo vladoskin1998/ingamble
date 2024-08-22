@@ -5,14 +5,14 @@ export const PrivateRouter = () => {
     return (
         <Routes>
             <Route
-                path="online-casino/:casino_name/bonuses/:bonus_type"
+                path=":casino_name/bonuses/:bonus_type"
                 element={<SimpleBonus />}
             />
             <Route
                 path="*"
                 element={
                     <Navigate
-                        to="online-casino/default-casino/bonuses/default-bonus"
+                        to="default-casino/bonuses/default-bonus"
                         replace
                     />
                 }

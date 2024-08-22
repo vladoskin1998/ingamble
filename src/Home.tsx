@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Footer } from "./components/footer"
 import { Header } from "./components/header"
 import { Navbar } from "./components/navbar"
@@ -5,7 +6,10 @@ import { PrivateRouter } from "./Router/PrivateRouter"
 
 function Home() {
   
+    const [isSidebarActive, setSidebarActive] = useState(false)
 
+    
+    
     return (
         <>
             <svg display="none">
@@ -200,9 +204,13 @@ function Home() {
                     </svg>
                 </div>
                 <div className="gamble">
-                    <Navbar />
+                    <Navbar 
+                    isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive}
+                    />
                     <div className="gamble__body">
-                        <Header />
+                        <Header 
+                       isSidebarActive={isSidebarActive}  setSidebarActive={setSidebarActive}
+                        />
                         <PrivateRouter />
                         <Footer />
                     </div>

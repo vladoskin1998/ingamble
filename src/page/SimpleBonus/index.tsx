@@ -24,7 +24,7 @@ import errorIcon from "../../assets/img/icons/error-icon.svg"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import { useQuery } from "react-query"
-import { lazy, useEffect,
+import { lazy, useEffect, useState,
   //   useState 
     } from "react"
 //import { FAKEDATAGETBONUCE } from "../../http/fakedata/getDataBonuce"
@@ -32,6 +32,7 @@ import $api from "../../http"
 import { BonusInformation } from "./BonusInformation"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { GetDataBonusResponse } from "../../types"
+import { SimpleBonusEssentialPrograms } from "./SimpleBonusEssentialPrograms"
 
 const MoreStakeCasinoBonuses = lazy(() => import('./MoreStakeCasinoBonuses'));
 
@@ -85,17 +86,22 @@ export const SimpleBonus = () => {
         keepPreviousData: true,
     } )
   
-    // const [data, setData] = useState<GetDataBonusResponse | null>(null)
+    const [isMobile, setIsMobile] = useState(false);
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setData(FAKEDATAGETBONUCE)
-    //     }, 2000)
-    // },[])
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 1420.98);
+        };
+
+        handleResize(); // Call once on mount
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     useEffect(() => {
       
-        const newUrl = `/home/online-casino/${data?.casino_name.replace(/\s/g, '')}/bonuses/${data?.bonus_type.replace(/\s/g, '')}`;
+        const newUrl = `/online-casino/${data?.casino_name.replace(/\s/g, '-').toLocaleLowerCase()}/bonuses/${data?.bonus_type.replace(/\s/g, '-').toLocaleLowerCase()}`;
       
         window.history.pushState({}, '', newUrl);
       }, [data]);
@@ -3925,6 +3931,7 @@ export const SimpleBonus = () => {
                         </div>
                     </div>
                 </section> */}  
+                {!isMobile ? 
                 <section className="simple-bonus__essential-programs essential-programs-gamble">
                     <div className="essential-programs-gamble__container container">
                         <div className="essential-programs-gamble__top top">
@@ -3955,8 +3962,8 @@ export const SimpleBonus = () => {
                         </div>
                         <div className="essential-programs-gamble__slider slider">
                             <div className="essential-programs-gamble__swiper slider__swiper swiper">
-                                <div className="slider__wrapper swiper-wrapper">
-                                    <div className="slider__slide slide-slider swiper-slide">
+                                <div className="slider__wrapper swiper-wrapper" style={{gap:'20px'}}>
+                                    <div className="slider__slide slide-slider swiper-slide" >
                                         <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                             <div className="item-essential-programs-gamble__top">
                                                 <a rel="nofollow noopener"
@@ -4517,7 +4524,8 @@ export const SimpleBonus = () => {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> 
+                :<SimpleBonusEssentialPrograms/>}
                 <section className="simple-bonus__casino-person casino-person">
                     <div className="casino-person__container container">
                         <div className="casino-person__body">

@@ -7461,6 +7461,13 @@ h3 {
     line-height: 18px;
   }
 }
+
+.swiper-wrapper{
+  display: flex;
+  gap: 20px;
+}
+
+
 .item-content-bonus-information__label {
   display: flex;
   align-items: center;

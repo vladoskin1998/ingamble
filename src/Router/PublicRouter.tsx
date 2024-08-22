@@ -6,8 +6,8 @@ import Home from "../Home"
 export const PublicRouter = () => {
     return (
         <Routes>
-            <Route path="/home/*" element={<Home/>} />
-            <Route path="/" element={<Navigate to='/home'/>} />
+            <Route path="/online-casino/*" element={<Home/>} />
+            <Route path="/" element={<Navigate to='/online-casino'/>} />
             <Route path="*" element={<NotFound/>} />
         </Routes>
     )

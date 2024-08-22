@@ -5101,6 +5101,7 @@ h3 {
   .sidebar-gamble.active .title-filters-sidebar-gamble {
     padding: 24px 16px 22px 16px;
   }
+ 
 }
 .sidebar-gamble.active .title-filters-sidebar-gamble__btn-icon_main {
   display: none;
@@ -5275,6 +5276,7 @@ h3 {
     background: transparent;
     height: auto;
     border-bottom: 0;
+    display: none;
   }
 }
 .top-sidebar-gamble__logo {

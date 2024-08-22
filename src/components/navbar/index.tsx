@@ -23,17 +23,15 @@ import clearAll from "../../assets/img/icons/clear-all.svg"
 import { useLayoutEffect, useState } from "react"
 import { AccordionItem } from "../acordion/Acordion"
 
-export const Navbar = () => {
-    const [isSidebarActive, setSidebarActive] = useState(false)
+export const Navbar = ({isSidebarActive, setSidebarActive}:{isSidebarActive:boolean, setSidebarActive:(s:boolean) => void}) => {
+    const [] = useState(false)
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
 
     useLayoutEffect(() => {
         const sidebarGamble = document.querySelector(
             ".sidebar-gamble"
         ) as HTMLElement
-        const gambleBody = document.querySelector(
-            ".gamble__body"
-        ) as HTMLElement
+   
         const header = document.querySelector(".header") as HTMLElement
         const footer = document.querySelector(".footer") as HTMLElement
         const main = document.querySelector("main") as HTMLElement
@@ -41,17 +39,17 @@ export const Navbar = () => {
         if (sidebarGamble) {
             sidebarGamble.classList.toggle("active", isSidebarActive)
         }
-        if (gambleBody) {
-            gambleBody.classList.toggle("hide", isGambleBodyHidden)
-        }
+        // if (gambleBody && window.innerWidth <= 650.98) {
+        //     gambleBody.classList.toggle("hide", isGambleBodyHidden)
+        // }
 
-        if (header) {
+        if (header && window.innerWidth > 650.98) {
             header?.classList.toggle("resize", isSidebarActive)
         }
-        if (footer) {
+        if (footer && window.innerWidth > 650.98) {
             footer?.classList.toggle("resize", isSidebarActive)
         }
-        if (main) {
+        if (main && window.innerWidth > 650.98) {
             main?.classList.toggle("resize", isSidebarActive)
         }
     }, [isSidebarActive, isGambleBodyHidden])
@@ -60,7 +58,7 @@ export const Navbar = () => {
         event.preventDefault()
         event.stopPropagation()
         if (document.documentElement.clientWidth > 650.98) {
-            setSidebarActive((prev) => !prev)
+            setSidebarActive(!isSidebarActive)
         } else {
             setSidebarActive(true)
             setGambleBodyHidden(true)
@@ -94,7 +92,7 @@ export const Navbar = () => {
                             onClick={handleFilterOpenBtnClick}
                             aria-label="Put your description here."
                             className="title-filters-sidebar-gamble__btn"
-                            data-da="header__row-mobile, 1, 650.98"
+                            data-da="header__row-mobile1, 1, 650.98"
                         >
                             <span className="title-filters-sidebar-gamble__btn-icon_main">
                                 <svg>

@@ -12,18 +12,29 @@ import "swiper/css"
 import { SwiperRef } from "swiper/react"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import "swiper/css/pagination"
-import { useCallback, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
- const MoreStakeCasinoBonuses = ({title}:{title:string}) => {
+const MoreStakeCasinoBonuses = ({ title }: { title: string }) => {
+    const [isMobile, setIsMobile] = useState(false)
     const sliderRef = useRef<SwiperRef | null>(null)
-    const [active, setActive] = useState(true)
+    const [active, setActive] = useState<number>(0)
     const slideTo = useCallback((s: number) => {
         if (!sliderRef.current) return
-        
-          setActive(!!!s)
-    
-        
+
+        setActive(s)
+
         sliderRef.current.swiper.slideTo(s)
+    }, [])
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 650.98)
+        }
+
+        handleResize() // Call once on mount
+        window.addEventListener("resize", handleResize)
+
+        return () => window.removeEventListener("resize", handleResize)
     }, [])
 
     return (
@@ -33,14 +44,12 @@ import { useCallback, useRef, useState } from "react"
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                <h2 className="top__title">
-                                  
-                                    {title}
-                                </h2>
+                                <h2 className="top__title">{title}</h2>
                             </div>
                         </div>
                         <div className="top__column">
-                            <a rel="nofollow noopener"
+                            <a
+                                rel="nofollow noopener"
                                 href=""
                                 aria-label="Put your description here."
                                 target="_blank"
@@ -68,7 +77,8 @@ import { useCallback, useRef, useState } from "react"
                                     <SwiperSlide>
                                         <div className="slider__slide slide-slider swiper-slide">
                                             <div className="slide-slider__item casino-card">
-                                                <a rel="nofollow noopener"
+                                                <a
+                                                    rel="nofollow noopener"
                                                     href=""
                                                     aria-label="Put your description here."
                                                     target="_blank"
@@ -86,7 +96,8 @@ import { useCallback, useRef, useState } from "react"
                                             effect="blur"
                                         /> */}
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         target="_blank"
                                                         aria-label="Put your description here."
@@ -98,7 +109,8 @@ import { useCallback, useRef, useState } from "react"
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
-                                                            <a rel="nofollow noopener"
+                                                            <a
+                                                                rel="nofollow noopener"
                                                                 href=""
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
@@ -137,7 +149,8 @@ import { useCallback, useRef, useState } from "react"
                                                         </div>
                                                     </div>
 
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
@@ -190,7 +203,8 @@ import { useCallback, useRef, useState } from "react"
                                     <SwiperSlide>
                                         <div className="slider__slide slide-slider swiper-slide">
                                             <div className="slide-slider__item casino-card">
-                                                <a rel="nofollow noopener"
+                                                <a
+                                                    rel="nofollow noopener"
                                                     href=""
                                                     aria-label="Put your description here."
                                                     target="_blank"
@@ -211,7 +225,8 @@ import { useCallback, useRef, useState } from "react"
                                             effect="blur" 
                                         />*/}
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         target="_blank"
                                                         aria-label="Put your description here."
@@ -223,7 +238,8 @@ import { useCallback, useRef, useState } from "react"
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
-                                                            <a rel="nofollow noopener"
+                                                            <a
+                                                                rel="nofollow noopener"
                                                                 href=""
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
@@ -261,7 +277,8 @@ import { useCallback, useRef, useState } from "react"
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
@@ -313,7 +330,8 @@ import { useCallback, useRef, useState } from "react"
                                     <SwiperSlide>
                                         <div className="slider__slide slide-slider swiper-slide">
                                             <div className="slide-slider__item casino-card">
-                                                <a rel="nofollow noopener"
+                                                <a
+                                                    rel="nofollow noopener"
                                                     href=""
                                                     aria-label="Put your description here."
                                                     target="_blank"
@@ -335,7 +353,8 @@ import { useCallback, useRef, useState } from "react"
                                                             loading="lazy"
                                                         />
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         target="_blank"
                                                         aria-label="Put your description here."
@@ -347,7 +366,8 @@ import { useCallback, useRef, useState } from "react"
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
-                                                            <a rel="nofollow noopener"
+                                                            <a
+                                                                rel="nofollow noopener"
                                                                 href=""
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
@@ -385,7 +405,8 @@ import { useCallback, useRef, useState } from "react"
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
@@ -437,7 +458,8 @@ import { useCallback, useRef, useState } from "react"
                                     <SwiperSlide>
                                         <div className="slider__slide slide-slider swiper-slide">
                                             <div className="slide-slider__item casino-card">
-                                                <a rel="nofollow noopener"
+                                                <a
+                                                    rel="nofollow noopener"
                                                     href=""
                                                     aria-label="Put your description here."
                                                     target="_blank"
@@ -459,7 +481,8 @@ import { useCallback, useRef, useState } from "react"
                                                             loading="lazy"
                                                         />
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         target="_blank"
                                                         aria-label="Put your description here."
@@ -471,7 +494,8 @@ import { useCallback, useRef, useState } from "react"
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
-                                                            <a rel="nofollow noopener"
+                                                            <a
+                                                                rel="nofollow noopener"
                                                                 href=""
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
@@ -509,7 +533,8 @@ import { useCallback, useRef, useState } from "react"
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
@@ -561,7 +586,8 @@ import { useCallback, useRef, useState } from "react"
                                     <SwiperSlide>
                                         <div className="slider__slide slide-slider swiper-slide">
                                             <div className="slide-slider__item casino-card">
-                                                <a rel="nofollow noopener"
+                                                <a
+                                                    rel="nofollow noopener"
                                                     href=""
                                                     aria-label="Put your description here."
                                                     target="_blank"
@@ -583,7 +609,8 @@ import { useCallback, useRef, useState } from "react"
                                                             loading="lazy"
                                                         />
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         target="_blank"
                                                         aria-label="Put your description here."
@@ -595,7 +622,8 @@ import { useCallback, useRef, useState } from "react"
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
-                                                            <a rel="nofollow noopener"
+                                                            <a
+                                                                rel="nofollow noopener"
                                                                 href=""
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
@@ -633,7 +661,8 @@ import { useCallback, useRef, useState } from "react"
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
@@ -686,7 +715,8 @@ import { useCallback, useRef, useState } from "react"
                                     <SwiperSlide>
                                         <div className="slider__slide slide-slider swiper-slide">
                                             <div className="slide-slider__item casino-card">
-                                                <a rel="nofollow noopener"
+                                                <a
+                                                    rel="nofollow noopener"
                                                     href=""
                                                     aria-label="Put your description here."
                                                     target="_blank"
@@ -708,7 +738,8 @@ import { useCallback, useRef, useState } from "react"
                                                             loading="lazy"
                                                         />
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         target="_blank"
                                                         aria-label="Put your description here."
@@ -720,7 +751,8 @@ import { useCallback, useRef, useState } from "react"
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
-                                                            <a rel="nofollow noopener"
+                                                            <a
+                                                                rel="nofollow noopener"
                                                                 href=""
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
@@ -758,7 +790,8 @@ import { useCallback, useRef, useState } from "react"
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a rel="nofollow noopener"
+                                                    <a
+                                                        rel="nofollow noopener"
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
@@ -814,10 +847,28 @@ import { useCallback, useRef, useState } from "react"
                     </div>
                     <div className="slider__bottom bottom-slider">
                         <div className="bottom-slider__pagination more-staket-simple-bonus__pagination swiper-pagination">
-                          <button className={`swiper-pagination-bullet ${active && "swiper-pagination-bullet-active"} `}
-                          onClick={() => slideTo(0)}
-                          ></button>
-                          <button     onClick={() => slideTo(6)} className={`swiper-pagination-bullet ${!active && "swiper-pagination-bullet-active"} `}></button>
+                            <button
+                                className={`swiper-pagination-bullet ${
+                                    active === 0 && "swiper-pagination-bullet-active"
+                                } `}
+                                onClick={() => slideTo(0)}
+                            ></button>
+                            {isMobile &&
+                                [1,2, 3, 4].map((item) => (
+                                    <button
+                                        onClick={() => slideTo(item)}
+                                        className={`swiper-pagination-bullet ${
+                                            active === item &&
+                                            "swiper-pagination-bullet-active"
+                                        } `}
+                                    ></button>
+                                ))}
+                            <button
+                                onClick={() => slideTo(5)}
+                                className={`swiper-pagination-bullet ${
+                                    active === 5 && "swiper-pagination-bullet-active"
+                                } `}
+                            ></button>
                         </div>
                     </div>
                 </div>
@@ -825,6 +876,5 @@ import { useCallback, useRef, useState } from "react"
         </section>
     )
 }
-
 
 export default MoreStakeCasinoBonuses
