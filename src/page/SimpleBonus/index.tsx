@@ -482,57 +482,10 @@ export const SimpleBonus = () => {
                                         }
                                     )}
                                     
-                                    {/* <div className="deposits__column deposits__column_big">
-                                        <div className="deposits__item item-deposits item-deposits_grass">
-                                            <div className="item-deposits__icon icon-item-deposits">
-                                                <div className="icon-item-deposits__img">
-                                                    <svg>
-                                                        <use xlinkHref="#gift"></use>
-                                                    </svg>
-                                                </div>
-                                                <div className="icon-item-deposits__number">
-                                                    <div className="icon-item-deposits__number-border">
-                                                        <span>1</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="item-deposits__info info-item-deposits">
-                                                <div className="info-item-deposits__label">
-                                                    1st Deposit
-                                                </div>
-                                                <div className="info-item-deposits__value">
-                                                    150% up to 200 EUR
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="deposits__column deposits__column_big">
-                                        <div className="deposits__item item-deposits item-deposits_ocean">
-                                            <div className="item-deposits__icon icon-item-deposits">
-                                                <div className="icon-item-deposits__img">
-                                                    <svg>
-                                                        <use xlinkHref="#gift"></use>
-                                                    </svg>
-                                                </div>
-                                                <div className="icon-item-deposits__number">
-                                                    <div className="icon-item-deposits__number-border">
-                                                        <span>2</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="item-deposits__info info-item-deposits">
-                                                <div className="info-item-deposits__label">
-                                                    2nd Deposit
-                                                </div>
-                                                <div className="info-item-deposits__value">
-                                                    100% up to 150 EUR
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
+                                 
                                 </div>
                             </div>
-                            {/* <div className="deposits__block">
+                            <div className="deposits__block">
                                 <div className="deposits__row">
                                     <div className="deposits__column deposits__column_small">
                                         <div className="deposits__item item-deposits item-deposits_grass">
@@ -755,7 +708,7 @@ export const SimpleBonus = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 </section>
