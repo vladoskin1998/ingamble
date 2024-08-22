@@ -12,7 +12,7 @@ import french from "../../assets/img/flags/french.svg"
 import italian from "../../assets/img/flags/italian.svg"
 import slovak from "../../assets/img/flags/slovak.svg"
 import { useEffect, useState } from "react"
-
+import logoIcon from "../../assets/img/logo-icon.svg"
 type Language = {
     code: string
     name: string
@@ -68,14 +68,13 @@ export const Header = ({
     const handleFilterOpenBtnClick = (event: React.MouseEvent) => {
         event.preventDefault()
         event.stopPropagation()
-    
+
         setSidebarActive(!isSidebarActive)
-    
     }
 
     useEffect(() => {
         const gambleBody = document.querySelector(".gamble__body")
-    
+
         if (gambleBody && window.innerWidth <= 650.98) {
             gambleBody.classList.toggle("hide", isSidebarActive)
         } else {
@@ -114,7 +113,7 @@ export const Header = ({
                     </div>
                     <div
                         className="header__column"
-                        data-da="mobile-header__body, 0, 1355.98"
+                        data-da="mobile-header__body1, 0, 1355.98"
                     >
                         <nav className="header__menu menu-header">
                             <ul className="menu-header__list">
@@ -239,7 +238,7 @@ export const Header = ({
                         </form>
                         <div
                             className="header__theme theme-header"
-                            data-da="mobile-header__top, 1, 650.98"
+                            data-da="mobile-header__top1, 1, 650.98"
                         >
                             <a
                                 rel="nofollow noopener"
@@ -372,7 +371,29 @@ export const Header = ({
                     isMenuOpen ? "active" : ""
                 }`}
             >
-                <div className="mobile-header__top"></div>
+                <div className="mobile-header__top">
+                    
+                        <a
+                            rel="nofollow noopener"
+                            href=""
+                            target="_blank"
+                            className="top-sidebar-gamble__logo"
+                        >
+                            <LazyLoadImage alt={"logo-icon"} src={logoIcon} />
+                        </a>
+             
+                    <div className="header__theme theme-header">
+                        <a
+                            rel="nofollow noopener"
+                            href=""
+                            aria-label="Put your description here."
+                            className="theme-header__link theme-header__link_moon"
+                        >
+                            <LazyLoadImage alt={"moon"} src={moon} />
+                        </a>
+                    </div>
+                </div>
+
                 <div className="mobile-header__body">
                     <div
                         className="header__column"

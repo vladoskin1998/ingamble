@@ -71,7 +71,7 @@ const MoreStakeCasinoBonuses = ({ title }: { title: string }) => {
                             <div className="slider__wrapper">
                                 <Swiper
                                     slidesPerView="auto"
-                                    spaceBetween={10}
+                                    spaceBetween={20}
                                     ref={sliderRef}
                                 >
                                     <SwiperSlide>
