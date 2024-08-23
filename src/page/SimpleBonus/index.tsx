@@ -100,7 +100,14 @@ export const SimpleBonus = () => {
     }, []);
 
     useEffect(() => {
-      
+        const ibg = document.querySelectorAll(".ibg") as NodeListOf<HTMLElement>
+        ibg.forEach((item) => {
+            const ibgImg = item.querySelector("img")
+            const ibgImgSrc = ibgImg?.getAttribute("src")
+            if (ibgImgSrc) {
+                item.style.backgroundImage = `url(${ibgImgSrc})`
+            }
+        })
         const newUrl = `/online-casino/${data?.casino_name.replace(/\s/g, '-').toLocaleLowerCase()}/bonuses/${data?.bonus_type.replace(/\s/g, '-').toLocaleLowerCase()}`;
       
         window.history.pushState({}, '', newUrl);
@@ -142,12 +149,12 @@ export const SimpleBonus = () => {
                                      >
                                             <img
                                                 src={
-                                                    data?.bonus_image || mainImg
+                                                     data?.bonus_image || mainImg
                                                 }
                                                 alt="main-img"
-                                                loading="lazy"
+                                               
                                             />
-                                          
+                                            <img src="" alt="" />
                                         </div>
                                     </div>
                                     <div className="main-casino-info__name name-main-casino-info">
@@ -179,7 +186,7 @@ export const SimpleBonus = () => {
                                                     />
                                                 </span>
                                                 <span className="info-casino-card__stake__rating-number">
-                                                    {data?.casino_rank || "4.8"}
+                                                    {data?.bonus_rank || "4.8"}
                                                 </span>
                                             </div>
                                             <div
@@ -417,7 +424,7 @@ export const SimpleBonus = () => {
                                                 <div className="features-content-casino-info__item item-features-content-casino-info">
                                                     <div className="item-features-content-casino-info__top">
                                                         <div className="item-features-content-casino-info__label">
-                                                            Max Dep
+                                                            Max Bet
                                                         </div>
                                                     </div>
                                                     <div className="item-features-content-casino-info__body">
@@ -2330,8 +2337,8 @@ export const SimpleBonus = () => {
                         </div>
                     </div>
                 </section>
-                <MoreStakeCasinoBonuses title={"More Stake Casino Bonuses"}/>
-                <MoreStakeCasinoBonuses title={"Other Best Reload bonuses"}/>
+                <MoreStakeCasinoBonuses title={"More Stake Casino Bonuses"} data={data}/>
+                <MoreStakeCasinoBonuses title={"Other Best Reload bonuses"}data={data}/>
 
 
 

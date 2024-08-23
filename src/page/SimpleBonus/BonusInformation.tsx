@@ -98,10 +98,10 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                 </div>
                                 <div className="content-bonus-information__item item-content-bonus-information">
                                     <div className="item-content-bonus-information__label">
-                                        Min bet:
+                                        Min dep:
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                        10 EUR
+                                    {(` ${data?.bonus_min_dep?.[0]?.min_value}  ${ data?.bonus_min_dep?.[0]?.symbol?.name}`) || '0€'}
                                     </div>
                                 </div>
                                 <div className="content-bonus-information__item item-content-bonus-information">

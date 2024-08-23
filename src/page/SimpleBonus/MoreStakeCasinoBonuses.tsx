@@ -13,8 +13,9 @@ import { SwiperRef } from "swiper/react"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import "swiper/css/pagination"
 import { useCallback, useEffect, useRef, useState } from "react"
-
-const MoreStakeCasinoBonuses = ({ title }: { title: string }) => {
+import { GetDataBonusResponse } from "../../types"
+//@ts-ignore
+const MoreStakeCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusResponse | undefined }) => {
     const [isMobile, setIsMobile] = useState(false)
     const sliderRef = useRef<SwiperRef | null>(null)
     const [active, setActive] = useState<number>(0)
@@ -174,7 +175,7 @@ const MoreStakeCasinoBonuses = ({ title }: { title: string }) => {
                                                                 Min Dep:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                €10
+                                                               10€
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_purple">
