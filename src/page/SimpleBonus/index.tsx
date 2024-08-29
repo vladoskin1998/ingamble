@@ -97,12 +97,8 @@ export const SimpleBonus = () => {
         window.history.pushState({}, "", newUrl)
     }, [data])
 
-    const goToCasinoAffiliateLink = ({
-        casino_name,
-    }: {
-        casino_name: string
-    }) => {
-        window.open(`/go/${casino_name}`, "_blank")
+    const handleClick = () => {
+        window.location.href = data?.casino_affiliate_link || ""
     }
 
     return (
@@ -255,37 +251,19 @@ export const SimpleBonus = () => {
                                                     T&C Apply
                                                 </a>
                                             </div>
-                                            {/* <a rel="nofollow noopener"
-                                            href={
-                                                data?.casino_affiliate_link ||
-                                                ""
-                                            }
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="main-get-bonus__btn main-get-bonus__btn_bonus"
-                                        >
-                                            <span>
-                                                <LazyLoadImage
-                                                    src={giftIcon}
-                                                    alt="gift"
-                                                    effect="blur"
-                                                />
-                                            </span>
-                                            Get Bonus and Play
-                                        </a> */}
-                                            <button
-                                                onClick={() =>
-                                                    goToCasinoAffiliateLink({
-                                                        casino_name:
-                                                            data?.casino_name
-                                                                .toLocaleLowerCase()
-                                                                .replace(
-                                                                    /\s/g,
-                                                                    "-"
-                                                                ) || "",
-                                                    })
-                                                }
+                                            <a
+                                                rel="nofollow noopener"
+                                                href={`go/${
+                                                    data?.casino_name
+                                                        .toLocaleLowerCase()
+                                                        .replace(/\s/g, "-") ||
+                                                    ""
+                                                }`}
+                                                aria-label="Put your description here."
+                                                target="_blank"
                                                 className="main-get-bonus__btn main-get-bonus__btn_bonus"
+                                                title="link"
+                                                onClick={handleClick}
                                             >
                                                 <span>
                                                     <LazyLoadImage
@@ -295,7 +273,7 @@ export const SimpleBonus = () => {
                                                     />
                                                 </span>
                                                 Get Bonus and Play
-                                            </button>
+                                            </a>
                                         </div>
                                         <div className="content-casino-info__features features-content-casino-info">
                                             <div className="features-content-casino-info__row">
@@ -464,43 +442,31 @@ export const SimpleBonus = () => {
                                             </div>
                                             <div className="main-get-bonus__btns">
                                                 <div className="main-get-bonus__btns-item">
-                                                    {/* <a rel="nofollow noopener"
-                                                    href={
-                                                        data?.casino_affiliate_link ||
-                                                        ""
-                                                    }
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="main-get-bonus__btn main-get-bonus__btn_bonus"
-                                                >
-                                                   
-                                                </a> */}
-                                                    <button
-                                                        onClick={() =>
-                                                            goToCasinoAffiliateLink(
-                                                                {
-                                                                    casino_name:
-                                                                        data?.casino_name
-                                                                            .toLocaleLowerCase()
-                                                                            .replace(
-                                                                                /\s/g,
-                                                                                "-"
-                                                                            ) ||
-                                                                        "",
-                                                                }
-                                                            )
-                                                        }
+                                                    <a
+                                                        rel="nofollow noopener"
+                                                        href={`go/${
+                                                            data?.casino_name
+                                                                .toLocaleLowerCase()
+                                                                .replace(
+                                                                    /\s/g,
+                                                                    "-"
+                                                                ) || ""
+                                                        }`}
+                                                        aria-label="Put your description here."
+                                                        target="_blank"
                                                         className="main-get-bonus__btn main-get-bonus__btn_bonus"
+                                                        title="link"
+                                                        onClick={handleClick}
                                                     >
-                                                        <span>
-                                                            <LazyLoadImage
-                                                                src={giftIcon}
-                                                                alt="gift"
-                                                                effect="blur"
-                                                            />
-                                                        </span>
-                                                        Get Bonus
-                                                    </button>
+                                                          <span>
+                                                    <LazyLoadImage
+                                                        src={giftIcon}
+                                                        alt="gift"
+                                                        effect="blur"
+                                                    />
+                                                </span>
+                                                Get Bonus
+                                                    </a>
                                                 </div>
                                                 <div className="main-get-bonus__btns-item">
                                                     <a
