@@ -1,0 +1,672 @@
+{
+    "id": 8,
+    "slug": "first-deposit-welcome-bonus",
+    "casino_name": "iWild Casino",
+    "casino_logo": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
+    "casino_rank": "8.7",
+    "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
+    "sibling_bonuses": [
+        {
+            "id": 6,
+            "name": "50%",
+            "likes": 19,
+            "bonus_image": "/media/bonuses/files/ava_1.jpg",
+            "labels": []
+        },
+        {
+            "id": 9,
+            "name": "50% bonus up to €500 + 25 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
+        },
+        {
+            "id": 10,
+            "name": "50% bonus up to €300 + 50 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
+        },
+        {
+            "id": 11,
+            "name": "10-15%",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
+        },
+        {
+            "id": 353,
+            "name": "100% up to €500 + 100 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
+        },
+        {
+            "id": 354,
+            "name": "50% up to €1000 + 80 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
+        },
+        {
+            "id": 355,
+            "name": "30% up to €1000 + 60 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
+        },
+        {
+            "id": 356,
+            "name": "80% up to €1000 + 30 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
+        },
+        {
+            "id": 459,
+            "name": "testing",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
+        }
+    ],
+    "name": "100% up to €1000 + 100 Free Spins",
+    "likes": 666,
+    "bonus_rank": "5.0",
+    "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/%D0%BA%D0%B0%D0%B7_5_%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F.jpg",
+    "bonus_value": 100.0,
+    "category": [
+        {
+            "name": "Best Welcome Bonuses"
+        },
+        {
+            "name": "Best Reload Bonuses"
+        },
+        {
+            "name": "Low Wager Bonuses"
+        },
+        {
+            "name": "Low Risk Bonuses"
+        },
+        {
+            "name": "No Deposit Bonuses"
+        }
+    ],
+    "bonus_type": "Welcome Bonus",
+    "bonus_subtype": [
+        {
+            "name": "1st Deposit Bonus | 15000% up to 200 EUR"
+        },
+        {
+            "name": "2nd deposit bonus | 100% up to 150 EUR"
+        },
+        {
+            "name": "3rd deposit bonus | 80% up to 200 EUR"
+        },
+        {
+            "name": "4th deposit bonus | 50% up to 150 EUR"
+        }
+    ],
+    "labels": [
+        {
+            "name": "Safe"
+        },
+        {
+            "name": "Sticky"
+        },
+        {
+            "name": "No KYC"
+        }
+    ],
+    "bonus_amount": [
+        {
+            "value": 4444.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        },
+        {
+            "value": 1212.0,
+            "symbol": {
+                "symbol": "LBTC",
+                "name": "Lightning Bitcoin"
+            }
+        }
+    ],
+    "link": "https://iwildcasino8.com/en/promo/item/welcome-bonus1",
+    "restriction_rtp_game": 97.0,
+    "max_bet_automatic": true,
+    "game_providers": [
+        {
+            "name": "Amusnet (EGT)",
+            "image": null
+        },
+        {
+            "name": "TOP TREND GAMING",
+            "image": null
+        }
+    ],
+    "sticky": true,
+    "turnover_bonus": true,
+    "buy_feature": true,
+    "promotion_period": {
+        "start_date": "2024-08-06",
+        "end_date": "2024-08-29"
+    },
+    "bonus_expiration": {
+        "days": 4
+    },
+    "bonus_only": null,
+    "bonus_plus_freespins_value": null,
+    "wagering_bonus_plus_deposit": {
+        "bonus_plus_deposit": 55,
+        "bonus_only": null
+    },
+    "bonus_plus_deposit": null,
+    "calculation_bonus_deposit": 0.0,
+    "calculation_bonus_only": null,
+    "special_promo_category": false,
+    "special_side_bar": false,
+    "bonus_min_dep": [
+        {
+            "min_value": 44.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        }
+    ],
+    "day_of_week": [
+        {
+            "day": "Thursday"
+        }
+    ],
+    "special_note": {
+        "description": ""
+    },
+    "max_bet": [
+        {
+            "value": 55.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        }
+    ],
+    "restriction_country": {
+        "country": [
+            {
+                "slug": "alderney",
+                "name": "Alderney"
+            },
+            {
+                "slug": "andorra",
+                "name": "Andorra"
+            },
+            {
+                "slug": "angola",
+                "name": "Angola"
+            },
+            {
+                "slug": "anguilla",
+                "name": "Anguilla"
+            },
+            {
+                "slug": "antarctica",
+                "name": "Antarctica"
+            }
+        ]
+    },
+    "restriction_game": {
+        "game": [
+            {
+                "name": "£500 Wheel Roulette"
+            },
+            {
+                "name": "10000 Wishes (Alchemy Gaming)"
+            },
+            {
+                "name": "Adventure Palace"
+            },
+            {
+                "name": "Avalon"
+            },
+            {
+                "name": "Aztec Idols"
+            },
+            {
+                "name": "Book of Dead"
+            },
+            {
+                "name": "Castle Builder"
+            },
+            {
+                "name": "Cygnus"
+            },
+            {
+                "name": "Dawn of Egypt"
+            },
+            {
+                "name": "Dead or Alive 2"
+            },
+            {
+                "name": "Devil's Delight"
+            },
+            {
+                "name": "Divine Lotus"
+            },
+            {
+                "name": "Dragon Horn"
+            },
+            {
+                "name": "Dragon Ship"
+            },
+            {
+                "name": "Dr. Jekyll & Mr. Hyde"
+            },
+            {
+                "name": "Ecuador Gold"
+            },
+            {
+                "name": "Esqueleto Explosivo 2"
+            },
+            {
+                "name": "Extra Chilli"
+            },
+            {
+                "name": "Fruit Warp"
+            },
+            {
+                "name": "Guns N' Roses"
+            },
+            {
+                "name": "Happy Halloween"
+            },
+            {
+                "name": "Hellboy"
+            },
+            {
+                "name": "Hugo 2"
+            },
+            {
+                "name": "Immortal Romance"
+            },
+            {
+                "name": "Jack and the Beanstalk"
+            },
+            {
+                "name": "Jack Hammer"
+            },
+            {
+                "name": "Joker 8000"
+            },
+            {
+                "name": "Joker Pro"
+            },
+            {
+                "name": "Koi Princess"
+            },
+            {
+                "name": "Laser Fruit"
+            },
+            {
+                "name": "Legacy of Dead"
+            },
+            {
+                "name": "Lucky Little Gods"
+            },
+            {
+                "name": "Midas Golden Touch"
+            },
+            {
+                "name": "Minotaurus"
+            },
+            {
+                "name": "Moon Princess"
+            },
+            {
+                "name": "Pearls of India"
+            },
+            {
+                "name": "Pimped"
+            },
+            {
+                "name": "Pink Elephants"
+            },
+            {
+                "name": "Power Force Villains"
+            },
+            {
+                "name": "Reactoonz"
+            },
+            {
+                "name": "Reel Rush"
+            },
+            {
+                "name": "Riders of the Storm"
+            },
+            {
+                "name": "Rise of Merlin"
+            },
+            {
+                "name": "Rocket Fellas Inc"
+            },
+            {
+                "name": "Sea Hunter"
+            },
+            {
+                "name": "Secrets of Atlantis"
+            },
+            {
+                "name": "Spectacular Wheel of Wealth"
+            },
+            {
+                "name": "Starburst"
+            },
+            {
+                "name": "Steam Tower"
+            },
+            {
+                "name": "The Falcon Huntress"
+            },
+            {
+                "name": "The Ninja"
+            },
+            {
+                "name": "The Wish Master"
+            },
+            {
+                "name": "Thunderstruck"
+            },
+            {
+                "name": "Tower Quest"
+            },
+            {
+                "name": "Untamed Bengal Tiger"
+            },
+            {
+                "name": "Untamed Wolf Pack"
+            },
+            {
+                "name": "Victorious"
+            },
+            {
+                "name": "Viking Runecraft"
+            },
+            {
+                "name": "Vikings Go Berzerk"
+            },
+            {
+                "name": "Voodoo"
+            },
+            {
+                "name": "Voodoo Dice"
+            },
+            {
+                "name": "Voodoo Gold"
+            },
+            {
+                "name": "Wheel of Wealth"
+            },
+            {
+                "name": "Wheel of Wealth Special Edition"
+            },
+            {
+                "name": "Wild Circus"
+            }
+        ]
+    },
+    "bonus_slot": {
+        "game": [
+            {
+                "name": "1000x Busta"
+            },
+            {
+                "name": "Golf"
+            }
+        ]
+    },
+    "wagering_contribution": [
+        {
+            "description": "Texas Hold'em and other Table Games",
+            "value": 57.0
+        },
+        {
+            "description": "Video Poker",
+            "value": 33.0
+        },
+        {
+            "description": "Roulette",
+            "value": 13.0
+        },
+        {
+            "description": "Blackjack",
+            "value": 13.0
+        },
+        {
+            "description": "Baccarat",
+            "value": 88.0
+        },
+        {
+            "description": "Craps",
+            "value": 0.0
+        },
+        {
+            "description": "Slots and other games",
+            "value": 100.0
+        },
+        {
+            "description": "Live casino games",
+            "value": 0.0
+        }
+    ],
+    "slots_wagering": [
+        {
+            "slot": [
+                {
+                    "name": "Beautiful Bones"
+                },
+                {
+                    "name": "Chilli Heat"
+                },
+                {
+                    "name": "Dragonz"
+                },
+                {
+                    "name": "Easter Eggs"
+                },
+                {
+                    "name": "EmotiCoins"
+                },
+                {
+                    "name": "Emperor of the Sea"
+                },
+                {
+                    "name": "Forbidden Throne"
+                },
+                {
+                    "name": "Hot as Hades"
+                },
+                {
+                    "name": "Jimi Hendrix"
+                },
+                {
+                    "name": "Karaoke Party"
+                },
+                {
+                    "name": "King of Slots"
+                },
+                {
+                    "name": "Loaded"
+                },
+                {
+                    "name": "Mystery Joker"
+                },
+                {
+                    "name": "Mystic Mirror"
+                },
+                {
+                    "name": "Pretty Kitty"
+                },
+                {
+                    "name": "Pyramid: Quest for Immortality"
+                },
+                {
+                    "name": "Rage to Riches"
+                },
+                {
+                    "name": "Reel Gems"
+                },
+                {
+                    "name": "Reel Steal"
+                },
+                {
+                    "name": "The Invisible Man"
+                },
+                {
+                    "name": "Untamed Giant Panda"
+                },
+                {
+                    "name": "Volcano Riches"
+                },
+                {
+                    "name": "Wizard of Gems"
+                }
+            ],
+            "value": 20.0
+        },
+        {
+            "slot": [
+                {
+                    "name": "300 Shields"
+                },
+                {
+                    "name": "Astro Legends: Lyra and Erion"
+                },
+                {
+                    "name": "Big Bad Wolf"
+                },
+                {
+                    "name": "Blood Suckers"
+                },
+                {
+                    "name": "Flaming Reels"
+                },
+                {
+                    "name": "Forsaken Kingdom"
+                },
+                {
+                    "name": "Goldilocks"
+                },
+                {
+                    "name": "Great Rhino"
+                },
+                {
+                    "name": "Gypsy Rose"
+                },
+                {
+                    "name": "High Society"
+                },
+                {
+                    "name": "Hot Ink"
+                },
+                {
+                    "name": "Jackpot 6000"
+                },
+                {
+                    "name": "Jungle Spirit: Call of the Wild"
+                },
+                {
+                    "name": "Lucky Angler"
+                },
+                {
+                    "name": "Ragnarok"
+                },
+                {
+                    "name": "Safari Sam"
+                },
+                {
+                    "name": "Sakura Fortune"
+                },
+                {
+                    "name": "Scarab Treasure"
+                },
+                {
+                    "name": "Scruffy Duck"
+                },
+                {
+                    "name": "Secret of the Stones"
+                },
+                {
+                    "name": "Secrets of Christmas"
+                },
+                {
+                    "name": "Sticky Bandits"
+                },
+                {
+                    "name": "Sugar Pop"
+                },
+                {
+                    "name": "Sweet Alchemy"
+                },
+                {
+                    "name": "The Finer Reels of Life"
+                },
+                {
+                    "name": "Thunderstruck II"
+                },
+                {
+                    "name": "Tomb Raider"
+                },
+                {
+                    "name": "Tomb Raider Secret of the Sword"
+                },
+                {
+                    "name": "Untamed Crowned Eagle"
+                },
+                {
+                    "name": "Vampire: The Masquerade – Las Vegas"
+                },
+                {
+                    "name": "Warlords: Crystals of Power"
+                },
+                {
+                    "name": "Wild Toro"
+                }
+            ],
+            "value": 0.0
+        }
+    ],
+    "wagering": {
+        "tbwr": "1. Welcome Bonus Pack is valid for the first 4 deposits. 2. You must deposit at least €20 to receive the Bonus on each deposit. 3. The Welcome Bonus Pack includes the following items: Welcome Bonus on First deposit: 200% up to €1000 + 200 Free Spins on the slot Sweet Bonanza slot (Pragmatic Play);",
+        "tbwe": "1. Welcome Bonus Pack is valid for the first 4 deposits. 2. You must deposit at least €20 to receive the Bonus on each deposit. 3. The Welcome Bonus Pack includes the following items: Welcome Bonus on First deposit: 200% up to €1000 + 200 Free Spins on the slot Sweet Bonanza slot (Pragmatic Play);",
+        "wagering_difficulty": ""
+    },
+    "wager": {
+        "value": 77.0
+    },
+    "one_spin": {
+        "value": 0.1
+    },
+    "free_spin_amount": {
+        "value": 50.0
+    },
+    "bonus_max_win": [
+        {
+            "max_value": 4444.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        },
+        {
+            "max_value": 100.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        }
+    ],
+    "description": "Description"
+}

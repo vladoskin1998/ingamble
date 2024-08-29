@@ -9,7 +9,7 @@ export interface GetDataBonusResponse {
     bonus_rank: string;
     bonus_image: string | null;
     bonus_value?: number;
-    category?: string[];
+    category?: {name:string}[];
     bonus_type: string;
     bonus_subtype?: { name: string }[];
     labels: { name: string }[];

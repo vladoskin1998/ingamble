@@ -5,7 +5,7 @@ export const PrivateRouter = () => {
     return (
         <Routes>
             <Route
-                path=":casino_name/bonuses/:bonus_type"
+                path="/casino/:casino_name/bonuses/:bonus_type"
                 element={<SimpleBonus />}
             />
             <Route

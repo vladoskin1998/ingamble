@@ -15,7 +15,7 @@ import "swiper/css/pagination"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { GetDataBonusResponse } from "../../types"
 //@ts-ignore
-const MoreStakeCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusResponse | undefined }) => {
+const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusResponse | undefined }) => {
     const [isMobile, setIsMobile] = useState(false)
     const sliderRef = useRef<SwiperRef | null>(null)
     const [active, setActive] = useState<number>(0)
@@ -878,4 +878,4 @@ const MoreStakeCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBo
     )
 }
 
-export default MoreStakeCasinoBonuses
+export default MoreCasinoBonuses

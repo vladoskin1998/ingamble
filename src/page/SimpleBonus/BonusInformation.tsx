@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import arrowYellowIcon from "../../assets/img/icons/arrow-yellow.svg"
 import closeIcon from "../../assets/img/icons/close.svg"
@@ -6,7 +6,11 @@ import slotsIcon from "../../assets/img/games/01.svg"
 import { GetDataBonusResponse } from "../../types"
 import moment from "moment"
 
-export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefined }) => {
+export const BonusInformation = ({
+    data,
+}: {
+    data: GetDataBonusResponse | undefined
+}) => {
     const [BonusInfoIsOpen, setIsBonusInfoOpen] = useState({
         BonusGeneralInfo: true,
         FreeSpins: true,
@@ -67,7 +71,10 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                     }))
                                 }
                             >
-                               <img src={arrowYellowIcon} alt="arrowYellowIcon"/>
+                                <img
+                                    src={arrowYellowIcon}
+                                    alt="arrowYellowIcon"
+                                />
                             </div>
                         </div>
                         <div
@@ -101,7 +108,8 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         Min dep:
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                    {(` ${data?.bonus_min_dep?.[0]?.min_value}  ${ data?.bonus_min_dep?.[0]?.symbol?.name}`) || '0€'}
+                                        {` ${data?.bonus_min_dep?.[0]?.min_value}  ${data?.bonus_min_dep?.[0]?.symbol?.name}` ||
+                                            "0€"}
                                     </div>
                                 </div>
                                 <div className="content-bonus-information__item item-content-bonus-information">
@@ -124,7 +132,13 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         </span>
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                        {`${data?.bonus_max_win?.[0]?.max_value || 0} ${data?.bonus_max_win?.[0]?.symbol?.symbol || ""}`} 
+                                        {`${
+                                            data?.bonus_max_win?.[0]
+                                                ?.max_value || 0
+                                        } ${
+                                            data?.bonus_max_win?.[0]?.symbol
+                                                ?.symbol || ""
+                                        }`}
                                     </div>
                                 </div>
                                 <div className="content-bonus-information__item item-content-bonus-information">
@@ -189,7 +203,8 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         Bonus Terms:
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                        <a rel="nofollow noopener" 
+                                        <a
+                                            rel="nofollow noopener"
                                             href=""
                                             target="_blank"
                                             aria-label="Put your description here."
@@ -220,7 +235,10 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                     }))
                                 }
                             >
-                               <img src={arrowYellowIcon} alt="arrowYellowIcon"/>
+                                <img
+                                    src={arrowYellowIcon}
+                                    alt="arrowYellowIcon"
+                                />
                             </div>
                         </div>
                         <div
@@ -249,10 +267,18 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         </span>
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                        {
-                                            data?.wagering_bonus_plus_deposit?.bonus_plus_deposit || 0
-                                        }
-                                        X Bonus only
+                                        {`${
+                                            data?.wagering_bonus_plus_deposit
+                                                ?.bonus_plus_deposit ||
+                                            data?.wagering_bonus_plus_deposit
+                                                ?.bonus_only ||
+                                            0
+                                        }x ${
+                                            data?.wagering_bonus_plus_deposit
+                                                ?.bonus_plus_deposit
+                                                ? "Bonus + Deposit"
+                                                : "Bonus Only"
+                                        }`}
                                     </div>
                                 </div>
                                 <div className="content-bonus-information__item item-content-bonus-information">
@@ -318,7 +344,10 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                     }))
                                 }
                             >
-                               <img src={arrowYellowIcon} alt="arrowYellowIcon"/>
+                                <img
+                                    src={arrowYellowIcon}
+                                    alt="arrowYellowIcon"
+                                />
                             </div>
                         </div>
 
@@ -329,76 +358,61 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                             }`}
                         >
                             <div className="content-bonus-information__items">
-                                {
-                                    data?.wagering_contribution?.map(item =>  <div className="content-bonus-information__item item-content-bonus-information">
-                                        <div className="item-content-bonus-information__label">
-                                           {item.description}
+                                {data?.wagering_contribution
+                                    ?.sort((a, b) => b.value - a.value)
+                                    .map((item) => (
+                                        <div className="content-bonus-information__item item-content-bonus-information">
+                                            <div className="item-content-bonus-information__label">
+                                                {item.description}
+                                            </div>
+                                            <div className="item-content-bonus-information__value">
+                                                {item.value + "%"}
+                                            </div>
                                         </div>
-                                        <div className="item-content-bonus-information__value">
-                                            {item.value}
-                                        </div>
-                                    </div>)
-                                }
-                                <div className="content-bonus-information__item item-content-bonus-information">
-                                    <div className="item-content-bonus-information__label">
-                                        Slots:
-                                    </div>
-                                    <div className="item-content-bonus-information__value">
-                                        100%
-                                    </div>
-                                </div>
-                                <div className="content-bonus-information__item item-content-bonus-information">
-                                    <div className="item-content-bonus-information__label">
-                                        Bingo:
-                                    </div>
-                                    <div className="item-content-bonus-information__value">
-                                        100%
-                                    </div>
-                                </div>
-                                <div className="content-bonus-information__item item-content-bonus-information item-content-bonus-information-last-child">
-                                    <div className="item-content-bonus-information__label">
-                                        Video poker:
-                                    </div>
-                                    <div className="item-content-bonus-information__value">
-                                        20%
-                                    </div>
-                                </div>
+                                    ))}
                             </div>
                         </div>
                     </div>
-                    <div className="bonus-information__item  item-bonus-information item-bonus-information_special-notes">
-                        <div
-                            className={`item-bonus-information__top top-item-bonus-information ${
-                                BonusInfoIsOpen.SpecialNotes && "active"
-                            }`}
-                        >
-                            <div className="top-item-bonus-information__title">
-                                Special Notes
-                            </div>
+                    {data?.special_note?.description && (
+                        <div className="bonus-information__item  item-bonus-information item-bonus-information_special-notes">
                             <div
-                                className="top-item-bonus-information__icon"
-                                onClick={() =>
-                                    setIsBonusInfoOpen((s) => ({
-                                        ...s,
-                                        SpecialNotes: !s.SpecialNotes,
-                                    }))
-                                }
+                                className={`item-bonus-information__top top-item-bonus-information ${
+                                    BonusInfoIsOpen.SpecialNotes && "active"
+                                }`}
                             >
-                               <img src={arrowYellowIcon} alt="arrowYellowIcon"/>
+                                <div className="top-item-bonus-information__title">
+                                    Special Notes
+                                </div>
+                                <div
+                                    className="top-item-bonus-information__icon"
+                                    onClick={() =>
+                                        setIsBonusInfoOpen((s) => ({
+                                            ...s,
+                                            SpecialNotes: !s.SpecialNotes,
+                                        }))
+                                    }
+                                >
+                                    <img
+                                        src={arrowYellowIcon}
+                                        alt="arrowYellowIcon"
+                                    />
+                                </div>
                             </div>
-                        </div>
 
-                        <div
-                            className={`content-bonus-information  ${
-                                !BonusInfoIsOpen.SpecialNotes && "active"
-                            }`}
-                        >
-                            <div className="content-bonus-information__items ">
-                                <div className="content-bonus-information__item item-content-bonus-information item-content-bonus-information-last-child">
-                                    <div className="item-content-bonus-information__text">
-                                        <p>
-                                            {data?.special_note?.description}
-                                            {/* <span>
+                            <div
+                                className={`content-bonus-information  ${
+                                    !BonusInfoIsOpen.SpecialNotes && "active"
+                                }`}
+                            >
+                                <div className="content-bonus-information__items ">
+                                    <div className="content-bonus-information__item item-content-bonus-information item-content-bonus-information-last-child">
+                                        <div className="item-content-bonus-information__text">
+                                            <p>
+                                                {
+                                                    data?.special_note
+                                                        ?.description
+                                                }
+                                                {/* <span>
                                                 This bonus offer is exclusively
                                                 for German players.
                                             </span>{" "}
@@ -408,12 +422,13 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                             bonus with a German IP address but
                                             lacking a German passport may have
                                             the bonus revoked. */}
-                                        </p>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
                 <div className="bonus-information__column">
                     <div className="bonus-information__item  item-bonus-information item-bonus-information_free-spins">
@@ -434,7 +449,10 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                     }))
                                 }
                             >
-                               <img src={arrowYellowIcon} alt="arrowYellowIcon"/>
+                                <img
+                                    src={arrowYellowIcon}
+                                    alt="arrowYellowIcon"
+                                />
                             </div>
                         </div>
 
@@ -449,7 +467,7 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         Free spin amount:
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                    {data?.free_spin_amount?.value || 0}
+                                        {data?.free_spin_amount?.value || 0}
                                     </div>
                                 </div>
                                 <div className="content-bonus-information__item item-content-bonus-information">
@@ -465,7 +483,8 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         Bonus slot:
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                       {data?.bonus_slot?.game?.[0]?.name || ''}
+                                        {data?.bonus_slot?.game?.[0]?.name ||
+                                            ""}
                                     </div>
                                 </div>
                                 <div className="content-bonus-information__item item-content-bonus-information item-content-bonus-information-last-child">
@@ -473,7 +492,7 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         Wager for free spins:
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                        {data?.wager?.value || 0 }x
+                                        {data?.wager?.value || 0}x
                                     </div>
                                 </div>
                             </div>
@@ -497,7 +516,10 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                     }))
                                 }
                             >
-                               <img src={arrowYellowIcon} alt="arrowYellowIcon"/>
+                                <img
+                                    src={arrowYellowIcon}
+                                    alt="arrowYellowIcon"
+                                />
                             </div>
                         </div>
                         <div
@@ -511,7 +533,8 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         Bonus restriction games:
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                    {data?.restriction_game?.game?.reduce(
+                                        {data?.restriction_game?.game
+                                            ?.reduce(
                                                 (prev, state) =>
                                                     prev + ", " + state.name,
                                                 ""
@@ -539,9 +562,16 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                             <div className="popup-item-content-bonus-information__body">
                                                 <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
                                                     <div className="top-popup-item-content-bonus-information__title">
-                                                        All Bonus Restriction Games
+                                                        All Bonus Restriction
+                                                        Games
                                                         <div className="top-popup-item-content-bonus-information__number">
-                                                            {`(${data?.restriction_game?.game?.length || 0})`}
+                                                            {`(${
+                                                                data
+                                                                    ?.restriction_game
+                                                                    ?.game
+                                                                    ?.length ||
+                                                                0
+                                                            })`}
                                                         </div>
                                                     </div>
                                                     <button
@@ -565,9 +595,10 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                                 </div>
                                                 <div className="popup-item-content-bonus-information__content">
                                                     <div className="popup-item-content-bonus-information__row">
-                                                    {data?.restriction_game?.game?.map(
+                                                        {data?.restriction_game?.game?.map(
                                                             (item) => (
-                                                                <a rel="nofollow noopener" 
+                                                                <a
+                                                                    rel="nofollow noopener"
                                                                     href=""
                                                                     target="_blank"
                                                                     aria-label="Put your description here."
@@ -874,7 +905,8 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         Provider restrictions:
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                        {data?.game_providers?.reduce(
+                                        {data?.game_providers
+                                            ?.reduce(
                                                 (prev, state) =>
                                                     prev + ", " + state.name,
                                                 ""
@@ -905,7 +937,12 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                                         All Provider
                                                         Restrictions
                                                         <div className="top-popup-item-content-bonus-information__number">
-                                                            {`(${data?.game_providers?.length || 0})`}
+                                                            {`(${
+                                                                data
+                                                                    ?.game_providers
+                                                                    ?.length ||
+                                                                0
+                                                            })`}
                                                         </div>
                                                     </div>
                                                     <button
@@ -931,7 +968,8 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                                     <div className="popup-item-content-bonus-information__row">
                                                         {data?.game_providers?.map(
                                                             (item) => (
-                                                                <a rel="nofollow noopener"
+                                                                <a
+                                                                    rel="nofollow noopener"
                                                                     href=""
                                                                     target="_blank"
                                                                     aria-label="Put your description here."
@@ -1238,7 +1276,8 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         Country restrictions:
                                     </div>
                                     <div className="item-content-bonus-information__value">
-                                        {data?.restriction_country?.country?.reduce(
+                                        {data?.restriction_country?.country
+                                            ?.reduce(
                                                 (prev, state) =>
                                                     prev + ", " + state.name,
                                                 ""
@@ -1268,7 +1307,13 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                                     <div className="top-popup-item-content-bonus-information__title">
                                                         All Country Restrictions
                                                         <div className="top-popup-item-content-bonus-information__number">
-                                                            {`(${data?.restriction_country?.country?.length || 0})`}
+                                                            {`(${
+                                                                data
+                                                                    ?.restriction_country
+                                                                    ?.country
+                                                                    ?.length ||
+                                                                0
+                                                            })`}
                                                         </div>
                                                     </div>
                                                     <button
@@ -1294,7 +1339,8 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                                     <div className="popup-item-content-bonus-information__row">
                                                         {data?.restriction_country?.country?.map(
                                                             (item) => (
-                                                                <a rel="nofollow noopener"
+                                                                <a
+                                                                    rel="nofollow noopener"
                                                                     href=""
                                                                     target="_blank"
                                                                     aria-label="Put your description here."
@@ -1629,7 +1675,10 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                     }))
                                 }
                             >
-                               <img src={arrowYellowIcon} alt="arrowYellowIcon"/>
+                                <img
+                                    src={arrowYellowIcon}
+                                    alt="arrowYellowIcon"
+                                />
                             </div>
                         </div>
 
