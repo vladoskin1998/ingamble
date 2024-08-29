@@ -1,19 +1,14 @@
-// import { useState } from "react"
-// import { Footer } from "./components/footer"
-// import { Header } from "./components/header"
-// import { Navbar } from "./components/navbar"
+import  { ReactNode, useState } from "react"
+import { Footer } from "../../components/footer"
+import { Header } from "../../components/header"
+import { Navbar } from "../../components/navbar"
 
-import { PublicRouter } from "./Router/PublicRouter"
 
-function App() {
-  
-    // const [isSidebarActive, setSidebarActive] = useState(false)
-
-    
-    
+export const Default = ({children}:{children:ReactNode}) => {
+    const [isSidebarActive, setSidebarActive] = useState(false)
     return (
         <>
-            {/* <svg display="none">
+            <svg display="none">
                 <symbol id="arrow" viewBox="0 0 10 6">
                     <g>
                         <path
@@ -205,22 +200,20 @@ function App() {
                     </svg>
                 </div>
                 <div className="gamble">
-                    <Navbar 
-                    isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive}
+                    <Navbar
+                        isSidebarActive={isSidebarActive}
+                        setSidebarActive={setSidebarActive}
                     />
                     <div className="gamble__body">
-                        <Header 
-                       isSidebarActive={isSidebarActive}  setSidebarActive={setSidebarActive}
+                        <Header
+                            isSidebarActive={isSidebarActive}
+                            setSidebarActive={setSidebarActive}
                         />
-                        
+                        {children}
                         <Footer />
                     </div>
                 </div>
-            </div>*/}
-             <PublicRouter />
-        </> 
-       
+            </div>
+        </>
     )
 }
-
-export default App

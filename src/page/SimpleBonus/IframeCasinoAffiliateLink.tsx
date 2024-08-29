@@ -60,7 +60,7 @@ export const IframeCasinoAffiliateLink = () => {
                         height: "100%",
                         border: "none",
                         zIndex: "9999",
-                        backgroundColor: "#fff",
+                        // backgroundColor: "#fff",
                     }}
                 ></div>
             )}
