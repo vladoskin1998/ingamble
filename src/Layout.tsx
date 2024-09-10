@@ -83,3 +83,21 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 
     return <>{children}</>
 }
+
+
+
+// if (filter_open_delete && sidebar_gamble && header) {
+//     filter_open_delete.addEventListener('click', function (event) {
+//         event.preventDefault(); sidebar_gamble.classList.remove('active'); header.classList.remove('resize'); footer.classList.remove('resize'); main.classList.remove('resize'); if (!document.querySelector('.mobile-header.active')) { body.classList.remove('lock') }
+//         if (gamble_body) { gamble_body.classList.remove('hide') }
+//         if (document.querySelector('.title-filters-sidebar-gamble__text')) { let title = document.querySelector('.title-filters-sidebar-gamble__text'); title.classList.remove('selected'); document.querySelector('.title-filters-sidebar-gamble__text').innerHTML = 'Filters' }
+//         if (document.querySelector('.filter-selected__body')) { document.querySelector('.filter-selected__body').classList.remove('active') }
+//     })
+// }
+//let sidebar_title_icons = document.querySelectorAll('.title-item-form-filters__icon'); if (sidebar_title_icons) { sidebar_title_icons.forEach(function (sidebar_title_icon) { sidebar_title_icon.addEventListener('click', function (event) { event.preventDefault(); if (!sidebar_gamble.classList.contains('active')) { filter_open_btn.classList.toggle('active'); sidebar_gamble.classList.toggle('active'); header.classList.toggle('resize'); footer.classList.toggle('resize'); main.classList.toggle('resize') } }) }) }
+// let filter_open_btn = document.querySelector('.title-filters-sidebar-gamble__btn'); let filter_open_delete = document.querySelector('.title-filters-sidebar-gamble__btn-delete'); let sidebar_gamble = document.querySelector('.sidebar-gamble'); let header = document.querySelector('.header'); let gamble_body = document.querySelector('.gamble__body'); let footer = document.querySelector('.footer'); let main = document.querySelector('main'); if (filter_open_btn && sidebar_gamble && header && main) {
+//     filter_open_btn.addEventListener('click', function (event) {
+//         event.preventDefault(); if (document.documentElement.clientWidth > 650.98) { filter_open_btn.classList.toggle('active'); sidebar_gamble.classList.toggle('active'); header.classList.toggle('resize'); footer.classList.toggle('resize'); main.classList.toggle('resize') } else { sidebar_gamble.classList.add('active'); header.classList.add('resize'); footer.classList.add('resize'); main.classList.add('resize'); body.classList.add('lock') }
+//         let titles_form_filter_item = document.querySelectorAll('.title-item-form-filters'); if (titles_form_filter_item && !sidebar_gamble.classList.contains('active')) { titles_form_filter_item.forEach(function (title_form_filter_item) { $('.title-item-form-filters').removeClass('active'); $('.title-item-form-filters').parent().removeClass('active'); $('.title-item-form-filters').next().slideUp(400); $('.title-item-form-filters').next().removeClass('active') }) }
+//     })
+// }

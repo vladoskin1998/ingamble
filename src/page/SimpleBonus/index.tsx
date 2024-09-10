@@ -15,7 +15,7 @@ import vulkanLogo from "../../assets/img/casino-logo/vulkan.svg"
 import giftFeatureIcon from "../../assets/img/features/gift.svg"
 import cashIcon from "../../assets/img/features/cash.svg"
 import roySpinsLogo from "../../assets/img/casino-logo/roy-spins.svg"
-import harryStyles from "../../assets/img/casino-person/01.svg"
+import harryStyles from "../../assets/img/casino-person/01.png"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
 import backgroundImage08 from "../../assets/img/bg/08.jpg"
 import logoIcon from "../../assets/img/logo-icon.svg"
@@ -276,6 +276,150 @@ export const SimpleBonus = () => {
                                             </a>
                                         </div>
                                         <div className="content-casino-info__features features-content-casino-info">
+                                                <div className="features-content-casino-info__row">
+                                                    <div className="features-content-casino-info__column">
+                                                        <div
+                                                            className="features-content-casino-info__item item-features-content-casino-info item-features-content-casino-info_border">
+                                                            <div className="item-features-content-casino-info__top">
+                                                                <div className="item-features-content-casino-info__label">
+                                                                    Bonus Rank</div>
+                                                            </div>
+                                                            <div className="item-features-content-casino-info__body">
+                                                                <div className="item-features-content-casino-info__number">
+                                                                {data?.bonus_rank ||
+                                                                    0}
+                                                                </div>
+                                                                <div className="item-features-content-casino-info__rating">
+                                                                    <div
+                                                                        className="item-features-content-casino-info__star">
+                                                                          <LazyLoadImage
+                                                                        src={
+                                                                            starIcon
+                                                                        }
+                                                                        alt="star"
+                                                                        effect="blur"
+                                                                    />
+                                                                    </div>
+                                                                    <div
+                                                                        className="item-features-content-casino-info__star">
+                                                                           <LazyLoadImage
+                                                                        src={
+                                                                            starIcon
+                                                                        }
+                                                                        alt="star"
+                                                                        effect="blur"
+                                                                    />
+                                                                    </div>
+                                                                    <div
+                                                                        className="item-features-content-casino-info__star">
+                                                                          <LazyLoadImage
+                                                                        src={
+                                                                            starIcon
+                                                                        }
+                                                                        alt="star"
+                                                                        effect="blur"
+                                                                    />
+                                                                    </div>
+                                                                    <div
+                                                                        className="item-features-content-casino-info__star">
+                                                                           <LazyLoadImage
+                                                                        src={
+                                                                            starIcon
+                                                                        }
+                                                                        alt="star"
+                                                                        effect="blur"
+                                                                    />
+                                                                    </div>
+                                                                    <div
+                                                                        className="item-features-content-casino-info__star">
+                                                                          <LazyLoadImage
+                                                                        src={
+                                                                            starIcon
+                                                                        }
+                                                                        alt="star"
+                                                                        effect="blur"
+                                                                    />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="features-content-casino-info__column">
+                                                        <div
+                                                            className="features-content-casino-info__item item-features-content-casino-info">
+                                                            <div className="item-features-content-casino-info__top">
+                                                                <div className="item-features-content-casino-info__label">
+                                                                    Wager
+                                                                    </div>
+                                                            </div>
+                                                            <div className="item-features-content-casino-info__body">
+                                                                <div className="item-features-content-casino-info__number">
+                                                                {data
+                                                                    ?.wagering_bonus_plus_deposit
+                                                                    ?.bonus_plus_deposit ||
+                                                                    data
+                                                                        ?.wagering_bonus_plus_deposit
+                                                                        ?.bonus_only ||
+                                                                    0}
+                                                                x
+                                                                </div>
+                                                                <div className="item-features-content-casino-info__value">
+                                                                {data
+                                                                    ?.wagering_bonus_plus_deposit
+                                                                    ?.bonus_plus_deposit
+                                                                    ? "Bonus + Deposit"
+                                                                    : "Bonus Only"}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="features-content-casino-info__column">
+                                                        <div
+                                                            className="features-content-casino-info__item item-features-content-casino-info">
+                                                            <div className="item-features-content-casino-info__top">
+                                                                <div className="item-features-content-casino-info__label">
+                                                                    Min Dep
+                                                                </div>
+                                                            </div>
+                                                            <div className="item-features-content-casino-info__body">
+                                                                <div className="item-features-content-casino-info__number">
+                                                                {data
+                                                                    ?.bonus_min_dep?.[0]
+                                                                    ?.min_value ||
+                                                                    0}
+                                                                €
+                                                                </div>
+                                                                <div className="item-features-content-casino-info__value">
+                                                                    To Activate
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="features-content-casino-info__column">
+                                                        <div
+                                                            className="features-content-casino-info__item item-features-content-casino-info">
+                                                            <div className="item-features-content-casino-info__top">
+                                                                <div className="item-features-content-casino-info__label">
+                                                                    Max Bet
+                                                                </div>
+                                                            </div>
+                                                            <div className="item-features-content-casino-info__body">
+                                                                <div className="item-features-content-casino-info__number">
+                                                                {`${
+                                                                    data
+                                                                        ?.max_bet?.[0]
+                                                                        ?.value ||
+                                                                    0
+                                                                }€`}
+                                                                </div>
+                                                                <div className="item-features-content-casino-info__value">
+                                                                    Per Spin
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {/* <div className="content-casino-info__features features-content-casino-info">
                                             <div className="features-content-casino-info__row">
                                                 <div className="features-content-casino-info__column">
                                                     <div className="features-content-casino-info__item item-features-content-casino-info">
@@ -411,7 +555,7 @@ export const SimpleBonus = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>
