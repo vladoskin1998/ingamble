@@ -86,6 +86,7 @@ export const Header = ({
         <header className="header">
             <div className="header__container container">
                 <div className="header__row">
+                    
                     <div className="header__column">
                         <a
                             rel="nofollow noopener"
@@ -100,7 +101,8 @@ export const Header = ({
                             <span></span>
                             <span></span>
                         </a>
-                        <a
+                        {
+                            !isSidebarActive &&     <a
                             rel="nofollow noopener"
                             href=""
                             target="_blank"
@@ -110,6 +112,8 @@ export const Header = ({
                                 <LazyLoadImage alt={"logo"} src={logo} />
                             </div>
                         </a>
+                        }
+                    
                     </div>
                     <div
                         className="header__column"

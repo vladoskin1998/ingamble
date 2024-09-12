@@ -3,6 +3,7 @@
 // import { Header } from "./components/header"
 // import { Navbar } from "./components/navbar"
 
+import { AdaptiveProvider } from "./Layout"
 import { PublicRouter } from "./Router/PublicRouter"
 
 function App() {
@@ -217,7 +218,10 @@ function App() {
                     </div>
                 </div>
             </div>*/}
-             <PublicRouter />
+                <AdaptiveProvider>
+                <PublicRouter />
+                </AdaptiveProvider>
+            
         </> 
        
     )

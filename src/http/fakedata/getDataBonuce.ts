@@ -428,7 +428,8 @@ export const FAKEDATAGETBONUCE:GetDataBonusResponse = {
     ],
     "wagering": {
         "tbwr": "60x bonus",
-        "tbwe": "10x bonus"
+        "tbwe": "10x bonus",
+        "wagering_difficulty": 'easy'
     },
     "wager": {
         "value": 0.0

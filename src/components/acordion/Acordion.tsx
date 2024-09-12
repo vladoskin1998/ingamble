@@ -1,74 +1,81 @@
-import React, { useEffect, useRef } from "react"
-import { useAccordion } from "../../hooks/useAccordion"
+import React, { useEffect, useRef, useState } from "react";
+import { useAccordion } from "../../hooks/useAccordion";
 
 type AccordionItemProps = {
-    heading: any
-    content: any
-}
+    heading: any;
+    content: any;
+    defaultOpen?: boolean; // Новый пропс для установки начального состояния
+};
 
 export const AccordionItem: React.FC<AccordionItemProps> = ({
     heading,
     content,
+    defaultOpen = false, 
 }) => {
-    const { isOpen, toggle } = useAccordion()
-    const headerRef = useRef<HTMLDivElement>(null)
-    console.log(isOpen);
-    
+    const [isOpen, setIsOpen] = useState(defaultOpen);
+    const { toggle } = useAccordion();
+    const headerRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         if (headerRef.current) {
             const titleElement = headerRef.current.querySelector(
-                ".item-form-filters__title.title-item-form-filters"
-            ) as HTMLDivElement
+                ".accordion--title--element"
+            ) as HTMLDivElement;
             if (titleElement) {
                 if (isOpen) {
-                    titleElement.classList.add("active")
+                    titleElement.classList.add("active");
                 } else {
-                    titleElement.classList.remove("active")
+                    titleElement.classList.remove("active");
                 }
-            }
-            else{
+            } else {
                 const subTitleElement = headerRef.current.querySelector(
-                    ".form-filter__title.title-form-filter"
-                ) as HTMLDivElement
+                    ".accordion--body--element"
+                ) as HTMLDivElement;
                 if (subTitleElement) {
                     if (isOpen) {
-                        subTitleElement.classList.add("active")
+                        subTitleElement.classList.add("active");
                     } else {
-                        subTitleElement.classList.remove("active")
+                        subTitleElement.classList.remove("active");
                     }
                 }
             }
         }
+    }, [isOpen]);
 
-    }, [isOpen])
+    // Обработчик клика для переключения состояния
+    const handleClick = () => {
+        setIsOpen((prevState) => !prevState);
+        toggle(); // Вызов функции toggle из useAccordion, если нужно
+    };
 
     return (
         <div>
             <div
                 ref={headerRef}
                 style={styles.accordionItemHeader}
-                onClick={toggle}
+                onClick={handleClick} // Используйте новый обработчик клика
             >
                 {heading}
             </div>
             <div
                 style={{
                     ...styles.accordionItemPanel,
+                    overflow: isOpen ? "visiable" : "hidden",
                     maxHeight: isOpen ? "10000px" : "0",
                 }}
             >
                 {content}
             </div>
         </div>
-    )
-}
+    );
+};
 
 const styles = {
     accordionItemHeader: {
         cursor: "pointer",
     },
     accordionItemPanel: {
-        overflow: "hidden",
-        transition: "max-height 0.6s ease",
+        // overflow: "hidden",
+        transition: "max-height 0.5s ease",
     },
-}
+};

@@ -6,37 +6,26 @@ import bigFatRaceImage from "../../assets/img/casino-cards/03.jpg"
 import crazyCashBombImage from "../../assets/img/casino-cards/07.jpg"
 import newYearBetRaceImage01 from "../../assets/img/casino-cards/01.jpg"
 import newYearBetRaceImage04 from "../../assets/img/casino-cards/04.jpg"
-
+import { Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import { SwiperRef } from "swiper/react"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import "swiper/css/pagination"
-import { useCallback, useEffect, useRef, useState } from "react"
+import {  useRef } from "react"
 import { GetDataBonusResponse } from "../../types"
+
 //@ts-ignore
-const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusResponse | undefined }) => {
-    const [isMobile, setIsMobile] = useState(false)
+const MoreCasinoBonuses = ({
+    title,
+    //@ts-ignore
+    data,
+}: {
+    title: string
+    data?: GetDataBonusResponse | undefined
+}) => {
     const sliderRef = useRef<SwiperRef | null>(null)
-    const [active, setActive] = useState<number>(0)
-    const slideTo = useCallback((s: number) => {
-        if (!sliderRef.current) return
-
-        setActive(s)
-
-        sliderRef.current.swiper.slideTo(s)
-    }, [])
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 650.98)
-        }
-
-        handleResize() // Call once on mount
-        window.addEventListener("resize", handleResize)
-
-        return () => window.removeEventListener("resize", handleResize)
-    }, [])
+    const paginationRef = useRef<HTMLDivElement | null>(null)
 
     return (
         <section className="simple-bonus__more-stake more-staket-simple-bonus">
@@ -74,6 +63,28 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                     slidesPerView="auto"
                                     spaceBetween={20}
                                     ref={sliderRef}
+                                    // pagination={{ clickable: true }}
+
+                                    pagination={{
+                                        el: paginationRef.current,
+                                        //      el: "#more-staket-simple-bonus__pagination",
+                                        // type: "bullets",
+                                        // bulletClass: "swiper-custom-bullet",
+                                        // bulletActiveClass: "swiper-custom-bullet-active",
+                                        clickable: true,
+                                    }}
+                                    modules={[Pagination]}
+                                    breakpoints={{
+                                        320: {
+                                            spaceBetween: 16,
+                                        },
+                                        1650.98: {
+                                            spaceBetween: 20,
+                                        },
+                                        1920: {
+                                            spaceBetween: 20,
+                                        },
+                                    }}
                                 >
                                     <SwiperSlide>
                                         <div className="slider__slide slide-slider swiper-slide">
@@ -91,11 +102,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                             alt="Crazy Cash Bomb Winnings $1,000,000 asdasdas WQEasdasd"
                                                             loading="lazy"
                                                         />
-                                                        {/* <LazyLoadImage
-                                            src={casinoCard09}
-                                            alt="Crazy Cash Bomb Winnings $1,000,000 asdasdas WQEasdasd"
-                                            effect="blur"
-                                        /> */}
                                                     </div>
                                                     <a
                                                         rel="nofollow noopener"
@@ -107,6 +113,42 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         Play
                                                     </a>
                                                 </a>
+                                                <div className="casino-card__tags tags-casino-card">
+                                                    <div className="tags-casino-card__item tags-casino-card__item_green">
+                                                        <span className="tags-casino-card__item-label">
+                                                            WR:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            4.0x
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_blue">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Min Dep:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            10€
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_purple">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Max bet:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €5
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_grass">
+                                                        <span className="tags-casino-card__item-label">
+                                                            <svg>
+                                                                <use xlinkHref="#check-grass"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            Safe
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
@@ -121,12 +163,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                             </a>
                                                             <div className="info-casino-card__stake-rating">
                                                                 <span className="info-casino-card__stake-rating-icon">
-                                                                    <LazyLoadImage
+                                                                    <img
                                                                         src={
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__stake__rating-number">
@@ -136,12 +177,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         </div>
                                                         <div className="info-casino-card__likes">
                                                             <span className="info-casino-card__likes-icon">
-                                                                <LazyLoadImage
+                                                                <img
                                                                     src={
                                                                         likeIcon
                                                                     }
                                                                     alt="like"
-                                                                    effect="blur"
                                                                 />
                                                             </span>
                                                             <span className="info-casino-card__likes-number">
@@ -161,42 +201,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         $1,000,000 asdasdas
                                                         WQEasdasd
                                                     </a>
-                                                    <div className="casino-card__tags tags-casino-card">
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                               10€
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,13 +222,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                             }
                                                             alt="Big Fat Race to$100 Moon coins"
                                                         />
-                                                        {/* <LazyLoadImage
-                                            src={
-                                                bigFatRaceImage
-                                            }
-                                            alt="Big Fat Race to$100 Moon coins"
-                                            effect="blur" 
-                                        />*/}
                                                     </div>
                                                     <a
                                                         rel="nofollow noopener"
@@ -236,6 +233,42 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         Play
                                                     </a>
                                                 </a>
+                                                <div className="casino-card__tags tags-casino-card">
+                                                    <div className="tags-casino-card__item tags-casino-card__item_green">
+                                                        <span className="tags-casino-card__item-label">
+                                                            WR:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            4.0x
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_blue">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Min Dep:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €10
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_purple">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Max bet:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €5
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_grass">
+                                                        <span className="tags-casino-card__item-label">
+                                                            <svg>
+                                                                <use xlinkHref="#check-grass"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            Safe
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
@@ -250,12 +283,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                             </a>
                                                             <div className="info-casino-card__stake-rating">
                                                                 <span className="info-casino-card__stake-rating-icon">
-                                                                    <LazyLoadImage
+                                                                    <img
                                                                         src={
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__stake__rating-number">
@@ -265,12 +297,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         </div>
                                                         <div className="info-casino-card__likes">
                                                             <span className="info-casino-card__likes-icon">
-                                                                <LazyLoadImage
+                                                                <img
                                                                     src={
                                                                         likeIcon
                                                                     }
                                                                     alt="like"
-                                                                    effect="blur"
                                                                 />
                                                             </span>
                                                             <span className="info-casino-card__likes-number">
@@ -288,42 +319,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         Big Fat Race to$100 Moon
                                                         coins
                                                     </a>
-                                                    <div className="casino-card__tags tags-casino-card">
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €10
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -339,13 +334,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                     className="casino-card__image-block"
                                                 >
                                                     <div className="casino-card__image ibg">
-                                                        {/* <LazyLoadImage
-                                            src={
-                                                crazyCashBombImage
-                                            }
-                                            alt="Crazy Cash Bomb Winnings $1,000,"
-                                            effect="blur"
-                                        /> */}
                                                         <img
                                                             src={
                                                                 crazyCashBombImage
@@ -364,6 +352,42 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         Play
                                                     </a>
                                                 </a>
+                                                <div className="casino-card__tags tags-casino-card">
+                                                    <div className="tags-casino-card__item tags-casino-card__item_green">
+                                                        <span className="tags-casino-card__item-label">
+                                                            WR:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            4.0x
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_blue">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Min Dep:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €10
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_purple">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Max bet:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €5
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_grass">
+                                                        <span className="tags-casino-card__item-label">
+                                                            <svg>
+                                                                <use xlinkHref="#check-grass"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            Safe
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
@@ -378,12 +402,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                             </a>
                                                             <div className="info-casino-card__stake-rating">
                                                                 <span className="info-casino-card__stake-rating-icon">
-                                                                    <LazyLoadImage
+                                                                    <img
                                                                         src={
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__stake__rating-number">
@@ -393,12 +416,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         </div>
                                                         <div className="info-casino-card__likes">
                                                             <span className="info-casino-card__likes-icon">
-                                                                <LazyLoadImage
+                                                                <img
                                                                     src={
                                                                         likeIcon
                                                                     }
                                                                     alt="like"
-                                                                    effect="blur"
                                                                 />
                                                             </span>
                                                             <span className="info-casino-card__likes-number">
@@ -416,42 +438,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         Crazy Cash Bomb Winnings
                                                         $1,000,
                                                     </a>
-                                                    <div className="casino-card__tags tags-casino-card">
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €10
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -467,13 +453,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                     className="casino-card__image-block"
                                                 >
                                                     <div className="casino-card__image ibg">
-                                                        {/* <LazyLoadImage
-                                            src={
-                                                bigFatRaceImage
-                                            }
-                                            alt="Big Fat Race to $100 Moon coins"
-                                            effect="blur"
-                                        /> */}
                                                         <img
                                                             src={
                                                                 bigFatRaceImage
@@ -492,6 +471,42 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         Play
                                                     </a>
                                                 </a>
+                                                <div className="casino-card__tags tags-casino-card">
+                                                    <div className="tags-casino-card__item tags-casino-card__item_green">
+                                                        <span className="tags-casino-card__item-label">
+                                                            WR:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            4.0x
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_blue">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Min Dep:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €10
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_purple">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Max bet:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €5
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_grass">
+                                                        <span className="tags-casino-card__item-label">
+                                                            <svg>
+                                                                <use xlinkHref="#check-grass"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            Safe
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
@@ -544,42 +559,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         Big Fat Race to $100
                                                         Moon coins
                                                     </a>
-                                                    <div className="casino-card__tags tags-casino-card">
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €10
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -595,13 +574,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                     className="casino-card__image-block"
                                                 >
                                                     <div className="casino-card__image ibg">
-                                                        {/* <LazyLoadImage
-                                            src={
-                                                newYearBetRaceImage01
-                                            }
-                                            alt="New Year Bet Race - $30,000 Rocket Launcher With 10x Scope"
-                                            effect="blur"
-                                        /> */}
                                                         <img
                                                             src={
                                                                 newYearBetRaceImage01
@@ -620,6 +592,42 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         Play
                                                     </a>
                                                 </a>
+                                                <div className="casino-card__tags tags-casino-card">
+                                                    <div className="tags-casino-card__item tags-casino-card__item_green">
+                                                        <span className="tags-casino-card__item-label">
+                                                            WR:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            4.0x
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_blue">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Min Dep:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €10
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_purple">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Max bet:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €5
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_grass">
+                                                        <span className="tags-casino-card__item-label">
+                                                            <svg>
+                                                                <use xlinkHref="#check-grass"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            Safe
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
@@ -634,12 +642,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                             </a>
                                                             <div className="info-casino-card__stake-rating">
                                                                 <span className="info-casino-card__stake-rating-icon">
-                                                                    <LazyLoadImage
+                                                                    <img
                                                                         src={
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__stake__rating-number">
@@ -649,12 +656,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         </div>
                                                         <div className="info-casino-card__likes">
                                                             <span className="info-casino-card__likes-icon">
-                                                                <LazyLoadImage
+                                                                <img
                                                                     src={
                                                                         likeIcon
                                                                     }
                                                                     alt="like"
-                                                                    effect="blur"
                                                                 />
                                                             </span>
                                                             <span className="info-casino-card__likes-number">
@@ -673,42 +679,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         $30,000 Rocket Launcher
                                                         With 10x Scope
                                                     </a>
-                                                    <div className="casino-card__tags tags-casino-card">
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €10
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -724,13 +694,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                     className="casino-card__image-block"
                                                 >
                                                     <div className="casino-card__image ibg">
-                                                        {/* <LazyLoadImage
-                                            src={
-                                                newYearBetRaceImage04
-                                            }
-                                            alt="New Year Bet Race - $30,000 Rocket Launcher With 10x Scope"
-                                            effect="blur"
-                                        /> */}
                                                         <img
                                                             src={
                                                                 newYearBetRaceImage04
@@ -749,6 +712,42 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         Play
                                                     </a>
                                                 </a>
+                                                <div className="casino-card__tags tags-casino-card">
+                                                    <div className="tags-casino-card__item tags-casino-card__item_green">
+                                                        <span className="tags-casino-card__item-label">
+                                                            WR:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            4.0x
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_blue">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Min Dep:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €10
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_purple">
+                                                        <span className="tags-casino-card__item-label">
+                                                            Max bet:
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            €5
+                                                        </span>
+                                                    </div>
+                                                    <div className="tags-casino-card__item tags-casino-card__item_grass">
+                                                        <span className="tags-casino-card__item-label">
+                                                            <svg>
+                                                                <use xlinkHref="#check-grass"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span className="tags-casino-card__item-value">
+                                                            Safe
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__info info-casino-card">
                                                         <div className="info-casino-card__stake">
@@ -763,12 +762,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                             </a>
                                                             <div className="info-casino-card__stake-rating">
                                                                 <span className="info-casino-card__stake-rating-icon">
-                                                                    <LazyLoadImage
+                                                                    <img
                                                                         src={
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__stake__rating-number">
@@ -778,12 +776,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         </div>
                                                         <div className="info-casino-card__likes">
                                                             <span className="info-casino-card__likes-icon">
-                                                                <LazyLoadImage
+                                                                <img
                                                                     src={
                                                                         likeIcon
                                                                     }
                                                                     alt="like"
-                                                                    effect="blur"
                                                                 />
                                                             </span>
                                                             <span className="info-casino-card__likes-number">
@@ -802,42 +799,6 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                                                         $30,000 Rocket Launcher
                                                         With 10x Scope
                                                     </a>
-                                                    <div className="casino-card__tags tags-casino-card">
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €10
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                €5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -847,30 +808,11 @@ const MoreCasinoBonuses = ({ title ,data}: { title: string,data?: GetDataBonusRe
                         </div>
                     </div>
                     <div className="slider__bottom bottom-slider">
-                        <div className="bottom-slider__pagination more-staket-simple-bonus__pagination swiper-pagination">
-                            <button
-                                className={`swiper-pagination-bullet ${
-                                    active === 0 && "swiper-pagination-bullet-active"
-                                } `}
-                                onClick={() => slideTo(0)}
-                            ></button>
-                            {isMobile &&
-                                [1,2, 3, 4].map((item) => (
-                                    <button
-                                        onClick={() => slideTo(item)}
-                                        className={`swiper-pagination-bullet ${
-                                            active === item &&
-                                            "swiper-pagination-bullet-active"
-                                        } `}
-                                    ></button>
-                                ))}
-                            <button
-                                onClick={() => slideTo(5)}
-                                className={`swiper-pagination-bullet ${
-                                    active === 5 && "swiper-pagination-bullet-active"
-                                } `}
-                            ></button>
-                        </div>
+                        <div
+                            ref={paginationRef}
+                            id="#more-staket-simple-bonus__pagination"
+                            className="bottom-slider__pagination more-staket-simple-bonus__pagination swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+                        ></div>
                     </div>
                 </div>
             </div>

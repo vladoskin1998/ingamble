@@ -94,6 +94,7 @@ export interface GetDataBonusResponse {
     wagering?: {
         tbwr: string;
         tbwe: string;
+        wagering_difficulty: "easy" | "medium" | "hard" | "";
     };
     wager: {
         value: number;

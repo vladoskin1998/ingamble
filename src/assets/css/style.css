@@ -121,6 +121,12 @@ input,
 button,
 textarea {
   font-family: "Manrope";
+  border: none; 
+  padding: 0; 
+  margin: 0; 
+  background: none; 
+  box-shadow: none; 
+  outline: none; 
 }
 
 input::-ms-clear {
@@ -1704,6 +1710,8 @@ h3 {
 .bottom-slider__pagination .swiper-pagination-bullet-active {
   background: var(--Colors-Accent, #FFCF23);
 }
+
+
 
 .tags-casino-card {
   display: flex;
@@ -4850,6 +4858,13 @@ h3 {
   flex: 0 0 200px;
   width: 200px;
 }
+
+@media (max-width: 1760.98px) {
+  .header.resize .menu-header__link {
+    padding: 5px 15px;
+  }
+}
+
 @media (max-width: 1900.98px) {
   /* .header.resize .logo__img {
     width: 130px;
@@ -6766,7 +6781,7 @@ h3 {
   justify-content: center;
 }
 .gamble__sidebar{
-  overflow-x: hidden;
+ 
 }
 .sidebar-gamble {
   top: 0;
@@ -6858,19 +6873,20 @@ h3 {
   }
 }
 .sidebar-gamble.active .title-item-form-filters__icon {
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
 }
 .sidebar-gamble.active .title-item-form-filters__icon svg {
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 25px;
 }
 .sidebar-gamble.active .title-item-form-filters__icon-name {
   display: none;
 }
 .sidebar-gamble.active .title-item-form-filters__text {
+
   flex: 1 1 100%;
   color: var(--Text-Txt_Main, #FFFFFF);
   font-size: 18px;
@@ -7314,6 +7330,8 @@ h3 {
   opacity: 0;
   margin: 0;
   font-size: 0;
+
+  
   /* -webkit-transition: margin 0.3s ease 0s;
   -moz-transition: margin 0.3s ease 0s;
   -ms-transition: margin 0.3s ease 0s;
@@ -7329,11 +7347,11 @@ h3 {
   -webkit-transform: rotate(180deg);
   -o-transform: rotate(180deg);
   transform: rotate(180deg);
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -ms-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
 }
 .title-item-form-filters__arrow svg {
   width: 0;
@@ -9165,12 +9183,14 @@ h3 {
 .content-bonus-information.active{
   max-height: 0;
   overflow: hidden !important;
-}
+}*/
 .content-bonus-information.visiable{
   overflow: visible;
-} */
+} 
 
-
+.item-content-bonus-information-last-child{
+  margin-bottom: 20px ;
+}
 
 @media (max-width: 768.98px) {
   .item-bonus-information_restrictions .item-content-bonus-information {
@@ -9247,11 +9267,11 @@ h3 {
   transform: rotate(90deg);
   width: 6px;
   height: 10px;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -ms-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.55s ease 0s;
+  -moz-transition: all 0.55s ease 0s;
+  -ms-transition: all 0.55s ease 0s;
+  -o-transition: all 0.55s ease 0s;
+  transition: all 0.55s ease 0s;
 }
 
 .content-bonus-information__item:not(:last-child) {
@@ -17133,6 +17153,7 @@ h3 {
   line-height: 17.76px;
   color: var(--Text-Txt_Sec, rgba(255, 255, 255, 0.5019607843));
   margin: 0 8px 0 0;
+  text-wrap: nowrap;
 }
 @media (max-width: 480.98px) {
   .item-essential-programs-gamble__provider-name {

@@ -4,7 +4,7 @@
     "casino_name": "iWild Casino",
     "casino_logo": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
     "casino_rank": "8.7",
-    "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
+    "casino_affiliate_link": "https://google.com",
     "sibling_bonuses": [
         {
             "id": 6,
@@ -36,28 +36,28 @@
         },
         {
             "id": 353,
-            "name": "100% up to €500 + 100 Free Spins",
+            "name": "200% up to €1000+ 200 Free Spins",
             "likes": 0,
             "bonus_image": null,
             "labels": []
         },
         {
             "id": 354,
-            "name": "50% up to €1000 + 80 Free Spins",
+            "name": "100% up to €1000 + 100 Free Spins",
             "likes": 0,
             "bonus_image": null,
             "labels": []
         },
         {
             "id": 355,
-            "name": "30% up to €1000 + 60 Free Spins",
+            "name": "100% up to €1000 + 100 Free Spins",
             "likes": 0,
             "bonus_image": null,
             "labels": []
         },
         {
             "id": 356,
-            "name": "80% up to €1000 + 30 Free Spins",
+            "name": "150% up to €1000 + 150 Free Spins",
             "likes": 0,
             "bonus_image": null,
             "labels": []
@@ -95,9 +95,6 @@
     "bonus_type": "Welcome Bonus",
     "bonus_subtype": [
         {
-            "name": "1st Deposit Bonus | 15000% up to 200 EUR"
-        },
-        {
             "name": "2nd deposit bonus | 100% up to 150 EUR"
         },
         {
@@ -105,6 +102,9 @@
         },
         {
             "name": "4th deposit bonus | 50% up to 150 EUR"
+        },
+        {
+            "name": "1st Deposit Bonus | 15000% up to 200 EUR"
         }
     ],
     "labels": [
@@ -157,15 +157,11 @@
     "bonus_expiration": {
         "days": 4
     },
-    "bonus_only": null,
-    "bonus_plus_freespins_value": null,
     "wagering_bonus_plus_deposit": {
-        "bonus_plus_deposit": 55,
-        "bonus_only": null
+        "bonus_plus_deposit": null,
+        "bonus_only": 22
     },
-    "bonus_plus_deposit": null,
-    "calculation_bonus_deposit": 0.0,
-    "calculation_bonus_only": null,
+    "calculation_bonus_only": 0.0,
     "special_promo_category": false,
     "special_side_bar": false,
     "bonus_min_dep": [
