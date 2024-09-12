@@ -232,6 +232,20 @@ html::-webkit-scrollbar {
     width: 220px;
   }
 }
+/* header not delete*/
+@media (max-width: 650.98px) {
+  .header--row-pc{
+    display: none !important;
+  }
+  .header--row-mobile{
+    display: flex !important;
+ 
+  }
+  .header--row-mobile .header__row{
+    width: 100%;
+  }
+}
+
 @media (max-width: 650.98px) {
   .form-header {
     display: flex;
