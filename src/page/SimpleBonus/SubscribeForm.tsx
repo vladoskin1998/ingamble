@@ -76,6 +76,7 @@ export const SubscribeForm = () => {
                                         className={`form-item form-subscribe__item item-form-subscribe ${
                                             focus && "focus"
                                         } ${email && "filled"} ${
+                                            email &&
                                             !validateEmail(email) &&
                                             !focus &&
                                             "error"

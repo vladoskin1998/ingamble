@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import arrowYellowIcon from "../../assets/img/icons/arrow-yellow.svg"
 import closeIcon from "../../assets/img/icons/close.svg"
@@ -27,6 +27,37 @@ export const BonusInformation = ({
         ProviderRestrictions: false,
         CountryRestrictions: false,
     })
+
+    // Рефы для модалок
+    const modalRefs = {
+        BonusRestrictionGames: useRef<HTMLDivElement | null>(null),
+        ProviderRestrictions: useRef<HTMLDivElement | null>(null),
+        CountryRestrictions: useRef<HTMLDivElement | null>(null),
+      };
+    
+
+      const handleClickOutside = (event: MouseEvent): void => {
+        Object.keys(modalRefs).forEach((key) => {
+            //@ts-ignore
+          const ref = modalRefs[key as keyof ModalState]?.current as any;
+          if (ref && !ref.contains(event.target as Node)) {
+            setOpenModal(prevState => ({
+              ...prevState,
+              [key]: false
+            }));
+          }
+        });
+      };
+    
+      useEffect(() => {
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, []);
+
 
     useEffect(() => {
         if (BonusInfoIsOpen.Restrictions) {
@@ -561,6 +592,7 @@ export const BonusInformation = ({
                                                         openModal.BonusRestrictionGames &&
                                                         "active"
                                                     }`}
+                                                  ref={modalRefs.BonusRestrictionGames}
                                                 >
                                                     <div className="popup-item-content-bonus-information__body">
                                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
@@ -662,6 +694,7 @@ export const BonusInformation = ({
                                                         openModal.ProviderRestrictions &&
                                                         "active"
                                                     }`}
+                                                    ref={modalRefs.ProviderRestrictions}
                                                 >
                                                     <div className="popup-item-content-bonus-information__body">
                                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
@@ -767,6 +800,7 @@ export const BonusInformation = ({
                                                         openModal.CountryRestrictions &&
                                                         "active"
                                                     }`}
+                                                    ref={modalRefs.CountryRestrictions} 
                                                 >
                                                     <div className="popup-item-content-bonus-information__body">
                                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">

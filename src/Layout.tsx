@@ -77,7 +77,8 @@ const initializeAdaptiveBehavior = () => {
         }
     });
 
-    // Initial call to apply adaptive behavior
+    console.log("Initial call to apply adaptive behavior");
+     
     dinamicAdapt(da_elements, attr_elements, match_media, parents_original);
 };
 
@@ -90,7 +91,7 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
             initializeAdaptiveBehavior();
         };
 
-        // Initialize on mount and subscribe to resize events
+     
         initializeAdaptiveBehavior();
         window.addEventListener('resize', handleResize);
 

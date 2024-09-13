@@ -11,7 +11,7 @@ import german from "../../assets/img/flags/german.svg"
 import french from "../../assets/img/flags/french.svg"
 import italian from "../../assets/img/flags/italian.svg"
 import slovak from "../../assets/img/flags/slovak.svg"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import logoIcon from "../../assets/img/logo-icon.svg"
 type Language = {
     code: string
@@ -43,20 +43,33 @@ export const Header = ({
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isBodyLocked, setIsBodyLocked] = useState(false)
 
-    const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [isLanguageOpen, setIsLanguageOpen] = useState<boolean>(false)
     const [search, setSearch] = useState("")
     const [searchFocus, setSearchFocus] = useState(false)
     const [selectedLanguage, setSelectedLanguage] = useState<Language>(
         languages[0]
     )
-
+    const modalLanguageRef = useRef<HTMLDivElement | null>(null);
     const [searchShow, setSearchShow] = useState(false)
-    const toggleDropdown = () => setIsOpen(!isOpen)
 
     const handleLanguageSelect = (language: Language) => {
         setSelectedLanguage(language)
-        setIsOpen(false)
+        setIsLanguageOpen(false)
     }
+
+    const handleClickOutside = (event: MouseEvent): void => {
+        if (modalLanguageRef.current && !modalLanguageRef.current.contains(event.target as Node)) {
+          setIsLanguageOpen(false);
+        }
+      };
+    
+      useEffect(() => {
+        
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, []);
 
     const handleBurgerClick = (event: any) => {
         event.preventDefault()
@@ -74,7 +87,9 @@ export const Header = ({
     //     event.stopPropagation()
 
     //     setSidebarActive(!isSidebarActive)
-    // }
+    // }\
+
+    console.log("language", isLanguageOpen)
 
     useEffect(() => {
         const gambleBody = document.querySelector(".gamble__body")
@@ -90,21 +105,22 @@ export const Header = ({
         <header className="header">
             <div className="header__container container">
                 <div className="header__row header--row-pc">
-                    <div className="header__column">
-                        <a
-                            rel="nofollow noopener"
-                            href=""
-                            aria-label="Put your description here."
-                            className={`header__burger ${
-                                isMenuOpen ? "active" : ""
-                            }`}
-                            onClick={handleBurgerClick}
-                        >
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </a>
-                        {!isSidebarActive && (
+                    {!isSidebarActive && (
+                        <div className="header__column">
+                            <a
+                                rel="nofollow noopener"
+                                href=""
+                                aria-label="Put your description here."
+                                className={`header__burger ${
+                                    isMenuOpen ? "active" : ""
+                                }`}
+                                onClick={handleBurgerClick}
+                            >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                            (
                             <a
                                 rel="nofollow noopener"
                                 href=""
@@ -115,8 +131,9 @@ export const Header = ({
                                     <LazyLoadImage alt={"logo"} src={logo} />
                                 </div>
                             </a>
-                        )}
-                    </div>
+                            )
+                        </div>
+                    )}
                     <div
                         className="header__column"
                         // data-da="mobile-header__body1, 0, 1355.98"
@@ -270,7 +287,7 @@ export const Header = ({
                             <div className="dropdown language-header__dropdown dropdown-language-header">
                                 <button
                                     className="dropdown__btn dropdown-language-header__btn"
-                                    onClick={toggleDropdown}
+                                    onClick={() => setIsLanguageOpen(true)}
                                 >
                                     <LazyLoadImage
                                         alt={selectedLanguage.name}
@@ -279,40 +296,47 @@ export const Header = ({
                                         height={20}
                                     />
                                 </button>
-                                {isOpen && (
-                                    <div className="dropdown__body dropdown-language-header__body">
-                                        <ul className="dropdown__list dropdown-language-header__list">
-                                            {languages.map((language) => (
-                                                <li
-                                                    key={language.code}
-                                                    className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${
-                                                        language.code ===
-                                                        selectedLanguage.code
-                                                            ? "active"
-                                                            : ""
-                                                    }`}
-                                                    onClick={() =>
-                                                        handleLanguageSelect(
-                                                            language
-                                                        )
-                                                    }
-                                                >
-                                                    <span className="list-item-dropdown-language-header__icon">
-                                                        <LazyLoadImage
-                                                            alt={language.name}
-                                                            src={language.flag}
-                                                            width={20}
-                                                            height={20}
-                                                        />
-                                                    </span>
-                                                    <span className="list-item-dropdown-language-header__text">
-                                                        {language.name}
-                                                    </span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
+
+                                <div
+                                    className={`dropdown__body dropdown-language-header__body `}
+                                    style={{
+                                        display: isLanguageOpen
+                                            ? "block"
+                                            : "none",
+                                    }}
+                                    ref={modalLanguageRef}
+                                >
+                                    <ul className="dropdown__list dropdown-language-header__list">
+                                        {languages.map((language) => (
+                                            <li
+                                                key={language.code}
+                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${
+                                                    language.code ===
+                                                    selectedLanguage.code
+                                                        ? "active"
+                                                        : ""
+                                                }`}
+                                                onClick={() =>
+                                                    handleLanguageSelect(
+                                                        language
+                                                    )
+                                                }
+                                            >
+                                                <span className="list-item-dropdown-language-header__icon">
+                                                    <LazyLoadImage
+                                                        alt={language.name}
+                                                        src={language.flag}
+                                                        width={20}
+                                                        height={20}
+                                                    />
+                                                </span>
+                                                <span className="list-item-dropdown-language-header__text">
+                                                    {language.name}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -451,84 +475,87 @@ export const Header = ({
                         </a>
                     </div>
                 </div>
-
-                {/* <div className="mobile-header__body">
-                    <div
-                        className="header__column"
-                        //        data-da="mobile-header__body, 0, 1355.98"
-                    >
-                        <nav className="header__menu menu-header">
-                            <ul className="menu-header__list">
-                                <li className="menu-header__item">
-                                    <a
-                                        rel="nofollow noopener"
-                                        href=""
-                                        aria-label="Put your description here."
-                                        target="_blank"
-                                        className="menu-header__link current"
-                                    >
-                                        <span>Gambling Hub</span>
-                                    </a>
-                                </li>
-                                <li className="menu-header__item">
-                                    <a
-                                        rel="nofollow noopener"
-                                        href=""
-                                        aria-label="Put your description here."
-                                        target="_blank"
-                                        className="menu-header__link"
-                                    >
-                                        <span>All Bonuses</span>
-                                    </a>
-                                </li>
-                                <li className="menu-header__item">
-                                    <a
-                                        rel="nofollow noopener"
-                                        href=""
-                                        aria-label="Put your description here."
-                                        target="_blank"
-                                        className="menu-header__link"
-                                    >
-                                        <span>Casinos</span>
-                                    </a>
-                                </li>
-                                <li className="menu-header__item">
-                                    <a
-                                        rel="nofollow noopener"
-                                        href=""
-                                        aria-label="Put your description here."
-                                        target="_blank"
-                                        className="menu-header__link"
-                                    >
-                                        <span>Loyalties</span>
-                                    </a>
-                                </li>
-                                <li className="menu-header__item">
-                                    <a
-                                        rel="nofollow noopener"
-                                        href=""
-                                        aria-label="Put your description here."
-                                        target="_blank"
-                                        className="menu-header__link"
-                                    >
-                                        <span>VIP Program</span>
-                                    </a>
-                                </li>
-                                <li className="menu-header__item">
-                                    <a
-                                        rel="nofollow noopener"
-                                        href=""
-                                        aria-label="Put your description here."
-                                        target="_blank"
-                                        className="menu-header__link"
-                                    >
-                                        Special Events
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+            </div>
+            <div
+                className={`header__mobile mobile-header ${
+                    isMenuOpen ? "active" : ""
+                }`}
+            >
+                <div className="mobile-header__content">
+                    <div className="mobile-header__body">
+                        <div
+                            className="header__column"
+                            data-da="mobile-header__body, 0, 1355.98"
+                        >
+                            <nav className="header__menu menu-header">
+                                <ul className="menu-header__list">
+                                    <li className="menu-header__item">
+                                        <a
+                                            href=""
+                                            aria-label="Put your description here."
+                                            target="_blank"
+                                            className="menu-header__link current"
+                                        >
+                                            <span>Gambling Hub</span>
+                                        </a>
+                                    </li>
+                                    <li className="menu-header__item">
+                                        <a
+                                            href=""
+                                            aria-label="Put your description here."
+                                            target="_blank"
+                                            className="menu-header__link"
+                                        >
+                                            <span>All Bonuses</span>
+                                        </a>
+                                    </li>
+                                    <li className="menu-header__item">
+                                        <a
+                                            href=""
+                                            aria-label="Put your description here."
+                                            target="_blank"
+                                            className="menu-header__link"
+                                        >
+                                            <span>Casinos</span>
+                                        </a>
+                                    </li>
+                                    <li className="menu-header__item">
+                                        <a
+                                            href=""
+                                            aria-label="Put your description here."
+                                            target="_blank"
+                                            className="menu-header__link"
+                                        >
+                                            <span>Loyalties</span>
+                                        </a>
+                                    </li>
+                                    <li className="menu-header__item">
+                                        <a
+                                            href=""
+                                            aria-label="Put your description here."
+                                            target="_blank"
+                                            className="menu-header__link"
+                                        >
+                                            <span>VIP Program</span>
+                                        </a>
+                                    </li>
+                                    <li className="menu-header__item">
+                                        <a
+                                            href=""
+                                            aria-label="Put your description here."
+                                            target="_blank"
+                                            className="menu-header__link"
+                                        >
+                                            Special Events
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-                </div> */}
+                    <div className="mobile-header__top"></div>
+                </div>
+                <div className="mobile-header__bottom"></div>
             </div>
         </header>
     )

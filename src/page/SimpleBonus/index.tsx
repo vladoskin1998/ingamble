@@ -1,9 +1,9 @@
 import { LazyLoadImage } from "react-lazy-load-image-component"
-import mainImg from "../../assets/img/casino-info/main-img.jpg"
-import stakeLogo from "../../assets/img/casino-logo/stake.svg"
-import starIcon from "../../assets/img/icons/star.svg"
-import likeIcon from "../../assets/img/icons/like.svg"
-import latviaFlag from "../../assets/img/icons/latvia-flag.svg"
+// import mainImg from "../../assets/img/casino-info/main-img.jpg"
+// import stakeLogo from "../../assets/img/casino-logo/stake.svg"
+// import starIcon from "../../assets/img/icons/star.svg"
+// import likeIcon from "../../assets/img/icons/like.svg"
+// import latviaFlag from "../../assets/img/icons/latvia-flag.svg"
 import giftIcon from "../../assets/img/icons/gift.svg"
 import bg08 from "../../assets/img/bg/08.jpg"
 
@@ -15,6 +15,7 @@ import { useQuery } from "react-query"
 import {
     lazy,
     useEffect,
+    useState,
 
     //   useState
 } from "react"
@@ -30,18 +31,20 @@ import { Categories } from "./Categories"
 import { LastUpdate } from "./LastUpdate"
 import { Default } from "../Dafault"
 import { useAdaptiveBehavior } from "../../Layout"
-import { LineLoader } from "../../components/loader.tsx/LineLoader"
+
 import { SubscribeForm } from "./SubscribeForm"
+import { LogoLoader } from "../../components/loader/LogoLoader"
+import { HeaderSimpleBonus } from "./HeaderSimpleBonus"
 
 const MoreCasinoBonuses = lazy(() => import("./MoreCasinoBonuses"))
 
-const color_label = [
-    "tags-casino-card__item_green",
-    "tags-casino-card__item_blue",
-    "tags-casino-card__item_purple",
-    "tags-casino-card__item_grass",
-    "tags-casino-card__item_orange",
-]
+// const color_label = [
+//     "tags-casino-card__item_green",
+//     "tags-casino-card__item_blue",
+//     "tags-casino-card__item_purple",
+//     "tags-casino-card__item_grass",
+//     "tags-casino-card__item_orange",
+// ]
 
 const getBonusDataFetch = async () => {
     const { data } = await $api.get("get-data-bonus/8/")
@@ -59,6 +62,8 @@ export const SimpleBonus = () => {
         }
     )
 
+    const [like, setLike] = useState<'' | 'like' | 'dislike' >('')
+
     const adaptiveBehavior = useAdaptiveBehavior()
 
     useEffect(() => {
@@ -73,14 +78,16 @@ export const SimpleBonus = () => {
         window.history.pushState({}, "", newUrl)
     }, [data])
 
+
     const handleClick = () => {
         window.location.href = data?.casino_affiliate_link || ""
     }
 
-    if (isLoading) return <LineLoader />
+    if (isLoading) return   <LogoLoader />
 
     return (
         <Default>
+          
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
                     <Categories category={data?.category || []} />
@@ -109,342 +116,7 @@ export const SimpleBonus = () => {
                             },
                         ]}
                     />
-                    <section className="simple-bonus__casino-info casino-info">
-                        <div className="casino-info__container container">
-                            <div className="casino-info__body">
-                                <div className="casino-info__row">
-                                    <div className="casino-info__main main-casino-info">
-                                        <div className="main-casino-info__image-block">
-                                            <div className="main-casino-info__image ibg">
-                                                <img
-                                                    src={
-                                                        data?.bonus_image ||
-                                                        mainImg
-                                                    }
-                                                    alt="main-img"
-                                                />
-                                                <img src="" alt="" />
-                                            </div>
-                                        </div>
-                                        <div className="main-casino-info__name name-main-casino-info">
-                                            <div className="name-main-casino-info__logo">
-                                                <LazyLoadImage
-                                                    src={
-                                                        data?.casino_logo ||
-                                                        stakeLogo
-                                                    }
-                                                    alt={
-                                                        data?.casino_name ||
-                                                        "Stake Casino"
-                                                    }
-                                                />
-                                            </div>
-                                            <div className="name-main-casino-info__content">
-                                                <a
-                                                    href={"#"}
-                                                    aria-label={`Link to ${
-                                                        data?.casino_name ||
-                                                        "Casino"
-                                                    }`}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="name-main-casino-info__title"
-                                                >
-                                                    {data?.casino_name ||
-                                                        "Stake Casino"}
-                                                </a>
-                                                <div
-                                                    className="info-casino-card__stake-rating name-main-casino-info__stake-rating"
-                                                    data-da="name-main-casino-info, 0, 1023.98"
-                                                >
-                                                    <span className="info-casino-card__stake-rating-icon">
-                                                        <img
-                                                            src={starIcon}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="info-casino-card__stake__rating-number">
-                                                        {data?.bonus_rank ||
-                                                            "4.8"}
-                                                    </span>
-                                                </div>
-                                                <div
-                                                    className="info-casino-card__likes name-main-casino-info__likes"
-                                                    data-da="name-main-casino-info, 2, 1023.98"
-                                                >
-                                                    <span className="info-casino-card__likes-icon">
-                                                        <img
-                                                            src={likeIcon}
-                                                            alt="like"
-                                                        />
-                                                    </span>
-                                                    <span className="info-casino-card__likes-number">
-                                                        {data?.likes || "34K"}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/* <div className="main-casino-info__name name-main-casino-info">
-                                            <div className="name-main-casino-info__logo">
-                                                <LazyLoadImage
-                                                    src={
-                                                        data?.casino_logo ||
-                                                        stakeLogo
-                                                    }
-                                                    alt="stake"
-                                                    
-                                                />
-                                            </div>
-                                            <div className="name-main-casino-info__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="name-main-casino-info__title"
-                                                >
-                                                    {data?.casino_name ||
-                                                        "Casino"}
-                                                </a>
-                                                <div className="info-casino-card__stake-rating name-main-casino-info__stake-rating">
-                                                    <span className="info-casino-card__stake-rating-icon">
-                                                        <img
-                                                            src={starIcon}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="info-casino-card__stake__rating-number">
-                                                        {data?.bonus_rank ||
-                                                            "4.8"}
-                                                    </span>
-                                                </div>
-                                                <div
-                                                    className="info-casino-card__likes name-main-casino-info__likes"
-                                                    data-da="name-main-casino-info, 2, 1023.98"
-                                                >
-                                                    <span className="info-casino-card__likes-icon">
-                                                        <img
-                                                            src={likeIcon}
-                                                            alt="like"
-                                                        />
-                                                    </span>
-                                                    <span className="info-casino-card__likes-number">
-                                                        {data?.likes || "34K"}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div> */}
-                                    </div>
-                                    <div className="casino-info__content content-casino-info">
-                                        <div className="content-casino-info__main">
-                                            <div className="content-casino-info__top">
-                                                <h2 className="content-casino-info__title">
-                                                    {/* 200% up to €200 and 50 spin (€2
-                                                spin) */}
-                                                    {data?.name ||
-                                                        " 200% up to €200 and 50 spin (€2 spin)"}
-                                                </h2>
-                                                <div className="content-casino-info__subtitle">
-                                                    {data?.bonus_type ||
-                                                        "Reload Bonus"}
-                                                </div>
-                                            </div>
-                                            <div className="casino-card__tags tags-casino-card">
-                                                {data?.labels.map(
-                                                    (item, index) => (
-                                                        <div
-                                                            className={`tags-casino-card__item ${color_label[index]}`}
-                                                        >
-                                                            <span className="tags-casino-card__item-label"></span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                {item.name}
-                                                            </span>
-                                                        </div>
-                                                    )
-                                                )}
-                                            </div>
-                                            <div className="content-casino-info__country country-content-casino-info">
-                                                <div className="country-content-casino-info__info">
-                                                    <div className="country-content-casino-info__icon">
-                                                        <LazyLoadImage
-                                                            src={latviaFlag}
-                                                            alt="latvia"
-                                                        />
-                                                    </div>
-                                                    <div className="country-content-casino-info__text">
-                                                        Accepts players from
-                                                        Latvia
-                                                    </div>
-                                                </div>
-                                                <a
-                                                    rel="nofollow noopener"
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="main-get-bonus__btn main-get-bonus__btn_apply"
-                                                >
-                                                    T&C Apply
-                                                </a>
-                                            </div>
-                                            <a
-                                                rel="nofollow noopener"
-                                                href={`go/${
-                                                    data?.casino_name
-                                                        .toLocaleLowerCase()
-                                                        .replace(/\s/g, "-") ||
-                                                    ""
-                                                }`}
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="main-get-bonus__btn main-get-bonus__btn_bonus"
-                                                title="link"
-                                                onClick={handleClick}
-                                            >
-                                                <span>
-                                                    <LazyLoadImage
-                                                        src={giftIcon}
-                                                        alt="gift"
-                                                    />
-                                                </span>
-                                                Get Bonus and Play
-                                            </a>
-                                        </div>
-                                        <div className="content-casino-info__features features-content-casino-info">
-                                            <div className="features-content-casino-info__row">
-                                                <div className="features-content-casino-info__column">
-                                                    <div className="features-content-casino-info__item item-features-content-casino-info item-features-content-casino-info_border">
-                                                        <div className="item-features-content-casino-info__top">
-                                                            <div className="item-features-content-casino-info__label">
-                                                                Bonus Rank
-                                                            </div>
-                                                        </div>
-                                                        <div className="item-features-content-casino-info__body">
-                                                            <div className="item-features-content-casino-info__number">
-                                                                {data?.bonus_rank ||
-                                                                    0}
-                                                            </div>
-                                                            <div className="item-features-content-casino-info__rating">
-                                                                <div className="item-features-content-casino-info__star">
-                                                                    <LazyLoadImage
-                                                                        src={
-                                                                            starIcon
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </div>
-                                                                <div className="item-features-content-casino-info__star">
-                                                                    <LazyLoadImage
-                                                                        src={
-                                                                            starIcon
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </div>
-                                                                <div className="item-features-content-casino-info__star">
-                                                                    <LazyLoadImage
-                                                                        src={
-                                                                            starIcon
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </div>
-                                                                <div className="item-features-content-casino-info__star">
-                                                                    <LazyLoadImage
-                                                                        src={
-                                                                            starIcon
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </div>
-                                                                <div className="item-features-content-casino-info__star">
-                                                                    <LazyLoadImage
-                                                                        src={
-                                                                            starIcon
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="features-content-casino-info__column">
-                                                    <div className="features-content-casino-info__item item-features-content-casino-info">
-                                                        <div className="item-features-content-casino-info__top">
-                                                            <div className="item-features-content-casino-info__label">
-                                                                Wager
-                                                            </div>
-                                                        </div>
-                                                        <div className="item-features-content-casino-info__body">
-                                                            <div className="item-features-content-casino-info__number">
-                                                                {data
-                                                                    ?.wagering_bonus_plus_deposit
-                                                                    ?.bonus_plus_deposit ||
-                                                                    data
-                                                                        ?.wagering_bonus_plus_deposit
-                                                                        ?.bonus_only ||
-                                                                    0}
-                                                                x
-                                                            </div>
-                                                            <div className="item-features-content-casino-info__value">
-                                                                {data
-                                                                    ?.wagering_bonus_plus_deposit
-                                                                    ?.bonus_plus_deposit
-                                                                    ? "Bonus + Deposit"
-                                                                    : "Bonus Only"}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="features-content-casino-info__column">
-                                                    <div className="features-content-casino-info__item item-features-content-casino-info">
-                                                        <div className="item-features-content-casino-info__top">
-                                                            <div className="item-features-content-casino-info__label">
-                                                                Min Dep
-                                                            </div>
-                                                        </div>
-                                                        <div className="item-features-content-casino-info__body">
-                                                            <div className="item-features-content-casino-info__number">
-                                                                {data
-                                                                    ?.bonus_min_dep?.[0]
-                                                                    ?.min_value ||
-                                                                    0}
-                                                                €
-                                                            </div>
-                                                            <div className="item-features-content-casino-info__value">
-                                                                To Activate
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="features-content-casino-info__column">
-                                                    <div className="features-content-casino-info__item item-features-content-casino-info">
-                                                        <div className="item-features-content-casino-info__top">
-                                                            <div className="item-features-content-casino-info__label">
-                                                                Max Bet
-                                                            </div>
-                                                        </div>
-                                                        <div className="item-features-content-casino-info__body">
-                                                            <div className="item-features-content-casino-info__number">
-                                                                {`${
-                                                                    data
-                                                                        ?.max_bet?.[0]
-                                                                        ?.value ||
-                                                                    0
-                                                                }€`}
-                                                            </div>
-                                                            <div className="item-features-content-casino-info__value">
-                                                                Per Spin
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <HeaderSimpleBonus data={data}/>
                     <BonusSubType bonus_subtype={data?.bonus_subtype || []} />
                     <LastUpdate data={data} />
                     <section className="simple-bonus__get-bonus get-bonus">
@@ -541,12 +213,9 @@ export const SimpleBonus = () => {
                                             </div>
                                             <div className="like-get-bonus__btns">
                                                 <div className="like-get-bonus__btns-item">
-                                                    <a
-                                                        rel="nofollow noopener"
-                                                        href=""
-                                                        target="_blank"
-                                                        aria-label="Put your description here."
-                                                        className="like-get-bonus__btn like-get-bonus__btn_like"
+                                                    <button
+                                                       onClick={() => setLike('like')}
+                                                        className={`like-get-bonus__btn like-get-bonus__btn_like ${like === 'like' && "active"}`}
                                                     >
                                                         <span className="like-get-bonus__btn-icon">
                                                             <svg>
@@ -554,18 +223,14 @@ export const SimpleBonus = () => {
                                                             </svg>
                                                         </span>
                                                         <span className="like-get-bonus__btn-number">
-                                                            {data?.likes ||
-                                                                "34K"}
+                                                        {(data?.likes ?? 0) + (like === 'like' ? 1 : 0)}
                                                         </span>
-                                                    </a>
+                                                    </button>
                                                 </div>
                                                 <div className="like-get-bonus__btns-item">
-                                                    <a
-                                                        rel="nofollow noopener"
-                                                        href=""
-                                                        target="_blank"
-                                                        aria-label="Put your description here."
-                                                        className="like-get-bonus__btn like-get-bonus__btn_dislike"
+                                                    <button
+                                                    onClick={() => setLike('dislike')}
+                                                        className={`like-get-bonus__btn like-get-bonus__btn_dislike ${like ==='dislike' && 'active'}`}
                                                     >
                                                         <span className="like-get-bonus__btn-icon">
                                                             <svg>
@@ -573,7 +238,7 @@ export const SimpleBonus = () => {
                                                             </svg>
                                                         </span>
                                                         <span className="like-get-bonus__btn-number"></span>
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -595,8 +260,78 @@ export const SimpleBonus = () => {
                     />
 
                     <SimpleBonusEssentialPrograms />
-
-                    <section className="simple-bonus__casino-person casino-person">
+                    <section className="simple-bonus__casino-person simple-bonus__casino-person_desktop casino-person">
+      <div className="casino-person__container container">
+        <div className="casino-person__body">
+          <div className="casino-person__row">
+            <div className="casino-person__info info-casino-person">
+              <div className="info-casino-person__img">
+                <LazyLoadImage
+                  src={harryStyles}
+                  alt="HARRY STYLES"
+                
+                />
+              </div>
+              <div className="info-casino-person__content">
+                <h3 className="info-casino-person__name h3">HARRY STYLES</h3>
+                <div className="info-casino-person__position">
+                  Content Maker, Chief Marketing at Lerio
+                </div>
+              </div>
+            </div>
+            <div className="casino-person__socials">
+              <div className="socials-top-footer__items">
+                <div className="socials-top-footer__item">
+                  <a
+                    href=""
+                    aria-label="Put your description here."
+                    target="_blank"
+                    className="socials-top-footer__link"
+                    rel="noreferrer"
+                  >
+                    <svg>
+                      <use xlinkHref="#x"></use>
+                    </svg>
+                  </a>
+                </div>
+                <div className="socials-top-footer__item">
+                  <a
+                    href=""
+                    aria-label="Put your description here."
+                    target="_blank"
+                    className="socials-top-footer__link"
+                    rel="noreferrer"
+                  >
+                    <svg>
+                      <use xlinkHref="#facebook"></use>
+                    </svg>
+                  </a>
+                </div>
+                <div className="socials-top-footer__item">
+                  <a
+                    href=""
+                    aria-label="Put your description here."
+                    target="_blank"
+                    className="socials-top-footer__link"
+                    rel="noreferrer"
+                  >
+                    <svg>
+                      <use xlinkHref="#linkedin"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="casino-person__waves">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+                    {/* <section className="simple-bonus__casino-person casino-person">
                         <div className="casino-person__container container">
                             <div className="iwild-review__item item-iwild-review item-iwild-review_author">
                                 <div className="item-iwild-review__content content-item-iwild-review">
@@ -668,7 +403,7 @@ export const SimpleBonus = () => {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> */}
                     <section className="main-gamble__bottom-filter-tags bottom-filter-tags">
                         <div className="bottom-filter-tags__container container">
                             <div className="bottom-filter-tags__top top">

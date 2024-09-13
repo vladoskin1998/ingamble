@@ -223,7 +223,7 @@ export const Footer = () => {
                         </div>
                         <div className="socials-top-footer__label-text">
                             You need help?
-                            <span>Get in touch with us</span>
+                            <a rel="nofollow noopener" href="" target="_blank">Get in touch with us</a>
                         </div>
                     </div>
                     <div className="socials-top-footer__items">

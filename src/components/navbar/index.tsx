@@ -244,7 +244,7 @@ export const Navbar = ({
                                                                 </span>
                                                                 <span>
                                                                     Casinos
-                                                                    htmlFor
+                                                                    
                                                                     Players From
                                                                 </span>
                                                                 <span className="title-form-filter__count"></span>

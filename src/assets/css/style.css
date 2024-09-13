@@ -1478,10 +1478,10 @@ h3 {
   opacity: 0;
   visibility: hidden;
 }
-@media (min-width: 1355.98px) {
+
   .casino-card__bnt:hover {
-    background: linear-gradient(180deg, #FFE141 0%, #FD9800 100%), var(--Colors-Accent, #FFCF23);
-    box-shadow: 0px -4px 8px 0px rgba(255, 255, 255, 0.2) inset;
+    background: linear-gradient(180deg, #FFE141 0%, #FD9800 100%), var(--Colors-Accent, #FFCF23) !important;
+    box-shadow: 0px -4px 8px 0px rgba(255, 255, 255, 0.2) inset !important;
     padding: 5px 43px 5px 12px;
   }
   .casino-card__bnt:hover::before {
@@ -1490,7 +1490,9 @@ h3 {
     opacity: 1;
     visibility: visible;
   }
-}
+
+
+
 .casino-card__bnt:active {
   background: #BF9B1A;
 }
