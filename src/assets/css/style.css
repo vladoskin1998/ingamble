@@ -210,7 +210,9 @@ html::-webkit-scrollbar {
     padding: 0 16px;
   }
 }
-
+html, body {
+  -webkit-overflow-scrolling: touch;
+}
 .form-header {
   flex: 0 0 320px;
   width: 320px;
@@ -2314,8 +2316,8 @@ h3 {
   right: -75px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(267px);
-  -webkit-filter: blur(267px);
+  /* filter: blur(267px);
+  -webkit-filter: blur(267px); */
 }
 .different-casino-bg__image-block {
   flex: 0 0 137.78px;
@@ -3084,8 +3086,8 @@ h3 {
     right: 350px;
     border-radius: 100%;
     pointer-events: none;
-    filter: blur(140px);
-    -webkit-filter: blur(140px);
+    /* filter: blur(140px);
+    -webkit-filter: blur(140px); */
     z-index: 1;
   }
   .subscribe::after {
@@ -3102,8 +3104,8 @@ h3 {
     top: -100px;
     right: -80px;
     pointer-events: none;
-    filter: blur(168px);
-    -webkit-filter: blur(168px);
+    /* filter: blur(168px);
+    -webkit-filter: blur(168px); */
     z-index: 1;
   }
 }
@@ -5211,8 +5213,8 @@ h3 {
   right: -88px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(267px);
-  -webkit-filter: blur(267px);
+  /* filter: blur(267px);
+  -webkit-filter: blur(267px); */
 }
 @media (max-width: 1355.98px) {
   .mobile-header.active {
@@ -5290,8 +5292,8 @@ h3 {
   left: -58px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(267px);
-  -webkit-filter: blur(267px);
+  /* filter: blur(267px);
+  -webkit-filter: blur(267px); */
 }
 @media (max-width: 1355.98px) {
   .mobile-header__body .menu-header {
@@ -7631,8 +7633,8 @@ h3 {
   top: -345px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(200px);
-  -webkit-filter: blur(200px);
+  /* filter: blur(200px);
+  -webkit-filter: blur(200px); */
 }
 @media (max-width: 992.98px) {
   .casino-person__body::before {
@@ -7654,8 +7656,8 @@ h3 {
   right: 70px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(168px);
-  -webkit-filter: blur(168px);
+  /* filter: blur(168px);
+  -webkit-filter: blur(168px); */
 }
 @media (max-width: 992.98px) {
   .casino-person__body::after {
@@ -10335,7 +10337,7 @@ h3 {
     -o-transform: rotate(-137.1deg);
     transform: rotate(-137.1deg);
     background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%);
-    filter: blur(120px);
+    /* filter: blur(120px); */
   }
   .item-iwild-review_author::before {
     top: calc(-100% + 85px);
@@ -10361,8 +10363,8 @@ h3 {
   border-radius: 50%;
   overflow: hidden;
   background: #42FF8E;
-  filter: blur(150px);
-  -webkit-filter: blur(150px);
+  /* filter: blur(150px);
+  -webkit-filter: blur(150px); */
   pointer-events: none;
 }
 @media (max-width: 992.98px) {
@@ -10415,8 +10417,8 @@ h3 {
   border-radius: 50%;
   overflow: hidden;
   background: var(--Text-Txt_Sec, rgba(255, 255, 255, 0.5019607843));
-  filter: blur(150px);
-  -webkit-filter: blur(150px);
+  /* filter: blur(150px);
+  -webkit-filter: blur(150px); */
   pointer-events: none;
 }
 @media (max-width: 992.98px) {
@@ -10893,8 +10895,8 @@ h3 {
   width: 79px;
   height: 79px;
   border-radius: 50%;
-  filter: blur(80px);
-  -webkit-filter: blur(80px);
+  /* filter: blur(80px);
+  -webkit-filter: blur(80px); */
 }
 .index-item-iwild-casino-safety::before {
   top: 0;
@@ -11178,8 +11180,8 @@ h3 {
   height: 189.7px;
   border-radius: 50%;
   background: var(--Colors-Yellow, #FFCF23);
-  filter: blur(150px);
-  -webkit-filter: blur(150px);
+  /* filter: blur(150px);
+  -webkit-filter: blur(150px); */
 }
 .other-сasinos-review .baner-row-block__body::before {
   top: 0;
@@ -12690,16 +12692,16 @@ h3 {
   display: none;
   left: -480px;
   top: -290px;
-  filter: blur(150px);
-  -webkit-filter: blur(150px);
+  /* filter: blur(150px);
+  -webkit-filter: blur(150px); */
 }
 .loyaltie__casino-person .casino-person__body::after {
   display: none;
   transform: rotate(-213deg);
   top: 195px;
   right: -230px;
-  filter: blur(150px);
-  -webkit-filter: blur(150px);
+  /* filter: blur(150px);
+  -webkit-filter: blur(150px); */
 }
 .loyaltie__casino-person .casino-person__waves {
   display: none;
@@ -16318,8 +16320,8 @@ h3 {
   }
 }
 .main-gamble__low-risk-bonuses .different-casino-bg::before {
-  filter: blur(168px);
-  -webkit-filter: blur(168px);
+  /* filter: blur(168px);
+  -webkit-filter: blur(168px); */
 }
 .main-gamble__low-risk-bonuses .swiper-slide:nth-child(2), .main-gamble__low-risk-bonuses .swiper-slide:nth-child(3) {
   transform: translate(0.5px, 0);
@@ -17071,8 +17073,8 @@ h3 {
   left: -58px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(267px);
-  -webkit-filter: blur(267px);
+  /* filter: blur(267px);
+  -webkit-filter: blur(267px); */
 }
 .item-essential-programs-gamble::after {
   position: absolute;
@@ -17089,8 +17091,8 @@ h3 {
   right: -25px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(168px);
-  -webkit-filter: blur(168px);
+  /* filter: blur(168px);
+  -webkit-filter: blur(168px); */
 }
 @media (max-width: 768.98px) {
   .item-essential-programs-gamble {
@@ -17656,8 +17658,8 @@ h3 {
   left: -58px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(267px);
-  -webkit-filter: blur(267px);
+  /* filter: blur(267px);
+  -webkit-filter: blur(267px); */
 }
 .top-bonuses-gamble__block::after {
   position: absolute;
@@ -17674,8 +17676,8 @@ h3 {
   right: -60px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(267px);
-  -webkit-filter: blur(267px);
+  /* filter: blur(267px);
+  -webkit-filter: blur(267px); */
 }
 .top-bonuses-gamble__top:not(:last-child) {
   margin: 0 0 32px 0;
@@ -18596,8 +18598,8 @@ h3 {
   right: 40px;
   border-radius: 100%;
   pointer-events: none;
-  filter: blur(267px);
-  -webkit-filter: blur(267px);
+  /* filter: blur(267px);
+  -webkit-filter: blur(267px); */
 }
 @media (max-width: 1650.98px) {
   .best-casinos-2024-2-gamble__item {
