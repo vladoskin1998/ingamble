@@ -3100,7 +3100,7 @@ h3 {
     -webkit-transform: rotate(-16.3deg);
     -o-transform: rotate(-16.3deg);
     transform: rotate(-16.3deg);
-    background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+    /* background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%); */
     top: -100px;
     right: -80px;
     pointer-events: none;
@@ -3332,7 +3332,7 @@ h3 {
 }
 @media (max-width: 650.98px) {
   .form-subscribe__row:not(:last-child) {
-    margin: 0 0 24px 0;
+    padding: 0 0 24px 0;
   }
 }
 .form-subscribe__item {

@@ -9,16 +9,13 @@ import bg08 from "../../assets/img/bg/08.jpg"
 
 import harryStyles from "../../assets/img/casino-person/01.png"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
-import backgroundImage08 from "../../assets/img/bg/08.jpg"
-import logoIcon from "../../assets/img/logo-icon.svg"
-import checkIcon from "../../assets/img/icons/check-icon.svg"
-import errorIcon from "../../assets/img/icons/error-icon.svg"
+
 import "swiper/css"
 import { useQuery } from "react-query"
 import {
     lazy,
     useEffect,
-    
+
     //   useState
 } from "react"
 //import { FAKEDATAGETBONUCE } from "../../http/fakedata/getDataBonuce"
@@ -34,6 +31,7 @@ import { LastUpdate } from "./LastUpdate"
 import { Default } from "../Dafault"
 import { useAdaptiveBehavior } from "../../Layout"
 import { LineLoader } from "../../components/loader.tsx/LineLoader"
+import { SubscribeForm } from "./SubscribeForm"
 
 const MoreCasinoBonuses = lazy(() => import("./MoreCasinoBonuses"))
 
@@ -61,13 +59,11 @@ export const SimpleBonus = () => {
         }
     )
 
-
-    const adaptiveBehavior = useAdaptiveBehavior();
-
+    const adaptiveBehavior = useAdaptiveBehavior()
 
     useEffect(() => {
         adaptiveBehavior()
-      
+
         const newUrl = `/casino/${data?.casino_name
             .replace(/\s/g, "-")
             .toLocaleLowerCase()}/bonuses/${data?.bonus_type
@@ -81,11 +77,10 @@ export const SimpleBonus = () => {
         window.location.href = data?.casino_affiliate_link || ""
     }
 
-    if(isLoading) return  <LineLoader/>
+    if (isLoading) return <LineLoader />
 
     return (
         <Default>
-           
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
                     <Categories category={data?.category || []} />
@@ -142,7 +137,6 @@ export const SimpleBonus = () => {
                                                         data?.casino_name ||
                                                         "Stake Casino"
                                                     }
-                                                    
                                                 />
                                             </div>
                                             <div className="name-main-casino-info__content">
@@ -159,7 +153,10 @@ export const SimpleBonus = () => {
                                                     {data?.casino_name ||
                                                         "Stake Casino"}
                                                 </a>
-                                                <div className="info-casino-card__stake-rating name-main-casino-info__stake-rating"    data-da="name-main-casino-info, 0, 1023.98">
+                                                <div
+                                                    className="info-casino-card__stake-rating name-main-casino-info__stake-rating"
+                                                    data-da="name-main-casino-info, 0, 1023.98"
+                                                >
                                                     <span className="info-casino-card__stake-rating-icon">
                                                         <img
                                                             src={starIcon}
@@ -271,7 +268,6 @@ export const SimpleBonus = () => {
                                                         <LazyLoadImage
                                                             src={latviaFlag}
                                                             alt="latvia"
-                                                            
                                                         />
                                                     </div>
                                                     <div className="country-content-casino-info__text">
@@ -307,7 +303,6 @@ export const SimpleBonus = () => {
                                                     <LazyLoadImage
                                                         src={giftIcon}
                                                         alt="gift"
-                                                        
                                                     />
                                                 </span>
                                                 Get Bonus and Play
@@ -334,7 +329,6 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        
                                                                     />
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__star">
@@ -343,7 +337,6 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        
                                                                     />
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__star">
@@ -352,7 +345,6 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        
                                                                     />
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__star">
@@ -361,7 +353,6 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        
                                                                     />
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__star">
@@ -370,7 +361,6 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        
                                                                     />
                                                                 </div>
                                                             </div>
@@ -500,7 +490,6 @@ export const SimpleBonus = () => {
                                                             <LazyLoadImage
                                                                 src={giftIcon}
                                                                 alt="gift"
-                                                                
                                                             />
                                                         </span>
                                                         Get Bonus
@@ -608,70 +597,78 @@ export const SimpleBonus = () => {
                     <SimpleBonusEssentialPrograms />
 
                     <section className="simple-bonus__casino-person casino-person">
-      <div className="casino-person__container container">
-      <div className="iwild-review__item item-iwild-review item-iwild-review_author">
-      <div className="item-iwild-review__content content-item-iwild-review">
-        <div className="content-item-iwild-review__image">
-          <LazyLoadImage src={harryStyles} alt="HARRY STYLES" />
-        </div>
-        <div className="content-item-iwild-review__body">
-          <div className="content-item-iwild-review__label">Author</div>
-          <div className="content-item-iwild-review__name">HARRY STYLES</div>
-          <div className="content-item-iwild-review__text">
-            <p>
-              Marketing @Coinmooner. Current learning project: USA.
-              <br />
-              I also summarise books on my <span>personal blog</span>.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="item-iwild-review__socials">
-        <div className="socials-top-footer__items">
-          <div className="socials-top-footer__item">
-            <a
-              href=""
-              aria-label="Put your description here."
-              target="_blank"
-              rel="nofollow noopener"
-              className="socials-top-footer__link"
-            >
-              <svg>
-                <use xlinkHref="#x"></use>
-              </svg>
-            </a>
-          </div>
-          <div className="socials-top-footer__item">
-            <a
-              href=""
-              aria-label="Put your description here."
-              target="_blank"
-              rel="nofollow noopener"
-              className="socials-top-footer__link"
-            >
-              <svg>
-                <use xlinkHref="#facebook"></use>
-              </svg>
-            </a>
-          </div>
-          <div className="socials-top-footer__item">
-            <a
-              href=""
-              aria-label="Put your description here."
-              target="_blank"
-              rel="nofollow noopener"
-              className="socials-top-footer__link"
-            >
-              <svg>
-                <use xlinkHref="#linkedin"></use>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-      </div>
-    </section>
+                        <div className="casino-person__container container">
+                            <div className="iwild-review__item item-iwild-review item-iwild-review_author">
+                                <div className="item-iwild-review__content content-item-iwild-review">
+                                    <div className="content-item-iwild-review__image">
+                                        <LazyLoadImage
+                                            src={harryStyles}
+                                            alt="HARRY STYLES"
+                                        />
+                                    </div>
+                                    <div className="content-item-iwild-review__body">
+                                        <div className="content-item-iwild-review__label">
+                                            Author
+                                        </div>
+                                        <div className="content-item-iwild-review__name">
+                                            HARRY STYLES
+                                        </div>
+                                        <div className="content-item-iwild-review__text">
+                                            <p>
+                                                Marketing @Coinmooner. Current
+                                                learning project: USA.
+                                                <br />I also summarise books on
+                                                my <span>personal blog</span>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="item-iwild-review__socials">
+                                    <div className="socials-top-footer__items">
+                                        <div className="socials-top-footer__item">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                rel="nofollow noopener"
+                                                className="socials-top-footer__link"
+                                            >
+                                                <svg>
+                                                    <use xlinkHref="#x"></use>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div className="socials-top-footer__item">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                rel="nofollow noopener"
+                                                className="socials-top-footer__link"
+                                            >
+                                                <svg>
+                                                    <use xlinkHref="#facebook"></use>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div className="socials-top-footer__item">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                rel="nofollow noopener"
+                                                className="socials-top-footer__link"
+                                            >
+                                                <svg>
+                                                    <use xlinkHref="#linkedin"></use>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                     <section className="main-gamble__bottom-filter-tags bottom-filter-tags">
                         <div className="bottom-filter-tags__container container">
                             <div className="bottom-filter-tags__top top">
@@ -680,7 +677,6 @@ export const SimpleBonus = () => {
                                         <LazyLoadImage
                                             src={searchFilterIcon}
                                             alt="search"
-                                            
                                         />
                                     </span>
                                     <h2 className="top__title">
@@ -865,145 +861,8 @@ export const SimpleBonus = () => {
                             </a>
                         </div>
                     </section>
-                    <div className="main-gamble__subscribe subscribe">
-                        <div className="subscribe__container container">
-                            <div className="subscribe__body">
-                                <div className="subscribe__bg ibg">
-                                    {/* <LazyLoadImage
-                                    src={backgroundImage08}
-                                    alt="bg"
-                                    
-                                /> */}
-                                    <img
-                                        src={backgroundImage08}
-                                        alt="bg"
-                                        loading="lazy"
-                                    />
-                                </div>
-                                <div className="subscribe__row">
-                                    <div className="subscribe__column">
-                                        <a
-                                            rel="nofollow noopener"
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="subscribe__logo"
-                                        >
-                                            <LazyLoadImage
-                                                src={logoIcon}
-                                                alt="logo"
-                                                
-                                            />
-                                        </a>
-                                        <div className="subscribe__content">
-                                            <div className="subscribe__title">
-                                                <span>Subscribe</span> to our
-                                                newsletter
-                                            </div>
-                                            <div className="subscribe__text">
-                                                <p>
-                                                    Get the highest potential
-                                                    bonuses right into your
-                                                    inbox
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="subscribe__column">
-                                        <form
-                                            action="#"
-                                            className="subscribe__form form-subscribe"
-                                        >
-                                            <div className="form-subscribe__row">
-                                                <div className="form-item form-subscribe__item item-form-subscribe">
-                                                    <span className="form-item__icon item-form-subscribe__icon">
-                                                        <svg>
-                                                            <use xlinkHref="#email"></use>
-                                                        </svg>
-                                                    </span>
-                                                    <input
-                                                        placeholder="Your e-mail..."
-                                                        autoComplete="off"
-                                                        type="email"
-                                                        name="form[]"
-                                                        className="item-form-subscribe__input form-item__input required input-email"
-                                                    />
-                                                    <a
-                                                        rel="nofollow noopener"
-                                                        href=""
-                                                        aria-label="Put your description here."
-                                                        className="form-item__icon form-item__icon_delete item-form-subscribe__icon_delete"
-                                                    >
-                                                        <svg>
-                                                            <use xlinkHref="#delete"></use>
-                                                        </svg>
-                                                    </a>
-                                                    <span className="form-item__icon form-item__icon_confired">
-                                                        <LazyLoadImage
-                                                            src={checkIcon}
-                                                            alt="check"
-                                                            
-                                                        />
-                                                    </span>
-                                                    <span className="form-item__icon form-item__icon_error">
-                                                        <LazyLoadImage
-                                                            src={errorIcon}
-                                                            alt="error"
-                                                            
-                                                        />
-                                                    </span>
-                                                </div>
-                                                <button
-                                                    type="submit"
-                                                    className="form-subscribe__btn"
-                                                >
-                                                    Subscribe
-                                                </button>
-                                            </div>
-                                            <div className="form-subscribe__bottom">
-                                                <div className="form-subscribe__checkbox">
-                                                    <input
-                                                        id="formAgreement"
-                                                        type="checkbox"
-                                                        name="form[]"
-                                                        className="form-subscribe__checkbox-input"
-                                                    />
-                                                    <label
-                                                        htmlFor="formAgreement"
-                                                        className="form-subscribe__checkbox-label"
-                                                    >
-                                                        <span>
-                                                            Feel free to
-                                                            unsubscribe anytime.
-                                                            Check our{" "}
-                                                            <a
-                                                                rel="nofollow noopener"
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                            >
-                                                                Terms of use
-                                                            </a>
-                                                            and{" "}
-                                                            <a
-                                                                rel="nofollow noopener"
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                            >
-                                                                Privacy Police
-                                                                here.
-                                                            </a>
-                                                        </span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <SubscribeForm/>
                     <section className="main-gamble__bottom-info bottom-info-gamble">
                         <div className="bottom-info-gamble__container container">
                             <div className="bottom-info-gamble__row">
@@ -1077,7 +936,6 @@ export const SimpleBonus = () => {
                     </section>
                 </div>
             </main>
-           
         </Default>
     )
 }
