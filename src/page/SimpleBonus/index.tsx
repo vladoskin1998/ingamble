@@ -33,6 +33,7 @@ import { Categories } from "./Categories"
 import { LastUpdate } from "./LastUpdate"
 import { Default } from "../Dafault"
 import { useAdaptiveBehavior } from "../../Layout"
+import { LineLoader } from "../../components/loader.tsx/LineLoader"
 
 const MoreCasinoBonuses = lazy(() => import("./MoreCasinoBonuses"))
 
@@ -52,7 +53,7 @@ const getBonusDataFetch = async () => {
 export const SimpleBonus = () => {
     document.title = "Simple Bonus"
 
-    const { data } = useQuery<GetDataBonusResponse>(
+    const { data, isLoading } = useQuery<GetDataBonusResponse>(
         "get-data-bonus",
         getBonusDataFetch,
         {
@@ -80,8 +81,11 @@ export const SimpleBonus = () => {
         window.location.href = data?.casino_affiliate_link || ""
     }
 
+    if(isLoading) return  <LineLoader/>
+
     return (
         <Default>
+           
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
                     <Categories category={data?.category || []} />
@@ -1082,6 +1086,7 @@ export const SimpleBonus = () => {
                     </section>
                 </div>
             </main>
+           
         </Default>
     )
 }
