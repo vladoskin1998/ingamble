@@ -138,7 +138,7 @@ export const SimpleBonus = () => {
                                                         data?.casino_name ||
                                                         "Stake Casino"
                                                     }
-                                                    effect="blur"
+                                                    
                                                 />
                                             </div>
                                             <div className="name-main-casino-info__content">
@@ -191,7 +191,7 @@ export const SimpleBonus = () => {
                                                         stakeLogo
                                                     }
                                                     alt="stake"
-                                                    effect="blur"
+                                                    
                                                 />
                                             </div>
                                             <div className="name-main-casino-info__content">
@@ -267,7 +267,7 @@ export const SimpleBonus = () => {
                                                         <LazyLoadImage
                                                             src={latviaFlag}
                                                             alt="latvia"
-                                                            effect="blur"
+                                                            
                                                         />
                                                     </div>
                                                     <div className="country-content-casino-info__text">
@@ -303,7 +303,7 @@ export const SimpleBonus = () => {
                                                     <LazyLoadImage
                                                         src={giftIcon}
                                                         alt="gift"
-                                                        effect="blur"
+                                                        
                                                     />
                                                 </span>
                                                 Get Bonus and Play
@@ -330,7 +330,7 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
+                                                                        
                                                                     />
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__star">
@@ -339,7 +339,7 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
+                                                                        
                                                                     />
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__star">
@@ -348,7 +348,7 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
+                                                                        
                                                                     />
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__star">
@@ -357,7 +357,7 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
+                                                                        
                                                                     />
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__star">
@@ -366,7 +366,7 @@ export const SimpleBonus = () => {
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
+                                                                        
                                                                     />
                                                                 </div>
                                                             </div>
@@ -496,7 +496,7 @@ export const SimpleBonus = () => {
                                                             <LazyLoadImage
                                                                 src={giftIcon}
                                                                 alt="gift"
-                                                                effect="blur"
+                                                                
                                                             />
                                                         </span>
                                                         Get Bonus
@@ -612,7 +612,7 @@ export const SimpleBonus = () => {
                                             <LazyLoadImage
                                                 src={harryStyles}
                                                 alt="HARRY STYLES"
-                                                effect="blur"
+                                                
                                             />
                                         </div>
                                         <div className="info-casino-person__content">
@@ -685,7 +685,7 @@ export const SimpleBonus = () => {
                                         <LazyLoadImage
                                             src={searchFilterIcon}
                                             alt="search"
-                                            effect="blur"
+                                            
                                         />
                                     </span>
                                     <h2 className="top__title">
@@ -877,7 +877,7 @@ export const SimpleBonus = () => {
                                     {/* <LazyLoadImage
                                     src={backgroundImage08}
                                     alt="bg"
-                                    effect="blur"
+                                    
                                 /> */}
                                     <img
                                         src={backgroundImage08}
@@ -897,7 +897,7 @@ export const SimpleBonus = () => {
                                             <LazyLoadImage
                                                 src={logoIcon}
                                                 alt="logo"
-                                                effect="blur"
+                                                
                                             />
                                         </a>
                                         <div className="subscribe__content">
@@ -947,14 +947,14 @@ export const SimpleBonus = () => {
                                                         <LazyLoadImage
                                                             src={checkIcon}
                                                             alt="check"
-                                                            effect="blur"
+                                                            
                                                         />
                                                     </span>
                                                     <span className="form-item__icon form-item__icon_error">
                                                         <LazyLoadImage
                                                             src={errorIcon}
                                                             alt="error"
-                                                            effect="blur"
+                                                            
                                                         />
                                                     </span>
                                                 </div>

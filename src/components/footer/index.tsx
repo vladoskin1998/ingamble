@@ -219,7 +219,7 @@ export const Footer = () => {
                 <div className="top-footer__socials socials-top-footer">
                     <div className="socials-top-footer__label" data-da="top-footer__socials-block, 1, 1355.98">
                         <div className="socials-top-footer__label-icon">
-                            <LazyLoadImage src={socialsIcon} alt="socials-icon" effect="blur" />
+                            <LazyLoadImage src={socialsIcon} alt="socials-icon"  />
                         </div>
                         <div className="socials-top-footer__label-text">
                             You need help?
@@ -319,52 +319,52 @@ export const Footer = () => {
                 <div className="bottom-footer__logos logos-bottom-footer">
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos01} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos01} alt="logo"  />
                 </div>
             </div>
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos02} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos02} alt="logo"  />
                 </div>
             </div>
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos03} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos03} alt="logo"  />
                 </div>
             </div>
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos04} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos04} alt="logo"  />
                 </div>
             </div>
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos05} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos05} alt="logo"  />
                 </div>
             </div>
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos06} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos06} alt="logo"  />
                 </div>
             </div>
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos07} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos07} alt="logo"  />
                 </div>
             </div>
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos08} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos08} alt="logo"  />
                 </div>
             </div>
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos09} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos09} alt="logo"  />
                 </div>
             </div>
             <div className="logos-bottom-footer__column">
                 <div className="logos-bottom-footer__item">
-                    <LazyLoadImage src={logos10} alt="logo" effect="blur" />
+                    <LazyLoadImage src={logos10} alt="logo"  />
                 </div>
             </div>
         </div>

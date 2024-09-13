@@ -44,6 +44,8 @@ export const Header = ({
     const [isBodyLocked, setIsBodyLocked] = useState(false)
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [search, setSearch] = useState("")
+    const [searchFocus, setSearchFocus] = useState(false)
     const [selectedLanguage, setSelectedLanguage] = useState<Language>(
         languages[0]
     )
@@ -84,8 +86,6 @@ export const Header = ({
         }
     }, [isSidebarActive])
 
-    console.log("searchShow", searchShow);
-    
     return (
         <header className="header">
             <div className="header__container container">
@@ -195,10 +195,16 @@ export const Header = ({
                     <div className="header__column">
                         <form
                             action="#"
-                            className={`header__form form-header ${searchShow ? "show" : ""}`}
-                        //    data-da="header__row-mobile1, 0, 650.98"
+                            className={`header__form form-header ${
+                                searchShow ? "show" : ""
+                            }`}
+                            //    data-da="header__row-mobile1, 0, 650.98"
                         >
-                            <div className="form-header__item form-item">
+                            <div
+                                className={`form-header__item form-item ${
+                                    search && "filled"
+                                } ${searchFocus && "focus"}`}
+                            >
                                 <span className="form-item__icon form-item__icon_search">
                                     <svg>
                                         <g>
@@ -212,13 +218,17 @@ export const Header = ({
                                     type="text"
                                     name="form[]"
                                     className="form-item__input form-item__input_search"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    onBlur={() => setSearchFocus(false)}
+                                    onFocus={() => setSearchFocus(true)}
                                 />
                                 <a
                                     rel="nofollow noopener"
                                     href=""
                                     aria-label="Put your description here."
                                     className="form-item__icon form-item__icon_delete"
-                                    
+                                    onClick={() => setSearch("")}
                                 >
                                     <svg>
                                         <g>
@@ -229,7 +239,6 @@ export const Header = ({
                                 <button
                                     type="submit"
                                     className="form-item__btn"
-                             
                                 >
                                     <svg>
                                         <g>
@@ -246,7 +255,7 @@ export const Header = ({
                         </form>
                         <div
                             className="header__theme theme-header"
-                        //    data-da="mobile-header__top1, 1, 650.98"
+                            //    data-da="mobile-header__top1, 1, 650.98"
                         >
                             <a
                                 rel="nofollow noopener"
@@ -313,17 +322,14 @@ export const Header = ({
                         <div className="header__column header__column_first">
                             <div
                                 className="sidebar-gamble__top top-sidebar-gamble"
-                           //     data-da="header__column_first, 0, 650.98"
+                                //     data-da="header__column_first, 0, 650.98"
                             >
                                 <a
                                     href=""
                                     target="_blank"
                                     className="top-sidebar-gamble__logo"
                                 >
-                                    <img
-                                        src={logoIcon}
-                                        alt="logo-icon"
-                                    />
+                                    <img src={logoIcon} alt="logo-icon" />
                                 </a>
                             </div>
                             <a
@@ -339,17 +345,22 @@ export const Header = ({
 
                         <div className="header__column header__column_last">
                             <div
-                              //  action="#"
-                              className={`header__form form-header ${searchShow ? "show" : ""}`}
+                                className={`header__form form-header ${
+                                    searchShow ? "show" : ""
+                                }`}
                                 onClick={(e) => {
                                     setSearchShow(true)
-                                 //   e.stopPropagation()
                                     e.preventDefault()
-                                    
                                 }}
                             >
-                                <div className="form-header__item form-item">
-                                    <span className={`form-item__icon form-item__icon_search `}  >
+                                <div
+                                    className={`form-header__item form-item ${
+                                        search && "filled"
+                                    } ${searchFocus && "focus"}`}
+                                >
+                                    <span
+                                        className={`form-item__icon form-item__icon_search `}
+                                    >
                                         <svg>
                                             <use xlinkHref="#search"></use>
                                         </svg>
@@ -360,12 +371,18 @@ export const Header = ({
                                         type="text"
                                         name="form[]"
                                         className="form-item__input form-item__input_search"
+                                        value={search}
+                                        onChange={(e) =>
+                                            setSearch(e.target.value)
+                                        }
+                                        onBlur={() => setSearchFocus(false)}
+                                        onFocus={() => setSearchFocus(true)}
                                     />
                                     <a
                                         href=""
                                         aria-label="Put your description here."
                                         className="form-item__icon form-item__icon_delete"
-                                      
+                                        onClick={() => setSearch("")}
                                     >
                                         <svg>
                                             <use xlinkHref="#delete"></use>
@@ -383,7 +400,9 @@ export const Header = ({
                                 <a
                                     href=""
                                     aria-label="Put your description here."
-                                    className={`form-header__icon ${searchShow ? "hide": ""}`}
+                                    className={`form-header__icon ${
+                                        searchShow ? "hide" : ""
+                                    }`}
                                 >
                                     <svg>
                                         <use xlinkHref="#search"></use>
@@ -395,7 +414,7 @@ export const Header = ({
                                 href=""
                                 aria-label="Put your description here."
                                 className="header__burger"
-                              //  data-da="header__column_last, -1, 650.98"
+                                //  data-da="header__column_last, -1, 650.98"
                                 onClick={handleBurgerClick}
                             >
                                 <span></span>
@@ -433,10 +452,10 @@ export const Header = ({
                     </div>
                 </div>
 
-                <div className="mobile-header__body">
+                {/* <div className="mobile-header__body">
                     <div
                         className="header__column"
-                //        data-da="mobile-header__body, 0, 1355.98"
+                        //        data-da="mobile-header__body, 0, 1355.98"
                     >
                         <nav className="header__menu menu-header">
                             <ul className="menu-header__list">
@@ -509,7 +528,7 @@ export const Header = ({
                             </ul>
                         </nav>
                     </div>
-                </div>
+                </div> */}
             </div>
         </header>
     )

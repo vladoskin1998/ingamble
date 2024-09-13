@@ -526,7 +526,7 @@ const MoreCasinoBonuses = ({
                                                                             starIcon
                                                                         }
                                                                         alt="star"
-                                                                        effect="blur"
+                                                                        
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__stake__rating-number">
@@ -541,7 +541,7 @@ const MoreCasinoBonuses = ({
                                                                         likeIcon
                                                                     }
                                                                     alt="like"
-                                                                    effect="blur"
+                                                                    
                                                                 />
                                                             </span>
                                                             <span className="info-casino-card__likes-number">

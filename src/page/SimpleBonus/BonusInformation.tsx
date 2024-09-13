@@ -718,7 +718,7 @@ export const BonusInformation = ({
                                                                                         slotsIcon
                                                                                     }
                                                                                     alt="Slots"
-                                                                                    effect="blur"
+                                                                               
                                                                                 />
                                                                             </span>
                                                                             <span className="game-popup-item-content-bonus-information__name">
