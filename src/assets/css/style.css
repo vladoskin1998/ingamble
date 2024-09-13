@@ -2311,7 +2311,7 @@ h3 {
   -webkit-transform: rotate(83deg);
   -o-transform: rotate(83deg);
   transform: rotate(83deg);
-  background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%);
+  /* background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%); */
   bottom: -150px;
   right: -75px;
   border-radius: 100%;
@@ -3081,7 +3081,7 @@ h3 {
     -webkit-transform: rotate(-111deg);
     -o-transform: rotate(-111deg);
     transform: rotate(-111deg);
-    background: radial-gradient(37.06% 39.78% at 50% 50%, rgba(52, 229, 155, 0.94) 0%, rgba(255, 255, 255, 0) 100%);
+    /* background: radial-gradient(37.06% 39.78% at 50% 50%, rgba(52, 229, 155, 0.94) 0%, rgba(255, 255, 255, 0) 100%); */
     bottom: -270px;
     right: 350px;
     border-radius: 100%;
@@ -5208,7 +5208,7 @@ h3 {
   -webkit-transform: rotate(83deg);
   -o-transform: rotate(83deg);
   transform: rotate(83deg);
-  background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%);
+  /* background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%); */
   bottom: -197px;
   right: -88px;
   border-radius: 100%;
@@ -10336,7 +10336,7 @@ h3 {
     -webkit-transform: rotate(-137.1deg);
     -o-transform: rotate(-137.1deg);
     transform: rotate(-137.1deg);
-    background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%);
+    /* background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%); */
     /* filter: blur(120px); */
   }
   .item-iwild-review_author::before {
@@ -17068,7 +17068,7 @@ h3 {
   -webkit-transform: rotate(150deg);
   -o-transform: rotate(150deg);
   transform: rotate(150deg);
-  background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%);
+  /* background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%); */
   top: -45px;
   left: -58px;
   border-radius: 100%;
@@ -17086,7 +17086,7 @@ h3 {
   -webkit-transform: rotate(83deg);
   -o-transform: rotate(83deg);
   transform: rotate(83deg);
-  background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%);
+  /* background: radial-gradient(43.45% 46.62% at 50% 50%, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0) 100%); */
   bottom: -106px;
   right: -25px;
   border-radius: 100%;
