@@ -5023,17 +5023,28 @@ h3 {
 @media (max-width: 1750.98px) {
   .header__column:nth-child(1):not(:last-child) {
     margin: 0 40px 0 0;
-    max-width: 230px;
+    max-width: 235px;
     width: 100%;
   }
 }
+
+@media (max-width: 1650.98px) {
+  .header__column:nth-child(1):not(:last-child) {
+    margin: 0 40px 0 0;
+    max-width: 205px;
+    width: 100%;
+  }
+}
+
+
 @media (max-width: 1425.98px) {
   .header__column:nth-child(1):not(:last-child) {
     margin: 0 24px 0 0;
-    max-width: 220px;
+    max-width: 217px;
     width: 100%;
   }
 }
+
 @media (max-width: 650.98px) {
   .header__column:nth-child(1) {
     flex: 1 1 100%;
