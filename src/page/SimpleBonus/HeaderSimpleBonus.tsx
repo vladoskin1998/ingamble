@@ -2,7 +2,7 @@ import mainImg from "../../assets/img/casino-info/main-img.jpg"
 import stakeLogo from "../../assets/img/casino-logo/stake.svg"
 import starIcon from "../../assets/img/icons/star.svg"
 import likeIcon from "../../assets/img/icons/like.svg"
-// import latviaFlag from "../../assets/img/icons/latvia-flag.svg"
+
 import { GetDataBonusResponse } from "../../types"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import giftIcon from "../../assets/img/icons/gift.svg"
@@ -204,14 +204,14 @@ export const HeaderSimpleBonus = ({
                                 <div className="content-casino-info__country country-content-casino-info">
                                     <div className="country-content-casino-info__info">
                                         <div className="country-content-casino-info__icon">
-                                            <Flag code={country?.countryCode} height={20}/>
+                                            <Flag code={country?.countryCode || 'LV'} height={20}/>
                                             {/* <LazyLoadImage
                                                 src={latviaFlag}
                                                 alt="latvia"
                                             /> */}
                                         </div>
                                         <div className="country-content-casino-info__text">
-                                            Accepts players from {country?.country}
+                                            Accepts players from {country?.country || 'Latvia'}
                                         </div>
                                     </div>
                                     <span className="main-get-bonus__btn main-get-bonus__btn_apply">
