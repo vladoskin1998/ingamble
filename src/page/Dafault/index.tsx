@@ -1,11 +1,12 @@
-import  { ReactNode, useState } from "react"
+import  { ReactNode } from "react"
 import { Footer } from "../../components/footer"
 import { Header } from "../../components/header"
 import { Navbar } from "../../components/navbar"
+import { useAdaptiveBehavior } from "../../Layout"
 
 
 export const Default = ({children}:{children:ReactNode}) => {
-    const [isSidebarActive, setSidebarActive] = useState(false)
+    const {isSidebarActive, setSidebarActive} =     useAdaptiveBehavior()
     return (
         <>
             <svg display="none">

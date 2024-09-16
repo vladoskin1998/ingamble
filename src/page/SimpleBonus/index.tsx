@@ -53,7 +53,7 @@ const getBonusDataFetch = async () => {
 
 export const SimpleBonus = () => {
     document.title = "Simple Bonus"
-
+    const { isSidebarActive, setSidebarActive } = useAdaptiveBehavior()
     const { data, isLoading } = useQuery<GetDataBonusResponse>(
         "get-data-bonus",
         getBonusDataFetch,
@@ -62,12 +62,12 @@ export const SimpleBonus = () => {
         }
     )
 
-    const [like, setLike] = useState<'' | 'like' | 'dislike' >('')
+    const [like, setLike] = useState<"" | "like" | "dislike">("")
 
-    const adaptiveBehavior = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
     useEffect(() => {
-        adaptiveBehavior()
+        initializeAdaptiveBehavior()
 
         const newUrl = `/casino/${data?.casino_name
             .replace(/\s/g, "-")
@@ -78,16 +78,14 @@ export const SimpleBonus = () => {
         window.history.pushState({}, "", newUrl)
     }, [data])
 
-
     const handleClick = () => {
         window.location.href = data?.casino_affiliate_link || ""
     }
 
-    if (isLoading) return   <LogoLoader />
+    if (isLoading) return <LogoLoader />
 
     return (
         <Default>
-          
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
                     <Categories category={data?.category || []} />
@@ -116,7 +114,7 @@ export const SimpleBonus = () => {
                             },
                         ]}
                     />
-                    <HeaderSimpleBonus data={data}/>
+                    <HeaderSimpleBonus data={data} />
                     <BonusSubType bonus_subtype={data?.bonus_subtype || []} />
                     <LastUpdate data={data} />
                     <section className="simple-bonus__get-bonus get-bonus">
@@ -214,8 +212,13 @@ export const SimpleBonus = () => {
                                             <div className="like-get-bonus__btns">
                                                 <div className="like-get-bonus__btns-item">
                                                     <button
-                                                       onClick={() => setLike('like')}
-                                                        className={`like-get-bonus__btn like-get-bonus__btn_like ${like === 'like' && "active"}`}
+                                                        onClick={() =>
+                                                            setLike("like")
+                                                        }
+                                                        className={`like-get-bonus__btn like-get-bonus__btn_like ${
+                                                            like === "like" &&
+                                                            "active"
+                                                        }`}
                                                     >
                                                         <span className="like-get-bonus__btn-icon">
                                                             <svg>
@@ -223,14 +226,24 @@ export const SimpleBonus = () => {
                                                             </svg>
                                                         </span>
                                                         <span className="like-get-bonus__btn-number">
-                                                        {(data?.likes ?? 0) + (like === 'like' ? 1 : 0)}
+                                                            {(data?.likes ??
+                                                                0) +
+                                                                (like === "like"
+                                                                    ? 1
+                                                                    : 0)}
                                                         </span>
                                                     </button>
                                                 </div>
                                                 <div className="like-get-bonus__btns-item">
                                                     <button
-                                                    onClick={() => setLike('dislike')}
-                                                        className={`like-get-bonus__btn like-get-bonus__btn_dislike ${like ==='dislike' && 'active'}`}
+                                                        onClick={() =>
+                                                            setLike("dislike")
+                                                        }
+                                                        className={`like-get-bonus__btn like-get-bonus__btn_dislike ${
+                                                            like ===
+                                                                "dislike" &&
+                                                            "active"
+                                                        }`}
                                                     >
                                                         <span className="like-get-bonus__btn-icon">
                                                             <svg>
@@ -261,149 +274,79 @@ export const SimpleBonus = () => {
 
                     <SimpleBonusEssentialPrograms />
                     <section className="simple-bonus__casino-person simple-bonus__casino-person_desktop casino-person">
-      <div className="casino-person__container container">
-        <div className="casino-person__body">
-          <div className="casino-person__row">
-            <div className="casino-person__info info-casino-person">
-              <div className="info-casino-person__img">
-                <LazyLoadImage
-                  src={harryStyles}
-                  alt="HARRY STYLES"
-                
-                />
-              </div>
-              <div className="info-casino-person__content">
-                <h3 className="info-casino-person__name h3">HARRY STYLES</h3>
-                <div className="info-casino-person__position">
-                  Content Maker, Chief Marketing at Lerio
-                </div>
-              </div>
-            </div>
-            <div className="casino-person__socials">
-              <div className="socials-top-footer__items">
-                <div className="socials-top-footer__item">
-                  <a
-                    href=""
-                    aria-label="Put your description here."
-                    target="_blank"
-                    className="socials-top-footer__link"
-                    rel="noreferrer"
-                  >
-                    <svg>
-                      <use xlinkHref="#x"></use>
-                    </svg>
-                  </a>
-                </div>
-                <div className="socials-top-footer__item">
-                  <a
-                    href=""
-                    aria-label="Put your description here."
-                    target="_blank"
-                    className="socials-top-footer__link"
-                    rel="noreferrer"
-                  >
-                    <svg>
-                      <use xlinkHref="#facebook"></use>
-                    </svg>
-                  </a>
-                </div>
-                <div className="socials-top-footer__item">
-                  <a
-                    href=""
-                    aria-label="Put your description here."
-                    target="_blank"
-                    className="socials-top-footer__link"
-                    rel="noreferrer"
-                  >
-                    <svg>
-                      <use xlinkHref="#linkedin"></use>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="casino-person__waves">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
-    </section>
-                    {/* <section className="simple-bonus__casino-person casino-person">
                         <div className="casino-person__container container">
-                            <div className="iwild-review__item item-iwild-review item-iwild-review_author">
-                                <div className="item-iwild-review__content content-item-iwild-review">
-                                    <div className="content-item-iwild-review__image">
-                                        <LazyLoadImage
-                                            src={harryStyles}
-                                            alt="HARRY STYLES"
-                                        />
+                            <div className="casino-person__body">
+                                <div className="casino-person__row">
+                                    <div className="casino-person__info info-casino-person">
+                                        <div className="info-casino-person__img">
+                                            <LazyLoadImage
+                                                src={harryStyles}
+                                                alt="HARRY STYLES"
+                                            />
+                                        </div>
+                                        <div className="info-casino-person__content">
+                                            <h3 className="info-casino-person__name h3">
+                                                HARRY STYLES
+                                            </h3>
+                                            <div className="info-casino-person__position">
+                                                Content Maker, Chief Marketing
+                                                at Lerio
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="content-item-iwild-review__body">
-                                        <div className="content-item-iwild-review__label">
-                                            Author
-                                        </div>
-                                        <div className="content-item-iwild-review__name">
-                                            HARRY STYLES
-                                        </div>
-                                        <div className="content-item-iwild-review__text">
-                                            <p>
-                                                Marketing @Coinmooner. Current
-                                                learning project: USA.
-                                                <br />I also summarise books on
-                                                my <span>personal blog</span>.
-                                            </p>
+                                    <div className="casino-person__socials">
+                                        <div className="socials-top-footer__items">
+                                            <div className="socials-top-footer__item">
+                                                <a
+                                                    href=""
+                                                    aria-label="Put your description here."
+                                                    target="_blank"
+                                                    className="socials-top-footer__link"
+                                                    rel="noreferrer"
+                                                >
+                                                    <svg>
+                                                        <use xlinkHref="#x"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div className="socials-top-footer__item">
+                                                <a
+                                                    href=""
+                                                    aria-label="Put your description here."
+                                                    target="_blank"
+                                                    className="socials-top-footer__link"
+                                                    rel="noreferrer"
+                                                >
+                                                    <svg>
+                                                        <use xlinkHref="#facebook"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div className="socials-top-footer__item">
+                                                <a
+                                                    href=""
+                                                    aria-label="Put your description here."
+                                                    target="_blank"
+                                                    className="socials-top-footer__link"
+                                                    rel="noreferrer"
+                                                >
+                                                    <svg>
+                                                        <use xlinkHref="#linkedin"></use>
+                                                    </svg>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="item-iwild-review__socials">
-                                    <div className="socials-top-footer__items">
-                                        <div className="socials-top-footer__item">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                rel="nofollow noopener"
-                                                className="socials-top-footer__link"
-                                            >
-                                                <svg>
-                                                    <use xlinkHref="#x"></use>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                        <div className="socials-top-footer__item">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                rel="nofollow noopener"
-                                                className="socials-top-footer__link"
-                                            >
-                                                <svg>
-                                                    <use xlinkHref="#facebook"></use>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                        <div className="socials-top-footer__item">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                rel="nofollow noopener"
-                                                className="socials-top-footer__link"
-                                            >
-                                                <svg>
-                                                    <use xlinkHref="#linkedin"></use>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div className="casino-person__waves">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
                                 </div>
                             </div>
                         </div>
-                    </section> */}
+                    </section>
+
                     <section className="main-gamble__bottom-filter-tags bottom-filter-tags">
                         <div className="bottom-filter-tags__container container">
                             <div className="bottom-filter-tags__top top">
@@ -581,10 +524,10 @@ export const SimpleBonus = () => {
                                     </a>
                                 </div>
                             </div>
-                            <a
-                                rel="nofollow noopener"
-                                href=""
-                                aria-label="Put your description here."
+                            <button
+                                onClick={() =>
+                                    setSidebarActive(!isSidebarActive)
+                                }
                                 className="bottom-filter-tags__btn-filter"
                             >
                                 <span>
@@ -593,11 +536,11 @@ export const SimpleBonus = () => {
                                     </svg>
                                 </span>
                                 Filter What You need
-                            </a>
+                            </button>
                         </div>
                     </section>
-                    
-                    <SubscribeForm/>
+
+                    <SubscribeForm />
                     <section className="main-gamble__bottom-info bottom-info-gamble">
                         <div className="bottom-info-gamble__container container">
                             <div className="bottom-info-gamble__row">

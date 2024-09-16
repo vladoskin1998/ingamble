@@ -49,7 +49,7 @@ export const Header = ({
     const [selectedLanguage, setSelectedLanguage] = useState<Language>(
         languages[0]
     )
-    const modalLanguageRef = useRef<HTMLDivElement | null>(null);
+    const modalLanguageRef = useRef<HTMLDivElement | null>(null)
     const [searchShow, setSearchShow] = useState(false)
 
     const handleLanguageSelect = (language: Language) => {
@@ -57,19 +57,24 @@ export const Header = ({
         setIsLanguageOpen(false)
     }
 
+    //@ts-ignore
+    const [logoHide, setLogoHide] = useState(false)
+
     const handleClickOutside = (event: MouseEvent): void => {
-        if (modalLanguageRef.current && !modalLanguageRef.current.contains(event.target as Node)) {
-          setIsLanguageOpen(false);
+        if (
+            modalLanguageRef.current &&
+            !modalLanguageRef.current.contains(event.target as Node)
+        ) {
+            setIsLanguageOpen(false)
         }
-      };
-    
-      useEffect(() => {
-        
-        document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside)
         return () => {
-          document.removeEventListener('mousedown', handleClickOutside);
-        };
-      }, []);
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    }, [])
 
     const handleBurgerClick = (event: any) => {
         event.preventDefault()
@@ -99,14 +104,28 @@ export const Header = ({
         } else {
             console.log("gambleBody not found!")
         }
+        if (isSidebarActive) {
+            setTimeout(() => {
+                setLogoHide(true)
+            }, 50)
+        } else {
+            setLogoHide(false)
+        }
     }, [isSidebarActive])
 
     return (
         <header className="header">
             <div className="header__container container">
                 <div className="header__row header--row-pc">
-                    {!isSidebarActive && (
-                        <div className="header__column">
+                    {
+                        <div
+                            className={`header__column header__column-logo ${
+                                isSidebarActive && "header__column-active"
+                            }`}
+                            // style={{
+                            //     width: isSidebarActive ? "0" : "auto"
+                            // }}
+                        >
                             <a
                                 rel="nofollow noopener"
                                 href=""
@@ -120,22 +139,26 @@ export const Header = ({
                                 <span></span>
                                 <span></span>
                             </a>
-                            (
-                            <a
-                                rel="nofollow noopener"
-                                href=""
-                                target="_blank"
-                                className="header__logo logo"
-                            >
-                                <div className="logo__img">
-                                    <LazyLoadImage alt={"logo"} src={logo} />
-                                </div>
-                            </a>
-                            )
+                          
+                                <a
+                                    rel="nofollow noopener"
+                                    href=""
+                                    target="_blank"
+                                    className="header__logo logo"
+                                >
+                                    <div className="logo__img">
+                                    { !isSidebarActive &&
+                                        <LazyLoadImage
+                                            alt={"logo"}
+                                            src={logo}
+                                        />}
+                                    </div>
+                                </a>
+                            
                         </div>
-                    )}
+                    }
                     <div
-                        className="header__column"
+                        className="header__column header__column-nav"
                         // data-da="mobile-header__body1, 0, 1355.98"
                     >
                         <nav className="header__menu menu-header">
@@ -286,7 +309,7 @@ export const Header = ({
                         <div className="header__language language-header">
                             <div className="dropdown language-header__dropdown dropdown-language-header">
                                 <button
-                                    className="dropdown__btn dropdown-language-header__btn"
+                                    className="dropdown__btn dropdown-language-header__btn dropdown-language-header__btn-icon"
                                     onClick={() => setIsLanguageOpen(true)}
                                 >
                                     <LazyLoadImage

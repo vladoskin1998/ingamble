@@ -222,6 +222,12 @@ html, body {
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s; */
 }
+.header--column-logo-none{
+  margin: 0 !important; 
+  transition: margin 0.5s ease;
+ 
+ 
+}
 @media (max-width: 1650.98px) {
   .form-header {
     flex: 180px;
@@ -4824,7 +4830,7 @@ h3 {
   width: calc(100% - 80px);
   
   border-bottom: 1px solid var(--BG-Bg_2, #232320);
-  border-left: 1px solid var(--BG-Bg_2, #232320);
+   /* border-left: 1px solid var(--BG-Bg_2, #232320); */
   z-index: 99;
 }
 .header::before {
@@ -4960,9 +4966,12 @@ h3 {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   position: relative;
   z-index: 5;
+}
+.header__column-nav{
+  flex-grow: 1;
 }
 @media (max-width: 650.98px) {
   .header__row {
@@ -4991,18 +5000,38 @@ h3 {
   display: flex;
   align-items: center;
   z-index: 1;
+  transition: all 1s ease;
 }
+
+/* .header.resize .header__column{
+  transform: translateX(-300px) !important;
+} */
+
+
 .header__column:nth-child(1):not(:last-child) {
   margin: 0 88px 0 0;
+
+  max-width: 180px;
+  width: 100%;
+  
 }
+
+.header__column-logo{
+
+}
+
 @media (max-width: 1750.98px) {
   .header__column:nth-child(1):not(:last-child) {
     margin: 0 40px 0 0;
+    max-width: 230px;
+    width: 100%;
   }
 }
 @media (max-width: 1425.98px) {
   .header__column:nth-child(1):not(:last-child) {
     margin: 0 24px 0 0;
+    max-width: 220px;
+    width: 100%;
   }
 }
 @media (max-width: 650.98px) {
@@ -6809,11 +6838,11 @@ h3 {
   background: var(--BG-Bg_1, #171719);
   position: fixed;
   z-index: 100;
-  -webkit-transition: all 0.1s ease-out 0s;
-  -moz-transition: all 0.1s ease-out 0s;
-  -ms-transition: all 0.1s ease-out 0s;
-  -o-transition: all 0.1s ease-out 0s;
-  transition: all 0.1s ease-out 0s;
+  -webkit-transition: all 0.15s ease-out 0s;
+  -moz-transition: all 0.15s ease-out 0s;
+  -ms-transition: all 0.15s ease-out 0s;
+  -o-transition: all 0.15s ease-out 0s;
+  transition: all 0.15s ease-out 0s;
 
 }
 .sidebar-gamble.active {
@@ -7013,6 +7042,7 @@ h3 {
   justify-content: flex-start;
   text-align: center;
   border-bottom: 1px solid var(--BG-Bg_2, #232320);
+  border-right: 1px solid var(--BG-Bg_2, #232320);
   background: linear-gradient(180deg, #171719 0%, #1C1C1C 100%);
   padding: 10px 22px;
 }

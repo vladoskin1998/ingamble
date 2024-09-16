@@ -1,13 +1,17 @@
-import React, { createContext, useContext, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, ReactNode, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 interface ParentOriginal {
     parent: HTMLElement;
     index: number;
 }
-
+interface AdaptiveContextType {
+    isSidebarActive: boolean;
+    setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
+    initializeAdaptiveBehavior: () => void;
+}
 // Create Context
-const AdaptiveContext = createContext<() => void>(() => {});
+const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
 
 // Function to handle dynamic adaptation
 const dinamicAdapt = (
@@ -85,7 +89,7 @@ const initializeAdaptiveBehavior = () => {
 // Provider Component
 export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const location = useLocation();
-
+    const [isSidebarActive, setSidebarActive] = useState(false)
     useEffect(() => {
         const handleResize = () => {
             initializeAdaptiveBehavior();
@@ -101,7 +105,7 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
     }, [location]);
 
     return (
-        <AdaptiveContext.Provider value={initializeAdaptiveBehavior}>
+        <AdaptiveContext.Provider value={{ isSidebarActive, setSidebarActive, initializeAdaptiveBehavior }}>
             {children}
         </AdaptiveContext.Provider>
     );
