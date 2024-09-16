@@ -63,7 +63,7 @@ export const Navbar = ({
             main?.classList.toggle("resize", isSidebarActive)
         }
         if (!isSidebarActive) {
-            setIsDefaultOpen((s) => "")
+            setIsDefaultOpen(() => "")
         }
     }, [isSidebarActive, isGambleBodyHidden])
 
@@ -114,7 +114,7 @@ export const Navbar = ({
                 <div className="sidebar-gamble__filters filters-sidebar-gamble">
                     <div className="filters-sidebar-gamble__title title-filters-sidebar-gamble">
                         <button
-                            onClick={(e) => setSidebarActive(!isSidebarActive)}
+                            onClick={() => setSidebarActive(!isSidebarActive)}
                             aria-label="Put your description here."
                             className="title-filters-sidebar-gamble__btn"
                             data-da="header__row-mobile1, 1, 650.98"
