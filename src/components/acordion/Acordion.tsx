@@ -16,6 +16,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
     const { toggle } = useAccordion();
     const headerRef = useRef<HTMLDivElement>(null);
 
+    
     useEffect(() => {
         if (headerRef.current) {
             const titleElement = headerRef.current.querySelector(
@@ -42,10 +43,13 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
         }
     }, [isOpen]);
 
-    // Обработчик клика для переключения состояния
+    useEffect(() => {
+        setIsOpen(defaultOpen)
+    }, [defaultOpen])
+
     const handleClick = () => {
         setIsOpen((prevState) => !prevState);
-        toggle(); // Вызов функции toggle из useAccordion, если нужно
+        toggle(); 
     };
 
     return (
@@ -53,7 +57,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
             <div
                 ref={headerRef}
                 style={styles.accordionItemHeader}
-                onClick={handleClick} // Используйте новый обработчик клика
+                onClick={handleClick} 
             >
                 {heading}
             </div>

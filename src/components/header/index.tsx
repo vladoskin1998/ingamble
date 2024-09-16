@@ -94,7 +94,7 @@ export const Header = ({
     //     setSidebarActive(!isSidebarActive)
     // }\
 
-    console.log("language", isLanguageOpen)
+
 
     useEffect(() => {
         const gambleBody = document.querySelector(".gamble__body")
@@ -102,7 +102,7 @@ export const Header = ({
         if (gambleBody && window.innerWidth <= 650.98) {
             gambleBody.classList.toggle("hide", isSidebarActive)
         } else {
-            console.log("gambleBody not found!")
+           
         }
         if (isSidebarActive) {
             setTimeout(() => {

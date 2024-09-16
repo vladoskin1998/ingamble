@@ -81,7 +81,6 @@ const initializeAdaptiveBehavior = () => {
         }
     });
 
-    console.log("Initial call to apply adaptive behavior");
      
     dinamicAdapt(da_elements, attr_elements, match_media, parents_original);
 };

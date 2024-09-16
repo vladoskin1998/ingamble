@@ -20,8 +20,10 @@ import malta from "../../assets/img/flags/malta.svg"
 import gibralatar from "../../assets/img/flags/gibralatar.svg"
 import jersey from "../../assets/img/flags/jersey.svg"
 import clearAll from "../../assets/img/icons/clear-all.svg"
-import { useLayoutEffect, useState } from "react"
+import { useLayoutEffect, useMemo, useState } from "react"
 import { AccordionItem } from "../acordion/Acordion"
+
+type DefaultOpenType = "casinos" | "bonuses" | "loyalties" | "slots" | ""
 
 export const Navbar = ({
     isSidebarActive,
@@ -32,6 +34,8 @@ export const Navbar = ({
 }) => {
     const [] = useState(false)
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
+
+    const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>("")
 
     useLayoutEffect(() => {
         const sidebarGamble = document.querySelector(
@@ -49,7 +53,7 @@ export const Navbar = ({
         //     gambleBody.classList.toggle("hide", isGambleBodyHidden)
         // }
 
-        if (header && window.innerWidth > 650.98 && window.innerWidth  < 1356) {
+        if (header && window.innerWidth > 650.98 && window.innerWidth < 1356) {
             header?.classList.toggle("resize", isSidebarActive)
         }
         if (footer && window.innerWidth > 650.98) {
@@ -58,13 +62,23 @@ export const Navbar = ({
         if (main && window.innerWidth > 650.98) {
             main?.classList.toggle("resize", isSidebarActive)
         }
+        if (!isSidebarActive) {
+            setIsDefaultOpen((s) => "")
+        }
     }, [isSidebarActive, isGambleBodyHidden])
 
-    const handleFilterOpenBtnClick = (event: React.MouseEvent) => {
+    console.log("isDefaultOpen", isDefaultOpen)
+
+    const handleFilterOpenBtnClick = (
+        event: React.MouseEvent,
+        s: DefaultOpenType
+    ) => {
+        setIsDefaultOpen(s)
         event.preventDefault()
         event.stopPropagation()
+
         if (document.documentElement.clientWidth > 650.98) {
-            setSidebarActive(!isSidebarActive)
+            setSidebarActive(true)
         } else {
             setSidebarActive(true)
             setGambleBodyHidden(true)
@@ -76,6 +90,10 @@ export const Navbar = ({
         setSidebarActive(false)
         setGambleBodyHidden(false)
     }
+    const randomKey = useMemo(
+        () => Math.random().toString(36).substring(2, 9),
+        [isSidebarActive]
+    )
 
     return (
         <>
@@ -96,7 +114,7 @@ export const Navbar = ({
                 <div className="sidebar-gamble__filters filters-sidebar-gamble">
                     <div className="filters-sidebar-gamble__title title-filters-sidebar-gamble">
                         <button
-                            onClick={handleFilterOpenBtnClick}
+                            onClick={(e) => setSidebarActive(!isSidebarActive)}
                             aria-label="Put your description here."
                             className="title-filters-sidebar-gamble__btn"
                             data-da="header__row-mobile1, 1, 650.98"
@@ -137,14 +155,21 @@ export const Navbar = ({
                                     className={`form-filters__item item-form-filters`}
                                 >
                                     <AccordionItem
+                                        defaultOpen={
+                                            isDefaultOpen === "casinos"
+                                        }
+                                        key={randomKey}
                                         heading={
                                             <div
                                                 className={`item-form-filters__title title-item-form-filters  accordion--title--element`}
                                             >
                                                 <span
                                                     className="title-item-form-filters__icon"
-                                                    onClick={
-                                                        handleFilterOpenBtnClick
+                                                    onClick={(e) =>
+                                                        handleFilterOpenBtnClick(
+                                                            e,
+                                                            "casinos"
+                                                        )
                                                     }
                                                 >
                                                     <svg>
@@ -244,7 +269,6 @@ export const Navbar = ({
                                                                 </span>
                                                                 <span>
                                                                     Casinos
-                                                                    
                                                                     Players From
                                                                 </span>
                                                                 <span className="title-form-filter__count"></span>
@@ -3234,14 +3258,21 @@ export const Navbar = ({
                                     className={`form-filters__item item-form-filters`}
                                 >
                                     <AccordionItem
+                                        defaultOpen={
+                                            isDefaultOpen === "bonuses"
+                                        }
+                                        key={randomKey}
                                         heading={
                                             <div
                                                 className={`item-form-filters__title title-item-form-filters accordion--title--element`}
                                             >
                                                 <span
                                                     className="title-item-form-filters__icon"
-                                                    onClick={
-                                                        handleFilterOpenBtnClick
+                                                    onClick={(e) =>
+                                                        handleFilterOpenBtnClick(
+                                                            e,
+                                                            "bonuses"
+                                                        )
                                                     }
                                                 >
                                                     <svg>
@@ -3270,12 +3301,19 @@ export const Navbar = ({
                                     className={`form-filters__item item-form-filters `}
                                 >
                                     <AccordionItem
+                                        defaultOpen={
+                                            isDefaultOpen === "loyalties"
+                                        }
+                                        key={randomKey}
                                         heading={
                                             <div className="item-form-filters__title title-item-form-filters accordion--title--element">
                                                 <span
                                                     className="title-item-form-filters__icon"
-                                                    onClick={
-                                                        handleFilterOpenBtnClick
+                                                    onClick={(e) =>
+                                                        handleFilterOpenBtnClick(
+                                                            e,
+                                                            "loyalties"
+                                                        )
                                                     }
                                                 >
                                                     <svg>
@@ -3304,12 +3342,17 @@ export const Navbar = ({
                                     className={`form-filters__item item-form-filters `}
                                 >
                                     <AccordionItem
+                                        key={randomKey}
+                                        defaultOpen={isDefaultOpen === "slots"}
                                         heading={
                                             <div className="item-form-filters__title title-item-form-filters accordion--title--element">
                                                 <span
                                                     className="title-item-form-filters__icon"
-                                                    onClick={
-                                                        handleFilterOpenBtnClick
+                                                    onClick={(e) =>
+                                                        handleFilterOpenBtnClick(
+                                                            e,
+                                                            "slots"
+                                                        )
                                                     }
                                                 >
                                                     <svg>
@@ -3342,6 +3385,7 @@ export const Navbar = ({
                                     <button
                                         type="reset"
                                         className="bottom-form-filters__btn bottom-form-filters__btn_reset"
+                                    
                                     >
                                         <span className="bottom-form-filters__btn-icon">
                                             <LazyLoadImage
