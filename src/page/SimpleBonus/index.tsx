@@ -4,6 +4,11 @@ import { LazyLoadImage } from "react-lazy-load-image-component"
 // import starIcon from "../../assets/img/icons/star.svg"
 // import likeIcon from "../../assets/img/icons/like.svg"
 // import latviaFlag from "../../assets/img/icons/latvia-flag.svg"
+import casinoCards09 from "../../assets/img/casino-cards/09.jpg"
+import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
+import casinoCards07 from "../../assets/img/casino-cards/07.jpg"
+import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
+import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 
 import harryStyles from "../../assets/img/casino-person/01.png"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
@@ -169,7 +174,7 @@ export const SimpleBonus = () => {
                             <MainSlider
                                 data={[
                                     {
-                                        img: "/src/assets/img/casino-cards/09.jpg",
+                                        img: casinoCards09,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
@@ -215,7 +220,7 @@ export const SimpleBonus = () => {
                                         ),
                                     },
                                     {
-                                        img: "/src/assets/img/casino-cards/03.jpg",
+                                        img: casinoCards03,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
@@ -261,7 +266,7 @@ export const SimpleBonus = () => {
                                         ),
                                     },
                                     {
-                                        img: "/src/assets/img/casino-cards/07.jpg",
+                                        img: casinoCards07,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
@@ -307,7 +312,7 @@ export const SimpleBonus = () => {
                                         ),
                                     },
                                     {
-                                        img: "/src/assets/img/casino-cards/01.jpg",
+                                        img: casinoCards01,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
@@ -353,7 +358,7 @@ export const SimpleBonus = () => {
                                         ),
                                     },
                                     {
-                                        img: "/src/assets/img/casino-cards/04.jpg",
+                                        img: casinoCards04,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
@@ -453,7 +458,7 @@ export const SimpleBonus = () => {
                             <MainSlider
                                 data={[
                                     {
-                                        img: "/src/assets/img/casino-cards/09.jpg",
+                                        img: casinoCards09,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
@@ -499,7 +504,7 @@ export const SimpleBonus = () => {
                                         ),
                                     },
                                     {
-                                        img: "/src/assets/img/casino-cards/03.jpg",
+                                        img: casinoCards03,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
@@ -545,7 +550,7 @@ export const SimpleBonus = () => {
                                         ),
                                     },
                                     {
-                                        img: "/src/assets/img/casino-cards/07.jpg",
+                                        img: casinoCards07,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
@@ -591,7 +596,7 @@ export const SimpleBonus = () => {
                                         ),
                                     },
                                     {
-                                        img: "/src/assets/img/casino-cards/01.jpg",
+                                        img: casinoCards01,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
@@ -637,7 +642,7 @@ export const SimpleBonus = () => {
                                         ),
                                     },
                                     {
-                                        img: "/src/assets/img/casino-cards/04.jpg",
+                                        img:casinoCards04,
                                         raiting: "4.8",
                                         likes: "34k",
                                         nameCasino: "Stake Casino",
