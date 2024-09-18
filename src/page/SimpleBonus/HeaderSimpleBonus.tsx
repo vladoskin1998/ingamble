@@ -3,7 +3,7 @@ import stakeLogo from "../../assets/img/casino-logo/stake.svg"
 import starIcon from "../../assets/img/icons/star.svg"
 import likeIcon from "../../assets/img/icons/like.svg"
 
-import { GetDataBonusResponse } from "../../types"
+import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import giftIcon from "../../assets/img/icons/gift.svg"
 import { useState, useEffect } from "react"
@@ -20,13 +20,18 @@ const color_label = [
 ]
 export const HeaderSimpleBonus = ({
     data,
+    geoLocation,
 }: {
     data?: GetDataBonusResponse | undefined
+    geoLocation: GeoLocationAllowdType
 }) => {
     const handleClick = () => {
         window.location.href = data?.casino_affiliate_link || ""
     }
-    const [country, setCountry] = useState<{country?:string, countryCode?: string } | null>(null);
+    
+
+    console.log(geoLocation);
+    
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(window.innerWidth <= 1023.98);
 
     const handleResize = (): void => {
@@ -44,22 +49,10 @@ export const HeaderSimpleBonus = ({
     }, []);
 
 
-    console.log(country);
-    
-    useEffect(() => {
-  
-        fetch("http://ip-api.com/json/")
-          .then((response) => response.json())
-          .then((d) => {
-            setCountry(d );
-          })
-          .catch((error) => {
-            console.error("Ошибка получения данных о стране:", error);
-          });
-      }, []);
+
 
     return (
-        <section className="simple-bonus__casino-info casino-info">
+        <section className={`simple-bonus__casino-info casino-info ${!geoLocation.isAllowed && "casino-info_not-available"} `}>
             <div className="casino-info__container container">
                 <div className="casino-info__body">
                     <div className="casino-info__row">
@@ -204,14 +197,14 @@ export const HeaderSimpleBonus = ({
                                 <div className="content-casino-info__country country-content-casino-info">
                                     <div className="country-content-casino-info__info">
                                         <div className="country-content-casino-info__icon">
-                                            <Flag code={country?.countryCode || 'LV'} height={20}/>
+                                            <Flag code={ 'LV'} height={20}/>
                                             {/* <LazyLoadImage
                                                 src={latviaFlag}
                                                 alt="latvia"
                                             /> */}
                                         </div>
-                                        <div className="country-content-casino-info__text">
-                                            Accepts players from {country?.country || 'Latvia'}
+                                        <div className={`country-content-casino-info__text `}>
+                                          {`${geoLocation.isAllowed ? "Accepts players from" : "Doesn’t accept players from"} ${geoLocation.countryName}`}   
                                         </div>
                                     </div>
                                     <span className="main-get-bonus__btn main-get-bonus__btn_apply">
@@ -237,7 +230,9 @@ export const HeaderSimpleBonus = ({
                                             alt="gift"
                                         />
                                     </span>
-                                    Get Bonus and Play
+                                    {
+                                        geoLocation.isAllowed ? "Get Bonus and Play " : "Browse Recommended Bonuses"
+                                    }            
                                 </a>
                             </div>
                             <div className="content-casino-info__features features-content-casino-info">

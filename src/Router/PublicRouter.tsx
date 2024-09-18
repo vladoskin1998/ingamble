@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import { NotFound } from "../page/NotFound/NotFound"
 
 import { SimpleBonus } from "../page/SimpleBonus"
+import { Main } from "../page/Main"
 
 
 export const PublicRouter = () => {
@@ -12,6 +13,10 @@ export const PublicRouter = () => {
             <Route
                 path="/casino/:casino_name/bonuses/:bonus_type"
                 element={<SimpleBonus />}
+            />
+            <Route
+                path="/main"
+                element={<Main />}
             />
             <Route
                 path="/"

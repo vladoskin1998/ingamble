@@ -4864,11 +4864,11 @@ h3 {
 }
 .header.resize {
   width: calc(100% - 350px);
-  -webkit-transition: all 0.1s ease 0s;
-  -moz-transition: all 0.1s ease 0s;
-  -ms-transition: all 0.1s ease 0s;
-  -o-transition: all 0.1s ease 0s;
-  transition: all 0.1s ease 0s;  
+  -webkit-transition: all 0.15s ease 0s;
+  -moz-transition: all 0.15s ease 0s;
+  -ms-transition: all 0.15s ease 0s;
+  -o-transition: all 0.15s ease 0s;
+  transition: all 0.15s ease 0s;  
 }
 /* .header.resize .header__theme:not(:first-child) {
   margin: 0 0 0 24px;
@@ -6850,11 +6850,11 @@ h3 {
   background: var(--BG-Bg_1, #171719);
   position: fixed;
   z-index: 100;
-  -webkit-transition: all 0.15s ease-out 0s;
-  -moz-transition: all 0.15s ease-out 0s;
-  -ms-transition: all 0.15s ease-out 0s;
-  -o-transition: all 0.15s ease-out 0s;
-  transition: all 0.15s ease-out 0s;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -moz-transition: all 0.1s ease-out 0s;
+  -ms-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
 
 }
 .sidebar-gamble.active {
@@ -7306,7 +7306,7 @@ h3 {
   padding: 0 8px;
 }
 .item-form-filters:not(:last-child) {
-  margin: 0 0 16px 0;
+  margin: 0 0 8px 0;
 }
 .item-form-filters__body {
   height: 0;
@@ -19451,5 +19451,40 @@ h3 {
   }
 }
 
+/* ///////////////new */
 
+
+.main-gamble__fastest-payout-casinos {
+  display: none;
+}
+@media (max-width: 650.98px) {
+  .main-gamble__fastest-payout-casinos {
+    display: block;
+  }
+}
+.main-gamble__fastest-payout-casinos .slider__body:not(:last-child) {
+  margin: 0 0 20.5px 0;
+}
+@media (max-width: 480.98px) {
+  .main-gamble__fastest-payout-casinos .slider__body:not(:last-child) {
+    margin: 0 0 6px 0;
+  }
+}
+.main-gamble__fastest-payout-casinos .casino-small-card__rating-icon {
+  margin: 1px 4px 0 0;
+}
+@media (max-width: 650.98px) {
+  .main-gamble__fastest-payout-casinos .casino-small-card__rating-icon {
+    margin: 2px 1px 0 0;
+  }
+}
+
+.todays-hot-gamble .casino-card__image-block:not(:last-child) {
+  margin: 0 0 11.55px 0;
+}
+@media (max-width: 480.98px) {
+  .todays-hot-gamble .casino-card__image-block:not(:last-child) {
+    margin: 0 0 8px 0;
+  }
+}
 

@@ -53,7 +53,7 @@ export const Navbar = ({
         //     gambleBody.classList.toggle("hide", isGambleBodyHidden)
         // }
 
-        if (header && window.innerWidth > 650.98 && window.innerWidth < 1356) {
+        if (header && window.innerWidth > 650.98 ) {
             header?.classList.toggle("resize", isSidebarActive)
         }
         if (footer && window.innerWidth > 650.98) {

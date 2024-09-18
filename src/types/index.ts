@@ -114,3 +114,10 @@ export interface GetDataBonusResponse {
     }[];
     description: string;
 }
+
+
+export type GeoLocationAllowdType={
+    countryCode: string,
+    countryName: string,
+    isAllowed: boolean,
+}

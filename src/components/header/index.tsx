@@ -122,9 +122,7 @@ export const Header = ({
                             className={`header__column header__column-logo ${
                                 isSidebarActive && "header__column-active"
                             }`}
-                            // style={{
-                            //     width: isSidebarActive ? "0" : "auto"
-                            // }}
+                         
                         >
                             <a
                                 rel="nofollow noopener"
@@ -147,11 +145,11 @@ export const Header = ({
                                     className="header__logo logo"
                                 >
                                     <div className="logo__img">
-                                    { !isSidebarActive &&
+                                    
                                         <LazyLoadImage
                                             alt={"logo"}
                                             src={logo}
-                                        />}
+                                        />
                                     </div>
                                 </a>
                             
@@ -177,7 +175,7 @@ export const Header = ({
                                 <li className="menu-header__item">
                                     <a
                                         rel="nofollow noopener"
-                                        href=""
+                                        href="/casino/:casino_name/bonuses/:bonus_type"
                                         aria-label="Put your description here."
                                         target="_blank"
                                         className="menu-header__link"
@@ -207,7 +205,7 @@ export const Header = ({
                                         <span>Loyalties</span>
                                     </a>
                                 </li>
-                                <li className="menu-header__item">
+                                {/* <li className="menu-header__item">
                                     <a
                                         rel="nofollow noopener"
                                         href=""
@@ -228,7 +226,7 @@ export const Header = ({
                                     >
                                         Special Events
                                     </a>
-                                </li>
+                                </li> */}
                             </ul>
                         </nav>
                     </div>
@@ -285,8 +283,8 @@ export const Header = ({
                                             <path
                                                 d="M9 5.0459L5 1.0459L1 5.0459"
                                                 fill="transparent"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
                                             />
                                         </g>
                                     </svg>
