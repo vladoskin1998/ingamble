@@ -2,9 +2,9 @@ import star from "../../assets/img/icons/star.svg"
 import { Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
-import { Swiper, SwiperSlide } from "swiper/react"
+import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import casinoCards07 from "../../assets/img/casino-cards/07.jpg"
 import casinoCards06 from "../../assets/img/casino-cards/06.jpg"
 import casinoCards08 from "../../assets/img/casino-cards/08.jpg"
@@ -18,7 +18,22 @@ import Tsars from  "../../assets/img/casino-small-cards/Tsars.jpg"
 import Playkasino from"../../assets/img/casino-small-cards/Playkasino.jpg"
 
 export const NewBonus = () => {
-    const paginationRefNewBonus = useRef<HTMLDivElement | null>(null)
+
+
+    const sliderRef = useRef<SwiperRef | null>(null);
+    const paginationRef = useRef<HTMLDivElement | null>(null);
+    useEffect(() => {
+        if (sliderRef.current && paginationRef.current) {
+          const swiper = sliderRef.current.swiper;
+          if (swiper && paginationRef.current) {
+            //@ts-ignore
+            swiper.params.pagination.el = paginationRef.current;
+            swiper.pagination.init();
+            swiper.pagination.render();
+            swiper.pagination.update();
+          }
+        }
+      }, []);
     return (
         <section className="main-gamble__new-bonuses new-bonuses-gamble">
             <div className="new-bonuses-gamble__container container">
@@ -50,12 +65,13 @@ export const NewBonus = () => {
                     <div className="slider__body">
                         <div className="new-bonuses-gamble__swiper slider__swiper swiper">
                             <Swiper
+                            ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
                                 spaceBetween={20}
                                 modules={[Pagination]}
                                 pagination={{
-                                    el: paginationRefNewBonus.current,
+                                    el: paginationRef.current,
                                     clickable: true,
                                 }}
                                 breakpoints={{
@@ -517,7 +533,7 @@ export const NewBonus = () => {
                     </div>
                     <div className="slider__bottom bottom-slider">
                         <div
-                            ref={paginationRefNewBonus}
+                            ref={paginationRef}
                             className="bottom-slider__pagination new-bonuses-gamble__pagination swiper-pagination"
                         ></div>
                     </div>
