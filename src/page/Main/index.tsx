@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useLayoutEffect } from "react"
 import { Default } from "../Dafault"
 import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
@@ -22,12 +22,19 @@ export const Main = () => {
     //@ts-ignore
     const { isSidebarActive, setSidebarActive, initializeAdaptiveBehavior } =
         useAdaptiveBehavior()
-    useEffect(() => {
-        initializeAdaptiveBehavior()
+
+
+    useLayoutEffect(() => {
+        setTimeout(() => {
+      
+            initializeAdaptiveBehavior()},1000)
+     
+     
     }, [])
+
     return (
         <Default>
-            <main className="gamble__main main-gamble">
+            <main className="gamble__main main-gamble" >
                 <div className="main-gamble__body">
                     <Categories
                         category={

@@ -21,7 +21,7 @@ export const PublicRouter = () => {
             <Route
                 path="/"
                 element={
-                    <Navigate to="/casino/:casino_name/bonuses/:bonus_type" />
+                    <Navigate to="/main" />
                 }
             />
             {/* <Route

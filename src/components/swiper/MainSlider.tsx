@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { SwiperRef } from "swiper/react";
 
-const MainSlider = React.memo(
+const MainSlider = 
   ({
     data,
   }: {
@@ -20,6 +20,7 @@ const MainSlider = React.memo(
       likes: string;
       tags?: React.ReactNode;
     }[];
+
   }) => {
     const sliderRef = useRef<SwiperRef | null>(null);
     const paginationRef = useRef<HTMLDivElement | null>(null);
@@ -143,6 +144,6 @@ const MainSlider = React.memo(
       </div>
     );
   }
-);
+
 
 export default MainSlider;
