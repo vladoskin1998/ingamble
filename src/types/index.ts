@@ -69,6 +69,7 @@ export interface GetDataBonusResponse {
     restriction_country: {
         country: {
             name: string;
+            code: string;
         }[];
     };
     restriction_game: {
@@ -120,4 +121,5 @@ export type GeoLocationAllowdType={
     countryCode: string,
     countryName: string,
     isAllowed: boolean,
+    isLoadedGeo: boolean,
 }

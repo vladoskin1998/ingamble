@@ -16091,6 +16091,14 @@ h3 {
     width: 300px;
   }
 }
+.main-gamble .main-gamble__popular-free {
+  display: none;
+}
+@media (max-width: 650.98px) {
+  .main-gamble .main-gamble__popular-free {
+    display: block;
+  }
+}
 .main-gamble__body {
   width: 100%;
   padding: 24px 0 0 0;

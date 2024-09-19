@@ -12,11 +12,12 @@ import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 
 import harryStyles from "../../assets/img/casino-person/01.png"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
-import Flag from 'react-world-flags'
+
 import "swiper/css"
 import { useQuery } from "react-query"
 import {
 
+    lazy,
     useEffect,
     useState,
 
@@ -29,7 +30,7 @@ import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
 import { SimpleBonusEssentialPrograms } from "./SimpleBonusEssentialPrograms"
 import { BonusSubType } from "./BonusSubType"
-import { Categories } from "./Categories"
+import { Categories } from "../../components/catogories/Categories"
 
 import { LastUpdate } from "./LastUpdate"
 import { Default } from "../Dafault"
@@ -40,7 +41,7 @@ import { LogoLoader } from "../../components/loader/LogoLoader"
 import { HeaderSimpleBonus } from "./HeaderSimpleBonus"
 import { HowToGetBonus } from "./HowToGetBonus"
 import MainSlider from "../../components/swiper/MainSlider"
-
+const LazyFlag = lazy(() => import('react-world-flags'));
 
 
 const getBonusDataFetch = async () => {
@@ -59,6 +60,7 @@ export const SimpleBonus = () => {
         countryCode: "LV",
         countryName: "Latvia",
         isAllowed: false,
+        isLoadedGeo: false,
     })
 
     const { data, isLoading } = useQuery<{
@@ -73,12 +75,13 @@ export const SimpleBonus = () => {
             const headers = data?.headers
             const countryCode = headers?.["cf-ipcountry-code"]
             const countryName = headers?.["cf-ipcountry"]
-            const isAllowed = false
+            const isAllowed = !data.dataBonus.restriction_country.country.find(item => item.code?.toLocaleLowerCase() === countryCode?.toLocaleLowerCase())
             
             setGeoLocation({
                 countryCode,
                 countryName,
                 isAllowed,
+                isLoadedGeo: true,
             })
         }
         initializeAdaptiveBehavior()
@@ -92,7 +95,7 @@ export const SimpleBonus = () => {
         window.history.pushState({}, "", newUrl)
     }, [data])
 
-    if (isLoading) return <LogoLoader />
+    if (isLoading && geoLocation.isLoadedGeo) return <LogoLoader />
 
     return (
         <Default>
@@ -419,14 +422,11 @@ export const SimpleBonus = () => {
                                                 geoLocation.isAllowed ? 
                                                 <h2 className="top__title">
                                                 Other Best Reload bonuses
-
-                                               
-                                                
-                                            
+   
                                             </h2>
                                                 : <>
                                                 <span className="top__title-icon" style={{borderRadius:'4px',overflow:'hidden'}}>
-                                                    <Flag code={ geoLocation.countryCode} height={20}/>
+                                                    <LazyFlag code={ geoLocation.countryCode} height={20}/>
                                                 </span>
                                                 <h2 className="top__title">
                                                     Bonuses available

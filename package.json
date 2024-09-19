@@ -25,7 +25,7 @@
     "react-query": "^3.39.3",
     "react-router-dom": "^6.26.0",
     "react-world-flags": "^1.6.0",
-    "swiper": "^11.1.9"
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
