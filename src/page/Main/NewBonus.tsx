@@ -5,6 +5,17 @@ import "swiper/css/pagination"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 import { useRef } from "react"
+import casinoCards07 from "../../assets/img/casino-cards/07.jpg"
+import casinoCards06 from "../../assets/img/casino-cards/06.jpg"
+import casinoCards08 from "../../assets/img/casino-cards/08.jpg"
+import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
+import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
+
+import CasinoVibes from "../../assets/img/casino-small-cards/Casino-Vibes.jpg"
+import Casoo from "../../assets/img/casino-small-cards/Casoo.jpg"
+import Playamo from "../../assets/img/casino-small-cards/Playamo.jpg"
+import Tsars from  "../../assets/img/casino-small-cards/Tsars.jpg"
+import Playkasino from"../../assets/img/casino-small-cards/Playkasino.jpg"
 
 export const NewBonus = () => {
     const paginationRefNewBonus = useRef<HTMLDivElement | null>(null)
@@ -38,488 +49,476 @@ export const NewBonus = () => {
                 <div className="new-bonuses-gamble__slider slider">
                     <div className="slider__body">
                         <div className="new-bonuses-gamble__swiper slider__swiper swiper">
-                            
-                                <Swiper
+                            <Swiper
                                 className="slider__wrapper swiper-wrapper"
-                                    slidesPerView="auto"
-                                    spaceBetween={20}
-                                    modules={[Pagination]}
-                                    pagination={{
-                                        el: paginationRefNewBonus.current,
-                                        clickable: true,
-                                     
-                                    }}
-                                    breakpoints={{
-                                        320: {
-                                            spaceBetween: 16,
-                                        },
-                                        1650.98: {
-                                            spaceBetween: 20,
-                                        },
-                                        1920: {
-                                            spaceBetween: 20,
-                                        },
-                                    }}
-
-                                >
-                                    <SwiperSlide>
-                                        <div className="slider__slide slide-slider swiper-slide">
-                                            <div className="slide-slider__item casino-card">
+                                slidesPerView="auto"
+                                spaceBetween={20}
+                                modules={[Pagination]}
+                                pagination={{
+                                    el: paginationRefNewBonus.current,
+                                    clickable: true,
+                                }}
+                                breakpoints={{
+                                    320: {
+                                        spaceBetween: 16,
+                                    },
+                                    1650.98: {
+                                        spaceBetween: 20,
+                                    },
+                                    1920: {
+                                        spaceBetween: 20,
+                                    },
+                                }}
+                            >
+                                <SwiperSlide>
+                                    <div className="slider__slide slide-slider swiper-slide">
+                                        <div className="slide-slider__item casino-card">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                className="casino-card__image-block"
+                                            >
+                                                <div className="casino-card__image ibg">
+                                                    <img
+                                                        src={casinoCards07}
+                                                        alt="Big Fat Race to $100 Moon coins "
+                                                    />
+                                                </div>
                                                 <a
                                                     href=""
-                                                    aria-label="Put your description here."
                                                     target="_blank"
-                                                    className="casino-card__image-block"
+                                                    aria-label="Put your description here."
+                                                    className="casino-card__bnt"
                                                 >
-                                                    <div className="casino-card__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/casino-cards/07.jpg"
-                                                            alt="Big Fat Race to $100 Moon coins "
-                                                        />
-                                                    </div>
+                                                    Play
+                                                </a>
+                                            </a>
+                                            <div className="casino-card__content">
+                                                <div className="casino-card__small-card casino-small-card">
                                                     <a
                                                         href=""
-                                                        target="_blank"
                                                         aria-label="Put your description here."
-                                                        className="casino-card__bnt"
+                                                        target="_blank"
+                                                        className="casino-small-card__image-block"
                                                     >
-                                                        Play
+                                                        <div className="casino-small-card__image ibg">
+                                                            <img
+                                                                src={
+                                                                    CasinoVibes
+                                                                }
+                                                                alt="Casino Vibes"
+                                                            />
+                                                        </div>
                                                     </a>
-                                                </a>
-                                                <div className="casino-card__content">
-                                                    <div className="casino-card__small-card casino-small-card">
+                                                    <div className="casino-small-card__body">
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="casino-small-card__image-block"
+                                                            className="casino-small-card__name"
                                                         >
-                                                            <div className="casino-small-card__image ibg">
-                                                                <img
-                                                                    src="/src/assets/img/casino-small-cards/Casino-Vibes.jpg"
-                                                                    alt="Casino Vibes"
-                                                                />
-                                                            </div>
+                                                            Casino Vibes
                                                         </a>
-                                                        <div className="casino-small-card__body">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="casino-small-card__name"
-                                                            >
-                                                                Casino Vibes
-                                                            </a>
-                                                            <div className="casino-small-card__info">
-                                                                <span className="casino-small-card__info-link">
-                                                                    Sportsbook
-                                                                </span>
-                                                                <span className="casino-small-card__info-link">
-                                                                    VPN Friendly
-                                                                </span>
-                                                            </div>
-                                                            <div className="casino-small-card__rating">
-                                                                <span className="casino-small-card__rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            star
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </span>
-                                                                <span className="casino-small-card__rating-number">
-                                                                    5.5
-                                                                </span>
-                                                            </div>
+                                                        <div className="casino-small-card__info">
+                                                            <span className="casino-small-card__info-link">
+                                                                Sportsbook
+                                                            </span>
+                                                            <span className="casino-small-card__info-link">
+                                                                VPN Friendly
+                                                            </span>
+                                                        </div>
+                                                        <div className="casino-small-card__rating">
+                                                            <span className="casino-small-card__rating-icon">
+                                                                <img
+                                                                    src={star}
+                                                                    alt="star"
+                                                                />
+                                                            </span>
+                                                            <span className="casino-small-card__rating-number">
+                                                                5.5
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide>
-                                        <div className="slider__slide slide-slider swiper-slide">
-                                            <div className="slide-slider__item casino-card">
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="slider__slide slide-slider swiper-slide">
+                                        <div className="slide-slider__item casino-card">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                className="casino-card__image-block"
+                                            >
+                                                <div className="casino-card__image ibg">
+                                                    <img
+                                                        src={casinoCards04}
+                                                        alt="Big Fat Race to $100 Moon coins"
+                                                    />
+                                                </div>
                                                 <a
                                                     href=""
-                                                    aria-label="Put your description here."
                                                     target="_blank"
-                                                    className="casino-card__image-block"
+                                                    aria-label="Put your description here."
+                                                    className="casino-card__bnt"
                                                 >
-                                                    <div className="casino-card__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/casino-cards/04.jpg"
-                                                            alt="Big Fat Race to $100 Moon coins"
-                                                        />
-                                                    </div>
+                                                    Play
+                                                </a>
+                                            </a>
+                                            <div className="casino-card__content">
+                                                <div className="casino-card__small-card casino-small-card">
                                                     <a
                                                         href=""
-                                                        target="_blank"
                                                         aria-label="Put your description here."
-                                                        className="casino-card__bnt"
+                                                        target="_blank"
+                                                        className="casino-small-card__image-block"
                                                     >
-                                                        Play
+                                                        <div className="casino-small-card__image ibg">
+                                                            <img
+                                                                src={Casoo}
+                                                                alt="Casoo"
+                                                            />
+                                                        </div>
                                                     </a>
-                                                </a>
-                                                <div className="casino-card__content">
-                                                    <div className="casino-card__small-card casino-small-card">
+                                                    <div className="casino-small-card__body">
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="casino-small-card__image-block"
+                                                            className="casino-small-card__name"
                                                         >
-                                                            <div className="casino-small-card__image ibg">
-                                                                <img
-                                                                    src="/src/assets/img/casino-small-cards/Casoo.jpg"
-                                                                    alt="Casoo"
-                                                                />
-                                                            </div>
+                                                            Casoo
                                                         </a>
-                                                        <div className="casino-small-card__body">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="casino-small-card__name"
-                                                            >
-                                                                Casoo
-                                                            </a>
-                                                            <div className="casino-small-card__info">
-                                                                <span className="casino-small-card__info-link">
-                                                                    Sportsbook
-                                                                </span>
-                                                                <span className="casino-small-card__info-link">
-                                                                    VPN Friendly
-                                                                </span>
-                                                            </div>
-                                                            <div className="casino-small-card__rating">
-                                                                <span className="casino-small-card__rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            star
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </span>
-                                                                <span className="casino-small-card__rating-number">
-                                                                    5.5
-                                                                </span>
-                                                            </div>
+                                                        <div className="casino-small-card__info">
+                                                            <span className="casino-small-card__info-link">
+                                                                Sportsbook
+                                                            </span>
+                                                            <span className="casino-small-card__info-link">
+                                                                VPN Friendly
+                                                            </span>
+                                                        </div>
+                                                        <div className="casino-small-card__rating">
+                                                            <span className="casino-small-card__rating-icon">
+                                                                <img
+                                                                    src={star}
+                                                                    alt="star"
+                                                                />
+                                                            </span>
+                                                            <span className="casino-small-card__rating-number">
+                                                                5.5
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide>
-                                        <div className="slider__slide slide-slider swiper-slide">
-                                            <div className="slide-slider__item casino-card">
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="slider__slide slide-slider swiper-slide">
+                                        <div className="slide-slider__item casino-card">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                className="casino-card__image-block"
+                                            >
+                                                <div className="casino-card__image ibg">
+                                                    <img
+                                                        src={casinoCards06}
+                                                        alt="Big Fat Race to $100 Moon coins"
+                                                    />
+                                                </div>
                                                 <a
                                                     href=""
-                                                    aria-label="Put your description here."
                                                     target="_blank"
-                                                    className="casino-card__image-block"
+                                                    aria-label="Put your description here."
+                                                    className="casino-card__bnt"
                                                 >
-                                                    <div className="casino-card__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/casino-cards/06.jpg"
-                                                            alt="Big Fat Race to $100 Moon coins"
-                                                        />
-                                                    </div>
+                                                    Play
+                                                </a>
+                                            </a>
+                                            <div className="casino-card__content">
+                                                <div className="casino-card__small-card casino-small-card">
                                                     <a
                                                         href=""
-                                                        target="_blank"
                                                         aria-label="Put your description here."
-                                                        className="casino-card__bnt"
+                                                        target="_blank"
+                                                        className="casino-small-card__image-block"
                                                     >
-                                                        Play
+                                                        <div className="casino-small-card__image ibg">
+                                                            <img
+                                                                src={Playamo}
+                                                                alt="Playamo"
+                                                            />
+                                                        </div>
                                                     </a>
-                                                </a>
-                                                <div className="casino-card__content">
-                                                    <div className="casino-card__small-card casino-small-card">
+                                                    <div className="casino-small-card__body">
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="casino-small-card__image-block"
+                                                            className="casino-small-card__name"
                                                         >
-                                                            <div className="casino-small-card__image ibg">
-                                                                <img
-                                                                    src="/src/assets/img/casino-small-cards/Playamo.jpg"
-                                                                    alt="Playamo"
-                                                                />
-                                                            </div>
+                                                            Playamo
                                                         </a>
-                                                        <div className="casino-small-card__body">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="casino-small-card__name"
-                                                            >
-                                                                Playamo
-                                                            </a>
-                                                            <div className="casino-small-card__info">
-                                                                <span className="casino-small-card__info-link">
-                                                                    Sportsbook
-                                                                </span>
-                                                                <span className="casino-small-card__info-link">
-                                                                    VPN Friendly
-                                                                </span>
-                                                            </div>
-                                                            <div className="casino-small-card__rating">
-                                                                <span className="casino-small-card__rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            star
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </span>
-                                                                <span className="casino-small-card__rating-number">
-                                                                    5.5
-                                                                </span>
-                                                            </div>
+                                                        <div className="casino-small-card__info">
+                                                            <span className="casino-small-card__info-link">
+                                                                Sportsbook
+                                                            </span>
+                                                            <span className="casino-small-card__info-link">
+                                                                VPN Friendly
+                                                            </span>
+                                                        </div>
+                                                        <div className="casino-small-card__rating">
+                                                            <span className="casino-small-card__rating-icon">
+                                                                <img
+                                                                    src={star}
+                                                                    alt="star"
+                                                                />
+                                                            </span>
+                                                            <span className="casino-small-card__rating-number">
+                                                                5.5
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide>
-                                        <div className="slider__slide slide-slider swiper-slide">
-                                            <div className="slide-slider__item casino-card">
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="slider__slide slide-slider swiper-slide">
+                                        <div className="slide-slider__item casino-card">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                className="casino-card__image-block"
+                                            >
+                                                <div className="casino-card__image ibg">
+                                                    <img
+                                                        src={casinoCards08}
+                                                        alt="Big Fat Race to $100 Moon coins"
+                                                    />
+                                                </div>
                                                 <a
                                                     href=""
-                                                    aria-label="Put your description here."
                                                     target="_blank"
-                                                    className="casino-card__image-block"
+                                                    aria-label="Put your description here."
+                                                    className="casino-card__bnt"
                                                 >
-                                                    <div className="casino-card__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/casino-cards/08.jpg"
-                                                            alt="Big Fat Race to $100 Moon coins"
-                                                        />
-                                                    </div>
+                                                    Play
+                                                </a>
+                                            </a>
+                                            <div className="casino-card__content">
+                                                <div className="casino-card__small-card casino-small-card">
                                                     <a
                                                         href=""
-                                                        target="_blank"
                                                         aria-label="Put your description here."
-                                                        className="casino-card__bnt"
+                                                        target="_blank"
+                                                        className="casino-small-card__image-block"
                                                     >
-                                                        Play
+                                                        <div className="casino-small-card__image ibg">
+                                                            <img
+                                                                src={Tsars}
+                                                                alt="Tsars"
+                                                            />
+                                                        </div>
                                                     </a>
-                                                </a>
-                                                <div className="casino-card__content">
-                                                    <div className="casino-card__small-card casino-small-card">
+                                                    <div className="casino-small-card__body">
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="casino-small-card__image-block"
+                                                            className="casino-small-card__name"
                                                         >
-                                                            <div className="casino-small-card__image ibg">
-                                                                <img
-                                                                    src="/src/assets/img/casino-small-cards/Tsars.jpg"
-                                                                    alt="Tsars"
-                                                                />
-                                                            </div>
+                                                            Tsars
                                                         </a>
-                                                        <div className="casino-small-card__body">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="casino-small-card__name"
-                                                            >
-                                                                Tsars
-                                                            </a>
-                                                            <div className="casino-small-card__info">
-                                                                <span className="casino-small-card__info-link">
-                                                                    Sportsbook
-                                                                </span>
-                                                                <span className="casino-small-card__info-link">
-                                                                    VPN Friendly
-                                                                </span>
-                                                            </div>
-                                                            <div className="casino-small-card__rating">
-                                                                <span className="casino-small-card__rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            star
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </span>
-                                                                <span className="casino-small-card__rating-number">
-                                                                    5.5
-                                                                </span>
-                                                            </div>
+                                                        <div className="casino-small-card__info">
+                                                            <span className="casino-small-card__info-link">
+                                                                Sportsbook
+                                                            </span>
+                                                            <span className="casino-small-card__info-link">
+                                                                VPN Friendly
+                                                            </span>
+                                                        </div>
+                                                        <div className="casino-small-card__rating">
+                                                            <span className="casino-small-card__rating-icon">
+                                                                <img
+                                                                    src={star}
+                                                                    alt="star"
+                                                                />
+                                                            </span>
+                                                            <span className="casino-small-card__rating-number">
+                                                                5.5
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide>
-                                        <div className="slider__slide slide-slider swiper-slide">
-                                            <div className="slide-slider__item casino-card">
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="slider__slide slide-slider swiper-slide">
+                                        <div className="slide-slider__item casino-card">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                className="casino-card__image-block"
+                                            >
+                                                <div className="casino-card__image ibg">
+                                                    <img
+                                                        src={casinoCards01}
+                                                        alt="Big Fat Race to $100 Moon coins"
+                                                    />
+                                                </div>
                                                 <a
                                                     href=""
-                                                    aria-label="Put your description here."
                                                     target="_blank"
-                                                    className="casino-card__image-block"
+                                                    aria-label="Put your description here."
+                                                    className="casino-card__bnt"
                                                 >
-                                                    <div className="casino-card__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/casino-cards/01.jpg"
-                                                            alt="Big Fat Race to $100 Moon coins"
-                                                        />
-                                                    </div>
+                                                    Play
+                                                </a>
+                                            </a>
+                                            <div className="casino-card__content">
+                                                <div className="casino-card__small-card casino-small-card">
                                                     <a
                                                         href=""
-                                                        target="_blank"
                                                         aria-label="Put your description here."
-                                                        className="casino-card__bnt"
+                                                        target="_blank"
+                                                        className="casino-small-card__image-block"
                                                     >
-                                                        Play
+                                                        <div className="casino-small-card__image ibg">
+                                                            <img
+                                                                src={Playkasino}
+                                                                alt="Playkasino"
+                                                            />
+                                                        </div>
                                                     </a>
-                                                </a>
-                                                <div className="casino-card__content">
-                                                    <div className="casino-card__small-card casino-small-card">
+                                                    <div className="casino-small-card__body">
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="casino-small-card__image-block"
+                                                            className="casino-small-card__name"
                                                         >
-                                                            <div className="casino-small-card__image ibg">
-                                                                <img
-                                                                    src="/src/assets/img/casino-small-cards/Playkasino.jpg"
-                                                                    alt="Playkasino"
-                                                                />
-                                                            </div>
+                                                            Playkasino
                                                         </a>
-                                                        <div className="casino-small-card__body">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="casino-small-card__name"
-                                                            >
-                                                                Playkasino
-                                                            </a>
-                                                            <div className="casino-small-card__info">
-                                                                <span className="casino-small-card__info-link">
-                                                                    Sportsbook
-                                                                </span>
-                                                                <span className="casino-small-card__info-link">
-                                                                    VPN Friendly
-                                                                </span>
-                                                            </div>
-                                                            <div className="casino-small-card__rating">
-                                                                <span className="casino-small-card__rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            star
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </span>
-                                                                <span className="casino-small-card__rating-number">
-                                                                    5.5
-                                                                </span>
-                                                            </div>
+                                                        <div className="casino-small-card__info">
+                                                            <span className="casino-small-card__info-link">
+                                                                Sportsbook
+                                                            </span>
+                                                            <span className="casino-small-card__info-link">
+                                                                VPN Friendly
+                                                            </span>
+                                                        </div>
+                                                        <div className="casino-small-card__rating">
+                                                            <span className="casino-small-card__rating-icon">
+                                                                <img
+                                                                    src={star}
+                                                                    alt="star"
+                                                                />
+                                                            </span>
+                                                            <span className="casino-small-card__rating-number">
+                                                                5.5
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide>
-                                        <div className="slider__slide slide-slider swiper-slide">
-                                            <div className="slide-slider__item casino-card">
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="slider__slide slide-slider swiper-slide">
+                                        <div className="slide-slider__item casino-card">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                className="casino-card__image-block"
+                                            >
+                                                <div className="casino-card__image ibg">
+                                                    <img
+                                                        src={casinoCards07}
+                                                        alt="Big Fat Race to $100 Moon coins "
+                                                    />
+                                                </div>
                                                 <a
                                                     href=""
-                                                    aria-label="Put your description here."
                                                     target="_blank"
-                                                    className="casino-card__image-block"
+                                                    aria-label="Put your description here."
+                                                    className="casino-card__bnt"
                                                 >
-                                                    <div className="casino-card__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/casino-cards/07.jpg"
-                                                            alt="Big Fat Race to $100 Moon coins "
-                                                        />
-                                                    </div>
+                                                    Play
+                                                </a>
+                                            </a>
+                                            <div className="casino-card__content">
+                                                <div className="casino-card__small-card casino-small-card">
                                                     <a
                                                         href=""
-                                                        target="_blank"
                                                         aria-label="Put your description here."
-                                                        className="casino-card__bnt"
+                                                        target="_blank"
+                                                        className="casino-small-card__image-block"
                                                     >
-                                                        Play
+                                                        <div className="casino-small-card__image ibg">
+                                                            <img
+                                                                src={
+                                                                    CasinoVibes
+                                                                }
+                                                                alt="Casino Vibes"
+                                                            />
+                                                        </div>
                                                     </a>
-                                                </a>
-                                                <div className="casino-card__content">
-                                                    <div className="casino-card__small-card casino-small-card">
+                                                    <div className="casino-small-card__body">
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="casino-small-card__image-block"
+                                                            className="casino-small-card__name"
                                                         >
-                                                            <div className="casino-small-card__image ibg">
-                                                                <img
-                                                                    src="/src/assets/img/casino-small-cards/Casino-Vibes.jpg"
-                                                                    alt="Casino Vibes"
-                                                                />
-                                                            </div>
+                                                            Casino Vibes
                                                         </a>
-                                                        <div className="casino-small-card__body">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="casino-small-card__name"
-                                                            >
-                                                                Casino Vibes
-                                                            </a>
-                                                            <div className="casino-small-card__info">
-                                                                <span className="casino-small-card__info-link">
-                                                                    Sportsbook
-                                                                </span>
-                                                                <span className="casino-small-card__info-link">
-                                                                    VPN Friendly
-                                                                </span>
-                                                            </div>
-                                                            <div className="casino-small-card__rating">
-                                                                <span className="casino-small-card__rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            star
-                                                                        }
-                                                                        alt="star"
-                                                                    />
-                                                                </span>
-                                                                <span className="casino-small-card__rating-number">
-                                                                    5.5
-                                                                </span>
-                                                            </div>
+                                                        <div className="casino-small-card__info">
+                                                            <span className="casino-small-card__info-link">
+                                                                Sportsbook
+                                                            </span>
+                                                            <span className="casino-small-card__info-link">
+                                                                VPN Friendly
+                                                            </span>
+                                                        </div>
+                                                        <div className="casino-small-card__rating">
+                                                            <span className="casino-small-card__rating-icon">
+                                                                <img
+                                                                    src={star}
+                                                                    alt="star"
+                                                                />
+                                                            </span>
+                                                            <span className="casino-small-card__rating-number">
+                                                                5.5
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </SwiperSlide>
-                                </Swiper>
-                            
+                                    </div>
+                                </SwiperSlide>
+                            </Swiper>
                         </div>
                     </div>
-                    <div className="slider__bottom bottom-slider" >
-                        <div        ref={paginationRefNewBonus}
+                    <div className="slider__bottom bottom-slider">
+                        <div
+                            ref={paginationRefNewBonus}
                             className="bottom-slider__pagination new-bonuses-gamble__pagination swiper-pagination"
-                     
                         ></div>
                     </div>
                 </div>

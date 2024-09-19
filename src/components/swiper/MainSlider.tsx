@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import starIcon from "../../assets/img/icons/star.svg";
 import likeIcon from "../../assets/img/icons/like.svg";
 
@@ -24,7 +24,18 @@ const MainSlider =
   }) => {
     const sliderRef = useRef<SwiperRef | null>(null);
     const paginationRef = useRef<HTMLDivElement | null>(null);
-
+    useEffect(() => {
+        if (sliderRef.current && paginationRef.current) {
+          const swiper = sliderRef.current.swiper;
+          if (swiper && paginationRef.current) {
+            //@ts-ignore
+            swiper.params.pagination.el = paginationRef.current;
+            swiper.pagination.init();
+            swiper.pagination.render();
+            swiper.pagination.update();
+          }
+        }
+      }, []);
     return (
       <div className="more-staket-simple-bonus__slider slider">
         <div className="slider__body">
@@ -50,9 +61,10 @@ const MainSlider =
                     spaceBetween: 20,
                   },
                 }}
+              
               >
-                {data?.map((item, index) => (
-                  <SwiperSlide key={index}>
+                {data?.map((item) => (
+                  <SwiperSlide >
                     <div className="slider__slide slide-slider swiper-slide" >
                       <div className="slide-slider__item casino-card">
                         <a
@@ -137,7 +149,7 @@ const MainSlider =
         <div className="slider__bottom bottom-slider">
           <div
             ref={paginationRef}
-            id="more-staket-simple-bonus__pagination"
+        
             className="bottom-slider__pagination more-staket-simple-bonus__pagination swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
           ></div>
         </div>

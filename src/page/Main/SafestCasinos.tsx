@@ -3,13 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 
-import {  useRef } from "react"
+import {  useEffect, useRef } from "react"
 import bigImg from "../../assets/img/big-img/01.jpg"
 import Playamo from "../../assets/img/casino-small-cards/Playamo.jpg"
 import shield from "../../assets/img/icons/shield.svg"
-
+import security from "/src/assets/img/icons/security.svg"
 export const SafestCasinos = () => {
-    const swiperRef = useRef<any>(null)
+    const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 
     // console.log("swiperRef",swiperRef);
@@ -30,6 +30,19 @@ export const SafestCasinos = () => {
     //     }
     // }, [swiperRef, swiperRef.current,paginationRef,paginationRef.current])
 
+    useEffect(() => {
+        if (sliderRef.current && paginationRef.current) {
+          const swiper = sliderRef.current.swiper;
+          if (swiper && paginationRef.current) {
+            //@ts-ignore
+            swiper.params.pagination.el = paginationRef.current;
+            swiper.pagination.init();
+            swiper.pagination.render();
+            swiper.pagination.update();
+          }
+        }
+      }, []);
+
     return (
         <section className="main-gamble__safest-casino-2 safest-casino-2-gamble main-gamble__different-casino-bg main-gamble__baner-block">
             <div className="safest-casino-2-gamble__container container">
@@ -39,7 +52,7 @@ export const SafestCasinos = () => {
                             <div className="top__title-block">
                                 <span className="top__title-icon">
                                     <img
-                                        src="/src/assets/img/icons/security.svg"
+                                        src={security}
                                         alt="security"
                                     />
                                 </span>
@@ -70,13 +83,13 @@ export const SafestCasinos = () => {
                                 <div className="baner-row-block__swiper safest-casino-2-baner__swiper swiper">
                                     <div className="baner-row-block__wrapper swiper-wrapper">
                                         <Swiper
-                                            ref={swiperRef}
+                                            ref={sliderRef}
                                             spaceBetween={20}
                                             modules={[Pagination]}
                                             pagination={{
                                                 el: paginationRef.current,
                                                 clickable: true,
-                                                type: "custom",
+                                          
                                             }}
                                             breakpoints={{
                                                 320: {

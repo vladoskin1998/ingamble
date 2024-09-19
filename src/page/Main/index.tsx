@@ -12,6 +12,7 @@ import casinoCards02 from "../../assets/img/casino-cards/02.jpg"
 import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
 import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 import casinoCards05 from "../../assets/img/casino-cards/05.jpg"
+import hot from "/src/assets/img/icons/hot.svg"
 
 import gIcon from "../../assets/img/icons/g-icon.svg"
 import { Categories } from "../../components/catogories/Categories"
@@ -56,7 +57,7 @@ export const Main = () => {
                                         <div className="top__title-block">
                                             <span className="top__title-icon">
                                                 <img
-                                                    src="/src/assets/img/icons/hot.svg"
+                                                    src={hot}
                                                     alt="Today’s Hot"
                                                 />
                                             </span>
