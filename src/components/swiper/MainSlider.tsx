@@ -112,7 +112,7 @@ const MainSlider =
                                 <span className="info-casino-card__stake-rating-icon casino-small-card__rating-icon">
                                   <img src={starIcon} alt="star" />
                                 </span>
-                                <span className="info-casino-card__stake__rating-number casino-small-card__rating-icon">
+                                <span >
                                   {item.raiting}
                                 </span>
                               </div>

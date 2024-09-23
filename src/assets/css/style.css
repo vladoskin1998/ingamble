@@ -14801,6 +14801,14 @@ h3 {
     margin: 0 1px 1px 0;
   }
 }
+.main-gamble__payn-play-casinos {
+  display: none;
+}
+@media (max-width: 650.98px) {
+  .main-gamble__payn-play-casinos {
+      display: block;
+  }
+}
 .main-gamble__payn-play-casinos .swiper {
   overflow: hidden;
 }

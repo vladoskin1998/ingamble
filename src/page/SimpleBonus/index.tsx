@@ -1,9 +1,4 @@
 import { LazyLoadImage } from "react-lazy-load-image-component"
-// import mainImg from "../../assets/img/casino-info/main-img.jpg"
-// import stakeLogo from "../../assets/img/casino-logo/stake.svg"
-// import starIcon from "../../assets/img/icons/star.svg"
-// import likeIcon from "../../assets/img/icons/like.svg"
-// import latviaFlag from "../../assets/img/icons/latvia-flag.svg"
 import casinoCards09 from "../../assets/img/casino-cards/09.jpg"
 import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
 import casinoCards07 from "../../assets/img/casino-cards/07.jpg"
@@ -11,7 +6,7 @@ import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
 import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 
 import harryStyles from "../../assets/img/casino-person/01.png"
-import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
+
 
 import "swiper/css"
 import { useQuery } from "react-query"
@@ -19,12 +14,8 @@ import {
     lazy,
     useEffect,
     useState,
-
-    //   useState
 } from "react"
-//import { FAKEDATAGETBONUCE } from "../../http/fakedata/getDataBonuce"
 import $api from "../../http"
-
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
 import { SimpleBonusEssentialPrograms } from "./SimpleBonusEssentialPrograms"
@@ -40,6 +31,7 @@ import { LogoLoader } from "../../components/loader/LogoLoader"
 import { HeaderSimpleBonus } from "./HeaderSimpleBonus"
 import { HowToGetBonus } from "./HowToGetBonus"
 import MainSlider from "../../components/swiper/MainSlider"
+import { CheckMoreWhatSuitsYouBest } from "./CheckMoreWhatSuitsYouBest"
 
 const LazyFlag = lazy(() => import("react-world-flags"))
 
@@ -52,7 +44,7 @@ const getBonusDataFetch = async () => {
 
 export const SimpleBonus = () => {
     document.title = "Simple Bonus"
-    const { isSidebarActive, setSidebarActive, initializeAdaptiveBehavior } =
+    const {  initializeAdaptiveBehavior } =
         useAdaptiveBehavior()
 
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
@@ -789,198 +781,7 @@ export const SimpleBonus = () => {
                                     </div>
                                 </div>
                             </section>
-                            <section className="main-gamble__bottom-filter-tags bottom-filter-tags">
-                                <div className="bottom-filter-tags__container container">
-                                    <div className="bottom-filter-tags__top top">
-                                        <div className="top__title-block">
-                                            <span className="top__title-icon">
-                                                <LazyLoadImage
-                                                    src={searchFilterIcon}
-                                                    alt="search"
-                                                />
-                                            </span>
-                                            <h2 className="top__title">
-                                                Check more what suits You Best
-                                            </h2>
-                                        </div>
-                                    </div>
-                                    <div className="bottom-filter-tags__row">
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Best Welcome Bonuses
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Reload bonuses
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Low wager bonuses
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Bonus buy bonuses
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Non-sticky bonuses
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Low risk
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Safest
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Highest RTP Slots
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Best Live Casinos
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column bottom-filter-tags__column_non-mob">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Highest RTP Slots
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column bottom-filter-tags__column_non-mob">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Safest
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column bottom-filter-tags__column_non-mob">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Low wager bonuses
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Best Welcome Bonuses
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column bottom-filter-tags__column_non-mob">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Low risk
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column bottom-filter-tags__column_non-mob">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Highest RTP Slots
-                                            </a>
-                                        </div>
-                                        <div className="bottom-filter-tags__column bottom-filter-tags__column_mob">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
-                                                aria-label="Put your description here."
-                                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
-                                            >
-                                                Reload bonuses
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <button
-                                        onClick={() =>
-                                            setSidebarActive(!isSidebarActive)
-                                        }
-                                        className="bottom-filter-tags__btn-filter"
-                                    >
-                                        <span>
-                                            <svg>
-                                                <use xlinkHref="#filter"></use>
-                                            </svg>
-                                        </span>
-                                        Filter What You need
-                                    </button>
-                                </div>
-                            </section>{" "}
+                            <CheckMoreWhatSuitsYouBest/>
                         </>
                     )}
                     <SubscribeForm />

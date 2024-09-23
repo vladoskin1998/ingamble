@@ -65,7 +65,7 @@ export const NewBonus = () => {
                     <div className="slider__body">
                         <div className="new-bonuses-gamble__swiper slider__swiper swiper">
                             <Swiper
-                            ref={sliderRef}
+                                ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
                                 spaceBetween={20}
