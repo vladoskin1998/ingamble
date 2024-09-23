@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import { NotFound } from "../page/NotFound/NotFound"
 
 import { SimpleBonus } from "../page/SimpleBonus"
-import { Main } from "../page/Main"
+import { Home } from "../page/Home"
 
 
 export const PublicRouter = () => {
@@ -15,13 +15,13 @@ export const PublicRouter = () => {
                 element={<SimpleBonus />}
             />
             <Route
-                path="/main"
-                element={<Main />}
+                path="/home"
+                element={<Home />}
             />
             <Route
                 path="/"
                 element={
-                    <Navigate to="/main" />
+                    <Navigate to="/home" />
                 }
             />
             {/* <Route

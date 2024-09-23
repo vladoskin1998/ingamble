@@ -94,15 +94,12 @@ export const Header = ({
     //     setSidebarActive(!isSidebarActive)
     // }\
 
-
-
     useEffect(() => {
         const gambleBody = document.querySelector(".gamble__body")
 
         if (gambleBody && window.innerWidth <= 650.98) {
             gambleBody.classList.toggle("hide", isSidebarActive)
         } else {
-           
         }
         if (isSidebarActive) {
             setTimeout(() => {
@@ -122,7 +119,6 @@ export const Header = ({
                             className={`header__column header__column-logo ${
                                 isSidebarActive && "header__column-active"
                             }`}
-                         
                         >
                             <a
                                 rel="nofollow noopener"
@@ -137,28 +133,20 @@ export const Header = ({
                                 <span></span>
                                 <span></span>
                             </a>
-                          
-                                <a
-                                    rel="nofollow noopener"
-                                    href=""
-                                    target="_blank"
-                                    className="header__logo logo"
-                                >
-                                    <div className="logo__img">
-                                    
-                                        <LazyLoadImage
-                                            alt={"logo"}
-                                            src={logo}
-                                        />
-                                    </div>
-                                </a>
-                            
+
+                            <a
+                                rel="nofollow noopener"
+                                href=""
+                                target="_blank"
+                                className="header__logo logo"
+                            >
+                                <div className="logo__img">
+                                    <LazyLoadImage alt={"logo"} src={logo} />
+                                </div>
+                            </a>
                         </div>
                     }
-                    <div
-                        className="header__column header__column-nav"
-                        // data-da="mobile-header__body1, 0, 1355.98"
-                    >
+                    <div className="header__column header__column-nav">
                         <nav className="header__menu menu-header">
                             <ul className="menu-header__list">
                                 <li className="menu-header__item">
@@ -459,7 +447,7 @@ export const Header = ({
                                 href=""
                                 aria-label="Put your description here."
                                 className="header__burger"
-                                //  data-da="header__column_last, -1, 650.98"
+                        
                                 onClick={handleBurgerClick}
                             >
                                 <span></span>

@@ -3,37 +3,35 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 
-import {  useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import bigImg from "../../assets/img/big-img/01.jpg"
 import Playamo from "../../assets/img/casino-small-cards/Playamo.jpg"
 import shield from "../../assets/img/icons/shield.svg"
-import security from "/src/assets/img/icons/security.svg"
-import bcGameImage from "../../assets/img/different-casino/bc-game.png";
-import playamoImage from "../../assets/img/different-casino/playamo.png";
-import rollingSlotsImage from "../../assets/img/different-casino/rolling-slots.png";
-import shieldIcon from "../../assets/img/icons/shield.svg";
-import casinoVibesImage from "../../assets/img/different-casino/casino-vibes.png";
-
-import thirtyBetImage from "../../assets/img/different-casino/30bet.png";
-
+import security from "../../assets/img/icons/security.svg"
+import bcGameImage from "../../assets/img/different-casino/bc-game.png"
+import playamoImage from "../../assets/img/different-casino/playamo.png"
+import rollingSlotsImage from "../../assets/img/different-casino/rolling-slots.png"
+import shieldIcon from "../../assets/img/icons/shield.svg"
+import casinoVibesImage from "../../assets/img/different-casino/casino-vibes.png"
+import Tsars from "../../assets/img/casino-small-cards/Tsars.jpg"
+import thirtyBetImage from "../../assets/img/different-casino/30bet.png"
+import Casoo from "../../assets/img/casino-small-cards/Casoo.jpg"
 export const SafestCasinos = () => {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 
-
-
     useEffect(() => {
         if (sliderRef.current && paginationRef.current) {
-          const swiper = sliderRef.current.swiper;
-          if (swiper && paginationRef.current) {
-            //@ts-ignore
-            swiper.params.pagination.el = paginationRef.current;
-            swiper.pagination.init();
-            swiper.pagination.render();
-            swiper.pagination.update();
-          }
+            const swiper = sliderRef.current.swiper
+            if (swiper && paginationRef.current) {
+                //@ts-ignore
+                swiper.params.pagination.el = paginationRef.current
+                swiper.pagination.init()
+                swiper.pagination.render()
+                swiper.pagination.update()
+            }
         }
-      }, []);
+    }, [])
 
     return (
         <section className="main-gamble__safest-casino-2 safest-casino-2-gamble main-gamble__different-casino-bg main-gamble__baner-block">
@@ -43,10 +41,7 @@ export const SafestCasinos = () => {
                         <div className="top__column">
                             <div className="top__title-block">
                                 <span className="top__title-icon">
-                                    <img
-                                        src={security}
-                                        alt="security"
-                                    />
+                                    <img src={security} alt="security" />
                                 </span>
                                 <h2 className="top__title">Safest Casinos</h2>
                             </div>
@@ -81,7 +76,6 @@ export const SafestCasinos = () => {
                                             pagination={{
                                                 el: paginationRef.current,
                                                 clickable: true,
-                                          
                                             }}
                                             breakpoints={{
                                                 320: {
@@ -198,12 +192,11 @@ export const SafestCasinos = () => {
                                                 </div>
                                             </SwiperSlide>
                                             <SwiperSlide>
-                                       
                                                 <div className="baner-row-block__slide slide-baner-row-block swiper-slide">
                                                     <div className="slide-baner-row-block__item item-baner-row-block">
                                                         <div className="item-baner-row-block__image ibg">
                                                             <img
-                                                                src="/src/assets/img/big-img/01.jpg"
+                                                                src={bigImg}
                                                                 alt="baner"
                                                             />
                                                         </div>
@@ -223,7 +216,9 @@ export const SafestCasinos = () => {
                                                                     >
                                                                         <div className="casino-small-card__image ibg">
                                                                             <img
-                                                                                src="/src/assets/img/casino-small-cards/Tsars.jpg"
+                                                                                src={
+                                                                                    Tsars
+                                                                                }
                                                                                 alt="Tsars"
                                                                             />
                                                                         </div>
@@ -299,7 +294,7 @@ export const SafestCasinos = () => {
                                                     <div className="slide-baner-row-block__item item-baner-row-block">
                                                         <div className="item-baner-row-block__image ibg">
                                                             <img
-                                                                src="/src/assets/img/big-img/01.jpg"
+                                                                src={bigImg}
                                                                 alt="baner"
                                                             />
                                                         </div>
@@ -319,7 +314,9 @@ export const SafestCasinos = () => {
                                                                     >
                                                                         <div className="casino-small-card__image ibg">
                                                                             <img
-                                                                                src="/src/assets/img/casino-small-cards/Casoo.jpg"
+                                                                                src={
+                                                                                    Casoo
+                                                                                }
                                                                                 alt="Casoo"
                                                                             />
                                                                         </div>
@@ -408,11 +405,8 @@ export const SafestCasinos = () => {
                                 <div>
                                     <Swiper
                                         slidesPerView="auto"
-                                
                                         spaceBetween={20}
                                         modules={[Pagination]}
-                                    
-
                                         breakpoints={{
                                             320: {
                                                 spaceBetween: 16,
@@ -435,7 +429,9 @@ export const SafestCasinos = () => {
                                                 >
                                                     <span className="different-casino-bg__image ibg">
                                                         <img
-                                                            src={rollingSlotsImage}
+                                                            src={
+                                                                rollingSlotsImage
+                                                            }
                                                             alt="rolling-slots"
                                                             loading="lazy"
                                                         />
@@ -487,7 +483,7 @@ export const SafestCasinos = () => {
                                                         <img
                                                             src={thirtyBetImage}
                                                             alt="30bet"
-                                                             loading="lazy"
+                                                            loading="lazy"
                                                         />
                                                     </span>
                                                 </a>
@@ -535,9 +531,11 @@ export const SafestCasinos = () => {
                                                 >
                                                     <span className="different-casino-bg__image ibg">
                                                         <img
-                                                            src={casinoVibesImage}
+                                                            src={
+                                                                casinoVibesImage
+                                                            }
                                                             alt="casino-vibes"
-                                                             loading="lazy"
+                                                            loading="lazy"
                                                         />
                                                     </span>
                                                 </a>
@@ -561,7 +559,7 @@ export const SafestCasinos = () => {
                                                     <div className="different-casino-bg__rating">
                                                         <span className="different-casino-bg__rating-icon">
                                                             <img
-                                                                src={shieldIcon }
+                                                                src={shieldIcon}
                                                                 alt="shield"
                                                             />
                                                         </span>
@@ -587,7 +585,7 @@ export const SafestCasinos = () => {
                                                         <img
                                                             src={bcGameImage}
                                                             alt="bc-game"
-                                                             loading="lazy"
+                                                            loading="lazy"
                                                         />
                                                     </span>
                                                 </a>
@@ -611,7 +609,7 @@ export const SafestCasinos = () => {
                                                     <div className="different-casino-bg__rating">
                                                         <span className="different-casino-bg__rating-icon">
                                                             <img
-                                                                src={shieldIcon }
+                                                                src={shieldIcon}
                                                                 alt="shield"
                                                             />
                                                         </span>
@@ -637,7 +635,7 @@ export const SafestCasinos = () => {
                                                         <img
                                                             src={playamoImage}
                                                             alt="playamo"
-                                                             loading="lazy"
+                                                            loading="lazy"
                                                         />
                                                     </span>
                                                 </a>
@@ -661,7 +659,7 @@ export const SafestCasinos = () => {
                                                     <div className="different-casino-bg__rating">
                                                         <span className="different-casino-bg__rating-icon">
                                                             <img
-                                                                src={shieldIcon }
+                                                                src={shieldIcon}
                                                                 alt="shield"
                                                             />
                                                         </span>
@@ -685,9 +683,11 @@ export const SafestCasinos = () => {
                                                 >
                                                     <span className="different-casino-bg__image ibg">
                                                         <img
-                                                            src={rollingSlotsImage}
+                                                            src={
+                                                                rollingSlotsImage
+                                                            }
                                                             alt="rolling-slots"
-                                                             loading="lazy"
+                                                            loading="lazy"
                                                         />
                                                     </span>
                                                 </a>
@@ -711,7 +711,7 @@ export const SafestCasinos = () => {
                                                     <div className="different-casino-bg__rating">
                                                         <span className="different-casino-bg__rating-icon">
                                                             <img
-                                                                src={shieldIcon }
+                                                                src={shieldIcon}
                                                                 alt="shield"
                                                             />
                                                         </span>

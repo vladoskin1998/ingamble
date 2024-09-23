@@ -1,9 +1,10 @@
-import  { ReactNode } from "react"
-import { Footer } from "../../components/footer"
+import  { lazy, ReactNode } from "react"
+
 import { Header } from "../../components/header"
 import { Navbar } from "../../components/navbar"
 import { useAdaptiveBehavior } from "../../Layout"
 
+const Footer = lazy(() => import("../../components/footer"))
 
 export const Default = ({children}:{children:ReactNode}) => {
     const {isSidebarActive, setSidebarActive} =     useAdaptiveBehavior()

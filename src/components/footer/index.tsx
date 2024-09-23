@@ -10,10 +10,11 @@ import logos08 from "../../assets/img/logos/08.svg"
 import logos09 from "../../assets/img/logos/09.svg"
 import logos10 from "../../assets/img/logos/10.svg"
 import socialsIcon from "../../assets/img/icons/socials-icon.svg"
+import "../../assets/css/footer.css"
 
 import { LazyLoadImage } from "react-lazy-load-image-component"
 
-export const Footer = () => {
+export default function Footer() {
     return (
         <footer className="footer">
             <div className="footer__top top-footer">
@@ -510,15 +511,13 @@ export const Footer = () => {
                                 <div className="socials-top-footer__label-text">
                                     You need help?
                                     <a
-                                    rel="nofollow noopener"
-                                    href="#"
-                                    aria-label="Put your description here."
-                                    target="_blank"
-                                   
-                                >
-                                    <span>Get in touch with us</span>
-                                </a>
-                                   
+                                        rel="nofollow noopener"
+                                        href="#"
+                                        aria-label="Put your description here."
+                                        target="_blank"
+                                    >
+                                        <span>Get in touch with us</span>
+                                    </a>
                                 </div>
                             </div>
                             <div className="socials-top-footer__items">
@@ -645,7 +644,6 @@ export const Footer = () => {
                             </div>
                         </div>
                     </div>
-                 
                 </div>
             </div>
             <div className="footer__bottom bottom-footer">
