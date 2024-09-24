@@ -1,4 +1,3 @@
-import { LazyLoadImage } from "react-lazy-load-image-component"
 import logo from "../../assets/img/logo.svg"
 import moon from "../../assets/img/icons/moon.svg"
 import latviaFlag from "../../assets/img/icons/latvia-flag.svg"
@@ -141,7 +140,7 @@ export const Header = ({
                                 className="header__logo logo"
                             >
                                 <div className="logo__img">
-                                    <LazyLoadImage alt={"logo"} src={logo} />
+                                    <img alt={"logo"} src={logo} />
                                 </div>
                             </a>
                         </div>
@@ -289,7 +288,7 @@ export const Header = ({
                                 aria-label="Put your description here."
                                 className="theme-header__link theme-header__link_moon"
                             >
-                                <LazyLoadImage alt={"moon"} src={moon} />
+                                <img alt={"moon"} src={moon} />
                             </a>
                         </div>
                         <div className="header__language language-header">
@@ -298,7 +297,7 @@ export const Header = ({
                                     className="dropdown__btn dropdown-language-header__btn dropdown-language-header__btn-icon"
                                     onClick={() => setIsLanguageOpen(true)}
                                 >
-                                    <LazyLoadImage
+                                    <img
                                         alt={selectedLanguage.name}
                                         src={selectedLanguage.flag}
                                         width={20}
@@ -332,7 +331,7 @@ export const Header = ({
                                                 }
                                             >
                                                 <span className="list-item-dropdown-language-header__icon">
-                                                    <LazyLoadImage
+                                                    <img
                                                         alt={language.name}
                                                         src={language.flag}
                                                         width={20}
@@ -371,7 +370,7 @@ export const Header = ({
                                 className="header__logo logo"
                             >
                                 <div className="logo__img">
-                                    <LazyLoadImage alt={"logo"} src={logo} />
+                                    <img alt={"logo"} src={logo} />
                                 </div>
                             </a>
                         </div>
@@ -470,7 +469,7 @@ export const Header = ({
                         target="_blank"
                         className="top-sidebar-gamble__logo"
                     >
-                        <LazyLoadImage alt={"logo-icon"} src={logoIcon} />
+                        <img alt={"logo-icon"} src={logoIcon} />
                     </a>
 
                     <div className="header__theme theme-header">
@@ -480,7 +479,7 @@ export const Header = ({
                             aria-label="Put your description here."
                             className="theme-header__link theme-header__link_moon"
                         >
-                            <LazyLoadImage alt={"moon"} src={moon} />
+                            <img alt={"moon"} src={moon} />
                         </a>
                     </div>
                 </div>
