@@ -3,7 +3,18 @@ import star from "../../assets/img/icons/star.svg"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
+import bg01 from "../../assets/img/bg/01.jpg"
+import girl from "../../assets/img/girls/01.png"
+import Playamo from "../../assets/img/casino-small-cards/Playamo.jpg"
 
+import bcGameImage from "../../assets/img/different-casino/bc-game.png"
+import playamoImage from "../../assets/img/different-casino/playamo.png"
+import rollingSlotsImage from "../../assets/img/different-casino/rolling-slots.png"
+
+import casinoVibesImage from "../../assets/img/different-casino/casino-vibes.png"
+
+import thirtyBetImage from "../../assets/img/different-casino/30bet.png"
+import Vavada from "../../assets/img/different-casino/vavada.png"
 export default function TheBestCasinosYear() {
     const sliderRef = useRef<SwiperRef | null>(null)
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
@@ -12,7 +23,7 @@ export default function TheBestCasinosYear() {
             <div className="best-casinos-2024-gamble__container container">
                 <div className="best-casinos-2024-gamble__body">
                     <div className="best-casinos-2024-gamble__bg ibg">
-                        <img src="/src/assets/img/bg/01.jpg" alt="bg" />
+                        <img src={bg01} alt="bg" />
                     </div>
                     <div className="best-casinos-2024-gamble__waves">
                         <span></span>
@@ -20,7 +31,7 @@ export default function TheBestCasinosYear() {
                         <span></span>
                     </div>
                     <div className={`best-casinos-2024-gamble__girl ${isScrolled && "scrolled"}`}>
-                        <img src="/src/assets/img/girls/01.png" alt="girl" />
+                        <img src={girl} alt="girl" />
                     </div>
                     <div className={`best-casinos-2024-gamble__slider slider-best-casinos-2024-gamble ${isScrolled && "scrolled"}`}>
                         <div className="slider-best-casinos-2024-gamble__top top">
@@ -82,7 +93,7 @@ export default function TheBestCasinosYear() {
                                             >
                                                 <span className="different-casino-medium__image ibg">
                                                     <img
-                                                        src="/src/assets/img/different-casino/30bet.png"
+                                                        src={thirtyBetImage}
                                                         alt="30Bet"
                                                     />
                                                 </span>
@@ -120,7 +131,7 @@ export default function TheBestCasinosYear() {
                                             >
                                                 <span className="different-casino-medium__image ibg">
                                                     <img
-                                                        src="/src/assets/img/different-casino/playamo.png"
+                                                        src={Playamo}
                                                         alt="Playamo"
                                                     />
                                                 </span>
@@ -158,7 +169,7 @@ export default function TheBestCasinosYear() {
                                             >
                                                 <span className="different-casino-medium__image ibg">
                                                     <img
-                                                        src="/src/assets/img/different-casino/bc-game.png"
+                                                        src={bcGameImage}
                                                         alt="BC.Game"
                                                     />
                                                 </span>
@@ -196,7 +207,7 @@ export default function TheBestCasinosYear() {
                                             >
                                                 <span className="different-casino-medium__image ibg">
                                                     <img
-                                                        src="/src/assets/img/different-casino/fairspin.png"
+                                                        src={thirtyBetImage}
                                                         alt="Fairspin"
                                                     />
                                                 </span>
@@ -234,7 +245,7 @@ export default function TheBestCasinosYear() {
                                             >
                                                 <span className="different-casino-medium__image ibg">
                                                     <img
-                                                        src="/src/assets/img/different-casino/vavada.png"
+                                                        src={Vavada}
                                                         alt="Vavada"
                                                     />
                                                 </span>
@@ -272,7 +283,7 @@ export default function TheBestCasinosYear() {
                                             >
                                                 <span className="different-casino-medium__image ibg">
                                                     <img
-                                                        src="/src/assets/img/different-casino/casino-vibes.png"
+                                                        src={casinoVibesImage}
                                                         alt="CasinoVibes"
                                                     />
                                                 </span>
@@ -310,7 +321,7 @@ export default function TheBestCasinosYear() {
                                             >
                                                 <span className="different-casino-medium__image ibg">
                                                     <img
-                                                        src="/src/assets/img/different-casino/lucky-block.png"
+                                                        src={playamoImage}
                                                         alt="Lucky Block"
                                                     />
                                                 </span>
@@ -348,7 +359,7 @@ export default function TheBestCasinosYear() {
                                             >
                                                 <span className="different-casino-medium__image ibg">
                                                     <img
-                                                        src="/src/assets/img/different-casino/playamo.png"
+                                                        src={rollingSlotsImage}
                                                         alt="Playamo"
                                                     />
                                                 </span>
@@ -386,7 +397,7 @@ export default function TheBestCasinosYear() {
                                             >
                                                 <span className="different-casino-medium__image ibg">
                                                     <img
-                                                        src="/src/assets/img/different-casino/30bet.png"
+                                                        src={thirtyBetImage}
                                                         alt="30Bet"
                                                     />
                                                 </span>
