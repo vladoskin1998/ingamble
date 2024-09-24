@@ -62,7 +62,7 @@ export const BestLiveDealerCasinos = () => {
   
 
     return (
-        <section className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble">
+        <section className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble  main-gamble__different-casino-bg main-gamble__baner-block">
             <div className="best-live-dealer-casinos-gamble__container container">
                 <div className="best-live-dealer-casinos-gamble__top top">
                     <div className="top__row">

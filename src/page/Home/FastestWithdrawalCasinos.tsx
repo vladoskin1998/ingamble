@@ -4,6 +4,16 @@ import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import { useRef, useEffect } from "react"
 
+import VavadaImage from "../../assets/img/different-casino/vavada.png"
+
+import BcGameImage from "../../assets/img/different-casino/bc-game.png"
+import FairspinImage from "../../assets/img/different-casino/fairspin.png"
+
+import CasinoVibesImage from "../../assets/img/different-casino/casino-vibes.png"
+
+import ThirtyBetImage from "../../assets/img/different-casino/30bet.png"
+import RollingSlotsfrom from "../../assets/img/different-casino/rolling-slots.png"
+
 export default function FastestWithdrawalCasinos() {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
@@ -52,7 +62,8 @@ export default function FastestWithdrawalCasinos() {
                 <div className="payn-play-casinos-gamble__slider slider">
                     <div className="slider__body">
                         <div className="payn-play-casinos-gamble__swiper slider__swiper swiper">
-                            <Swiper    ref={sliderRef}
+                            <Swiper
+                                ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
                                 spaceBetween={20}
@@ -71,912 +82,983 @@ export default function FastestWithdrawalCasinos() {
                                     1920: {
                                         spaceBetween: 20,
                                     },
-                                }}>
-                                <SwiperSlide><div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/rolling-slots.png"
-                                                            alt="rolling-slots"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
-                                                        <a
-                                                            href=""
-                                                            aria-label="Put your description here."
-                                                            target="_blank"
-                                                            className="different-casino-standart__name"
-                                                        >
-                                                            Rolling Slots Casino
-                                                        </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                200% Up to $2000
-                                                            </a>
-                                                        </div>
-                                                    </div>
+                                }}
+                            >
+                                <SwiperSlide>
+                                    <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    RollingSlotsfrom
+                                                                }
+                                                                alt="rolling-slots"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/30bet.png"
-                                                            alt="30bet"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
-                                                        <a
-                                                            href=""
-                                                            aria-label="Put your description here."
-                                                            target="_blank"
-                                                            className="different-casino-standart__name"
-                                                        >
-                                                            30 Bet Casino
-                                                        </a>
-                                                        <div className="different-casino-standart__info">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
                                                             <a
                                                                 href=""
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
-                                                                className="different-casino-standart__info-link"
+                                                                className="different-casino-standart__name"
                                                             >
-                                                                150% Up to $1000
+                                                                Rolling Slots
+                                                                Casino
                                                             </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    200% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <a
-                                                        href=""
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
-                                                        className="different-casino-standart__btn-visit"
-                                                    >
-                                                        Visit
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/casino-vibes.png"
-                                                            alt="casino-vibes"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Casino Vibes
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                350% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    ThirtyBetImage
+                                                                }
+                                                                alt="30bet"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div></SwiperSlide>
-                                <SwiperSlide>   <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/fairspin.png"
-                                                            alt="Fairspin"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                30 Bet Casino
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    150% Up to
+                                                                    $1000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Fairspin
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                200% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    CasinoVibesImage
+                                                                }
+                                                                alt="casino-vibes"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/bc-game.png"
-                                                            alt="bc-game"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Casino Vibes
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    350% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            BC.GAME Casino
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                150% Up to $1000
-                                                            </a>
-                                                        </div>
                                                     </div>
-                                                    <a
-                                                        href=""
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
-                                                        className="different-casino-standart__btn-visit"
-                                                    >
-                                                        Visit
-                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/vavada.png"
-                                                            alt="Vavada"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    {" "}
+                                    <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
+                                                    <a
+                                                        href=""
+                                                        aria-label="Put your description here."
+                                                        target="_blank"
+                                                        className="different-casino-standart__image-block"
+                                                    >
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    FairspinImage
+                                                                }
+                                                                alt="Fairspin"
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Fairspin
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    200% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Vavada
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                350% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    BcGameImage
+                                                                }
+                                                                alt="bc-game"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div></SwiperSlide>
-                                <SwiperSlide> <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/rolling-slots.png"
-                                                            alt="rolling-slots"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                BC.GAME Casino
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    150% Up to
+                                                                    $1000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Rolling Slots Casino
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                200% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    VavadaImage
+                                                                }
+                                                                alt="Vavada"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/30bet.png"
-                                                            alt="30bet"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Vavada
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    350% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            30 Bet Casino
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                150% Up to $1000
-                                                            </a>
-                                                        </div>
                                                     </div>
-                                                    <a
-                                                        href=""
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
-                                                        className="different-casino-standart__btn-visit"
-                                                    >
-                                                        Visit
-                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/casino-vibes.png"
-                                                            alt="casino-vibes"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    {" "}
+                                    <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
+                                                    <a
+                                                        href=""
+                                                        aria-label="Put your description here."
+                                                        target="_blank"
+                                                        className="different-casino-standart__image-block"
+                                                    >
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    RollingSlotsfrom
+                                                                }
+                                                                alt="rolling-slots"
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Rolling Slots
+                                                                Casino
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    200% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Casino Vibes
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                350% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    ThirtyBetImage
+                                                                }
+                                                                alt="30bet"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div></SwiperSlide>
-                                <SwiperSlide>  <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/fairspin.png"
-                                                            alt="Fairspin"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                30 Bet Casino
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    150% Up to
+                                                                    $1000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Fairspin
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                200% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    CasinoVibesImage
+                                                                }
+                                                                alt="casino-vibes"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/bc-game.png"
-                                                            alt="bc-game"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Casino Vibes
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    350% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            BC.GAME Casino
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                150% Up to $1000
-                                                            </a>
-                                                        </div>
                                                     </div>
-                                                    <a
-                                                        href=""
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
-                                                        className="different-casino-standart__btn-visit"
-                                                    >
-                                                        Visit
-                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/vavada.png"
-                                                            alt="Vavada"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    {" "}
+                                    <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
+                                                    <a
+                                                        href=""
+                                                        aria-label="Put your description here."
+                                                        target="_blank"
+                                                        className="different-casino-standart__image-block"
+                                                    >
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    FairspinImage
+                                                                }
+                                                                alt="Fairspin"
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Fairspin
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    200% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Vavada
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                350% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    BcGameImage
+                                                                }
+                                                                alt="bc-game"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div></SwiperSlide>
-                                <SwiperSlide>  <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/rolling-slots.png"
-                                                            alt="rolling-slots"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                BC.GAME Casino
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    150% Up to
+                                                                    $1000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Rolling Slots Casino
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                200% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    VavadaImage
+                                                                }
+                                                                alt="Vavada"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/30bet.png"
-                                                            alt="30bet"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Vavada
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    350% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            30 Bet Casino
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                150% Up to $1000
-                                                            </a>
-                                                        </div>
                                                     </div>
-                                                    <a
-                                                        href=""
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
-                                                        className="different-casino-standart__btn-visit"
-                                                    >
-                                                        Visit
-                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/casino-vibes.png"
-                                                            alt="casino-vibes"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    {" "}
+                                    <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
+                                                    <a
+                                                        href=""
+                                                        aria-label="Put your description here."
+                                                        target="_blank"
+                                                        className="different-casino-standart__image-block"
+                                                    >
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    RollingSlotsfrom
+                                                                }
+                                                                alt="rolling-slots"
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Rolling Slots
+                                                                Casino
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    200% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Casino Vibes
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                350% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    ThirtyBetImage
+                                                                }
+                                                                alt="30bet"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div></SwiperSlide>
-                                <SwiperSlide><div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/fairspin.png"
-                                                            alt="Fairspin"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                30 Bet Casino
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    150% Up to
+                                                                    $1000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Fairspin
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                200% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    CasinoVibesImage
+                                                                }
+                                                                alt="casino-vibes"
+                                                            />
+                                                        </span>
                                                     </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/bc-game.png"
-                                                            alt="bc-game"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Casino Vibes
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    350% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            BC.GAME Casino
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                150% Up to $1000
-                                                            </a>
-                                                        </div>
                                                     </div>
-                                                    <a
-                                                        href=""
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
-                                                        className="different-casino-standart__btn-visit"
-                                                    >
-                                                        Visit
-                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
-                                        <div className="different-casino-standart">
-                                            <div className="different-casino-standart__body">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-standart__image-block"
-                                                >
-                                                    <span className="different-casino-standart__image ibg">
-                                                        <img
-                                                            src="/src/assets/img/different-casino/vavada.png"
-                                                            alt="Vavada"
-                                                        />
-                                                    </span>
-                                                </a>
-                                                <div className="different-casino-standart__content">
-                                                    <div className="different-casino-standart__content-row">
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
+                                                    <a
+                                                        href=""
+                                                        aria-label="Put your description here."
+                                                        target="_blank"
+                                                        className="different-casino-standart__image-block"
+                                                    >
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    FairspinImage
+                                                                }
+                                                                alt="Fairspin"
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Fairspin
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    200% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <a
                                                             href=""
                                                             aria-label="Put your description here."
                                                             target="_blank"
-                                                            className="different-casino-standart__name"
+                                                            className="different-casino-standart__btn-visit"
                                                         >
-                                                            Vavada
+                                                            Visit
                                                         </a>
-                                                        <div className="different-casino-standart__info">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__info-link"
-                                                            >
-                                                                350% Up to $2000
-                                                            </a>
-                                                        </div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
                                                     <a
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
-                                                        className="different-casino-standart__btn-visit"
+                                                        className="different-casino-standart__image-block"
                                                     >
-                                                        Visit
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    BcGameImage
+                                                                }
+                                                                alt="bc-game"
+                                                            />
+                                                        </span>
                                                     </a>
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                BC.GAME Casino
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    150% Up to
+                                                                    $1000
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <a
+                                                            href=""
+                                                            aria-label="Put your description here."
+                                                            target="_blank"
+                                                            className="different-casino-standart__btn-visit"
+                                                        >
+                                                            Visit
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
+                                            <div className="different-casino-standart">
+                                                <div className="different-casino-standart__body">
+                                                    <a
+                                                        href=""
+                                                        aria-label="Put your description here."
+                                                        target="_blank"
+                                                        className="different-casino-standart__image-block"
+                                                    >
+                                                        <span className="different-casino-standart__image ibg">
+                                                            <img
+                                                                src={
+                                                                    VavadaImage
+                                                                }
+                                                                alt="Vavada"
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                    <div className="different-casino-standart__content">
+                                                        <div className="different-casino-standart__content-row">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-standart__name"
+                                                            >
+                                                                Vavada
+                                                            </a>
+                                                            <div className="different-casino-standart__info">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="different-casino-standart__info-link"
+                                                                >
+                                                                    350% Up to
+                                                                    $2000
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <a
+                                                            href=""
+                                                            aria-label="Put your description here."
+                                                            target="_blank"
+                                                            className="different-casino-standart__btn-visit"
+                                                        >
+                                                            Visit
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div></SwiperSlide>
-                                
-                             
-                               
-                              
-                              
-                                
+                                </SwiperSlide>
                             </Swiper>
                         </div>
                     </div>
                     <div className="slider__bottom bottom-slider">
-                        <div ref={paginationRef}className="bottom-slider__pagination payn-play-casinos-gamble__pagination swiper-pagination"></div>
+                        <div
+                            ref={paginationRef}
+                            className="bottom-slider__pagination payn-play-casinos-gamble__pagination swiper-pagination"
+                        ></div>
                     </div>
                 </div>
             </div>

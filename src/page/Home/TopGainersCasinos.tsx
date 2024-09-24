@@ -16,13 +16,15 @@ import luckyBlockImage from "../../assets/img/different-casino/lucky-block.png"
 export const TopGainersCasinos = () => {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
-    const [screenState, setScreenState] = useState<number>(1);
+    const [screenState, setScreenState] = useState<number | "auto">(1);
 
     useEffect(() => {
         const handleResize = () => {
           const width = window.innerWidth;
-
-          if (width < 1220) {
+          if (width < 1020) {
+            setScreenState("auto");
+          }
+          else if (width < 1220) {
             setScreenState(1);
           } else if (width < 1600) {
             setScreenState(2);

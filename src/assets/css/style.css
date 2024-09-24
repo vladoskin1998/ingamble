@@ -6112,7 +6112,7 @@ h3 {
 }
 @media (max-width: 768.98px) {
   .simple-bonus__filter-tags:not(:last-child) {
-    margin: 0 0 24px 0;
+    margin: 0 0 40px 0;
   }
 }
 .simple-bonus__essential-programs {
@@ -14801,6 +14801,12 @@ h3 {
     margin: 0 1px 1px 0;
   }
 }
+.main-gamble .main-gamble__best-live-dealer-casinos.best-live-dealer-casinos-gamble_mobile .best-live-dealer-casinos-gamble__btn svg {
+  width: 20px;
+  height: 18px;
+  stroke: var(--Text-Txt_Dark, #020202);
+  stroke-width: 1.3px;
+}
 .main-gamble__payn-play-casinos {
   display: none;
 }
@@ -16649,6 +16655,7 @@ h3 {
   bottom: 0;
   width: 356.73px;
   height: 440px;
+  transition: all 0.3s ease 0s;
 }
 .best-casinos-2024-gamble__girl img {
   max-width: 100%;
@@ -16683,6 +16690,15 @@ h3 {
     left: 15px;
   }
 }
+@media (max-width: 480.98px) {
+  .main-gamble__best-casinos-2024 .best-casinos-2024-gamble__girl.scrolled {
+      left: -65px;
+  }
+}
+
+/* ///////////////// */
+
+/* ///////////////// */
 .slider-best-casinos-2024-gamble {
   height: 100%;
   padding: 0 0 0 480px;
@@ -16690,6 +16706,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   transform: translate(0, -4px);
+  transition: all 0.3s ease 0s;
 }
 @media (max-width: 1650.98px) {
   .slider-best-casinos-2024-gamble {
@@ -16707,6 +16724,27 @@ h3 {
     padding: 0 0 0 226px;
   }
 }
+
+@media (max-width: 650.98px) {
+  .main-gamble__best-casinos-2024 .slider-best-casinos-2024-gamble.scrolled{
+      padding-left: 157px;
+  }
+}
+@media (max-width: 480.98px) and (max-width: 480.98px) {
+  .main-gamble__best-casinos-2024 .slider-best-casinos-2024-gamble.scrolled {
+      padding: 0 0 0 111px;
+  }
+}
+/* @media (max-width: 650.98px) {
+  .main-gamble__best-casinos-2024 .slider-best-casinos-2024-gamble.scrolled .slider-best-casinos-2024-gamble__body {
+    transform: translate(157px, 38px);
+  }
+}
+@media (max-width: 480.98px) and (max-width: 480.98px) {
+  .main-gamble__best-casinos-2024 .slider-best-casinos-2024-gamble.scrolled .slider-best-casinos-2024-gamble__body {
+    transform: translate(111px, 18px);
+  }
+} */
 .slider-best-casinos-2024-gamble__top {
   padding: 0 120px 0 0;
 }

@@ -9,7 +9,7 @@ import MainSlider from "../../components/swiper/MainSlider"
 
 export const LowWagerBonus = ({isShowSubtitle=true}:{isShowSubtitle?:boolean}) => {
   return (
-    <section className="main-gamble__low-wager-bonuses low-wager-bonuses-gamble">
+    <section className="main-gamble__low-wager-bonuses low-wager-bonuses-gamble ">
     <div className="low-wager-bonuses-gamble__container container">
         <div className="low-wager-bonuses-gamble__top top">
             <div className="top__row">

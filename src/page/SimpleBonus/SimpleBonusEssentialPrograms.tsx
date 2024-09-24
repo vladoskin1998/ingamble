@@ -12,7 +12,7 @@ import vulkan from "../../assets/img/casino-logo/vulkan.svg"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 
-export const SimpleBonusEssentialPrograms = () => {
+export const SimpleBonusEssentialPrograms = ({title="Essential VIP Loyatly Programs"}:{title?:string}) => {
     return (
         <section className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
             <div className="essential-programs-gamble__container container">
@@ -21,7 +21,8 @@ export const SimpleBonusEssentialPrograms = () => {
                         <div className="top__column">
                             <div className="top__title-block">
                                 <h2 className="top__title">
-                                    Essential VIP Loyatly Programs
+                                    {title}
+                               
                                 </h2>
                             </div>
                         </div>

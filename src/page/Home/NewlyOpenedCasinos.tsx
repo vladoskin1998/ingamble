@@ -12,16 +12,16 @@ import "swiper/css"
 
 import { Swiper, SwiperSlide } from "swiper/react"
 
-export  default function ExploreTheBestCryptoCasinos  ()  {
+export default function NewlyOpenedCasinos  () {
     return (
-        <section className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+        <section className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="crypto-casinos-gamble__container container">
                 <div className="crypto-casinos-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
                                 <h2 className="top__title">
-                                    Explore The Best Crypto Casinos
+                                Newly Opened Casinos
                                 </h2>
                             </div>
                         </div>
