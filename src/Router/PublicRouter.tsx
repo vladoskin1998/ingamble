@@ -1,11 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-
 import { NotFound } from "../page/NotFound/NotFound"
-
-import { SimpleBonus } from "../page/SimpleBonus"
 import { Home } from "../page/Home"
+import { lazy } from "react"
 
-
+const Loyalties = lazy(() => import("../page/Loyalties"))
+const SimpleBonus = lazy(() => import("../page/SimpleBonus"))
 export const PublicRouter = () => {
     return (
         <Routes>
@@ -14,6 +13,10 @@ export const PublicRouter = () => {
                 path="/casino/:casino_name/bonuses/:bonus_type"
                 element={<SimpleBonus />}
             />
+             <Route
+                path="/loyaltie"
+                element={<Loyalties />}
+            />
             <Route
                 path="/home"
                 element={<Home />}
@@ -21,7 +24,7 @@ export const PublicRouter = () => {
             <Route
                 path="/"
                 element={
-                    <Navigate to="/home" />
+                    <Navigate to="/loyaltie" />
                 }
             />
             {/* <Route

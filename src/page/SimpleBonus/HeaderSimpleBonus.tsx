@@ -30,7 +30,6 @@ export const HeaderSimpleBonus = ({
     }
     
 
-    console.log(geoLocation);
     
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(window.innerWidth <= 1023.98);
 

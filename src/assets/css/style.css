@@ -11416,6 +11416,7 @@ h3 {
   padding: 16px 12px;
   background: var(--BG-Bg_4, #1C1C1C);
   position: relative;
+  
 }
 .item-information-loyaltie::before {
   position: absolute;
@@ -11585,7 +11586,7 @@ h3 {
 .item-information-loyaltie__inner {
   position: relative;
   z-index: 1;
-  display: none;
+  display: block;
 }
 
 .top-item-information-loyaltie {
@@ -11672,7 +11673,7 @@ h3 {
   background: rgba(0, 0, 0, 0.1490196078);
 }
 .item-inner-information-loyaltie__body {
-  display: none;
+  display: block;
 }
 .item-inner-information-loyaltie__wrapper {
   padding: 32px 0 0 0;

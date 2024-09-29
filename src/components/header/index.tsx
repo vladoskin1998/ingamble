@@ -173,7 +173,7 @@ export const Header = ({
                                 <li className="menu-header__item">
                                     <a
                                         rel="nofollow noopener"
-                                        href=""
+                                        href="/"
                                         aria-label="Put your description here."
                                         target="_blank"
                                         className="menu-header__link"
@@ -184,7 +184,7 @@ export const Header = ({
                                 <li className="menu-header__item">
                                     <a
                                         rel="nofollow noopener"
-                                        href=""
+                                        href="/loyaltie"
                                         aria-label="Put your description here."
                                         target="_blank"
                                         className="menu-header__link"

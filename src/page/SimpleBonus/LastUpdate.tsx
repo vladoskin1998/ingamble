@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { BonusInformation } from './BonusInformation';
 import { GetDataBonusResponse } from '../../types';
 
-// Функция для генерации случайной даты в диапазоне
+
 const getRandomDate = (startDate: Date, endDate: Date): Date => {
     const randomTime = Math.floor(Math.random() * (endDate.getTime() - startDate.getTime() + 1)) + startDate.getTime();
     return new Date(randomTime);
 };
 
-// Функция для получения даты последнего обновления из localStorage
+
 const getLastUpdateDate = (): Date | null => {
     const storedDate = localStorage.getItem('lastUpdate');
     const date = storedDate ? new Date(storedDate) : null;
@@ -21,7 +21,7 @@ const getLastUpdateDate = (): Date | null => {
     return date;
 };
 
-// Функция для установки даты последнего обновления в localStorage
+
 const setLastUpdateDate = (date: Date): void => {
     if (isNaN(date.getTime())) {
         console.error('Invalid date passed to setLastUpdateDate:', date);
@@ -30,17 +30,17 @@ const setLastUpdateDate = (date: Date): void => {
     localStorage.setItem('lastUpdate', date.toISOString());
 };
 
-// Функция для получения текущей даты
+
 const getCurrentDate = (): Date => new Date();
 
-// Функция для получения даты, которая была 3 дня назад
+
 const getThreeDaysAgo = (): Date => {
     const date = new Date();
     date.setDate(date.getDate() - 3);
     return date;
 };
 
-// Функция для форматирования даты в 'дд.мм.гггг'
+
 const formatDate = (date: Date): string => {
     const day = date.getDate().toString().padStart(2, '0');
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -48,7 +48,7 @@ const formatDate = (date: Date): string => {
     return `${day}.${month}.${year}`;
 };
 
-// Тип для пропсов компонента
+
 interface LastUpdateProps {
     data?: GetDataBonusResponse;
 }
@@ -63,19 +63,19 @@ export const LastUpdate: React.FC<LastUpdateProps> = ({ data }) => {
         const threeDaysAgo = getThreeDaysAgo();
 
         if (!lastUpdateDate) {
-            // Нет даты в localStorage, установить случайную дату
+       
             const randomDate = getRandomDate(threeDaysAgo, today);
             setLastUpdate(formatDate(randomDate));
             setLastUpdateDate(randomDate);
         } else {
             const lastUpdateDateStr = formatDate(lastUpdateDate);
             if (lastUpdateDate < threeDaysAgo) {
-                // Дата старше 3 дней, установить новую случайную дату
+
                 const randomDate = getRandomDate(threeDaysAgo, today);
                 setLastUpdate(formatDate(randomDate));
                 setLastUpdateDate(randomDate);
             } else {
-                // Использовать сохранённую дату
+
                 setLastUpdate(lastUpdateDateStr);
             }
         }

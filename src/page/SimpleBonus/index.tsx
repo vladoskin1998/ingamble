@@ -1,11 +1,11 @@
-import { LazyLoadImage } from "react-lazy-load-image-component"
+
 import casinoCards09 from "../../assets/img/casino-cards/09.jpg"
 import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
 import casinoCards07 from "../../assets/img/casino-cards/07.jpg"
 import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
 import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 
-import harryStyles from "../../assets/img/casino-person/01.png"
+
 
 
 import "swiper/css"
@@ -32,6 +32,8 @@ import { HeaderSimpleBonus } from "./HeaderSimpleBonus"
 import { HowToGetBonus } from "./HowToGetBonus"
 import MainSlider from "../../components/swiper/MainSlider"
 import { CheckMoreWhatSuitsYouBest } from "./CheckMoreWhatSuitsYouBest"
+import { HarryStyles } from "./HarryStyles"
+
 
 const LazyFlag = lazy(() => import("react-world-flags"))
 
@@ -42,7 +44,7 @@ const getBonusDataFetch = async () => {
     return { dataBonus: response.data, headers }
 }
 
-export const SimpleBonus = () => {
+export default function SimpleBonus () {
     document.title = "Simple Bonus"
     const {  initializeAdaptiveBehavior } =
         useAdaptiveBehavior()
@@ -97,7 +99,9 @@ export const SimpleBonus = () => {
     if (isLoading && geoLocation.isLoadedGeo) return <LogoLoader />
 
     return (
+
         <Default>
+    
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
                     <Categories category={data?.dataBonus?.category || []} />
@@ -175,7 +179,7 @@ export const SimpleBonus = () => {
                                         </div>
                                     </div>
                                     <MainSlider
-                                        key={"1wqf12231"}
+                                 
                                         data={[
                                             {
                                                 img: casinoCards09,
@@ -708,79 +712,8 @@ export const SimpleBonus = () => {
                     <SimpleBonusEssentialPrograms />
                     {geoLocation.isAllowed && (
                         <>
-                            <section className="simple-bonus__casino-person simple-bonus__casino-person_desktop casino-person">
-                                <div className="casino-person__container container">
-                                    <div className="casino-person__body">
-                                        <div className="casino-person__row">
-                                            <div className="casino-person__info info-casino-person">
-                                                <div className="info-casino-person__img">
-                                                    <LazyLoadImage
-                                                        src={harryStyles}
-                                                        alt="HARRY STYLES"
-                                                    />
-                                                </div>
-                                                <div className="info-casino-person__content">
-                                                    <h3 className="info-casino-person__name h3">
-                                                        HARRY STYLES
-                                                    </h3>
-                                                    <div className="info-casino-person__position">
-                                                        Content Maker, Chief
-                                                        Marketing at Lerio
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="casino-person__socials">
-                                                <div className="socials-top-footer__items">
-                                                    <div className="socials-top-footer__item">
-                                                        <a
-                                                            href=""
-                                                            aria-label="Put your description here."
-                                                            target="_blank"
-                                                            className="socials-top-footer__link"
-                                                            rel="noreferrer"
-                                                        >
-                                                            <svg>
-                                                                <use xlinkHref="#x"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </div>
-                                                    <div className="socials-top-footer__item">
-                                                        <a
-                                                            href=""
-                                                            aria-label="Put your description here."
-                                                            target="_blank"
-                                                            className="socials-top-footer__link"
-                                                            rel="noreferrer"
-                                                        >
-                                                            <svg>
-                                                                <use xlinkHref="#facebook"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </div>
-                                                    <div className="socials-top-footer__item">
-                                                        <a
-                                                            href=""
-                                                            aria-label="Put your description here."
-                                                            target="_blank"
-                                                            className="socials-top-footer__link"
-                                                            rel="noreferrer"
-                                                        >
-                                                            <svg>
-                                                                <use xlinkHref="#linkedin"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="casino-person__waves">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+                        <HarryStyles/>
+                         
                             <CheckMoreWhatSuitsYouBest/>
                         </>
                     )}

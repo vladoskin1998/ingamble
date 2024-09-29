@@ -1,85 +1,118 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useAccordion } from "../../hooks/useAccordion";
+import React, { useEffect, useRef, useState } from "react"
+import { useAccordion } from "../../hooks/useAccordion"
 
 type AccordionItemProps = {
-    heading: any;
-    content: any;
-    defaultOpen?: boolean; // Новый пропс для установки начального состояния
-};
+    heading: any
+    content: any
+    defaultOpen?: boolean
+    isNested?: boolean
+}
 
 export const AccordionItem: React.FC<AccordionItemProps> = ({
     heading,
     content,
-    defaultOpen = false, 
+    defaultOpen = false,
+    isNested = false,
 }) => {
-    const [isOpen, setIsOpen] = useState(defaultOpen);
-    const { toggle } = useAccordion();
-    const headerRef = useRef<HTMLDivElement>(null);
+    const [isOpen, setIsOpen] = useState(defaultOpen || isNested)
+    const { toggle } = useAccordion()
+    const headerRef = useRef<HTMLDivElement>(null)
+    const bodyRefAcc = useRef<HTMLDivElement | null>(null)
+    const [maxHeight, setMaxHeight] = useState<string>("0")
+    const [isAnimating, setIsAnimating] = useState<boolean>(false)
+
+    // Управление скрытием и отображением
+    const [isHidden, setIsHidden] = useState<"hidden" | "visible">(
+        isOpen ? "visible" : "hidden"
+    )
+
+  
+    const calculateTotalHeight = (element: HTMLElement): number => {
+        let totalHeight = element.scrollHeight
+
+        console.log(element.scrollHeight);
+        const nestedAccordions = element.querySelectorAll(".accordion-item")
+
+  
+        nestedAccordions.forEach((nestedAccordion) => {
+          
+            
+            if (nestedAccordion instanceof HTMLElement) {
+                totalHeight += calculateTotalHeight(nestedAccordion)
+            }
+        })
+
+        return totalHeight
+    }
+
+
+    useEffect(() => {
+        if (bodyRefAcc.current) {
+    
+            const contentHeight = calculateTotalHeight(bodyRefAcc.current)
+            setMaxHeight(`${contentHeight}px`)
+        }
+    }, [])
+
+
+
 
     
-    useEffect(() => {
-        if (headerRef.current) {
-            const titleElement = headerRef.current.querySelector(
-                ".accordion--title--element"
-            ) as HTMLDivElement;
-            if (titleElement) {
-                if (isOpen) {
-                    titleElement.classList.add("active");
-                } else {
-                    titleElement.classList.remove("active");
-                }
-            } else {
-                const subTitleElement = headerRef.current.querySelector(
-                    ".accordion--body--element"
-                ) as HTMLDivElement;
-                if (subTitleElement) {
-                    if (isOpen) {
-                        subTitleElement.classList.add("active");
-                    } else {
-                        subTitleElement.classList.remove("active");
-                    }
-                }
-            }
-        }
-    }, [isOpen]);
-
-    useEffect(() => {
-        setIsOpen(defaultOpen)
-    }, [defaultOpen])
-
     const handleClick = () => {
-        setIsOpen((prevState) => !prevState);
-        toggle(); 
-    };
+        if (isAnimating) return
+
+        setIsAnimating(true)
+
+        setIsOpen((prevState) => {
+            if (!prevState === true) {
+                setTimeout(() => {
+                    setIsHidden("visible")
+                }, 300)
+            } else {
+                setIsHidden("hidden")
+            }
+            return !prevState
+        })
+
+        toggle()
+
+        setTimeout(() => {
+            setIsAnimating(false)
+        }, 300)
+    }
 
     return (
-        <div>
+        <div >
             <div
                 ref={headerRef}
+                //@ts-ignore
                 style={styles.accordionItemHeader}
-                onClick={handleClick} 
+                onClick={handleClick}
             >
                 {heading}
             </div>
-            <div
+            <div className="accordion-item" 
+                ref={bodyRefAcc}
                 style={{
                     ...styles.accordionItemPanel,
-                    overflow: isOpen ? "visiable" : "hidden",
-                    maxHeight: isOpen ? "10000px" : "0",
+                    overflow: isHidden,
+                    maxHeight: isOpen ? maxHeight : "0",
+                   
                 }}
             >
                 {content}
             </div>
         </div>
-    );
-};
+    )
+}
 
 const styles = {
     accordionItemHeader: {
         cursor: "pointer",
+        position: "relative",
+        zIndex: "2",
     },
     accordionItemPanel: {
-        // overflow: "hidden",
-        transition: "max-height 0.5s ease",
+        transition: "max-height 0.3s ease-in-out",
     },
-};
+}
