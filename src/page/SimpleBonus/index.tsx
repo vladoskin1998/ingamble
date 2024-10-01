@@ -26,7 +26,7 @@ import { LastUpdate } from "./LastUpdate"
 import { Default } from "../Dafault"
 import { useAdaptiveBehavior } from "../../Layout"
 
-import { SubscribeForm } from "./SubscribeForm"
+import  SubscribeForm  from "./SubscribeForm"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { HeaderSimpleBonus } from "./HeaderSimpleBonus"
 import { HowToGetBonus } from "./HowToGetBonus"

@@ -6,7 +6,7 @@ import errorIcon from "../../assets/img/icons/error-icon.svg"
 import bgImage08 from "../../assets/img/bg/08.jpg"
 import bgImage11 from "../../assets/img/bg/11.jpg"
 
-export const SubscribeForm = () => {
+export default function  SubscribeForm () {
     const [email, setEmail] = useState("")
     const [isSubscribed, setIsSubscribed] = useState(false)
     const [hasError, setHasError] = useState(false)

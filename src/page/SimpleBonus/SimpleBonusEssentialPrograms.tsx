@@ -29,7 +29,7 @@ export const SimpleBonusEssentialPrograms = ({title="Essential VIP Loyatly Progr
                         <div className="top__column">
                             <a
                                 rel="nofollow noopener"
-                                href=""
+                                href="/essential_loyalty"
                                 aria-label="Put your description here."
                                 target="_blank"
                                 className="top__btn"

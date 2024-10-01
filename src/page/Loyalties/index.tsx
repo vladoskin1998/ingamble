@@ -17,7 +17,7 @@ import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 import { SimpleBonusEssentialPrograms } from "../SimpleBonus/SimpleBonusEssentialPrograms"
 import { HarryStyles } from "../SimpleBonus/HarryStyles"
 import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
-import { SubscribeForm } from "../SimpleBonus/SubscribeForm"
+import  SubscribeForm  from "../SimpleBonus/SubscribeForm"
 import { LoyaltyAcordeon } from "./LoyaltyAcordeon"
 export default function Loyalties() {
     document.title = "Loyaltie"

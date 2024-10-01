@@ -1,7 +1,7 @@
 import { lazy, useEffect } from "react"
 import { Default } from "../Dafault"
 
-import { SubscribeForm } from "../SimpleBonus/SubscribeForm"
+
 import { useAdaptiveBehavior } from "../../Layout"
 import { SimpleBonusEssentialPrograms } from "../SimpleBonus/SimpleBonusEssentialPrograms"
 import MainSlider from "../../components/swiper/MainSlider"
@@ -31,6 +31,7 @@ import { GreatLiveCasinoBonuses } from "./GreatLiveCasinoBonuses"
 import { FastestPayoutCasinos } from "./FastestPayoutCasinos"
 
 
+const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 const LowRiskBonusesMobile = lazy(() => import("./LowRiskBonusesMobile"))
 
 const TopReloadBonuses = lazy(() => import("./TopReloadBonuses"))
@@ -102,7 +103,7 @@ export const Home = () => {
                                     </div>
                                     <div className="top__column">
                                         <a
-                                            href=""
+                                            href="/today_hots"
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="top__btn"
