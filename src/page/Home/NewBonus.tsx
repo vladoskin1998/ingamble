@@ -46,7 +46,7 @@ export const NewBonus = () => {
                         </div>
                         <div className="top__column">
                             <a
-                                href=""
+                                   href="/see-all?key=33456789"
                                 aria-label="Put your description here."
                                 target="_blank"
                                 className="top__btn"

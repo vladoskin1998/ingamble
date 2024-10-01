@@ -27,7 +27,7 @@ export default function NewlyOpenedCasinos  () {
                         </div>
                         <div className="top__column">
                             <a
-                                href=""
+                                href="/see-all?key=44567890"
                                 aria-label="Put your description here."
                                 target="_blank"
                                 className="top__btn"

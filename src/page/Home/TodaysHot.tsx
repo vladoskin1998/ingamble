@@ -1,32 +1,36 @@
+import MainSlider from "../../components/swiper/MainSlider"
 
 import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
-import casinoCards06 from "../../assets/img/casino-cards/06.jpg"
+import casinoCards02 from "../../assets/img/casino-cards/02.jpg"
 import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
 import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 import casinoCards05 from "../../assets/img/casino-cards/05.jpg"
 
-import casinoCards08 from "../../assets/img/casino-cards/08.jpg"
-import MainSlider from "../../components/swiper/MainSlider"
+import hot from "/src/assets/img/icons/hot.svg"
 
-export default function NonStickyBonus () {
+
+export const TodaysHot = () => {
   return (
-    <section className="main-gamble__low-wager-bonuses low-wager-bonuses-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
-    <div className="low-wager-bonuses-gamble__container container">
-        <div className="low-wager-bonuses-gamble__top top">
+    <section className="main-gamble__todays-hot todays-hot-gamble">
+    <div className="todays-hot-gamble__container container">
+        <div className="todays-hot-gamble__top top">
             <div className="top__row">
                 <div className="top__column">
                     <div className="top__title-block">
+                        <span className="top__title-icon">
+                            <img
+                                src={hot}
+                                alt="Today’s Hot"
+                            />
+                        </span>
                         <h2 className="top__title">
-                        Non Sticky Bonus
+                            Today’s Hot
                         </h2>
-                    </div>
-                  <div className="top__subtitle">
-                        Bonuses we are loving right now
                     </div>
                 </div>
                 <div className="top__column">
                     <a
-                          href="/see-all?key=55678901"
+                         href="/see-all?key=22145678"
                         aria-label="Put your description here."
                         target="_blank"
                         className="top__btn"
@@ -44,22 +48,20 @@ export default function NonStickyBonus () {
         <MainSlider
             data={[
                 {
-                    img: casinoCards06,
+                    img: casinoCards01,
                     raiting: "4.8",
                     likes: "34k",
                     nameCasino: "Stake Casino",
                     comment:
                         "New Year Bet Race - $30,000 Rocket...",
-                  
                 },
                 {
-                    img: casinoCards08,
+                    img: casinoCards02,
                     raiting: "4.8",
                     likes: "34k",
                     nameCasino: "Stake Casino",
                     comment:
                         "New Year Bet Race - $30,000 Rocket...",
-                  
                 },
                 {
                     img: casinoCards03,
@@ -68,15 +70,14 @@ export default function NonStickyBonus () {
                     nameCasino: "Stake Casino",
                     comment:
                         " Big Fat Race to $100 Moon coins",
-               
                 },
                 {
                     img: casinoCards04,
                     raiting: "4.8",
                     likes: "34k",
                     nameCasino: "Stake Casino",
-                    comment: " Big Fat Race to $100 Moon coins"
-            
+                    comment:
+                        "New Year Bet Race - $30,000 Rocket...",
                 },
                 {
                     img: casinoCards05,
@@ -85,7 +86,6 @@ export default function NonStickyBonus () {
                     nameCasino: "Stake Casino",
                     comment:
                         " Big Fat Race to $100 Moon coins",
-                
                 },
                 {
                     img: casinoCards01,
@@ -94,7 +94,6 @@ export default function NonStickyBonus () {
                     nameCasino: "Stake Casino",
                     comment:
                         "New Year Bet Race - $30,000 Rocket...",
-               
                 },
             ]}
         />

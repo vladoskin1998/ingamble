@@ -67,7 +67,7 @@ export const Navbar = ({
         }
     }, [isSidebarActive, isGambleBodyHidden])
 
-    console.log("isDefaultOpen", isDefaultOpen)
+ 
 
     const handleFilterOpenBtnClick = (
         event: React.MouseEvent,

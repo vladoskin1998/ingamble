@@ -25,7 +25,7 @@ export const WhatWeArePlayingNow = () => {
                                     </div>
                                     <div className="top__column">
                                         <a
-                                            href=""
+                                            href="/see-all?key=43456789"
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="top__btn"

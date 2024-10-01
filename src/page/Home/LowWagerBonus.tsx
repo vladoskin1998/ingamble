@@ -25,7 +25,7 @@ export const LowWagerBonus = ({isShowSubtitle=true}:{isShowSubtitle?:boolean}) =
                 </div>
                 <div className="top__column">
                     <a
-                        href=""
+                      href="/see-all?key=22345678"
                         aria-label="Put your description here."
                         target="_blank"
                         className="top__btn"

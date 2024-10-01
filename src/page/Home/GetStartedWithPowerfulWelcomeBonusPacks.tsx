@@ -24,7 +24,7 @@ export default function GetStartedWithPowerfulWelcomeBonusPacks ()  {
                 </div>
                 <div className="top__column">
                     <a
-                        href=""
+                          href="/see-all?key=67890123"
                         aria-label="Put your description here."
                         target="_blank"
                         className="top__btn"

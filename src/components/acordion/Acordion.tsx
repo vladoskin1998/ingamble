@@ -30,7 +30,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
     const calculateTotalHeight = (element: HTMLElement): number => {
         let totalHeight = element.scrollHeight
 
-        console.log(element.scrollHeight);
+       
         const nestedAccordions = element.querySelectorAll(".accordion-item")
 
   
