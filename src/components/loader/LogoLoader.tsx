@@ -2,7 +2,7 @@ import logoIcon from "../../assets/img/logo-icon.svg"
 import "./loader.css"
 export const LogoLoader = () => {
     return (
-        <div className="loader-body">
+        <div className="loader-body-line">
             <div className="loader-body-logo">
                 <img className="loader-body-logo-img"src={logoIcon} alt="" />
                 <div  className="loader-body-logo-load">Loading...</div>

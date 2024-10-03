@@ -1,0 +1,321 @@
+import { Pagination } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/pagination"
+
+import { useEffect, useRef } from "react"
+
+import shield from "../../assets/img/icons/shield.svg"
+
+import { BlockTypeNumber, HomeDataBlock } from "../../types"
+export const BlockType2 = ({ data }: { data: HomeDataBlock | undefined }) => {
+    const sliderRef = useRef<any>(null)
+    const paginationRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        if (sliderRef.current && paginationRef.current) {
+            const swiper = sliderRef.current.swiper
+            if (swiper && paginationRef.current) {
+                //@ts-ignore
+                swiper.params.pagination.el = paginationRef.current
+                swiper.pagination.init()
+                swiper.pagination.render()
+                swiper.pagination.update()
+            }
+        }
+    }, [])
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType2)
+        return <></>
+    return (
+        <section className="main-gamble__safest-casino-2 safest-casino-2-gamble main-gamble__different-casino-bg main-gamble__baner-block">
+            <div className="safest-casino-2-gamble__container container">
+                <div className="safest-casino-2-gamble__top top">
+                    <div className="top__row">
+                        <div className="top__column">
+                            <div className="top__title-block">
+                                <span className="top__title-icon">
+                                    {data.items_block.title_image && (
+                                        <img
+                                            src={data.items_block.title_image}
+                                            alt="security"
+                                        />
+                                    )}
+                                </span>
+                                <h2 className="top__title">
+                                    {data.items_block.block_title}
+                                </h2>
+                            </div>
+                        </div>
+                        <div className="top__column">
+                            <a
+                                href="/see-all?key=77890123"
+                                aria-label="Put your description here."
+                                target="_blank"
+                                className="top__btn"
+                            >
+                                <span>See All</span>
+                                <span className="top__btn-arrow">
+                                    <svg>
+                                        <use xlinkHref="#arrow"></use>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className="safest-casino-2-gamble__row main-gamble__row-block row-block row-block__left">
+                    <div className="row-block__baner row-block__baner_left baner-row-block">
+                        <div className="baner-row-block__slider">
+                            <div className="baner-row-block__slider-body">
+                                <div className="baner-row-block__swiper safest-casino-2-baner__swiper swiper">
+                                    <div className="baner-row-block__wrapper swiper-wrapper">
+                                        <Swiper
+                                            ref={sliderRef}
+                                            spaceBetween={20}
+                                            modules={[Pagination]}
+                                            pagination={{
+                                                el: paginationRef.current,
+                                                clickable: true,
+                                            }}
+                                            breakpoints={{
+                                                320: {
+                                                    spaceBetween: 16,
+                                                },
+                                                1650.98: {
+                                                    spaceBetween: 20,
+                                                },
+                                                1920: {
+                                                    spaceBetween: 20,
+                                                },
+                                            }}
+                                        >
+                                            {data?.items_block?.data_cards
+                                                ?.filter(
+                                                    (item) => item.big_card
+                                                )
+                                                .map((item) => (
+                                                    <SwiperSlide>
+                                                        <div className="baner-row-block__slide slide-baner-row-block swiper-slide">
+                                                            <div className="slide-baner-row-block__item item-baner-row-block">
+                                                                <div className="item-baner-row-block__image ibg">
+                                                                    <img
+                                                                        src={
+                                                                            item
+                                                                                .bonus_info
+                                                                                .bonus_image ||
+                                                                            ""
+                                                                        }
+                                                                        alt="baner"
+                                                                    />
+                                                                </div>
+                                                                <a
+                                                                    href=""
+                                                                    target="_blank"
+                                                                    aria-label="Put your description here."
+                                                                    className="item-baner-row-block__row"
+                                                                >
+                                                                    <div className="item-baner-row-block__column">
+                                                                        <div className="item-baner-row-block__small-card casino-small-card">
+                                                                            <a
+                                                                                href=""
+                                                                                aria-label="Put your description here."
+                                                                                target="_blank"
+                                                                                className="casino-small-card__image-block"
+                                                                            >
+                                                                                <div className="casino-small-card__image ibg">
+                                                                                    <img
+                                                                                        src={
+                                                                                            item
+                                                                                                ?.casino_info
+                                                                                                ?.casino_image ||
+                                                                                            ""
+                                                                                        }
+                                                                                        alt="Playamo"
+                                                                                    />
+                                                                                </div>
+                                                                            </a>
+                                                                            <div className="casino-small-card__body">
+                                                                                <a
+                                                                                    href=""
+                                                                                    aria-label="Put your description here."
+                                                                                    target="_blank"
+                                                                                    className="casino-small-card__name"
+                                                                                >
+                                                                                    {
+                                                                                        item
+                                                                                            .casino_info
+                                                                                            .casino_name
+                                                                                    }
+                                                                                </a>
+                                                                                <div className="casino-small-card__info">
+                                                                                    {item.casino_info.additional_casino_params.map(
+                                                                                        (
+                                                                                            it
+                                                                                        ) => (
+                                                                                            <span className="casino-small-card__info-link">
+                                                                                                {
+                                                                                                    it
+                                                                                                }
+                                                                                            </span>
+                                                                                        )
+                                                                                    )}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="item-baner-row-block__index">
+                                                                            <div className="item-baner-row-block__index-icon">
+                                                                                <img
+                                                                                    src={
+                                                                                        shield
+                                                                                    }
+                                                                                    alt="shield"
+                                                                                />
+                                                                            </div>
+                                                                            <div className="item-baner-row-block__index-number">
+                                                                                {
+                                                                                    item
+                                                                                        .casino_info
+                                                                                        .casino_rank
+                                                                                }
+                                                                            </div>
+                                                                            <div className="item-baner-row-block__index-text">
+                                                                                Safety
+                                                                                Index
+                                                                            </div>
+                                                                        </div>
+                                                                        <a
+                                                                            href=""
+                                                                            aria-label="Put your description here."
+                                                                            className="item-baner-row-block__title"
+                                                                        >
+                                                                            {
+                                                                                item
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_name
+                                                                            }
+                                                                        </a>
+                                                                    </div>
+
+                                                                    <div className="item-baner-row-block__column">
+                                                                        <a
+                                                                            href={
+                                                                                item
+                                                                                    ?.casino_info
+                                                                                    ?.casino_affiliate_link
+                                                                            }
+                                                                            aria-label="Put your description here."
+                                                                            target="_blank"
+                                                                            className="item-baner-row-block__btn casino-card__bnt"
+                                                                        >
+                                                                            Play
+                                                                        </a>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </SwiperSlide>
+                                                ))}
+                                        </Swiper>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="baner-row-block__slider-bottom">
+                                <div
+                                    id="safest-casino-pagination-1"
+                                    ref={paginationRef}
+                                    className="baner-row-block__pagination bottom-slider__pagination safest-casino-2-baner__pagination swiper-pagination"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="safest-casino-2-gamble__slider row-block__slider slider">
+                        <div className="slider__body">
+                            <div className="safest-casino-2-gamble__swiper slider__swiper swiper">
+                                <div>
+                                    <Swiper
+                                        slidesPerView="auto"
+                                        spaceBetween={20}
+                                        modules={[Pagination]}
+                                        breakpoints={{
+                                            320: {
+                                                spaceBetween: 16,
+                                            },
+                                            1650.98: {
+                                                spaceBetween: 20,
+                                            },
+                                            1920: {
+                                                spaceBetween: 20,
+                                            },
+                                        }}
+                                    >
+                                        {data.items_block.data_cards
+                                            .filter((item) => !item.big_card)
+                                            .map((item) => (
+                                                <SwiperSlide className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
+                                                    <div className="slide-slider__item different-casino-bg">
+                                                        <a
+                                                            href=""
+                                                            aria-label="Put your description here."
+                                                            target="_blank"
+                                                            className="different-casino-bg__image-block"
+                                                        >
+                                                            <span className="different-casino-bg__image ibg">
+                                                                <img
+                                                                    src={
+                                                                        item.casino_info.casino_image || ''
+                                                                    }
+                                                                    alt="rolling-slots"
+                                                                    loading="lazy"
+                                                                />
+                                                            </span>
+                                                        </a>
+                                                        <div className="different-casino-bg__content">
+                                                            <a
+                                                                href=""
+                                                                aria-label="Put your description here."
+                                                                target="_blank"
+                                                                className="different-casino-bg__name"
+                                                            >
+                                                               
+                                                                        {item.casino_info.casino_name }
+                                                                    
+                                                            </a>
+                                                            <div className="different-casino-bg__info">
+                                                                {
+                                                                     item.casino_info.additional_casino_params.map(it =>                                                            <span className="different-casino-bg__info-link">
+                                                                        {it}
+                                                                    </span>)
+                                                                }
+     
+                                                               
+                                                            </div>
+                                                            <div className="different-casino-bg__rating">
+                                                                <span className="different-casino-bg__rating-icon">
+                                                                    <img
+                                                                        src={
+                                                                            shield
+                                                                        }
+                                                                        alt="shield"
+                                                                    />
+                                                                </span>
+                                                                <span className="different-casino-bg__rating-number">
+                                                                   {item.casino_info.casino_rank}
+                                                                </span>
+                                                                <span className="different-casino-bg__rating-text">
+                                                                    Safety Index
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </SwiperSlide>
+                                            ))}
+                                    </Swiper>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}

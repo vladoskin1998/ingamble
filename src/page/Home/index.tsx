@@ -1,17 +1,15 @@
 import { lazy, useEffect } from "react"
 import { Default } from "../Dafault"
 
-
 import { useAdaptiveBehavior } from "../../Layout"
-import { SimpleBonusEssentialPrograms } from "../SimpleBonus/SimpleBonusEssentialPrograms"
 
 import { Categories } from "../../components/catogories/Categories"
-import { SafestCasinos } from "./SafestCasinos"
-import { NewBonus } from "./NewBonus"
+import { BlockType2 } from "./BlockType2"
+import { BlockType6 } from "./BlockType6"
 import { TopGainersCasinos } from "./TopGainersCasinos"
-import { HighestMaxBetBonuses } from "./HighestMaxBetBonuses"
-import { LowRiskBonuses } from "./LowRiskBonuses"
-import { BestLiveDealerCasinos } from "./BestLiveDealerCasinos"
+import { BlockType4 } from "./BlockType4"
+import { BlockType7 } from "./BlockType7"
+import { BlockType5 } from "./BlockType5"
 import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
 import { LowWagerBonus } from "./LowWagerBonus"
 import { VPNFriendlyCasinos } from "./VPNFriendlyCasinos"
@@ -20,11 +18,15 @@ import { WhatWeArePlayingNow } from "./WhatWeArePlayingNow"
 import PopularFree from "./PopularFree"
 import { GreatLiveCasinoBonuses } from "./GreatLiveCasinoBonuses"
 import { FastestPayoutCasinos } from "./FastestPayoutCasinos"
-import { TodaysHot } from "./TodaysHot"
-
+import { BlockType1 } from "./BlockType1"
+import $api from "../../http"
+import { useQuery } from "react-query"
+import { LogoLoader } from "../../components/loader/LogoLoader"
+import { BlockTypeNumber, HomeDataBlock } from "../../types"
+import { BlockType9 } from "./BlockType9"
 
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
-const LowRiskBonusesMobile = lazy(() => import("./LowRiskBonusesMobile"))
+const BlockType7Mobile = lazy(() => import("./BlockType7Mobile"))
 
 const TopReloadBonuses = lazy(() => import("./TopReloadBonuses"))
 const NonStickyBonus = lazy(() => import("./NonStickyBonus"))
@@ -42,12 +44,19 @@ const TheBestCasinosYear = lazy(() => import("./TheBestCasinosYear"))
 const FastestWithdrawalCasinos = lazy(
     () => import("./FastestWithdrawalCasinos")
 )
-const SafestCasinosMobile = lazy(() => import("./SafestCasinosMobile"))
+const BlockType2Mobile = lazy(() => import("./BlockType2Mobile"))
 const HighrollerCasinoBonuses = lazy(() => import("./HighrollerCasinoBonuses"))
 
 const GetStartedWithPowerfulWelcomeBonusPacks = lazy(
     () => import("./GetStartedWithPowerfulWelcomeBonusPacks")
 )
+
+const getHomeDataFetch = async () => {
+    const response = await $api.get("get-data-home-page/")
+    const headers = response.headers
+
+    return { dataHome: response.data, headers }
+}
 
 export const Home = () => {
     document.title = "Home"
@@ -55,13 +64,25 @@ export const Home = () => {
     const { isSidebarActive, setSidebarActive, initializeAdaptiveBehavior } =
         useAdaptiveBehavior()
 
+    const { data, isLoading } = useQuery<{
+        dataHome: { data_blocks: HomeDataBlock[] }
+        headers: any
+    }>("get-data-home-page/ ", getHomeDataFetch, {
+        keepPreviousData: true,
+    })
+
+    console.log(data)
+
     useEffect(() => {
         initializeAdaptiveBehavior()
-    }, [])
+    }, [isLoading])
 
+    // https://adm.incasinowetrust.com/api/v1/get-data-home-page
+    // https://adm.incasinowetrust.com/api/v1/get-data-home-page/
+
+    if (isLoading) return <LogoLoader />
     return (
         <Default>
-
             <main className="gamble__main main-gamble">
                 <div className="main-gamble__body">
                     <Categories
@@ -76,17 +97,37 @@ export const Home = () => {
                             ] || []
                         }
                     />
-                    <TodaysHot/>
+                    <BlockType1
+                        data={data?.dataHome?.data_blocks?.find(
+                            (item) =>
+                                item.items_block.type_block ===
+                                BlockTypeNumber.BlockType1
+                        )}
+                    />
                     <FastestPayoutCasinos />
-                    <SimpleBonusEssentialPrograms
-                        title={"Essential Loyatly Programs"}
+                    <BlockType9
+                        data={data?.dataHome?.data_blocks?.find(
+                            (item) =>
+                                item.items_block.type_block ===
+                                BlockTypeNumber.BlockType9
+                        )}
                     />
 
-                    <SafestCasinos />
+                    <BlockType2
+                        data={data?.dataHome?.data_blocks?.find(
+                            (item) =>
+                                item.items_block.type_block ===
+                                BlockTypeNumber.BlockType2
+                        )}
+                    />
                     <div className="main-gamble__different-casino-bg main-gamble__baner-block">
                         <WhatWeArePlayingNow />
                     </div>
-                    <NewBonus />
+                    <BlockType6   data={data?.dataHome?.data_blocks?.find(
+                            (item) =>
+                                item.items_block.type_block ===
+                                BlockTypeNumber.BlockType6
+                        )}/>
                     <FastestWithdrawalCasinos />
                     <WeeksFavoiritesBonuses />
                     <div className="main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
@@ -97,7 +138,13 @@ export const Home = () => {
 
                     <PopularFree />
 
-                    <SafestCasinosMobile />
+                    <BlockType2Mobile
+                        data={data?.dataHome?.data_blocks?.find(
+                            (item) =>
+                                item.items_block.type_block ===
+                                BlockTypeNumber.BlockType2
+                        )}
+                    />
                     <HighrollerCasinoBonuses />
                     <NewlyOpenedCasinos />
                     <div className="main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
@@ -109,17 +156,33 @@ export const Home = () => {
 
                     <TopGainersCasinos />
 
-                    <HighestMaxBetBonuses />
+                    <BlockType4    data={data?.dataHome?.data_blocks?.find(
+                            (item) =>
+                                item.items_block.type_block ===
+                                BlockTypeNumber.BlockType4
+                        )}/>
                     <LowWagerBonus isShowSubtitle={true} />
                     <VPNFriendlyCasinos />
-                    <LowRiskBonuses />
+                    <BlockType7 data={data?.dataHome?.data_blocks?.find(
+                            (item) =>
+                                item.items_block.type_block ===
+                                BlockTypeNumber.BlockType7
+                        )}/>
                     <NonStickyBonus />
                     <TopReloadBonuses />
-                    <LowRiskBonusesMobile />
+                    <BlockType7Mobile  data={data?.dataHome?.data_blocks?.find(
+                            (item) =>
+                                item.items_block.type_block ===
+                                BlockTypeNumber.BlockType7
+                        )}/>
                     <div>
-                        <GreatLiveCasinoBonuses />{" "}
+                        <GreatLiveCasinoBonuses />
                     </div>
-                    <BestLiveDealerCasinos />
+                    <BlockType5 data={data?.dataHome?.data_blocks?.find(
+                            (item) =>
+                                item.items_block.type_block ===
+                                BlockTypeNumber.BlockType5
+                        )}/>
                     <MoreBonusesForYourChoise />
                     <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />
