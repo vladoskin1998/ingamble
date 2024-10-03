@@ -1,15 +1,5 @@
 import star from "../../assets/img/icons/star.svg"
 import { Pagination } from "swiper/modules"
-import casinoBigCard02 from "../../assets/img/casino-big-cards/02.jpg";
-import casinoVibes from "../../assets/img/casino-small-cards/Casino-Vibes.jpg";
-
-import casinoBigCard04 from "../../assets/img/casino-big-cards/04.jpg";
-import playkasino from "../../assets/img/casino-small-cards/Playkasino.jpg";
-
-import casinoBigCard05 from "../../assets/img/casino-big-cards/05.jpg";
-import tsars from "../../assets/img/casino-small-cards/Tsars.jpg";
-
-
 import "swiper/css"
 import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"

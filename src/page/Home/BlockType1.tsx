@@ -1,5 +1,4 @@
 import MainSlider from "../../components/swiper/MainSlider"
-
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 
 export const BlockType1 = ({ data }: { data: HomeDataBlock | undefined }) => {

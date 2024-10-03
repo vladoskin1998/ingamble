@@ -2,12 +2,10 @@ import { Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
-
 import { useEffect, useRef } from "react"
-
 import shield from "../../assets/img/icons/shield.svg"
-
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
+
 export const BlockType2 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)

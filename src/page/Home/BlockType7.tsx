@@ -4,19 +4,7 @@ import { Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Swiper, SwiperSlide } from "swiper/react"
-import bcGameImage from "../../assets/img/different-casino/bc-game.png"
-import vavadaImage from "../../assets/img/different-casino/vavada.png"
-import luckyBlockImage from "../../assets/img/different-casino/lucky-block.png"
 import shieldIcon from "../../assets/img/icons/shield.svg"
-
-import rollingSlotsImage from "../../assets/img/different-casino/rolling-slots.png"
-
-import casinoVibesImage from "../../assets/img/different-casino/casino-vibes.png"
-import playamoImage from "../../assets/img/different-casino/playamo.png"
-import fairspinImage from "../../assets/img/different-casino/fairspin.png"
-import thirtyBetImage from "../../assets/img/different-casino/30bet.png"
-
-import lightning from "../../assets/img/icons/lightning.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 
 export const BlockType7 = ({ data }: { data: HomeDataBlock | undefined }) => {

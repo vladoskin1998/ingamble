@@ -4,11 +4,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import { useRef, useEffect } from "react"
-
 import VavadaImage from "../../assets/img/different-casino/vavada.png"
-import RoySpinsImage from "../../assets/img/different-casino/roy-spins.png"
-
-import FairspinImage from "../../assets/img/different-casino/fairspin.png"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 
 export default function BlockType7Mobile({
@@ -88,6 +84,7 @@ export default function BlockType7Mobile({
                                 }}
                             >
                                 {
+                                    //@ts-ignore
                                     data.items_block.data_cards.map(item =>    <SwiperSlide className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
                                         <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                             <div className="different-casino-standart">

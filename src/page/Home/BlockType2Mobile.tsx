@@ -3,9 +3,7 @@ import { Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
-
 import { useEffect, useRef } from "react"
-
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 
 export default function BlockType2Mobile({

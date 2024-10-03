@@ -1,9 +1,7 @@
-import spinbetter from "../../assets/img/casino-logo/spinbetter.svg"
+
 import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
 import car13 from "../../assets/img/review-loyalty/13.png"
-
-
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
