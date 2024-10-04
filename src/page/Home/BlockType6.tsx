@@ -5,6 +5,7 @@ import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
+import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
 
 export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const sliderRef = useRef<SwiperRef | null>(null)
@@ -30,10 +31,23 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
+                                {data.items_block.title_image && (
+                                    <span className="top__title-icon">
+                                        <img
+                                            src={data.items_block.title_image}
+                                            alt="security"
+                                        />
+                                    </span>
+                                )}
                                 <h2 className="top__title">
                                     {data.items_block.block_title}
                                 </h2>
                             </div>
+                            {data.items_block.subtitle && (
+                                <div className="top__subtitle">
+                                    {data.items_block.subtitle}
+                                </div>
+                            )}
                         </div>
                         <div className="top__column">
                             <a
@@ -77,104 +91,111 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     },
                                 }}
                             >
-                                {data.items_block.data_cards.map((item) => (
-                                    <SwiperSlide>
-                                        <div className="slider__slide slide-slider swiper-slide">
-                                            <div className="slide-slider__item casino-card">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="casino-card__image-block"
-                                                >
-                                                    <div className="casino-card__image ibg">
-                                                        <img
-                                                            src={
-                                                                item.bonus_info
-                                                                    .bonus_image ||
-                                                                ""
-                                                            }
-                                                            alt="Big Fat Race to $100 Moon coins "
-                                                        />
-                                                    </div>
+                                {data.items_block.data_cards
+                                    .sort((a, b) => a.order - b.order)
+                                    .map((item) => (
+                                        <SwiperSlide>
+                                            <div className="slider__slide slide-slider swiper-slide">
+                                                <div className="slide-slider__item casino-card">
                                                     <a
-                                                        href={
-                                                            item.casino_info
-                                                                .casino_affiliate_link
-                                                        }
-                                                        target="_blank"
+                                                        href=""
                                                         aria-label="Put your description here."
-                                                        className="casino-card__bnt"
+                                                        target="_blank"
+                                                        className="casino-card__image-block"
                                                     >
-                                                        Play
-                                                    </a>
-                                                </a>
-                                                <div className="casino-card__content">
-                                                    <div className="casino-card__small-card casino-small-card">
+                                                        <div className="casino-card__image ibg">
+                                                            <LazyCardImg
+                                                                img={
+                                                                    item
+                                                                        .bonus_info
+                                                                        .bonus_image ||
+                                                                    ""
+                                                                }
+                                                            />
+                                                        </div>
                                                         <a
-                                                            href=""
-                                                            aria-label="Put your description here."
+                                                            href={
+                                                                item.casino_info
+                                                                    .casino_affiliate_link
+                                                            }
                                                             target="_blank"
-                                                            className="casino-small-card__image-block"
+                                                            aria-label="Put your description here."
+                                                            className="casino-card__bnt"
                                                         >
-                                                            <div className="casino-small-card__image ibg">
-                                                                <img
-                                                                    src={
-                                                                        item
-                                                                            .casino_info
-                                                                            .casino_image ||
-                                                                        ""
-                                                                    }
-                                                                    alt="Casino Vibes"
-                                                                />
-                                                            </div>
+                                                            Play
                                                         </a>
-                                                        <div className="casino-small-card__body">
+                                                    </a>
+                                                    <div className="casino-card__content">
+                                                        <div className="casino-card__small-card casino-small-card">
                                                             <a
                                                                 href=""
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
-                                                                className="casino-small-card__name"
+                                                                className="casino-small-card__image-block"
                                                             >
-                                                                {
-                                                                    item
-                                                                        .casino_info
-                                                                        .casino_name
-                                                                }
-                                                            </a>
-                                                            <div className="casino-small-card__info">
-                                                                {item.casino_info.additional_casino_params.map(
-                                                                    (it) => (
-                                                                        <span className="casino-small-card__info-link">
-                                                                            {it}
-                                                                        </span>
-                                                                    )
-                                                                )}
-                                                            </div>
-                                                            <div className="casino-small-card__rating">
-                                                                <span className="casino-small-card__rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            star
-                                                                        }
-                                                                        alt="star"
+                                                                <div className="casino-small-card__image ibg">
+                                                                    <LazyCardImg
+                                                                        img={
+                                                                            item
+                                                                                .casino_info
+                                                                                .casino_image ||
+                                                                            ""
+                                                                               
+                                                                        }size="medium"
                                                                     />
-                                                                </span>
-                                                                <span className="casino-small-card__rating-number">
+                                                                   
+                                                                </div>
+                                                            </a>
+                                                            <div className="casino-small-card__body">
+                                                                <a
+                                                                    href=""
+                                                                    aria-label="Put your description here."
+                                                                    target="_blank"
+                                                                    className="casino-small-card__name"
+                                                                >
                                                                     {
                                                                         item
                                                                             .casino_info
-                                                                            .casino_rank
+                                                                            .casino_name
                                                                     }
-                                                                </span>
+                                                                </a>
+                                                                <div className="casino-small-card__info">
+                                                                    {item.casino_info.additional_casino_params.map(
+                                                                        (
+                                                                            it
+                                                                        ) => (
+                                                                            <span className="casino-small-card__info-link">
+                                                                                {
+                                                                                    it
+                                                                                }
+                                                                            </span>
+                                                                        )
+                                                                    )}
+                                                                </div>
+                                                                <div className="casino-small-card__rating">
+                                                                    <span className="casino-small-card__rating-icon">
+                                                                        <img
+                                                                            src={
+                                                                                star
+                                                                            }
+                                                                            alt="star"
+                                                                        />
+                                                                    </span>
+                                                                    <span className="casino-small-card__rating-number">
+                                                                        {
+                                                                            item
+                                                                                .casino_info
+                                                                                .casino_rank
+                                                                        }
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </SwiperSlide>
-                                ))}
+                                        </SwiperSlide>
+                                    ))}
                             </Swiper>
                         </div>
                     </div>

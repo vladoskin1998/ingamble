@@ -1,5 +1,5 @@
 import { Default } from "../Dafault"
-import { Categories } from "../../components/catogories/Categories"
+import { Categories } from "../../components/categories/Categories"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { LoyaltieCasinoInfo } from "./LoyaltieCasinoInfo"
 import { LoyaltyRewnew } from "./LoyaltyRewnew"

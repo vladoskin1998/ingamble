@@ -9,6 +9,7 @@ import girl from "../../assets/img/girls/03.png"
 import bg07 from "../../assets/img/bg/07.jpg"
 import gift from "../../assets/img/icons/gift.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
+import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
 
 export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const sliderRef = useRef<SwiperRef | null>(null)
@@ -60,10 +61,23 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
+                                {data.items_block.title_image && (
+                                    <span className="top__title-icon">
+                                        <img
+                                            src={data.items_block.title_image}
+                                            alt="security"
+                                        />
+                                    </span>
+                                )}
                                 <h2 className="top__title">
-                                    Best Live Dealer Casinos
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
+                            {data.items_block.subtitle && (
+                                <div className="top__subtitle">
+                                    {data.items_block.subtitle}
+                                </div>
+                            )}
                         </div>
                         <div className="top__column">
                             <a
@@ -145,8 +159,9 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                             },
                                         }}
                                     >
-                                        {data.items_block.data_cards.map(
-                                            (item) => (
+                                        {data.items_block.data_cards
+                                            .sort((a, b) => a.order - b.order)
+                                            .map((item) => (
                                                 <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                     <a
                                                         href=""
@@ -155,14 +170,13 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                         className="slide-slider__item casino-big-card"
                                                     >
                                                         <div className="casino-big-card__image ibg">
-                                                            <img
-                                                                src={
+                                                            <LazyCardImg
+                                                                img={
                                                                     item
                                                                         .bonus_info
                                                                         .bonus_image ||
                                                                     ""
                                                                 }
-                                                                alt="Welcome Casino Bonus"
                                                             />
                                                         </div>
                                                         <div className="casino-big-card__top">
@@ -174,14 +188,14 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                     className="casino-small-card__image-block"
                                                                 >
                                                                     <div className="casino-small-card__image ibg">
-                                                                        <img
-                                                                            src={
+                                                                        <LazyCardImg
+                                                                            img={
                                                                                 item
                                                                                     .casino_info
                                                                                     .casino_image ||
                                                                                 ""
                                                                             }
-                                                                            alt="Casino Vibes"
+                                                                            size="medium"
                                                                         />
                                                                     </div>
                                                                 </a>
@@ -261,8 +275,7 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                         </div>
                                                     </a>
                                                 </SwiperSlide>
-                                            )
-                                        )}
+                                            ))}
                                     </Swiper>
                                 </div>
                             </div>

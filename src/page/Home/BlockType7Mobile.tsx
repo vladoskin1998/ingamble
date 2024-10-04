@@ -36,10 +36,23 @@ export default function BlockType7Mobile({
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
+                                {data.items_block.title_image && (
+                                    <span className="top__title-icon">
+                                        <img
+                                            src={data.items_block.title_image}
+                                            alt="security"
+                                        />
+                                    </span>
+                                )}
                                 <h2 className="top__title">
                                     {data.items_block.block_title}
                                 </h2>
                             </div>
+                            {data.items_block.subtitle && (
+                                <div className="top__subtitle">
+                                    {data.items_block.subtitle}
+                                </div>
+                            )}
                         </div>
                         <div className="top__column">
                             <a
@@ -85,84 +98,93 @@ export default function BlockType7Mobile({
                             >
                                 {
                                     //@ts-ignore
-                                    data.items_block.data_cards.map(item =>    <SwiperSlide className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
-                                        <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
-                                            <div className="different-casino-standart">
-                                                <div className="different-casino-standart__body">
-                                                    <a
-                                                        href=""
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
-                                                        className="different-casino-standart__image-block"
-                                                    >
-                                                        <span className="different-casino-standart__image ibg">
-                                                            <img
-                                                                src={VavadaImage}
-                                                                alt="vavada"
-                                                            />
-                                                        </span>
-                                                    </a>
-                                                    <div className="different-casino-standart__content">
-                                                        <div className="different-casino-standart__content-row">
+                                    data.items_block.data_cards
+                                        .sort((a, b) => a.order - b.order)
+                                        //@ts-ignore
+                                        .map((item) => (
+                                            <SwiperSlide className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                                <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
+                                                    <div className="different-casino-standart">
+                                                        <div className="different-casino-standart__body">
                                                             <a
                                                                 href=""
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
-                                                                className="different-casino-standart__name"
+                                                                className="different-casino-standart__image-block"
                                                             >
-                                                                200% up to €200 and
-                                                                50 spins
+                                                                <span className="different-casino-standart__image ibg">
+                                                                    <img
+                                                                        src={
+                                                                            VavadaImage
+                                                                        }
+                                                                        alt="vavada"
+                                                                    />
+                                                                </span>
                                                             </a>
-                                                            <div className="different-casino-standart__tags tags-casino-card">
-                                                                <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                                    <span className="tags-casino-card__item-label">
-                                                                        WR:
-                                                                    </span>
-                                                                    <span className="tags-casino-card__item-value">
-                                                                        4.0x
-                                                                    </span>
-                                                                </div>
-                                                                <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                                    <span className="tags-casino-card__item-label">
-                                                                        Min Dep:
-                                                                    </span>
-                                                                    <span className="tags-casino-card__item-value">
-                                                                        €10
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="info-casino-card__stake">
-                                                                <a
-                                                                    href=""
-                                                                    aria-label="Put your description here."
-                                                                    target="_blank"
-                                                                    className="info-casino-card__stake-link"
-                                                                >
-                                                                    Stake Casino
-                                                                </a>
-                                                                <div className="info-casino-card__stake-rating">
-                                                                    <span className="info-casino-card__stake-rating-icon">
-                                                                        <img
-                                                                            src={
-                                                                                star
-                                                                            }
-                                                                            alt="star"
-                                                                        />
-                                                                    </span>
-                                                                    <span className="info-casino-card__stake__rating-number">
-                                                                        4.7
-                                                                    </span>
+                                                            <div className="different-casino-standart__content">
+                                                                <div className="different-casino-standart__content-row">
+                                                                    <a
+                                                                        href=""
+                                                                        aria-label="Put your description here."
+                                                                        target="_blank"
+                                                                        className="different-casino-standart__name"
+                                                                    >
+                                                                        200% up
+                                                                        to €200
+                                                                        and 50
+                                                                        spins
+                                                                    </a>
+                                                                    <div className="different-casino-standart__tags tags-casino-card">
+                                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
+                                                                            <span className="tags-casino-card__item-label">
+                                                                                WR:
+                                                                            </span>
+                                                                            <span className="tags-casino-card__item-value">
+                                                                                4.0x
+                                                                            </span>
+                                                                        </div>
+                                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
+                                                                            <span className="tags-casino-card__item-label">
+                                                                                Min
+                                                                                Dep:
+                                                                            </span>
+                                                                            <span className="tags-casino-card__item-value">
+                                                                                €10
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="info-casino-card__stake">
+                                                                        <a
+                                                                            href=""
+                                                                            aria-label="Put your description here."
+                                                                            target="_blank"
+                                                                            className="info-casino-card__stake-link"
+                                                                        >
+                                                                            Stake
+                                                                            Casino
+                                                                        </a>
+                                                                        <div className="info-casino-card__stake-rating">
+                                                                            <span className="info-casino-card__stake-rating-icon">
+                                                                                <img
+                                                                                    src={
+                                                                                        star
+                                                                                    }
+                                                                                    alt="star"
+                                                                                />
+                                                                            </span>
+                                                                            <span className="info-casino-card__stake__rating-number">
+                                                                                4.7
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>)
+                                            </SwiperSlide>
+                                        ))
                                 }
-                            
-                             
                             </Swiper>
                         </div>
                     </div>

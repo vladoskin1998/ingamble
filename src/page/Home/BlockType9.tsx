@@ -1,16 +1,11 @@
-
 import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
-import car13 from "../../assets/img/review-loyalty/13.png"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
+import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
 
-export const BlockType9 = ({
-    data,
-}: {
-    data: HomeDataBlock | undefined
-}) => {
+export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9)
         return <></>
     return (
@@ -20,10 +15,23 @@ export const BlockType9 = ({
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
+                                {data.items_block.title_image && (
+                                    <span className="top__title-icon">
+                                        <img
+                                            src={data.items_block.title_image}
+                                            alt="security"
+                                        />
+                                    </span>
+                                )}
                                 <h2 className="top__title">
-                                    {data?.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
+                            {data.items_block.subtitle && (
+                                <div className="top__subtitle">
+                                    {data.items_block.subtitle}
+                                </div>
+                            )}
                         </div>
                         <div className="top__column">
                             <a
@@ -73,9 +81,8 @@ export const BlockType9 = ({
                                                 target="_blank"
                                                 className="item-essential-programs-gamble__logo"
                                             >
-                                                <img
-                                                    src={item?.card_logo || ""}
-                                                    alt="spinbetter"
+                                                <LazyCardImg
+                                                    img={item.card_logo || ""}
                                                 />
                                             </a>
                                         </div>
@@ -115,20 +122,29 @@ export const BlockType9 = ({
                                                         </div>
                                                         <div className="item-stats-essential-programs-gamble__value value-item-stats-essential-programs-gamble">
                                                             <div className="value-item-stats-essential-programs-gamble__number">
-                                                                {item.loyalty_rank}
+                                                                {
+                                                                    item.loyalty_rank
+                                                                }
                                                             </div>
                                                             <div className="value-item-stats-essential-programs-gamble__content">
                                                                 <div className="value-item-stats-essential-programs-gamble__stars value-item-stats-essential-programs-gamble__stars_5">
-                                                                    {item.stars.map(item =>   <div className="value-item-stats-essential-programs-gamble__star">
-                                                                        <img
-                                                                            src={
-                                                                                star
-                                                                            }
-                                                                            alt={"star" + item}
-                                                                        />
-                                                                    </div>)}
-                                                                  
-                                                                 
+                                                                    {item.stars.map(
+                                                                        (
+                                                                            item
+                                                                        ) => (
+                                                                            <div className="value-item-stats-essential-programs-gamble__star">
+                                                                                <img
+                                                                                    src={
+                                                                                        star
+                                                                                    }
+                                                                                    alt={
+                                                                                        "star" +
+                                                                                        item
+                                                                                    }
+                                                                                />
+                                                                            </div>
+                                                                        )
+                                                                    )}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -141,41 +157,49 @@ export const BlockType9 = ({
                                                         </div>
                                                         <div className="item-stats-essential-programs-gamble__value value-item-stats-essential-programs-gamble">
                                                             <div className="value-item-stats-essential-programs-gamble__number">
-                                                                {item.loyalty_count_levels}
+                                                                {
+                                                                    item.loyalty_count_levels
+                                                                }
                                                             </div>
                                                             <div className="value-item-stats-essential-programs-gamble__content">
-                                                                {item.loyalty_level_description}
+                                                                {
+                                                                    item.loyalty_level_description
+                                                                }
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="item-essential-programs-gamble__features features-essential-programs-gamble">
-                                             
-                                              {
-                                                item.keypoints.map(item =>    <div className="features-essential-programs-gamble__item">
-                                                    <div className="features-essential-programs-gamble__icon">
-                                                        <img
-                                                            src={item.image || car13}
-                                                            alt="car"
-                                                        />
-                                                    </div>
-                                                    <div className="features-essential-programs-gamble__info">
-                                                        <div className="features-essential-programs-gamble__name">
-                                                           {item.text_1}
+                                                {item.keypoints.map((item) => (
+                                                    <div className="features-essential-programs-gamble__item">
+                                                        <div className="features-essential-programs-gamble__icon">
+                                                            <LazyCardImg
+                                                                img={
+                                                                    item.image ||
+                                                                    ""
+                                                                }
+                                                                size="medium"
+                                                            />
                                                         </div>
-                                                        <div className="features-essential-programs-gamble__text">
-                                                        {item.text_2}
+                                                        <div className="features-essential-programs-gamble__info">
+                                                            <div className="features-essential-programs-gamble__name">
+                                                                {item.text_1}
+                                                            </div>
+                                                            <div className="features-essential-programs-gamble__text">
+                                                                {item.text_2}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>)
-                                              }
+                                                ))}
                                             </div>
                                         </div>
                                         <div className="item-essential-programs-gamble__bottom">
                                             <div className="item-essential-programs-gamble__bottom-column">
                                                 <a
-                                                    href={item.casino_affiliate_link}
+                                                    href={
+                                                        item.casino_affiliate_link
+                                                    }
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="item-essential-programs-gamble__btn item-essential-programs-gamble__btn_yellow"

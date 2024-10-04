@@ -20,7 +20,7 @@ import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
 import { SimpleBonusEssentialPrograms } from "./SimpleBonusEssentialPrograms"
 import { BonusSubType } from "./BonusSubType"
-import { Categories } from "../../components/catogories/Categories"
+import { Categories } from "../../components/categories/Categories"
 
 import { LastUpdate } from "./LastUpdate"
 import { Default } from "../Dafault"

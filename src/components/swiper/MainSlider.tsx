@@ -14,7 +14,7 @@ const MainSliderImg = ({ img }: { img: string }) => {
 
     return (
         <div className="casino-card__image ibg">
-            {loading && <LineLoader />}
+            {loading && !img && <LineLoader />}
             <img
                 src={img}
                 alt=""

@@ -1,6 +1,6 @@
 import star from "../../assets/img/icons/star.svg"
 import { Default } from "../Dafault"
-import { Categories } from "../../components/catogories/Categories"
+import { Categories } from "../../components/categories/Categories"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import roySpins from "../../assets/img/casino-logo/roy-spins.svg"
 import vulkan from "../../assets/img/casino-logo/vulkan.svg"

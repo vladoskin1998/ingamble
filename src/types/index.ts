@@ -154,7 +154,7 @@ export interface HomeBonusInfo {
     bonus_name: string;
     bonus_likes: number;
     bonus_image: string | null;
-    labels: string | null;
+    labels:  string [] | null;
 }
 
 export interface HomeDataCard {
@@ -189,7 +189,7 @@ export interface DataHomeItemsBlock {
     block_title: string;
     subtitle: string | null;
     title_image: string | null;
-    type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5;
+    type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5 | BlockTypeNumber.BlockType3 | BlockTypeNumber.BlockType8;
     data_cards: (HomeDataCard)[];
 }
 

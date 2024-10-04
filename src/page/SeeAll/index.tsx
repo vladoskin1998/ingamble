@@ -1,5 +1,5 @@
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
-import { Categories } from "../../components/catogories/Categories"
+import { Categories } from "../../components/categories/Categories"
 import { PaginationPage } from "../../components/pagination/PaginationPage";
 import { Default } from "../Dafault"
 import { useLocation } from 'react-router-dom';

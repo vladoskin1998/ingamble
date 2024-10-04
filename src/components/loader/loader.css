@@ -13,22 +13,7 @@
   -webkit-align-items: center;
 }
 
-.loader-body-line{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 999999;
 
-  background: #111111;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: -webkit-flex;
-  -webkit-justify-content: center;
-  -webkit-align-items: center;
-}
 
 .lds-spinner,
 .lds-spinner div,
@@ -40,12 +25,12 @@
   color: currentColor;
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 48px;
+  height: 48px;
 }
 
 .lds-spinner div {
-  transform-origin: 40px 40px;
+  transform-origin: 24px 24px;
   animation: lds-spinner 1.2s linear infinite;
 }
 
@@ -53,11 +38,11 @@
   content: " ";
   display: block;
   position: absolute;
-  top: 3.2px;
-  left: 36.8px;
-  width: 4px;
-  height: 13px;
-  border-radius: 20%;
+  top: 4px;
+  left: 22.4px;
+  width: 2.2px;
+  height: 8px;
+  border-radius: 100px;
   background: #FFCF23;
 }
 
@@ -121,6 +106,26 @@
   animation-delay: 0s;
 }
 
+.loader-body-size-medium .lds-spinner{
+  width: 24px;
+  height: 24px;
+}
+
+.loader-body-size-medium .lds-spinner div{
+  transform-origin: 12px 12px;
+}
+
+.loader-body-size-medium .lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 11.4px;
+  width: 1.5px;
+  height: 5px;
+
+}
+
 @keyframes lds-spinner {
   0% {
     opacity: 1;
@@ -131,6 +136,22 @@
   }
 }
 
+.loader-body-line{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+
+  background: #111111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+}
 .loader-body-logo{
   display: flex;
   flex-direction: column;
@@ -141,6 +162,20 @@
   width: 80px;
   height: 80px;
 }
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1; /* В начале и в конце анимации текст полностью видим */
+  }
+  50% {
+    opacity: 0.2; /* В середине анимации текст исчезает */
+  }
+}
+
+.loader-body-infinite-fade-text {
+  animation: fadeInOut 1.15s infinite; /* Анимация длится 4 секунды и повторяется бесконечно */
+}
+
 
 .loader-body-logo-load{
   color: rgba(255, 255, 255, 0.5);
