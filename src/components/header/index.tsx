@@ -49,9 +49,12 @@ export const Header = ({
         languages[0]
     )
     const modalLanguageRef = useRef<HTMLDivElement | null>(null)
+  
     const [searchShow, setSearchShow] = useState(false)
 
     const handleLanguageSelect = (language: Language) => {
+        console.log("handleLanguageSelect");
+        
         setSelectedLanguage(language)
         setIsLanguageOpen(false)
     }
@@ -60,11 +63,13 @@ export const Header = ({
     const [logoHide, setLogoHide] = useState(false)
 
     const handleClickOutside = (event: MouseEvent): void => {
+        const isScreenWide = window.innerWidth > 650;
         if (
             modalLanguageRef.current &&
-            !modalLanguageRef.current.contains(event.target as Node)
+            !modalLanguageRef.current.contains(event.target as Node) &&
+            isScreenWide 
         ) {
-            setIsLanguageOpen(false)
+            setIsLanguageOpen(false);
         }
     }
 
@@ -86,12 +91,6 @@ export const Header = ({
         }
     }
 
-    // const handleFilterOpenBtnClick = (event: React.MouseEvent) => {
-    //     event.preventDefault()
-    //     event.stopPropagation()
-
-    //     setSidebarActive(!isSidebarActive)
-    // }\
 
     useEffect(() => {
         const gambleBody = document.querySelector(".gamble__body")
@@ -162,7 +161,7 @@ export const Header = ({
                                 <li className="menu-header__item">
                                     <a
                                         rel="nofollow noopener"
-                                        href="/casino/:casino_name/bonuses/:bonus_type"
+                                        href=""
                                         aria-label="Put your description here."
                                         target="_blank"
                                         className="menu-header__link"
@@ -192,38 +191,15 @@ export const Header = ({
                                         <span>Loyalties</span>
                                     </a>
                                 </li>
-                                {/* <li className="menu-header__item">
-                                    <a
-                                        rel="nofollow noopener"
-                                        href=""
-                                        aria-label="Put your description here."
-                                        target="_blank"
-                                        className="menu-header__link"
-                                    >
-                                        <span>VIP Program</span>
-                                    </a>
-                                </li>
-                                <li className="menu-header__item">
-                                    <a
-                                        rel="nofollow noopener"
-                                        href=""
-                                        aria-label="Put your description here."
-                                        target="_blank"
-                                        className="menu-header__link"
-                                    >
-                                        Special Events
-                                    </a>
-                                </li> */}
                             </ul>
                         </nav>
                     </div>
-                    <div className="header__column">
+                    <div className="header__column header__column_last">
                         <form
                             action="#"
                             className={`header__form form-header ${
                                 searchShow ? "show" : ""
                             }`}
-                            //    data-da="header__row-mobile1, 0, 650.98"
                         >
                             <div
                                 className={`form-header__item form-item ${
@@ -278,10 +254,7 @@ export const Header = ({
                                 </button>
                             </div>
                         </form>
-                        <div
-                            className="header__theme theme-header"
-                            //    data-da="mobile-header__top1, 1, 650.98"
-                        >
+                        <div className="header__theme theme-header">
                             <a
                                 rel="nofollow noopener"
                                 href=""
@@ -352,10 +325,7 @@ export const Header = ({
                 <div className="header__row-mobile header--row-mobile">
                     <div className="header__row">
                         <div className="header__column header__column_first">
-                            <div
-                                className="sidebar-gamble__top top-sidebar-gamble"
-                                //     data-da="header__column_first, 0, 650.98"
-                            >
+                            <div className="sidebar-gamble__top top-sidebar-gamble">
                                 <a
                                     href=""
                                     target="_blank"
@@ -445,8 +415,9 @@ export const Header = ({
                             <a
                                 href=""
                                 aria-label="Put your description here."
-                                className="header__burger"
-                        
+                                className={`header__burger ${
+                                    isMenuOpen ? "active" : ""
+                                }`}
                                 onClick={handleBurgerClick}
                             >
                                 <span></span>
@@ -457,33 +428,7 @@ export const Header = ({
                     </div>
                 </div>
             </div>
-            <div
-                className={`header__mobile mobile-header ${
-                    isMenuOpen ? "active" : ""
-                }`}
-            >
-                <div className="mobile-header__top">
-                    <a
-                        rel="nofollow noopener"
-                        href=""
-                        target="_blank"
-                        className="top-sidebar-gamble__logo"
-                    >
-                        <img alt={"logo-icon"} src={logoIcon} />
-                    </a>
 
-                    <div className="header__theme theme-header">
-                        <a
-                            rel="nofollow noopener"
-                            href=""
-                            aria-label="Put your description here."
-                            className="theme-header__link theme-header__link_moon"
-                        >
-                            <img alt={"moon"} src={moon} />
-                        </a>
-                    </div>
-                </div>
-            </div>
             <div
                 className={`header__mobile mobile-header ${
                     isMenuOpen ? "active" : ""
@@ -529,7 +474,7 @@ export const Header = ({
                                     </li>
                                     <li className="menu-header__item">
                                         <a
-                                            href=""
+                                            href="/loyaltie"
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="menu-header__link"
@@ -537,33 +482,95 @@ export const Header = ({
                                             <span>Loyalties</span>
                                         </a>
                                     </li>
-                                    <li className="menu-header__item">
-                                        <a
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="menu-header__link"
-                                        >
-                                            <span>VIP Program</span>
-                                        </a>
-                                    </li>
-                                    <li className="menu-header__item">
-                                        <a
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="menu-header__link"
-                                        >
-                                            Special Events
-                                        </a>
-                                    </li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <div className="mobile-header__top"></div>
+                    <div className="mobile-header__top">
+                        <div className="header__theme theme-header">
+                            <a
+                                href=""
+                                aria-label="Put your description here."
+                                className="theme-header__link theme-header__link_moon"
+                            >
+                                <svg>
+                                    <use xlinkHref="#moon"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div className="mobile-header__bottom"></div>
+                <div className="mobile-header__bottom">
+                    <div className="header__language language-header">
+                        <div className="dropdown language-header__dropdown dropdown-language-header">
+                            <button
+                                className="dropdown__btn dropdown-language-header__btn"
+                                onClick={() => setIsLanguageOpen(true)}
+                            >
+                                <span className="dropdown-language-header__btn-icon">
+                                    <img
+                                        alt={selectedLanguage.name}
+                                        src={selectedLanguage.flag}
+                                        width={20}
+                                        height={20}
+                                    />
+                                </span>
+                                <span className="dropdown-language-header__btn-text">
+                                    {selectedLanguage.name}
+                                </span>
+                                <span className="dropdown-language-header__btn-arrow">
+                                    <svg>
+                                        <use xlinkHref="#arrow"></use>
+                                    </svg>
+                                </span>
+                            </button>
+                            {isLanguageOpen &&   <div
+                                className="dropdown__body dropdown-language-header__body"
+                                style={{ display: "block" }}
+                            >
+                                <button
+                                    aria-label="Put your description here."
+                                    className="dropdown-language-header__btn-back"
+                                    onClick={() => {
+                                        setIsLanguageOpen(false)
+                                    }}
+                                >
+                                    <span>
+                                        <svg>
+                                            <use xlinkHref="#arrow"></use>
+                                        </svg>
+                                    </span>
+                                    Back
+                                </button>
+                                
+                                    <ul className="dropdown__list dropdown-language-header__list" >
+                                        {languages.map((item) => (
+                                            <li
+                                                onClick={() => handleLanguageSelect(item)}
+                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${item.code === selectedLanguage.code && "active"}`}
+                                                data-dropdown=""
+                                            >
+                                                <span className="list-item-dropdown-language-header__icon">
+                                                    <img
+                                                        src={item.flag}
+                                                        loading="lazy"
+                                                        width="20"
+                                                        height="20"
+                                                        alt={item.name}
+                                                    />
+                                                </span>
+                                                <span className="list-item-dropdown-language-header__text">
+                                                    {item.name}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                
+                            </div>}
+                          
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
     )

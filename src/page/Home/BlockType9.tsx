@@ -71,8 +71,8 @@ export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
                             }}
                             className="slider__wrapper swiper-wrapper"
                         >
-                            {data.items_block.data_cards.map((item) => (
-                                <SwiperSlide className="slider__slide slide-slider ">
+                            {data.items_block.data_cards.map((item,index) => (
+                                <SwiperSlide key={index}className="slider__slide slide-slider ">
                                     <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                         <div className="item-essential-programs-gamble__top">
                                             <a
@@ -130,16 +130,16 @@ export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                 <div className="value-item-stats-essential-programs-gamble__stars value-item-stats-essential-programs-gamble__stars_5">
                                                                     {item.stars.map(
                                                                         (
-                                                                            item
+                                                                            it, idstar
                                                                         ) => (
-                                                                            <div className="value-item-stats-essential-programs-gamble__star">
+                                                                            <div key={idstar+111} className="value-item-stats-essential-programs-gamble__star">
                                                                                 <img
                                                                                     src={
                                                                                         star
                                                                                     }
                                                                                     alt={
                                                                                         "star" +
-                                                                                        item
+                                                                                        it
                                                                                     }
                                                                                 />
                                                                             </div>
@@ -171,12 +171,12 @@ export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                 </div>
                                             </div>
                                             <div className="item-essential-programs-gamble__features features-essential-programs-gamble">
-                                                {item.keypoints.map((item) => (
-                                                    <div className="features-essential-programs-gamble__item">
+                                                {item.keypoints.map((itp, idk) => (
+                                                    <div className="features-essential-programs-gamble__item" key={idk+222}>
                                                         <div className="features-essential-programs-gamble__icon">
                                                             <LazyCardImg
                                                                 img={
-                                                                    item.image ||
+                                                                    itp.image ||
                                                                     ""
                                                                 }
                                                                 size="medium"
@@ -184,10 +184,10 @@ export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                         </div>
                                                         <div className="features-essential-programs-gamble__info">
                                                             <div className="features-essential-programs-gamble__name">
-                                                                {item.text_1}
+                                                                {itp.text_1}
                                                             </div>
                                                             <div className="features-essential-programs-gamble__text">
-                                                                {item.text_2}
+                                                                {itp.text_2}
                                                             </div>
                                                         </div>
                                                     </div>

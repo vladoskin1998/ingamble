@@ -1,7 +1,7 @@
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { Categories } from "../../components/categories/Categories"
 import { PaginationPage } from "../../components/pagination/PaginationPage";
-import { Default } from "../Dafault"
+import { Wraper } from "../Wraper"
 import { useLocation } from 'react-router-dom';
 import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
@@ -61,7 +61,7 @@ export default function SeeAll() {
     console.log(key);
     
     return (
-        <Default>
+        <Wraper>
             <main className="gamble__see-all main-gamble see-all">
                 <div className="main-gamble__body">
                     <Categories
@@ -1185,6 +1185,6 @@ export default function SeeAll() {
                         </section>
                 </div>
             </main>
-        </Default>
+        </Wraper>
     )
 }

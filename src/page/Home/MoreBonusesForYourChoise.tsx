@@ -1,7 +1,7 @@
 import bg07 from "../../assets/img/bg/07.jpg"
 
 import girl from "../../assets/img/girls/03.png"
-import { useAdaptiveBehavior } from "../../Layout"
+import { useAdaptiveBehavior } from "../../context/AppContext"
 
 export default function MoreBonusesForYourChoise ()  {
 

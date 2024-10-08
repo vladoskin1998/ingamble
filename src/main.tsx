@@ -12,14 +12,12 @@ const queryClient = new QueryClient()
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
-      
-            <BrowserRouter>
-                <QueryClientProvider client={queryClient}>
-              <Suspense>
-                        <App />
-          </Suspense>
-                </QueryClientProvider>
-            </BrowserRouter>
-        
+        <BrowserRouter>
+            <QueryClientProvider client={queryClient}>
+                <Suspense>
+                    <App />
+                </Suspense>
+            </QueryClientProvider>
+        </BrowserRouter>
     </StrictMode>
 )

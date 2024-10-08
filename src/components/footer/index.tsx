@@ -355,57 +355,6 @@ export default function Footer() {
                         <ul className="menu-footer__list">
                             <li className="menu-footer__item menu-footer__item_title">
                                 <span className="menu-footer__title">
-                                    VIP LOYALTY PROGRAM
-                                </span>
-                            </li>
-                            <li className="menu-footer__item">
-                                <a
-                                    rel="nofollow noopener"
-                                    href=""
-                                    aria-label="Put your description here."
-                                    target="_blank"
-                                    className="menu-footer__link"
-                                >
-                                    Most engaging loyalties
-                                </a>
-                            </li>
-                            <li className="menu-footer__item">
-                                <a
-                                    rel="nofollow noopener"
-                                    href=""
-                                    aria-label="Put your description here."
-                                    target="_blank"
-                                    className="menu-footer__link"
-                                >
-                                    Highest cashack
-                                </a>
-                            </li>
-                            <li className="menu-footer__item">
-                                <a
-                                    rel="nofollow noopener"
-                                    href=""
-                                    aria-label="Put your description here."
-                                    target="_blank"
-                                    className="menu-footer__link"
-                                >
-                                    Big level up bonuses
-                                </a>
-                            </li>
-                            <li className="menu-footer__item">
-                                <a
-                                    rel="nofollow noopener"
-                                    href=""
-                                    aria-label="Put your description here."
-                                    target="_blank"
-                                    className="menu-footer__link"
-                                >
-                                    Personal manager included
-                                </a>
-                            </li>
-                        </ul>
-                        <ul className="menu-footer__list">
-                            <li className="menu-footer__item menu-footer__item_title">
-                                <span className="menu-footer__title">
                                     COMPANY
                                 </span>
                             </li>
@@ -488,6 +437,58 @@ export default function Footer() {
                                 </a>
                             </li>
                         </ul>
+                        <ul className="menu-footer__list">
+                            <li className="menu-footer__item menu-footer__item_title">
+                                <span className="menu-footer__title">
+                                    VIP LOYALTY PROGRAM
+                                </span>
+                            </li>
+                            <li className="menu-footer__item">
+                                <a
+                                    rel="nofollow noopener"
+                                    href=""
+                                    aria-label="Put your description here."
+                                    target="_blank"
+                                    className="menu-footer__link"
+                                >
+                                    Most engaging loyalties
+                                </a>
+                            </li>
+                            <li className="menu-footer__item">
+                                <a
+                                    rel="nofollow noopener"
+                                    href=""
+                                    aria-label="Put your description here."
+                                    target="_blank"
+                                    className="menu-footer__link"
+                                >
+                                    Highest cashack
+                                </a>
+                            </li>
+                            <li className="menu-footer__item">
+                                <a
+                                    rel="nofollow noopener"
+                                    href=""
+                                    aria-label="Put your description here."
+                                    target="_blank"
+                                    className="menu-footer__link"
+                                >
+                                    Big level up bonuses
+                                </a>
+                            </li>
+                            <li className="menu-footer__item">
+                                <a
+                                    rel="nofollow noopener"
+                                    href=""
+                                    aria-label="Put your description here."
+                                    target="_blank"
+                                    className="menu-footer__link"
+                                >
+                                    Personal manager included
+                                </a>
+                            </li>
+                        </ul>
+                       
                     </nav>
                     <div className="top-footer__socials-block">
                         <a

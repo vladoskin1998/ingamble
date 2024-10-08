@@ -108,7 +108,7 @@ export const Navbar = ({
                         target="_blank"
                         className="top-sidebar-gamble__logo"
                     >
-                        <LazyLoadImage alt={"logo-icon"} src={logoIcon} />
+                        <img alt={"logo-icon"} src={logoIcon} />
                     </a>
                 </div>
                 <div className="sidebar-gamble__filters filters-sidebar-gamble">

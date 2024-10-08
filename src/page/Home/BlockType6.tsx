@@ -93,8 +93,8 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                             >
                                 {data.items_block.data_cards
                                     .sort((a, b) => a.order - b.order)
-                                    .map((item) => (
-                                        <SwiperSlide>
+                                    .map((item, index) => (
+                                        <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
                                                     <a
@@ -162,9 +162,9 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                 <div className="casino-small-card__info">
                                                                     {item.casino_info.additional_casino_params.map(
                                                                         (
-                                                                            it
+                                                                            it, id
                                                                         ) => (
-                                                                            <span className="casino-small-card__info-link">
+                                                                            <span key={id}className="casino-small-card__info-link">
                                                                                 {
                                                                                     it
                                                                                 }

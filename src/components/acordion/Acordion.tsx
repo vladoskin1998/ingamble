@@ -7,7 +7,7 @@ type AccordionItemProps = {
     defaultOpen?: boolean
     isNested?: boolean
 }
-
+ //всегда в хедерт) добавлять accordion--title--element!!!!!!!!
 export const AccordionItem: React.FC<AccordionItemProps> = ({
     heading,
     content,
@@ -21,19 +21,15 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
     const [maxHeight, setMaxHeight] = useState<string>("0")
     const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
-    // Управление скрытием и отображением
+
     const [isHidden, setIsHidden] = useState<"hidden" | "visible">(
         isOpen ? "visible" : "hidden"
     )
 
-  
     const calculateTotalHeight = (element: HTMLElement): number => {
         let totalHeight = element.scrollHeight
-
-       
         const nestedAccordions = element.querySelectorAll(".accordion-item")
 
-  
         nestedAccordions.forEach((nestedAccordion) => {
           
             
@@ -81,6 +77,24 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
         }, 300)
     }
 
+    useEffect(() => {
+        const headerElement = headerRef.current
+
+        if (headerElement) {
+            const targetElement = headerElement.querySelector(
+                ".accordion--title--element"
+            ) as HTMLElement | null
+
+            if (targetElement) {
+                if (isOpen) {
+                    targetElement.classList.add("active")
+                } else {
+                    targetElement.classList.remove("active")
+                }
+            }
+        }
+    }, [isOpen])
+
     return (
         <div >
             <div
@@ -88,6 +102,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
                 //@ts-ignore
                 style={styles.accordionItemHeader}
                 onClick={handleClick}
+                className="active"
             >
                 {heading}
             </div>

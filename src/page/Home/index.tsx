@@ -1,7 +1,7 @@
 import { lazy, useEffect } from "react"
-import { Default } from "../Dafault"
+import { Wraper } from "../Wraper"
 
-import { useAdaptiveBehavior } from "../../Layout"
+import { useAdaptiveBehavior } from "../../context/AppContext"
 
 import { Categories } from "../../components/categories/Categories"
 import { BlockType2 } from "./BlockType2"
@@ -82,7 +82,7 @@ export const Home = () => {
 
     if (isLoading) return <LogoLoader />
     return (
-        <Default>
+        <Wraper>
             <main className="gamble__main main-gamble">
                 <div className="main-gamble__body">
                     <Categories
@@ -271,6 +271,6 @@ export const Home = () => {
                     </section>
                 </div>
             </main>
-        </Default>
+        </Wraper>
     )
 }

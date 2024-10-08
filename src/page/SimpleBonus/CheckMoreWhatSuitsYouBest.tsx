@@ -1,12 +1,12 @@
 import { LazyLoadImage } from "react-lazy-load-image-component"
-import { useAdaptiveBehavior } from "../../Layout"
+import { useAdaptiveBehavior } from "../../context/AppContext"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
 export const CheckMoreWhatSuitsYouBest = () => {
 
     const { isSidebarActive, setSidebarActive } =
     useAdaptiveBehavior()
   return (
-    <section className="main-gamble__bottom-filter-tags bottom-filter-tags">
+    <section className="main-gamble__bottom-filter-tags bottom-filter-tags" style={{marginTop:'60px'}}>
     <div className="bottom-filter-tags__container container">
         <div className="bottom-filter-tags__top top">
             <div className="top__title-block">

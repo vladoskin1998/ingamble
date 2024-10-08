@@ -98,8 +98,8 @@ export default function BlockType2Mobile({
                             >
                                 {data.items_block.data_cards
                                     .sort((a, b) => a.order - b.order)
-                                    .map((item) => (
-                                        <SwiperSlide>
+                                    .map((item, index) => (
+                                        <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
                                                     <a

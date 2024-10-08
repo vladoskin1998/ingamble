@@ -161,8 +161,8 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     >
                                         {data.items_block.data_cards
                                             .sort((a, b) => a.order - b.order)
-                                            .map((item) => (
-                                                <SwiperSlide className="slider__slide slide-slider swiper-slide">
+                                            .map((item, index) => (
+                                                <SwiperSlide key={index} className="slider__slide slide-slider swiper-slide">
                                                     <a
                                                         href=""
                                                         target="_blank"
@@ -215,9 +215,9 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                     <div className="casino-small-card__info">
                                                                         {item.casino_info.additional_casino_params.map(
                                                                             (
-                                                                                it
+                                                                                it, id
                                                                             ) => (
-                                                                                <span className="casino-small-card__info-link">
+                                                                                <span key={id+100}className="casino-small-card__info-link">
                                                                                     {
                                                                                         it
                                                                                     }

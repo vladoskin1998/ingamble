@@ -94,8 +94,8 @@ export const BlockType7 = ({ data }: { data: HomeDataBlock | undefined }) => {
                             >
                                 {data.items_block.data_cards
                                     .sort((a, b) => a.order - b.order)
-                                    .map((item) => (
-                                        <SwiperSlide className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
+                                    .map((item,index) => (
+                                        <SwiperSlide key={index}className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
                                             <div className="slide-slider__item different-casino-bg">
                                                 <a
                                                     href=""
@@ -127,8 +127,8 @@ export const BlockType7 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                     </a>
                                                     <div className="different-casino-bg__info">
                                                         {item.casino_info.additional_casino_params.map(
-                                                            (it) => (
-                                                                <span className="different-casino-bg__info-link">
+                                                            (it, id) => (
+                                                                <span key={id}className="different-casino-bg__info-link">
                                                                     {it}
                                                                 </span>
                                                             )

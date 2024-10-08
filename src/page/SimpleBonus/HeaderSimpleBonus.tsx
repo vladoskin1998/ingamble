@@ -1,4 +1,3 @@
-import mainImg from "../../assets/img/casino-info/main-img.jpg"
 import stakeLogo from "../../assets/img/casino-logo/stake.svg"
 import starIcon from "../../assets/img/icons/star.svg"
 import likeIcon from "../../assets/img/icons/like.svg"
@@ -7,6 +6,7 @@ import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import giftIcon from "../../assets/img/icons/gift.svg"
 import { useState, useEffect, lazy } from "react"
+import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
 const LazyFlag = lazy(() => import('react-world-flags'));
 
 
@@ -38,10 +38,9 @@ export const HeaderSimpleBonus = ({
     };
   
     useEffect(() => {
-      // Добавляем обработчик изменения размера окна
+
       window.addEventListener('resize', handleResize);
   
-      // Удаляем обработчик при размонтировании компонента
       return () => {
         window.removeEventListener('resize', handleResize);
       };
@@ -58,25 +57,18 @@ export const HeaderSimpleBonus = ({
                         <div className="casino-info__main main-casino-info">
                             <div className="main-casino-info__image-block">
                                 <div className="main-casino-info__image ibg">
-                                    <img
+                                    <LazyCardImg img={data?.bonus_image || "" }/>
+                                    {/* <img
                                         src={data?.bonus_image || mainImg}
                                         alt="main-img"
-                                    />
-                                    <img src="" alt="" />
+                                    /> */}
+                         
                                 </div>
                             </div>
                             { !isSmallScreen ?  <div className="main-casino-info__name name-main-casino-info">
                         <div className="name-main-casino-info__logo">
-                            <LazyLoadImage
-                                src={
-                                    data?.casino_logo ||
-                                    stakeLogo
-                                }
-                                alt={
-                                    data?.casino_name ||
-                                    "Stake Casino"
-                                }
-                            />
+                        <LazyCardImg img={  data?.casino_logo || "" }/>
+                          
                         </div>
                         <div className="name-main-casino-info__content">
                             <a

@@ -3,7 +3,7 @@ import { Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
 import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
 
@@ -17,27 +17,27 @@ const colors_tags = [
 export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
-    const [screenState, setScreenState] = useState<number | "auto">(1)
+    // const [screenState, setScreenState] = useState<number | "auto">("auto")
 
-    useEffect(() => {
-        const handleResize = () => {
-            const width = window.innerWidth
-            if (width < 1020) {
-                setScreenState("auto")
-            } else if (width < 1220) {
-                setScreenState(1)
-            } else if (width < 1600) {
-                setScreenState(2)
-            } else if (width > 2100) {
-                setScreenState(3)
-            }
-        }
-        handleResize()
-        window.addEventListener("resize", handleResize)
-        return () => {
-            window.removeEventListener("resize", handleResize)
-        }
-    }, [])
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         const width = window.innerWidth
+    //         if (width < 1020) {
+    //             setScreenState("auto")
+    //         } else if (width < 1220) {
+    //             setScreenState(2)
+    //         } else if (width < 1600) {
+    //             setScreenState(2)
+    //         } else if (width > 2100) {
+    //             setScreenState(3)
+    //         }
+    //     }
+    //     handleResize()
+    //     window.addEventListener("resize", handleResize)
+    //     return () => {
+    //         window.removeEventListener("resize", handleResize)
+    //     }
+    // }, [])
 
     useEffect(() => {
         if (sliderRef?.current && paginationRef?.current) {
@@ -105,7 +105,8 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                         >
                             <div className="top-gainers-casinos-gamble__swiper slider__swiper swiper">
                                 <Swiper
-                                    slidesPerView={screenState}
+                                   // slidesPerView={screenState}
+                                   slidesPerView="auto"
                                     className="slider__wrapper swiper-wrapper"
                                     spaceBetween={20}
                                     breakpoints={{

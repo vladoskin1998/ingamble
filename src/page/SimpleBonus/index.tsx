@@ -23,8 +23,8 @@ import { BonusSubType } from "./BonusSubType"
 import { Categories } from "../../components/categories/Categories"
 
 import { LastUpdate } from "./LastUpdate"
-import { Default } from "../Dafault"
-import { useAdaptiveBehavior } from "../../Layout"
+import { Wraper } from "../Wraper"
+import { useAdaptiveBehavior } from "../../context/AppContext"
 
 import  SubscribeForm  from "./SubscribeForm"
 import { LogoLoader } from "../../components/loader/LogoLoader"
@@ -96,11 +96,11 @@ export default function SimpleBonus () {
         initializeAdaptiveBehavior()
     }, [geoLocation])
 
-    if (isLoading && geoLocation.isLoadedGeo) return <LogoLoader />
+    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
 
     return (
 
-        <Default>
+        <Wraper>
     
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
@@ -791,6 +791,6 @@ export default function SimpleBonus () {
                     </section>
                 </div>
             </main>
-        </Default>
+        </Wraper>
     )
 }

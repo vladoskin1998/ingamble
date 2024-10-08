@@ -340,7 +340,7 @@ html, body {
   width: 8px;
   height: 4px;
   stroke: var(--Text-Txt_Main, #FFFFFF);
-  stroke-width: 1.5px;
+  strokeWidth: 1.5px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -ms-transition: all 0.3s ease 0s;
@@ -1083,7 +1083,7 @@ h3 {
   height: 6px;
 }
 .top__btn-arrow svg {
-  stroke-width: 2px;
+  strokeWidth: 2px;
   stroke: var(--Text-Txt_Sec, rgba(255, 255, 255, 0.5019607843));
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
@@ -2847,7 +2847,7 @@ h3 {
 .navigation-btn svg {
   width: 10px;
   height: 6px;
-  stroke-width: 1.5px;
+  strokeWidth: 1.5px;
   stroke: var(--Text-Txt_Main, #FFFFFF);
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -2948,7 +2948,7 @@ h3 {
   width: 100%;
   height: 100%;
   stroke: var(--Text-Txt_Dark, #020202);
-  stroke-width: 1.3px;
+  strokeWidth: 1.3px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -ms-transition: all 0.3s ease 0s;
@@ -4776,7 +4776,7 @@ h3 {
   flex: 0;
   display: flex;
   stroke: var(--Colors-Accent, #FFCF23);
-  stroke-width: 1.5px;
+  strokeWidth: 1.5px;
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -5033,7 +5033,7 @@ h3 {
   align-items: center;
   justify-content: flex-end;
   stroke: var(--Colors-Accent, #FFCF23);
-  stroke-width: 1.5px;
+  strokeWidth: 1.5px;
   margin: 0 0 0 8px;
 }
 @media (min-width: 650.98px) {
@@ -5183,7 +5183,7 @@ h3 {
     align-items: center;
     justify-content: flex-end;
     stroke: var(--Colors-Accent, #FFCF23);
-    stroke-width: 1.5px;
+    strokeWidth: 1.5px;
     margin: 0 8px 0 0;
   }
   .dropdown-language-header__btn-back span svg {
@@ -5201,9 +5201,7 @@ h3 {
 }
 .dropdown-language-header__list {
   padding: 0 12px 0 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: 247px;
+
 }
 .dropdown-language-header__list::-webkit-scrollbar {
   width: 2px;
@@ -5214,16 +5212,8 @@ h3 {
 .dropdown-language-header__list::-webkit-scrollbar-thumb {
   background: var(--Colors-Accent, #FFCF23);
 }
-@media (max-width: 768.98px) {
-  .dropdown-language-header__list {
-    max-height: 227px;
-  }
-}
-@media (max-width: 480.98px) {
-  .dropdown-language-header__list {
-    max-height: 207px;
-  }
-}
+
+
 .list-item-dropdown-language-header {
   cursor: pointer;
   display: flex;
@@ -5373,11 +5363,7 @@ h3 {
   background: var(--BG-Bg_1, #171719);
   position: fixed;
   z-index: 100;
-  -webkit-transition: all 0.1s ease-out 0s;
-  -moz-transition: all 0.1s ease-out 0s;
-  -ms-transition: all 0.1s ease-out 0s;
-  -o-transition: all 0.1s ease-out 0s;
-  transition: all 0.1s ease-out 0s;
+
 
 }
 .sidebar-gamble.active {
@@ -5483,7 +5469,7 @@ h3 {
   height: 6px;
   display: flex;
   stroke: var(--Colors-Accent, #FFCF23);
-  stroke-width: 1.5px;
+  strokeWidth: 1.5px;
   margin: 0 0 0 10px;
 }
 .sidebar-gamble.active .title-item-form-filters__arrow svg {
@@ -5679,6 +5665,7 @@ h3 {
 .title-filters-sidebar-gamble__btn svg {
   stroke-width: 1.8px;
 }
+
 .title-filters-sidebar-gamble__btn:active {
   background: linear-gradient(0deg, var(--BG-Bg_2, #232320), var(--BG-Bg_2, #232320)), linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25));
 }
@@ -5717,7 +5704,7 @@ h3 {
   width: 100%;
   height: 100%;
   stroke: var(--Text-Txt_Main, #FFFFFF);
-  stroke-width: 1.8px;
+  strokeWidth: 1.8px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -ms-transition: all 0.3s ease 0s;
@@ -5829,7 +5816,7 @@ h3 {
   padding: 0 8px;
 }
 .item-form-filters:not(:last-child) {
-  margin: 0 0 8px 0;
+  margin: 0 0 16px 0;
 }
 .item-form-filters__body {
   height: 0;
@@ -12364,7 +12351,7 @@ h3 {
     align-items: center;
     justify-content: flex-end;
     stroke: var(--Colors-Accent, #FFCF23);
-    stroke-width: 1.5px;
+    strokeWidth: 1.5px;
     margin: 0 0 0 10px;
   }
   .title-filter-selected__arrow svg {
@@ -12396,7 +12383,7 @@ h3 {
   align-items: center;
   justify-content: flex-end;
   stroke: var(--Colors-Accent, #FFCF23);
-  stroke-width: 1.5px;
+  strokeWidth: 1.5px;
   margin: 0 8px 0 0;
 }
 .top-filter-selected__back span svg {
@@ -14806,7 +14793,7 @@ h3 {
   width: 20px;
   height: 18px;
   stroke: var(--Text-Txt_Dark, #020202);
-  stroke-width: 1.3px;
+  strokeWidth: 1.3px;
 }
 .main-gamble__payn-play-casinos {
   display: none;

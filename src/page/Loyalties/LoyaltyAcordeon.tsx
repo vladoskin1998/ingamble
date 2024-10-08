@@ -88,7 +88,7 @@ export const LoyaltyAcordeon = () => {
                             <div className="information-loyaltie__item item-information-loyaltie item-information-loyaltie_begginer ">
                                 <AccordionItem
                                     heading={
-                                        <div className="item-information-loyaltie__top top-item-information-loyaltie ">
+                                        <div className="item-information-loyaltie__top top-item-information-loyaltie accordion--title--element">
                                             <div className="top-item-information-loyaltie__column">
                                                 <div className="top-item-information-loyaltie__icon">
                                                     <svg>
@@ -118,7 +118,7 @@ export const LoyaltyAcordeon = () => {
                                                     <AccordionItem
                                                  
                                                         heading={
-                                                            <div className="item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
+                                                            <div className="item-inner-information-loyaltie__top top-item-inner-information-loyaltie accordion--title--element">
                                                                 <div className="top-item-inner-information-loyaltie__column">
                                                                     <div className="top-item-inner-information-loyaltie__icon">
                                                                         <span>
@@ -284,7 +284,7 @@ export const LoyaltyAcordeon = () => {
                                                     <AccordionItem
                                                     
                                                         heading={
-                                                            <div className="item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
+                                                            <div className="accordion--title--element item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
                                                                 <div className="top-item-inner-information-loyaltie__column">
                                                                     <div className="top-item-inner-information-loyaltie__icon">
                                                                         <span>
@@ -445,7 +445,7 @@ export const LoyaltyAcordeon = () => {
                                                     <AccordionItem
                                                       
                                                         heading={
-                                                            <div className="item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
+                                                            <div className="accordion--title--element item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
                                                                 <div className="top-item-inner-information-loyaltie__column">
                                                                     <div className="top-item-inner-information-loyaltie__icon">
                                                                         <span>
@@ -611,7 +611,7 @@ export const LoyaltyAcordeon = () => {
                                                     <AccordionItem
                                                    
                                                         heading={
-                                                            <div className="item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
+                                                            <div className="accordion--title--element item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
                                                                   <div className="top-item-inner-information-loyaltie__column">
                                                                     <div className="top-item-inner-information-loyaltie__icon">
                                                                         <span>
@@ -782,7 +782,7 @@ export const LoyaltyAcordeon = () => {
                                                     <AccordionItem
                                                   
                                                         heading={
-                                                            <div className="item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
+                                                            <div className="accordion--title--element item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
                                                                 <div className="top-item-inner-information-loyaltie__column">
                                                                     <div className="top-item-inner-information-loyaltie__icon">
                                                                         <span>
@@ -951,7 +951,7 @@ export const LoyaltyAcordeon = () => {
                             <div className="inner-information-loyaltie__item item-inner-information-loyaltie item-inner-information-loyaltie_only item-inner-information-loyaltie_begginer ">
                                 <AccordionItem
                                     heading={
-                                        <div className="item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
+                                        <div className="accordion--title--element item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
                                             <div className="top-item-inner-information-loyaltie__column">
                                                 <div className="top-item-inner-information-loyaltie__icon">
                                                     <svg>

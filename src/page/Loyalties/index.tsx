@@ -1,4 +1,4 @@
-import { Default } from "../Dafault"
+import { Wraper } from "../Wraper"
 import { Categories } from "../../components/categories/Categories"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { LoyaltieCasinoInfo } from "./LoyaltieCasinoInfo"
@@ -22,7 +22,7 @@ import { LoyaltyAcordeon } from "./LoyaltyAcordeon"
 export default function Loyalties() {
     document.title = "Loyaltie"
     return (
-        <Default>
+        <Wraper>
             <main className="gamble__loyaltie main-gamble loyaltie">
                 <div className="main-gamble__body">
                     <Categories
@@ -692,6 +692,6 @@ export default function Loyalties() {
                     </section>
                 </div>
             </main>
-        </Default>
+        </Wraper>
     )
 }

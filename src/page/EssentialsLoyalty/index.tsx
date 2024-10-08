@@ -1,5 +1,5 @@
 import star from "../../assets/img/icons/star.svg"
-import { Default } from "../Dafault"
+import { Wraper } from "../Wraper"
 import { Categories } from "../../components/categories/Categories"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import roySpins from "../../assets/img/casino-logo/roy-spins.svg"
@@ -20,7 +20,7 @@ export default function EssentialsLoyalty() {
     document.title = "Loyaltie Programs"
 
     return (
-        <Default>
+        <Wraper>
             <main className="gamble__loyaltie-programs main-gamble loyaltie-programs">
                 <div className="main-gamble__body">
                     <Categories
@@ -903,6 +903,6 @@ export default function EssentialsLoyalty() {
                     </section>
                 </div>
             </main>
-        </Default>
+        </Wraper>
     )
 }

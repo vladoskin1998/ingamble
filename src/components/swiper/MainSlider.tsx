@@ -78,8 +78,8 @@ const MainSlider = ({
                                 },
                             }}
                         >
-                            {data?.map((item) => (
-                                <SwiperSlide>
+                            {data?.map((item, index) => (
+                                <SwiperSlide key={index}>
                                     <div className="slider__slide slide-slider swiper-slide">
                                         <div className="slide-slider__item casino-card">
                                             <a
