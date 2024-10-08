@@ -50,7 +50,7 @@ export const BlockType1 = ({ data }: { data: HomeDataBlock | undefined }) => {
                     data={data?.items_block.data_cards
                         .sort((a, b) => a.order - b.order)
                         .map((item) => ({
-                            img: item?.casino_info?.casino_image,
+                            img: item?.bonus_info?.bonus_image,
                             raiting: item?.casino_info?.casino_rank,
                             likes: item?.bonus_info?.bonus_likes,
                             nameCasino: item?.casino_info?.casino_name,

@@ -120,9 +120,9 @@ export const Home = () => {
                                 BlockTypeNumber.BlockType2
                         )}
                     />
-                    <div className="main-gamble__different-casino-bg main-gamble__baner-block">
+                    {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
                         <WhatWeArePlayingNow />
-                    </div>
+                    </div> */}
                     <BlockType6   data={data?.dataHome?.data_blocks?.find(
                             (item) =>
                                 item.items_block.type_block ===

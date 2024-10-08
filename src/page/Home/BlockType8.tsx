@@ -58,7 +58,7 @@ export const BlockType8 = ({ data }: { data: HomeDataBlock | undefined }) => {
                         .sort((a, b) => a.order - b.order)
                         .map((item) => ({
                             link: item.casino_info.casino_affiliate_link,
-                            img: item.casino_info.casino_image,
+                            img: item.bonus_info.bonus_image,
                             raiting: item.casino_info.casino_rank,
                             likes: item.bonus_info.bonus_likes,
                             nameCasino: item.casino_info.casino_name,

@@ -145,7 +145,7 @@ const MainSlider = ({
                                                         </span>
                                                     </div>
                                                 </div>
-
+                                                
                                                 <a
                                                     rel="nofollow noopener"
                                                     href=""
@@ -153,9 +153,7 @@ const MainSlider = ({
                                                     target="_blank"
                                                     className="casino-card__name"
                                                 >
-                                                    Crazy Cash Bomb Winnings
-                                                    $1,000,000 asdasdas
-                                                    WQEasdasd
+                                                    {item?.comment}
                                                 </a>
                                             </div>
                                         </div>
