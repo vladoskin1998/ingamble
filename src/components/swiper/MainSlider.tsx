@@ -59,7 +59,7 @@ const MainSlider = ({
                     <div className="slider__wrapper">
                         <Swiper
                             slidesPerView="auto"
-                            spaceBetween={20}
+                            
                             ref={sliderRef}
                             pagination={{
                                 el: paginationRef.current,

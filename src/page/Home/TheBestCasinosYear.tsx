@@ -66,7 +66,7 @@ export default function TheBestCasinosYear() {
                                     className="slider-best-casinos-2024-gamble__wrapper swiper-wrapper"
                                     ref={sliderRef}
                                     slidesPerView="auto"
-                                    spaceBetween={20}
+                                    
                                     onSlideChange={(swiper) => {
                                         setIsScrolled(!swiper.isBeginning)
                                       

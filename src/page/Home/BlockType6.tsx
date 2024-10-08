@@ -73,7 +73,7 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                 ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
-                                spaceBetween={20}
+                                
                                 modules={[Pagination]}
                                 pagination={{
                                     el: paginationRef.current,

@@ -50,7 +50,7 @@ export const SimpleBonusEssentialPrograms = ({title="Essential VIP Loyatly Progr
                         <Swiper
                             slidesPerView="auto"
                             allowTouchMove={true}
-                            spaceBetween={20}
+                            
                             breakpoints={{
                                 320: {
                                     spaceBetween: 16,

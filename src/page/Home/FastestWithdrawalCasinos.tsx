@@ -66,7 +66,7 @@ export default function FastestWithdrawalCasinos() {
                                 ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
-                                spaceBetween={20}
+                                
                                 modules={[Pagination]}
                                 pagination={{
                                     el: paginationRef.current,

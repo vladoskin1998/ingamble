@@ -340,7 +340,7 @@ html, body {
   width: 8px;
   height: 4px;
   stroke: var(--Text-Txt_Main, #FFFFFF);
-  strokeWidth: 1.5px;
+  stroke-width: 1.5px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -ms-transition: all 0.3s ease 0s;
@@ -1083,7 +1083,7 @@ h3 {
   height: 6px;
 }
 .top__btn-arrow svg {
-  strokeWidth: 2px;
+  stroke-width: 2px;
   stroke: var(--Text-Txt_Sec, rgba(255, 255, 255, 0.5019607843));
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
@@ -2421,6 +2421,25 @@ h3 {
     margin: 0 0 16px 0;
   }
 }
+
+.main-gamble .main-gamble__top-gainers-casinos .different-casino-standart {
+  width: 100%;
+  max-width: 357px;
+}
+@media (max-width: 1320px) {
+  .main-gamble .main-gamble__top-gainers-casinos .different-casino-standart {
+    max-width: 352px;
+  }
+}
+.main-gamble .main-gamble__top-gainers-casinos .different-casino-standart .different-casino-standart__image-block {
+  margin: 0 16px 0 0;
+}
+.main-gamble .main-gamble__top-gainers-casinos .different-casino-standart .different-casino-standart__name {
+  font-weight: 400;
+}
+.main-gamble .main-gamble__top-gainers-casinos .different-casino-standart .info-casino-card__stake-link {
+  margin: 0 4px 0 0;
+}
 .different-casino-standart__number {
   font-size: 16px;
   line-height: 22px;
@@ -2847,7 +2866,7 @@ h3 {
 .navigation-btn svg {
   width: 10px;
   height: 6px;
-  strokeWidth: 1.5px;
+  stroke-width: 1.5px;
   stroke: var(--Text-Txt_Main, #FFFFFF);
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -2948,7 +2967,7 @@ h3 {
   width: 100%;
   height: 100%;
   stroke: var(--Text-Txt_Dark, #020202);
-  strokeWidth: 1.3px;
+  stroke-width: 1.3px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -ms-transition: all 0.3s ease 0s;
@@ -4776,7 +4795,7 @@ h3 {
   flex: 0;
   display: flex;
   stroke: var(--Colors-Accent, #FFCF23);
-  strokeWidth: 1.5px;
+  stroke-width: 1.5px;
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -5033,7 +5052,7 @@ h3 {
   align-items: center;
   justify-content: flex-end;
   stroke: var(--Colors-Accent, #FFCF23);
-  strokeWidth: 1.5px;
+  stroke-width: 1.5px;
   margin: 0 0 0 8px;
 }
 @media (min-width: 650.98px) {
@@ -5183,7 +5202,7 @@ h3 {
     align-items: center;
     justify-content: flex-end;
     stroke: var(--Colors-Accent, #FFCF23);
-    strokeWidth: 1.5px;
+    stroke-width: 1.5px;
     margin: 0 8px 0 0;
   }
   .dropdown-language-header__btn-back span svg {
@@ -5469,7 +5488,7 @@ h3 {
   height: 6px;
   display: flex;
   stroke: var(--Colors-Accent, #FFCF23);
-  strokeWidth: 1.5px;
+  stroke-width: 1.5px;
   margin: 0 0 0 10px;
 }
 .sidebar-gamble.active .title-item-form-filters__arrow svg {
@@ -5704,7 +5723,7 @@ h3 {
   width: 100%;
   height: 100%;
   stroke: var(--Text-Txt_Main, #FFFFFF);
-  strokeWidth: 1.8px;
+  stroke-width: 1.8px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -ms-transition: all 0.3s ease 0s;
@@ -12351,7 +12370,7 @@ h3 {
     align-items: center;
     justify-content: flex-end;
     stroke: var(--Colors-Accent, #FFCF23);
-    strokeWidth: 1.5px;
+    stroke-width: 1.5px;
     margin: 0 0 0 10px;
   }
   .title-filter-selected__arrow svg {
@@ -12383,7 +12402,7 @@ h3 {
   align-items: center;
   justify-content: flex-end;
   stroke: var(--Colors-Accent, #FFCF23);
-  strokeWidth: 1.5px;
+  stroke-width: 1.5px;
   margin: 0 8px 0 0;
 }
 .top-filter-selected__back span svg {
@@ -14793,7 +14812,7 @@ h3 {
   width: 20px;
   height: 18px;
   stroke: var(--Text-Txt_Dark, #020202);
-  strokeWidth: 1.3px;
+  stroke-width: 1.3px;
 }
 .main-gamble__payn-play-casinos {
   display: none;
@@ -14849,6 +14868,17 @@ h3 {
     margin: 0 0 40px 0;
   }
 }
+
+.check-bottom-filter-tags{
+  margin-top: 60px !important;
+}
+
+@media (max-width: 480.98px) {
+  .check-bottom-filter-tags {
+    margin-top:40px !important;
+  }
+}
+
 .main-gamble__bottom-info {
   margin: 0 0 20px 0;
 }
@@ -15129,12 +15159,120 @@ h3 {
     padding: 0;
   }
 }
+
+
+.main-gamble .main-gamble__top-gainers-casinos .row-block__right {
+  padding: 0 593px 0 0;
+  position: relative;
+}
+.main-gamble .main-gamble__top-gainers-casinos .row-block__right::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -80px;
+  width: 100px;
+  height: 100%;
+  background-color: #111111;
+  z-index: 2;
+}
+
+@media (max-width: 992.98px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__right::before {
+    display: none;
+  }
+}
+@media (max-width: 1750px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__right {
+    padding: 0 546px 0 0;
+  }
+}
+@media (max-width: 1700px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__right {
+    padding: 0 505px 0 0;
+  }
+}
+@media (max-width: 1650.98px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__right {
+    padding: 0 589px 0 0;
+  }
+}
+@media (max-width: 1400px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__right {
+    padding: 0 505px 0 0;
+  }
+}
+@media (max-width: 1200px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__right {
+    padding: 0 613px 0 0;
+  }
+}
+@media (max-width: 1050px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__right {
+    padding: 0 550px 0 0;
+  }
+}
+@media (max-width: 992.98px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__right {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 992.98px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__slider {
+    order: 2;
+  }
+}
+
+@media (max-width: 1050px) {
+  .baner-row-block__slide.slide-baner-row-block {
+    width: 536px;
+  }
+}
+
+.main-gamble .main-gamble__top-gainers-casinos .slide-slider-column_standart.swiper-slide {
+  width: calc(33.333% - 13.333px);
+}
+@media (max-width: 1650.98px) {
+  .main-gamble .main-gamble__top-gainers-casinos .slide-slider-column_standart.swiper-slide {
+    width: 50%;
+  }
+}
+@media (max-width: 1320px) {
+  .main-gamble .main-gamble__top-gainers-casinos .slide-slider-column_standart.swiper-slide {
+    width: auto;
+  }
+}
+@media (max-width: 1200px) {
+  .main-gamble .main-gamble__top-gainers-casinos .slide-slider-column_standart.swiper-slide {
+    width: 100%;
+  }
+}
+@media (max-width: 992.98px) {
+  .main-gamble .main-gamble__top-gainers-casinos .slide-slider-column_standart.swiper-slide {
+    width: 50%;
+  }
+}
+@media (max-width: 730px) {
+  .main-gamble .main-gamble__top-gainers-casinos .slide-slider-column_standart.swiper-slide {
+    width: 100%;
+  }
+}
+
 .row-block__baner {
   position: absolute;
   top: 0;
   height: 100%;
   z-index: 4;
 }
+@media (max-width: 992.98px) {
+  .main-gamble .main-gamble__top-gainers-casinos .baner-row-block {
+      position: relative;
+      order: 1;
+      margin: 0 0 16px 0;
+  }
+}
+
 @media (max-width: 850.98px) {
   .row-block__baner {
     position: relative;
@@ -15291,6 +15429,53 @@ h3 {
   right: 20px;
 }
 .main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right .item-baner-row-block__small-card:not(:last-child){
+  margin: 0 0 10px 0;
+}
+.main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right {
+  width: 573px;
+}
+@media (max-width: 1750px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right {
+    width: 530px;
+  }
+}
+@media (max-width: 1700px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right {
+    width: 489px;
+  }
+}
+@media (max-width: 1650.98px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right {
+    width: 573px;
+  }
+}
+@media (max-width: 1400px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right {
+    width: 489px;
+  }
+}
+@media (max-width: 1220px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right {
+    width: 627px;
+  }
+}
+@media (max-width: 110px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right {
+    width: 597px;
+  }
+}
+@media (max-width: 1050px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right {
+    width: 536px;
+  }
+}
+@media (max-width: 992.98px) {
+  .main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right {
+    width: 100%;
+    height: 340px;
+  }
+}
+.main-gamble .main-gamble__top-gainers-casinos .row-block__baner_right .item-baner-row-block__small-card:not(:last-child) {
   margin: 0 0 10px 0;
 }
 .item-baner-row-block__small-card .casino-small-card__image-block {

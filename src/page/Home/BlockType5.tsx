@@ -140,7 +140,7 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                         onSlideChange={handleSlideChange}
                                         className="slider__wrapper swiper-wrapper"
                                         slidesPerView="auto"
-                                        spaceBetween={20}
+                                       
                                         modules={[Pagination]}
                                         ref={sliderRef}
                                         pagination={{

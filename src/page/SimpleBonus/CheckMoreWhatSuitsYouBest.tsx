@@ -6,7 +6,7 @@ export const CheckMoreWhatSuitsYouBest = () => {
     const { isSidebarActive, setSidebarActive } =
     useAdaptiveBehavior()
   return (
-    <section className="main-gamble__bottom-filter-tags bottom-filter-tags" style={{marginTop:'60px'}}>
+    <section className="main-gamble__bottom-filter-tags bottom-filter-tags check-bottom-filter-tags">
     <div className="bottom-filter-tags__container container">
         <div className="bottom-filter-tags__top top">
             <div className="top__title-block">

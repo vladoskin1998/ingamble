@@ -48,7 +48,7 @@ export default function NewlyOpenedCasinos  () {
                             <Swiper
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
-                                spaceBetween={20}
+                                
                                 breakpoints={{
                                     320: {
                                         spaceBetween: 16,

@@ -73,7 +73,7 @@ export const BlockType7 = ({ data }: { data: HomeDataBlock | undefined }) => {
                         <div className="low-risk-bonuses-gamble__swiper slider__swiper swiper">
                             <Swiper
                                 slidesPerView="auto"
-                                spaceBetween={20}
+                                
                                 modules={[Pagination]}
                                 ref={sliderRef}
                                 pagination={{

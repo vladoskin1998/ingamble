@@ -57,7 +57,7 @@ export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
                         <Swiper
                             slidesPerView="auto"
                             allowTouchMove={true}
-                            spaceBetween={20}
+                          
                             breakpoints={{
                                 320: {
                                     spaceBetween: 16,

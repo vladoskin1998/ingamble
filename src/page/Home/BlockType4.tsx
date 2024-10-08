@@ -74,7 +74,7 @@ export const BlockType4 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                 <Swiper
                                     className="slider__wrapper swiper-wrapper"
                                     slidesPerView="auto"
-                                    spaceBetween={20}
+                                 
                                     modules={[Pagination]}
                                     ref={sliderRef}
                                     pagination={{

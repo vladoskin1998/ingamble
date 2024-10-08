@@ -78,7 +78,7 @@ export default function BlockType7Mobile({
                                 ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
-                                spaceBetween={20}
+                          
                                 modules={[Pagination]}
                                 pagination={{
                                     el: paginationRef.current,

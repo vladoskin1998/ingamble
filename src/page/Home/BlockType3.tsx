@@ -3,7 +3,7 @@ import { Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
 import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
 
@@ -17,27 +17,27 @@ const colors_tags = [
 export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
-    // const [screenState, setScreenState] = useState<number | "auto">("auto")
+    const [screenState, setScreenState] = useState<number | "auto">("auto")
 
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         const width = window.innerWidth
-    //         if (width < 1020) {
-    //             setScreenState("auto")
-    //         } else if (width < 1220) {
-    //             setScreenState(2)
-    //         } else if (width < 1600) {
-    //             setScreenState(2)
-    //         } else if (width > 2100) {
-    //             setScreenState(3)
-    //         }
-    //     }
-    //     handleResize()
-    //     window.addEventListener("resize", handleResize)
-    //     return () => {
-    //         window.removeEventListener("resize", handleResize)
-    //     }
-    // }, [])
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth
+            if (width < 1020) {
+                setScreenState("auto")
+            } else if (width < 1220) {
+                setScreenState(1)
+            } else if (width < 1600) {
+                setScreenState(2)
+            } else if (width > 2100) {
+                setScreenState(3)
+            }
+        }
+        handleResize()
+        window.addEventListener("resize", handleResize)
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [])
 
     useEffect(() => {
         if (sliderRef?.current && paginationRef?.current) {
@@ -105,10 +105,9 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                         >
                             <div className="top-gainers-casinos-gamble__swiper slider__swiper swiper">
                                 <Swiper
-                                   // slidesPerView={screenState}
-                                   slidesPerView="auto"
+                                    slidesPerView={screenState}
                                     className="slider__wrapper swiper-wrapper"
-                                    spaceBetween={20}
+                     
                                     breakpoints={{
                                         320: {
                                             spaceBetween: 16,
@@ -143,15 +142,11 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                             },
                                             []
                                         )
-
                                         .map((item) => (
-                                            <SwiperSlide>
-                                                <div
-                                                    className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide"
-                                                    style={{
-                                                        minHeight: "260px",
-                                                        height: "100%",
-                                                    }}
+                                            //////main slide
+                                            <SwiperSlide className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide" style={{     minHeight: "260px",
+                                                height: "100%",}}>
+                                                <
                                                 >
                                                     <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                         <div className="different-casino-standart">
@@ -357,7 +352,7 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                             </div>
                                                         </div>
                                                     )}
-                                                </div>
+                                                </>
                                             </SwiperSlide>
                                         ))}
                                 </Swiper>
@@ -370,9 +365,10 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                 <div className="baner-row-block__swiper top-gainers-casinos-baner__swiper swiper">
                                     <div className="baner-row-block__wrapper swiper-wrapper">
                                         <Swiper
+                                        
                                             slidesPerView={1}
                                             ref={sliderRef}
-                                            spaceBetween={20}
+                                
                                             modules={[Pagination]}
                                             pagination={{
                                                 el: paginationRef.current,
@@ -393,8 +389,8 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                             {data.items_block.data_cards
                                                 .filter((item) => item.big_card)
                                                 .map((item) => (
-                                                    <SwiperSlide>
-                                                        <div className="baner-row-block__slide slide-baner-row-block swiper-slide">
+                                                    <SwiperSlide className="baner-row-block__slide slide-baner-row-block swiper-slide">
+                                                  
                                                             <div className="slide-baner-row-block__item item-baner-row-block">
                                                                 <div className="item-baner-row-block__image ibg">
                                                                     <LazyCardImg
@@ -492,7 +488,7 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                     </div>
                                                                 </a>
                                                             </div>
-                                                        </div>
+                                                    
                                                     </SwiperSlide>
                                                 ))}
                                         </Swiper>

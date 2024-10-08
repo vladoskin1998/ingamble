@@ -15,8 +15,8 @@ import { BlockType8 } from "./BlockType8"
 import { VPNFriendlyCasinos } from "./VPNFriendlyCasinos"
 import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
 import { WhatWeArePlayingNow } from "./WhatWeArePlayingNow"
-import PopularFree from "./PopularFree"
-import { GreatLiveCasinoBonuses } from "./GreatLiveCasinoBonuses"
+// import PopularFree from "./PopularFree"
+// import { GreatLiveCasinoBonuses } from "./GreatLiveCasinoBonuses"
 import { FastestPayoutCasinos } from "./FastestPayoutCasinos"
 import { BlockType1 } from "./BlockType1"
 import $api from "../../http"
@@ -140,7 +140,7 @@ export const Home = () => {
 
                     <TheBestCasinosYear />
 
-                    <PopularFree />
+                    {/* <PopularFree /> */}
 
                     <BlockType2Mobile
                         data={data?.dataHome?.data_blocks?.find(
@@ -187,9 +187,9 @@ export const Home = () => {
                                 item.items_block.type_block ===
                                 BlockTypeNumber.BlockType7
                         )}/>
-                    <div>
-                        <GreatLiveCasinoBonuses />
-                    </div>
+                  
+                        {/* <GreatLiveCasinoBonuses /> */}
+                   
                     <BlockType5 data={data?.dataHome?.data_blocks?.find(
                             (item) =>
                                 item.items_block.type_block ===

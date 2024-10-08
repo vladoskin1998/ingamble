@@ -75,7 +75,7 @@ export const BlockType2 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     <div className="baner-row-block__wrapper swiper-wrapper">
                                         <Swiper
                                             ref={sliderRef}
-                                            spaceBetween={20}
+                                    
                                             modules={[Pagination]}
                                             pagination={{
                                                 el: paginationRef.current,
@@ -241,7 +241,7 @@ export const BlockType2 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                 <div>
                                     <Swiper
                                         slidesPerView="auto"
-                                        spaceBetween={20}
+                                        
                                         modules={[Pagination]}
                                         breakpoints={{
                                             320: {
