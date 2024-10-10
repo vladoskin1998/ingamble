@@ -5402,6 +5402,7 @@ h3 {
   .sidebar-gamble.active .title-filters-sidebar-gamble {
     padding: 24px 16px 22px 16px;
   }
+ 
 }
 .sidebar-gamble.active .title-filters-sidebar-gamble__btn-icon_main {
   display: none;
@@ -5712,7 +5713,9 @@ h3 {
     flex: 0 0 40px;
     width: 40px;
     height: 40px;
+    display: none;
   }
+  
 }
 .title-filters-sidebar-gamble__btn-icon_main {
   flex: 0 0 20px;

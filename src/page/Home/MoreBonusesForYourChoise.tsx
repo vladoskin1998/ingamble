@@ -32,7 +32,7 @@ export default function MoreBonusesForYourChoise ()  {
                 </div>
                 <div className="best-live-dealer-casinos-gamble__content">
                     <div className="best-live-dealer-casinos-gamble__title">
-                        <span>More bonuses</span>
+                        <span>More bonuses</span>{" "}
                         for your choice
                     </div>
                     <button

@@ -438,7 +438,7 @@ export const Header = ({
                     <div className="mobile-header__body">
                         <div
                             className="header__column"
-                            data-da="mobile-header__body, 0, 1355.98"
+                            // data-da="mobile-header__body, 0, 1355.98"
                         >
                             <nav className="header__menu menu-header">
                                 <ul className="menu-header__list">
@@ -548,7 +548,7 @@ export const Header = ({
                                             <li
                                                 onClick={() => handleLanguageSelect(item)}
                                                 className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${item.code === selectedLanguage.code && "active"}`}
-                                                data-dropdown=""
+                                          
                                             >
                                                 <span className="list-item-dropdown-language-header__icon">
                                                     <img

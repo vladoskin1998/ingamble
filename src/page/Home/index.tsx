@@ -4,7 +4,9 @@ import { Wraper } from "../Wraper"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 
 import { Categories } from "../../components/categories/Categories"
+import { BlockType1 } from "./BlockType1"
 import { BlockType2 } from "./BlockType2"
+
 import { BlockType6 } from "./BlockType6"
 import { BlockType3 } from "./BlockType3"
 import { BlockType4 } from "./BlockType4"
@@ -12,51 +14,87 @@ import { BlockType7 } from "./BlockType7"
 import { BlockType5 } from "./BlockType5"
 import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
 import { BlockType8 } from "./BlockType8"
-import { VPNFriendlyCasinos } from "./VPNFriendlyCasinos"
+import { BlockType9 } from "./BlockType9"
 import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
-import { WhatWeArePlayingNow } from "./WhatWeArePlayingNow"
+
+// import { VPNFriendlyCasinos } from "./VPNFriendlyCasinos"
+// import { WhatWeArePlayingNow } from "./WhatWeArePlayingNow"
 // import PopularFree from "./PopularFree"
 // import { GreatLiveCasinoBonuses } from "./GreatLiveCasinoBonuses"
-import { FastestPayoutCasinos } from "./FastestPayoutCasinos"
-import { BlockType1 } from "./BlockType1"
+// import { FastestPayoutCasinos } from "./FastestPayoutCasinos"
+
 import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
-import { BlockType9 } from "./BlockType9"
 
-const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
-const BlockType7Mobile = lazy(() => import("./BlockType7Mobile"))
-
-const TopReloadBonuses = lazy(() => import("./TopReloadBonuses"))
-const NonStickyBonus = lazy(() => import("./NonStickyBonus"))
-
-const NewlyOpenedCasinos = lazy(() => import("./NewlyOpenedCasinos"))
-
-const ExploreTheBestCryptoCasinos = lazy(
-    () => import("./ExploreTheBestCryptoCasinos")
-)
-
-const WeeksFavoiritesBonuses = lazy(() => import("./WeeksFavoiritesBonuses"))
-
-const TheBestCasinosYear = lazy(() => import("./TheBestCasinosYear"))
-
-const FastestWithdrawalCasinos = lazy(
-    () => import("./FastestWithdrawalCasinos")
-)
 const BlockType2Mobile = lazy(() => import("./BlockType2Mobile"))
-const HighrollerCasinoBonuses = lazy(() => import("./HighrollerCasinoBonuses"))
+const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
+// const BlockType7Mobile = lazy(() => import("./BlockType7Mobile"))
 
-const GetStartedWithPowerfulWelcomeBonusPacks = lazy(
-    () => import("./GetStartedWithPowerfulWelcomeBonusPacks")
-)
+// const TopReloadBonuses = lazy(() => import("./TopReloadBonuses"))
+// const NonStickyBonus = lazy(() => import("./NonStickyBonus"))
+
+// const NewlyOpenedCasinos = lazy(() => import("./NewlyOpenedCasinos"))
+
+// const ExploreTheBestCryptoCasinos = lazy(
+//     () => import("./ExploreTheBestCryptoCasinos")
+// )
+
+// const WeeksFavoiritesBonuses = lazy(() => import("./WeeksFavoiritesBonuses"))
+
+// const TheBestCasinosYear = lazy(() => import("./TheBestCasinosYear"))
+
+// const FastestWithdrawalCasinos = lazy(
+//     () => import("./FastestWithdrawalCasinos")
+// )
+
+// const HighrollerCasinoBonuses = lazy(() => import("./HighrollerCasinoBonuses"))
+
+// const GetStartedWithPowerfulWelcomeBonusPacks = lazy(
+//     () => import("./GetStartedWithPowerfulWelcomeBonusPacks")
+// )
 
 const getHomeDataFetch = async () => {
     const response = await $api.get("get-data-home-page/")
     const headers = response.headers
 
-    return { dataHome: response.data, headers }
+    return { dataHome: response?.data?.data_blocks?.sort(
+        (a:any, b:any) => a?.blocks_sequence_number - b?.blocks_sequence_number
+    ), headers }
 }
+
+const renderBlock = (block: any) => {
+    console.log("renderBlock---->",block);
+    
+    switch (block.items_block.type_block) {
+        case BlockTypeNumber.BlockType1:
+            return <BlockType1 data={block} />;
+        case BlockTypeNumber.BlockType9:
+            return <BlockType9 data={block} />;
+        case BlockTypeNumber.BlockType2:
+            return (
+                <>
+                    <BlockType2 data={block} />
+                    <BlockType2Mobile data={block} />
+                </>
+            );
+        case BlockTypeNumber.BlockType6:
+            return <BlockType6 data={block} />;
+        case BlockTypeNumber.BlockType8:
+            return <BlockType8 data={block} />;
+        case BlockTypeNumber.BlockType3:
+            return <BlockType3 data={block} />;
+        case BlockTypeNumber.BlockType4:
+            return <BlockType4 data={block} />;
+        case BlockTypeNumber.BlockType7:
+            return <BlockType7 data={block} />;
+        case BlockTypeNumber.BlockType5:
+            return <BlockType5 data={block} />;
+        default:
+            return null;
+    }
+};
 
 export const Home = () => {
     document.title = "Home"
@@ -65,13 +103,13 @@ export const Home = () => {
         useAdaptiveBehavior()
 
     const { data, isLoading } = useQuery<{
-        dataHome: { data_blocks: HomeDataBlock[] }
+        dataHome: { data_blocks: HomeDataBlock[] }[]
         headers: any
     }>("get-data-home-page/ ", getHomeDataFetch, {
         keepPreviousData: true,
     })
 
-    console.log(data)
+    console.log("------?",data)
 
     useEffect(() => {
         initializeAdaptiveBehavior()
@@ -86,115 +124,135 @@ export const Home = () => {
             <main className="gamble__main main-gamble">
                 <div className="main-gamble__body">
                     <Categories
-                        category={
-                            [
-                                { name: "All" },
-                                { name: "Hot Events" },
-                                { name: "Best Cash Back Casinos" },
-                                { name: "Highest RTP Slots" },
-                                { name: "No Deposit Bonuses" },
-                                { name: "VPN Allowed Casinos" },
-                            ] || []
-                        }
+                        category={[
+                            { name: "All" },
+                            { name: "Hot Events" },
+                            { name: "Best Cash Back Casinos" },
+                            { name: "Highest RTP Slots" },
+                            { name: "No Deposit Bonuses" },
+                            { name: "VPN Allowed Casinos" },
+                        ]}
                     />
-                    <BlockType1
-                        data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType1
-                        )}
-                    />
-                    <FastestPayoutCasinos />
-                    <BlockType9
-                        data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType9
-                        )}
-                    />
+                    {data?.dataHome?.map((block) => renderBlock(block))}
+                    {/* {[
+                        <BlockType1
+                            data={data?.dataHome?.data_blocks?.find(
+                                (item) =>
+                                    item.items_block.type_block ===
+                                    BlockTypeNumber.BlockType1
+                            )}
+                        />,
+                        <BlockType9
+                            data={data?.dataHome?.data_blocks?.find(
+                                (item) =>
+                                    item.items_block.type_block ===
+                                    BlockTypeNumber.BlockType9
+                            )}
+                        />,
+                        <>
+                            <BlockType2
+                                data={data?.dataHome?.data_blocks?.find(
+                                    (item) =>
+                                        item.items_block.type_block ===
+                                        BlockTypeNumber.BlockType2
+                                )}
+                            />
+                            <BlockType2Mobile
+                                data={data?.dataHome?.data_blocks?.find(
+                                    (item) =>
+                                        item.items_block.type_block ===
+                                        BlockTypeNumber.BlockType2
+                                )}
+                            />
+                        </>,
 
-                    <BlockType2
-                        data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType2
-                        )}
-                    />
+                        <BlockType6
+                            data={data?.dataHome?.data_blocks?.find(
+                                (item) =>
+                                    item.items_block.type_block ===
+                                    BlockTypeNumber.BlockType6
+                            )}
+                        />,
+                        <BlockType8
+                            data={data?.dataHome?.data_blocks?.find(
+                                (item) =>
+                                    item.items_block.type_block ===
+                                    BlockTypeNumber.BlockType8
+                            )}
+                        />,
+                        <BlockType3
+                            data={data?.dataHome?.data_blocks?.find(
+                                (item) =>
+                                    item.items_block.type_block ===
+                                    BlockTypeNumber.BlockType3
+                            )}
+                        />,
+                        <BlockType4
+                            data={data?.dataHome?.data_blocks?.find(
+                                (item) =>
+                                    item.items_block.type_block ===
+                                    BlockTypeNumber.BlockType4
+                            )}
+                        />,
+                        <BlockType8
+                            data={data?.dataHome?.data_blocks?.find(
+                                (item) =>
+                                    item.items_block.type_block ===
+                                    BlockTypeNumber.BlockType8
+                            )}
+                        />,
+                        <BlockType7
+                            data={data?.dataHome?.data_blocks?.find(
+                                (item) =>
+                                    item.items_block.type_block ===
+                                    BlockTypeNumber.BlockType7
+                            )}
+                        />,
+                        
+                        <BlockType5
+                            data={data?.dataHome?.data_blocks?.find(
+                                (item) =>
+                                    item.items_block.type_block ===
+                                    BlockTypeNumber.BlockType5
+                            )}
+                        />,
+                    ]} */}
+
+                    {/* <FastestPayoutCasinos /> */}
+
                     {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
                         <WhatWeArePlayingNow />
                     </div> */}
-                    <BlockType6   data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType6
-                        )}/>
-                    <FastestWithdrawalCasinos />
-                    <WeeksFavoiritesBonuses />
-                    <div className="main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
-                        <BlockType8 data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType8
-                        )}/>
-                    </div>
 
-                    <TheBestCasinosYear />
+                    {/* <FastestWithdrawalCasinos />
+                    <WeeksFavoiritesBonuses /> */}
+
+                    {/* <TheBestCasinosYear /> */}
 
                     {/* <PopularFree /> */}
 
-                    <BlockType2Mobile
-                        data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType2
-                        )}
-                    />
-                    <HighrollerCasinoBonuses />
+                    {/* <HighrollerCasinoBonuses />
                     <NewlyOpenedCasinos />
                     <div className="main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
                         <WhatWeArePlayingNow />
-                    </div>
+                    </div> */}
 
-                    <ExploreTheBestCryptoCasinos />
-                    <GetStartedWithPowerfulWelcomeBonusPacks />
+                    {/* <ExploreTheBestCryptoCasinos />
+                    <GetStartedWithPowerfulWelcomeBonusPacks /> */}
 
-                    <BlockType3   data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType3
-                        )}/>
-
-                    <BlockType4    data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType4
-                        )}/>
-                    <BlockType8 data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType8
-                        )}/>
-                    <VPNFriendlyCasinos />
-                    <BlockType7 data={data?.dataHome?.data_blocks?.find(
+                    {/* <VPNFriendlyCasinos /> */}
+                    {/* <NonStickyBonus />
+                    <TopReloadBonuses /> */}
+                    {/* <BlockType7Mobile
+                        data={data?.dataHome?.data_blocks?.find(
                             (item) =>
                                 item.items_block.type_block ===
                                 BlockTypeNumber.BlockType7
-                        )}/>
-                    <NonStickyBonus />
-                    <TopReloadBonuses />
-                    <BlockType7Mobile  data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType7
-                        )}/>
-                  
-                        {/* <GreatLiveCasinoBonuses /> */}
-                   
-                    <BlockType5 data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType5
-                        )}/>
+                        )}
+                    /> */}
+
+                    {/* <GreatLiveCasinoBonuses /> */}
+
                     <MoreBonusesForYourChoise />
                     <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />
