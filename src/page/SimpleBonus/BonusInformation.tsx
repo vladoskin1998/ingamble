@@ -6,6 +6,7 @@ import slotsIcon from "../../assets/img/games/01.svg"
 import { GetDataBonusResponse } from "../../types"
 import moment from "moment"
 import { AccordionItem } from "../../components/acordion/Acordion"
+import { euroToDolar } from "../../helper"
 
 export const BonusInformation = ({
     data,
@@ -111,8 +112,8 @@ export const BonusInformation = ({
                                             <div className="item-content-bonus-information__value">
                                                 {data?.bonus_amount?.[0]?.value}{" "}
                                                 {
-                                                    data?.bonus_amount?.[0]
-                                                        ?.symbol.symbol
+                                                   euroToDolar(  data?.bonus_amount?.[0]
+                                                        ?.symbol.symbol || '')
                                                 }
                                             </div>
                                         </div>
@@ -125,8 +126,9 @@ export const BonusInformation = ({
                                                     data?.max_bet?.[0].value ||
                                                     0
                                                 } ${
-                                                    data?.max_bet?.[0].symbol
-                                                        .symbol || "EUR"
+                                                    euroToDolar( data?.max_bet?.[0].symbol
+                                                        .symbol || "")
+                                                   
                                                 }`}
                                             </div>
                                         </div>
@@ -135,8 +137,7 @@ export const BonusInformation = ({
                                                 Min dep:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {` ${data?.bonus_min_dep?.[0]?.min_value} ${data?.bonus_min_dep?.[0]?.symbol?.name}` ||
-                                                    "0€"}
+                                                {` ${data?.bonus_min_dep?.[0]?.min_value || 0 } ${euroToDolar(data?.bonus_min_dep?.[0]?.symbol?.name || '')}` }
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -166,8 +167,8 @@ export const BonusInformation = ({
                                                     data?.bonus_max_win?.[0]
                                                         ?.max_value || 0
                                                 } ${
-                                                    data?.bonus_max_win?.[0]
-                                                        ?.symbol?.symbol || ""
+                                                    euroToDolar(data?.bonus_max_win?.[0]
+                                                        ?.symbol?.symbol || "") 
                                                 }`}
                                             </div>
                                         </div>
@@ -874,8 +875,8 @@ export const BonusInformation = ({
                                                     RTP restriction:
                                                 </div>
                                                 <div className="item-content-bonus-information__value">
-                                                    {data?.restriction_rtp_game}{" "}
-                                                    %
+                                                    {data?.restriction_rtp_game}{"%"}
+                                                    
                                                 </div>
                                             </div>
                                         </div>

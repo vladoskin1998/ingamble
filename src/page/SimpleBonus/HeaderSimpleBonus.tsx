@@ -7,9 +7,8 @@ import { LazyLoadImage } from "react-lazy-load-image-component"
 import giftIcon from "../../assets/img/icons/gift.svg"
 import { useState, useEffect, lazy } from "react"
 import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
-const LazyFlag = lazy(() => import('react-world-flags'));
-
-
+import { euroToDolar } from "../../helper"
+const LazyFlag = lazy(() => import("react-world-flags"))
 
 const color_label = [
     "tags-casino-card__item_green",
@@ -28,144 +27,145 @@ export const HeaderSimpleBonus = ({
     const handleClick = () => {
         window.location.href = data?.casino_affiliate_link || ""
     }
-    
 
-    
-    const [isSmallScreen, setIsSmallScreen] = useState<boolean>(window.innerWidth <= 1023.98);
+    const [isSmallScreen, setIsSmallScreen] = useState<boolean>(
+        window.innerWidth <= 1023.98
+    )
 
     const handleResize = (): void => {
-      setIsSmallScreen(window.innerWidth <= 1023.98);
-    };
-  
+        setIsSmallScreen(window.innerWidth <= 1023.98)
+    }
+
     useEffect(() => {
+        window.addEventListener("resize", handleResize)
 
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-
-
-
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [])
 
     return (
-        <section className={`simple-bonus__casino-info casino-info ${!geoLocation.isAllowed && "casino-info_not-available"} `}>
+        <section
+            className={`simple-bonus__casino-info casino-info ${
+                !geoLocation.isAllowed && "casino-info_not-available"
+            } `}
+        >
             <div className="casino-info__container container">
                 <div className="casino-info__body">
                     <div className="casino-info__row">
                         <div className="casino-info__main main-casino-info">
                             <div className="main-casino-info__image-block">
                                 <div className="main-casino-info__image ibg">
-                                    <LazyCardImg img={data?.bonus_image || "" }/>
+                                    <LazyCardImg
+                                        img={data?.bonus_image || ""}
+                                    />
                                     {/* <img
                                         src={data?.bonus_image || mainImg}
                                         alt="main-img"
                                     /> */}
-                         
                                 </div>
                             </div>
-                            { !isSmallScreen ?  <div className="main-casino-info__name name-main-casino-info">
-                        <div className="name-main-casino-info__logo">
-                        <LazyCardImg img={  data?.casino_logo || "" }/>
-                          
-                        </div>
-                        <div className="name-main-casino-info__content">
-                            <a
-                                href={"#"}
-                                aria-label={`Link to ${
-                                    data?.casino_name ||
-                                    "Casino"
-                                }`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="name-main-casino-info__title"
-                            >
-                                {data?.casino_name ||
-                                    "Stake Casino"}
-                            </a>
-                            <div
-                                className="info-casino-card__stake-rating name-main-casino-info__stake-rating"
-                                // data-da="name-main-casino-info, 0, 1023.98"
-                            >
-                                <span className="info-casino-card__stake-rating-icon">
-                                    <img
-                                        src={starIcon}
-                                        alt="star"
-                                    />
-                                </span>
-                                <span className="info-casino-card__stake__rating-number">
-                                    {data?.bonus_rank ||
-                                        "4.8"}
-                                </span>
-                            </div>
-                            <div
-                                className="info-casino-card__likes name-main-casino-info__likes"
-                                // data-da="name-main-casino-info, 2, 1023.98"
-                            >
-                                <span className="info-casino-card__likes-icon">
-                                    <img
-                                        src={likeIcon}
-                                        alt="like"
-                                    />
-                                </span>
-                                <span className="info-casino-card__likes-number">
-                                    {data?.likes || "34K"}
-                                </span>
-                            </div>
-                        </div>
-                    </div> 
-                      :
-                            <div className="main-casino-info__name name-main-casino-info">
-                                <div
-                                    className="info-casino-card__stake-rating name-main-casino-info__stake-rating"
-                           //         data-da="name-main-casino-info, 0, 1023.98"
-                                >
-                                    <span className="info-casino-card__stake-rating-icon">
-                                        <img src={starIcon} alt="star" />
-                                    </span>
-                                    <span className="info-casino-card__stake__rating-number">
-                                        {data?.bonus_rank || "4.8"}
-                                    </span>
+                            {!isSmallScreen ? (
+                                <div className="main-casino-info__name name-main-casino-info">
+                                    <div className="name-main-casino-info__logo">
+                                        <LazyCardImg
+                                            img={data?.casino_logo || ""}
+                                        />
+                                    </div>
+                                    <div className="name-main-casino-info__content">
+                                        <a
+                                            href={"#"}
+                                            aria-label={`Link to ${
+                                                data?.casino_name || "Casino"
+                                            }`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="name-main-casino-info__title"
+                                        >
+                                            {data?.casino_name ||
+                                                "Stake Casino"}
+                                        </a>
+                                        <div
+                                            className="info-casino-card__stake-rating name-main-casino-info__stake-rating"
+                                            // data-da="name-main-casino-info, 0, 1023.98"
+                                        >
+                                            <span className="info-casino-card__stake-rating-icon">
+                                                <img
+                                                    src={starIcon}
+                                                    alt="star"
+                                                />
+                                            </span>
+                                            <span className="info-casino-card__stake__rating-number">
+                                                {data?.bonus_rank || "4.8"}
+                                            </span>
+                                        </div>
+                                        <div
+                                            className="info-casino-card__likes name-main-casino-info__likes"
+                                            // data-da="name-main-casino-info, 2, 1023.98"
+                                        >
+                                            <span className="info-casino-card__likes-icon">
+                                                <img
+                                                    src={likeIcon}
+                                                    alt="like"
+                                                />
+                                            </span>
+                                            <span className="info-casino-card__likes-number">
+                                                {data?.likes || "34K"}
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="name-main-casino-info__logo">
-                                    <img
-                                        src={data?.casino_logo || stakeLogo}
-                                        alt="stake"
-                                    />
-                                </div>
-                                <div
-                                    className="info-casino-card__likes name-main-casino-info__likes"
-                              //      data-da="name-main-casino-info, 2, 1023.98"
-                                >
-                                    <span className="info-casino-card__likes-icon">
-                                        <img src={likeIcon} alt="like" />
-                                    </span>
-                                    <span className="info-casino-card__likes-number">
-                                        {data?.likes || "34K"}
-                                    </span>
-                                </div>
-                                <div className="name-main-casino-info__content">
-                                    <a
-                                        href={"#"}
-                                        aria-label={`Link to ${
-                                            data?.casino_name || "Casino"
-                                        }`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="name-main-casino-info__title"
+                            ) : (
+                                <div className="main-casino-info__name name-main-casino-info">
+                                    <div
+                                        className="info-casino-card__stake-rating name-main-casino-info__stake-rating"
+                                        //         data-da="name-main-casino-info, 0, 1023.98"
                                     >
-                                        {data?.casino_name || "Stake Casino"}
-                                    </a>
+                                        <span className="info-casino-card__stake-rating-icon">
+                                            <img src={starIcon} alt="star" />
+                                        </span>
+                                        <span className="info-casino-card__stake__rating-number">
+                                            {data?.bonus_rank || "4.8"}
+                                        </span>
+                                    </div>
+                                    <div className="name-main-casino-info__logo">
+                                        <img
+                                            src={data?.casino_logo || stakeLogo}
+                                            alt="stake"
+                                        />
+                                    </div>
+                                    <div
+                                        className="info-casino-card__likes name-main-casino-info__likes"
+                                        //      data-da="name-main-casino-info, 2, 1023.98"
+                                    >
+                                        <span className="info-casino-card__likes-icon">
+                                            <img src={likeIcon} alt="like" />
+                                        </span>
+                                        <span className="info-casino-card__likes-number">
+                                            {data?.likes || "34K"}
+                                        </span>
+                                    </div>
+                                    <div className="name-main-casino-info__content">
+                                        <a
+                                            href={"#"}
+                                            aria-label={`Link to ${
+                                                data?.casino_name || "Casino"
+                                            }`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="name-main-casino-info__title"
+                                        >
+                                            {data?.casino_name ||
+                                                "Stake Casino"}
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>}
-                          
+                            )}
                         </div>
                         <div className="casino-info__content content-casino-info">
                             <div className="content-casino-info__main">
                                 <div className="content-casino-info__top">
                                     <h2 className="content-casino-info__title">
-                                       
                                         {data?.name ||
                                             " 200% up to €200 and 50 spin (€2 spin)"}
                                     </h2>
@@ -188,14 +188,20 @@ export const HeaderSimpleBonus = ({
                                 <div className="content-casino-info__country country-content-casino-info">
                                     <div className="country-content-casino-info__info">
                                         <div className="country-content-casino-info__icon">
-                                            <LazyFlag code={ 'LV'} height={20}/>
+                                            <LazyFlag code={"LV"} height={20} />
                                             {/* <LazyLoadImage
                                                 src={latviaFlag}
                                                 alt="latvia"
                                             /> */}
                                         </div>
-                                        <div className={`country-content-casino-info__text `}>
-                                          {`${geoLocation.isAllowed ? "Accepts players from" : "Doesn’t accept players from"} ${geoLocation.countryName}`}   
+                                        <div
+                                            className={`country-content-casino-info__text `}
+                                        >
+                                            {`${
+                                                geoLocation.isAllowed
+                                                    ? "Accepts players from"
+                                                    : "Doesn’t accept players from"
+                                            } ${geoLocation.countryName}`}
                                         </div>
                                     </div>
                                     <span className="main-get-bonus__btn main-get-bonus__btn_apply">
@@ -221,9 +227,9 @@ export const HeaderSimpleBonus = ({
                                             alt="gift"
                                         />
                                     </span>
-                                    {
-                                        geoLocation.isAllowed ? "Get Bonus and Play " : "Browse Recommended Bonuses"
-                                    }            
+                                    {geoLocation.isAllowed
+                                        ? "Get Bonus and Play "
+                                        : "Browse Recommended Bonuses"}
                                 </a>
                             </div>
                             <div className="content-casino-info__features features-content-casino-info">
@@ -311,9 +317,15 @@ export const HeaderSimpleBonus = ({
                                             </div>
                                             <div className="item-features-content-casino-info__body">
                                                 <div className="item-features-content-casino-info__number">
-                                                    {data?.bonus_min_dep?.[0]
-                                                        ?.min_value || 0}
-                                                    €
+                                                    {`${
+                                                        data?.bonus_min_dep?.[0]
+                                                            ?.min_value || 0
+                                                    }${euroToDolar(
+                                                        data?.bonus_min_dep?.[0]
+                                                            .symbol.symbol || ""
+                                                    )}
+
+                                                    `}
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
                                                     To Activate
@@ -333,7 +345,10 @@ export const HeaderSimpleBonus = ({
                                                     {`${
                                                         data?.max_bet?.[0]
                                                             ?.value || 0
-                                                    }€`}
+                                                    }${euroToDolar(
+                                                        data?.max_bet?.[0]
+                                                            .symbol.symbol || ""
+                                                    )}`}
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
                                                     Per Spin

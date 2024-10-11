@@ -44,6 +44,8 @@ const getBonusDataFetch = async () => {
     return { dataBonus: response.data, headers }
 }
 
+
+
 export default function SimpleBonus () {
     document.title = "Simple Bonus"
     const {  initializeAdaptiveBehavior } =

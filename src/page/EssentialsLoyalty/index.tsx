@@ -32,7 +32,7 @@ export default function EssentialsLoyalty() {
                                 { name: "Highest RTP Slots" },
                                 { name: " No Deposit Bonuses" },
                                 { name: "  VPN Allowed Casinos" },
-                            ] || []
+                            ] 
                         }
                     />
                     <BreadCrumb

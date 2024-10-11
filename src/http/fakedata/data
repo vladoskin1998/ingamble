@@ -1,1124 +1,368 @@
 {
-    "data_blocks": [
+    "id": 8,
+    "slug": "first-deposit-welcome-bonus",
+    "casino_name": "iWild Casino",
+    "casino_logo": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
+    "casino_rank": "8.7",
+    "casino_affiliate_link": "",
+    "sibling_bonuses": [
         {
-            "blocks_sequence_number": 0,
-            "items_block": {
-                "block_title": "Type 1 test",
-                "subtitle": "test subtitle",
-                "title_image": "https://adm.incasinowetrust.com/media/home_page_title_image/download_25.png",
-                "type_block": "type_1",
-                "data_cards": [
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 101,
-                            "casino_name": "Welle Casino",
-                            "casino_rank": "8.5",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/Group_46_4.png",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": "653",
-                            "bonus_name": "100% up to €200",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 99,
-                            "casino_name": "Pin-Up Casino",
-                            "casino_rank": "9.1",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": "641",
-                            "bonus_name": "125% up to €5000 and 250 Free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 49,
-                            "casino_name": "IceCasino",
-                            "casino_rank": "9.8",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": "215",
-                            "bonus_name": "120% up to €300+120FS",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 1,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 13,
-                            "casino_name": "BitStarz Casino",
-                            "casino_rank": "9.8",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": "50",
-                            "bonus_name": "100% up to €100 or 1 BTC + 180 Free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 2,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 3,
-                            "casino_name": "iWild Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "testtest"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "9",
-                            "bonus_name": "50% bonus up to €500 + 25 Free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 3,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 4,
-                            "casino_name": "Pledoo Casino",
-                            "casino_rank": "8.6",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/0xVidia.webp",
-                            "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "358",
-                            "bonus_name": "70% up to €500 + 75FS",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    }
-                ]
-            }
+            "id": 6,
+            "name": "50%",
+            "likes": 19,
+            "bonus_image": "/media/bonuses/files/ava_1.jpg",
+            "labels": []
         },
         {
-            "blocks_sequence_number": 0,
-            "items_block": {
-                "block_title": "Type 2",
-                "subtitle": "test subtitle",
-                "title_image": "https://adm.incasinowetrust.com/media/home_page_title_image/icpswap_logo.png",
-                "type_block": "type_2",
-                "data_cards": [
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 7,
-                            "casino_name": "Magic Red Casino",
-                            "casino_rank": "9.8",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 13,
-                            "casino_name": "BitStarz Casino",
-                            "casino_rank": "9.8",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 46,
-                            "casino_name": "21 Casino",
-                            "casino_rank": "9.3",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 24,
-                            "casino_name": "Bitsler Casino",
-                            "casino_rank": "8.8",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/internet-computer-icp-logo.png",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 5,
-                            "casino_name": "Casinoin",
-                            "casino_rank": "8.4",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 1,
-                        "big_card": true,
-                        "casino_info": {
-                            "casino_id": 4,
-                            "casino_name": "Pledoo Casino",
-                            "casino_rank": "8.6",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/0xVidia.webp",
-                            "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "358",
-                            "bonus_name": "70% up to €500 + 75FS",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 2,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 3,
-                            "casino_name": "iWild Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "testtest"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "9",
-                            "bonus_name": "50% bonus up to €500 + 25 Free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    }
-                ]
-            }
+            "id": 9,
+            "name": "50% bonus up to €500 + 25 Free Spins",
+            "likes": 0,
+            "bonus_image": "/media/bonuses/files/42017.webp",
+            "labels": []
         },
         {
-            "blocks_sequence_number": 0,
-            "items_block": {
-                "block_title": "Type 6",
-                "subtitle": "test subtitle",
-                "title_image": "https://adm.incasinowetrust.com/media/home_page_title_image/download_25_vXr3TAY.png",
-                "type_block": "type_6",
-                "data_cards": [
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 46,
-                            "casino_name": "21 Casino",
-                            "casino_rank": "9.3",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 22,
-                            "casino_name": "Bitcasino.io",
-                            "casino_rank": "8.9",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 48,
-                            "casino_name": "Fairspin Casino",
-                            "casino_rank": "9.0",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 1,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 4,
-                            "casino_name": "Pledoo Casino",
-                            "casino_rank": "8.6",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/0xVidia.webp",
-                            "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "357",
-                            "bonus_name": "100% up to €200 + 75FS",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 2,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 3,
-                            "casino_name": "iWild Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "testtest"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "355",
-                            "bonus_name": "100% up to €1000 + 100 Free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 3,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 6,
-                            "casino_name": "King Billy Casino",
-                            "casino_rank": "9.8",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/photo_2024-03-12_13-18-43.jpg",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "23",
-                            "bonus_name": "50% up to €/$75",
-                            "bonus_likes": 0,
-                            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/EtmBWkuG_400x400.jpg",
-                            "labels": null
-                        }
-                    }
-                ]
-            }
+            "id": 10,
+            "name": "50% bonus up to €300 + 50 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
         },
         {
-            "blocks_sequence_number": 0,
-            "items_block": {
-                "block_title": "Type 3",
-                "subtitle": "test subtitle",
-                "title_image": null,
-                "type_block": "type_3",
-                "data_cards": [
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 6,
-                            "casino_name": "King Billy Casino",
-                            "casino_rank": "9.8",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/photo_2024-03-12_13-18-43.jpg",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "23",
-                            "bonus_name": "50% up to €/$75",
-                            "bonus_likes": 0,
-                            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/EtmBWkuG_400x400.jpg",
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 69,
-                            "casino_name": "Rolling Slots Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": "314",
-                            "bonus_name": "50% up to €250",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 49,
-                            "casino_name": "IceCasino",
-                            "casino_rank": "9.8",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": "416",
-                            "bonus_name": "200% up to €700+100FS",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": [
-                                "Safe",
-                                "1111"
-                            ]
-                        }
-                    },
-                    {
-                        "order": 1,
-                        "big_card": true,
-                        "casino_info": {
-                            "casino_id": 4,
-                            "casino_name": "Pledoo Casino",
-                            "casino_rank": "8.6",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/0xVidia.webp",
-                            "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "358",
-                            "bonus_name": "70% up to €500 + 75FS",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 2,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 3,
-                            "casino_name": "iWild Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "testtest"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "9",
-                            "bonus_name": "50% bonus up to €500 + 25 Free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    }
-                ]
-            }
+            "id": 11,
+            "name": "10-15%",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
         },
         {
-            "blocks_sequence_number": 0,
-            "items_block": {
-                "block_title": "Type 4",
-                "subtitle": "test subtitle",
-                "title_image": "https://adm.incasinowetrust.com/media/home_page_title_image/download_25_R0SNNTn.png",
-                "type_block": "type_4",
-                "data_cards": [
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 19,
-                            "casino_name": "RioBet Casino",
-                            "casino_rank": "9.1",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 1,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 4,
-                            "casino_name": "Pledoo Casino",
-                            "casino_rank": "8.6",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/0xVidia.webp",
-                            "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "357",
-                            "bonus_name": "100% up to €200 + 75FS",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 2,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 3,
-                            "casino_name": "iWild Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "testtest"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "10",
-                            "bonus_name": "50% bonus up to €300 + 50 Free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 3,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 5,
-                            "casino_name": "Casinoin",
-                            "casino_rank": "8.4",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": "16",
-                            "bonus_name": "100% up to €1,000+100 free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    }
-                ]
-            }
+            "id": 353,
+            "name": "200% up to €1000+ 200 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
         },
         {
-            "blocks_sequence_number": 0,
-            "items_block": {
-                "block_title": "Type 8",
-                "subtitle": "subtitle",
-                "title_image": null,
-                "type_block": "type_8",
-                "data_cards": [
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 3,
-                            "casino_name": "iWild Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "testtest"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "9",
-                            "bonus_name": "50% bonus up to €500 + 25 Free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 6,
-                            "casino_name": "King Billy Casino",
-                            "casino_rank": "9.8",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/photo_2024-03-12_13-18-43.jpg",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "24",
-                            "bonus_name": "50 Free Spins",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 1,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 4,
-                            "casino_name": "Pledoo Casino",
-                            "casino_rank": "8.6",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/0xVidia.webp",
-                            "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "357",
-                            "bonus_name": "100% up to €200 + 75FS",
-                            "bonus_likes": 666,
-                            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/3_1.jpg",
-                            "labels": [
-                                "Safe",
-                                "Min Dep: $20"
-                            ]
-                        }
-                    }
-                ]
-            }
+            "id": 354,
+            "name": "100% up to €1000 + 100 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
         },
         {
-            "blocks_sequence_number": 0,
-            "items_block": {
-                "block_title": "Type 7",
-                "subtitle": "test subtitle",
-                "title_image": null,
-                "type_block": "type_7",
-                "data_cards": [
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 55,
-                            "casino_name": "5Gringos Casino",
-                            "casino_rank": "8.9",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 23,
-                            "casino_name": "Betcoin.ag Casino",
-                            "casino_rank": "8.9",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 45,
-                            "casino_name": "Wazamba Casino",
-                            "casino_rank": "9.4",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 20,
-                            "casino_name": "LuckyBlock Casino",
-                            "casino_rank": "9.1",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 5,
-                            "casino_name": "Casinoin",
-                            "casino_rank": "8.4",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 6,
-                            "casino_name": "King Billy Casino",
-                            "casino_rank": "9.8",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/photo_2024-03-12_13-18-43.jpg",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 69,
-                            "casino_name": "Rolling Slots Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 24,
-                            "casino_name": "Bitsler Casino",
-                            "casino_rank": "8.8",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/internet-computer-icp-logo.png",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 1,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 4,
-                            "casino_name": "Pledoo Casino",
-                            "casino_rank": "8.6",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/0xVidia.webp",
-                            "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "357",
-                            "bonus_name": "100% up to €200 + 75FS",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 2,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 3,
-                            "casino_name": "iWild Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "testtest"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "8",
-                            "bonus_name": "100% up to €1000 + 100 Free Spins",
-                            "bonus_likes": 1111,
-                            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/%D0%BA%D0%B0%D0%B7_5_%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F.jpg",
-                            "labels": null
-                        }
-                    }
-                ]
-            }
+            "id": 355,
+            "name": "100% up to €1000 + 100 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
         },
         {
-            "blocks_sequence_number": 0,
-            "items_block": {
-                "block_title": "Type 5",
-                "subtitle": "test subtitle",
-                "title_image": "https://adm.incasinowetrust.com/media/home_page_title_image/download_25_C7w8CNM.png",
-                "type_block": "type_5",
-                "data_cards": [
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 5,
-                            "casino_name": "Casinoin",
-                            "casino_rank": "8.4",
-                            "casino_image": null,
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": []
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 0,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 6,
-                            "casino_name": "King Billy Casino",
-                            "casino_rank": "9.8",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/photo_2024-03-12_13-18-43.jpg",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": null,
-                            "bonus_name": null,
-                            "bonus_likes": null,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 1,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 4,
-                            "casino_name": "Pledoo Casino",
-                            "casino_rank": "8.6",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/0xVidia.webp",
-                            "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "test parameter 2"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "13",
-                            "bonus_name": "up to €/$300",
-                            "bonus_likes": 0,
-                            "bonus_image": null,
-                            "labels": null
-                        }
-                    },
-                    {
-                        "order": 2,
-                        "big_card": false,
-                        "casino_info": {
-                            "casino_id": 3,
-                            "casino_name": "iWild Casino",
-                            "casino_rank": "8.7",
-                            "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/iwildcasino-casino-logo.webp",
-                            "casino_affiliate_link": "",
-                            "additional_casino_params": [
-                                "test parameter 1",
-                                "testtest"
-                            ]
-                        },
-                        "bonus_info": {
-                            "bonus_id": "8",
-                            "bonus_name": "100% up to €1000 + 100 Free Spins",
-                            "bonus_likes": 1111,
-                            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/%D0%BA%D0%B0%D0%B7_5_%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F.jpg",
-                            "labels": null
-                        }
-                    }
-                ]
-            }
+            "id": 356,
+            "name": "150% up to €1000 + 150 Free Spins",
+            "likes": 0,
+            "bonus_image": null,
+            "labels": []
         },
         {
-            "blocks_sequence_number": 0,
-            "items_block": {
-                "category": {
-                    "id": 1,
-                    "name": "test category"
+            "id": 459,
+            "name": "testing",
+            "likes": 25,
+            "bonus_image": null,
+            "labels": [
+                {
+                    "name": "Safe"
                 },
-                "block_title": "Essential VIP Loyatly Programs",
-                "subtitle": null,
-                "title_image": null,
-                "type_block": "type_9",
-                "data_cards": [
-                    {
-                        "stars": [
-                            1,
-                            2,
-                            3,
-                            4,
-                            5
-                        ],
-                        "card_logo": "https://adm.incasinowetrust.com/media/casino_loyalty_images/spinbetter.svg",
-                        "casino_id": 3,
-                        "keypoints": [
-                            {
-                                "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/download_24.png",
-                                "text_1": "Weekly Cashback",
-                                "text_2": "Up to 15%"
-                            },
-                            {
-                                "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/download_25.png",
-                                "text_1": "Personal VIP manager",
-                                "text_2": "Help with any questions 24/7"
-                            },
-                            {
-                                "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/images_2.png",
-                                "text_1": "Additional Bonuses",
-                                "text_2": "Additional 15% to a deposit"
-                            },
-                            {
-                                "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/42002.webp",
-                                "text_1": "Increased Withdrawal Limits",
-                                "text_2": "Ability to raise limits"
-                            },
-                            {
-                                "image": "",
-                                "text_1": "Exclusive gaming activity",
-                                "text_2": "Unique bonuses, big cashbacks and exclusive promotions"
-                            }
-                        ],
-                        "card_number": null,
-                        "casino_name": "iWild Casino",
-                        "casino_rank": "8.7",
-                        "loyalty_rank": "8.0",
-                        "loyalty_likes": 48,
-                        "loyalty_count_levels": 5,
-                        "casino_affiliate_link": null,
-                        "loyalty_level_description": null
-                    },
-                    {
-                        "stars": [
-                            1,
-                            2,
-                            3,
-                            4,
-                            5
-                        ],
-                        "card_logo": "https://adm.incasinowetrust.com/media/casino_loyalty_images/lambo_9cdwCVz.png",
-                        "casino_id": 4,
-                        "keypoints": [
-                            {
-                                "image": "",
-                                "text_1": "Cashback",
-                                "text_2": "Up to 10%"
-                            },
-                            {
-                                "image": "",
-                                "text_1": "Exchange Points",
-                                "text_2": "For free pins"
-                            },
-                            {
-                                "image": "",
-                                "text_1": "Cash Bonus",
-                                "text_2": "Receive extra money directly into your account"
-                            },
-                            {
-                                "image": "",
-                                "text_1": "test",
-                                "text_2": "test"
-                            }
-                        ],
-                        "card_number": null,
-                        "casino_name": "Pledoo Casino",
-                        "casino_rank": "8.6",
-                        "loyalty_rank": "10.0",
-                        "loyalty_likes": 995,
-                        "loyalty_count_levels": 5,
-                        "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y",
-                        "loyalty_level_description": "Perfection"
-                    }
-                ]
+                {
+                    "name": "Sticky"
+                },
+                {
+                    "name": "Min Dep: $20"
+                },
+                {
+                    "name": "No KYC"
+                },
+                {
+                    "name": "1111"
+                }
+            ]
+        }
+    ],
+    "name": "100% up to €1000 + 100 Free Spins",
+    "likes": 1111,
+    "bonus_rank": "11.0",
+    "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/%D0%BA%D0%B0%D0%B7_5_%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F.jpg",
+    "bonus_value": 1111.0,
+    "category": [
+        {
+            "name": "Best Welcome Bonuses"
+        },
+        {
+            "name": "Best Reload Bonuses"
+        },
+        {
+            "name": "Low Wager Bonuses"
+        },
+        {
+            "name": "Low Risk Bonuses"
+        },
+        {
+            "name": "No Deposit Bonuses"
+        }
+    ],
+    "bonus_type": "Reload Bonus",
+    "bonus_subtype": [
+        {
+            "name": "2nd deposit bonus | 100% up to 150 EUR"
+        },
+        {
+            "name": "3rd deposit bonus | 80% up to 200 EUR"
+        },
+        {
+            "name": "4th deposit bonus | 50% up to 150 EUR"
+        },
+        {
+            "name": "1st Deposit Bonus | 15000% up to 200 EUR"
+        },
+        {
+            "name": "1st deposit bonus | 100% up to 300€"
+        },
+        {
+            "name": "2nd deposit bonus | 100%"
+        }
+    ],
+    "labels": [
+        {
+            "name": "Safe"
+        },
+        {
+            "name": "Sticky"
+        },
+        {
+            "name": "No KYC"
+        },
+        {
+            "name": "1111"
+        }
+    ],
+    "bonus_amount": [
+        {
+            "value": 1111.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        },
+        {
+            "value": 1111.0,
+            "symbol": {
+                "symbol": "LBTC",
+                "name": "Lightning Bitcoin"
             }
         }
-    ]
+    ],
+    "link": "https://iwildcasino8.com/en/promo/item/welcome-bonus1",
+    "restriction_rtp_game": 1111.0,
+    "max_bet_automatic": true,
+    "game_providers": [
+        {
+            "name": "Amusnet (EGT)",
+            "image": null
+        },
+        {
+            "name": "TOP TREND GAMING",
+            "image": null
+        },
+        {
+            "name": "Habanero",
+            "image": null
+        },
+        {
+            "name": "GONG Gaming Technologies",
+            "image": null
+        },
+        {
+            "name": "Retro Gaming",
+            "image": null
+        }
+    ],
+    "sticky": true,
+    "turnover_bonus": true,
+    "buy_feature": true,
+    "promotion_period": {
+        "start_date": "2024-08-15",
+        "end_date": "2024-11-08"
+    },
+    "bonus_expiration": {
+        "days": 30
+    },
+    "wagering_bonus_plus_deposit": {
+        "bonus_plus_deposit": 1111,
+        "bonus_only": null
+    },
+    "calculation_bonus_deposit": 0.0,
+    "special_promo_category": false,
+    "special_side_bar": false,
+    "bonus_min_dep": [
+        {
+            "min_value": 1111.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        }
+    ],
+    "day_of_week": [
+        {
+            "day": "Monday"
+        },
+        {
+            "day": "Friday"
+        },
+        {
+            "day": "Saturday"
+        }
+    ],
+    "special_note": {
+        "description": ""
+    },
+    "max_bet": [
+        {
+            "value": 1111.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        }
+    ],
+    "restriction_country": {
+        "country": [
+            {
+                "slug": "alderney",
+                "name": "Alderney",
+                "name2": null,
+                "code": null
+            },
+            {
+                "slug": "andorra",
+                "name": "Andorra",
+                "name2": null,
+                "code": "AD"
+            },
+            {
+                "slug": "angola",
+                "name": "Angola",
+                "name2": null,
+                "code": "AO"
+            },
+            {
+                "slug": "anguilla",
+                "name": "Anguilla",
+                "name2": null,
+                "code": "AI"
+            },
+            {
+                "slug": "antarctica",
+                "name": "Antarctica",
+                "name2": null,
+                "code": "AQ"
+            },
+            {
+                "slug": "latvia",
+                "name": "Latvia",
+                "name2": null,
+                "code": "LV"
+            }
+        ]
+    },
+    "restriction_game": {
+        "game": [
+            {
+                "name": "10001 Nights Megaways"
+            }
+        ]
+    },
+    "bonus_slot": {
+        "game": [
+            {
+                "name": "1000x Busta"
+            },
+            {
+                "name": "Golf"
+            }
+        ]
+    },
+    "wagering_contribution": [
+        {
+            "description": "Texas Hold'em and other Table Games",
+            "value": 1111.0
+        },
+        {
+            "description": "Video Poker",
+            "value": 1111.0
+        },
+        {
+            "description": "Roulette",
+            "value": 1111.0
+        },
+        {
+            "description": "Blackjack",
+            "value": 1111.0
+        },
+        {
+            "description": "Baccarat",
+            "value": 1111.0
+        },
+        {
+            "description": "Craps",
+            "value": 0.0
+        },
+        {
+            "description": "Slots and other games",
+            "value": 1111.0
+        },
+        {
+            "description": "Live casino games",
+            "value": 1111.0
+        }
+    ],
+    "slots_wagering": [
+        {
+            "slot": [],
+            "value": 20.0
+        },
+        {
+            "slot": [],
+            "value": 0.0
+        }
+    ],
+    "wagering": {
+        "tbwr": "1111",
+        "tbwe": "1111",
+        "wagering_difficulty": "hard"
+    },
+    "wager": {
+        "value": 1111.0
+    },
+    "one_spin": {
+        "value": 1111.0
+    },
+    "free_spin_amount": {
+        "value": 1111.0
+    },
+    "bonus_max_win": [
+        {
+            "max_value": 1111.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        },
+        {
+            "max_value": 1111.0,
+            "symbol": {
+                "symbol": "EUR",
+                "name": "Euro"
+            }
+        }
+    ],
+    "description": "Start your gaming journey at iWild Casino with the incredible Welcome Bonus Pack! Enjoy a huge 550% bonus up to €4000 and 550 Free Spins on Sweet Bonanza across your first four deposits. \r\n\r\nWith just a $20 minimum deposit, you can unlock this exciting offer. The bonus comes with x35 wagering requirements (bonus + deposit) and lasts for 10 days, giving you plenty of time to play. \r\n<br>\r\nPlus, it's a non-sticky bonus, allowing you to withdraw your deposit before playing the bonus funds. Don’t miss out on this epic welcome offer at iWild Casino—claim it today!"
 }

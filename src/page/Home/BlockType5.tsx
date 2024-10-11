@@ -30,6 +30,14 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const [isBeginning, setIsBeginning] = useState<boolean>(true)
     const [isEnd, setIsEnd] = useState<boolean>(false)
 
+
+   const handleSlideChange = () => {
+        if (sliderRef.current) {
+            setIsBeginning(sliderRef.current.swiper.isBeginning)
+            setIsEnd(sliderRef.current.swiper.isEnd)
+        }
+    }
+
     const nextSlide = () => {
         if (sliderRef.current) {
             sliderRef.current.swiper.slideNext()
@@ -44,13 +52,7 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
         }
     }
 
-    const handleSlideChange = () => {
-        if (sliderRef.current) {
-            setIsBeginning(sliderRef.current.swiper.isBeginning)
-            setIsEnd(sliderRef.current.swiper.isEnd)
-        }
-    }
-
+ 
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5)
         return <></>
 
