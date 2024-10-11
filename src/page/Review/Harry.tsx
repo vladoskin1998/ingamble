@@ -1,3 +1,5 @@
+import { CasinoReview } from "./CasinoReview"
+
 const DoYouLike = () => (
     <div className="iwild-review__item item-iwild-review item-iwild-review_like-bonus">
         <h2 className="item-iwild-review__title">Do You Like This Casino?</h2>
@@ -36,7 +38,11 @@ const DoYouLike = () => (
     </div>
 )
 
-export const Harry = () => {
+export const Harry = ({
+    handlerOpen,
+}: {
+    handlerOpen: (s: boolean) => void
+}) => {
     return (
         <>
             <section className="review__iwild-review-mob iwild-review-mob">
@@ -50,46 +56,7 @@ export const Harry = () => {
                             className="iwild-review__column iwild-review__column_medium iwild-review__harytitle"
                             data-da="iwild-review-mob__container, 0, 1150"
                         >
-                            <div className="iwild-review__item item-iwild-review item-iwild-review_main">
-                                <h2 className="item-iwild-review__title">
-                                    iWild Casino review
-                                </h2>
-                                <div className="item-iwild-review__text">
-                                    <p>
-                                        iWild Casino - is the new era of online
-                                        casinos. Newly opened casino launched in
-                                        2017 and raised popularity in a days.
-                                        Most gamers checked and loved it from
-                                        first. The new era of online casinos.
-                                        Newly opened casino launched in 2017 and
-                                        raised popularity in a days. Most gamers
-                                        checked and loved it. Casino launched in
-                                        2017 and raised popularity in a days.
-                                        Most gamers checked and loved it. Newly
-                                        opened casino launched in 2017 and
-                                        raised popularity in a days. Newly
-                                        opened casino launched in 2017 and
-                                        raised popularity in a days. Most gamers
-                                        checked and loved it from first. The new
-                                        era of online casinos. Newly opened
-                                        casino launched in 2017 and raised
-                                        popularity in a days. Most gamers
-                                        checked and loved it. Casino launched in
-                                        2017 and raised popularity in a days.
-                                        Most gamers checked and loved it. Newly
-                                        opened casino launched in 2017 and
-                                        raised popularity in a days.
-                                    </p>
-                                </div>
-                                <a
-                                    href=""
-                                    target="_blank"
-                                    aria-label="Put your description here."
-                                    className="item-iwild-review__btn item-content-bonus-information__link popup-review-btn"
-                                >
-                                    Read More
-                                </a>
-                            </div>
+                            <CasinoReview handlerOpen={handlerOpen}/>
                         </div>
 
                         <div className="iwild-review__column iwild-review__column_medium">

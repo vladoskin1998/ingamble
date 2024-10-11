@@ -9090,6 +9090,9 @@ h3 {
 .item-iwild-review_like-bonus .item-iwild-review__title:not(:last-child) {
   margin: 0 0 24px 0;
 }
+
+
+
 @media (max-width: 650.98px) {
   .item-iwild-review_like-bonus .item-iwild-review__title {
     font-size: 14px;
@@ -14151,12 +14154,17 @@ h3 {
   padding: 0 0 56.33%;
 }
 /* custom dont delete */
+/* custom dont delete */
+
 @media (max-width: 1150px) {
   .iwild-review__harytitle {
     display: none;
   }
 }
 .iwild-review__do-you-like-mob{
+  display: none;
+}
+.item-iwild-review_main-read-mob{
   display: none;
 }
 @media (max-width: 1150px) {
@@ -14170,8 +14178,13 @@ h3 {
   .iwild-review__column_medium:nth-child(2) {
     flex: 0 0 100%;
   }
+  .item-iwild-review_main-read-mob{
+    display: block;
+  }
 }
 
+
+/* custom dont delete */
 /* custom dont delete */
 @media (max-width: 1600px) {
   .main-gamble.resize .review__iwild-casino-promo .swiper-slide {

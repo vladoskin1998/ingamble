@@ -1,6 +1,7 @@
-import { useState } from "react"
-
+import { useEffect, useRef, useState } from "react"
+import closeIcon from "../../assets/img/icons/close.svg"
 import { Swiper, SwiperSlide } from "swiper/react"
+import { CasinoReview } from "./CasinoReview"
 
 enum TabType {
     General = "General",
@@ -11,10 +12,66 @@ enum TabType {
     Tools = "Tools",
 }
 
-export const TabMain = () => {
+const initStateOpenModal = {
+    paymantPopup: false,
+    languagePopup: false,
+    providerPopup: false,
+    typePopup: false,
+    toolPopup: false,
+}
+
+export const TabMain = ({
+    handlerOpen,
+}: {
+    handlerOpen: (s: boolean) => void
+}) => {
     const [activeTab, setActiveTab] = useState<TabType>(TabType.General)
-    console.log("activeTab", activeTab)
+
+
+    const [openModal, setOpenModal] = useState(initStateOpenModal)
+
+
+    const modalRefs = {
+        paymantPopup: useRef<HTMLDivElement | null>(null),
+        languagePopup: useRef<HTMLDivElement | null>(null),
+        providerPopup: useRef<HTMLDivElement | null>(null),
+        typePopup: useRef<HTMLDivElement | null>(null),
+        toolPopup: useRef<HTMLDivElement | null>(null),
+      };
+    
+
+      const handleClickOutside = (event: MouseEvent): void => {
+        console.log("handleClickOutside");
+        
+        Object.keys(modalRefs).forEach((key) => {
+            //@ts-ignore
+          const ref = modalRefs[key as keyof ModalState]?.current as any;
+          if (ref && !ref.contains(event.target as Node)) {
+            setOpenModal(prevState => ({
+              ...prevState,
+              [key]: false
+            }));
+          }
+        });
+      };
+    
+      useEffect(() => {
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, []);
+
+
     return (
+        <>
+        <section className="review__iwild-review-mob iwild-review-mob item-iwild-review_main-read-mob">
+            <div className="iwild-review-mob__container container">
+            <CasinoReview handlerOpen={handlerOpen}/>
+            </div>
+        </section>
         <section className="review__info info-review tabs-container">
             <div className="info-review__tabs tabs">
                 <div className="tabs__container container">
@@ -296,20 +353,30 @@ export const TabMain = () => {
                             }`}
                             data-filter="Payment"
                         >
-                            <div className="block-info-review__top top-block-info-review">
+                            <div className="block-info-review__top top-block-info-review" >
                                 <div className="top-block-info-review__title">
                                     Payment Methods
                                 </div>
-                                <a
-                                    href=""
-                                    target="_blank"
+                                <button
+                                     onClick={() =>
+                                        setOpenModal(() => ({
+                                            ...initStateOpenModal,
+                                            paymantPopup:
+                                                true,
+                                        }))
+                                    }
                                     aria-label="Put your description here."
                                     className="item-content-bonus-information__link info-popup-open"
                                 >
                                     Show All (64)
-                                </a>
-                                <div className="block-info-review__popup popup-item-content-bonus-information">
-                                    <div className="popup-item-content-bonus-information__body">
+                                </button>
+                                <div
+                                    className={`block-info-review__popup popup-item-content-bonus-information  ${
+                                       openModal.paymantPopup && "active"
+                                    }`}
+                                    ref={modalRefs.paymantPopup}
+                                >
+                                    <div className="popup-item-content-bonus-information__body"  >
                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
                                             <div className="top-popup-item-content-bonus-information__title">
                                                 All Payment Methods
@@ -317,16 +384,22 @@ export const TabMain = () => {
                                                     (64)
                                                 </div>
                                             </div>
-                                            <a
-                                                href=""
+                                            <button
+                                                onClick={() =>
+                                                    setOpenModal((s) => ({
+                                                        ...s,
+                                                        paymantPopup:
+                                                            false,
+                                                    }))
+                                                }
                                                 aria-label="Put your description here."
                                                 className="top-popup-item-content-bonus-information__btn-close info-popup-close"
                                             >
                                                 <img
-                                                    src="/src/assets/img/icons/close.svg"
+                                                    src={closeIcon}
                                                     alt="close"
                                                 />
-                                            </a>
+                                            </button>
                                         </div>
                                         <div className="popup-item-content-bonus-information__content">
                                             <div className="block-info-review__elements">
@@ -1073,15 +1146,25 @@ export const TabMain = () => {
                                 <div className="top-block-info-review__title">
                                     Languages
                                 </div>
-                                <a
-                                    href=""
-                                    target="_blank"
+                                <button
+                                      onClick={() =>
+                                        setOpenModal(() => ({
+                                            ...initStateOpenModal,
+                                            languagePopup:
+                                                true,
+                                        }))
+                                    }
                                     aria-label="Put your description here."
                                     className="item-content-bonus-information__link info-popup-open"
                                 >
                                     Show All (12)
-                                </a>
-                                <div className="block-info-review__popup popup-item-content-bonus-information">
+                                </button>
+                                <div
+                                    className={`block-info-review__popup popup-item-content-bonus-information ${
+                                        openModal.languagePopup && "active"
+                                    }`}
+                                    ref={modalRefs.languagePopup}
+                                >
                                     <div className="popup-item-content-bonus-information__body">
                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
                                             <div className="top-popup-item-content-bonus-information__title">
@@ -1090,16 +1173,22 @@ export const TabMain = () => {
                                                     (12)
                                                 </div>
                                             </div>
-                                            <a
-                                                href=""
+                                            <button
+                                               onClick={() =>
+                                                setOpenModal((s) => ({
+                                                    ...s,
+                                                    languagePopup:
+                                                        false,
+                                                }))
+                                            }
                                                 aria-label="Put your description here."
                                                 className="top-popup-item-content-bonus-information__btn-close info-popup-close"
                                             >
                                                 <img
-                                                    src="/src/assets/img/icons/close.svg"
+                                                    src={closeIcon}
                                                     alt="close"
                                                 />
-                                            </a>
+                                            </button>
                                         </div>
                                         <div className="popup-item-content-bonus-information__content">
                                             <div className="block-info-review__elements">
@@ -1438,15 +1527,25 @@ export const TabMain = () => {
                                 <div className="top-block-info-review__title">
                                     Game Providers
                                 </div>
-                                <a
-                                    href=""
-                                    target="_blank"
+                                <button
+                                    onClick={() =>
+                                        setOpenModal(() => ({
+                                            ...initStateOpenModal,
+                                            providerPopup:
+                                                true,
+                                        }))
+                                    }
                                     aria-label="Put your description here."
                                     className="item-content-bonus-information__link info-popup-open"
                                 >
                                     Show All (130)
-                                </a>
-                                <div className="block-info-review__popup popup-item-content-bonus-information">
+                                </button>
+                                <div
+                                    className={`block-info-review__popup popup-item-content-bonus-information ${
+                                        openModal.providerPopup && "active"
+                                    }`}
+                                    ref={modalRefs.providerPopup}
+                                >
                                     <div className="popup-item-content-bonus-information__body">
                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
                                             <div className="top-popup-item-content-bonus-information__title">
@@ -1455,16 +1554,21 @@ export const TabMain = () => {
                                                     (130)
                                                 </div>
                                             </div>
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
+                                            <button
+                                                onClick={() =>
+                                                    setOpenModal((s) => ({
+                                                        ...s,
+                                                        providerPopup:
+                                                            false,
+                                                    }))
+                                                }
                                                 className="top-popup-item-content-bonus-information__btn-close info-popup-close"
                                             >
                                                 <img
-                                                    src="/src/assets/img/icons/close.svg"
+                                                    src={closeIcon}
                                                     alt="close"
                                                 />
-                                            </a>
+                                            </button>
                                         </div>
                                         <div className="popup-item-content-bonus-information__content">
                                             <div className="block-info-review__elements">
@@ -2211,16 +2315,25 @@ export const TabMain = () => {
                                 <div className="top-block-info-review__title">
                                     Game Types
                                 </div>
-                                <a
-                                    href=""
-                                    target="_blank"
-                                    aria-label="Put your description here."
+                                <button
+                                   onClick={() =>
+                                    setOpenModal(() => ({
+                                        ...initStateOpenModal,
+                                        typePopup:
+                                            true,
+                                    }))
+                                }
                                     className="item-content-bonus-information__link info-popup-open"
                                 >
                                     Show All (14)
-                                </a>
-                                <div className="block-info-review__popup popup-item-content-bonus-information">
-                                    <div className="popup-item-content-bonus-information__body">
+                                </button>
+                                <div
+                                    className={`block-info-review__popup popup-item-content-bonus-information ${
+                                        openModal.typePopup && "active"
+                                    }`}
+                                    ref={modalRefs.typePopup}
+                                >
+                                    <div className="popup-item-content-bonus-information__body" >
                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
                                             <div className="top-popup-item-content-bonus-information__title">
                                                 All Game Types
@@ -2228,16 +2341,21 @@ export const TabMain = () => {
                                                     (14)
                                                 </div>
                                             </div>
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
+                                            <button
+                                               onClick={() =>
+                                                setOpenModal((s) => ({
+                                                    ...s,
+                                                    typePopup:
+                                                        false,
+                                                }))
+                                            }
                                                 className="top-popup-item-content-bonus-information__btn-close info-popup-close"
                                             >
                                                 <img
-                                                    src="/src/assets/img/icons/close.svg"
+                                                    src={closeIcon}
                                                     alt="close"
                                                 />
-                                            </a>
+                                            </button>
                                         </div>
                                         <div className="popup-item-content-bonus-information__content">
                                             <div className="block-info-review__elements">
@@ -2763,21 +2881,31 @@ export const TabMain = () => {
                                 activeTab === TabType.Tools && "active"
                             }`}
                             data-filter="Tools"
+                            
                         >
                             <div className="block-info-review__top top-block-info-review">
-                                <div className="top-block-info-review__title">
+                                <div className="top-block-info-review__title"  >
                                     Responsible Game Tools
                                 </div>
-                                <a
-                                    href=""
-                                    target="_blank"
-                                    aria-label="Put your description here."
+                                <button
+                                    onClick={() =>
+                                        setOpenModal(() => ({
+                                            ...initStateOpenModal,
+                                            toolPopup:
+                                                true,
+                                        }))
+                                    }
                                     className="item-content-bonus-information__link info-popup-open"
                                 >
                                     Show All (11)
-                                </a>
-                                <div className="block-info-review__popup popup-item-content-bonus-information">
-                                    <div className="popup-item-content-bonus-information__body">
+                                </button>
+                                <div
+                                    className={`block-info-review__popup popup-item-content-bonus-information ${
+                                        openModal.toolPopup && "active"
+                                    }`}
+                                    ref={modalRefs.toolPopup}
+                                >
+                                    <div className="popup-item-content-bonus-information__body" >
                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
                                             <div className="top-popup-item-content-bonus-information__title">
                                                 Responsible Game Tools
@@ -2785,16 +2913,21 @@ export const TabMain = () => {
                                                     (11)
                                                 </div>
                                             </div>
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
+                                            <button
+                                                 onClick={() =>
+                                                    setOpenModal((s) => ({
+                                                        ...s,
+                                                        toolPopup:
+                                                            false,
+                                                    }))
+                                                }
                                                 className="top-popup-item-content-bonus-information__btn-close info-popup-close"
                                             >
                                                 <img
-                                                    src="/src/assets/img/icons/close.svg"
+                                                    src={closeIcon}
                                                     alt="close"
                                                 />
-                                            </a>
+                                            </button>
                                         </div>
                                         <div className="popup-item-content-bonus-information__content">
                                             <div className="block-info-review__elements">
@@ -3136,5 +3269,6 @@ export const TabMain = () => {
                 </div>
             </div>
         </section>
+        </>
     )
 }
