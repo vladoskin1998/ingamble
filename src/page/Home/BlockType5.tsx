@@ -9,7 +9,7 @@ import girl from "../../assets/img/girls/03.png"
 import bg07 from "../../assets/img/bg/07.jpg"
 import gift from "../../assets/img/icons/gift.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
-import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
 export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const sliderRef = useRef<SwiperRef | null>(null)

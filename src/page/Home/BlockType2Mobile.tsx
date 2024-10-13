@@ -5,7 +5,7 @@ import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
-import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
 export default function BlockType2Mobile({
     data,

@@ -6,7 +6,7 @@ import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import giftIcon from "../../assets/img/icons/gift.svg"
 import { useState, useEffect, lazy } from "react"
-import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { euroToDolar } from "../../helper"
 const LazyFlag = lazy(() => import("react-world-flags"))
 

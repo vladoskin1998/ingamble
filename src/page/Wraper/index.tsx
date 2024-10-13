@@ -1,4 +1,4 @@
-import  { lazy, ReactNode } from "react"
+import { lazy, ReactNode } from "react"
 
 import { Header } from "../../components/header"
 import { Navbar } from "../../components/navbar"
@@ -7,11 +7,17 @@ import { Icons } from "./Icons"
 
 const Footer = lazy(() => import("../../components/footer"))
 
-export const Wraper = ({children}:{children:ReactNode}) => {
-    const {isSidebarActive, setSidebarActive} =     useAdaptiveBehavior()
+export const Wraper = ({
+    children,
+
+}: {
+    children: ReactNode
+
+}) => {
+    const { isSidebarActive, setSidebarActive } = useAdaptiveBehavior()
     return (
         <>
-            <Icons/>
+            <Icons />
             <div className="wrapper">
                 <div className="lh-gauge__wrapper">
                     <div className="lh-gauge__percentage"></div>
@@ -35,12 +41,8 @@ export const Wraper = ({children}:{children:ReactNode}) => {
                             isSidebarActive={isSidebarActive}
                             setSidebarActive={setSidebarActive}
                         />
-                        <>
-                        {children}
-                    
-               
-                        </>
-                        
+                        <>{children}</>
+
                         <Footer />
                     </div>
                 </div>

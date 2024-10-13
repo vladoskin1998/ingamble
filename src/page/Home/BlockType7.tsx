@@ -6,7 +6,7 @@ import "swiper/css/pagination"
 import { Swiper, SwiperSlide } from "swiper/react"
 import shieldIcon from "../../assets/img/icons/shield.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
-import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
 export const BlockType7 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const sliderRef = useRef<SwiperRef | null>(null)

@@ -5,7 +5,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { useEffect, useRef, useState } from "react"
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
-import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
 const colors_tags = [
     "tags-casino-card__item_blue",

@@ -163,7 +163,7 @@ export default function  SubscribeForm () {
                                                 </a>{" "}
                                                 and{" "}
                                                 <a
-                                                    href="#"
+                                                    href="/privacy-policy"
                                                     aria-label="Privacy Policy"
                                                     target="_blank"
                                                     rel="noopener noreferrer"

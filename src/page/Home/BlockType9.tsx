@@ -3,7 +3,7 @@ import like from "../../assets/img/icons/like.svg"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
-import { LazyCardImg } from "../../components/LazyImg/LazyCardImg"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
 export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9)
