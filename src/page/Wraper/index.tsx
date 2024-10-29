@@ -12,7 +12,6 @@ export const Wraper = ({
 
 }: {
     children: ReactNode
-
 }) => {
     const { isSidebarActive, setSidebarActive } = useAdaptiveBehavior()
     return (

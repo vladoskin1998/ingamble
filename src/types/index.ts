@@ -185,7 +185,14 @@ interface EssentialCard {
     loyalty_level_description: string;
 }
 
+export enum DataHomeItemsBlockTypeCategory{
+    bonus_category = "bonus_category",
+    casino_category = "casino_category"
+}
+
 export interface DataHomeItemsBlock {
+    type_category: DataHomeItemsBlockTypeCategory,
+    category: {id: number, name: string}
     block_title: string;
     subtitle: string | null;
     title_image: string | null;
@@ -204,4 +211,51 @@ export interface EssentialItemsBlock {
 export interface HomeDataBlock {
     blocks_sequence_number: number;
     items_block: DataHomeItemsBlock | EssentialItemsBlock;
+}
+
+
+
+export type SeeAllBonusResponse= {
+    type_category: string;
+    category_id: number;
+    category_name: string;
+    bonuses: SeeAllBonus[];
+};
+
+export type  SeeAllBonus = {
+    bonus_id: number;
+    bonus_name: string;
+    bonus_image: string;
+    casino_rank: string;
+    bonus_likes: number;
+    labels: string[];
+    casino_affiliate_link: string;
+};
+
+
+
+export interface SeeAllEssentialLoyaltyKeypoint {
+    image: string | null;
+    text_1: string;
+    text_2: string;
+}
+
+export interface SeeAllEssentialLoyaltyProgram {
+    loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
+}
+
+export interface SeeAllEssentialLoyaltyCasino {
+    casino_id: number;
+    casino_name: string;
+    casino_rank: string;
+    casino_image?: string;
+    casino_affiliate_link: string;
+    loyalty_program: SeeAllEssentialLoyaltyProgram;
+}
+
+export interface SeeAllEssentialCasinoResponse {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: SeeAllEssentialLoyaltyCasino[];
 }

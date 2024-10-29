@@ -6,6 +6,7 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { SeeAllButton } from "./SeeAllButton"
 
 export const BlockType4 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const sliderRef = useRef<SwiperRef | null>(null)
@@ -51,19 +52,7 @@ export const BlockType4 = ({ data }: { data: HomeDataBlock | undefined }) => {
                             )}
                         </div>
                         <div className="top__column">
-                            <a
-                                href="/see-all?key=89012345"
-                                aria-label="Put your description here."
-                                target="_blank"
-                                className="top__btn"
-                            >
-                                <span>See All</span>
-                                <span className="top__btn-arrow">
-                                    <svg>
-                                        <use xlinkHref="#arrow"></use>
-                                    </svg>
-                                </span>
-                            </a>
+                        <SeeAllButton type_category={data.items_block.type_category} id={data.items_block.category.id} />
                         </div>
                     </div>
                 </div>

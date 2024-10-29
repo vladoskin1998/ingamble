@@ -6,13 +6,10 @@ import "swiper/css/pagination"
 import { useEffect, useRef, useState } from "react"
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { SeeAllButton } from "./SeeAllButton"
+import { COLORS_TAGS } from "../../helper"
 
-const colors_tags = [
-    "tags-casino-card__item_blue",
-    "tags-casino-card__item_green",
-    "tags-casino-card__item_purple",
-    "tags-casino-card__item_grass",
-]
+
 
 export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
     const sliderRef = useRef<any>(null)
@@ -81,19 +78,7 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                             )}
                         </div>
                         <div className="top__column">
-                            <a
-                                href="/see-all?key=99012345"
-                                aria-label="Put your description here."
-                                target="_blank"
-                                className="top__btn"
-                            >
-                                <span>See All</span>
-                                <span className="top__btn-arrow">
-                                    <svg>
-                                        <use xlinkHref="#arrow"></use>
-                                    </svg>
-                                </span>
-                            </a>
+                        <SeeAllButton type_category={data.items_block.type_category} id={data.items_block.category.id} />
                         </div>
                     </div>
                 </div>
@@ -194,7 +179,7 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                                     ) => (
                                                                                         <div
                                                                                             className={`tags-casino-card__item ${
-                                                                                                colors_tags[
+                                                                                                COLORS_TAGS[
                                                                                                     index %
                                                                                                         4
                                                                                                 ]
@@ -205,9 +190,6 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                                                     item
                                                                                                 }
                                                                                             </span>
-                                                                                            {/* <span className="tags-casino-card__item-value">
-                                                                                                4.0x
-                                                                                            </span> */}
                                                                                         </div>
                                                                                     )
                                                                                 )}
@@ -296,7 +278,7 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                                         ) => (
                                                                                             <div
                                                                                                 className={`tags-casino-card__item ${
-                                                                                                    colors_tags[
+                                                                                                    COLORS_TAGS[
                                                                                                         index %
                                                                                                             4
                                                                                                     ]

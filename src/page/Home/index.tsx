@@ -65,8 +65,6 @@ const getHomeDataFetch = async () => {
 }
 
 const renderBlock = (block: any) => {
-    console.log("renderBlock---->",block);
-    
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} />;
@@ -115,8 +113,6 @@ export const Home = () => {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    // https://adm.incasinowetrust.com/api/v1/get-data-home-page
-    // https://adm.incasinowetrust.com/api/v1/get-data-home-page/
 
     if (isLoading) return <LogoLoader />
     return (

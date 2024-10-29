@@ -1,9 +1,14 @@
 import MainSlider from "../../components/swiper/MainSlider"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
+import { SeeAllButton } from "./SeeAllButton"
 
 export const BlockType1 = ({ data }: { data: HomeDataBlock | undefined }) => {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType1)
         return <></>
+
+
+    console.log("data id",data.items_block.type_category, data?.items_block?.category?.id);
+    
     return (
         <section className="main-gamble__todays-hot todays-hot-gamble">
             <div className="todays-hot-gamble__container container">
@@ -30,19 +35,7 @@ export const BlockType1 = ({ data }: { data: HomeDataBlock | undefined }) => {
                             )}
                         </div>
                         <div className="top__column">
-                            <a
-                                href="/see-all?key=22145678"
-                                aria-label="Put your description here."
-                                target="_blank"
-                                className="top__btn"
-                            >
-                                <span>See All</span>
-                                <span className="top__btn-arrow">
-                                    <svg>
-                                        <use xlinkHref="#arrow"></use>
-                                    </svg>
-                                </span>
-                            </a>
+                            <SeeAllButton type_category={data.items_block.type_category} id={data?.items_block?.category?.id} />
                         </div>
                     </div>
                 </div>

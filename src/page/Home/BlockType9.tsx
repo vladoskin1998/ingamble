@@ -36,7 +36,7 @@ export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
                         <div className="top__column">
                             <a
                                 rel="nofollow noopener"
-                                href="/essential_loyalty"
+                                href="/see-all-loyalties"
                                 aria-label="Put your description here."
                                 target="_blank"
                                 className="top__btn"

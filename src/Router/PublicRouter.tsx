@@ -7,8 +7,11 @@ import { lazy } from "react"
 const Review  = lazy(() => import( "../page/Review"))
 const Loyalties = lazy(() => import("../page/Loyalties"))
 const SimpleBonus = lazy(() => import("../page/SimpleBonus"))
-const EssentialsLoyalty = lazy(() => import("../page/EssentialsLoyalty"))
-const SeeAll = lazy(() => import("../page/SeeAll"))
+const SeeAllEssentialsLoyalty = lazy(() => import("../page/SeeAllEssentialsLoyalty"))
+
+const SeeAllBonus = lazy(() => import("../page/SeeAllBonus"))
+const SeeAllCasinos = lazy(() => import("../page/SeeAllCasinos"))
+
 const  PrivacyPolicy   = lazy(() => import( "../page/Policy"))
 const  NotFound  = lazy(() => import("../page/NotFound"))
 
@@ -25,8 +28,9 @@ export const PublicRouter = () => {
                 element={<SimpleBonus />}
             />
 
-            <Route path="/see-all" element={<SeeAll />} />
-            <Route path="/essential_loyalty" element={<EssentialsLoyalty />} />
+            <Route path="/see-all-casinos" element={<SeeAllCasinos />} />
+            <Route path="/see-all-bonus" element={<SeeAllBonus />} />
+            <Route path="/see-all-loyalties" element={<SeeAllEssentialsLoyalty />} />
 
             <Route path="/loyaltie" element={<Loyalties />} />
             <Route path="/home" element={<Home />} />

@@ -1,0 +1,10 @@
+.loyalty-img-custom {
+    overflow: hidden;
+}
+
+
+.loyalty-img-custom img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}

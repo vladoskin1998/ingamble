@@ -1,12 +1,9 @@
 import MainSlider from "../../components/swiper/MainSlider"
+import { COLORS_TAGS } from "../../helper"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
+import { SeeAllButton } from "./SeeAllButton"
 
-const colors_tags = [
-    "tags-casino-card__item_blue",
-    "tags-casino-card__item_green",
-    "tags-casino-card__item_purple",
-    "tags-casino-card__item_grass",
-]
+
 
 export const BlockType8 = ({ data }: { data: HomeDataBlock | undefined }) => {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType8)
@@ -37,19 +34,7 @@ export const BlockType8 = ({ data }: { data: HomeDataBlock | undefined }) => {
                             )}
                         </div>
                         <div className="top__column">
-                            <a
-                                href="/see-all?key=22345678"
-                                aria-label="Put your description here."
-                                target="_blank"
-                                className="top__btn"
-                            >
-                                <span>See All</span>
-                                <span className="top__btn-arrow">
-                                    <svg>
-                                        <use xlinkHref="#arrow"></use>
-                                    </svg>
-                                </span>
-                            </a>
+                        <SeeAllButton type_category={data.items_block.type_category} id={data.items_block.category.id} />
                         </div>
                     </div>
                 </div>
@@ -70,7 +55,7 @@ export const BlockType8 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                             (item, index) => (
                                                 <div
                                                     className={`tags-casino-card__item ${
-                                                        colors_tags[index % 4]
+                                                        COLORS_TAGS[index % 4]
                                                     }`}
                                                 >
                                                     <span className="tags-casino-card__item-label">
