@@ -138,7 +138,7 @@ export default function SeeAllBonus() {
                                                     target="_blank"
                                                     className="casino-card__image-block"
                                                 >
-                                                    <div className="casino-card__image ibg">
+                                                    <div className="casino-card__image see-all-custom__image-custom">
                                                         <LazyCardImg
                                                             img={
                                                                 item.bonus_image
