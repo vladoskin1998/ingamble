@@ -242,7 +242,9 @@ export default function SeeAllCasinos() {
                                                                             <span className="item-info-content-item-loyaltie-programs__value-flag">
                                                                                 <LazyFlag
                                                                                     code={
-                                                                                        "LV"
+                                                                                        item
+                                                                                        ?.licenses?.[0]
+                                                                                        ?.country_code
                                                                                     }
                                                                                 />
                                                                             </span>

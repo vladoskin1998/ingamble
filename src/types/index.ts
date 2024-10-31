@@ -297,7 +297,9 @@ export interface SeeAllEssentialCasinoResponse {
         };
     }[];
     licenses: {    name: string;
-        image: string | null;}[];
+        image: string | null;     
+        country_code: string;}[];
+  
     payout_speed: PAYOUTSPEED;
     withdrawal_limit: {
         daily: number | null;
