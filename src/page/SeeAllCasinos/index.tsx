@@ -332,7 +332,7 @@ export default function SeeAllCasinos() {
                                                     </div>
                                                     <div className="content-item-loyaltie-programs__column content-item-loyaltie-programs__column_features">
                                                         <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
-                                                            {item?.loyalty_program?.loyalty_keypoint?.map(
+                                                            {item?.loyalty_program?.loyalty_keypoint?.slice(0,3).map(
                                                                 (it) => (
                                                                     <div className="features-essential-programs-gamble__column">
                                                                         <div className="features-essential-programs-gamble__item">
