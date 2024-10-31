@@ -1,3 +1,6 @@
+.pages-pagination__page-numbers{
+  cursor: pointer;
+}
 
 .main-loyaltie-programs__btn-more {
     display: none;

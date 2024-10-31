@@ -7,63 +7,84 @@ import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
 import $api from "../../http"
 import { useQuery } from "react-query"
-import { SeeAllEssentialCasinoResponse, SeeAllEssentialLoyaltyCasino } from "../../types"
+import {
+    SeeAllEssentialCasinoResponse,
+    SeeAllEssentialLoyaltyCasino,
+} from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import "./style.css"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { useEffect, useState } from "react"
 
-
+const countPageSize = 10
 
 export default function SeeAllEssentialsLoyalty() {
-    document.title = "Loyaltie Programs"
+    document.title = "See All Essentials Loyalty"
 
-    
-    const [currentPage, setCurrentPage] = useState(1);
-    const [allData, setAllData] = useState<SeeAllEssentialLoyaltyCasino[]>([]);
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
-
-    const getAllEssentialsLoyalty = async (page: number): Promise<SeeAllEssentialCasinoResponse> => {
-        const response = await $api.get(`get-see-all-loyalties/?page=${page}`);
-        return response.data;
-    };
+    const [currentPage, setCurrentPage] = useState(1)
+    const [allData, setAllData] = useState<SeeAllEssentialLoyaltyCasino[]>([])
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
+    const getAllEssentialsLoyalty = async (
+        page: number
+    ): Promise<SeeAllEssentialCasinoResponse> => {
+        const response = await $api.get(
+            `get-see-all-loyalties/?page=${page}&page_size=${countPageSize}`
+        )
+        return response.data
+    }
 
     const { data, isLoading } = useQuery(
-        ["get-see-all-loyalties", currentPage], 
+        ["get-see-all-loyalties", currentPage],
         () => getAllEssentialsLoyalty(currentPage),
         {
             keepPreviousData: true,
         }
-    );
-
-
+    )
 
     useEffect(() => {
-        initializeAdaptiveBehavior();
-    }, [isLoading]);
+        initializeAdaptiveBehavior()
+    }, [isLoading])
 
     useEffect(() => {
         if (data?.results) {
-            setAllData((s) => [...s, ...data?.results]);
+            setAllData((s) => [...s, ...data?.results])
         }
-    }, [data]);
+    }, [data])
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 900);
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-    
+        if (data?.results) {
+            setAllData((s) => {
+                const combinedData = [...s, ...data?.results]
+
+                const uniqueData = combinedData.reduce((acc, item) => {
+                    if (!acc.some((el) => el.casino_id === item.casino_id)) {
+                        acc.push(item)
+                    }
+                    return acc
+                }, [] as SeeAllEssentialLoyaltyCasino[])
+
+                return uniqueData
+            })
+        }
+    }, [data])
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 900)
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
+
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
+    const displayedData = isMobile ? allData : data?.results
+
     if (isLoading) return <LogoLoader />
 
-    const displayedData = isMobile ? allData : data?.results;
     return (
         <Wraper>
             <main className="gamble__loyaltie-programs main-gamble loyaltie-programs">
@@ -140,31 +161,37 @@ export default function SeeAllEssentialsLoyalty() {
                                                     </div>
                                                 </div>
                                                 <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
-                                                    {item.loyalty_program.loyalty_keypoint.map(it =>   <div className="features-essential-programs-gamble__column">
-                                                        <div className="features-essential-programs-gamble__item">
-                                                            <div className="features-essential-programs-gamble__icon">
-                                                            <LazyCardImg
-                                                        img={
-                                                            it?.image ||
-                                                            ""
-                                                        }
-                                                        width="100%"
-                                                        size="medium"
-                                        
-                                                    />
-                                                            </div>
-                                                            <div className="features-essential-programs-gamble__info">
-                                                                <div className="features-essential-programs-gamble__name">
-                                                                    {it.text_1}
+                                                    {item.loyalty_program.loyalty_keypoint.map(
+                                                        (it) => (
+                                                            <div className="features-essential-programs-gamble__column">
+                                                                <div className="features-essential-programs-gamble__item">
+                                                                    <div className="features-essential-programs-gamble__icon">
+                                                                        <LazyCardImg
+                                                                            img={
+                                                                                it?.image ||
+                                                                                ""
+                                                                            }
+                                                                            width="100%"
+                                                                            size="medium"
+                                                                        />
+                                                                    </div>
+                                                                    <div className="features-essential-programs-gamble__info">
+                                                                        <div className="features-essential-programs-gamble__name">
+                                                                            {
+                                                                                it.text_1
+                                                                            }
+                                                                        </div>
+                                                                        <div className="features-essential-programs-gamble__text">
+                                                                            {
+                                                                                it.text_2
+                                                                            }
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div className="features-essential-programs-gamble__text">
-                                                                {it.text_2}
-                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>)}
-                                                  
-                                                   
+                                                        )
+                                                    )}
+
                                                     <div className="features-essential-programs-gamble__column features-essential-programs-gamble__column_rating">
                                                         <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
                                                             <div className="item-essential-programs-gamble__rating">
@@ -195,7 +222,9 @@ export default function SeeAllEssentialsLoyalty() {
                                                 <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                                         <a
-                                                            href={item.casino_affiliate_link}
+                                                            href={
+                                                                item.casino_affiliate_link
+                                                            }
                                                             target="_blank"
                                                             aria-label="Put your description here."
                                                             className="bottom-content-item-loyaltie-programs__btn-view"
@@ -217,10 +246,19 @@ export default function SeeAllEssentialsLoyalty() {
                                     </div>
                                 ))}
                             </div>
-                            <PaginationPage countElem={data?.count} 
-                               currentPage={currentPage}
-                         
-                               setCurrentPage={(s) => setCurrentPage(s)}
+                            <PaginationPage
+                                countElem={data?.count}
+                                currentPage={currentPage}
+                                countPageElem={countPageSize}
+                                setCurrentPage={(s) => {
+                                    setCurrentPage(s)
+                                    if (!isMobile) {
+                                        window.scrollTo({
+                                            behavior: "smooth",
+                                            top: 0,
+                                        })
+                                    }
+                                }}
                             />
                         </div>
                     </section>

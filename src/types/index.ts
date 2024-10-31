@@ -219,7 +219,12 @@ export type SeeAllBonusResponse= {
     type_category: string;
     category_id: number;
     category_name: string;
-    bonuses: SeeAllBonus[];
+    bonuses: {
+        count:number
+        next:string
+        previous:string
+        results:SeeAllBonus[]
+    };
 };
 
 export type  SeeAllBonus = {
@@ -259,3 +264,58 @@ export interface SeeAllEssentialCasinoResponse {
     previous: string | null;
     results: SeeAllEssentialLoyaltyCasino[];
 }
+
+
+
+
+  export interface SeeAllCasinosLoyaltyKeyPoint extends SeeAllEssentialLoyaltyKeypoint{}
+  
+  export interface SeeAllCasinosLoyaltyProgram {
+    loyalty_keypoint: SeeAllCasinosLoyaltyKeyPoint[];
+  }
+  
+  export enum PAYOUTSPEED  {
+    Medium="Medium",
+    High="High",
+    Low="Low"
+  }
+
+  export interface SeeAllCasinosCasino {
+    casino_id: number;
+    casino_name: string;
+    casino_rank: string;
+    likes: number;
+    vpn_usage: boolean;
+    casino_image: string;
+    casino_affiliate_link: string;
+    additional_casino_params: string[];
+    min_dep: {
+        value: number;
+        symbol: {
+            symbol: string;
+            name: string;
+        };
+    }[];
+    licenses: {    name: string;
+        image: string | null;}[];
+    payout_speed: PAYOUTSPEED;
+    withdrawal_limit: {
+        daily: number | null;
+        weekly: number | null;
+        monthly: number | null;
+    };
+    loyalty_program: SeeAllCasinosLoyaltyProgram;
+  }
+  
+ 
+  export interface SeeAllCasinosCategoryResponse {
+    type_category: string;
+    category_id: number;
+    category_name: string;
+    casino: {
+        count: number
+        next:string
+        previous:string
+        results:SeeAllCasinosCasino[]};
+  }
+  
