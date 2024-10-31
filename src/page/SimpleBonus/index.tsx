@@ -1,20 +1,12 @@
-
 import casinoCards09 from "../../assets/img/casino-cards/09.jpg"
 import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
 import casinoCards07 from "../../assets/img/casino-cards/07.jpg"
 import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
 import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 
-
-
-
 import "swiper/css"
 import { useQuery } from "react-query"
-import {
-    lazy,
-    useEffect,
-    useState,
-} from "react"
+import { lazy, useEffect, useState } from "react"
 import $api from "../../http"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
@@ -26,14 +18,13 @@ import { LastUpdate } from "./LastUpdate"
 import { Wraper } from "../Wraper"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 
-import  SubscribeForm  from "./SubscribeForm"
+import SubscribeForm from "./SubscribeForm"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { HeaderSimpleBonus } from "./HeaderSimpleBonus"
 import { HowToGetBonus } from "./HowToGetBonus"
 import MainSlider from "../../components/swiper/MainSlider"
 import { CheckMoreWhatSuitsYouBest } from "./CheckMoreWhatSuitsYouBest"
 import { HarryStyles } from "./HarryStyles"
-
 
 const LazyFlag = lazy(() => import("react-world-flags"))
 
@@ -44,12 +35,9 @@ const getBonusDataFetch = async () => {
     return { dataBonus: response.data, headers }
 }
 
-
-
-export default function SimpleBonus () {
+export default function SimpleBonus() {
     document.title = "Simple Bonus"
-    const {  initializeAdaptiveBehavior } =
-        useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: "LV",
@@ -101,12 +89,19 @@ export default function SimpleBonus () {
     if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
 
     return (
-
         <Wraper>
-    
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
-                    <Categories category={data?.dataBonus?.category || []} />
+                    <Categories
+                        category={
+                            data?.dataBonus?.category?.map((item) => ({
+                                name: item.name,
+                                link: `${window.location.origin}/${item?.name
+                                    .toLocaleLowerCase()
+                                    .replace(/\s/g, "-")}`,
+                            })) || []
+                        }
+                    />
 
                     <BreadCrumb
                         path={[
@@ -181,7 +176,6 @@ export default function SimpleBonus () {
                                         </div>
                                     </div>
                                     <MainSlider
-                                 
                                         data={[
                                             {
                                                 img: casinoCards09,
@@ -714,9 +708,9 @@ export default function SimpleBonus () {
                     <SimpleBonusEssentialPrograms />
                     {geoLocation.isAllowed && (
                         <>
-                        <HarryStyles/>
-                         
-                            <CheckMoreWhatSuitsYouBest/>
+                            <HarryStyles />
+
+                            <CheckMoreWhatSuitsYouBest />
                         </>
                     )}
                     <SubscribeForm />

@@ -321,3 +321,19 @@ export interface SeeAllEssentialCasinoResponse {
         results:SeeAllCasinosCasino[]};
   }
   
+
+
+export  type AllCategoriesHomeBonusCategory = {
+    id: number;
+    name: string;
+};
+
+export type AllCategoriesHomeCasinoCategory = {
+    id: number;
+    name: string;
+};
+
+export type AllCategoriesHomeDataResponse = {
+    bonus_categories: AllCategoriesHomeBonusCategory[];
+    casino_categories: AllCategoriesHomeCasinoCategory[];
+};

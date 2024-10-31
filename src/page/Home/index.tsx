@@ -26,31 +26,23 @@ import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
 import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
-import { BlockTypeNumber, HomeDataBlock } from "../../types"
+import { AllCategoriesHomeDataResponse, BlockTypeNumber, HomeDataBlock } from "../../types"
 
 const BlockType2Mobile = lazy(() => import("./BlockType2Mobile"))
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 // const BlockType7Mobile = lazy(() => import("./BlockType7Mobile"))
-
 // const TopReloadBonuses = lazy(() => import("./TopReloadBonuses"))
 // const NonStickyBonus = lazy(() => import("./NonStickyBonus"))
-
 // const NewlyOpenedCasinos = lazy(() => import("./NewlyOpenedCasinos"))
-
 // const ExploreTheBestCryptoCasinos = lazy(
 //     () => import("./ExploreTheBestCryptoCasinos")
 // )
-
 // const WeeksFavoiritesBonuses = lazy(() => import("./WeeksFavoiritesBonuses"))
-
 // const TheBestCasinosYear = lazy(() => import("./TheBestCasinosYear"))
-
 // const FastestWithdrawalCasinos = lazy(
 //     () => import("./FastestWithdrawalCasinos")
 // )
-
 // const HighrollerCasinoBonuses = lazy(() => import("./HighrollerCasinoBonuses"))
-
 // const GetStartedWithPowerfulWelcomeBonusPacks = lazy(
 //     () => import("./GetStartedWithPowerfulWelcomeBonusPacks")
 // )
@@ -63,6 +55,12 @@ const getHomeDataFetch = async () => {
         (a:any, b:any) => a?.blocks_sequence_number - b?.blocks_sequence_number
     ), headers }
 }
+
+const getDataHomePageCategories = async () => {
+    const response = await $api.get("get-data-home-page-categories/");
+    return response.data 
+};
+
 
 const renderBlock = (block: any) => {
     switch (block.items_block.type_block) {
@@ -107,6 +105,14 @@ export const Home = () => {
         keepPreviousData: true,
     })
 
+    const { data: dataCategories, isLoading: isLoadingCategories } = useQuery< AllCategoriesHomeDataResponse >(
+        "get-data-home-page-categories/",
+        getDataHomePageCategories,
+        {
+            keepPreviousData: true,
+        }
+    );
+
     console.log("------?",data)
 
     useEffect(() => {
@@ -114,20 +120,18 @@ export const Home = () => {
     }, [isLoading])
 
 
-    if (isLoading) return <LogoLoader />
+    if (isLoading || isLoadingCategories) return <LogoLoader />
     return (
         <Wraper>
             <main className="gamble__main main-gamble">
                 <div className="main-gamble__body">
                     <Categories
-                        category={[
-                            { name: "All" },
-                            { name: "Hot Events" },
-                            { name: "Best Cash Back Casinos" },
-                            { name: "Highest RTP Slots" },
-                            { name: "No Deposit Bonuses" },
-                            { name: "VPN Allowed Casinos" },
-                        ]}
+                        category={
+                           [
+                            ...dataCategories?.bonus_categories?.map(item => ({name: item.name, link: `${window.location.origin}/see-all-bonus?id=${item.id}`}))  || [], 
+                            ...dataCategories?.casino_categories?.map(item => ({name: item.name, link: `${window.location.origin}/see-all-casinos?id=${item.id}`}))  || [], 
+                           ]  
+                        }
                     />
                     {data?.dataHome?.map((block) => renderBlock(block))}
                     {/* {[
