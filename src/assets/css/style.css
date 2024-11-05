@@ -12774,13 +12774,13 @@ h3 {
   width: 52px;
   height: 52px;
 }
-.content-item-loyaltie-programs__features .features-essential-programs-gamble__item .features-essential-programs-gamble__icon img {
+/* .content-item-loyaltie-programs__features .features-essential-programs-gamble__item .features-essential-programs-gamble__icon img {
   -moz-transform: scale(1.4);
   -ms-transform: scale(1.4);
   -webkit-transform: scale(1.4);
   -o-transform: scale(1.4);
   transform: scale(1.4);
-}
+} */
 .content-item-loyaltie-programs__features .features-essential-programs-gamble__item .features-essential-programs-gamble__info {
   justify-content: center;
 }
