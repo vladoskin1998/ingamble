@@ -47,6 +47,14 @@ const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 //     () => import("./GetStartedWithPowerfulWelcomeBonusPacks")
 // )
 
+const shuffleArray = (array:any) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; 
+    }
+    return array;
+};
+
 const getHomeDataFetch = async () => {
     const response = await $api.get("get-data-home-page/")
     const headers = response.headers
@@ -127,10 +135,10 @@ export const Home = () => {
                 <div className="main-gamble__body">
                     <Categories
                         category={
-                           [
+                            shuffleArray(     [
                             ...dataCategories?.bonus_categories?.map(item => ({name: item.name, link: `${window.location.origin}/see-all-bonus?id=${item.id}`}))  || [], 
                             ...dataCategories?.casino_categories?.map(item => ({name: item.name, link: `${window.location.origin}/see-all-casinos?id=${item.id}`}))  || [], 
-                           ]  
+                           ]  )
                         }
                     />
                     {data?.dataHome?.map((block) => renderBlock(block))}
