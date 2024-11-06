@@ -154,7 +154,7 @@ export interface HomeBonusInfo {
     bonus_name: string;
     bonus_likes: number;
     bonus_image: string | null;
-    labels:  string [] | null;
+    labels: string[] | null;
 }
 
 export interface HomeDataCard {
@@ -185,14 +185,14 @@ interface EssentialCard {
     loyalty_level_description: string;
 }
 
-export enum DataHomeItemsBlockTypeCategory{
+export enum DataHomeItemsBlockTypeCategory {
     bonus_category = "bonus_category",
     casino_category = "casino_category"
 }
 
 export interface DataHomeItemsBlock {
     type_category: DataHomeItemsBlockTypeCategory,
-    category: {id: number, name: string}
+    category: { id: number, name: string }
     block_title: string;
     subtitle: string | null;
     title_image: string | null;
@@ -215,19 +215,19 @@ export interface HomeDataBlock {
 
 
 
-export type SeeAllBonusResponse= {
+export type SeeAllBonusResponse = {
     type_category: string;
     category_id: number;
     category_name: string;
     bonuses: {
-        count:number
-        next:string
-        previous:string
-        results:SeeAllBonus[]
+        count: number
+        next: string
+        previous: string
+        results: SeeAllBonus[]
     };
 };
 
-export type  SeeAllBonus = {
+export type SeeAllBonus = {
     bonus_id: number;
     bonus_name: string;
     bonus_image: string;
@@ -268,19 +268,19 @@ export interface SeeAllEssentialCasinoResponse {
 
 
 
-  export interface SeeAllCasinosLoyaltyKeyPoint extends SeeAllEssentialLoyaltyKeypoint{}
-  
-  export interface SeeAllCasinosLoyaltyProgram {
-    loyalty_keypoint: SeeAllCasinosLoyaltyKeyPoint[];
-  }
-  
-  export enum PAYOUTSPEED  {
-    Medium="Medium",
-    High="High",
-    Low="Low"
-  }
+export interface SeeAllCasinosLoyaltyKeyPoint extends SeeAllEssentialLoyaltyKeypoint { }
 
-  export interface SeeAllCasinosCasino {
+export interface SeeAllCasinosLoyaltyProgram {
+    loyalty_keypoint: SeeAllCasinosLoyaltyKeyPoint[];
+}
+
+export enum PAYOUTSPEED {
+    Medium = "Medium",
+    High = "High",
+    Low = "Low"
+}
+
+export interface SeeAllCasinosCasino {
     casino_id: number;
     casino_name: string;
     casino_rank: string;
@@ -296,10 +296,12 @@ export interface SeeAllEssentialCasinoResponse {
             name: string;
         };
     }[];
-    licenses: {    name: string;
-        image: string | null;     
-        country_code: string;}[];
-  
+    licenses: {
+        name: string;
+        image: string | null;
+        country_code: string;
+    }[];
+
     payout_speed: PAYOUTSPEED;
     withdrawal_limit: {
         daily: number | null;
@@ -307,23 +309,24 @@ export interface SeeAllEssentialCasinoResponse {
         monthly: number | null;
     };
     loyalty_program: SeeAllCasinosLoyaltyProgram;
-  }
-  
- 
-  export interface SeeAllCasinosCategoryResponse {
+}
+
+
+export interface SeeAllCasinosCategoryResponse {
     type_category: string;
     category_id: number;
     category_name: string;
     casino: {
         count: number
-        next:string
-        previous:string
-        results:SeeAllCasinosCasino[]};
-  }
-  
+        next: string
+        previous: string
+        results: SeeAllCasinosCasino[]
+    };
+}
 
 
-export  type AllCategoriesHomeBonusCategory = {
+
+export type AllCategoriesHomeBonusCategory = {
     id: number;
     name: string;
 };
@@ -337,3 +340,39 @@ export type AllCategoriesHomeDataResponse = {
     bonus_categories: AllCategoriesHomeBonusCategory[];
     casino_categories: AllCategoriesHomeCasinoCategory[];
 };
+
+
+export type GetFilterDataType = {
+    live_chat_competence: {
+        value: string,
+        label: string
+    }[],
+    responsible_gambling: {
+        value: string,
+        label: string
+    }[],
+    licenses: {
+        id: number,
+        name: string,
+        image: string | null
+    }[],
+    game_types: {
+        id: number,
+        name: string,
+        image: string | null
+    }[],
+    game_providers: {
+        id: number,
+        name: string,
+        image: string | null
+    }[],
+    classic_currency: { id: number, symbol: string, name: string, name2: string }[],
+    countries: { id: number, name: string, name2: string | null, code: string }[],
+    crypto_currencies: {id: number, symbol: string, name: string, name2: string |  null},
+    games: {id: number, name: string}[],
+    language: {id: number, name: string, image:string | null}[],
+    payment_methods: {id: number, name: string, image: string | null}[],
+    payout_speed: {id: number, name: string}[]
+
+
+}

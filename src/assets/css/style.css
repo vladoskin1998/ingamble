@@ -12544,7 +12544,8 @@ h3 {
 @media (max-width: 992.98px) {
   .item-loyaltie-programs__row {
     flex-direction: column;
-    background: url("../img/bg/10.jpg") center repeat;
+    /* menubg */
+    background: url("../img/menu-bg.jpg") center repeat;
     border-radius: var(--SystemCorners-Medium, 12px);
   }
 }
