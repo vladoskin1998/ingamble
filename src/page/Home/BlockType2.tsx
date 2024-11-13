@@ -91,7 +91,7 @@ export const BlockType2 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                 )
                                                 .map((item, index) => (
                                                     <SwiperSlide key={index}>
-                                                        <div className="baner-row-block__slide slide-baner-row-block swiper-slide">
+                                                        <div className="baner-row-block__slide slide-baner-row-block swiper-slide" style={{width: '100%'}}>
                                                             <div className="slide-baner-row-block__item item-baner-row-block">
                                                                 <div className="item-baner-row-block__image ibg">
                                                                     <LazyCardImg

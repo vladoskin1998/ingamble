@@ -10,10 +10,9 @@ interface AdaptiveContextType {
     setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
     initializeAdaptiveBehavior: () => void;
 }
-// Create Context
+
 const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
 
-// Function to handle dynamic adaptation
 const dinamicAdapt = (
     da_elements: NodeListOf<HTMLElement>,
     attr_elements: string[],
@@ -37,14 +36,13 @@ const dinamicAdapt = (
     });
 };
 
-// Initialize Adaptive Behavior
+
 const initializeAdaptiveBehavior = () => {
     const da_elements = document.querySelectorAll('[data-da]') as NodeListOf<HTMLElement>;
     const parents_original: ParentOriginal[] = [];
     const attr_elements: string[] = [];
     const match_media: MediaQueryList[] = [];
 
-    // Store the original parent and index of the elements
     da_elements.forEach((item) => {
         const parentChildren = item.parentElement?.children;
         if (parentChildren) {
@@ -59,7 +57,7 @@ const initializeAdaptiveBehavior = () => {
         }
     });
 
-    // Setup media queries
+
     attr_elements.push(...Array.from(da_elements).map((item) => item.dataset.da || ''));
     attr_elements.forEach((attr_element) => {
         //@ts-ignore
@@ -71,7 +69,7 @@ const initializeAdaptiveBehavior = () => {
         }
     });
 
-    // Update background images
+ 
     const ibg = document.querySelectorAll('.ibg') as NodeListOf<HTMLElement>;
     ibg.forEach((item) => {
         const ibgImg = item.querySelector('img');
@@ -85,10 +83,10 @@ const initializeAdaptiveBehavior = () => {
     dinamicAdapt(da_elements, attr_elements, match_media, parents_original);
 };
 
-// Provider Component
+
 export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const location = useLocation();
-    const [isSidebarActive, setSidebarActive] = useState(false)
+    const [isSidebarActive, setSidebarActive] = useState(true)
     useEffect(() => {
         const handleResize = () => {
             initializeAdaptiveBehavior();

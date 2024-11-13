@@ -18,7 +18,7 @@ type Language = {
     flag: string
 }
 
-const languages: Language[] = [
+export const LANGUAGES_WEBSITE: Language[] = [
     { code: "lv", name: "Latvian", flag: latviaFlag },
     { code: "en", name: "English", flag: english },
     { code: "uk", name: "Ukrainian", flag: ukraine },
@@ -46,7 +46,7 @@ export const Header = ({
     const [search, setSearch] = useState("")
     const [searchFocus, setSearchFocus] = useState(false)
     const [selectedLanguage, setSelectedLanguage] = useState<Language>(
-        languages[0]
+        LANGUAGES_WEBSITE[0]
     )
     const modalLanguageRef = useRef<HTMLDivElement | null>(null)
   
@@ -288,7 +288,7 @@ export const Header = ({
                                     ref={modalLanguageRef}
                                 >
                                     <ul className="dropdown__list dropdown-language-header__list">
-                                        {languages.map((language) => (
+                                        {LANGUAGES_WEBSITE.map((language) => (
                                             <li
                                                 key={language.code}
                                                 className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${
@@ -544,7 +544,7 @@ export const Header = ({
                                 </button>
                                 
                                     <ul className="dropdown__list dropdown-language-header__list" >
-                                        {languages.map((item) => (
+                                        {LANGUAGES_WEBSITE.map((item) => (
                                             <li
                                                 onClick={() => handleLanguageSelect(item)}
                                                 className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${item.code === selectedLanguage.code && "active"}`}

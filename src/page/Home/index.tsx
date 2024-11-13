@@ -111,6 +111,8 @@ export const Home = () => {
         headers: any
     }>("get-data-home-page/ ", getHomeDataFetch, {
         keepPreviousData: true,
+        staleTime: Infinity,
+    
     })
 
     const { data: dataCategories, isLoading: isLoadingCategories } = useQuery< AllCategoriesHomeDataResponse >(
@@ -118,6 +120,7 @@ export const Home = () => {
         getDataHomePageCategories,
         {
             keepPreviousData: true,
+            staleTime: Infinity,
         }
     );
 

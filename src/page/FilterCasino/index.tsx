@@ -1,98 +1,138 @@
-import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
+import { useQuery } from "react-query"
 import { Categories } from "../../components/categories/Categories"
-import { PaginationPage } from "../../components/pagination/PaginationPage"
+import { FilterHeaderList } from "../../components/filter-header-list/FilterHeaderList"
+import { initialCasinoFilters, useFilterContext } from "../../context/FilterContext"
+import $api from "../../http"
+import {
+    CasinoFilterBodyType,
+    FilterCasinoPostResponse,
+    SeeAllCasinosCasino,
+} from "../../types"
 import { Wraper } from "../Wraper"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import like from "../../assets/img/icons/like.svg"
-import "./style.css"
-import { useSearchParams } from "react-router-dom"
 import { lazy, useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
-import $api from "../../http"
-import { useQuery } from "react-query"
-import { LogoLoader } from "../../components/loader/LogoLoader"
-import {
-    PAYOUTSPEED,
-    SeeAllCasinosCasino,
-    SeeAllCasinosCategoryResponse,
-} from "../../types"
-import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from "../SeeAllCasinos"
 import { euroToDolar, NumberAssociaty } from "../../helper"
+import { PaginationPage } from "../../components/pagination/PaginationPage"
+import { debounce } from "lodash"
+import { LogoLoader } from "../../components/loader/LogoLoader"
+import searchImg from "../../assets/img/icons/search-filter.svg"
+
+interface MakeListFilterHeaderType {
+    value: string;
+    field: string;
+}
+
+const makeListFilterHeader = (o: CasinoFilterBodyType): MakeListFilterHeaderType[] => {
+    const result: MakeListFilterHeaderType[] = [];
+
+    for (const [key, value] of Object.entries(o)) {
+        if (Array.isArray(value) && value.length > 0) {
+            // Если значение - массив, добавляем длину массива
+            result.push({
+                value: `${key.replace(/_/g, ' ')}: ${value.length}`,
+                field: key
+            });
+        } else if (value && typeof value === 'object' && 'min' in value && 'max' in value) {
+            // Если значение - объект с полями min и max
+            result.push({
+                value: `${key.replace(/_/g, ' ')}: ${value.min}, ${value.max}`,
+                field: key
+            });
+        } else if (value !== null && typeof value !== 'object') {
+            // Если значение - примитивное значение (boolean, number), и оно не null
+            result.push({
+                value: `${key.replace(/_/g, ' ')}: ${String(value)}`,
+                field: key
+            });
+        }
+    }
+
+    return result;
+};
+
+const filterEmptyValues = (
+    body: CasinoFilterBodyType
+): Partial<CasinoFilterBodyType> => {
+    return Object.fromEntries(
+        Object.entries(body).filter(([_, value]) => {
+            return value !== null && (!Array.isArray(value) || value.length > 0)
+        })
+    )
+}
+
 const LazyFlag = lazy(() => import("react-world-flags"))
-
-export const rankCasinosSeeAll = (r: number) => {
-    if (r >= 8) {
-        return PAYOUTSPEED.High
-    } else if (r >= 5) {
-        return PAYOUTSPEED.Medium
-    } else {
-        return PAYOUTSPEED.Low
-    }
-}
-
-export const WithdrawalSeeAllCasinos = (n: {
-    daily: number | null
-    weekly: number | null
-    monthly: number | null
-}) => {
-    if (n.monthly) {
-        return "Monthly"
-    } else if (n.weekly) {
-        return "Weekly"
-    } else if (n.daily) {
-        return "Daily"
-    }
-    return ""
-}
 
 const countPageSize = 10
 
-export default function SeeAllCasinos() {
-    document.title = "See All Casinos"
+const debouncedFetchFilter = debounce(
+    (filters, fetchFunction) => fetchFunction(filters),
+    1000
+)
+
+const debouncedFetchPagination = debounce(
+    (filters, fetchFunction, setLoading) => {
+        setLoading(true)
+        fetchFunction(filters).finally(() => setLoading(false))
+    }
+)
+
+const getFilteringCasinoList = async (
+    payload: CasinoFilterBodyType,
+    page: number
+) => {
+    const body = filterEmptyValues(payload)
+    const response = await $api.post(
+        `filter/casinos/?page=${page}&page_size=${countPageSize}`,
+        body
+    )
+    return response.data
+}
+
+export default function FilterCasino() {
+    document.title = "Filter Casino"
+
+    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const { casinoFilters, setCasinoFilters } = useFilterContext()
 
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllCasinosCasino[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
-    const [searchParams] = useSearchParams()
-    const [queryId, setQueryId] = useState("")
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
-
-    useEffect(() => {
-        const id = searchParams.get("id")
-        if (id) {
-            setQueryId(id)
-        }
-    }, [searchParams])
-
-    const getAllCasinosFetchData = async (page: number) => {
-        const response = await $api.get(
-            `get-see-all-casinos-category/${queryId}/?page=${page}&page_size=${countPageSize}`
-        )
-        return response.data
-    }
-
-    const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(
-        ["get-see-all-loyalties", currentPage], 
-        () => getAllCasinosFetchData(currentPage),
+    const [isDebouncedLoading, setIsDebouncedLoading] = useState(false)
+    const { data, isLoading, refetch } = useQuery<FilterCasinoPostResponse>(
+        ["get-datas-filter-casino", casinoFilters, currentPage],
+        () => getFilteringCasinoList(casinoFilters, currentPage),
         {
             keepPreviousData: true,
-            enabled: !!queryId,
+            enabled: false,
         }
     )
+
     useEffect(() => {
-        if (data?.casino?.results) {
+        debouncedFetchPagination(casinoFilters, refetch, setIsDebouncedLoading)
+    }, [currentPage, refetch, setCurrentPage])
+
+    useEffect(() => {
+        debouncedFetchFilter(casinoFilters, refetch)
+    }, [casinoFilters, refetch])
+
+    useEffect(() => {
+        if (data?.results) {
             setAllData((s) => {
-                const combinedData = [...s, ...data?.casino?.results];
-                
+                const combinedData = [...s, ...data?.results]
+
                 const uniqueData = combinedData.reduce((acc, item) => {
-                  if (!acc.some((el) => el.casino_id === item.casino_id)) {
-                    acc.push(item);
-                  }
-                  return acc;
-                }, [] as SeeAllCasinosCasino[]);
-              
-                return uniqueData;
-              });
+                    if (!acc.some((el) => el.casino_id === item.casino_id)) {
+                        acc.push(item)
+                    }
+                    return acc
+                }, [] as SeeAllCasinosCasino[])
+
+                return uniqueData
+            })
         }
     }, [data])
 
@@ -106,9 +146,22 @@ export default function SeeAllCasinos() {
         return () => window.removeEventListener("resize", handleResize)
     }, [])
 
-    const displayedData = isMobile ? allData : data?.casino?.results
+    const displayedData = isMobile ? allData : data?.results
 
-    if (isLoading || !queryId) return <LogoLoader />
+
+    const clearAll = () => {
+        setCasinoFilters(initialCasinoFilters)
+    }
+
+    const handlerClearOne = (v: string) => {
+        const findedValueField = initialCasinoFilters[v as keyof CasinoFilterBodyType]
+        setCasinoFilters(s => ({
+            ...s,
+            [v as keyof CasinoFilterBodyType]: findedValueField
+        }))
+    }
+
+    if (isDebouncedLoading) return <LogoLoader />
 
     return (
         <Wraper>
@@ -124,33 +177,19 @@ export default function SeeAllCasinos() {
                             { name: "VPN Allowed Casinos" },
                         ]}
                     />
-                    <BreadCrumb
-                        path={[
-                            {
-                                name: "Home",
-                                link: "https://cryptogamblers.pro",
-                            },
-                            {
-                                name: "All Bonuses",
-                                link: "https://cryptogamblers.pro/bonuses",
-                            },
-                            // {
-                            //     name:   DataArray.find(item => Number(item?.key) === key)?.name || 'not found',
-                            //     link: "#",
-                            // },
-                        ]}
+                    <FilterHeaderList 
+                        list={makeListFilterHeader(casinoFilters)}
+                        clearAll={clearAll}
+                        clearOne={(v) => handlerClearOne(v)}
                     />
                     <section className="casinos-filtered__main main-loyaltie-programs">
                         <div className="main-loyaltie-programs__container container">
-                            <div className="main-loyaltie-programs__top top">
-                                <div className="top__row">
-                                    <div className="top__column">
-                                        <div className="top__title-block">
-                                            <h2 className="top__title">
-                                                {data?.category_name}
-                                            </h2>
-                                        </div>
-                                    </div>
+                            <div className="results-filter-scenarios__top top">
+                                <div className="top__title-block">
+                                    <span className="top__title-icon">
+                                        <img src={searchImg} alt="search" />
+                                    </span>
+                                    <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
                             <div className="main-loyaltie-programs__items loyaltie-programs__items">
@@ -244,8 +283,8 @@ export default function SeeAllCasinos() {
                                                                                 <LazyFlag
                                                                                     code={
                                                                                         item
-                                                                                        ?.licenses?.[0]
-                                                                                        ?.country_code
+                                                                                            ?.licenses?.[0]
+                                                                                            ?.country_code
                                                                                     }
                                                                                 />
                                                                             </span>
@@ -333,8 +372,9 @@ export default function SeeAllCasinos() {
                                                     </div>
                                                     <div className="content-item-loyaltie-programs__column content-item-loyaltie-programs__column_features">
                                                         <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
-                                                            {item?.loyalty_program?.loyalty_keypoint?.slice(0,3).map(
-                                                                (it) => (
+                                                            {item?.loyalty_program?.loyalty_keypoint
+                                                                ?.slice(0, 3)
+                                                                .map((it) => (
                                                                     <div className="features-essential-programs-gamble__column">
                                                                         <div className="features-essential-programs-gamble__item">
                                                                             <div className="features-essential-programs-gamble__icon">
@@ -361,8 +401,7 @@ export default function SeeAllCasinos() {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                )
-                                                            )}
+                                                                ))}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -371,18 +410,21 @@ export default function SeeAllCasinos() {
                                     </div>
                                 ))}
                             </div>
-                            <PaginationPage countElem={data?.casino?.count} 
-                               currentPage={currentPage}
-                               countPageElem={countPageSize} 
-                               setCurrentPage={(s) => {
-                                setCurrentPage(s)
-                                if(!isMobile){
-                                    window.scrollTo({ behavior: 'smooth',    top: 0,});
-                                }
-                            }}
+                            <PaginationPage
+                                countElem={data?.count}
+                                currentPage={currentPage}
+                                countPageElem={countPageSize}
+                                setCurrentPage={(s) => {
+                                    setCurrentPage(s)
+                                    if (!isMobile) {
+                                        window.scrollTo({
+                                            behavior: "smooth",
+                                            top: 0,
+                                        })
+                                    }
+                                }}
                             />
                         </div>
-                        
                     </section>
                 </div>
             </main>

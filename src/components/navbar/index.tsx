@@ -4,11 +4,14 @@ import logoIcon from "../../assets/img/logo-icon.svg"
 import clearAll from "../../assets/img/icons/clear-all.svg"
 import { useLayoutEffect, useMemo, useState } from "react"
 import { AccordionItem } from "../acordion/Acordion"
-import { CasinoFilterContent } from "./CasinoFilterContent"
-
+import { CasinoFilterContent } from "./CasinoFilter"
+import {
+    RouteToNextFilter,
+    useFilterContext,
+} from "../../context/FilterContext"
+import { Link } from "react-router-dom"
 
 type DefaultOpenType = "casinos" | "bonuses" | "loyalties" | "slots" | ""
-
 
 export const Navbar = ({
     isSidebarActive,
@@ -17,10 +20,10 @@ export const Navbar = ({
     isSidebarActive: boolean
     setSidebarActive: (s: boolean) => void
 }) => {
-    const [] = useState(false)
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
-
     const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>("")
+
+    const { currentRouteFilter, handlerCurrentRouteFilter, handlerClearAllFilters } = useFilterContext()
 
     useLayoutEffect(() => {
         const sidebarGamble = document.querySelector(
@@ -38,7 +41,7 @@ export const Navbar = ({
         //     gambleBody.classList.toggle("hide", isGambleBodyHidden)
         // }
 
-        if (header && window.innerWidth > 650.98 ) {
+        if (header && window.innerWidth > 650.98) {
             header?.classList.toggle("resize", isSidebarActive)
         }
         if (footer && window.innerWidth > 650.98) {
@@ -51,8 +54,6 @@ export const Navbar = ({
             setIsDefaultOpen(() => "")
         }
     }, [isSidebarActive, isGambleBodyHidden])
-
- 
 
     const handleFilterOpenBtnClick = (
         event: React.MouseEvent,
@@ -81,265 +82,259 @@ export const Navbar = ({
         [isSidebarActive]
     )
 
-
-    
     return (
-        <>
-            <aside className="gamble__sidebar sidebar-gamble">
-                <div
-                    className="sidebar-gamble__top top-sidebar-gamble"
-                    data-da="mobile-header__top, 0, 650.98"
+        <aside className="gamble__sidebar sidebar-gamble">
+            <div
+                className="sidebar-gamble__top top-sidebar-gamble"
+                data-da="mobile-header__top, 0, 650.98"
+            >
+                <a
+                    rel="nofollow noopener"
+                    href=""
+                    target="_blank"
+                    className="top-sidebar-gamble__logo"
                 >
-                    <a
-                        rel="nofollow noopener"
-                        href=""
-                        target="_blank"
-                        className="top-sidebar-gamble__logo"
+                    <img alt={"logo-icon"} src={logoIcon} />
+                </a>
+            </div>
+            <div className="sidebar-gamble__filters filters-sidebar-gamble">
+                <div className="filters-sidebar-gamble__title title-filters-sidebar-gamble">
+                    <button
+                        onClick={() => setSidebarActive(!isSidebarActive)}
+                        aria-label="Put your description here."
+                        className="title-filters-sidebar-gamble__btn"
+                        data-da="header__row-mobile1, 1, 650.98"
                     >
-                        <img alt={"logo-icon"} src={logoIcon} />
-                    </a>
+                        <span className="title-filters-sidebar-gamble__btn-icon_main">
+                            <svg>
+                                <use xlinkHref="#filter"></use>
+                            </svg>
+                        </span>
+                        <span className="title-filters-sidebar-gamble__btn-icon_close">
+                            <svg>
+                                <use xlinkHref="#delete"></use>
+                            </svg>
+                        </span>
+                    </button>
+                    <h2 className="title-filters-sidebar-gamble__text">
+                        Filters
+                    </h2>
+                    <button
+                        onClick={handleFilterOpenDeleteClick}
+                        aria-label="Put your description here."
+                        className="title-filters-sidebar-gamble__btn-delete"
+                    >
+                        <span className="title-filters-sidebar-gamble__btn-delete-icon_close">
+                            <svg>
+                                <use xlinkHref="#delete"></use>
+                            </svg>
+                        </span>
+                    </button>
                 </div>
-                <div className="sidebar-gamble__filters filters-sidebar-gamble">
-                    <div className="filters-sidebar-gamble__title title-filters-sidebar-gamble">
-                        <button
-                            onClick={() => setSidebarActive(!isSidebarActive)}
-                            aria-label="Put your description here."
-                            className="title-filters-sidebar-gamble__btn"
-                            data-da="header__row-mobile1, 1, 650.98"
-                        >
-                            <span className="title-filters-sidebar-gamble__btn-icon_main">
-                                <svg>
-                                    <use xlinkHref="#filter"></use>
-                                </svg>
-                            </span>
-                            <span className="title-filters-sidebar-gamble__btn-icon_close">
-                                <svg>
-                                    <use xlinkHref="#delete"></use>
-                                </svg>
-                            </span>
-                        </button>
-                        <h2 className="title-filters-sidebar-gamble__text">
-                            Filters
-                        </h2>
-                        <button
-                            onClick={handleFilterOpenDeleteClick}
-                            aria-label="Put your description here."
-                            className="title-filters-sidebar-gamble__btn-delete"
-                        >
-                            <span className="title-filters-sidebar-gamble__btn-delete-icon_close">
-                                <svg>
-                                    <use xlinkHref="#delete"></use>
-                                </svg>
-                            </span>
-                        </button>
+                <div className="filters-sidebar-gamble__form form-filters">
+                    <div className="form-filters__items-block">
+                        <div className="form-filters__items">
+                            <div
+                                className={`form-filters__item item-form-filters`}
+                                onClick={() =>
+                                    handlerCurrentRouteFilter(
+                                        RouteToNextFilter.CASINOS
+                                    )
+                                }
+                            >
+                                <AccordionItem
+                                    defaultOpen={isDefaultOpen === "casinos"}
+                                    key={randomKey}
+                                    heading={
+                                        <div
+                                            className={`item-form-filters__title title-item-form-filters  accordion--title--element`}
+                                        >
+                                            <span
+                                                className="title-item-form-filters__icon"
+                                                onClick={(e) =>
+                                                    handleFilterOpenBtnClick(
+                                                        e,
+                                                        "casinos"
+                                                    )
+                                                }
+                                            >
+                                                <svg>
+                                                    <use xlinkHref="#casinos"></use>
+                                                </svg>
+                                            </span>
+                                            <span className="title-item-form-filters__icon-name">
+                                                Casinos
+                                            </span>
+                                            <h2 className="title-item-form-filters__text">
+                                                Casinos
+                                            </h2>
+                                            <span className="title-item-form-filters__arrow">
+                                                <svg>
+                                                    <use xlinkHref="#arrow"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    }
+                                    content={<CasinoFilterContent />}
+                                />
+                            </div>
+                            <div
+                                className={`form-filters__item item-form-filters`}
+                            >
+                                <AccordionItem
+                                    defaultOpen={isDefaultOpen === "bonuses"}
+                                    key={randomKey}
+                                    heading={
+                                        <div
+                                            className={`item-form-filters__title title-item-form-filters accordion--title--element`}
+                                        >
+                                            <span
+                                                className="title-item-form-filters__icon"
+                                                onClick={(e) =>
+                                                    handleFilterOpenBtnClick(
+                                                        e,
+                                                        "bonuses"
+                                                    )
+                                                }
+                                            >
+                                                <svg>
+                                                    <use xlinkHref="#bonuses"></use>
+                                                </svg>
+                                            </span>
+                                            <span className="title-item-form-filters__icon-name">
+                                                Bonuses
+                                            </span>
+                                            <h2 className="title-item-form-filters__text">
+                                                Bonuses
+                                            </h2>
+                                            <span className="title-item-form-filters__arrow">
+                                                <svg>
+                                                    <use xlinkHref="#arrow"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    }
+                                    content={
+                                        <div className="item-form-filters__body"></div>
+                                    }
+                                />
+                            </div>
+                            <div
+                                className={`form-filters__item item-form-filters `}
+                            >
+                                <AccordionItem
+                                    defaultOpen={isDefaultOpen === "loyalties"}
+                                    key={randomKey}
+                                    heading={
+                                        <div className="item-form-filters__title title-item-form-filters accordion--title--element">
+                                            <span
+                                                className="title-item-form-filters__icon"
+                                                onClick={(e) =>
+                                                    handleFilterOpenBtnClick(
+                                                        e,
+                                                        "loyalties"
+                                                    )
+                                                }
+                                            >
+                                                <svg>
+                                                    <use xlinkHref="#loyalties"></use>
+                                                </svg>
+                                            </span>
+                                            <span className="title-item-form-filters__icon-name">
+                                                Loyalties
+                                            </span>
+                                            <h2 className="title-item-form-filters__text">
+                                                Loyalties
+                                            </h2>
+                                            <span className="title-item-form-filters__arrow">
+                                                <svg>
+                                                    <use xlinkHref="#arrow"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    }
+                                    content={
+                                        <div className="item-form-filters__body"></div>
+                                    }
+                                />
+                            </div>
+                            <div
+                                className={`form-filters__item item-form-filters `}
+                            >
+                                <AccordionItem
+                                    key={randomKey}
+                                    defaultOpen={isDefaultOpen === "slots"}
+                                    heading={
+                                        <div className="item-form-filters__title title-item-form-filters accordion--title--element">
+                                            <span
+                                                className="title-item-form-filters__icon"
+                                                onClick={(e) =>
+                                                    handleFilterOpenBtnClick(
+                                                        e,
+                                                        "slots"
+                                                    )
+                                                }
+                                            >
+                                                <svg>
+                                                    <use xlinkHref="#slots"></use>
+                                                </svg>
+                                            </span>
+                                            <span className="title-item-form-filters__icon-name">
+                                                Slots
+                                            </span>
+                                            <h2 className="title-item-form-filters__text">
+                                                Slots
+                                            </h2>
+                                            <span className="title-item-form-filters__arrow">
+                                                <svg>
+                                                    <use xlinkHref="#arrow"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    }
+                                    content={
+                                        <div className="item-form-filters__body"></div>
+                                    }
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <form
-                        action="#"
-                        className="filters-sidebar-gamble__form form-filters"
-                    >
-                        <div className="form-filters__items-block">
-                            <div className="form-filters__items">
-                                <div
-                                    className={`form-filters__item item-form-filters`}
+                    <div className="form-filters__bottom bottom-form-filters">
+                        <div className="bottom-form-filters__row">
+                            <div className="bottom-form-filters__column">
+                                <button
+                                    onClick={handlerClearAllFilters}
+                                    className="bottom-form-filters__btn bottom-form-filters__btn_reset"
                                 >
-                                    <AccordionItem
-                                        defaultOpen={
-                                            isDefaultOpen === "casinos"
-                                        }
-                                        key={randomKey}
-                                        heading={
-                                            <div
-                                                className={`item-form-filters__title title-item-form-filters  accordion--title--element`}
-                                            >
-                                                <span
-                                                    className="title-item-form-filters__icon"
-                                                    onClick={(e) =>
-                                                        handleFilterOpenBtnClick(
-                                                            e,
-                                                            "casinos"
-                                                        )
-                                                    }
-                                                >
-                                                    <svg>
-                                                        <use xlinkHref="#casinos"></use>
-                                                    </svg>
-                                                </span>
-                                                <span className="title-item-form-filters__icon-name">
-                                                    Casinos
-                                                </span>
-                                                <h2 className="title-item-form-filters__text">
-                                                    Casinos
-                                                </h2>
-                                                <span className="title-item-form-filters__arrow">
-                                                    <svg>
-                                                        <use xlinkHref="#arrow"></use>
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                        }
-                                        content={
-                                          <CasinoFilterContent/>
-                                        }
-                                    />
-                                </div>
-                                <div
-                                    className={`form-filters__item item-form-filters`}
+                                    <span className="bottom-form-filters__btn-icon">
+                                        <LazyLoadImage
+                                            alt={"clear-all.svg"}
+                                            src={clearAll}
+                                            width={20}
+                                            height={20}
+                                        />
+                                   
+                                    </span>
+                                    <span>Clear All</span>
+                                </button>
+                            </div>
+                            <div className="bottom-form-filters__column">
+                                <Link
+                                    to={
+                                        currentRouteFilter ===
+                                        RouteToNextFilter.DEFAULT
+                                            ? "/" + currentRouteFilter
+                                            : `/filter-${currentRouteFilter}`
+                                    }
+                                    className="bottom-form-filters__btn bottom-form-filters__btn_submit"
                                 >
-                                    <AccordionItem
-                                        defaultOpen={
-                                            isDefaultOpen === "bonuses"
-                                        }
-                                        key={randomKey}
-                                        heading={
-                                            <div
-                                                className={`item-form-filters__title title-item-form-filters accordion--title--element`}
-                                            >
-                                                <span
-                                                    className="title-item-form-filters__icon"
-                                                    onClick={(e) =>
-                                                        handleFilterOpenBtnClick(
-                                                            e,
-                                                            "bonuses"
-                                                        )
-                                                    }
-                                                >
-                                                    <svg>
-                                                        <use xlinkHref="#bonuses"></use>
-                                                    </svg>
-                                                </span>
-                                                <span className="title-item-form-filters__icon-name">
-                                                    Bonuses
-                                                </span>
-                                                <h2 className="title-item-form-filters__text">
-                                                    Bonuses
-                                                </h2>
-                                                <span className="title-item-form-filters__arrow">
-                                                    <svg>
-                                                        <use xlinkHref="#arrow"></use>
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                        }
-                                        content={
-                                            <div className="item-form-filters__body"></div>
-                                        }
-                                    />
-                                </div>
-                                <div
-                                    className={`form-filters__item item-form-filters `}
-                                >
-                                    <AccordionItem
-                                        defaultOpen={
-                                            isDefaultOpen === "loyalties"
-                                        }
-                                        key={randomKey}
-                                        heading={
-                                            <div className="item-form-filters__title title-item-form-filters accordion--title--element">
-                                                <span
-                                                    className="title-item-form-filters__icon"
-                                                    onClick={(e) =>
-                                                        handleFilterOpenBtnClick(
-                                                            e,
-                                                            "loyalties"
-                                                        )
-                                                    }
-                                                >
-                                                    <svg>
-                                                        <use xlinkHref="#loyalties"></use>
-                                                    </svg>
-                                                </span>
-                                                <span className="title-item-form-filters__icon-name">
-                                                    Loyalties
-                                                </span>
-                                                <h2 className="title-item-form-filters__text">
-                                                    Loyalties
-                                                </h2>
-                                                <span className="title-item-form-filters__arrow">
-                                                    <svg>
-                                                        <use xlinkHref="#arrow"></use>
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                        }
-                                        content={
-                                            <div className="item-form-filters__body"></div>
-                                        }
-                                    />
-                                </div>
-                                <div
-                                    className={`form-filters__item item-form-filters `}
-                                >
-                                    <AccordionItem
-                                        key={randomKey}
-                                        defaultOpen={isDefaultOpen === "slots"}
-                                        heading={
-                                            <div className="item-form-filters__title title-item-form-filters accordion--title--element">
-                                                <span
-                                                    className="title-item-form-filters__icon"
-                                                    onClick={(e) =>
-                                                        handleFilterOpenBtnClick(
-                                                            e,
-                                                            "slots"
-                                                        )
-                                                    }
-                                                >
-                                                    <svg>
-                                                        <use xlinkHref="#slots"></use>
-                                                    </svg>
-                                                </span>
-                                                <span className="title-item-form-filters__icon-name">
-                                                    Slots
-                                                </span>
-                                                <h2 className="title-item-form-filters__text">
-                                                    Slots
-                                                </h2>
-                                                <span className="title-item-form-filters__arrow">
-                                                    <svg>
-                                                        <use xlinkHref="#arrow"></use>
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                        }
-                                        content={
-                                            <div className="item-form-filters__body"></div>
-                                        }
-                                    />
-                                </div>
+                                    <span>Apply Filters</span>
+                                </Link>
                             </div>
                         </div>
-                        <div className="form-filters__bottom bottom-form-filters">
-                            <div className="bottom-form-filters__row">
-                                <div className="bottom-form-filters__column">
-                                    <button
-                                        type="reset"
-                                        className="bottom-form-filters__btn bottom-form-filters__btn_reset"
-                                    
-                                    >
-                                        <span className="bottom-form-filters__btn-icon">
-                                            <LazyLoadImage
-                                                alt={"clear-all.svg"}
-                                                src={clearAll}
-                                                width={20}
-                                                height={20}
-                                            />
-                                            {/* <img src="img/icons/clear-all.svg" alt="clear-all"> */}
-                                        </span>
-                                        <span>Clear All</span>
-                                    </button>
-                                </div>
-                                <div className="bottom-form-filters__column">
-                                    <button
-                                        type="submit"
-                                        className="bottom-form-filters__btn bottom-form-filters__btn_submit"
-                                    >
-                                        <span>Apply Filters</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </aside>
-        </>
+            </div>
+        </aside>
     )
 }

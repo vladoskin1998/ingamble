@@ -366,13 +366,49 @@ export type GetFilterDataType = {
         name: string,
         image: string | null
     }[],
-    classic_currency: { id: number, symbol: string, name: string, name2: string }[],
-    countries: { id: number, name: string, name2: string | null, code: string }[],
-    crypto_currencies: {id: number, symbol: string, name: string, name2: string |  null},
-    games: {id: number, name: string}[],
-    language: {id: number, name: string, image:string | null}[],
-    payment_methods: {id: number, name: string, image: string | null}[],
-    payout_speed: {id: number, name: string}[]
-
-
+    classic_currency: { id: number, symbol: string, name: string, name2: string | null, }[],
+    countries: { id: number, name: string, name2: string | null, code: string, image: string | null }[],
+    crypto_currencies: { id: number, symbol: string, name: string, name2: string | null, }[],
+    games: { id: number, name: string }[],
+    language: { id: number, name: string, image: string | null }[],
+    payment_methods: { id: number, name: string, image: string | null }[],
+    payout_speed: { id: number, name: string }[]
 }
+
+export type FilterCasinoPostResponse = {
+    count: number,
+    next:string| null
+    previous: string | null
+    results: SeeAllCasinosCasino[]
+    total_pages: number
+}
+
+export interface CasinoFilterBodyType {
+    payout_speed: number[];
+    casino_rank: { min: number; max: number } | null;
+    casino_likes: { min: number; max: number } | null;
+    sportsbook: boolean | null;
+    tournaments: boolean | null;
+    vpn_usage: boolean | null;
+    bonus_hunt_with_active_bonus: boolean | null;
+    social_bonus: boolean | null;
+    established: { min: number; max: number } | null;
+    casino_owner: string[];
+    withdrawal_limits: {
+        daily: number;
+        weekly: number;
+        monthly: number;
+    } | null;
+    min_wager: number | null;
+    min_deposit: number | null;
+    selected_countries: number[];
+    accepted_currencies: number[];
+    payment_methods: number[];
+    language_live_chat: number[];
+    language_website: number[];
+    game_providers: number[];
+    game_types: number[];
+    licenses: number[];
+    games: number[];
+    live_chat_competence: string[];
+};
