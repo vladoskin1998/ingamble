@@ -367,8 +367,8 @@ export type GetFilterDataType = {
         image: string | null
     }[],
     classic_currency: { id: number, symbol: string, name: string, name2: string | null, }[],
-    countries: { id: number, name: string, name2: string | null, code: string, image: string | null }[],
-    crypto_currencies: { id: number, symbol: string, name: string, name2: string | null, }[],
+    countries: { id: number, name: string, name2: string | null, code: string, allowed_casinos_count?: number | null, image: string | null }[],
+    crypto_currencies: { id: number, symbol: string, name: string, name2: string | null, flag_image: string | null}[],
     games: { id: number, name: string }[],
     language: { id: number, name: string, image: string | null }[],
     payment_methods: { id: number, name: string, image: string | null }[],

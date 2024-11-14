@@ -1,10 +1,12 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { CasinoFilterBodyType } from "../../../types"
 
 export const YesNoDoubleCheckbox = ({
+    initState,
     field,
     setLocalCasinoFilters,
 }: {
+    initState: boolean | null,
     field: string
     setLocalCasinoFilters: React.Dispatch<
         React.SetStateAction<CasinoFilterBodyType>
@@ -19,6 +21,13 @@ export const YesNoDoubleCheckbox = ({
             [field]: isAllowed,
         }))
     }
+
+    
+    useEffect(() => {
+        if(initState !== null){
+            setLocalField(initState)
+        }
+    }, [initState])
 
     return (
         <div className="form-filter__body">

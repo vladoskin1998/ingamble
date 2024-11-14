@@ -1,20 +1,22 @@
-import { useState, useMemo, memo } from 'react';
+import { useState, useMemo, memo, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import ukraine from "../../../assets/img/flags/ukraine.svg";
 import { FixedSizeList as List } from "react-window";
 import { CasinoFilterBodyType } from '../../../types';
 
+type ListCasinoPlayersFromContentType = { id: number; name: string; name2: string | null; code: string, image: string | null }[] ;
+
 export const CasinoPlayersFromContent = memo(({
+    initState,
     countries,
     setLocalCasinoFilters,
 }: {
-
-    countries: { id: number; name: string; name2: string | null; code: string, image: string | null }[] | null | undefined ;
+    initState: number[],
+    countries: ListCasinoPlayersFromContentType  | undefined
     setLocalCasinoFilters: React.Dispatch<React.SetStateAction<CasinoFilterBodyType>>;
 }) => {
     const [searchText, setSearchText] = useState("");
 
-    const [localSelectedCountries, setLocalSelectedCountries] = useState<number[]>([203, 29, 136])
+    const [localSelectedCountries, setLocalSelectedCountries] = useState<number[]>([])
 
     const checkboxItem = (id: number) => {
         setLocalCasinoFilters(prevFilters => {
@@ -45,10 +47,17 @@ export const CasinoPlayersFromContent = memo(({
         );
     }, [countries, searchText]);
 
+    useEffect(() => {
+        if(!initState.length){
+            setLocalSelectedCountries([])
+        }
+        
+    }, [initState])
+
     return (
         <div className="form-filter__body">
             <div className="form-filter__checkbox checkbox-form-filter">
-                <div className="form-filter__your-country your-country-form-filter">
+                {/* <div className="form-filter__your-country your-country-form-filter">
                     <div className="your-country-form-filter__text">
                         Is this your country of residence?
                     </div>
@@ -73,7 +82,7 @@ export const CasinoPlayersFromContent = memo(({
                             Change
                         </a>
                     </div>
-                </div>
+                </div> */}
                 <div className="form-filter__search-block">
                     <span className="form-filter__search-icon">
                         <svg>

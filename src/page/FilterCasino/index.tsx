@@ -38,10 +38,18 @@ const makeListFilterHeader = (o: CasinoFilterBodyType): MakeListFilterHeaderType
         } else if (value && typeof value === 'object' && 'min' in value && 'max' in value) {
             // Если значение - объект с полями min и max
             result.push({
-                value: `${key.replace(/_/g, ' ')}: ${value.min}, ${value.max}`,
+                value: `${key.replace(/_/g, ' ')}: ${value.min} - ${value.max}`,
                 field: key
             });
-        } else if (value !== null && typeof value !== 'object') {
+        } else if (value !== null && typeof value === 'object' && 'daily' in value && 'weekly' in value && 'monthly' in value) {
+            // Если значение - примитивное значение (boolean, number), и оно не null
+            result.push({
+                value: `${key.replace(/_/g, ' ')}: ${value.daily}, ${value.weekly}, ${value.monthly}`,
+                field: key
+            });
+        }
+        
+        else if (value !== null && typeof value !== 'object') {
             // Если значение - примитивное значение (boolean, number), и оно не null
             result.push({
                 value: `${key.replace(/_/g, ' ')}: ${String(value)}`,
@@ -117,6 +125,12 @@ export default function FilterCasino() {
 
     useEffect(() => {
         debouncedFetchFilter(casinoFilters, refetch)
+        if (!isMobile) {
+            window.scrollTo({
+                behavior: "smooth",
+                top: 0,
+            })
+        }
     }, [casinoFilters, refetch])
 
     useEffect(() => {

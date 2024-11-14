@@ -1,4 +1,4 @@
-import { useState, useMemo, memo } from "react"
+import { useState, useMemo, memo, useEffect } from "react"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { FixedSizeList as List } from "react-window"
 import { CasinoFilterBodyType } from "../../../types"
@@ -11,19 +11,23 @@ const maxHeight = 260
 
 export const ListCheckBox = memo(
     ({
+        initState,
         list,
         setLocalCasinoFilters,
         placeholder,
         field,
-        height=260,
+        height = 240,
     }: {
+        initState: (number | string)[]
         list:
             | {
                   id: number | string
                   name: string
                   image?: string | null
+                  flag_image?: string | null
                   symbol?: string
-                  name2?: string |  null
+                  name2?: string | null
+                  allowed_casinos_count?: number | null
               }[]
             | undefined
         setLocalCasinoFilters: React.Dispatch<
@@ -54,7 +58,12 @@ export const ListCheckBox = memo(
                                   field as NumberArrayKeys<CasinoFilterBodyType>
                               ] as number[]
                           ).filter((item) => item !== id)
-                        : [...prevFilters?.[field as NumberArrayKeys<CasinoFilterBodyType>] , id],
+                        : [
+                              ...prevFilters?.[
+                                  field as NumberArrayKeys<CasinoFilterBodyType>
+                              ],
+                              id,
+                          ],
                 }
             })
             setLocalSelectedCountries((prevFilters) => {
@@ -72,26 +81,30 @@ export const ListCheckBox = memo(
             )
         }, [list, searchText])
 
+        useEffect(() => {
+            setLocalSelectedCountries(initState as any)
+        }, [initState])
+
         return (
             <div className="form-filter__body">
                 <div className="form-filter__checkbox checkbox-form-filter">
-                    {
-                        placeholder &&    <div className="form-filter__search-block">
-                        <span className="form-filter__search-icon">
-                            <svg>
-                                <use xlinkHref="#search"></use>
-                            </svg>
-                        </span>
-                        <input
-                            placeholder={placeholder}
-                            type="text"
-                            className="form-filter__search-input"
-                            value={searchText}
-                            onChange={(e) => setSearchText(e.target.value)}
-                        />
-                    </div>
-                    }
-                 
+                    {placeholder && (
+                        <div className="form-filter__search-block">
+                            <span className="form-filter__search-icon">
+                                <svg>
+                                    <use xlinkHref="#search"></use>
+                                </svg>
+                            </span>
+                            <input
+                                placeholder={placeholder}
+                                type="text"
+                                className="form-filter__search-input"
+                                value={searchText}
+                                onChange={(e) => setSearchText(e.target.value)}
+                            />
+                        </div>
+                    )}
+
                     <div className="form-filter__radio radio-form-filter">
                         <List
                             className="radio-form-filter__items radio-form-filter__items_flags"
@@ -104,7 +117,7 @@ export const ListCheckBox = memo(
                                 const country = filteredCountries?.[index]
                                 const isChecked =
                                     localSelectedCountries?.includes(
-                                        country?.id ||  0 as any
+                                        country?.id || (0 as any)
                                     )
                                 return (
                                     <div
@@ -117,18 +130,25 @@ export const ListCheckBox = memo(
                                             checked={isChecked}
                                             className="radio-form-filter__input form-filter__input"
                                             onChange={() =>
-                                                checkboxItem(country?.id || 0 as any)
+                                                checkboxItem(
+                                                    country?.id || (0 as any)
+                                                )
                                             }
                                         />
                                         <label
                                             htmlFor={`${field}formFilterPlayersFrom${country?.name}`}
                                             className="radio-form-filter__label"
                                         >
-                                            {country?.image && (
+                                            {(country?.image ||
+                                                country?.flag_image) && (
                                                 <span className="flag">
                                                     <LazyLoadImage
                                                         alt={country?.name}
-                                                        src={country?.image}
+                                                        src={
+                                                            country?.image ||
+                                                            country?.flag_image ||
+                                                            ""
+                                                        }
                                                         width={20}
                                                         height={20}
                                                     />
@@ -137,6 +157,11 @@ export const ListCheckBox = memo(
 
                                             <span>{country?.name}</span>
                                         </label>
+                                        {country?.allowed_casinos_count && (
+                                            <span className="number">
+                                                {country?.allowed_casinos_count}
+                                            </span>
+                                        )}
                                     </div>
                                 )
                             }}

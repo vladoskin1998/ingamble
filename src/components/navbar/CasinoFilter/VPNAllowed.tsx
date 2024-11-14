@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { CasinoFilterBodyType } from "../../../types"
 
 export const VPNAllowed = ({
+    initState,
     setLocalCasinoFilters,
 }: {
+    initState:boolean | null,
     setLocalCasinoFilters: React.Dispatch<
         React.SetStateAction<CasinoFilterBodyType>
     >
@@ -18,6 +20,12 @@ export const VPNAllowed = ({
             vpn_usage: isAllowed,
         }))
     }
+
+    useEffect(() => {
+        if(initState !== null){
+            setLocalVpnUsage(initState)
+        }
+    }, [initState])
 
     return (
         <div className="form-filter__body">

@@ -6,6 +6,7 @@ type AccordionItemProps = {
     content: any
     defaultOpen?: boolean
     isNested?: boolean
+
 }
  //всегда в хедерт) добавлять accordion--title--element!!!!!!!!
 export const AccordionItem: React.FC<AccordionItemProps> = ({
@@ -13,12 +14,13 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
     content,
     defaultOpen = false,
     isNested = false,
+
 }) => {
     const [isOpen, setIsOpen] = useState(defaultOpen || isNested)
     const { toggle } = useAccordion()
     const headerRef = useRef<HTMLDivElement>(null)
     const bodyRefAcc = useRef<HTMLDivElement | null>(null)
-    const [maxHeight, setMaxHeight] = useState<string>("0")
+    const [maxHeight, setMaxHeight] = useState<string>( "0")
     const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
 
@@ -96,7 +98,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
     }, [isOpen])
 
     return (
-        <div >
+        <div className="cusom-react-accordion">
             <div
                 ref={headerRef}
                 //@ts-ignore
@@ -111,7 +113,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
                 style={{
                     ...styles.accordionItemPanel,
                     overflow: isHidden,
-                    maxHeight: isOpen ? maxHeight : "0",
+                    maxHeight: isOpen ? maxHeight  : "0",
                    
                 }}
             >

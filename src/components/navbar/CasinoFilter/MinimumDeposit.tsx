@@ -1,14 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Slider from "rc-slider"
 import "rc-slider/assets/index.css"
 import { CasinoFilterBodyType } from "../../../types"
 
 export const MinimumDeposit = ({
+    initState,
     label,
     field,
     max,
     setLocalCasinoFilters,
 }: {
+    initState: number | null,
     label: string
     field:string
     max: number
@@ -25,6 +27,14 @@ export const MinimumDeposit = ({
         [field]: v,
     }))
     }
+
+    
+    useEffect(() => {
+        if(initState !== null){
+            setDeposit(initState)
+        }
+    }, [initState])
+
 
     return (
         <div className="form-filter__body">

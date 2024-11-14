@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { CasinoFilterBodyType } from "../../../types";
 
 export const WithdrawalLimits = ({
+    initState,
     setLocalCasinoFilters,
 }: {
+    initState: {
+        daily: number;
+        weekly: number;
+        monthly: number;
+    } | null,
     setLocalCasinoFilters: React.Dispatch<React.SetStateAction<CasinoFilterBodyType>>;
 }) => {
     const [dailyLimit, setDailyLimit] = useState(10000);
@@ -14,7 +20,7 @@ export const WithdrawalLimits = ({
 
     const handleLimitChange = (
         value: number,
-        limitType: "daily" | "weekly" | "yearly",
+        limitType: "daily" | "weekly" | "monthly",
         setLimit: React.Dispatch<React.SetStateAction<number>>
     ) => {
         setLimit(value);
@@ -28,6 +34,16 @@ export const WithdrawalLimits = ({
             },
         }));
     };
+
+        
+    useEffect(() => {
+        if(initState !== null){
+            setDailyLimit(initState.daily)
+            setWeeklyLimit(initState.weekly)
+            setYearlyLimit(initState.monthly)
+        }
+    }, [initState])
+
 
     const renderLimit = (
         label: string,
@@ -87,7 +103,7 @@ export const WithdrawalLimits = ({
                 yearlyLimit,
                 1,
                 100000000,
-                (value) => handleLimitChange(value, "yearly", setYearlyLimit)
+                (value) => handleLimitChange(value, "monthly", setYearlyLimit)
             )}
         </div>
     );
