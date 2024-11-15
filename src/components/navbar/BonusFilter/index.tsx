@@ -60,7 +60,7 @@ export const BonusFilter = ({
                     content={
                         <RangeSlider
                             initState={bonusFilters.bonus_likes}
-                            field="bonus_rank"
+                            field="bonus_likes"
                             minmax={[0, 10000]}
                             setLocalFilters={setBonusFilters}
                         />
@@ -314,6 +314,7 @@ export const BonusFilter = ({
                     }
                     content={
                         <ListCheckBox
+                            keyType="bonus_selected_countries"
                             initState={bonusFilters.selected_countries}
                             field="selected_countries"
                             placeholder="Search (Country)"

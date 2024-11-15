@@ -17,6 +17,7 @@ const ListCheck = <M extends CasinoFilterBodyType | BonusFilterBodyType>({
   placeholder,
   field,
   height = 240,
+  keyType,
 }: {
   initState: (number | string)[]
   list:
@@ -30,11 +31,12 @@ const ListCheck = <M extends CasinoFilterBodyType | BonusFilterBodyType>({
         allowed_casinos_count?: number | null
       }[] | undefined
   setLocalFilters: React.Dispatch<
-    React.SetStateAction<M> // Обобщаем на оба типа
+    React.SetStateAction<M> 
   >
   placeholder?: string
   field: string
   height?: number
+  keyType?: string
 }) => {
   const [searchText, setSearchText] = useState("")
   const [localFilterItems, setLocalFilterItems] = useState<number[]>([])
@@ -105,7 +107,7 @@ const ListCheck = <M extends CasinoFilterBodyType | BonusFilterBodyType>({
               return (
                 <div className="radio-form-filter__item" style={style}>
                   <input
-                    id={`${field}formFilterPlayersFrom${itemFilter?.name}`}
+                    id={`${keyType}${field}formFilterPlayersFrom${itemFilter?.name}`}
                     type="checkbox"
                     checked={isChecked}
                     className="radio-form-filter__input form-filter__input"
@@ -114,7 +116,7 @@ const ListCheck = <M extends CasinoFilterBodyType | BonusFilterBodyType>({
                     }
                   />
                   <label
-                    htmlFor={`${field}formFilterPlayersFrom${itemFilter?.name}`}
+                    htmlFor={`${keyType}${field}formFilterPlayersFrom${itemFilter?.name}`}
                     className="radio-form-filter__label"
                   >
                     {(itemFilter?.image || itemFilter?.flag_image) && (
