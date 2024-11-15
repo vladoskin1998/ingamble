@@ -387,11 +387,11 @@ export interface CasinoFilterBodyType {
     payout_speed: number[];
     casino_rank: { min: number; max: number } | null;
     casino_likes: { min: number; max: number } | null;
-    sportsbook: boolean | null;
-    tournaments: boolean | null;
-    vpn_usage: boolean | null;
-    bonus_hunt_with_active_bonus: boolean | null;
-    social_bonus: boolean | null;
+    sportsbook: boolean | undefined;
+    tournaments: boolean | undefined;
+    vpn_usage: boolean | undefined;
+    bonus_hunt_with_active_bonus: boolean | undefined;
+    social_bonus: boolean | undefined;
     established: { min: number; max: number } | null;
     casino_owner: string[];
     withdrawal_limits: {

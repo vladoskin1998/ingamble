@@ -12314,6 +12314,7 @@ h3 {
   align-items: center;
   justify-content: center;
   margin: 0 0 0 4px;
+  cursor: pointer;
 }
 .filter-selected__btn span svg {
   width: 8.67px;

@@ -1,1 +1,0 @@
-import{j as t}from"./index-BcmEp6PV.js";function i(){return document.title="Filter Bonus",t.jsx("div",{children:"index"})}export{i as default};

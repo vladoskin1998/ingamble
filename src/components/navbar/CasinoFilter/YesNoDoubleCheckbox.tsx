@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react"
 import { CasinoFilterBodyType } from "../../../types"
 
 export const YesNoDoubleCheckbox = ({
@@ -6,28 +5,22 @@ export const YesNoDoubleCheckbox = ({
     field,
     setLocalCasinoFilters,
 }: {
-    initState: boolean | null,
+    initState: boolean | undefined,
     field: string
     setLocalCasinoFilters: React.Dispatch<
         React.SetStateAction<CasinoFilterBodyType>
     >
 }) => {
-    const [localFields, setLocalField] = useState(true)
+
 
     const handleYesNoChange = (isAllowed: boolean) => {
-        setLocalField(isAllowed)
         setLocalCasinoFilters((prevFilters) => ({
             ...prevFilters,
             [field]: isAllowed,
         }))
     }
 
-    
-    useEffect(() => {
-        if(initState !== null){
-            setLocalField(initState)
-        }
-    }, [initState])
+
 
     return (
         <div className="form-filter__body">
@@ -40,7 +33,7 @@ export const YesNoDoubleCheckbox = ({
                         <input
                             type="checkbox"
                             className="radio-form-filter__input form-filter__input"
-                            checked={localFields}
+                            checked={initState === true}
                         />
                         <label className="radio-form-filter__label">
                             <span>Yes</span>
@@ -53,7 +46,7 @@ export const YesNoDoubleCheckbox = ({
                         <input
                             type="checkbox"
                             className="radio-form-filter__input form-filter__input"
-                            checked={!localFields}
+                            checked={initState === false}
                         />
                         <label className="radio-form-filter__label">
                             <span>No</span>

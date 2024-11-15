@@ -1,31 +1,24 @@
-import { useEffect, useState } from "react"
 import { CasinoFilterBodyType } from "../../../types"
 
 export const VPNAllowed = ({
     initState,
     setLocalCasinoFilters,
 }: {
-    initState:boolean | null,
+    initState:boolean | undefined,
     setLocalCasinoFilters: React.Dispatch<
         React.SetStateAction<CasinoFilterBodyType>
     >
 }) => {
-    const [localVpnUsage, setLocalVpnUsage] = useState<boolean>(true)
+
 
     const handleVpnChange = (b: boolean) => {
         const isAllowed = b
-        setLocalVpnUsage(isAllowed)
+
         setLocalCasinoFilters((prevFilters) => ({
             ...prevFilters,
             vpn_usage: isAllowed,
         }))
     }
-
-    useEffect(() => {
-        if(initState !== null){
-            setLocalVpnUsage(initState)
-        }
-    }, [initState])
 
     return (
         <div className="form-filter__body">
@@ -38,7 +31,7 @@ export const VPNAllowed = ({
                         <input
                             type="checkbox"
                             className="radio-form-filter__input form-filter__input"
-                            checked={localVpnUsage}
+                            checked={initState === true}
                         />
                         <label className="radio-form-filter__label">
                             <span>Allowed</span>
@@ -51,7 +44,7 @@ export const VPNAllowed = ({
                         <input
                             type="checkbox"
                             className="radio-form-filter__input form-filter__input"
-                            checked={!localVpnUsage}
+                            checked={initState === false}
                         />
                         <label className="radio-form-filter__label">
                             <span>Not Allowed</span>

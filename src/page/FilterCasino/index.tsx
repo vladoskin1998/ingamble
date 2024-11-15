@@ -1,7 +1,10 @@
 import { useQuery } from "react-query"
 import { Categories } from "../../components/categories/Categories"
 import { FilterHeaderList } from "../../components/filter-header-list/FilterHeaderList"
-import { initialCasinoFilters, useFilterContext } from "../../context/FilterContext"
+import {
+    initialCasinoFilters,
+    useFilterContext,
+} from "../../context/FilterContext"
 import $api from "../../http"
 import {
     CasinoFilterBodyType,
@@ -21,52 +24,82 @@ import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 
 interface MakeListFilterHeaderType {
-    value: string;
-    field: string;
+    value: string
+    field: string
 }
 
-const makeListFilterHeader = (o: CasinoFilterBodyType): MakeListFilterHeaderType[] => {
-    const result: MakeListFilterHeaderType[] = [];
+type BooleanValueType = {
+    true: "Yes"
+    false: "No"
+}
+const BooleanValue: BooleanValueType = {
+    true: "Yes",
+    false: "No",
+}
+
+const makeListFilterHeader = (
+    o: CasinoFilterBodyType
+): MakeListFilterHeaderType[] => {
+    const result: MakeListFilterHeaderType[] = []
 
     for (const [key, value] of Object.entries(o)) {
         if (Array.isArray(value) && value.length > 0) {
-            // Если значение - массив, добавляем длину массива
             result.push({
-                value: `${key.replace(/_/g, ' ')}: ${value.length}`,
-                field: key
-            });
-        } else if (value && typeof value === 'object' && 'min' in value && 'max' in value) {
-            // Если значение - объект с полями min и max
+                value: `${key.replace(/_/g, " ")}: ${value.length}`,
+                field: key,
+            })
+        } else if (
+            value !== undefined &&
+            value &&
+            typeof value === "object" &&
+            "min" in value &&
+            "max" in value
+        ) {
             result.push({
-                value: `${key.replace(/_/g, ' ')}: ${value.min} - ${value.max}`,
-                field: key
-            });
-        } else if (value !== null && typeof value === 'object' && 'daily' in value && 'weekly' in value && 'monthly' in value) {
-            // Если значение - примитивное значение (boolean, number), и оно не null
+                value: `${key.replace(/_/g, " ")}: ${value.min} - ${value.max}`,
+                field: key,
+            })
+        } else if (
+            value !== undefined &&
+            value !== null &&
+            typeof value === "object" &&
+            "daily" in value &&
+            "weekly" in value &&
+            "monthly" in value
+        ) {
             result.push({
-                value: `${key.replace(/_/g, ' ')}: ${value.daily}, ${value.weekly}, ${value.monthly}`,
-                field: key
-            });
-        }
-        
-        else if (value !== null && typeof value !== 'object') {
-            // Если значение - примитивное значение (boolean, number), и оно не null
+                value: `${key.replace(/_/g, " ")}: ${value.daily}, ${
+                    value.weekly
+                }, ${value.monthly}`,
+                field: key,
+            })
+        } else if (
+            value !== undefined &&
+            value !== null &&
+            typeof value !== "object"
+        ) {
             result.push({
-                value: `${key.replace(/_/g, ' ')}: ${String(value)}`,
-                field: key
-            });
+                value: `${key.replace(/_/g, " ")}: ${
+                    typeof value === "boolean"
+                        ? BooleanValue[String(value) as keyof BooleanValueType]
+                        : String(value)
+                }`,
+                field: key,
+            })
         }
     }
 
-    return result;
-};
+    return result
+}
 
 const filterEmptyValues = (
     body: CasinoFilterBodyType
 ): Partial<CasinoFilterBodyType> => {
     return Object.fromEntries(
         Object.entries(body).filter(([_, value]) => {
-            return value !== null && (!Array.isArray(value) || value.length > 0)
+            if (value === null || value === undefined) return false
+            if (Array.isArray(value) && value.length === 0) return false
+            return true
         })
     )
 }
@@ -109,7 +142,7 @@ export default function FilterCasino() {
     const [allData, setAllData] = useState<SeeAllCasinosCasino[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
-    const [isDebouncedLoading, setIsDebouncedLoading] = useState(false)
+    const [isDebouncedLoading, setIsDebouncedLoading] = useState(true)
     const { data, isLoading, refetch } = useQuery<FilterCasinoPostResponse>(
         ["get-datas-filter-casino", casinoFilters, currentPage],
         () => getFilteringCasinoList(casinoFilters, currentPage),
@@ -162,16 +195,16 @@ export default function FilterCasino() {
 
     const displayedData = isMobile ? allData : data?.results
 
-
     const clearAll = () => {
         setCasinoFilters(initialCasinoFilters)
     }
 
     const handlerClearOne = (v: string) => {
-        const findedValueField = initialCasinoFilters[v as keyof CasinoFilterBodyType]
-        setCasinoFilters(s => ({
+        const findedValueField =
+            initialCasinoFilters[v as keyof CasinoFilterBodyType]
+        setCasinoFilters((s) => ({
             ...s,
-            [v as keyof CasinoFilterBodyType]: findedValueField
+            [v as keyof CasinoFilterBodyType]: findedValueField,
         }))
     }
 
@@ -191,7 +224,7 @@ export default function FilterCasino() {
                             { name: "VPN Allowed Casinos" },
                         ]}
                     />
-                    <FilterHeaderList 
+                    <FilterHeaderList
                         list={makeListFilterHeader(casinoFilters)}
                         clearAll={clearAll}
                         clearOne={(v) => handlerClearOne(v)}

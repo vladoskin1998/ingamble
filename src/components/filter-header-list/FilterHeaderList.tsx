@@ -84,6 +84,7 @@ export const FilterHeaderList = ({
                                         <div className="filter-selected__btn">
                                             {item.value}
                                             <span
+                                            
                                                 onClick={() =>
                                                     clearOne(item.field)
                                                 }

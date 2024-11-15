@@ -50,7 +50,6 @@ export const RangeSlider = (
                             type="number"
                             className="field__input field__input_min"
                             value={localCasinoRank[0]}
-                       
                             onChange={v => handleRangeChange([Number(v.target.value), localCasinoRank?.[1]])}
                         />
                     </div>
@@ -60,7 +59,6 @@ export const RangeSlider = (
                             type="number"
                             className="field__input field__input_max"
                             value={localCasinoRank[1]}
-                       
                             onChange={v => handleRangeChange([localCasinoRank?.[0], Number(v.target.value)  ])}
                         />
                     </div>
