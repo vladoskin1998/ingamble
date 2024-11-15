@@ -114,8 +114,11 @@ const debouncedFetchFilter = debounce(
 )
 
 const debouncedFetchPagination = debounce(
-    (filters, fetchFunction, setLoading) => {
-        setLoading(true)
+    (filters, fetchFunction, setLoading, isMobile) => {
+        if(!isMobile){
+            setLoading(true)
+        }
+      
         fetchFunction(filters).finally(() => setLoading(false))
     }
 )
@@ -153,7 +156,7 @@ export default function FilterCasino() {
     )
 
     useEffect(() => {
-        debouncedFetchPagination(casinoFilters, refetch, setIsDebouncedLoading)
+        debouncedFetchPagination(casinoFilters, refetch, setIsDebouncedLoading, isMobile)
     }, [currentPage, refetch, setCurrentPage])
 
     useEffect(() => {

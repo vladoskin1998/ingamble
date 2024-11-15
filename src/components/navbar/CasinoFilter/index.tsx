@@ -39,8 +39,7 @@ export const CasinoFilterContent = () => {
     //@ts-ignore
     const { casinoFilters, setCasinoFilters } = useFilterContext()
 
-    // const [localCasinoFilters, setLocalCasinoFilters] =
-    //     useState<CasinoFilterBodyType>(casinoFilters)
+
 
     return (
         <div
@@ -701,36 +700,3 @@ export const CasinoFilterContent = () => {
         </div>
     )
 }
-
-// export type GetFilterDataType = {
-//     live_chat_competence: {
-//         value: string,
-//         label: string
-//     }[],
-//     responsible_gambling: {
-//         value: string,
-//         label: string
-//     }[],
-//     licenses: {
-//         id: number,
-//         name: string,
-//         image: string | null
-//     }[],
-//     game_types: {
-//         id: number,
-//         name: string,
-//         image: string | null
-//     }[],
-//     game_providers: {
-//         id: number,
-//         name: string,
-//         image: string | null
-//     }[],
-//     classic_currency: { id: number, symbol: string, name: string, name2: string | null, }[],
-//     countries: { id: number, name: string, name2: string | null, code: string, image: string | null }[],
-//     crypto_currencies: { id: number, symbol: string, name: string, name2: string | null, }[],
-//     games: { id: number, name: string }[],
-//     language: { id: number, name: string, image: string | null }[],
-//     payment_methods: { id: number, name: string, image: string | null }[],
-//     payout_speed: { id: number, name: string }[]
-// }
