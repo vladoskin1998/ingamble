@@ -24,3 +24,10 @@ export const NumberAssociaty = (n:number | string) => {
     }
     else n
 } 
+
+
+
+export const getFilterContentHeight = (s: number | undefined) => {
+    if (!s) return
+    return s * 40 > 240 ? 240 : s * 40
+}

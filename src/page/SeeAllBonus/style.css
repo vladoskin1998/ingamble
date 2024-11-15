@@ -107,10 +107,7 @@
   .main-see-all .casino-card {
     position: relative;
   }
-  .main-see-all .casino-card__image-block {
-    height: auto;
-    padding: 0 8px 50.432% 8px;
-  }
+
   .main-see-all .casino-card__bnt {
     top: auto;
     bottom: 8px;

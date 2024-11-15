@@ -18,7 +18,7 @@ import {
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS } from "../../helper"
 
-const countPageSize = 10
+const countPageSize = 60
 
 export default function SeeAllBonus() {
     document.title = "See All Bonus"
@@ -170,7 +170,7 @@ export default function SeeAllBonus() {
                                                                 }`}
                                                             >
                                                                 <span className="tags-casino-card__item-label">
-                                                                    {it}
+                                                                    {typeof it === "string" ? it : it.name}
                                                                 </span>
                                                             </div>
                                                         )

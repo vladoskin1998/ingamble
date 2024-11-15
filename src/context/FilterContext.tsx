@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from "react"
-import { CasinoFilterBodyType } from "../types"
+import { BonusFilterBodyType, CasinoFilterBodyType } from "../types"
 import { useNavigate } from "react-router-dom"
 
 export const initialCasinoFilters: CasinoFilterBodyType = {
@@ -27,6 +27,23 @@ export const initialCasinoFilters: CasinoFilterBodyType = {
     games: [],
     live_chat_competence: [],
 }
+export const initialBonusFilters: BonusFilterBodyType = {
+    bonus_rank: null,
+    bonus_likes: null,
+    bonus_min_dep: null,
+    bonus_max_bet: null,
+    free_spin_amount: null,
+    bonus_value: null,
+    bonus_amount: null,
+    bonus_max_win: null,
+    bonus_type: [],
+    daily_availability: [],
+    wagering_difficulty: [],
+    selected_countries: [],
+    selected_games: [],
+    selected_providers: [],
+    sticky: undefined,
+}
 
 export enum RouteToNextFilter {
     CASINOS = "casinos",
@@ -38,6 +55,9 @@ export enum RouteToNextFilter {
 type FilterContextType = {
     casinoFilters: CasinoFilterBodyType
     setCasinoFilters: React.Dispatch<React.SetStateAction<CasinoFilterBodyType>>
+
+    bonusFilters: BonusFilterBodyType
+    setBonusFilters: React.Dispatch<React.SetStateAction<BonusFilterBodyType>>
 
     currentRouteFilter: RouteToNextFilter
     handlerCurrentRouteFilter: (v: RouteToNextFilter) => void
@@ -60,23 +80,26 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         }
     }
 
- 
-
     const [casinoFilters, setCasinoFilters] =
         useState<CasinoFilterBodyType>(initialCasinoFilters)
 
+    const [bonusFilters, setBonusFilters] =
+        useState<BonusFilterBodyType>(initialBonusFilters)
 
     const handlerClearAllFilters = () => {
         handlerCurrentRouteFilter(RouteToNextFilter.DEFAULT)
         setCasinoFilters(initialCasinoFilters)
-        navigation('/')
+        setBonusFilters(initialBonusFilters)
+        navigation("/")
     }
-        
+
     return (
         <FilterContext.Provider
             value={{
                 casinoFilters,
                 setCasinoFilters,
+                bonusFilters,
+                setBonusFilters,
                 currentRouteFilter,
                 handlerCurrentRouteFilter,
                 handlerClearAllFilters,

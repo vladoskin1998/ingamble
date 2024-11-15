@@ -1,6 +1,4 @@
-import $api from "../../../http"
-import { GetFilterDataType } from "../../../types"
-import { useQuery } from "react-query"
+import { CasinoFilterDataType, GeneralFilterDataType } from "../../../types"
 import { AccordionItem } from "../../acordion/Acordion"
 import "rc-slider/assets/index.css"
 import { useFilterContext } from "../../../context/FilterContext"
@@ -8,38 +6,23 @@ import { useFilterContext } from "../../../context/FilterContext"
 import { CasinoPlayersFromContent } from "./CasinoPlayersFromContent"
 //@ts-ignore
 import { ByLicenses } from "./ByLicenses"
-import { RangeSlider } from "./RangeSlider"
+import { RangeSlider } from "../../filter-components/RangeSlider"
 
 import { VPNAllowed } from "./VPNAllowed"
-import { YesNoDoubleCheckbox } from "./YesNoDoubleCheckbox"
-import { ListCheckBox } from "./ListCheckBox"
+import { YesNoDoubleCheckbox } from "../../filter-components/YesNoDoubleCheckbox"
+import { ListCheckBox } from "../../filter-components/ListCheckBox"
 import { WithdrawalLimits } from "./WithdrawalLimits"
 import { MinimumDeposit } from "./MinimumDeposit"
+import { getFilterContentHeight } from "../../../helper"
 
-const getHeight = (s: number | undefined) => {
-    if (!s) return
-    return s * 40 > 240 ? 240 : s * 40
-}
-
-const getDatasFilterCasino = async () => {
-    const response = await $api.get("get-datas-filter-casino/")
-    return response.data
-}
-
-export const CasinoFilterContent = () => {
-    //@ts-ignore
-    const { data: datasFilterCasino, isLoading: isLoadingDatasFilterCasino } =
-        useQuery<GetFilterDataType>(
-            "get-datas-filter-casino/",
-            getDatasFilterCasino,
-            {
-                staleTime: Infinity,
-            }
-        )
-    //@ts-ignore
+export const CasinoFilterContent = ({
+    datasFilterCasino,
+}: {
+    datasFilterCasino:
+        | (GeneralFilterDataType & CasinoFilterDataType)
+        | undefined
+}) => {
     const { casinoFilters, setCasinoFilters } = useFilterContext()
-
-
 
     return (
         <div
@@ -76,7 +59,7 @@ export const CasinoFilterContent = () => {
                             initState={casinoFilters.casino_rank}
                             field="casino_rank"
                             minmax={[0, 10]}
-                            setLocalCasinoFilters={setCasinoFilters}
+                            setLocalFilters={setCasinoFilters}
                         />
                     }
                 />
@@ -99,7 +82,7 @@ export const CasinoFilterContent = () => {
                             initState={casinoFilters.casino_likes}
                             field="casino_likes"
                             minmax={[0, 10000]}
-                            setLocalCasinoFilters={setCasinoFilters}
+                            setLocalFilters={setCasinoFilters}
                         />
                     }
                 />
@@ -129,8 +112,8 @@ export const CasinoFilterContent = () => {
                             field="selected_countries"
                             placeholder="Search (Country)"
                             list={datasFilterCasino?.countries}
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.countries?.length
                             )}
                         />
@@ -158,7 +141,7 @@ export const CasinoFilterContent = () => {
                                 new Date().getFullYear() - 10,
                                 new Date().getFullYear(),
                             ]}
-                            setLocalCasinoFilters={setCasinoFilters}
+                            setLocalFilters={setCasinoFilters}
                         />
                     }
                 />
@@ -182,8 +165,8 @@ export const CasinoFilterContent = () => {
                             field="licenses"
                             placeholder="Search (License )"
                             list={datasFilterCasino?.licenses}
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.licenses?.length
                             )}
                         />
@@ -236,8 +219,8 @@ export const CasinoFilterContent = () => {
                             field="game_providers"
                             placeholder="Search (Game Providers)"
                             list={datasFilterCasino?.game_providers}
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.game_providers?.length
                             )}
                         />
@@ -264,8 +247,8 @@ export const CasinoFilterContent = () => {
                             field="game_types"
                             placeholder="Search (Game Types)"
                             list={datasFilterCasino?.game_types}
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.game_types?.length
                             )}
                         />
@@ -291,8 +274,10 @@ export const CasinoFilterContent = () => {
                             field="games"
                             placeholder="Search (Game)"
                             list={datasFilterCasino?.games}
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(datasFilterCasino?.games?.length)}
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
+                                datasFilterCasino?.games?.length
+                            )}
                         />
                     }
                 />
@@ -334,7 +319,7 @@ export const CasinoFilterContent = () => {
                     }
                     content={
                         <YesNoDoubleCheckbox
-                            initState={casinoFilters.tournaments}
+                            initState={casinoFilters.sportsbook}
                             field="sportsbook"
                             setLocalCasinoFilters={setCasinoFilters}
                         />
@@ -360,8 +345,8 @@ export const CasinoFilterContent = () => {
                             list={datasFilterCasino?.language}
                             field="language_website"
                             placeholder="Search (Language)"
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.language?.length
                             )}
                         />
@@ -387,8 +372,8 @@ export const CasinoFilterContent = () => {
                             list={datasFilterCasino?.language}
                             field="language_live_chat"
                             placeholder="Search (Language)"
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.language?.length
                             )}
                         />
@@ -414,8 +399,8 @@ export const CasinoFilterContent = () => {
                             list={datasFilterCasino?.payment_methods}
                             field="payment_methods"
                             placeholder="Search (Payment Methods)"
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.payment_methods?.length
                             )}
                         />
@@ -441,8 +426,8 @@ export const CasinoFilterContent = () => {
                             list={datasFilterCasino?.classic_currency}
                             field="accepted_currencies"
                             placeholder="Search (Currencies)"
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.classic_currency?.length
                             )}
                         />
@@ -468,8 +453,8 @@ export const CasinoFilterContent = () => {
                             list={datasFilterCasino?.crypto_currencies}
                             field="accepted_currencies"
                             placeholder="Search (Crypto Currencies)"
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.crypto_currencies?.length
                             )}
                         />
@@ -500,8 +485,8 @@ export const CasinoFilterContent = () => {
                             )}
                             field="live_chat_competence"
                             placeholder="Search (Crypto Currencies)"
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.live_chat_competence?.length
                             )}
                         />
@@ -533,8 +518,8 @@ export const CasinoFilterContent = () => {
                             )}
                             field="casino_owner"
                             placeholder="Search (Crypto Currencies)"
-                            setLocalCasinoFilters={setCasinoFilters}
-                            height={getHeight(
+                            setLocalFilters={setCasinoFilters}
+                            height={getFilterContentHeight(
                                 datasFilterCasino?.responsible_gambling?.length
                             )}
                         />
@@ -581,7 +566,7 @@ export const CasinoFilterContent = () => {
                             initState={casinoFilters.min_deposit}
                             label="Minimum Deposit"
                             field="min_deposit"
-                            max={1000000}
+                            max={10000}
                             setLocalCasinoFilters={setCasinoFilters}
                         />
                     }
@@ -603,18 +588,12 @@ export const CasinoFilterContent = () => {
                     content={
                         <ListCheckBox
                             initState={casinoFilters.payout_speed}
-                            height={
-                                getHeight(
-                                    datasFilterCasino?.payout_speed?.length
-                                )
-                                // datasFilterCasino?.payout_speed?.length
-                                //     ? datasFilterCasino?.payout_speed?.length *
-                                //       40
-                                //     : 260
-                            }
+                            height={getFilterContentHeight(
+                                datasFilterCasino?.payout_speed?.length
+                            )}
                             list={datasFilterCasino?.payout_speed}
                             field="payout_speed"
-                            setLocalCasinoFilters={setCasinoFilters}
+                            setLocalFilters={setCasinoFilters}
                         />
                     }
                 />

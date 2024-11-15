@@ -1,26 +1,22 @@
-import { CasinoFilterBodyType } from "../../../types"
+import { BonusFilterBodyType, CasinoFilterBodyType } from "../../types"
 
-export const YesNoDoubleCheckbox = ({
+export const YesNoDoubleCheckbox = <
+    T extends CasinoFilterBodyType | BonusFilterBodyType
+>({
     initState,
     field,
     setLocalCasinoFilters,
 }: {
-    initState: boolean | undefined,
+    initState: boolean | undefined
     field: string
-    setLocalCasinoFilters: React.Dispatch<
-        React.SetStateAction<CasinoFilterBodyType>
-    >
+    setLocalCasinoFilters: React.Dispatch<React.SetStateAction<T>>
 }) => {
-
-
     const handleYesNoChange = (isAllowed: boolean) => {
         setLocalCasinoFilters((prevFilters) => ({
             ...prevFilters,
             [field]: isAllowed,
         }))
     }
-
-
 
     return (
         <div className="form-filter__body">

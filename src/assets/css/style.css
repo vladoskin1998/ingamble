@@ -13155,8 +13155,8 @@ h3 {
   position: relative;
 }
 .main-see-all .casino-card__image-block {
-  height: auto;
-  padding: 0 8px 50.432% 8px;
+  /* height: auto; */
+  /* padding: 0 8px 50.432% 8px; */
 }
 .main-see-all .casino-card__bnt {
   top: auto;

@@ -1,6 +1,6 @@
 import { useQuery } from "react-query"
 import { Categories } from "../../components/categories/Categories"
-import { FilterHeaderList } from "../../components/filter-header-list/FilterHeaderList"
+import { FilterHeaderList } from "../../components/filter-components/FilterHeaderList"
 import {
     initialCasinoFilters,
     useFilterContext,
@@ -23,75 +23,6 @@ import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 
-interface MakeListFilterHeaderType {
-    value: string
-    field: string
-}
-
-type BooleanValueType = {
-    true: "Yes"
-    false: "No"
-}
-const BooleanValue: BooleanValueType = {
-    true: "Yes",
-    false: "No",
-}
-
-const makeListFilterHeader = (
-    o: CasinoFilterBodyType
-): MakeListFilterHeaderType[] => {
-    const result: MakeListFilterHeaderType[] = []
-
-    for (const [key, value] of Object.entries(o)) {
-        if (Array.isArray(value) && value.length > 0) {
-            result.push({
-                value: `${key.replace(/_/g, " ")}: ${value.length}`,
-                field: key,
-            })
-        } else if (
-            value !== undefined &&
-            value &&
-            typeof value === "object" &&
-            "min" in value &&
-            "max" in value
-        ) {
-            result.push({
-                value: `${key.replace(/_/g, " ")}: ${value.min} - ${value.max}`,
-                field: key,
-            })
-        } else if (
-            value !== undefined &&
-            value !== null &&
-            typeof value === "object" &&
-            "daily" in value &&
-            "weekly" in value &&
-            "monthly" in value
-        ) {
-            result.push({
-                value: `${key.replace(/_/g, " ")}: ${value.daily}, ${
-                    value.weekly
-                }, ${value.monthly}`,
-                field: key,
-            })
-        } else if (
-            value !== undefined &&
-            value !== null &&
-            typeof value !== "object"
-        ) {
-            result.push({
-                value: `${key.replace(/_/g, " ")}: ${
-                    typeof value === "boolean"
-                        ? BooleanValue[String(value) as keyof BooleanValueType]
-                        : String(value)
-                }`,
-                field: key,
-            })
-        }
-    }
-
-    return result
-}
-
 const filterEmptyValues = (
     body: CasinoFilterBodyType
 ): Partial<CasinoFilterBodyType> => {
@@ -106,7 +37,7 @@ const filterEmptyValues = (
 
 const LazyFlag = lazy(() => import("react-world-flags"))
 
-const countPageSize = 10
+const countPageSize = 15
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),
@@ -115,10 +46,10 @@ const debouncedFetchFilter = debounce(
 
 const debouncedFetchPagination = debounce(
     (filters, fetchFunction, setLoading, isMobile) => {
-        if(!isMobile){
+        if (!isMobile) {
             setLoading(true)
         }
-      
+
         fetchFunction(filters).finally(() => setLoading(false))
     }
 )
@@ -147,7 +78,7 @@ export default function FilterCasino() {
 
     const [isDebouncedLoading, setIsDebouncedLoading] = useState(true)
     const { data, isLoading, refetch } = useQuery<FilterCasinoPostResponse>(
-        ["get-datas-filter-casino", casinoFilters, currentPage],
+        ["filter/casinos", casinoFilters, currentPage],
         () => getFilteringCasinoList(casinoFilters, currentPage),
         {
             keepPreviousData: true,
@@ -156,7 +87,12 @@ export default function FilterCasino() {
     )
 
     useEffect(() => {
-        debouncedFetchPagination(casinoFilters, refetch, setIsDebouncedLoading, isMobile)
+        debouncedFetchPagination(
+            casinoFilters,
+            refetch,
+            setIsDebouncedLoading,
+            isMobile
+        )
     }, [currentPage, refetch, setCurrentPage])
 
     useEffect(() => {
@@ -228,7 +164,7 @@ export default function FilterCasino() {
                         ]}
                     />
                     <FilterHeaderList
-                        list={makeListFilterHeader(casinoFilters)}
+                        initList={casinoFilters}
                         clearAll={clearAll}
                         clearOne={(v) => handlerClearOne(v)}
                     />
@@ -244,7 +180,7 @@ export default function FilterCasino() {
                             </div>
                             <div className="main-loyaltie-programs__items loyaltie-programs__items">
                                 {displayedData?.map((item) => (
-                                    <div className="loyaltie-programs__item item-loyaltie-programs">
+                                    <div className="loyaltie-programs__item item-loyaltie-programs" key={item?.casino_id + item?.casino_image}>
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
                                                 <div

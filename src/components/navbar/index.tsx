@@ -10,8 +10,17 @@ import {
     useFilterContext,
 } from "../../context/FilterContext"
 import { Link } from "react-router-dom"
+import $api from "../../http"
+import { useQuery } from "react-query"
+import { GetFilterDataTypeResponse } from "../../types"
+import { BonusFilter } from "./BonusFilter"
 
 type DefaultOpenType = "casinos" | "bonuses" | "loyalties" | "slots" | ""
+
+const getDatasFilter = async () => {
+    const response = await $api.get("get-datas-filter/")
+    return response.data
+}
 
 export const Navbar = ({
     isSidebarActive,
@@ -23,7 +32,11 @@ export const Navbar = ({
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
     const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>("")
 
-    const { currentRouteFilter, handlerCurrentRouteFilter, handlerClearAllFilters } = useFilterContext()
+    const {
+        currentRouteFilter,
+        handlerCurrentRouteFilter,
+        handlerClearAllFilters,
+    } = useFilterContext()
 
     useLayoutEffect(() => {
         const sidebarGamble = document.querySelector(
@@ -80,6 +93,14 @@ export const Navbar = ({
     const randomKey = useMemo(
         () => Math.random().toString(36).substring(2, 9),
         [isSidebarActive]
+    )
+
+    const { data: datasFilter } = useQuery<GetFilterDataTypeResponse>(
+        "get-datas-filter",
+        getDatasFilter,
+        {
+            staleTime: Infinity,
+        }
     )
 
     return (
@@ -175,11 +196,27 @@ export const Navbar = ({
                                             </span>
                                         </div>
                                     }
-                                    content={<CasinoFilterContent />}
+                                    content={
+                                        <CasinoFilterContent
+                                            datasFilterCasino={
+                                                datasFilter
+                                                    ? {
+                                                          ...datasFilter.casino,
+                                                          ...datasFilter.general,
+                                                      }
+                                                    : undefined
+                                            }
+                                        />
+                                    }
                                 />
                             </div>
                             <div
                                 className={`form-filters__item item-form-filters`}
+                                onClick={() =>
+                                    handlerCurrentRouteFilter(
+                                        RouteToNextFilter.BONUS
+                                    )
+                                }
                             >
                                 <AccordionItem
                                     defaultOpen={isDefaultOpen === "bonuses"}
@@ -215,7 +252,16 @@ export const Navbar = ({
                                         </div>
                                     }
                                     content={
-                                        <div className="item-form-filters__body"></div>
+                                        <BonusFilter
+                                            datasFilterBonus={
+                                                datasFilter
+                                                    ? {
+                                                          ...datasFilter.bonus,
+                                                          ...datasFilter.general,
+                                                      }
+                                                    : undefined
+                                            }
+                                        />
                                     }
                                 />
                             </div>
@@ -258,7 +304,7 @@ export const Navbar = ({
                                     }
                                 />
                             </div>
-                            <div
+                            {/* <div
                                 className={`form-filters__item item-form-filters `}
                             >
                                 <AccordionItem
@@ -296,7 +342,7 @@ export const Navbar = ({
                                         <div className="item-form-filters__body"></div>
                                     }
                                 />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="form-filters__bottom bottom-form-filters">
@@ -313,7 +359,6 @@ export const Navbar = ({
                                             width={20}
                                             height={20}
                                         />
-                                   
                                     </span>
                                     <span>Clear All</span>
                                 </button>

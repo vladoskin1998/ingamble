@@ -233,7 +233,7 @@ export type SeeAllBonus = {
     bonus_image: string;
     casino_rank: string;
     bonus_likes: number;
-    labels: string[];
+    labels: string[] |{name: string}[];
     casino_affiliate_link: string;
 };
 
@@ -341,39 +341,85 @@ export type AllCategoriesHomeDataResponse = {
     casino_categories: AllCategoriesHomeCasinoCategory[];
 };
 
-
-export type GetFilterDataType = {
-    live_chat_competence: {
-        value: string,
-        label: string
-    }[],
-    responsible_gambling: {
-        value: string,
-        label: string
-    }[],
-    licenses: {
-        id: number,
-        name: string,
-        image: string | null
-    }[],
-    game_types: {
-        id: number,
-        name: string,
-        image: string | null
-    }[],
+export type GeneralFilterDataType = {
+    countries: {
+        id: number;
+        name: string;
+        name2: string | null;
+        code: string;
+        allowed_casinos_count?: number | null;
+        image: string | null;
+    }[];
     game_providers: {
-        id: number,
-        name: string,
-        image: string | null
-    }[],
-    classic_currency: { id: number, symbol: string, name: string, name2: string | null, }[],
-    countries: { id: number, name: string, name2: string | null, code: string, allowed_casinos_count?: number | null, image: string | null }[],
-    crypto_currencies: { id: number, symbol: string, name: string, name2: string | null, flag_image: string | null}[],
-    games: { id: number, name: string }[],
-    language: { id: number, name: string, image: string | null }[],
-    payment_methods: { id: number, name: string, image: string | null }[],
-    payout_speed: { id: number, name: string }[]
+        id: number;
+        name: string;
+        image: string | null;
+    }[];
+    games: {
+        id: number;
+        name: string;
+    }[];
 }
+
+export type CasinoFilterDataType = {
+    live_chat_competence: {
+        value: string;
+        label: string;
+    }[];
+    responsible_gambling: {
+        value: string;
+        label: string;
+    }[];
+    licenses: {
+        id: number;
+        name: string;
+        image: string | null;
+    }[];
+    game_types: {
+        id: number;
+        name: string;
+        image: string | null;
+    }[];
+    payment_methods: {
+        id: number;
+        name: string;
+        image: string | null;
+    }[];
+    classic_currency: {
+        id: number;
+        symbol: string;
+        name: string;
+        name2: string | null;
+    }[];
+    crypto_currencies: {
+        id: number;
+        symbol: string;
+        name: string;
+        name2: string | null;
+        flag_image: string | null;
+    }[];
+    payout_speed: {
+        id: number;
+        name: string;
+    }[];
+    language: {
+        id: number;
+        name: string;
+        image: string | null;
+    }[];
+};
+
+export type BonusFilterDataType = {
+    bonus_type:  {id: number, name: string}[];
+    daily_availability: {id: number, day: string}[];
+};
+
+export type GetFilterDataTypeResponse = {
+    general: GeneralFilterDataType;
+    casino: CasinoFilterDataType;
+    bonus: BonusFilterDataType;
+};
+
 
 export type FilterCasinoPostResponse = {
     count: number,
@@ -412,3 +458,31 @@ export interface CasinoFilterBodyType {
     games: number[];
     live_chat_competence: string[];
 };
+
+
+export type BonusFilterBodyType = {
+    bonus_rank: { min: number; max: number } | null;
+    bonus_likes: { min: number; max: number } | null;
+    bonus_min_dep: { min: number; max: number } | null;
+    bonus_max_bet: { min: number; max: number } | null;
+    free_spin_amount: { min: number; max: number } | null;
+    bonus_value: { min: number; max: number } | null;
+    bonus_amount: { min: number; max: number } | null;
+    bonus_max_win: { min: number; max: number } | null;
+    bonus_type: number[]; 
+    daily_availability: number[]; 
+    wagering_difficulty: ("easy" | "medium" | "hard")[]; 
+    selected_countries: number[]; 
+    selected_games: number[];
+    selected_providers: number[];
+    sticky: boolean | undefined;
+};
+
+
+export type FilterBonusPostResponse = {
+    count: number,
+    next:string| null
+    previous: string | null
+    results: SeeAllBonus[]
+    total_pages: number
+}

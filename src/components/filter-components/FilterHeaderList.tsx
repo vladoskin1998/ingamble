@@ -1,17 +1,91 @@
 import { useRef, useState, useEffect } from "react"
+import { BonusFilterBodyType, CasinoFilterBodyType } from "../../types"
+
+interface MakeListFilterHeaderType {
+    value: string
+    field: string
+}
+
+type BooleanValueType = {
+    true: "Yes"
+    false: "No"
+}
+const BooleanValue: BooleanValueType = {
+    true: "Yes",
+    false: "No",
+}
+
+
+const makeListFilterHeader = (
+    o: any
+): MakeListFilterHeaderType[] => {
+    const result: MakeListFilterHeaderType[] = []
+
+    for (const [key, value] of Object.entries(o)) {
+        if (Array.isArray(value) && value.length > 0) {
+            result.push({
+                value: `${key.replace(/_/g, " ")}: ${value.length}`,
+                field: key,
+            })
+        } else if (
+            value !== undefined &&
+            value &&
+            typeof value === "object" &&
+            "min" in value &&
+            "max" in value
+        ) {
+            result.push({
+                value: `${key.replace(/_/g, " ")}: ${value.min} - ${value.max}`,
+                field: key,
+            })
+        } else if (
+            value !== undefined &&
+            value !== null &&
+            typeof value === "object" &&
+            "daily" in value &&
+            "weekly" in value &&
+            "monthly" in value
+        ) {
+            result.push({
+                value: `${key.replace(/_/g, " ")}: ${value.daily}, ${
+                    value.weekly
+                }, ${value.monthly}`,
+                field: key,
+            })
+        } else if (
+            value !== undefined &&
+            value !== null &&
+            typeof value !== "object"
+        ) {
+            result.push({
+                value: `${key.replace(/_/g, " ")}: ${
+                    typeof value === "boolean"
+                        ? BooleanValue[String(value) as keyof BooleanValueType]
+                        : String(value)
+                }`,
+                field: key,
+            })
+        }
+    }
+
+    return result
+}
+
 
 export const FilterHeaderList = ({
-    list,
+    initList,
     clearAll,
     clearOne,
 }: {
-    list: { value: string; field: string }[]
+    initList: CasinoFilterBodyType | BonusFilterBodyType
     clearAll: () => void
     clearOne: (v: string) => void
 }) => {
     const [isExpanded, setIsExpanded] = useState(false)
     const [showMoreButton, setShowMoreButton] = useState(false)
     const listRef = useRef<HTMLDivElement>(null)
+
+    const list = makeListFilterHeader(initList)
 
     useEffect(() => {
         if (listRef.current) {
