@@ -22,6 +22,7 @@ import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
+import "../SeeAllCasinos/style.css"
 
 const filterEmptyValues = (
     body: CasinoFilterBodyType

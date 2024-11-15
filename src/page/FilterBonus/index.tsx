@@ -24,6 +24,7 @@ import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
+import "../SeeAllBonus/style.css"
 
 const filterEmptyValues = (
     body: BonusFilterBodyType
@@ -170,8 +171,8 @@ export default function FilterBonus() {
                         clearAll={clearAll}
                         clearOne={(v) => handlerClearOne(v)}
                     />
-                    <section className="see-all__main main-see-all">
-                        <div className="main-loyaltie-programs__container container">
+                   <section className="see-all__main main-see-all">
+                        <div className="main-see-all__container container">
                             <div className="results-filter-scenarios__top top">
                                 <div className="top__title-block">
                                     <span className="top__title-icon">
@@ -191,7 +192,7 @@ export default function FilterBonus() {
                                                     target="_blank"
                                                     className="casino-card__image-block"
                                                 >
-                                                    <div className="casino-card__image see-all-custom__image-custom ibg">
+                                                    <div className="casino-card__image see-all-custom__image-custom ">
                                                         <LazyCardImg
                                                             img={
                                                                 item?.bonus_image
