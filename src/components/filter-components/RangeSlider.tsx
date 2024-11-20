@@ -17,6 +17,8 @@ export const RangeSlider = <T extends CasinoFilterBodyType | BonusFilterBodyType
 }) => {
     const [localRange, setLocalRange] = useState(minmax)
 
+  
+
     const handleRangeChange = (n: number[]) => {
         const [minValue, maxValue] = n
         const clampedMin = Math.max(0, Math.min(minValue, minmax[1]))
@@ -36,7 +38,7 @@ export const RangeSlider = <T extends CasinoFilterBodyType | BonusFilterBodyType
         else {
             setLocalRange(minmax)
         }
-    }, [initState])
+    }, [initState, minmax])
     return (
         <div className="form-filter__body">
             <div className="form-filter__range range-form-filter range-form-filter_few">

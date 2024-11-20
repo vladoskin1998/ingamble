@@ -199,7 +199,7 @@ export default function SimpleBonus() {
                                                                 Min Dep:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                10€
+                                                                10$
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -207,7 +207,7 @@ export default function SimpleBonus() {
                                                                 Max bet:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                €5
+                                                                $5
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_grass">
@@ -245,7 +245,7 @@ export default function SimpleBonus() {
                                                                 Min Dep:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                10€
+                                                                10$
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -253,7 +253,7 @@ export default function SimpleBonus() {
                                                                 Max bet:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                €5
+                                                                $5
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_grass">
@@ -291,7 +291,7 @@ export default function SimpleBonus() {
                                                                 Min Dep:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                10€
+                                                                10$
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -299,7 +299,7 @@ export default function SimpleBonus() {
                                                                 Max bet:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                €5
+                                                                $5
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_grass">
@@ -337,7 +337,7 @@ export default function SimpleBonus() {
                                                                 Min Dep:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                10€
+                                                                10$
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -345,7 +345,7 @@ export default function SimpleBonus() {
                                                                 Max bet:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                €5
+                                                                $5
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_grass">
@@ -383,7 +383,7 @@ export default function SimpleBonus() {
                                                                 Min Dep:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                10€
+                                                                10$
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -391,7 +391,7 @@ export default function SimpleBonus() {
                                                                 Max bet:
                                                             </span>
                                                             <span className="tags-casino-card__item-value">
-                                                                €5
+                                                                $5
                                                             </span>
                                                         </div>
                                                         <div className="tags-casino-card__item tags-casino-card__item_grass">
@@ -492,7 +492,7 @@ export default function SimpleBonus() {
                                                         Min Dep:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        10€
+                                                        10$
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -500,7 +500,7 @@ export default function SimpleBonus() {
                                                         Max bet:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        €5
+                                                        $5
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_grass">
@@ -538,7 +538,7 @@ export default function SimpleBonus() {
                                                         Min Dep:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        10€
+                                                        10$
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -546,7 +546,7 @@ export default function SimpleBonus() {
                                                         Max bet:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        €5
+                                                        $5
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_grass">
@@ -584,7 +584,7 @@ export default function SimpleBonus() {
                                                         Min Dep:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        10€
+                                                        10$
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -592,7 +592,7 @@ export default function SimpleBonus() {
                                                         Max bet:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        €5
+                                                        $5
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_grass">
@@ -630,7 +630,7 @@ export default function SimpleBonus() {
                                                         Min Dep:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        10€
+                                                        10$
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -638,7 +638,7 @@ export default function SimpleBonus() {
                                                         Max bet:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        €5
+                                                        $5
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_grass">
@@ -676,7 +676,7 @@ export default function SimpleBonus() {
                                                         Min Dep:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        10€
+                                                        10$
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_purple">
@@ -684,7 +684,7 @@ export default function SimpleBonus() {
                                                         Max bet:
                                                     </span>
                                                     <span className="tags-casino-card__item-value">
-                                                        €5
+                                                        $5
                                                     </span>
                                                 </div>
                                                 <div className="tags-casino-card__item tags-casino-card__item_grass">

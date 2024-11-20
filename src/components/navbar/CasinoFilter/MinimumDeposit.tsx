@@ -4,36 +4,43 @@ import "rc-slider/assets/index.css"
 import { CasinoFilterBodyType } from "../../../types"
 
 export const MinimumDeposit = ({
+
     initState,
     label,
     field,
     max,
     setLocalCasinoFilters,
+    keyToValue="$", 
 }: {
     initState: number | null,
     label: string
     field:string
     max: number
+    keyToValue?:string
     setLocalCasinoFilters: React.Dispatch<
         React.SetStateAction<CasinoFilterBodyType>
     >
+    
 }) => {
     const [deposit, setDeposit] = useState(max)
 
-    const handlerChangeValue = (v:number) => {
-      setDeposit(v)
-      setLocalCasinoFilters((prevFilters) => ({
-        ...prevFilters,
-        [field]: v,
-    }))
-    }
-
+    const handlerChangeValue = (v: number) => {
+        const clampedValue = Math.min(max, Math.max( v));
+        setDeposit(clampedValue);
+        setLocalCasinoFilters((prevFilters) => ({
+            ...prevFilters,
+            [field]: clampedValue,
+        }));
+    };
     
     useEffect(() => {
         if(initState !== null){
-            setDeposit(initState)
+            setDeposit(initState )
         }
-    }, [initState])
+        else{
+            setDeposit(max )
+        }
+    }, [initState, max])
 
 
     return (
@@ -48,7 +55,7 @@ export const MinimumDeposit = ({
                             value={deposit}
                             onChange={(e) => handlerChangeValue(Number(e.target.value))}
                         />
-                        <span className="field__icon">€</span>
+                        <span className="field__icon">{keyToValue}</span>
                     </div>
                 </div>
 
@@ -62,10 +69,10 @@ export const MinimumDeposit = ({
 
                 <div className="range-form-filter__min-max">
                     <span className="range-form-filter__min">
-                        € {(1).toLocaleString("en-US")}
+                        {keyToValue} {(1).toLocaleString("en-US")}
                     </span>
                     <span className="range-form-filter__max">
-                        € {(10000).toLocaleString("en-US")}
+                        {keyToValue} {(max).toLocaleString("en-US")}
                     </span>
                 </div>
             </div>

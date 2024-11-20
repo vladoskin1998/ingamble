@@ -1,49 +1,68 @@
-import { useEffect, useState } from "react";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import { CasinoFilterBodyType } from "../../../types";
+import { useEffect, useState } from "react"
+import Slider from "rc-slider"
+import "rc-slider/assets/index.css"
+import { CasinoFilterBodyType } from "../../../types"
+
+const initStateWithdrawalLimits = {
+    daily: 10000,
+    weekly: 100000,
+    monthly: 100000000,
+    unlimited: false,
+}
 
 export const WithdrawalLimits = ({
     initState,
     setLocalCasinoFilters,
 }: {
     initState: {
-        daily: number;
-        weekly: number;
-        monthly: number;
-    } | null,
-    setLocalCasinoFilters: React.Dispatch<React.SetStateAction<CasinoFilterBodyType>>;
+        daily: number
+        weekly: number
+        monthly: number
+        unlimited: boolean
+    } | null
+    setLocalCasinoFilters: React.Dispatch<
+        React.SetStateAction<CasinoFilterBodyType>
+    >
 }) => {
-    const [dailyLimit, setDailyLimit] = useState(10000);
-    const [weeklyLimit, setWeeklyLimit] = useState(100000);
-    const [yearlyLimit, setYearlyLimit] = useState(100000000);
+    const [dailyLimit, setDailyLimit] = useState(initStateWithdrawalLimits.daily)
+    const [weeklyLimit, setWeeklyLimit] = useState(
+        initStateWithdrawalLimits.weekly
+    )
+    const [monthlyLimit, setMonthlyLimit] = useState(
+        initStateWithdrawalLimits.monthly
+    )
 
-    const handleLimitChange = (
-        value: number,
-        limitType: "daily" | "weekly" | "monthly",
-        setLimit: React.Dispatch<React.SetStateAction<number>>
-    ) => {
-        setLimit(value);
-        setLocalCasinoFilters((prevFilters) => ({
-            ...prevFilters,
-            withdrawal_limits: {
-                daily: prevFilters?.withdrawal_limits?.daily ?? 10000,
-                weekly: prevFilters?.withdrawal_limits?.weekly ?? 100000,
-                monthly: prevFilters?.withdrawal_limits?.monthly ?? 100000000,
-                [limitType]: value,
-            },
-        }));
-    };
-
-        
     useEffect(() => {
-        if(initState !== null){
+        if (initState !== null) {
             setDailyLimit(initState.daily)
             setWeeklyLimit(initState.weekly)
-            setYearlyLimit(initState.monthly)
+            setMonthlyLimit(initState.monthly)
         }
     }, [initState])
 
+    const handleLimitChange = (
+        value: number | boolean,
+        limitType: "daily" | "weekly" | "monthly" | "unlimited",
+        setLimit?: React.Dispatch<React.SetStateAction<number>>
+    ) => {
+        if (typeof value === "number" && setLimit) {
+            const maxLimit =
+                initStateWithdrawalLimits[limitType as keyof typeof initStateWithdrawalLimits]
+            const newValue = Math.min(value, maxLimit as number) 
+            setLimit(newValue)
+            value = newValue
+        }
+
+        setLocalCasinoFilters((prevFilters) => ({
+            ...prevFilters,
+            withdrawal_limits: !prevFilters.withdrawal_limits
+                ? { ...initStateWithdrawalLimits, [limitType]: value }
+                : {
+                      ...prevFilters?.withdrawal_limits,
+                      [limitType]: value,
+                  },
+        }))
+    }
 
     const renderLimit = (
         label: string,
@@ -60,12 +79,13 @@ export const WithdrawalLimits = ({
                         className="field__input field__input_only"
                         type="number"
                         value={value}
-                        onChange={(e) => onChange(Number(e.target.value))}
+                        onChange={(e) =>
+                            onChange(Math.min(Number(e.target.value), max))
+                        }
                     />
-                    <span className="field__icon">€</span>
+                    <span className="field__icon">$</span>
                 </div>
             </div>
-
             <div className="range-form-filter__input input-range input-style-range">
                 <Slider
                     className="input-style-range"
@@ -73,38 +93,50 @@ export const WithdrawalLimits = ({
                     max={max}
                     value={value}
                     onChange={(v) => onChange(Number(v))}
+                    onAfterChange={(v) => onChange(Number(v))}
                 />
             </div>
             <div className="range-form-filter__min-max">
-                <span className="range-form-filter__min">€ 1</span>
-                <span className="range-form-filter__max">€ {max.toLocaleString("en-US")}</span>
+                <span className="range-form-filter__min">$ 1</span>
+                <span className="range-form-filter__max">
+                    $ {max.toLocaleString("en-US")}
+                </span>
             </div>
         </div>
-    );
+    )
 
     return (
         <div className="form-filter__body input-style-range">
-            {renderLimit(
-                "Daily Limits",
-                dailyLimit,
-                1,
-                10000,
-                (value) => handleLimitChange(value, "daily", setDailyLimit)
+            {renderLimit("Daily Limits", dailyLimit, 1, initStateWithdrawalLimits.daily, (value) =>
+                handleLimitChange(value, "daily", setDailyLimit)
+            )}
+            {renderLimit("Weekly Limits", weeklyLimit, 1, initStateWithdrawalLimits.weekly, (value) =>
+                handleLimitChange(value, "weekly", setWeeklyLimit)
             )}
             {renderLimit(
-                "Weekly Limits",
-                weeklyLimit,
+                "Monthly Limits",
+                monthlyLimit,
                 1,
-                100000,
-                (value) => handleLimitChange(value, "weekly", setWeeklyLimit)
+                initStateWithdrawalLimits.monthly,
+                (value) => handleLimitChange(value, "monthly", setMonthlyLimit)
             )}
-            {renderLimit(
-                "Yearly Limits",
-                yearlyLimit,
-                1,
-                100000000,
-                (value) => handleLimitChange(value, "monthly", setYearlyLimit)
-            )}
+            <div>
+                <input
+                    id={`formFilterPlayersFromWithdrawalLimits`}
+                    type="checkbox"
+                    checked={initState?.unlimited}
+                    className="radio-form-filter__input form-filter__input"
+                    onChange={() =>
+                        handleLimitChange(!initState?.unlimited, "unlimited")
+                    }
+                />
+                <label
+                    htmlFor={`formFilterPlayersFromWithdrawalLimits`}
+                    className="radio-form-filter__label"
+                >
+                    <span>Unlimited</span>
+                </label>
+            </div>
         </div>
-    );
-};
+    )
+}

@@ -233,7 +233,7 @@ export type SeeAllBonus = {
     bonus_image: string;
     casino_rank: string;
     bonus_likes: number;
-    labels: string[] |{name: string}[];
+    labels: string[] | { name: string }[];
     casino_affiliate_link: string;
 };
 
@@ -362,6 +362,8 @@ export type GeneralFilterDataType = {
 }
 
 export type CasinoFilterDataType = {
+    max_min_deposit_value: number;
+    max_min_wagering_value: number;
     live_chat_competence: {
         value: string;
         label: string;
@@ -407,11 +409,15 @@ export type CasinoFilterDataType = {
         name: string;
         image: string | null;
     }[];
+    casino_owner: string[]
 };
 
 export type BonusFilterDataType = {
-    bonus_type:  {id: number, name: string}[];
-    daily_availability: {id: number, day: string}[];
+    bonus_type: { id: number, name: string }[];
+    daily_availability: { id: number, day: string }[];
+    max_bonus_amount_value: number
+    max_bonus_max_win_value: number
+    max_free_spin_amount_value: number
 };
 
 export type GetFilterDataTypeResponse = {
@@ -423,7 +429,7 @@ export type GetFilterDataTypeResponse = {
 
 export type FilterCasinoPostResponse = {
     count: number,
-    next:string| null
+    next: string | null
     previous: string | null
     results: SeeAllCasinosCasino[]
     total_pages: number
@@ -444,6 +450,7 @@ export interface CasinoFilterBodyType {
         daily: number;
         weekly: number;
         monthly: number;
+        unlimited: boolean
     } | null;
     min_wager: number | null;
     min_deposit: number | null;
@@ -457,6 +464,8 @@ export interface CasinoFilterBodyType {
     licenses: number[];
     games: number[];
     live_chat_competence: string[];
+    responsible_gambling: [],
+
 };
 
 
@@ -469,19 +478,22 @@ export type BonusFilterBodyType = {
     bonus_value: { min: number; max: number } | null;
     bonus_amount: { min: number; max: number } | null;
     bonus_max_win: { min: number; max: number } | null;
-    bonus_type: number[]; 
-    daily_availability: number[]; 
-    wagering_difficulty: ("easy" | "medium" | "hard")[]; 
-    selected_countries: number[]; 
+    bonus_type: number[];
+    daily_availability: number[];
+    wagering_difficulty: ("easy" | "medium" | "hard")[];
+    selected_countries: number[];
     selected_games: number[];
     selected_providers: number[];
     sticky: boolean | undefined;
+    unlimited_bonus_max_bet: boolean | undefined,
+    unlimited_bonus_amount: boolean | undefined,
+    unlimited_bonus_max_win: boolean | undefined,
 };
 
 
 export type FilterBonusPostResponse = {
     count: number,
-    next:string| null
+    next: string | null
     previous: string | null
     results: SeeAllBonus[]
     total_pages: number

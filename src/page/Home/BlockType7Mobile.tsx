@@ -119,7 +119,7 @@ export default function BlockType7Mobile({
                                                                         className="different-casino-standart__name"
                                                                     >
                                                                         200% up
-                                                                        to €200
+                                                                        to $200
                                                                         and 50
                                                                         spins
                                                                     </a>
@@ -138,7 +138,7 @@ export default function BlockType7Mobile({
                                                                                 Dep:
                                                                             </span>
                                                                             <span className="tags-casino-card__item-value">
-                                                                                €10
+                                                                                $10
                                                                             </span>
                                                                         </div>
                                                                     </div>

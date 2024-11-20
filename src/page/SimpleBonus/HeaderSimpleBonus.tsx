@@ -167,7 +167,7 @@ export const HeaderSimpleBonus = ({
                                 <div className="content-casino-info__top">
                                     <h2 className="content-casino-info__title">
                                         {data?.name ||
-                                            " 200% up to €200 and 50 spin (€2 spin)"}
+                                            " 200% up to $200 and 50 spin ($2 spin)"}
                                     </h2>
                                     <div className="content-casino-info__subtitle">
                                         {data?.bonus_type || "Reload Bonus"}

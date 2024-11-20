@@ -90,7 +90,6 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
     useEffect(() => {
         const handleResize = () => {
             initializeAdaptiveBehavior();
-            console.log("handleResize");
         };
 
 

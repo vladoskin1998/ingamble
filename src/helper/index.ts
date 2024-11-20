@@ -31,3 +31,9 @@ export const getFilterContentHeight = (s: number | undefined) => {
     if (!s) return
     return s * 40 > 240 ? 240 : s * 40
 }
+
+export const sliceString = (s:string | undefined,l:number) => {
+    if(!s) return ''
+    return   s.length > l ? `${ s.slice(0, l)}...` : s
+}
+  

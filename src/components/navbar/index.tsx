@@ -10,17 +10,12 @@ import {
     useFilterContext,
 } from "../../context/FilterContext"
 import { Link } from "react-router-dom"
-import $api from "../../http"
-import { useQuery } from "react-query"
-import { GetFilterDataTypeResponse } from "../../types"
+
 import { BonusFilter } from "./BonusFilter"
 
 type DefaultOpenType = "casinos" | "bonuses" | "loyalties" | "slots" | ""
 
-const getDatasFilter = async () => {
-    const response = await $api.get("get-datas-filter/")
-    return response.data
-}
+
 
 export const Navbar = ({
     isSidebarActive,
@@ -36,6 +31,7 @@ export const Navbar = ({
         currentRouteFilter,
         handlerCurrentRouteFilter,
         handlerClearAllFilters,
+        data,
     } = useFilterContext()
 
     useLayoutEffect(() => {
@@ -95,13 +91,12 @@ export const Navbar = ({
         [isSidebarActive]
     )
 
-    const { data: datasFilter } = useQuery<GetFilterDataTypeResponse>(
-        "get-datas-filter",
-        getDatasFilter,
-        {
-            staleTime: Infinity,
-        }
-    )
+   
+    let datasFilter = data
+
+    // if(data){
+    //     const 
+    // }
 
     return (
         <aside className="gamble__sidebar sidebar-gamble">

@@ -2208,6 +2208,7 @@ h3 {
   overflow: hidden;
   border-radius: var(--SystemCorners-Medium, 12px);
   background: url("../img/menu-bg.jpg") center repeat;
+  background-size: 110%;
   position: relative;
 }
 .different-casino-bg::before {
@@ -12259,6 +12260,8 @@ h3 {
     background: var(--Colors-Yellow, #FFCF23);
   }
 }
+
+
 .filter-selected__btns-column {
   padding: 0 4px;
   margin: 0 0 8px 0;
@@ -13094,7 +13097,7 @@ h3 {
 .main-see-all__column {
   flex: 0 1 20%;
   margin: 0 0 40px 0;
-  padding: 0 10px;
+  /* padding: 0 10px; */
 }
 @media (max-width: 1650.98px) {
   .main-see-all__column {
@@ -17276,6 +17279,7 @@ h3 {
   border-radius: var(--SystemCorners-Medium, 12px);
   overflow: hidden;
   background: url("../img/menu-bg.jpg") center repeat;
+  background-size: 105%;
   display: flex;
   flex-direction: column;
   position: relative;

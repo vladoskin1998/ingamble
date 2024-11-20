@@ -291,7 +291,7 @@ export default function Review() {
                                                             </div>
                                                             <div className="item-features-content-casino-info__body">
                                                                 <div className="item-features-content-casino-info__number">
-                                                                    10€
+                                                                    10$
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value">
                                                                     To Activate
@@ -308,7 +308,7 @@ export default function Review() {
                                                             </div>
                                                             <div className="item-features-content-casino-info__body">
                                                                 <div className="item-features-content-casino-info__number">
-                                                                    5€
+                                                                    5$
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value">
                                                                     Per Spin

@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react"
 import { BonusFilterBodyType, CasinoFilterBodyType } from "../../types"
+import { sliceString } from "../../helper"
 
 interface MakeListFilterHeaderType {
     value: string
@@ -156,7 +157,10 @@ export const FilterHeaderList = ({
                                         key={item.field}
                                     >
                                         <div className="filter-selected__btn">
-                                            {item.value}
+                                            {
+                                                sliceString(item.value, 30)
+                                      
+                                            }
                                             <span
                                             
                                                 onClick={() =>

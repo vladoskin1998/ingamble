@@ -1,6 +1,13 @@
 import React, { createContext, useContext, useState, ReactNode } from "react"
-import { BonusFilterBodyType, CasinoFilterBodyType } from "../types"
+import { BonusFilterBodyType, CasinoFilterBodyType, GetFilterDataTypeResponse } from "../types"
 import { useNavigate } from "react-router-dom"
+import $api from "../http"
+import { useQuery } from "react-query"
+
+const getDatasFilter = async () => {
+    const response = await $api.get("get-datas-filter/")
+    return response.data
+}
 
 export const initialCasinoFilters: CasinoFilterBodyType = {
     payout_speed: [],
@@ -25,7 +32,9 @@ export const initialCasinoFilters: CasinoFilterBodyType = {
     game_types: [],
     licenses: [],
     games: [],
+    responsible_gambling: [],
     live_chat_competence: [],
+
 }
 export const initialBonusFilters: BonusFilterBodyType = {
     bonus_rank: null,
@@ -43,7 +52,21 @@ export const initialBonusFilters: BonusFilterBodyType = {
     selected_games: [],
     selected_providers: [],
     sticky: undefined,
+    unlimited_bonus_max_bet: undefined,
+    unlimited_bonus_amount: undefined,
+    unlimited_bonus_max_win:  undefined,
 }
+
+// export const initialLoyaltiesFilters:{
+//     "loyalty_rank": { "min": 5, "max": 10 },
+//     "loyalty_level_count": { "min": 3, "max": 4},
+//     "vip_manager": true,
+//     "level_up_bonus": false,
+//     "withdrawals": true,
+//     "special_prizes": true,
+//     "gifts": true,
+//     "bonuses": true
+// }
 
 export enum RouteToNextFilter {
     CASINOS = "casinos",
@@ -53,6 +76,8 @@ export enum RouteToNextFilter {
 }
 
 type FilterContextType = {
+    data: GetFilterDataTypeResponse | undefined,
+
     casinoFilters: CasinoFilterBodyType
     setCasinoFilters: React.Dispatch<React.SetStateAction<CasinoFilterBodyType>>
 
@@ -93,9 +118,21 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         navigation("/")
     }
 
+
+    const { data } = useQuery<GetFilterDataTypeResponse>(
+        "get-datas-filter",
+        getDatasFilter,
+        {
+            staleTime: Infinity,
+        }
+    )
+
+    
+
     return (
         <FilterContext.Provider
             value={{
+                data,
                 casinoFilters,
                 setCasinoFilters,
                 bonusFilters,

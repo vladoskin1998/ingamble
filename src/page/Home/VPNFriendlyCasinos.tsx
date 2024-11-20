@@ -109,7 +109,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €200
+                                                    to $200
                                                     and 50
                                                     spins
                                                 </a>
@@ -128,7 +128,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -186,7 +186,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €150
+                                                    to $150
                                                 </a>
                                                 <div className="different-casino-standart__tags tags-casino-card">
                                                     <div className="tags-casino-card__item tags-casino-card__item_green">
@@ -203,7 +203,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -263,7 +263,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €150
+                                                    to $150
                                                 </a>
                                                 <div className="different-casino-standart__tags tags-casino-card">
                                                     <div className="tags-casino-card__item tags-casino-card__item_green">
@@ -280,7 +280,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -338,7 +338,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €200
+                                                    to $200
                                                     and 50
                                                     spins
                                                 </a>
@@ -357,7 +357,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -417,7 +417,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €200
+                                                    to $200
                                                     and 50
                                                     spins
                                                 </a>
@@ -436,7 +436,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -494,7 +494,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €150
+                                                    to $150
                                                 </a>
                                                 <div className="different-casino-standart__tags tags-casino-card">
                                                     <div className="tags-casino-card__item tags-casino-card__item_green">
@@ -511,7 +511,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -571,7 +571,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €150
+                                                    to $150
                                                 </a>
                                                 <div className="different-casino-standart__tags tags-casino-card">
                                                     <div className="tags-casino-card__item tags-casino-card__item_green">
@@ -588,7 +588,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -646,7 +646,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €200
+                                                    to $200
                                                     and 50
                                                     spins
                                                 </a>
@@ -665,7 +665,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -725,7 +725,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €200
+                                                    to $200
                                                     and 50
                                                     spins
                                                 </a>
@@ -744,7 +744,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -802,7 +802,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €150
+                                                    to $150
                                                 </a>
                                                 <div className="different-casino-standart__tags tags-casino-card">
                                                     <div className="tags-casino-card__item tags-casino-card__item_green">
@@ -819,7 +819,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -879,7 +879,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €150
+                                                    to $150
                                                 </a>
                                                 <div className="different-casino-standart__tags tags-casino-card">
                                                     <div className="tags-casino-card__item tags-casino-card__item_green">
@@ -896,7 +896,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>
@@ -954,7 +954,7 @@ export const VPNFriendlyCasinos = () => {
                                                     className="different-casino-standart__name"
                                                 >
                                                     200% up
-                                                    to €200
+                                                    to $200
                                                     and 50
                                                     spins
                                                 </a>
@@ -973,7 +973,7 @@ export const VPNFriendlyCasinos = () => {
                                                             Dep:
                                                         </span>
                                                         <span className="tags-casino-card__item-value">
-                                                            €10
+                                                            $10
                                                         </span>
                                                     </div>
                                                 </div>

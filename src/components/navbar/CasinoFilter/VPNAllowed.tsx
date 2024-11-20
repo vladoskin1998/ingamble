@@ -10,7 +10,6 @@ export const VPNAllowed = ({
     >
 }) => {
 
-
     const handleVpnChange = (b: boolean) => {
         const isAllowed = b
 

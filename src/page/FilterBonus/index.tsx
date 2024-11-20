@@ -38,7 +38,7 @@ const filterEmptyValues = (
     )
 }
 
-const countPageSize = 10
+const countPageSize = 60
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),

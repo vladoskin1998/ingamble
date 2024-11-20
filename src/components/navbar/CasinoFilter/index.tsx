@@ -96,7 +96,7 @@ export const CasinoFilterContent = ({
                                     <use xlinkHref="#arrow"></use>
                                 </svg>
                             </span>
-                            <span>Casinos Players From</span>
+                            <span>Casinos For Players From</span>
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
@@ -129,7 +129,7 @@ export const CasinoFilterContent = ({
                                     <use xlinkHref="#arrow"></use>
                                 </svg>
                             </span>
-                            <span>By year of Established</span>
+                            <span>By Year of Establishment</span>
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
@@ -353,7 +353,7 @@ export const CasinoFilterContent = ({
                     }
                 />
             </div>
-            <div className="item-form-filters__filter form-filter">
+            {/* <div className="item-form-filters__filter form-filter">
                 <AccordionItem
                     heading={
                         <h3 className="form-filter__title title-form-filter accordion--title--element">
@@ -379,7 +379,7 @@ export const CasinoFilterContent = ({
                         />
                     }
                 />
-            </div>
+            </div> */}
             <div className="item-form-filters__filter form-filter">
                 <AccordionItem
                     heading={
@@ -470,24 +470,24 @@ export const CasinoFilterContent = ({
                                     <use xlinkHref="#arrow"></use>
                                 </svg>
                             </span>
-                            <span>Live Chat Competence</span>
+                            <span>Casino Owner</span>
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
                     content={
                         <ListCheckBox
-                            initState={casinoFilters.live_chat_competence}
-                            list={datasFilterCasino?.live_chat_competence.map(
+                            initState={casinoFilters.casino_owner}
+                            list={datasFilterCasino?.casino_owner.map(
                                 (item) => ({
-                                    id: item.value as any,
-                                    name: item.value,
+                                    id: item as string,
+                                    name: item,
                                 })
                             )}
-                            field="live_chat_competence"
-                            placeholder="Search (Crypto Currencies)"
+                            field="casino_owner"
+                            placeholder="Search (Casino Owner)"
                             setLocalFilters={setCasinoFilters}
                             height={getFilterContentHeight(
-                                datasFilterCasino?.live_chat_competence?.length
+                                datasFilterCasino?.casino_owner?.length
                             )}
                         />
                     }
@@ -509,14 +509,14 @@ export const CasinoFilterContent = ({
                     }
                     content={
                         <ListCheckBox
-                            initState={casinoFilters.casino_owner}
+                            initState={casinoFilters?.responsible_gambling}
                             list={datasFilterCasino?.responsible_gambling.map(
                                 (item) => ({
-                                    id: item.value as any,
-                                    name: item.value,
+                                    id: item?.value as any,
+                                    name: item?.label,
                                 })
                             )}
-                            field="casino_owner"
+                            field="responsible_gambling"
                             placeholder="Search (Crypto Currencies)"
                             setLocalFilters={setCasinoFilters}
                             height={getFilterContentHeight(
@@ -566,13 +566,13 @@ export const CasinoFilterContent = ({
                             initState={casinoFilters.min_deposit}
                             label="Minimum Deposit"
                             field="min_deposit"
-                            max={10000}
+                            max={datasFilterCasino?.max_min_deposit_value || 2222}
                             setLocalCasinoFilters={setCasinoFilters}
                         />
                     }
                 />
             </div>
-            <div className="item-form-filters__filter form-filter">
+            {/* <div className="item-form-filters__filter form-filter">
                 <AccordionItem
                     heading={
                         <h3 className="form-filter__title title-form-filter accordion--title--element">
@@ -597,7 +597,7 @@ export const CasinoFilterContent = ({
                         />
                     }
                 />
-            </div>
+            </div> */}
             <div className="item-form-filters__filter form-filter">
                 <AccordionItem
                     heading={
@@ -626,8 +626,9 @@ export const CasinoFilterContent = ({
                             initState={casinoFilters.min_wager}
                             label="Minimum Wagering"
                             field="min_wager"
-                            max={1000000}
+                            max={datasFilterCasino?.max_min_wagering_value || 100000}
                             setLocalCasinoFilters={setCasinoFilters}
+                            keyToValue={'X'}
                         />
                     }
                 />
@@ -647,7 +648,7 @@ export const CasinoFilterContent = ({
                     }
                     content={
                         <YesNoDoubleCheckbox
-                            initState={casinoFilters.tournaments}
+                            initState={casinoFilters.bonus_hunt_with_active_bonus}
                             field="bonus_hunt_with_active_bonus"
                             setLocalCasinoFilters={setCasinoFilters}
                         />
@@ -669,7 +670,7 @@ export const CasinoFilterContent = ({
                     }
                     content={
                         <YesNoDoubleCheckbox
-                            initState={casinoFilters.tournaments}
+                            initState={casinoFilters.social_bonus}
                             field="social_bonus"
                             setLocalCasinoFilters={setCasinoFilters}
                         />
