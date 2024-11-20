@@ -19,6 +19,16 @@
   .custom-main-see-all__row .main-see-all__column{
     padding: 0;
   }
+
+  .custom-main-see-all__row .casino-card__image-block{
+    min-height: 126px;
+    transition: 0s !important;
+    /* -webkit-transition: all 0.1s ease 0s;
+    -moz-transition: all 0.1s ease 0s;
+    -ms-transition: all 0.1s ease 0s;
+    -o-transition: all 0.1s ease 0s;
+    transition: all 0.1s ease 0s; */
+  }
   .main-see-all__column {
     flex: 0 1 20%;
     margin: 0 0 40px 0;
