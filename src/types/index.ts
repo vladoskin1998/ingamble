@@ -235,6 +235,7 @@ export type SeeAllBonus = {
     bonus_likes: number;
     labels: string[] | { name: string }[];
     casino_affiliate_link: string;
+    casino_name: string;
 };
 
 
@@ -496,5 +497,26 @@ export type FilterBonusPostResponse = {
     next: string | null
     previous: string | null
     results: SeeAllBonus[]
+    total_pages: number
+}
+
+
+export type LoyaltiesFilterBodyType = {
+    loyalty_rank: { min: number; max: number } | null;
+    loyalty_level_count: { min: number; max: number } | null;
+    vip_manager:  boolean | undefined,
+    level_up_bonus:  boolean | undefined,
+    withdrawals: boolean | undefined,
+    special_prizes:  boolean | undefined,
+    gifts:  boolean | undefined,
+    bonuses:  boolean | undefined,
+};
+
+
+export type FilterLoyaltiesPostResponse ={
+    count: number,
+    next: string | null
+    previous: string | null
+    results: SeeAllEssentialLoyaltyCasino[]
     total_pages: number
 }

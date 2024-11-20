@@ -19,24 +19,13 @@ import like from "../../assets/img/icons/like.svg"
 import { useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import star from "../../assets/img/icons/star.svg"
-import { COLORS_TAGS } from "../../helper"
+import { COLORS_TAGS, filterEmptyValues } from "../../helper"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllBonus/style.css"
 
-const filterEmptyValues = (
-    body: BonusFilterBodyType
-): Partial<BonusFilterBodyType> => {
-    return Object.fromEntries(
-        Object.entries(body).filter(([_, value]) => {
-            if (value === null || value === undefined) return false
-            if (Array.isArray(value) && value?.length === 0) return false
-            return true
-        })
-    )
-}
 
 const countPageSize = 60
 
@@ -181,7 +170,7 @@ export default function FilterBonus() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            <div className="main-see-all__row">
+                            <div className="main-see-all__row custom-main-see-all__row" >
                                 {displayedData?.map((item) => (
                                     <div className="main-see-all__column" key={item?.bonus_id + item?.bonus_image}>
                                         <div className="slide-slider__item casino-card">
@@ -191,6 +180,7 @@ export default function FilterBonus() {
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="casino-card__image-block"
+                                                    style={{minHeight: "126px"}}
                                                 >
                                                     <div className="casino-card__image see-all-custom__image-custom ">
                                                         <LazyCardImg
@@ -239,7 +229,7 @@ export default function FilterBonus() {
                                                             target="_blank"
                                                             className="info-casino-card__stake-link"
                                                         >
-                                                            Stake Casino
+                                                            {item?.casino_name}
                                                         </a>
                                                         <div className="info-casino-card__stake-rating">
                                                             <span className="info-casino-card__stake-rating-icon">

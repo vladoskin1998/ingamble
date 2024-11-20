@@ -14,7 +14,10 @@
     flex-wrap: wrap;
     margin: 0 -10px; */
     width: 100%;
-    column-gap: 10px;
+    column-gap: 20px;
+  }
+  .custom-main-see-all__row .main-see-all__column{
+    padding: 0;
   }
   .main-see-all__column {
     flex: 0 1 20%;

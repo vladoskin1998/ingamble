@@ -14,7 +14,7 @@ export const BonusFilter = ({
 }: {
     datasFilterBonus: (GeneralFilterDataType & BonusFilterDataType) | undefined
 }) => {
-    //@ts-ignore
+  
     const { bonusFilters, setBonusFilters } = useFilterContext()
 
     return (

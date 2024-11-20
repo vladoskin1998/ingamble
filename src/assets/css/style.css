@@ -12191,7 +12191,7 @@ h3 {
 }
 .results-filter-scenarios .casino-card__image-block {
   height: auto;
-  padding: 0 8px 50.432% 8px;
+  padding: 0 8px 50% 8px;
 }
 .results-filter-scenarios .casino-card__bnt {
   top: auto;
@@ -13097,7 +13097,7 @@ h3 {
 .main-see-all__column {
   flex: 0 1 20%;
   margin: 0 0 40px 0;
-  /* padding: 0 10px; */
+  padding: 0 10px;
 }
 @media (max-width: 1650.98px) {
   .main-see-all__column {
@@ -13158,8 +13158,8 @@ h3 {
   position: relative;
 }
 .main-see-all .casino-card__image-block {
-  /* height: auto; */
-  /* padding: 0 8px 50.432% 8px; */
+  height: auto;
+  padding: 0 8px 50.432% 8px;
 }
 .main-see-all .casino-card__bnt {
   top: auto;

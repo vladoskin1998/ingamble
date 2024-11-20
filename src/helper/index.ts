@@ -1,3 +1,4 @@
+
 export const euroToDolar = (s?:string) => { 
 
     if(s === "EUR" || s === "Euro" || !s  ){
@@ -37,3 +38,14 @@ export const sliceString = (s:string | undefined,l:number) => {
     return   s.length > l ? `${ s.slice(0, l)}...` : s
 }
   
+export const filterEmptyValues = <T>(
+    body: T
+): Partial<T> => {
+    return Object.fromEntries(
+        Object.entries(body as Record<string, unknown>).filter(([_, value]) => {
+            if (value === null || value === undefined) return false;
+            if (Array.isArray(value) && value.length === 0) return false;
+            return true;
+        })
+    ) as Partial<T>;
+}

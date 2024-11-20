@@ -17,24 +17,13 @@ import like from "../../assets/img/icons/like.svg"
 import {  useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from "../SeeAllCasinos"
-import { euroToDolar, NumberAssociaty, sliceString } from "../../helper"
+import { euroToDolar, filterEmptyValues, NumberAssociaty, sliceString } from "../../helper"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllCasinos/style.css"
 
-const filterEmptyValues = (
-    body: CasinoFilterBodyType
-): Partial<CasinoFilterBodyType> => {
-    return Object.fromEntries(
-        Object.entries(body).filter(([_, value]) => {
-            if (value === null || value === undefined) return false
-            if (Array.isArray(value) && value.length === 0) return false
-            return true
-        })
-    )
-}
 
 
 interface License {

@@ -12,6 +12,7 @@ import {
 import { Link } from "react-router-dom"
 
 import { BonusFilter } from "./BonusFilter"
+import { LoyaltiesFilter } from "./LoyaltiesFilter"
 
 type DefaultOpenType = "casinos" | "bonuses" | "loyalties" | "slots" | ""
 
@@ -262,6 +263,11 @@ export const Navbar = ({
                             </div>
                             <div
                                 className={`form-filters__item item-form-filters `}
+                                onClick={() =>
+                                    handlerCurrentRouteFilter(
+                                        RouteToNextFilter.LOYALTIES
+                                    )
+                                }
                             >
                                 <AccordionItem
                                     defaultOpen={isDefaultOpen === "loyalties"}
@@ -295,7 +301,8 @@ export const Navbar = ({
                                         </div>
                                     }
                                     content={
-                                        <div className="item-form-filters__body"></div>
+                                        // <div className="item-form-filters__body"></div>
+                                        <LoyaltiesFilter/>
                                     }
                                 />
                             </div>

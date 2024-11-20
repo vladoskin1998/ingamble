@@ -127,7 +127,7 @@ export default function SeeAllBonus() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="main-see-all__row">
+                            <div className="main-see-all__row custom-main-see-all__row">
                                 {displayedData?.map((item) => (
                                     <div className="main-see-all__column">
                                         <div className="slide-slider__item casino-card">
@@ -184,7 +184,7 @@ export default function SeeAllBonus() {
                                                             target="_blank"
                                                             className="info-casino-card__stake-link"
                                                         >
-                                                            Stake Casino
+                                                            {item?.casino_name}
                                                         </a>
                                                         <div className="info-casino-card__stake-rating">
                                                             <span className="info-casino-card__stake-rating-icon">

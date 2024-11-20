@@ -86,7 +86,7 @@ const initializeAdaptiveBehavior = () => {
 
 export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const location = useLocation();
-    const [isSidebarActive, setSidebarActive] = useState(true)
+    const [isSidebarActive, setSidebarActive] = useState(false)
     useEffect(() => {
         const handleResize = () => {
             initializeAdaptiveBehavior();

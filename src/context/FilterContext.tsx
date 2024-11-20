@@ -1,5 +1,10 @@
 import React, { createContext, useContext, useState, ReactNode } from "react"
-import { BonusFilterBodyType, CasinoFilterBodyType, GetFilterDataTypeResponse } from "../types"
+import {
+    BonusFilterBodyType,
+    CasinoFilterBodyType,
+    GetFilterDataTypeResponse,
+    LoyaltiesFilterBodyType,
+} from "../types"
 import { useNavigate } from "react-router-dom"
 import $api from "../http"
 import { useQuery } from "react-query"
@@ -34,7 +39,6 @@ export const initialCasinoFilters: CasinoFilterBodyType = {
     games: [],
     responsible_gambling: [],
     live_chat_competence: [],
-
 }
 export const initialBonusFilters: BonusFilterBodyType = {
     bonus_rank: null,
@@ -54,19 +58,19 @@ export const initialBonusFilters: BonusFilterBodyType = {
     sticky: undefined,
     unlimited_bonus_max_bet: undefined,
     unlimited_bonus_amount: undefined,
-    unlimited_bonus_max_win:  undefined,
+    unlimited_bonus_max_win: undefined,
 }
 
-// export const initialLoyaltiesFilters:{
-//     "loyalty_rank": { "min": 5, "max": 10 },
-//     "loyalty_level_count": { "min": 3, "max": 4},
-//     "vip_manager": true,
-//     "level_up_bonus": false,
-//     "withdrawals": true,
-//     "special_prizes": true,
-//     "gifts": true,
-//     "bonuses": true
-// }
+export const initialLoyaltiesFilters: LoyaltiesFilterBodyType = {
+    loyalty_rank: null,
+    loyalty_level_count: null,
+    vip_manager: undefined,
+    level_up_bonus: undefined,
+    withdrawals: undefined,
+    special_prizes: undefined,
+    gifts: undefined,
+    bonuses: undefined,
+}
 
 export enum RouteToNextFilter {
     CASINOS = "casinos",
@@ -76,13 +80,16 @@ export enum RouteToNextFilter {
 }
 
 type FilterContextType = {
-    data: GetFilterDataTypeResponse | undefined,
+    data: GetFilterDataTypeResponse | undefined
 
     casinoFilters: CasinoFilterBodyType
     setCasinoFilters: React.Dispatch<React.SetStateAction<CasinoFilterBodyType>>
 
     bonusFilters: BonusFilterBodyType
     setBonusFilters: React.Dispatch<React.SetStateAction<BonusFilterBodyType>>
+
+    loyaltiesFilters: LoyaltiesFilterBodyType
+    setLoyaltiesFilters:  React.Dispatch<React.SetStateAction<LoyaltiesFilterBodyType>>
 
     currentRouteFilter: RouteToNextFilter
     handlerCurrentRouteFilter: (v: RouteToNextFilter) => void
@@ -110,14 +117,17 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
 
     const [bonusFilters, setBonusFilters] =
         useState<BonusFilterBodyType>(initialBonusFilters)
+        
+    const [loyaltiesFilters, setLoyaltiesFilters] =
+    useState<LoyaltiesFilterBodyType>(initialLoyaltiesFilters)
 
     const handlerClearAllFilters = () => {
         handlerCurrentRouteFilter(RouteToNextFilter.DEFAULT)
         setCasinoFilters(initialCasinoFilters)
         setBonusFilters(initialBonusFilters)
+        setLoyaltiesFilters(initialLoyaltiesFilters)
         navigation("/")
     }
-
 
     const { data } = useQuery<GetFilterDataTypeResponse>(
         "get-datas-filter",
@@ -127,8 +137,6 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         }
     )
 
-    
-
     return (
         <FilterContext.Provider
             value={{
@@ -137,6 +145,8 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
                 setCasinoFilters,
                 bonusFilters,
                 setBonusFilters,
+                loyaltiesFilters, 
+                setLoyaltiesFilters,
                 currentRouteFilter,
                 handlerCurrentRouteFilter,
                 handlerClearAllFilters,

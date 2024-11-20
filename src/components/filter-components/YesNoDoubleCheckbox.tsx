@@ -1,7 +1,7 @@
-import { BonusFilterBodyType, CasinoFilterBodyType } from "../../types"
+import { BonusFilterBodyType, CasinoFilterBodyType, LoyaltiesFilterBodyType } from "../../types"
 
 export const YesNoDoubleCheckbox = <
-    T extends CasinoFilterBodyType | BonusFilterBodyType
+    T extends CasinoFilterBodyType | BonusFilterBodyType | LoyaltiesFilterBodyType
 >({
     initState,
     field,

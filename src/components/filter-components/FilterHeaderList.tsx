@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react"
-import { BonusFilterBodyType, CasinoFilterBodyType } from "../../types"
+import { BonusFilterBodyType, CasinoFilterBodyType, LoyaltiesFilterBodyType } from "../../types"
 import { sliceString } from "../../helper"
 
 interface MakeListFilterHeaderType {
@@ -78,7 +78,7 @@ export const FilterHeaderList = ({
     clearAll,
     clearOne,
 }: {
-    initList: CasinoFilterBodyType | BonusFilterBodyType
+    initList: CasinoFilterBodyType | BonusFilterBodyType | LoyaltiesFilterBodyType
     clearAll: () => void
     clearOne: (v: string) => void
 }) => {
