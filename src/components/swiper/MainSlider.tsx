@@ -13,9 +13,13 @@ const MainSliderImg = ({ img }: { img: string }) => {
     const [loading, setLoading] = useState(true)
 
     return (
-        <div className="casino-card__image ibg">
+        <div className="casino-card__image">
             {loading && !img && <LineLoader />}
             <img
+                style={{
+                    width: loading? "0" :"100%",
+                    height: "100%"
+                }}
                 src={img}
                 alt=""
                 loading="lazy"
