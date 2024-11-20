@@ -136,6 +136,7 @@ export default function SeeAllBonus() {
                                                     href=""
                                                     aria-label="Put your description here."
                                                     target="_blank"
+                                                    style={{minHeight: "0 8px 50.432% 8px"}}
                                                     className="casino-card__image-block"
                                                 >
                                                     <div className="casino-card__image see-all-custom__image-custom">

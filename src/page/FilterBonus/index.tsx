@@ -180,7 +180,7 @@ export default function FilterBonus() {
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="casino-card__image-block"
-                                                    style={{minHeight: "126px"}}
+                                                    style={{minHeight: "0 8px 50.432% 8px"}}
                                                 >
                                                     <div className="casino-card__image see-all-custom__image-custom ">
                                                         <LazyCardImg
