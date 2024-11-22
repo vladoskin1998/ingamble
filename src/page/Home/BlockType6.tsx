@@ -41,7 +41,7 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    {data.items_block.block_title}
+                                  111111  {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (

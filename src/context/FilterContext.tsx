@@ -59,6 +59,12 @@ export const initialBonusFilters: BonusFilterBodyType = {
     selected_games: [],
     selected_providers: [],
     sticky: undefined,
+
+    bonus_plus_deposit: null,
+bonus_only: null,
+deposit_only: null,
+winnings_only: null,
+
     unlimited_bonus_max_bet: undefined,
     unlimited_bonus_amount: undefined,
     unlimited_bonus_max_win: undefined,

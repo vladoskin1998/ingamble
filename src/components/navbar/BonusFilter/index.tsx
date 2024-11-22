@@ -6,6 +6,7 @@ import { ListCheckBox } from "../../filter-components/ListCheckBox"
 import { RangeSlider } from "../../filter-components/RangeSlider"
 import { UnlimitedCheckBox } from "../../filter-components/UnlimitedCheckBox"
 import { YesNoDoubleCheckbox } from "../../filter-components/YesNoDoubleCheckbox"
+import { Withdraw } from "./Waggering"
 
 //@ts-ignore
 const DataWageringDifficulty = ["Easy", "Medium", "Hard"]
@@ -190,11 +191,11 @@ export const BonusFilter = ({
                                 minmax={[
                                     0,
                                     datasFilterBonus?.max_bonus_amount_value ||
-                                    1000000,
+                                        1000000,
                                 ]}
                                 setLocalFilters={setBonusFilters}
                             />
-                              <UnlimitedCheckBox
+                            <UnlimitedCheckBox
                                 initState={bonusFilters.unlimited_bonus_amount}
                                 field="unlimited_bonus_amount"
                                 setLocalFilters={setBonusFilters}
@@ -229,7 +230,7 @@ export const BonusFilter = ({
                                 ]}
                                 setLocalFilters={setBonusFilters}
                             />
-                                <UnlimitedCheckBox
+                            <UnlimitedCheckBox
                                 initState={bonusFilters.unlimited_bonus_max_win}
                                 field="unlimited_bonus_max_win"
                                 setLocalFilters={setBonusFilters}
@@ -428,6 +429,34 @@ export const BonusFilter = ({
                             initState={bonusFilters.sticky}
                             field="sticky"
                             setLocalCasinoFilters={setBonusFilters}
+                        />
+                    }
+                />
+            </div>
+
+            <div className="item-form-filters__filter form-filter">
+                <AccordionItem
+                    heading={
+                        <h3 className="form-filter__title title-form-filter accordion--title--element">
+                            <span className="title-form-filter__icon">
+                                <svg>
+                                    <use xlinkHref="#arrow"></use>
+                                </svg>
+                            </span>
+                            <span>Withdraw</span>
+                            <span className="title-form-filter__count">1</span>
+                        </h3>
+                    }
+                    content={
+                        <Withdraw
+                            initState={{
+                                deposit_only: bonusFilters.deposit_only,
+                                winnings_only: bonusFilters.winnings_only,
+                                bonus_plus_deposit:
+                                    bonusFilters.bonus_plus_deposit,
+                                bonus_only: bonusFilters.bonus_only,
+                            }}
+                            setLocalFilters={setBonusFilters}
                         />
                     }
                 />

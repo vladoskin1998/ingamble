@@ -489,6 +489,13 @@ export type BonusFilterBodyType = {
     selected_games: number[];
     selected_providers: number[];
     sticky: boolean | undefined;
+
+    bonus_plus_deposit: number | null,
+    bonus_only: number | null,
+    deposit_only: number | null,
+    winnings_only: number | null,
+
+    
     unlimited_bonus_max_bet: boolean | undefined,
     unlimited_bonus_amount: boolean | undefined,
     unlimited_bonus_max_win: boolean | undefined,
