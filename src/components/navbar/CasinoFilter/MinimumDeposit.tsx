@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Slider from "rc-slider"
 import "rc-slider/assets/index.css"
 import { CasinoFilterBodyType } from "../../../types"
+import { sanitizeMaxInput } from "../../../helper"
 
 export const MinimumDeposit = ({
 
@@ -25,7 +26,7 @@ export const MinimumDeposit = ({
     const [deposit, setDeposit] = useState(max)
 
     const handlerChangeValue = (v: number) => {
-        const clampedValue = Math.min(max, Math.max( v));
+        const clampedValue = v
         setDeposit(clampedValue);
         setLocalCasinoFilters((prevFilters) => ({
             ...prevFilters,
@@ -53,7 +54,7 @@ export const MinimumDeposit = ({
                         <input
                             className="field__input field__input_only"
                             value={deposit}
-                            onChange={(e) => handlerChangeValue(Number(e.target.value))}
+                            onChange={(e) => handlerChangeValue(sanitizeMaxInput(e.target.value, max))}
                         />
                         <span className="field__icon">{keyToValue}</span>
                     </div>

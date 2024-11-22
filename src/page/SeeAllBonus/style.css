@@ -78,15 +78,7 @@
       margin: 0 0 24px 0;
     }
   }
-  @media (max-width: 550px) {
-    .main-see-all__column {
-      flex: 1 1 100%;
-      display: none;
-    }
-    .main-see-all__column:nth-child(1), .main-see-all__column:nth-child(2), .main-see-all__column:nth-child(3), .main-see-all__column:nth-child(4), .main-see-all__column:nth-child(5) {
-      display: block;
-    }
-  }
+
   .main-see-all__btn-more {
     margin: 0 0 22px 0;
     display: none;

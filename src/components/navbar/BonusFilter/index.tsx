@@ -4,6 +4,7 @@ import { BonusFilterDataType, GeneralFilterDataType } from "../../../types"
 import { AccordionItem } from "../../acordion/Acordion"
 import { ListCheckBox } from "../../filter-components/ListCheckBox"
 import { RangeSlider } from "../../filter-components/RangeSlider"
+import { UnlimitedCheckBox } from "../../filter-components/UnlimitedCheckBox"
 import { YesNoDoubleCheckbox } from "../../filter-components/YesNoDoubleCheckbox"
 
 //@ts-ignore
@@ -14,7 +15,6 @@ export const BonusFilter = ({
 }: {
     datasFilterBonus: (GeneralFilterDataType & BonusFilterDataType) | undefined
 }) => {
-  
     const { bonusFilters, setBonusFilters } = useFilterContext()
 
     return (
@@ -54,7 +54,7 @@ export const BonusFilter = ({
                                     <use xlinkHref="#arrow"></use>
                                 </svg>
                             </span>
-                            <span>Bonus Likes</span>
+                            <span>Bonus Community Likes</span>
                             <span className="title-form-filter__count">1</span>
                         </h3>
                     }
@@ -62,7 +62,7 @@ export const BonusFilter = ({
                         <RangeSlider
                             initState={bonusFilters.bonus_likes}
                             field="bonus_likes"
-                            minmax={[0, 10000]}
+                            minmax={[0, 1000000]}
                             setLocalFilters={setBonusFilters}
                         />
                     }
@@ -110,7 +110,7 @@ export const BonusFilter = ({
                         <RangeSlider
                             initState={bonusFilters.bonus_max_bet}
                             field="bonus_max_bet"
-                            minmax={[0, 10000]}
+                            minmax={[0, 30]}
                             setLocalFilters={setBonusFilters}
                         />
                     }
@@ -162,7 +162,7 @@ export const BonusFilter = ({
                         <RangeSlider
                             initState={bonusFilters.bonus_value}
                             field="bonus_value"
-                            minmax={[0, 10000]}
+                            minmax={[0, 1000]}
                             setLocalFilters={setBonusFilters}
                         />
                     }
@@ -183,16 +183,23 @@ export const BonusFilter = ({
                         </h3>
                     }
                     content={
-                        <RangeSlider
-                            initState={bonusFilters.bonus_amount}
-                            field="bonus_amount"
-                            minmax={[
-                                0,
-                                datasFilterBonus?.max_bonus_amount_value ||
+                        <div>
+                            <RangeSlider
+                                initState={bonusFilters.bonus_amount}
+                                field="bonus_amount"
+                                minmax={[
+                                    0,
+                                    datasFilterBonus?.max_bonus_amount_value ||
                                     1000000,
-                            ]}
-                            setLocalFilters={setBonusFilters}
-                        />
+                                ]}
+                                setLocalFilters={setBonusFilters}
+                            />
+                              <UnlimitedCheckBox
+                                initState={bonusFilters.unlimited_bonus_amount}
+                                field="unlimited_bonus_amount"
+                                setLocalFilters={setBonusFilters}
+                            />
+                        </div>
                     }
                 />
             </div>
@@ -222,27 +229,11 @@ export const BonusFilter = ({
                                 ]}
                                 setLocalFilters={setBonusFilters}
                             />
-                            <div className=""
-                                style={{    margin: "0px 12px 16px 12px"}}
-                            >
-                                <input
-                                    id={`formFilterPlayersFromunlimited_bonus_max_win`}
-                                    type="checkbox"
-                                    checked={bonusFilters?.unlimited_bonus_max_win}
-                                    className="radio-form-filter__input form-filter__input"
-                                    onChange={() =>
-                                        setBonusFilters(s => ({...s, unlimited_bonus_max_win: !s?.unlimited_bonus_max_win})
-                                        
-                                        )
-                                    }
-                                />
-                                <label
-                                    htmlFor={`formFilterPlayersFromunlimited_bonus_max_win`}
-                                    className="radio-form-filter__label"
-                                >
-                                    <span>Unlimited</span>
-                                </label>
-                            </div>
+                                <UnlimitedCheckBox
+                                initState={bonusFilters.unlimited_bonus_max_win}
+                                field="unlimited_bonus_max_win"
+                                setLocalFilters={setBonusFilters}
+                            />
                         </div>
                     }
                 />

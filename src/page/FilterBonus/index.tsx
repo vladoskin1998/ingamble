@@ -27,7 +27,7 @@ import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllBonus/style.css"
 
 
-const countPageSize = 60
+const countPageSize = 1
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),
@@ -98,12 +98,12 @@ export default function FilterBonus() {
     }, [bonusFilters, refetch])
 
     useEffect(() => {
-        if (data?.results) {
+        if (data?.results && isMobile ) {
             setAllData((s) => {
                 const combinedData = [...s, ...data?.results]
 
                 const uniqueData = combinedData.reduce((acc, item) => {
-                    if (!acc.some((el) => el?.bonus_id === item?.bonus_id)) {
+                    if (!acc.some((el) => el.bonus_id === item.bonus_id)) {
                         acc.push(item)
                     }
                     return acc
@@ -111,6 +111,9 @@ export default function FilterBonus() {
 
                 return uniqueData
             })
+        }
+        if (!allData.length && data?.results){
+            setAllData(data?.results)
         }
     }, [data])
 
@@ -138,7 +141,7 @@ export default function FilterBonus() {
             [v as keyof CasinoFilterBodyType]: findedValueField,
         }))
     }
-
+    
     if (isDebouncedLoading) return <LogoLoader />
 
     return (
@@ -171,8 +174,8 @@ export default function FilterBonus() {
                                 </div>
                             </div>
                             <div className="main-see-all__row custom-main-see-all__row" >
-                                {displayedData?.map((item) => (
-                                    <div className="main-see-all__column" key={item?.bonus_id + item?.bonus_image}>
+                                {displayedData?.map((item, index) => (
+                                    <div className="main-see-all__column" key={index}>
                                         <div className="slide-slider__item casino-card">
                                             <div className="casino-card__top">
                                                 <a

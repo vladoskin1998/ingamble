@@ -54,20 +54,14 @@ export default function SeeAllBonus() {
         }
     )
 
+ 
     useEffect(() => {
-        if (data?.bonuses?.results) {
-            setAllData((s) => {
-                const combinedData = [...s, ...data?.bonuses?.results]
-
-                const uniqueData = combinedData.reduce((acc, item) => {
-                    if (!acc.some((el) => el.bonus_id === item.bonus_id)) {
-                        acc.push(item)
-                    }
-                    return acc
-                }, [] as SeeAllBonusType[])
-
-                return uniqueData
-            })
+        if (data?.bonuses.results && isMobile ) {
+            setAllData((s) => ([...s, ...data?.bonuses.results]) 
+            )
+        }
+        if (!allData.length && data?.bonuses.results){
+            setAllData(data?.bonuses.results)
         }
     }, [data])
 

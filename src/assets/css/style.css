@@ -12169,15 +12169,7 @@ h3 {
     margin: 0 0 24px 0;
   }
 }
-@media (max-width: 550px) {
-  .results-filter-scenarios__column {
-    flex: 1 1 100%;
-    display: none;
-  }
-  .results-filter-scenarios__column:nth-child(1), .results-filter-scenarios__column:nth-child(2), .results-filter-scenarios__column:nth-child(3), .results-filter-scenarios__column:nth-child(4), .results-filter-scenarios__column:nth-child(5), .results-filter-scenarios__column:nth-child(6), .results-filter-scenarios__column:nth-child(7) {
-    display: block;
-  }
-}
+
 .results-filter-scenarios__btn-more {
   margin: 0 0 40px 0;
 }
@@ -13115,15 +13107,7 @@ h3 {
     margin: 0 0 24px 0;
   }
 }
-@media (max-width: 550px) {
-  .main-see-all__column {
-    flex: 1 1 100%;
-    display: none;
-  }
-  .main-see-all__column:nth-child(1), .main-see-all__column:nth-child(2), .main-see-all__column:nth-child(3), .main-see-all__column:nth-child(4), .main-see-all__column:nth-child(5) {
-    display: block;
-  }
-}
+
 .main-see-all__btn-more {
   margin: 0 0 22px 0;
   display: none;

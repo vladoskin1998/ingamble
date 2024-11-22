@@ -91,8 +91,9 @@ export const BlockType7 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="different-casino-bg__image-block"
+                                                    
                                                 >
-                                                    <span className="different-casino-bg__image ibg">
+                                                    <span className="different-casino-bg__image ibg" style={{backgroundSize:"115%"}}>
                                                         <LazyCardImg
                                                             img={
                                                                 item.casino_info

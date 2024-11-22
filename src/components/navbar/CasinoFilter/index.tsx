@@ -8,12 +8,12 @@ import { CasinoPlayersFromContent } from "./CasinoPlayersFromContent"
 import { ByLicenses } from "./ByLicenses"
 import { RangeSlider } from "../../filter-components/RangeSlider"
 
-import { VPNAllowed } from "./VPNAllowed"
 import { YesNoDoubleCheckbox } from "../../filter-components/YesNoDoubleCheckbox"
 import { ListCheckBox } from "../../filter-components/ListCheckBox"
 import { WithdrawalLimits } from "./WithdrawalLimits"
 import { MinimumDeposit } from "./MinimumDeposit"
 import { getFilterContentHeight } from "../../../helper"
+import { UnlimitedCheckBox } from "../../filter-components/UnlimitedCheckBox"
 
 export const CasinoFilterContent = ({
     datasFilterCasino,
@@ -193,9 +193,11 @@ export const CasinoFilterContent = ({
                         </h3>
                     }
                     content={
-                        <VPNAllowed
+                        <YesNoDoubleCheckbox
                             initState={casinoFilters.vpn_usage}
+                            field="vpn_usage"
                             setLocalCasinoFilters={setCasinoFilters}
+                            nameFiled={["Allowed", "Not Allowed"]}
                         />
                     }
                 />
@@ -562,13 +564,23 @@ export const CasinoFilterContent = ({
                         </h3>
                     }
                     content={
-                        <MinimumDeposit
-                            initState={casinoFilters.min_deposit}
-                            label="Minimum Deposit"
-                            field="min_deposit"
-                            max={datasFilterCasino?.max_min_deposit_value || 2222}
-                            setLocalCasinoFilters={setCasinoFilters}
-                        />
+                        <div>
+                            <MinimumDeposit
+                                initState={casinoFilters.min_deposit}
+                                label="Minimum Deposit"
+                                field="min_deposit"
+                                max={
+                                    datasFilterCasino?.max_min_deposit_value ||
+                                    2222
+                                }
+                                setLocalCasinoFilters={setCasinoFilters}
+                            />
+                            <UnlimitedCheckBox 
+                                initState={casinoFilters.unlimited_min_deposit}
+                                field="unlimited_min_deposit"
+                                setLocalFilters={setCasinoFilters}
+                            />
+                        </div>
                     }
                 />
             </div>
@@ -622,14 +634,26 @@ export const CasinoFilterContent = ({
                         </h3>
                     }
                     content={
+                        <div>
+
                         <MinimumDeposit
                             initState={casinoFilters.min_wager}
                             label="Minimum Wagering"
                             field="min_wager"
-                            max={datasFilterCasino?.max_min_wagering_value || 100000}
+                            max={
+                                datasFilterCasino?.max_min_wagering_value ||
+                                100000
+                            }
                             setLocalCasinoFilters={setCasinoFilters}
-                            keyToValue={'X'}
+                            keyToValue={"X"}
                         />
+                        
+<UnlimitedCheckBox 
+                                initState={casinoFilters.unlimited_min_wager}
+                                field="unlimited_min_wager"
+                                setLocalFilters={setCasinoFilters}
+                            /> 
+                        </div>
                     }
                 />
             </div>
@@ -648,7 +672,9 @@ export const CasinoFilterContent = ({
                     }
                     content={
                         <YesNoDoubleCheckbox
-                            initState={casinoFilters.bonus_hunt_with_active_bonus}
+                            initState={
+                                casinoFilters.bonus_hunt_with_active_bonus
+                            }
                             field="bonus_hunt_with_active_bonus"
                             setLocalCasinoFilters={setCasinoFilters}
                         />

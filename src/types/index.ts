@@ -467,6 +467,9 @@ export interface CasinoFilterBodyType {
     live_chat_competence: string[];
     responsible_gambling: [],
 
+    unlimited_min_wager: boolean | undefined,
+    unlimited_min_deposit: boolean | undefined,
+
 };
 
 

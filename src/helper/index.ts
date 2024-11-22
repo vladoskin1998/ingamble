@@ -49,3 +49,23 @@ export const filterEmptyValues = <T>(
         })
     ) as Partial<T>;
 }
+
+
+
+export const sanitizeMaxInput = (value: string, max: number): number => {
+    // Удаляем начальные нули, если они есть
+    let sanitized = value.replace(/^0+(?=\d)/, "");
+
+    // Если значение пустое или равно "0", заменяем его на "1"
+    if (sanitized === "" || sanitized === "0") {
+         sanitized = "1";
+    }
+
+
+    if (max < 10) {
+        sanitized = sanitized[sanitized.length - 1];
+    }
+
+    // Приводим к числу и ограничиваем максимумом
+    return Math.min(Number(sanitized), max);
+};

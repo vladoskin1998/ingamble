@@ -14,29 +14,32 @@ import {
 import { Wraper } from "../Wraper"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import like from "../../assets/img/icons/like.svg"
-import {  useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from "../SeeAllCasinos"
-import { euroToDolar, filterEmptyValues, NumberAssociaty, sliceString } from "../../helper"
+import {
+    euroToDolar,
+    filterEmptyValues,
+    NumberAssociaty,
+    sliceString,
+} from "../../helper"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllCasinos/style.css"
 
-
-
 interface License {
-    id?: number;
-    name: string;
-    image: string | null;
-    country_code?: string | null;
+    id?: number
+    name: string
+    image: string | null
+    country_code?: string | null
 }
 
 interface LicenseElemProps {
-    filtersDataLicenses?: License[];
-    casinoFiltersLicenses?: number[];
-    itemLicenses?: License[];
+    filtersDataLicenses?: License[]
+    casinoFiltersLicenses?: number[]
+    itemLicenses?: License[]
 }
 
 const LicenseElem: React.FC<LicenseElemProps> = ({
@@ -44,36 +47,38 @@ const LicenseElem: React.FC<LicenseElemProps> = ({
     casinoFiltersLicenses,
     itemLicenses,
 }) => {
-    const [selectedLicense, setSelectedLicense] = useState<License | undefined>(undefined);
+    const [selectedLicense, setSelectedLicense] = useState<License | undefined>(
+        undefined
+    )
 
     useEffect(() => {
-        
         const timeoutId = setTimeout(() => {
             const newSelectedLicense =
-                filtersDataLicenses?.find((license) => license?.id === casinoFiltersLicenses?.[0]) ||
-                itemLicenses?.[0];
-            setSelectedLicense(newSelectedLicense);
-        }, 1000); 
+                filtersDataLicenses?.find(
+                    (license) => license?.id === casinoFiltersLicenses?.[0]
+                ) || itemLicenses?.[0]
+            setSelectedLicense(newSelectedLicense)
+        }, 1000)
 
-       
-        return () => clearTimeout(timeoutId);
-    }, [filtersDataLicenses, casinoFiltersLicenses, itemLicenses]);
+        return () => clearTimeout(timeoutId)
+    }, [filtersDataLicenses, casinoFiltersLicenses, itemLicenses])
 
     return (
         <div className="item-info-content-item-loyaltie-programs__value">
-       
-                <>
-                    {sliceString(selectedLicense?.name, 15)}
-                    <span className="item-info-content-item-loyaltie-programs__value-flag">
-                        {selectedLicense?.image && (
-                            <img src={selectedLicense.image} alt={selectedLicense.name || ''} />
-                        )}
-                    </span>
-                </>
-            
+            <>
+                {sliceString(selectedLicense?.name, 15)}
+                <span className="item-info-content-item-loyaltie-programs__value-flag">
+                    {selectedLicense?.image && (
+                        <img
+                            src={selectedLicense.image}
+                            alt={selectedLicense.name || ""}
+                        />
+                    )}
+                </span>
+            </>
         </div>
-    );
-};
+    )
+}
 
 const countPageSize = 15
 
@@ -147,20 +152,14 @@ export default function FilterCasino() {
         }
     }, [casinoFilters, refetch])
 
+
     useEffect(() => {
-        if (data?.results) {
-            setAllData((s) => {
-                const combinedData = [...s, ...data?.results]
-
-                const uniqueData = combinedData.reduce((acc, item) => {
-                    if (!acc.some((el) => el.casino_id === item.casino_id)) {
-                        acc.push(item)
-                    }
-                    return acc
-                }, [] as SeeAllCasinosCasino[])
-
-                return uniqueData
-            })
+        if (data?.results && isMobile ) {
+            setAllData((s) => ([...s, ...data?.results]) 
+            )
+        }
+        if (!allData.length && data?.results){
+            setAllData(data?.results)
         }
     }, [data])
 
@@ -295,11 +294,15 @@ export default function FilterCasino() {
                                                                             Dep
                                                                         </div>
                                                                         <div className="item-info-content-item-loyaltie-programs__value">
-                                                                            {`${
-                                                                                item
-                                                                                    .min_dep?.[0]
-                                                                                    ?.value
-                                                                            } ${euroToDolar()}`}
+                                                                            {item
+                                                                                .min_dep?.[0]
+                                                                                ?.value
+                                                                                ? `${
+                                                                                      item
+                                                                                          .min_dep?.[0]
+                                                                                          ?.value
+                                                                                  } ${euroToDolar()}`
+                                                                                : "Unlimited"}
                                                                         </div>
                                                                     </div>
                                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
@@ -307,9 +310,17 @@ export default function FilterCasino() {
                                                                             License
                                                                         </div>
                                                                         <LicenseElem
-                                                                            filtersDataLicenses={filtersData?.casino.licenses}
-                                                                            casinoFiltersLicenses={casinoFilters.licenses}
-                                                                            itemLicenses={item.licenses}
+                                                                            filtersDataLicenses={
+                                                                                filtersData
+                                                                                    ?.casino
+                                                                                    .licenses
+                                                                            }
+                                                                            casinoFiltersLicenses={
+                                                                                casinoFilters.licenses
+                                                                            }
+                                                                            itemLicenses={
+                                                                                item.licenses
+                                                                            }
                                                                         />
                                                                         {/* <div className="item-info-content-item-loyaltie-programs__value">
                                                                             {filtersData?.casino.licenses.find(

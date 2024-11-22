@@ -111,7 +111,7 @@ export const BlockType4 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                     target="_blank"
                                                                     className="casino-small-card__image-block"
                                                                 >
-                                                                    <div className="casino-small-card__image ibg">
+                                                                    <div className="casino-small-card__image ibg" style={{backgroundSize: '133%'}}>
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item

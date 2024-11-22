@@ -80,19 +80,12 @@ export default function SeeAllCasinos() {
         }
     )
     useEffect(() => {
-        if (data?.casino?.results) {
-            setAllData((s) => {
-                const combinedData = [...s, ...data?.casino?.results];
-                
-                const uniqueData = combinedData.reduce((acc, item) => {
-                  if (!acc.some((el) => el.casino_id === item.casino_id)) {
-                    acc.push(item);
-                  }
-                  return acc;
-                }, [] as SeeAllCasinosCasino[]);
-              
-                return uniqueData;
-              });
+        if (data?.casino.results && isMobile ) {
+            setAllData((s) => ([...s, ...data?.casino.results]) 
+            )
+        }
+        if (!allData.length && data?.casino.results){
+            setAllData(data?.casino.results)
         }
     }, [data])
 

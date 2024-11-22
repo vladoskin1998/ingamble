@@ -39,6 +39,9 @@ export const initialCasinoFilters: CasinoFilterBodyType = {
     games: [],
     responsible_gambling: [],
     live_chat_competence: [],
+
+    unlimited_min_wager: undefined,
+    unlimited_min_deposit: undefined,
 }
 export const initialBonusFilters: BonusFilterBodyType = {
     bonus_rank: null,

@@ -51,21 +51,14 @@ export default function SeeAllEssentialsLoyalty() {
             setAllData((s) => [...s, ...data?.results])
         }
     }, [data])
-
+    
     useEffect(() => {
-        if (data?.results) {
-            setAllData((s) => {
-                const combinedData = [...s, ...data?.results]
-
-                const uniqueData = combinedData.reduce((acc, item) => {
-                    if (!acc.some((el) => el.casino_id === item.casino_id)) {
-                        acc.push(item)
-                    }
-                    return acc
-                }, [] as SeeAllEssentialLoyaltyCasino[])
-
-                return uniqueData
-            })
+        if (data?.results && isMobile ) {
+            setAllData((s) => ([...s, ...data?.results]) 
+            )
+        }
+        if (!allData.length && data?.results){
+            setAllData(data?.results)
         }
     }, [data])
 

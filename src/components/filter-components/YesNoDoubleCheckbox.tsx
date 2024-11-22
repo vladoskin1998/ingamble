@@ -6,15 +6,17 @@ export const YesNoDoubleCheckbox = <
     initState,
     field,
     setLocalCasinoFilters,
+    nameFiled=['Yes','No'], 
 }: {
     initState: boolean | undefined
     field: string
     setLocalCasinoFilters: React.Dispatch<React.SetStateAction<T>>
+    nameFiled?:[string,string]
 }) => {
     const handleYesNoChange = (isAllowed: boolean) => {
         setLocalCasinoFilters((prevFilters) => ({
             ...prevFilters,
-            [field]: isAllowed,
+            [field]: prevFilters?.[field as keyof T] === isAllowed ? undefined : isAllowed,
         }))
     }
 
@@ -32,7 +34,7 @@ export const YesNoDoubleCheckbox = <
                             checked={initState === true}
                         />
                         <label className="radio-form-filter__label">
-                            <span>Yes</span>
+                            <span>{nameFiled[0]}</span>
                         </label>
                     </div>
                     <div
@@ -45,7 +47,7 @@ export const YesNoDoubleCheckbox = <
                             checked={initState === false}
                         />
                         <label className="radio-form-filter__label">
-                            <span>No</span>
+                            <span>{nameFiled[1]}</span>
                         </label>
                     </div>
                 </div>

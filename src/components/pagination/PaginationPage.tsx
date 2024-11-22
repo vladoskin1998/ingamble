@@ -12,6 +12,9 @@ export const PaginationPage = ({
     setCurrentPage?: (n: number) => void
     countPageElem?: number
 }) => {
+
+    console.log(currentPage,countElem,currentPage,);
+    
     const totalPages = Math.ceil(countElem / countPageElem)
     
     const handlePageChange = (selectedItem: { selected: number }) => {

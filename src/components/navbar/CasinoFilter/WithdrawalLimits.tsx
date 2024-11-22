@@ -1,44 +1,47 @@
-import { useEffect, useState } from "react"
-import Slider from "rc-slider"
-import "rc-slider/assets/index.css"
-import { CasinoFilterBodyType } from "../../../types"
+import { useEffect, useState } from "react";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+import { CasinoFilterBodyType } from "../../../types";
+import { sanitizeMaxInput } from "../../../helper";
 
 const initStateWithdrawalLimits = {
+    daily: 1,
+    weekly: 1,
+    monthly: 1,
+    unlimited: false,
+};
+
+const initStateWithdrawalLimitsMax = {
     daily: 10000,
     weekly: 100000,
     monthly: 100000000,
-    unlimited: false,
-}
+};
 
 export const WithdrawalLimits = ({
     initState,
     setLocalCasinoFilters,
 }: {
     initState: {
-        daily: number
-        weekly: number
-        monthly: number
-        unlimited: boolean
-    } | null
+        daily: number;
+        weekly: number;
+        monthly: number;
+        unlimited: boolean;
+    } | null;
     setLocalCasinoFilters: React.Dispatch<
         React.SetStateAction<CasinoFilterBodyType>
-    >
+    >;
 }) => {
-    const [dailyLimit, setDailyLimit] = useState(initStateWithdrawalLimits.daily)
-    const [weeklyLimit, setWeeklyLimit] = useState(
-        initStateWithdrawalLimits.weekly
-    )
-    const [monthlyLimit, setMonthlyLimit] = useState(
-        initStateWithdrawalLimits.monthly
-    )
+    const [dailyLimit, setDailyLimit] = useState(1);
+    const [weeklyLimit, setWeeklyLimit] = useState(1);
+    const [monthlyLimit, setMonthlyLimit] = useState(1);
 
     useEffect(() => {
         if (initState !== null) {
-            setDailyLimit(initState.daily)
-            setWeeklyLimit(initState.weekly)
-            setMonthlyLimit(initState.monthly)
+            setDailyLimit(initState.daily);
+            setWeeklyLimit(initState.weekly);
+            setMonthlyLimit(initState.monthly);
         }
-    }, [initState])
+    }, [initState]);
 
     const handleLimitChange = (
         value: number | boolean,
@@ -47,10 +50,12 @@ export const WithdrawalLimits = ({
     ) => {
         if (typeof value === "number" && setLimit) {
             const maxLimit =
-                initStateWithdrawalLimits[limitType as keyof typeof initStateWithdrawalLimits]
-            const newValue = Math.min(value, maxLimit as number) 
-            setLimit(newValue)
-            value = newValue
+                initStateWithdrawalLimitsMax[
+                    limitType as keyof typeof initStateWithdrawalLimitsMax
+                ];
+            const newValue = Math.min(value, maxLimit as number);
+            setLimit(newValue);
+            value = newValue;
         }
 
         setLocalCasinoFilters((prevFilters) => ({
@@ -61,8 +66,9 @@ export const WithdrawalLimits = ({
                       ...prevFilters?.withdrawal_limits,
                       [limitType]: value,
                   },
-        }))
-    }
+        }));
+    };
+
 
     const renderLimit = (
         label: string,
@@ -80,7 +86,7 @@ export const WithdrawalLimits = ({
                         type="number"
                         value={value}
                         onChange={(e) =>
-                            onChange(Math.min(Number(e.target.value), max))
+                            onChange(sanitizeMaxInput(e.target.value, max))
                         }
                     />
                     <span className="field__icon">$</span>
@@ -93,7 +99,6 @@ export const WithdrawalLimits = ({
                     max={max}
                     value={value}
                     onChange={(v) => onChange(Number(v))}
-                    onAfterChange={(v) => onChange(Number(v))}
                 />
             </div>
             <div className="range-form-filter__min-max">
@@ -103,21 +108,29 @@ export const WithdrawalLimits = ({
                 </span>
             </div>
         </div>
-    )
+    );
 
     return (
         <div className="form-filter__body input-style-range">
-            {renderLimit("Daily Limits", dailyLimit, 1, initStateWithdrawalLimits.daily, (value) =>
-                handleLimitChange(value, "daily", setDailyLimit)
+            {renderLimit(
+                "Daily Limits",
+                dailyLimit,
+                1,
+                initStateWithdrawalLimitsMax.daily,
+                (value) => handleLimitChange(value, "daily", setDailyLimit)
             )}
-            {renderLimit("Weekly Limits", weeklyLimit, 1, initStateWithdrawalLimits.weekly, (value) =>
-                handleLimitChange(value, "weekly", setWeeklyLimit)
+            {renderLimit(
+                "Weekly Limits",
+                weeklyLimit,
+                1,
+                initStateWithdrawalLimitsMax.weekly,
+                (value) => handleLimitChange(value, "weekly", setWeeklyLimit)
             )}
             {renderLimit(
                 "Monthly Limits",
                 monthlyLimit,
                 1,
-                initStateWithdrawalLimits.monthly,
+                initStateWithdrawalLimitsMax.monthly,
                 (value) => handleLimitChange(value, "monthly", setMonthlyLimit)
             )}
             <div>
@@ -138,5 +151,5 @@ export const WithdrawalLimits = ({
                 </label>
             </div>
         </div>
-    )
-}
+    );
+};
