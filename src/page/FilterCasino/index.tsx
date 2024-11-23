@@ -80,7 +80,7 @@ const LicenseElem: React.FC<LicenseElemProps> = ({
     )
 }
 
-const countPageSize = 15
+const countPageSize = 1
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),
@@ -143,12 +143,16 @@ export default function FilterCasino() {
     }, [currentPage, refetch, setCurrentPage])
 
     useEffect(() => {
+        setCurrentPage(1)
         debouncedFetchFilter(casinoFilters, refetch)
         if (!isMobile) {
             window.scrollTo({
                 behavior: "smooth",
                 top: 0,
             })
+        }
+        else{
+            setAllData([])
         }
     }, [casinoFilters, refetch])
 
@@ -231,14 +235,15 @@ export default function FilterCasino() {
                                             <div className="item-loyaltie-programs__main">
                                                 <div
                                                     aria-label="Put your description here."
-                                                    className="item-loyaltie-programs__image item-loyaltie-programs__image-custom ibg"
-                                                    style={{backgroundPosition: 'center', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}
+                                                    className="item-loyaltie-programs__image item-loyaltie-programs__image-custom "
+                                                   
                                                 >
                                                     <LazyCardImg
                                                         img={
                                                             item?.casino_image ||
                                                             ""
                                                         }
+                                                        height="100%"
                                                         width="100%"
                                                     />
                                                 </div>

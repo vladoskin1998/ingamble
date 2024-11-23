@@ -1,7 +1,7 @@
 import  { useState } from "react"
 import { LineLoader } from "../loader/LineLoader"
 
-export const LazyCardImg = ({ img, size,width="auto" }: { img: string, size?: "large" | "medium"; width?: string }) => {
+export const LazyCardImg = ({ img, size,width="auto", height}: { height?:string,img: string, size?: "large" | "medium"; width?: string }) => {
     const [loading, setLoading] = useState(true)
     return (
         <>
@@ -12,6 +12,7 @@ export const LazyCardImg = ({ img, size,width="auto" }: { img: string, size?: "l
                 loading="lazy"
                 onLoad={() => setLoading(false)}
                 style={{
+                    height,
                     width: loading ? "0px" : width
                 }}
             />

@@ -16,8 +16,6 @@ import { LoyaltiesFilter } from "./LoyaltiesFilter"
 
 type DefaultOpenType = "casinos" | "bonuses" | "loyalties" | "slots" | ""
 
-
-
 export const Navbar = ({
     isSidebarActive,
     setSidebarActive,
@@ -92,12 +90,7 @@ export const Navbar = ({
         [isSidebarActive]
     )
 
-   
     let datasFilter = data
-
-    // if(data){
-    //     const 
-    // }
 
     return (
         <aside className="gamble__sidebar sidebar-gamble">
@@ -300,10 +293,7 @@ export const Navbar = ({
                                             </span>
                                         </div>
                                     }
-                                    content={
-                                        // <div className="item-form-filters__body"></div>
-                                        <LoyaltiesFilter/>
-                                    }
+                                    content={<LoyaltiesFilter />}
                                 />
                             </div>
                             {/* <div

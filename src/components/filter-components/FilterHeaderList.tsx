@@ -116,11 +116,11 @@ export const FilterHeaderList = ({
                         <div className="title-filter-selected__nubmer">
                             {list.length}
                         </div>
-                        <div className="title-filter-selected__arrow">
+                        {/* <div className="title-filter-selected__arrow">
                             <svg>
                                 <use xlinkHref="#arrow"></use>
                             </svg>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="filter-selected__body">
                         <div className="filter-selected__btns-block">

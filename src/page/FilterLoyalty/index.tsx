@@ -20,8 +20,8 @@ import { debounce } from "lodash"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import star from "../../assets/img/icons/star.svg"
-
-const countPageSize = 15
+import '../SeeAllEssentialsLoyalty/style.css'
+const countPageSize = 1
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),
@@ -83,12 +83,16 @@ export default function FilterLoyalty() {
     }, [currentPage, refetch, setCurrentPage])
 
     useEffect(() => {
+        setCurrentPage(1)
         debouncedFetchFilter(loyaltiesFilters, refetch)
         if (!isMobile) {
             window.scrollTo({
                 behavior: "smooth",
                 top: 0,
             })
+        }
+        else{
+            setAllData([])
         }
     }, [loyaltiesFilters, refetch])
 
@@ -173,12 +177,13 @@ export default function FilterLoyalty() {
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
-                                                <a className="item-loyaltie-programs__image loyalty-img-custom ibg" style={{backgroundPosition: 'center', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
+                                                <a className="item-loyaltie-programs__image loyalty-img-custom " >
                                                     <LazyCardImg
                                                         img={
                                                             item?.casino_image ||
                                                             ""
                                                         }
+                                                        height="100%"
                                                         width="100%"
                                                     />
                                                 </a>

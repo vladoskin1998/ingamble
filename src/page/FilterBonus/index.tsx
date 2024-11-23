@@ -88,12 +88,16 @@ export default function FilterBonus() {
     }, [currentPage, refetch, setCurrentPage])
 
     useEffect(() => {
+        setCurrentPage(1)
         debouncedFetchFilter(bonusFilters, refetch)
         if (!isMobile) {
             window.scrollTo({
                 behavior: "smooth",
                 top: 0,
             })
+        }
+        else{
+            setAllData([])
         }
     }, [bonusFilters, refetch])
 
@@ -119,7 +123,7 @@ export default function FilterBonus() {
 
     useEffect(() => {
         initializeAdaptiveBehavior()
-    }, [isLoading, isSidebarActive])
+    }, [isLoading, isSidebarActive, ])
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
@@ -141,7 +145,9 @@ export default function FilterBonus() {
             [v as keyof CasinoFilterBodyType]: findedValueField,
         }))
     }
+    console.log("currentPage", currentPage);
     
+
     if (isDebouncedLoading) return <LogoLoader />
 
     return (
@@ -185,11 +191,12 @@ export default function FilterBonus() {
                                                     className="casino-card__image-block"
                                                     style={{padding: "0 8px 50.432% 8px"}}
                                                 >
-                                                    <div className="casino-card__image see-all-custom__image-custom ibg" style={{backgroundPosition: 'center', backgroundRepeat:'no-repeat', backgroundSize:"cover"}} >
+                                                    <div className="casino-card__image see-all-custom__image-custom"  >
                                                         <LazyCardImg
                                                             img={
                                                                 item?.bonus_image
                                                             }
+                                                            height="100%"
                                                             width="100%"
                                                         />
                                                     </div>

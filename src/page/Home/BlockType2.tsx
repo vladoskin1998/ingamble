@@ -84,7 +84,7 @@ export const BlockType2 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                         >
                                             {data?.items_block?.data_cards
                                                 ?.filter(
-                                                    (item) => item.big_card
+                                                    (item) => item?.big_card
                                                 )
                                                 .sort(
                                                     (a, b) => a.order - b.order

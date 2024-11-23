@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { memo, useEffect, useRef, useState } from "react"
 import { useAccordion } from "../../hooks/useAccordion"
 
 type AccordionItemProps = {
@@ -9,20 +9,21 @@ type AccordionItemProps = {
 
 }
  //всегда в хедерт) добавлять accordion--title--element!!!!!!!!
-export const AccordionItem: React.FC<AccordionItemProps> = ({
+export const AccordionItem: React.FC<AccordionItemProps> = memo( ({
     heading,
     content,
     defaultOpen = false,
     isNested = false,
 
 }) => {
-    const [isOpen, setIsOpen] = useState(defaultOpen || isNested)
+    const [isOpen, setIsOpen] = useState(defaultOpen ||  isNested)
     const { toggle } = useAccordion()
     const headerRef = useRef<HTMLDivElement>(null)
     const bodyRefAcc = useRef<HTMLDivElement | null>(null)
     const [maxHeight, setMaxHeight] = useState<string>( "0")
     const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
+   
 
     const [isHidden, setIsHidden] = useState<"hidden" | "visible">(
         isOpen ? "visible" : "hidden"
@@ -46,7 +47,6 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
 
     useEffect(() => {
         if (bodyRefAcc.current) {
-    
             const contentHeight = calculateTotalHeight(bodyRefAcc.current)
             setMaxHeight(`${contentHeight}px`)
         }
@@ -65,7 +65,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
             if (!prevState === true) {
                 setTimeout(() => {
                     setIsHidden("visible")
-                }, 300)
+                }, 400)
             } else {
                 setIsHidden("hidden")
             }
@@ -76,7 +76,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
 
         setTimeout(() => {
             setIsAnimating(false)
-        }, 300)
+        }, 400)
     }
 
     useEffect(() => {
@@ -121,7 +121,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
             </div>
         </div>
     )
-}
+})
 
 const styles = {
     accordionItemHeader: {
@@ -130,6 +130,6 @@ const styles = {
         zIndex: "2",
     },
     accordionItemPanel: {
-        transition: "max-height 0.3s ease-in-out",
+        transition: "max-height 0.4s ease-in-out",
     },
 }

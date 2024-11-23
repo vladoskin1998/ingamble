@@ -19,25 +19,29 @@ export const PaginationPage = ({
     
     const handlePageChange = (selectedItem: { selected: number }) => {
         const newPage = selectedItem.selected + 1
+        
         setCurrentPage(newPage)
     }
     
-    if(countElem <= countPageElem){
-        return <></>
-    }
+    console.log(countElem, "===",countPageElem);
+    
+ 
 
     return (
         <>
-            <button
-                onClick={(e) => {
-                    e.preventDefault()
-                    if (currentPage < totalPages)
-                        setCurrentPage(currentPage + 1)
-                }}
-                className="main-loyaltie-programs__btn-more"
-            >
-                Show More
-            </button>
+        {
+            countElem <= currentPage || <button
+            onClick={(e) => {
+                e.preventDefault()
+                if (currentPage < totalPages)
+                    setCurrentPage(currentPage + 1)
+            }}
+            className="main-loyaltie-programs__btn-more"
+        >
+            Show More
+        </button>
+        }
+            
             <ReactPaginate
                 previousLabel={
                     <button>
