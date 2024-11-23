@@ -73,7 +73,7 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    {data.items_block.block_title}
+                                Type 5          {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -178,7 +178,7 @@ export const BlockType5 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                     target="_blank"
                                                                     className="casino-small-card__image-block"
                                                                 >
-                                                                    <div className="casino-small-card__image ibg" style={{backgroundSize: '133%'}}>
+                                                                    <div className="casino-small-card__image ibg" >
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item

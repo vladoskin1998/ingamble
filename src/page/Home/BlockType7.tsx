@@ -43,7 +43,7 @@ export const BlockType7 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    {data.items_block.block_title}
+                                Type 7            {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -93,7 +93,7 @@ export const BlockType7 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                     className="different-casino-bg__image-block"
                                                     
                                                 >
-                                                    <span className="different-casino-bg__image ibg" style={{backgroundSize:"115%"}}>
+                                                    <span className="different-casino-bg__image ibg">
                                                         <LazyCardImg
                                                             img={
                                                                 item.casino_info

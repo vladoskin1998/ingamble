@@ -112,7 +112,7 @@ const getFilteringCasinoList = async (
 export default function FilterCasino() {
     document.title = "Filter Casino"
 
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior, isSidebarActive } = useAdaptiveBehavior()
     const {
         data: filtersData,
         casinoFilters,
@@ -165,7 +165,7 @@ export default function FilterCasino() {
 
     useEffect(() => {
         initializeAdaptiveBehavior()
-    }, [isLoading])
+    }, [isLoading, isSidebarActive])
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
@@ -231,7 +231,8 @@ export default function FilterCasino() {
                                             <div className="item-loyaltie-programs__main">
                                                 <div
                                                     aria-label="Put your description here."
-                                                    className="item-loyaltie-programs__image item-loyaltie-programs__image-custom"
+                                                    className="item-loyaltie-programs__image item-loyaltie-programs__image-custom ibg"
+                                                    style={{backgroundPosition: 'center', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}
                                                 >
                                                     <LazyCardImg
                                                         img={

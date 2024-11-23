@@ -24,7 +24,7 @@ export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    {data.items_block.block_title}
+                                Type 9                 {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (

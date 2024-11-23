@@ -59,7 +59,7 @@ const getFilteringCasinoList = async (
 export default function FilterBonus() {
     document.title = "Filter Bonus"
 
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior, isSidebarActive } = useAdaptiveBehavior()
 
     const { bonusFilters, setBonusFilters } = useFilterContext()
 
@@ -119,7 +119,7 @@ export default function FilterBonus() {
 
     useEffect(() => {
         initializeAdaptiveBehavior()
-    }, [isLoading])
+    }, [isLoading, isSidebarActive])
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
@@ -185,7 +185,7 @@ export default function FilterBonus() {
                                                     className="casino-card__image-block"
                                                     style={{padding: "0 8px 50.432% 8px"}}
                                                 >
-                                                    <div className="casino-card__image see-all-custom__image-custom ">
+                                                    <div className="casino-card__image see-all-custom__image-custom ibg" style={{backgroundPosition: 'center', backgroundRepeat:'no-repeat', backgroundSize:"cover"}} >
                                                         <LazyCardImg
                                                             img={
                                                                 item?.bonus_image

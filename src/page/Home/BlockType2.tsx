@@ -42,7 +42,7 @@ export const BlockType2 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    {data.items_block.block_title}
+                                Type 2     {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -117,7 +117,7 @@ export const BlockType2 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                                 target="_blank"
                                                                                 className="casino-small-card__image-block"
                                                                             >
-                                                                                <div className="casino-small-card__image ibg" style={{backgroundSize: '150%'}}>
+                                                                                <div className="casino-small-card__image ibg" >
                                                                                     <LazyCardImg
                                                                                         img={
                                                                                             item
@@ -256,7 +256,7 @@ export const BlockType2 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                             target="_blank"
                                                             className="different-casino-bg__image-block"
                                                         >
-                                                            <span className="different-casino-bg__image ibg" style={{backgroundSize: '120%'}}>
+                                                            <span className="different-casino-bg__image ibg" >
                                                                 <LazyCardImg
                                                                     img={
                                                                         item

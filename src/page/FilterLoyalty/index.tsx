@@ -53,7 +53,7 @@ const getFilteringLoyaltiesList = async (
 export default function FilterLoyalty() {
     document.title = "Filter Loyalties"
 
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior, isSidebarActive } = useAdaptiveBehavior()
     const { loyaltiesFilters, setLoyaltiesFilters } = useFilterContext()
 
     const [currentPage, setCurrentPage] = useState(1)
@@ -111,7 +111,7 @@ export default function FilterLoyalty() {
 
     useEffect(() => {
         initializeAdaptiveBehavior()
-    }, [isLoading])
+    }, [isLoading, isSidebarActive])
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
@@ -173,7 +173,7 @@ export default function FilterLoyalty() {
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
-                                                <a className="item-loyaltie-programs__image loyalty-img-custom">
+                                                <a className="item-loyaltie-programs__image loyalty-img-custom ibg" style={{backgroundPosition: 'center', backgroundRepeat:'no-repeat', backgroundSize:"cover"}}>
                                                     <LazyCardImg
                                                         img={
                                                             item?.casino_image ||

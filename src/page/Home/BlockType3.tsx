@@ -68,7 +68,7 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    {data.items_block.block_title}
+                                Type 3             {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -142,7 +142,7 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                     target="_blank"
                                                                     className="different-casino-standart__image-block"
                                                                 >
-                                                                    <span className="different-casino-standart__image ibg"  style={{backgroundSize: '115%'}}>
+                                                                    <span className="different-casino-standart__image ibg"  >
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item?.[0]
@@ -241,7 +241,7 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                         target="_blank"
                                                                         className="different-casino-standart__image-block"
                                                                     >
-                                                                        <span className="different-casino-standart__image ibg" style={{backgroundSize: '115%'}}>
+                                                                        <span className="different-casino-standart__image ibg" >
                                                                             <LazyCardImg
                                                                                 img={
                                                                                     item?.[1]
@@ -398,7 +398,7 @@ export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                                 target="_blank"
                                                                                 className="casino-small-card__image-block"
                                                                             >
-                                                                                <div className="casino-small-card__image ibg" style={{backgroundSize: '133%'}}>
+                                                                                <div className="casino-small-card__image ibg" >
                                                                                     <LazyCardImg
                                                                                         img={
                                                                                             item

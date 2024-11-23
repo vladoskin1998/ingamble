@@ -6,7 +6,7 @@ import { ListCheckBox } from "../../filter-components/ListCheckBox"
 import { RangeSlider } from "../../filter-components/RangeSlider"
 import { UnlimitedCheckBox } from "../../filter-components/UnlimitedCheckBox"
 import { YesNoDoubleCheckbox } from "../../filter-components/YesNoDoubleCheckbox"
-import { Withdraw } from "./Waggering"
+import { Wagering } from "./Wagering"
 
 //@ts-ignore
 const DataWageringDifficulty = ["Easy", "Medium", "Hard"]
@@ -443,12 +443,12 @@ export const BonusFilter = ({
                                     <use xlinkHref="#arrow"></use>
                                 </svg>
                             </span>
-                            <span>Withdraw</span>
+                            <span>Wagering</span>
                             <span className="title-form-filter__count">1</span>
                         </h3>
                     }
                     content={
-                        <Withdraw
+                        <Wagering
                             initState={{
                                 deposit_only: bonusFilters.deposit_only,
                                 winnings_only: bonusFilters.winnings_only,

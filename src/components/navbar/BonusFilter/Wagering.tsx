@@ -6,7 +6,7 @@ import { sanitizeMaxInput } from "../../../helper"
 
 const MAX_LIMIT = 100
 
-export const Withdraw = ({
+export const Wagering = ({
     initState,
     setLocalFilters,
 }: {

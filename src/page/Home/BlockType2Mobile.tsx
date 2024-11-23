@@ -46,7 +46,7 @@ export default function BlockType2Mobile({
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    {data.items_block.block_title}
+                                Type 2 Mobile                {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
