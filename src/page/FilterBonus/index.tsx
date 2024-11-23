@@ -59,7 +59,7 @@ const getFilteringCasinoList = async (
 export default function FilterBonus() {
     document.title = "Filter Bonus"
 
-    const { initializeAdaptiveBehavior, isSidebarActive } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
     const { bonusFilters, setBonusFilters } = useFilterContext()
 
@@ -123,7 +123,7 @@ export default function FilterBonus() {
 
     useEffect(() => {
         initializeAdaptiveBehavior()
-    }, [isLoading, isSidebarActive, ])
+    }, [isLoading ])
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)

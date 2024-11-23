@@ -65,7 +65,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = memo( ({
             if (!prevState === true) {
                 setTimeout(() => {
                     setIsHidden("visible")
-                }, 400)
+                }, 300)
             } else {
                 setIsHidden("hidden")
             }
@@ -76,7 +76,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = memo( ({
 
         setTimeout(() => {
             setIsAnimating(false)
-        }, 400)
+        }, 300)
     }
 
     useEffect(() => {
@@ -130,6 +130,6 @@ const styles = {
         zIndex: "2",
     },
     accordionItemPanel: {
-        transition: "max-height 0.4s ease-in-out",
+        transition: "max-height 0.3s ease-in-out",
     },
 }

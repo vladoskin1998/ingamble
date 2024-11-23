@@ -146,6 +146,11 @@ export const Navbar = ({
                         <div className="form-filters__items">
                             <div
                                 className={`form-filters__item item-form-filters`}
+                                style={{
+                                    zIndex: 12,
+                                    position: "relative",
+                                    backgroundColor: "#171719",
+                                }}
                                 onClick={() =>
                                     handlerCurrentRouteFilter(
                                         RouteToNextFilter.CASINOS
@@ -201,6 +206,11 @@ export const Navbar = ({
                             </div>
                             <div
                                 className={`form-filters__item item-form-filters`}
+                                style={{
+                                    zIndex: 11,
+                                    position: "relative",
+                                    backgroundColor: "#171719",
+                                }}
                                 onClick={() =>
                                     handlerCurrentRouteFilter(
                                         RouteToNextFilter.BONUS
@@ -256,6 +266,11 @@ export const Navbar = ({
                             </div>
                             <div
                                 className={`form-filters__item item-form-filters `}
+                                style={{
+                                    zIndex: 10,
+                                    backgroundColor: "#171719",
+                                    position: "relative",
+                                }}
                                 onClick={() =>
                                     handlerCurrentRouteFilter(
                                         RouteToNextFilter.LOYALTIES
@@ -337,7 +352,7 @@ export const Navbar = ({
                             </div> */}
                         </div>
                     </div>
-                    <div className="form-filters__bottom bottom-form-filters">
+                    <div className="form-filters__bottom bottom-form-filters"  >
                         <div className="bottom-form-filters__row">
                             <div className="bottom-form-filters__column">
                                 <button

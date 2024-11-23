@@ -5850,7 +5850,9 @@ h3 {
 .item-form-filters__filter:not(:last-child) {
   margin: 0 0 8px 0;
 }
-
+.sidebar-gamble.active .item-form-filters__body{
+  background: #171719;
+}
 .title-item-form-filters {
   display: flex;
   align-items: center;
