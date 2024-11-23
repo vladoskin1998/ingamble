@@ -748,6 +748,7 @@ input[type=number]::-webkit-inner-spin-button {
   overflow: hidden;
   position: sticky;
   bottom: 0;
+  z-index: 9999;
 
 }
 .bottom-form-filters__row {
