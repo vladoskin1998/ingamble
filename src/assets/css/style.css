@@ -2211,6 +2211,7 @@ h3 {
   background: url("../img/menu-bg.jpg") center repeat;
   background-size: 110%;
   position: relative;
+  background-size: 165%;
 }
 .different-casino-bg::before {
   position: absolute;

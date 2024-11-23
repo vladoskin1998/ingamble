@@ -21,7 +21,7 @@ import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import star from "../../assets/img/icons/star.svg"
 import '../SeeAllEssentialsLoyalty/style.css'
-const countPageSize = 1
+const countPageSize = 15
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),

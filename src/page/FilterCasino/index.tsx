@@ -29,6 +29,9 @@ import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllCasinos/style.css"
 
+
+const countPageSize = 15
+
 interface License {
     id?: number
     name: string
@@ -80,7 +83,6 @@ const LicenseElem: React.FC<LicenseElemProps> = ({
     )
 }
 
-const countPageSize = 1
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),

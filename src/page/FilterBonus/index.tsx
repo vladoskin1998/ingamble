@@ -27,7 +27,7 @@ import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllBonus/style.css"
 
 
-const countPageSize = 1
+const countPageSize = 20
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),
