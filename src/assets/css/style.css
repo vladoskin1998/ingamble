@@ -17001,6 +17001,7 @@ h3 {
 .item-baner-row-block__title {
   font-size: 22px;
   line-height: 28px;
+  font-weight: 600;
   color: var(--Text-Txt_Main, #FFFFFF);
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
