@@ -142,7 +142,7 @@ export default function FilterLoyalty() {
 
     return (
         <Wraper>
-            <main className="gamble__casinos-filtered main-gamble casinos-filtered">
+            <main className="gamble__casinos-filtered main-gamble casinos-filtered loyaltie-filtered__main">
                 <div className="main-gamble__body">
                     <Categories
                         category={[

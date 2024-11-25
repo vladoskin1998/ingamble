@@ -15,7 +15,14 @@ import casinoVibesImage from "../../assets/img/different-casino/casino-vibes.png
 
 import thirtyBetImage from "../../assets/img/different-casino/30bet.png"
 import Vavada from "../../assets/img/different-casino/vavada.png"
-export default function TheBestCasinosYear() {
+import { HomeDataBlock } from "../../types"
+    //@ts-ignore
+export default function BlockType5Mobile({
+
+    data,
+}: {
+    data: HomeDataBlock | undefined
+}) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
     return (
@@ -30,10 +37,18 @@ export default function TheBestCasinosYear() {
                         <span></span>
                         <span></span>
                     </div>
-                    <div className={`best-casinos-2024-gamble__girl ${isScrolled && "scrolled"}`}>
+                    <div
+                        className={`best-casinos-2024-gamble__girl ${
+                            isScrolled && "scrolled"
+                        }`}
+                    >
                         <img src={girl} alt="girl" />
                     </div>
-                    <div className={`best-casinos-2024-gamble__slider slider-best-casinos-2024-gamble ${isScrolled && "scrolled"}`}>
+                    <div
+                        className={`best-casinos-2024-gamble__slider slider-best-casinos-2024-gamble ${
+                            isScrolled && "scrolled"
+                        }`}
+                    >
                         <div className="slider-best-casinos-2024-gamble__top top">
                             <div className="top__row">
                                 <div className="top__column">
@@ -45,7 +60,7 @@ export default function TheBestCasinosYear() {
                                 </div>
                                 <div className="top__column">
                                     <a
-                                         href="/see-all?key=88901234"
+                                        href="/see-all?key=88901234"
                                         aria-label="Put your description here."
                                         target="_blank"
                                         className="top__btn"
@@ -66,11 +81,9 @@ export default function TheBestCasinosYear() {
                                     className="slider-best-casinos-2024-gamble__wrapper swiper-wrapper"
                                     ref={sliderRef}
                                     slidesPerView="auto"
-                                    
                                     onSlideChange={(swiper) => {
                                         setIsScrolled(!swiper.isBeginning)
-                                      
-                                      }}
+                                    }}
                                     breakpoints={{
                                         320: {
                                             spaceBetween: 16,

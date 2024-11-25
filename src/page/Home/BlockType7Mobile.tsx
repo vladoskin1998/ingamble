@@ -46,7 +46,7 @@ export default function BlockType7Mobile({
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                Type 7 Mobile          {data.items_block.block_title}
+                                    Type 7 Mobile {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -56,7 +56,10 @@ export default function BlockType7Mobile({
                             )}
                         </div>
                         <div className="top__column">
-                        <SeeAllButton type_category={data.items_block.type_category} id={data.items_block.category.id} />
+                            <SeeAllButton
+                                type_category={data.items_block.type_category}
+                                id={data.items_block.category.id}
+                            />
                         </div>
                     </div>
                 </div>
@@ -67,7 +70,6 @@ export default function BlockType7Mobile({
                                 ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
-                          
                                 modules={[Pagination]}
                                 pagination={{
                                     el: paginationRef.current,
@@ -123,7 +125,7 @@ export default function BlockType7Mobile({
                                                                         and 50
                                                                         spins
                                                                     </a>
-                                                                    <div className="different-casino-standart__tags tags-casino-card">
+                                                                    {/* <div className="different-casino-standart__tags tags-casino-card">
                                                                         <div className="tags-casino-card__item tags-casino-card__item_green">
                                                                             <span className="tags-casino-card__item-label">
                                                                                 WR:
@@ -141,9 +143,9 @@ export default function BlockType7Mobile({
                                                                                 $10
                                                                             </span>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> */}
                                                                     <div className="info-casino-card__stake">
-                                                                        <a
+                                                                        {/* <a
                                                                             href=""
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
@@ -151,7 +153,7 @@ export default function BlockType7Mobile({
                                                                         >
                                                                             Stake
                                                                             Casino
-                                                                        </a>
+                                                                        </a> */}
                                                                         <div className="info-casino-card__stake-rating">
                                                                             <span className="info-casino-card__stake-rating-icon">
                                                                                 <img

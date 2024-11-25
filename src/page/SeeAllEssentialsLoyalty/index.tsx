@@ -80,7 +80,7 @@ export default function SeeAllEssentialsLoyalty() {
 
     return (
         <Wraper>
-            <main className="gamble__loyaltie-programs main-gamble loyaltie-programs">
+            <main className="gamble__loyaltie-programs main-gamble loyaltie-programs loyaltie-filtered__main">
                 <div className="main-gamble__body">
                     <Categories
                         category={[

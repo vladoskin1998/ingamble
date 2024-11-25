@@ -27,6 +27,8 @@ import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { AllCategoriesHomeDataResponse, BlockTypeNumber, HomeDataBlock } from "../../types"
+// import BlockType7Mobile from "./BlockType7Mobile"
+import BlockType5Mobile from "./BlockType5Mobile"
 
 const BlockType2Mobile = lazy(() => import("./BlockType2Mobile"))
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
@@ -92,9 +94,15 @@ const renderBlock = (block: any) => {
         case BlockTypeNumber.BlockType4:
             return <BlockType4 data={block} />;
         case BlockTypeNumber.BlockType7:
-            return <BlockType7 data={block} />;
+            return <>
+                <BlockType7 data={block} />
+                {/* <BlockType7Mobile data={block}/> */}
+            </> ;
         case BlockTypeNumber.BlockType5:
-            return <BlockType5 data={block} />;
+            return <>
+            <BlockType5 data={block} />
+            <BlockType5Mobile data={block}/>
+            </>;
         default:
             return null;
     }
