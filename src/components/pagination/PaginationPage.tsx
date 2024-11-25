@@ -12,9 +12,7 @@ export const PaginationPage = ({
     setCurrentPage?: (n: number) => void
     countPageElem?: number
 }) => {
-
-    console.log(currentPage, countElem, currentPage);
-    
+  
     const totalPages = Math.ceil(countElem / countPageElem)
     
     const handlePageChange = (selectedItem: { selected: number }) => {
@@ -22,12 +20,12 @@ export const PaginationPage = ({
         setCurrentPage(newPage)
     }
     
-    console.log(countElem, "===", countPageElem);
+    console.log(totalPages,  ">", currentPage);
     
     return (
         <>
             {
-                countElem <= currentPage || <button
+                (totalPages > currentPage ) ? <button
                     onClick={(e) => {
                         e.preventDefault()
                         if (currentPage < totalPages)
@@ -36,7 +34,7 @@ export const PaginationPage = ({
                     className="main-loyaltie-programs__btn-more"
                 >
                     Show More
-                </button>
+                </button> : <></>
             }
 
             <ReactPaginate
