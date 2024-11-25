@@ -20,6 +20,9 @@ export const PaginationPage = ({
         setCurrentPage(newPage)
     }
     
+
+
+    
     console.log(totalPages,  ">", currentPage);
     
     return (
