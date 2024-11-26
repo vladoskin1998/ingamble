@@ -206,7 +206,7 @@ export default function FilterLoyalty() {
                                                     </div>
                                                 </div>
                                                 <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
-                                                    {item.loyalty_program.loyalty_keypoint.map(
+                                                    {item?.loyalty_program?.loyalty_keypoint.map(
                                                         (it) => (
                                                             <div className="features-essential-programs-gamble__column">
                                                                 <div className="features-essential-programs-gamble__item">

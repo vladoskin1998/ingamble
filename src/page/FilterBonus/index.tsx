@@ -106,7 +106,7 @@ export default function FilterBonus() {
             setAllData((s) => {
                 const combinedData = [...s, ...data?.results]
 
-                const uniqueData = combinedData.reduce((acc, item) => {
+                const uniqueData = combinedData?.reduce((acc, item) => {
                     if (!acc.some((el) => el.bonus_id === item.bonus_id)) {
                         acc.push(item)
                     }
@@ -225,7 +225,7 @@ export default function FilterBonus() {
                                                                 }`}
                                                             >
                                                                 <span className="tags-casino-card__item-label">
-                                                                    {typeof it === "string" ? it : it.name}
+                                                                    {typeof it === "string" ? it : it?.name}
                                                                 </span>
                                                             </div>
                                                         )

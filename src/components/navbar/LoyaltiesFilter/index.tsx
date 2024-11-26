@@ -47,7 +47,7 @@ export const LoyaltiesFilter = () => {
                         <RangeSlider
                             initState={loyaltiesFilters.loyalty_level_count}
                             field="loyalty_level_count"
-                            minmax={[0, 10]}
+                            minmax={[0, 20]}
                             setLocalFilters={setLoyaltiesFilters}
                         />
                     }
@@ -103,7 +103,7 @@ export const LoyaltiesFilter = () => {
                                     <use xlinkHref="#arrow"></use>
                                 </svg>
                             </span>
-                            <span>Withdrawals</span>
+                            <span>Increased Withdrawal Limits</span>
                             <span className="title-form-filter__count">1</span>
                         </h3>
                     }

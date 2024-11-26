@@ -256,7 +256,7 @@ export default function FilterCasino() {
                                                         <div className="content-item-loyaltie-programs__top top-content-item-loyaltie-programs">
                                                             <h2 className="top-content-item-loyaltie-programs__name">
                                                                 {
-                                                                    item.casino_name
+                                                                    item?.casino_name
                                                                 }
                                                             </h2>
                                                             <div className="info-casino-card__likes">
@@ -285,12 +285,12 @@ export default function FilterCasino() {
                                                                         </div>
                                                                         <div className="item-info-content-item-loyaltie-programs__value">
                                                                             {
-                                                                                item.casino_rank
+                                                                                item?.casino_rank
                                                                             }
                                                                             <span className="item-info-content-item-loyaltie-programs__value-index">
                                                                                 {rankCasinosSeeAll(
                                                                                     Number(
-                                                                                        item.casino_rank
+                                                                                        item?.casino_rank
                                                                                     )
                                                                                 )}
                                                                             </span>
@@ -321,13 +321,13 @@ export default function FilterCasino() {
                                                                             filtersDataLicenses={
                                                                                 filtersData
                                                                                     ?.casino
-                                                                                    .licenses
+                                                                                    ?.licenses
                                                                             }
                                                                             casinoFiltersLicenses={
-                                                                                casinoFilters.licenses
+                                                                                casinoFilters?.licenses
                                                                             }
                                                                             itemLicenses={
-                                                                                item.licenses
+                                                                                item?.licenses
                                                                             }
                                                                         />
                                                                         {/* <div className="item-info-content-item-loyaltie-programs__value">
@@ -398,7 +398,7 @@ export default function FilterCasino() {
                                                                             className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${item.payout_speed.toLocaleLowerCase()}`}
                                                                         >
                                                                             {
-                                                                                item.payout_speed
+                                                                                item?.payout_speed
                                                                             }
                                                                         </div>
                                                                     </div>
@@ -409,12 +409,12 @@ export default function FilterCasino() {
                                                                         </div>
                                                                         <div
                                                                             className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${
-                                                                                item.vpn_usage
+                                                                                item?.vpn_usage
                                                                                     ? "yes"
                                                                                     : "no"
                                                                             }`}
                                                                         >
-                                                                            {item.vpn_usage
+                                                                            {item?.vpn_usage
                                                                                 ? "Yes"
                                                                                 : "No"}
                                                                         </div>
@@ -426,7 +426,7 @@ export default function FilterCasino() {
                                                             <div className="bottom-content-item-loyaltie-programs__btns">
                                                                 <a
                                                                     href={
-                                                                        item.casino_affiliate_link
+                                                                        item?.casino_affiliate_link
                                                                     }
                                                                     target="_blank"
                                                                     aria-label="Put your description here."
@@ -465,12 +465,12 @@ export default function FilterCasino() {
                                                                             <div className="features-essential-programs-gamble__info">
                                                                                 <div className="features-essential-programs-gamble__name">
                                                                                     {
-                                                                                        it.text_1
+                                                                                        it?.text_1
                                                                                     }
                                                                                 </div>
                                                                                 <div className="features-essential-programs-gamble__text">
                                                                                     {
-                                                                                        it.text_2
+                                                                                        it?.text_2
                                                                                     }
                                                                                 </div>
                                                                             </div>
