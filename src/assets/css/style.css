@@ -12648,10 +12648,18 @@ h3 {
 }
 @media (max-width: 992.98px) {
   .content-item-loyaltie-programs {
-    background: transparent;
+    /* background: transparent; */
     display: flex;
     flex-direction: column;
     padding: 24px 12px;
+    background-size: 90%;
+  }
+}
+
+@media (max-width: 480.98px) {
+  .content-item-loyaltie-programs {
+  
+    background-size: 140%;
   }
 }
 .content-item-loyaltie-programs__top:not(:last-child) {
