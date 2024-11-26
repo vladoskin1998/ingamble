@@ -574,11 +574,18 @@ export const CasinoFilterContent = ({
                                     2222
                                 }
                                 setLocalCasinoFilters={setCasinoFilters}
+                                unlimitedInitStateField="unlimited_min_deposit"
                             />
                             <UnlimitedCheckBox
                                 initState={casinoFilters.unlimited_min_deposit}
                                 field="unlimited_min_deposit"
                                 setLocalFilters={setCasinoFilters}
+                                clearFieldsInitState={() =>
+                                    setCasinoFilters((s) => ({
+                                        ...s,
+                                        min_deposit: null,
+                                    }))
+                                }
                             />
                         </div>
                     }
@@ -645,12 +652,19 @@ export const CasinoFilterContent = ({
                                 }
                                 setLocalCasinoFilters={setCasinoFilters}
                                 keyToValue={"X"}
+                                unlimitedInitStateField="unlimited_min_wager"
                             />
 
                             <UnlimitedCheckBox
                                 initState={casinoFilters.unlimited_min_wager}
                                 field="unlimited_min_wager"
                                 setLocalFilters={setCasinoFilters}
+                                clearFieldsInitState={() =>
+                                    setCasinoFilters((s) => ({
+                                        ...s,
+                                        min_wager: null,
+                                    }))
+                                }
                             />
                         </div>
                     }

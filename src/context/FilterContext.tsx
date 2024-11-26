@@ -61,9 +61,9 @@ export const initialBonusFilters: BonusFilterBodyType = {
     sticky: undefined,
 
     bonus_plus_deposit: null,
-bonus_only: null,
-deposit_only: null,
-winnings_only: null,
+    bonus_only: null,
+    deposit_only: null,
+    winnings_only: null,
 
     unlimited_bonus_max_bet: undefined,
     unlimited_bonus_amount: undefined,
@@ -98,7 +98,9 @@ type FilterContextType = {
     setBonusFilters: React.Dispatch<React.SetStateAction<BonusFilterBodyType>>
 
     loyaltiesFilters: LoyaltiesFilterBodyType
-    setLoyaltiesFilters:  React.Dispatch<React.SetStateAction<LoyaltiesFilterBodyType>>
+    setLoyaltiesFilters: React.Dispatch<
+        React.SetStateAction<LoyaltiesFilterBodyType>
+    >
 
     currentRouteFilter: RouteToNextFilter
     handlerCurrentRouteFilter: (v: RouteToNextFilter) => void
@@ -126,9 +128,11 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
 
     const [bonusFilters, setBonusFilters] =
         useState<BonusFilterBodyType>(initialBonusFilters)
+
+        console.log("bonusFilters", bonusFilters);
         
     const [loyaltiesFilters, setLoyaltiesFilters] =
-    useState<LoyaltiesFilterBodyType>(initialLoyaltiesFilters)
+        useState<LoyaltiesFilterBodyType>(initialLoyaltiesFilters)
 
     const handlerClearAllFilters = () => {
         handlerCurrentRouteFilter(RouteToNextFilter.DEFAULT)
@@ -154,7 +158,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
                 setCasinoFilters,
                 bonusFilters,
                 setBonusFilters,
-                loyaltiesFilters, 
+                loyaltiesFilters,
                 setLoyaltiesFilters,
                 currentRouteFilter,
                 handlerCurrentRouteFilter,

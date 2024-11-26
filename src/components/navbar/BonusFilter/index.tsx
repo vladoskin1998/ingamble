@@ -194,11 +194,13 @@ export const BonusFilter = ({
                                         1000000,
                                 ]}
                                 setLocalFilters={setBonusFilters}
+                                unlimitedInitStateField="unlimited_bonus_amount"
                             />
                             <UnlimitedCheckBox
                                 initState={bonusFilters.unlimited_bonus_amount}
                                 field="unlimited_bonus_amount"
                                 setLocalFilters={setBonusFilters}
+                                clearFieldsInitState={() => setBonusFilters(s => ({...s, bonus_amount: null }))}
                             />
                         </div>
                     }
@@ -229,11 +231,13 @@ export const BonusFilter = ({
                                         1000000,
                                 ]}
                                 setLocalFilters={setBonusFilters}
+                                unlimitedInitStateField="unlimited_bonus_max_win"
                             />
                             <UnlimitedCheckBox
                                 initState={bonusFilters.unlimited_bonus_max_win}
                                 field="unlimited_bonus_max_win"
                                 setLocalFilters={setBonusFilters}
+                                clearFieldsInitState={() => setBonusFilters(s => ({...s, bonus_max_win: null }))}
                             />
                         </div>
                     }

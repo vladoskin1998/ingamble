@@ -109,7 +109,7 @@ const ListCheck = <M extends CasinoFilterBodyType | BonusFilterBodyType>({
                   <input
                     id={`${keyType}${field}formFilterPlayersFrom${itemFilter?.name}`}
                     type="checkbox"
-                    checked={isChecked}
+                    checked={isChecked ?? false}
                     className="radio-form-filter__input form-filter__input"
                     onChange={() =>
                       checkboxItem(itemFilter?.id || (0 as any))

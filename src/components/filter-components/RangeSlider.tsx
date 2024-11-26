@@ -6,11 +6,13 @@ export const RangeSlider = <T extends CasinoFilterBodyType | BonusFilterBodyType
     initState,
     field,
     minmax,
+    unlimitedInitStateField,
     setLocalFilters,
 }: {
     initState: { min: number; max: number } | null
     field: string
     minmax: number[]
+    unlimitedInitStateField?: string
     setLocalFilters: React.Dispatch<
         React.SetStateAction<T>
     >
@@ -30,6 +32,7 @@ export const RangeSlider = <T extends CasinoFilterBodyType | BonusFilterBodyType
                 min: clampedMin,
                 max: clampedMax,
             },
+            [unlimitedInitStateField as keyof T]: undefined
         }))
     }
 

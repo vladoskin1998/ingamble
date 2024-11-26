@@ -1,23 +1,30 @@
 import React from "react"
 import { BonusFilterBodyType, CasinoFilterBodyType } from "../../types"
 
-export const UnlimitedCheckBox = <M extends CasinoFilterBodyType | BonusFilterBodyType>({
+export const UnlimitedCheckBox = <
+    M extends CasinoFilterBodyType | BonusFilterBodyType
+>({
     initState,
     field,
     setLocalFilters,
-}:{
-    initState: boolean | undefined,
-    field:string,
-    setLocalFilters: React.Dispatch<
-    React.SetStateAction<M> 
-  >
-
+    clearFieldsInitState = () => {},
+}: {
+    initState: boolean | undefined
+    field: string
+    setLocalFilters: React.Dispatch<React.SetStateAction<M>>
+    clearFieldsInitState?: () => void
 }) => {
-
     const handleYesNoChange = () => {
+        if( !initState ){
+            clearFieldsInitState()
+        }
+       
         setLocalFilters((prevFilters) => ({
             ...prevFilters,
-            [field]: prevFilters?.[field as keyof M] === undefined ? true : undefined,
+            [field]:
+                prevFilters?.[field as keyof M] === undefined
+                    ? true
+                    : undefined,
         }))
     }
 
@@ -26,10 +33,9 @@ export const UnlimitedCheckBox = <M extends CasinoFilterBodyType | BonusFilterBo
             <input
                 id={`formFilterPlayersFrom${field}`}
                 type="checkbox"
-                checked={initState}
+                checked={initState ?? false}
                 className="radio-form-filter__input form-filter__input"
-                onChange={handleYesNoChange
-                }
+                onChange={handleYesNoChange}
             />
             <label
                 htmlFor={`formFilterPlayersFrom${field}`}

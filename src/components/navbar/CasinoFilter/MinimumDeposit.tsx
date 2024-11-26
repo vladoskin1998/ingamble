@@ -12,6 +12,7 @@ export const MinimumDeposit = ({
     max,
     setLocalCasinoFilters,
     keyToValue="$", 
+    unlimitedInitStateField,
 }: {
     initState: number | null,
     label: string
@@ -21,6 +22,7 @@ export const MinimumDeposit = ({
     setLocalCasinoFilters: React.Dispatch<
         React.SetStateAction<CasinoFilterBodyType>
     >
+    unlimitedInitStateField?:string,
     
 }) => {
     const [deposit, setDeposit] = useState(max)
@@ -31,6 +33,7 @@ export const MinimumDeposit = ({
         setLocalCasinoFilters((prevFilters) => ({
             ...prevFilters,
             [field]: clampedValue,
+            [unlimitedInitStateField as keyof CasinoFilterBodyType]: undefined
         }));
     };
     
