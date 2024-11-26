@@ -12652,14 +12652,14 @@ h3 {
     display: flex;
     flex-direction: column;
     padding: 24px 12px;
-    background-size: 90%;
+    background-size: 105%;
   }
 }
 
 @media (max-width: 480.98px) {
   .content-item-loyaltie-programs {
   
-    background-size: 140%;
+    background-size: 205%;
   }
 }
 .content-item-loyaltie-programs__top:not(:last-child) {
