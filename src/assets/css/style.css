@@ -12622,10 +12622,17 @@ h3 {
   flex: 1 1 100%;
 }
 
-.content-item-loyaltie-programs {
+/* .content-item-loyaltie-programs {
   border-radius: var(--SystemCorners-Medium, 12px);
   background: url("../img/bg/10.jpg") center repeat;
   background-size: 57%;
+  padding: 20px;
+} */
+ /* фон дурацкий */
+.content-item-loyaltie-programs {
+  border-radius: var(--SystemCorners-Medium, 12px);
+  background: url("../img/bg/10.png") center ;
+  background-size: 65%;
   padding: 20px;
 }
 @media (min-width: 1650.98px) {

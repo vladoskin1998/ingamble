@@ -25,7 +25,7 @@ export const Navbar = ({
 }) => {
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
     const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>("")
-
+    
     const {
         currentRouteFilter,
         handlerCurrentRouteFilter,
@@ -352,7 +352,7 @@ export const Navbar = ({
                             </div> */}
                         </div>
                     </div>
-                    <div className="form-filters__bottom bottom-form-filters"  >
+                    <div className="form-filters__bottom bottom-form-filters">
                         <div className="bottom-form-filters__row">
                             <div className="bottom-form-filters__column">
                                 <button

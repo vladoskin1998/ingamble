@@ -519,7 +519,7 @@ export const CasinoFilterContent = ({
                                 })
                             )}
                             field="responsible_gambling"
-                            placeholder="Search (Crypto Currencies)"
+                            placeholder="Search (Responsible Gambling)"
                             setLocalFilters={setCasinoFilters}
                             height={getFilterContentHeight(
                                 datasFilterCasino?.responsible_gambling?.length
@@ -575,7 +575,7 @@ export const CasinoFilterContent = ({
                                 }
                                 setLocalCasinoFilters={setCasinoFilters}
                             />
-                            <UnlimitedCheckBox 
+                            <UnlimitedCheckBox
                                 initState={casinoFilters.unlimited_min_deposit}
                                 field="unlimited_min_deposit"
                                 setLocalFilters={setCasinoFilters}
@@ -635,24 +635,23 @@ export const CasinoFilterContent = ({
                     }
                     content={
                         <div>
+                            <MinimumDeposit
+                                initState={casinoFilters.min_wager}
+                                label="Minimum Wagering"
+                                field="min_wager"
+                                max={
+                                    datasFilterCasino?.max_min_wagering_value ||
+                                    100000
+                                }
+                                setLocalCasinoFilters={setCasinoFilters}
+                                keyToValue={"X"}
+                            />
 
-                        <MinimumDeposit
-                            initState={casinoFilters.min_wager}
-                            label="Minimum Wagering"
-                            field="min_wager"
-                            max={
-                                datasFilterCasino?.max_min_wagering_value ||
-                                100000
-                            }
-                            setLocalCasinoFilters={setCasinoFilters}
-                            keyToValue={"X"}
-                        />
-                        
-<UnlimitedCheckBox 
+                            <UnlimitedCheckBox
                                 initState={casinoFilters.unlimited_min_wager}
                                 field="unlimited_min_wager"
                                 setLocalFilters={setCasinoFilters}
-                            /> 
+                            />
                         </div>
                     }
                 />
