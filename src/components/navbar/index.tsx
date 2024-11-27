@@ -25,7 +25,7 @@ export const Navbar = ({
 }) => {
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
     const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>("")
-    
+
     const {
         currentRouteFilter,
         handlerCurrentRouteFilter,
@@ -166,12 +166,15 @@ export const Navbar = ({
                                         >
                                             <span
                                                 className="title-item-form-filters__icon"
-                                                onClick={(e) =>
+                                                onClick={(e) => {
                                                     handleFilterOpenBtnClick(
                                                         e,
                                                         "casinos"
                                                     )
-                                                }
+                                                    handlerCurrentRouteFilter(
+                                                        RouteToNextFilter.CASINOS
+                                                    )
+                                                }}
                                             >
                                                 <svg>
                                                     <use xlinkHref="#casinos"></use>
@@ -226,12 +229,15 @@ export const Navbar = ({
                                         >
                                             <span
                                                 className="title-item-form-filters__icon"
-                                                onClick={(e) =>
+                                                onClick={(e) => {
                                                     handleFilterOpenBtnClick(
                                                         e,
                                                         "bonuses"
                                                     )
-                                                }
+                                                    handlerCurrentRouteFilter(
+                                                        RouteToNextFilter.BONUS
+                                                    )
+                                                }}
                                             >
                                                 <svg>
                                                     <use xlinkHref="#bonuses"></use>
@@ -284,12 +290,15 @@ export const Navbar = ({
                                         <div className="item-form-filters__title title-item-form-filters accordion--title--element">
                                             <span
                                                 className="title-item-form-filters__icon"
-                                                onClick={(e) =>
+                                                onClick={(e) => {
                                                     handleFilterOpenBtnClick(
                                                         e,
                                                         "loyalties"
                                                     )
-                                                }
+                                                    handlerCurrentRouteFilter(
+                                                        RouteToNextFilter.LOYALTIES
+                                                    )
+                                                }}
                                             >
                                                 <svg>
                                                     <use xlinkHref="#loyalties"></use>

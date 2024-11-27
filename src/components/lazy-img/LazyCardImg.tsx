@@ -8,7 +8,7 @@ export const LazyCardImg = ({ img, size,width="auto", height}: { height?:string,
     
     return (
         <>
-            {(loading && img === '') && <LineLoader size={size}/>}
+            {(loading && !img) && <LineLoader size={size}/>}
             <img
                 src={img}
                 alt={img}

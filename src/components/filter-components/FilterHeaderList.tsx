@@ -191,7 +191,7 @@ export const FilterHeaderList = ({
                                     >
                                         <div className="filter-selected__btn">
                                             {
-                                                sliceString(item.value, 30)
+                                                sliceString(item.value, 35)
                                       
                                             }
                                             <span
