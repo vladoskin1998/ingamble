@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { CasinoFilterBodyType } from "../../../types";
 import { sanitizeMaxInput } from "../../../helper";
 
-const initStateWithdrawalLimits = {
-    daily: 1,
-    weekly: 1,
-    monthly: 1,
-    unlimited: false,
-};
+// const initStateWithdrawalLimits = {
+//     daily: 1,
+//     weekly: 1,
+//     monthly: 1,
+//     unlimited: false,
+// };
 
 const initStateWithdrawalLimitsMax = {
     daily: 10000,
@@ -21,59 +21,57 @@ export const WithdrawalLimits = ({
     initState,
     setLocalCasinoFilters,
 }: {
-    initState: {
-        daily: number;
-        weekly: number;
-        monthly: number;
-        unlimited: boolean;
-    } | null;
+    initState:{
+        daily: number | null;
+        weekly: number | null;
+        monthly: number | null;
+        unlimited: boolean | undefined
+    }
     setLocalCasinoFilters: React.Dispatch<
         React.SetStateAction<CasinoFilterBodyType>
     >;
 }) => {
-    const [dailyLimit, setDailyLimit] = useState(1);
-    const [weeklyLimit, setWeeklyLimit] = useState(1);
-    const [monthlyLimit, setMonthlyLimit] = useState(1);
 
-    useEffect(() => {
-        if (initState !== null) {
-            setDailyLimit(initState.daily);
-            setWeeklyLimit(initState.weekly);
-            setMonthlyLimit(initState.monthly);
-        }
-    }, [initState]);
 
     const handleLimitChange = (
         value: number | boolean,
         limitType: "daily" | "weekly" | "monthly" | "unlimited",
-        setLimit?: React.Dispatch<React.SetStateAction<number>>
+    
     ) => {
-        if (typeof value === "number" && setLimit) {
+        if (typeof value === "number" ) {
             const maxLimit =
                 initStateWithdrawalLimitsMax[
                     limitType as keyof typeof initStateWithdrawalLimitsMax
                 ];
             const newValue = Math.min(value, maxLimit as number);
-            setLimit(newValue);
+       
             value = newValue;
-        }
-        else{
-            setDailyLimit(1);
-            setWeeklyLimit(1);
-            setMonthlyLimit(1);
+
+            setLocalCasinoFilters(s => ({
+                ...s,
+                withdrawal_limits:{
+                    ...s.withdrawal_limits,
+                    unlimited: undefined,
+                    [limitType]: value
+                }
+
+            }))
         }
 
-        setLocalCasinoFilters((prevFilters) => ({
-            ...prevFilters,
-            withdrawal_limits: !prevFilters.withdrawal_limits
-                ? { ...initStateWithdrawalLimits, [limitType]: value, unlimited: false }
-                : {
-                      ...prevFilters?.withdrawal_limits,
-                        unlimited: false,
-                      [limitType]: value,
-                      
-                  },
-        }));
+        else{
+            setLocalCasinoFilters(s => ({
+                ...s,
+                withdrawal_limits:{
+                    daily: null,
+                    weekly: null,
+                    monthly: null,
+                    unlimited: !s.withdrawal_limits.unlimited ? true : undefined,
+                }
+
+            }))
+        }
+     
+        
     };
 
 
@@ -121,24 +119,24 @@ export const WithdrawalLimits = ({
         <div className="form-filter__body input-style-range">
             {renderLimit(
                 "Daily Limits",
-                dailyLimit,
+                initState?.daily || 1,
                 1,
                 initStateWithdrawalLimitsMax.daily,
-                (value) => handleLimitChange(value, "daily", setDailyLimit)
+                (value) => handleLimitChange(value, "daily")
             )}
             {renderLimit(
                 "Weekly Limits",
-                weeklyLimit,
+                initState?.weekly || 1,
                 1,
                 initStateWithdrawalLimitsMax.weekly,
-                (value) => handleLimitChange(value, "weekly", setWeeklyLimit)
+                (value) => handleLimitChange(value, "weekly")
             )}
             {renderLimit(
                 "Monthly Limits",
-                monthlyLimit,
+                initState?.monthly || 1,
                 1,
                 initStateWithdrawalLimitsMax.monthly,
-                (value) => handleLimitChange(value, "monthly", setMonthlyLimit)
+                (value) => handleLimitChange(value, "monthly")
             )}
             <div>
                 <input

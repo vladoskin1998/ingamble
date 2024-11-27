@@ -108,12 +108,26 @@ export const BonusFilter = ({
                         </h3>
                     }
                     content={
-                        <RangeSlider
-                            initState={bonusFilters.bonus_max_bet}
-                            field="bonus_max_bet"
-                            minmax={[0, 30]}
-                            setLocalFilters={setBonusFilters}
-                        />
+                        <div>
+                            <RangeSlider
+                                initState={bonusFilters.bonus_max_bet}
+                                field="bonus_max_bet"
+                                minmax={[0, 30]}
+                                setLocalFilters={setBonusFilters}
+                                unlimitedInitStateField="unlimited_bonus_max_bet"
+                            />
+                            <UnlimitedCheckBox
+                                initState={bonusFilters.unlimited_bonus_max_bet}
+                                field="unlimited_bonus_max_bet"
+                                setLocalFilters={setBonusFilters}
+                                clearFieldsInitState={() =>
+                                    setBonusFilters((s) => ({
+                                        ...s,
+                                        bonus_max_bet: null,
+                                    }))
+                                }
+                            />
+                        </div>
                     }
                 />
             </div>
@@ -200,7 +214,12 @@ export const BonusFilter = ({
                                 initState={bonusFilters.unlimited_bonus_amount}
                                 field="unlimited_bonus_amount"
                                 setLocalFilters={setBonusFilters}
-                                clearFieldsInitState={() => setBonusFilters(s => ({...s, bonus_amount: null }))}
+                                clearFieldsInitState={() =>
+                                    setBonusFilters((s) => ({
+                                        ...s,
+                                        bonus_amount: null,
+                                    }))
+                                }
                             />
                         </div>
                     }
@@ -237,7 +256,12 @@ export const BonusFilter = ({
                                 initState={bonusFilters.unlimited_bonus_max_win}
                                 field="unlimited_bonus_max_win"
                                 setLocalFilters={setBonusFilters}
-                                clearFieldsInitState={() => setBonusFilters(s => ({...s, bonus_max_win: null }))}
+                                clearFieldsInitState={() =>
+                                    setBonusFilters((s) => ({
+                                        ...s,
+                                        bonus_max_win: null,
+                                    }))
+                                }
                             />
                         </div>
                     }

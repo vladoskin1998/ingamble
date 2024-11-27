@@ -160,6 +160,7 @@ export default function SeeAllCasinos() {
                                                             item?.casino_image ||
                                                             ""
                                                         }
+                                                        height="auto"
                                                         width="100%"
                                                     />
                                                 </div>

@@ -23,6 +23,8 @@ const makeListFilterHeader = (
     const result: MakeListFilterHeaderType[] = []
 
     for (const [key, value] of Object.entries(o)) {
+        console.log(key, value);
+        
         if (Array.isArray(value) && value.length > 0) {
             result.push({
                 value: `${key.replace(/_/g, " ")}: ${value.length}`,
@@ -45,15 +47,44 @@ const makeListFilterHeader = (
             typeof value === "object" &&
             "daily" in value &&
             "weekly" in value &&
-            "monthly" in value
+            "monthly" in value &&
+            "unlimited" in value
         ) {
-            result.push({
-                value: `${key.replace(/_/g, " ")}: ${value.daily}, ${
-                    value.weekly
-                }, ${value.monthly}`,
-                field: key,
-            })
-        } else if (
+           
+            if (value.daily !== null) {
+                result.push({
+                    value: `Daily Limit: ${String(value.daily)}`,
+                    field: "Daily Limit",
+                });
+            }
+            
+            // Обработка weekly
+            if (value.weekly !== null) {
+                result.push({
+                    value: `Weekly Limit: ${String(value.weekly)}`,
+                    field: "Weekly Limit",
+                });
+            }
+            
+            // Обработка monthly
+            if (value.monthly !== null) {
+                result.push({
+                    value: `Monthly Limit: ${String(value.monthly)}`,
+                    field: "Monthly Limit",
+                });
+            }
+            // Обработка unlimited
+            if (value.unlimited === true) {
+                result.push({
+                    value: "Withdrawal Unlimited: Yes",
+                    field: "Withdrawal Unlimited",
+                });
+            }
+
+         
+        
+        }
+         else if (
             value !== undefined &&
             value !== null &&
             typeof value !== "object"
@@ -69,6 +100,8 @@ const makeListFilterHeader = (
         }
     }
 
+
+    
     return result
 }
 

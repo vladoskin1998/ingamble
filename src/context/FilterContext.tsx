@@ -25,7 +25,13 @@ export const initialCasinoFilters: CasinoFilterBodyType = {
     social_bonus: undefined,
     established: null,
     casino_owner: [],
-    withdrawal_limits: null,
+    withdrawal_limits: {
+        daily: null,
+        weekly: null,
+        monthly: null,
+        unlimited: undefined,
+
+    },
     min_wager: null,
     min_deposit: null,
     selected_countries: [],
@@ -129,7 +135,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
     const [bonusFilters, setBonusFilters] =
         useState<BonusFilterBodyType>(initialBonusFilters)
 
-        console.log("bonusFilters", bonusFilters);
+        console.log("casinoFilters", casinoFilters);
         
     const [loyaltiesFilters, setLoyaltiesFilters] =
         useState<LoyaltiesFilterBodyType>(initialLoyaltiesFilters)

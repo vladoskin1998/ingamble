@@ -448,11 +448,11 @@ export interface CasinoFilterBodyType {
     established: { min: number; max: number } | null;
     casino_owner: string[];
     withdrawal_limits: {
-        daily: number;
-        weekly: number;
-        monthly: number;
-        unlimited: boolean
-    } | null;
+        daily: number | null;
+        weekly: number | null;
+        monthly: number | null;
+        unlimited: boolean | undefined
+    } ;
     min_wager: number | null;
     min_deposit: number | null;
     selected_countries: number[];
