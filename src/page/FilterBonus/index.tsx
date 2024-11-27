@@ -180,8 +180,8 @@ export default function FilterBonus() {
                                 </div>
                             </div>
                             <div className="main-see-all__row custom-main-see-all__row" >
-                                {displayedData?.map((item, index) => (
-                                    <div className="main-see-all__column" key={index}>
+                                {displayedData?.map((item) => (
+                                    <div className="main-see-all__column" >
                                         <div className="slide-slider__item casino-card">
                                             <div className="casino-card__top">
                                                 <a

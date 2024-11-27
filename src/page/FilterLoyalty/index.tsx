@@ -174,7 +174,7 @@ export default function FilterLoyalty() {
                             </div>
                             <div className="main-loyaltie-programs__items loyaltie-programs__items">
                                 {displayedData?.map((item) => (
-                                    <div className="loyaltie-programs__item item-loyaltie-programs">
+                                    <div className="loyaltie-programs__item item-loyaltie-programs" >
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
                                                 <a className="item-loyaltie-programs__image loyalty-img-custom " >

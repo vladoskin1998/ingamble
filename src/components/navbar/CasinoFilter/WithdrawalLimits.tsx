@@ -57,14 +57,21 @@ export const WithdrawalLimits = ({
             setLimit(newValue);
             value = newValue;
         }
+        else{
+            setDailyLimit(1);
+            setWeeklyLimit(1);
+            setMonthlyLimit(1);
+        }
 
         setLocalCasinoFilters((prevFilters) => ({
             ...prevFilters,
             withdrawal_limits: !prevFilters.withdrawal_limits
-                ? { ...initStateWithdrawalLimits, [limitType]: value }
+                ? { ...initStateWithdrawalLimits, [limitType]: value, unlimited: false }
                 : {
                       ...prevFilters?.withdrawal_limits,
+                        unlimited: false,
                       [limitType]: value,
+                      
                   },
         }));
     };
@@ -137,7 +144,7 @@ export const WithdrawalLimits = ({
                 <input
                     id={`formFilterPlayersFromWithdrawalLimits`}
                     type="checkbox"
-                    checked={initState?.unlimited}
+                    checked={initState?.unlimited ?? false}
                     className="radio-form-filter__input form-filter__input"
                     onChange={() =>
                         handleLimitChange(!initState?.unlimited, "unlimited")

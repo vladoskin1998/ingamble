@@ -229,9 +229,7 @@ export default function FilterCasino() {
                                 {displayedData?.map((item) => (
                                     <div
                                         className="loyaltie-programs__item item-loyaltie-programs"
-                                        key={
-                                            item?.casino_id + item?.casino_image
-                                        }
+                                       
                                     >
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
