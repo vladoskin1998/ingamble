@@ -54,7 +54,7 @@ const makeListFilterHeader = (
             if (value.daily !== null) {
                 result.push({
                     value: `Daily Limit: ${String(value.daily)}`,
-                    field: "Daily Limit",
+                    field: "withdrawal_limits.daily",
                 });
             }
             
@@ -62,7 +62,7 @@ const makeListFilterHeader = (
             if (value.weekly !== null) {
                 result.push({
                     value: `Weekly Limit: ${String(value.weekly)}`,
-                    field: "Weekly Limit",
+                    field: "withdrawal_limits.weekly",
                 });
             }
             
@@ -70,14 +70,14 @@ const makeListFilterHeader = (
             if (value.monthly !== null) {
                 result.push({
                     value: `Monthly Limit: ${String(value.monthly)}`,
-                    field: "Monthly Limit",
+                    field: "withdrawal_limits.monthly",
                 });
             }
             // Обработка unlimited
             if (value.unlimited === true) {
                 result.push({
                     value: "Withdrawal Unlimited: Yes",
-                    field: "Withdrawal Unlimited",
+                    field: "withdrawal_limits.unlimited",
                 });
             }
 

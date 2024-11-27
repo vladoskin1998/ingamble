@@ -28,7 +28,7 @@ import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllCasinos/style.css"
-
+import { v4 as uuidv4 } from 'uuid';
 
 const countPageSize = 15
 
@@ -186,8 +186,20 @@ export default function FilterCasino() {
     }
 
     const handlerClearOne = (v: string) => {
+      
+        if(v.includes("withdrawal_limits")){
+            const field = v.replace("withdrawal_limits.", "");
+            setCasinoFilters((s) => ({
+                ...s,
+                withdrawal_limits: {
+                    ...s.withdrawal_limits,
+                    [field]: field === 'unlimited' ? undefined : null
+                }
+            }))
+        }    
+
         const findedValueField =
-            initialCasinoFilters[v as keyof CasinoFilterBodyType]
+        initialCasinoFilters[v as keyof CasinoFilterBodyType]
         setCasinoFilters((s) => ({
             ...s,
             [v as keyof CasinoFilterBodyType]: findedValueField,
@@ -236,7 +248,7 @@ export default function FilterCasino() {
                                                 <div
                                                     aria-label="Put your description here."
                                                     className="item-loyaltie-programs__image item-loyaltie-programs__image-custom "
-                                                   
+                                                    key={uuidv4()}
                                                 >
                                                     <LazyCardImg
                                                         img={

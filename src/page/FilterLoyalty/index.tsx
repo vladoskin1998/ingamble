@@ -21,6 +21,7 @@ import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import star from "../../assets/img/icons/star.svg"
 import '../SeeAllEssentialsLoyalty/style.css'
+import { v4 as uuidv4 } from 'uuid';
 const countPageSize = 15
 
 const debouncedFetchFilter = debounce(
@@ -177,7 +178,7 @@ export default function FilterLoyalty() {
                                     <div className="loyaltie-programs__item item-loyaltie-programs" >
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
-                                                <a className="item-loyaltie-programs__image loyalty-img-custom " >
+                                                <a className="item-loyaltie-programs__image loyalty-img-custom " key={uuidv4()}>
                                                     <LazyCardImg
                                                         img={
                                                             item?.casino_image ||

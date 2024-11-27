@@ -25,7 +25,7 @@ import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllBonus/style.css"
-
+import { v4 as uuidv4 } from 'uuid';
 
 const countPageSize = 20
 
@@ -191,7 +191,7 @@ export default function FilterBonus() {
                                                     className="casino-card__image-block"
                                                     style={{padding: "0 8px 50.432% 8px"}}
                                                 >
-                                                    <div className="casino-card__image see-all-custom__image-custom"  >
+                                                    <div className="casino-card__image see-all-custom__image-custom"  key={uuidv4()} >
                                                         <LazyCardImg
                                                             img={
                                                                 item?.bonus_image
