@@ -8,16 +8,16 @@ const SeeAllRoutes = {
 
 export const SeeAllButton = ({
     type_category,
-    id,
+    parameter,
 }:{
     type_category:DataHomeItemsBlockTypeCategory,
-    id: number,
+    parameter: string,
 }) => {
-    console.log("SeeAllButton",type_category, id);
+    console.log("SeeAllButton",type_category, parameter);
     
     return (
         <a
-            href={`/see-all-${SeeAllRoutes[type_category]}?id=${id}`}
+            href={`/all-${SeeAllRoutes[type_category]}${parameter ? "/" + parameter.toLocaleLowerCase().replace(/\s+/g, "-") : ''}`}
             aria-label="Put your description here."
             target="_blank"
             className="top__btn"

@@ -9,7 +9,7 @@ import $api from "../../http"
 import {
     CasinoFilterBodyType,
     FilterCasinoPostResponse,
-    SeeAllCasinosCasino,
+    SeeAllCasinosType,
 } from "../../types"
 import { Wraper } from "../Wraper"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
@@ -28,7 +28,7 @@ import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllCasinos/style.css"
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid"
 
 const countPageSize = 15
 
@@ -70,19 +70,18 @@ const LicenseElem: React.FC<LicenseElemProps> = ({
         <div className="item-info-content-item-loyaltie-programs__value">
             <>
                 {sliceString(selectedLicense?.name, 15)}
-                <span className="item-info-content-item-loyaltie-programs__value-flag">
-                    {selectedLicense?.image && (
+                {selectedLicense?.image && (
+                    <span className="item-info-content-item-loyaltie-programs__value-flag">
                         <img
                             src={selectedLicense.image}
                             alt={selectedLicense.name || ""}
                         />
-                    )}
-                </span>
+                    </span>
+                ) }
             </>
         </div>
     )
 }
-
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),
@@ -114,7 +113,8 @@ const getFilteringCasinoList = async (
 export default function FilterCasino() {
     document.title = "Filter Casino"
 
-    const { initializeAdaptiveBehavior, isSidebarActive } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior, isSidebarActive } =
+        useAdaptiveBehavior()
     const {
         data: filtersData,
         casinoFilters,
@@ -122,7 +122,7 @@ export default function FilterCasino() {
     } = useFilterContext()
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [allData, setAllData] = useState<SeeAllCasinosCasino[]>([])
+    const [allData, setAllData] = useState<SeeAllCasinosType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
     const [isDebouncedLoading, setIsDebouncedLoading] = useState(true)
@@ -152,19 +152,16 @@ export default function FilterCasino() {
                 behavior: "smooth",
                 top: 0,
             })
-        }
-        else{
+        } else {
             setAllData([])
         }
     }, [casinoFilters, refetch])
 
-
     useEffect(() => {
-        if (data?.results && isMobile ) {
-            setAllData((s) => ([...s, ...data?.results]) 
-            )
+        if (data?.results && isMobile) {
+            setAllData((s) => [...s, ...data?.results])
         }
-        if (!allData.length && data?.results){
+        if (!allData.length && data?.results) {
             setAllData(data?.results)
         }
     }, [data])
@@ -186,20 +183,19 @@ export default function FilterCasino() {
     }
 
     const handlerClearOne = (v: string) => {
-      
-        if(v.includes("withdrawal_limits")){
-            const field = v.replace("withdrawal_limits.", "");
+        if (v.includes("withdrawal_limits")) {
+            const field = v.replace("withdrawal_limits.", "")
             setCasinoFilters((s) => ({
                 ...s,
                 withdrawal_limits: {
                     ...s.withdrawal_limits,
-                    [field]: field === 'unlimited' ? undefined : null
-                }
+                    [field]: field === "unlimited" ? undefined : null,
+                },
             }))
-        }    
+        }
 
         const findedValueField =
-        initialCasinoFilters[v as keyof CasinoFilterBodyType]
+            initialCasinoFilters[v as keyof CasinoFilterBodyType]
         setCasinoFilters((s) => ({
             ...s,
             [v as keyof CasinoFilterBodyType]: findedValueField,
@@ -239,10 +235,7 @@ export default function FilterCasino() {
                             </div>
                             <div className="main-loyaltie-programs__items loyaltie-programs__items">
                                 {displayedData?.map((item) => (
-                                    <div
-                                        className="loyaltie-programs__item item-loyaltie-programs"
-                                       
-                                    >
+                                    <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
                                                 <div
@@ -340,40 +333,7 @@ export default function FilterCasino() {
                                                                                 item?.licenses
                                                                             }
                                                                         />
-                                                                        {/* <div className="item-info-content-item-loyaltie-programs__value">
-                                                                            {filtersData?.casino.licenses.find(
-                                                                                (
-                                                                                    cnt
-                                                                                ) =>
-                                                                                    cnt?.id ===
-                                                                                    casinoFilters
-                                                                                        ?.licenses[0]
-                                                                            )
-                                                                                ?.name ||
-                                                                                item
-                                                                                    ?.licenses?.[0]
-                                                                                    ?.name}
-                                                                            <span className="item-info-content-item-loyaltie-programs__value-flag">
-                                                                                <img
-                                                                                    src={
-                                                                                        filtersData?.casino.licenses.find(
-                                                                                            (
-                                                                                                cnt
-                                                                                            ) =>
-                                                                                                cnt?.id ===
-                                                                                                casinoFilters
-                                                                                                    ?.licenses[0]
-                                                                                        )
-                                                                                            ?.image ||
-                                                                                        item
-                                                                                            ?.licenses?.[0]
-                                                                                            ?.country_code
-                                                                                    }
-                                                                                    alt=""
-                                                                                />
-                                                                               
-                                                                            </span>
-                                                                        </div> */}
+                                                                       
                                                                     </div>
                                                                 </div>
                                                                 <div className="info-content-item-loyaltie-programs__column">

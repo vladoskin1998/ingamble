@@ -8,7 +8,11 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
 
-export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
+export default function BlockType4Mobile({
+    data,
+}: {
+    data: HomeDataBlock | undefined
+}) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -23,10 +27,11 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
             }
         }
     }, [])
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType6)
+
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType4)
         return <></>
     return (
-        <section className="main-gamble__new-bonuses new-bonuses-gamble">
+        <section className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="new-bonuses-gamble__container container">
                 <div className="new-bonuses-gamble__top top">
                     <div className="top__row">
@@ -41,7 +46,7 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                Type 6     {data.items_block.block_title}
+                                Type 4 Mobile                {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -62,7 +67,7 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                 ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
-                                
+                    
                                 modules={[Pagination]}
                                 pagination={{
                                     el: paginationRef.current,
@@ -96,16 +101,17 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                             <LazyCardImg
                                                                 img={
                                                                     item
-                                                                        .bonus_info
-                                                                        .bonus_image ||
+                                                                        ?.bonus_info
+                                                                        ?.bonus_image ||
                                                                     ""
                                                                 }
                                                             />
                                                         </div>
                                                         <a
                                                             href={
-                                                                item.casino_info
-                                                                    .casino_affiliate_link
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_affiliate_link
                                                             }
                                                             target="_blank"
                                                             aria-label="Put your description here."
@@ -122,19 +128,15 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                 target="_blank"
                                                                 className="casino-small-card__image-block"
                                                             >
-                                                                <div className="casino-small-card__image ibg" style={{
-                                                                    backgroundSize: "125% auto"
-                                                                }}>
+                                                                <div className="casino-small-card__image ibg">
                                                                     <LazyCardImg
                                                                         img={
                                                                             item
-                                                                                .casino_info
-                                                                                .casino_image ||
+                                                                                ?.casino_info
+                                                                                ?.casino_image ||
                                                                             ""
-                                                                               
-                                                                        }size="medium"
+                                                                        }
                                                                     />
-                                                                   
                                                                 </div>
                                                             </a>
                                                             <div className="casino-small-card__body">
@@ -151,13 +153,13 @@ export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                     }
                                                                 </a>
                                                                 <div className="casino-small-card__info">
-                                                                    {item?.casino_info?.additional_casino_params.map(
+                                                                    {item.casino_info.additional_casino_params.map(
                                                                         (
-                                                                            it, id
+                                                                            item
                                                                         ) => (
-                                                                            <span key={id}className="casino-small-card__info-link">
+                                                                            <span className="casino-small-card__info-link">
                                                                                 {
-                                                                                    it
+                                                                                    item
                                                                                 }
                                                                             </span>
                                                                         )

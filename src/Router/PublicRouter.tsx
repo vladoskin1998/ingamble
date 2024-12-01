@@ -29,25 +29,34 @@ export const PublicRouter = () => {
 
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="review" element={<Review />} />
-            <Route
-                path="/casino/:casino_name/bonuses/:bonus_type"
-                element={<SimpleBonus />}
-            />
+           
 
             <Route path="/filter-casinos" element={<FilterCasino />} />
             <Route path="/filter-bonus" element={<FilterBonus />} />
             <Route path="/filter-loyalties" element={<FilterLoyalty />} />
 
-            <Route path="/see-all-casinos" element={<SeeAllCasinos />} />
-            <Route path="/see-all-bonus" element={<SeeAllBonus />} />
+            {/* Страница категорий (see all) по казино  */}
+            <Route path="/all-casinos/:casino_categories" element={<SeeAllCasinos />} />
+            {/* Страница категорий  (see all) по бонусам */}
+            <Route path="/all-bonus/:bonus_categories" element={<SeeAllBonus />} />
+
+            {/* Страница лоялки ("Loyalties")*/}
             <Route
-                path="/see-all-loyalties"
+                path="/all-loyalties"
                 element={<SeeAllEssentialsLoyalty />}
             />
 
-            <Route path="/loyaltie" element={<Loyalties />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/" element={<Navigate to="/home" />} />
+            {/* //Страница конкретного бонуса */}
+            <Route
+                path="/casino/:casino_name/bonuses/:bonus_type"
+                element={<SimpleBonus />}
+            />
+            {/* Страница конкретной лоялки */}
+            <Route path="/casino/:casino_name/loyalty" element={<Loyalties />} />
+
+
+            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Navigate to="/" />} />
             {/* <Route
                 path="*"
                 element={

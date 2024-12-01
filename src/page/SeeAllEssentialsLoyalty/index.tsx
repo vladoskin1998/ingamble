@@ -17,10 +17,14 @@ import { LogoLoader } from "../../components/loader/LogoLoader"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { useEffect, useState } from "react"
 
+
+
+
+
 const countPageSize = 10
 
 export default function SeeAllEssentialsLoyalty() {
-    document.title = "See All Essentials Loyalty"
+    document.title = "All Essentials Loyalty"
 
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllEssentialLoyaltyCasino[]>([])
@@ -51,13 +55,23 @@ export default function SeeAllEssentialsLoyalty() {
             setAllData((s) => [...s, ...data?.results])
         }
     }, [data])
-    
+
     useEffect(() => {
-        if (data?.results && isMobile ) {
-            setAllData((s) => ([...s, ...data?.results]) 
-            )
+        if (data?.results && isMobile) {
+            setAllData((s) => {
+                const combinedData = [...s, ...data?.results]
+
+                const uniqueData = combinedData?.reduce((acc, item) => {
+                    if (!acc.some((el) => el?.casino_id === item?.casino_id)) {
+                        acc.push(item)
+                    }
+                    return acc
+                }, [] as SeeAllEssentialLoyaltyCasino[])
+
+                return uniqueData
+            })
         }
-        if (!allData.length && data?.results){
+        if (!allData?.length && data?.results) {
             setAllData(data?.results)
         }
     }, [data])

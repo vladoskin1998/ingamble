@@ -5,26 +5,21 @@ import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import bg01 from "../../assets/img/bg/01.jpg"
 import girl from "../../assets/img/girls/01.png"
-import Playamo from "../../assets/img/casino-small-cards/Playamo.jpg"
 
-import bcGameImage from "../../assets/img/different-casino/bc-game.png"
-import playamoImage from "../../assets/img/different-casino/playamo.png"
-import rollingSlotsImage from "../../assets/img/different-casino/rolling-slots.png"
-
-import casinoVibesImage from "../../assets/img/different-casino/casino-vibes.png"
-
-import thirtyBetImage from "../../assets/img/different-casino/30bet.png"
-import Vavada from "../../assets/img/different-casino/vavada.png"
-import { HomeDataBlock } from "../../types"
-    //@ts-ignore
+import { BlockTypeNumber, HomeDataBlock } from "../../types"
+import { SeeAllButton } from "./SeeAllButton"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+//@ts-ignore
 export default function BlockType5Mobile({
-
     data,
 }: {
     data: HomeDataBlock | undefined
 }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
+
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5)
+        return <></>
     return (
         <div className="main-gamble__best-casinos-2024 best-casinos-2024-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="best-casinos-2024-gamble__container container">
@@ -53,25 +48,38 @@ export default function BlockType5Mobile({
                             <div className="top__row">
                                 <div className="top__column">
                                     <div className="top__title-block">
-                                        <div className="top__title-big">
-                                            The Best Casinos of 2024
-                                        </div>
+                                        {data.items_block.title_image && (
+                                            <span className="top__title-icon">
+                                                <img
+                                                    src={
+                                                        data.items_block
+                                                            .title_image
+                                                    }
+                                                    alt="security"
+                                                />
+                                            </span>
+                                        )}
+                                        <h2 className="top__title">
+                                            Type 5 Mobile{" "}
+                                            {data.items_block.block_title}
+                                        </h2>
                                     </div>
+                                    {data.items_block.subtitle && (
+                                        <div className="top__subtitle">
+                                            {data.items_block.subtitle}
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="top__column">
-                                    <a
-                                        href="/see-all?key=88901234"
-                                        aria-label="Put your description here."
-                                        target="_blank"
-                                        className="top__btn"
-                                    >
-                                        <span>See All</span>
-                                        <span className="top__btn-arrow">
-                                            <svg>
-                                                <use xlinkHref="#arrow"></use>
-                                            </svg>
-                                        </span>
-                                    </a>
+                                    <SeeAllButton
+                                        type_category={
+                                            data.items_block.type_category
+                                        }
+                                        parameter={
+                                            data?.items_block?.category?.name ||
+                                            ""
+                                        }
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -96,348 +104,61 @@ export default function BlockType5Mobile({
                                         },
                                     }}
                                 >
-                                    <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
-                                        <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="different-casino-medium__image-block"
-                                            >
-                                                <span className="different-casino-medium__image ibg">
-                                                    <img
-                                                        src={thirtyBetImage}
-                                                        alt="30Bet"
-                                                    />
-                                                </span>
-                                            </a>
-                                            <div className="different-casino-medium__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-medium__name"
-                                                >
-                                                    30Bet
-                                                </a>
-                                                <div className="different-casino-medium__rating">
-                                                    <span className="different-casino-medium__rating-icon">
-                                                        <img
-                                                            src={star}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="different-casino-medium__rationg-number">
-                                                        5.5
-                                                    </span>
+                                    {data?.items_block.data_cards
+                                        .sort((a, b) => a?.order - b?.order)
+                                        .map((item) => (
+                                            <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
+                                                <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
+                                                    <a
+                                                        href=""
+                                                        aria-label="Put your description here."
+                                                        target="_blank"
+                                                        className="different-casino-medium__image-block"
+                                                    >
+                                                        <span className="different-casino-medium__image ibg">
+                                                            <LazyCardImg
+                                                                img={
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_image ||
+                                                                    ""
+                                                                }
+                                                                size="medium"
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                    <div className="different-casino-medium__content">
+                                                        <a
+                                                            href=""
+                                                            aria-label="Put your description here."
+                                                            target="_blank"
+                                                            className="different-casino-medium__name"
+                                                        >
+                                                            {
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_name
+                                                            }
+                                                        </a>
+                                                        <div className="different-casino-medium__rating">
+                                                            <span className="different-casino-medium__rating-icon">
+                                                                <img
+                                                                    src={star}
+                                                                    alt="star"
+                                                                />
+                                                            </span>
+                                                            <span className="different-casino-medium__rationg-number">
+                                                                {
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_rank
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
-                                        <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="different-casino-medium__image-block"
-                                            >
-                                                <span className="different-casino-medium__image ibg">
-                                                    <img
-                                                        src={Playamo}
-                                                        alt="Playamo"
-                                                    />
-                                                </span>
-                                            </a>
-                                            <div className="different-casino-medium__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-medium__name"
-                                                >
-                                                    Playamo
-                                                </a>
-                                                <div className="different-casino-medium__rating">
-                                                    <span className="different-casino-medium__rating-icon">
-                                                        <img
-                                                            src={star}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="different-casino-medium__rationg-number">
-                                                        5.5
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
-                                        <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="different-casino-medium__image-block"
-                                            >
-                                                <span className="different-casino-medium__image ibg">
-                                                    <img
-                                                        src={bcGameImage}
-                                                        alt="BC.Game"
-                                                    />
-                                                </span>
-                                            </a>
-                                            <div className="different-casino-medium__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-medium__name"
-                                                >
-                                                    BC.Game
-                                                </a>
-                                                <div className="different-casino-medium__rating">
-                                                    <span className="different-casino-medium__rating-icon">
-                                                        <img
-                                                            src={star}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="different-casino-medium__rationg-number">
-                                                        5.5
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
-                                        <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="different-casino-medium__image-block"
-                                            >
-                                                <span className="different-casino-medium__image ibg">
-                                                    <img
-                                                        src={thirtyBetImage}
-                                                        alt="Fairspin"
-                                                    />
-                                                </span>
-                                            </a>
-                                            <div className="different-casino-medium__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-medium__name"
-                                                >
-                                                    Fairspin
-                                                </a>
-                                                <div className="different-casino-medium__rating">
-                                                    <span className="different-casino-medium__rating-icon">
-                                                        <img
-                                                            src={star}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="different-casino-medium__rationg-number">
-                                                        5.5
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
-                                        <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="different-casino-medium__image-block"
-                                            >
-                                                <span className="different-casino-medium__image ibg">
-                                                    <img
-                                                        src={Vavada}
-                                                        alt="Vavada"
-                                                    />
-                                                </span>
-                                            </a>
-                                            <div className="different-casino-medium__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-medium__name"
-                                                >
-                                                    Vavada
-                                                </a>
-                                                <div className="different-casino-medium__rating">
-                                                    <span className="different-casino-medium__rating-icon">
-                                                        <img
-                                                            src={star}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="different-casino-medium__rationg-number">
-                                                        5.5
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
-                                        <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="different-casino-medium__image-block"
-                                            >
-                                                <span className="different-casino-medium__image ibg">
-                                                    <img
-                                                        src={casinoVibesImage}
-                                                        alt="CasinoVibes"
-                                                    />
-                                                </span>
-                                            </a>
-                                            <div className="different-casino-medium__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-medium__name"
-                                                >
-                                                    CasinoVibes
-                                                </a>
-                                                <div className="different-casino-medium__rating">
-                                                    <span className="different-casino-medium__rating-icon">
-                                                        <img
-                                                            src={star}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="different-casino-medium__rationg-number">
-                                                        5.5
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
-                                        <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="different-casino-medium__image-block"
-                                            >
-                                                <span className="different-casino-medium__image ibg">
-                                                    <img
-                                                        src={playamoImage}
-                                                        alt="Lucky Block"
-                                                    />
-                                                </span>
-                                            </a>
-                                            <div className="different-casino-medium__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-medium__name"
-                                                >
-                                                    Lucky Block
-                                                </a>
-                                                <div className="different-casino-medium__rating">
-                                                    <span className="different-casino-medium__rating-icon">
-                                                        <img
-                                                            src={star}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="different-casino-medium__rationg-number">
-                                                        5.5
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
-                                        <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="different-casino-medium__image-block"
-                                            >
-                                                <span className="different-casino-medium__image ibg">
-                                                    <img
-                                                        src={rollingSlotsImage}
-                                                        alt="Playamo"
-                                                    />
-                                                </span>
-                                            </a>
-                                            <div className="different-casino-medium__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-medium__name"
-                                                >
-                                                    Playamo
-                                                </a>
-                                                <div className="different-casino-medium__rating">
-                                                    <span className="different-casino-medium__rating-icon">
-                                                        <img
-                                                            src={star}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="different-casino-medium__rationg-number">
-                                                        5.5
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                    <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
-                                        <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="different-casino-medium__image-block"
-                                            >
-                                                <span className="different-casino-medium__image ibg">
-                                                    <img
-                                                        src={thirtyBetImage}
-                                                        alt="30Bet"
-                                                    />
-                                                </span>
-                                            </a>
-                                            <div className="different-casino-medium__content">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="different-casino-medium__name"
-                                                >
-                                                    30Bet
-                                                </a>
-                                                <div className="different-casino-medium__rating">
-                                                    <span className="different-casino-medium__rating-icon">
-                                                        <img
-                                                            src={star}
-                                                            alt="star"
-                                                        />
-                                                    </span>
-                                                    <span className="different-casino-medium__rationg-number">
-                                                        5.5
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
+                                            </SwiperSlide>
+                                        ))}
                                 </Swiper>
                             </div>
                         </div>

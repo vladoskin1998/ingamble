@@ -26,9 +26,16 @@ import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
 import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
-import { AllCategoriesHomeDataResponse, BlockTypeNumber, HomeDataBlock } from "../../types"
+import {
+    AllCategoriesHomeDataResponse,
+    BlockTypeNumber,
+    HomeDataBlock,
+} from "../../types"
 // import BlockType7Mobile from "./BlockType7Mobile"
 import BlockType5Mobile from "./BlockType5Mobile"
+import { BlockType3Mobile } from "./BlockType3Mobile"
+import BlockType7Mobile from "./BlockType7Mobile"
+import BlockType4Mobile from "./BlockType4Mobile"
 
 const BlockType2Mobile = lazy(() => import("./BlockType2Mobile"))
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
@@ -49,64 +56,81 @@ const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 //     () => import("./GetStartedWithPowerfulWelcomeBonusPacks")
 // )
 
-const shuffleArray = (array:any) => {
+const shuffleArray = (array: any) => {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; 
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[array[i], array[j]] = [array[j], array[i]]
     }
-    return array;
-};
+    return array
+}
 
 const getHomeDataFetch = async () => {
     const response = await $api.get("get-data-home-page/")
     const headers = response.headers
 
-    return { dataHome: response?.data?.data_blocks?.sort(
-        (a:any, b:any) => a?.blocks_sequence_number - b?.blocks_sequence_number
-    ), headers }
+    return {
+        dataHome: response?.data?.data_blocks?.sort(
+            (a: any, b: any) =>
+                a?.blocks_sequence_number - b?.blocks_sequence_number
+        ),
+        headers,
+    }
 }
 
 const getDataHomePageCategories = async () => {
-    const response = await $api.get("get-data-home-page-categories/");
-    return response.data 
-};
-
+    const response = await $api.get("get-data-home-page-categories/")
+    return response.data
+}
 
 const renderBlock = (block: any) => {
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
-            return <BlockType1 data={block} />;
+            return <BlockType1 data={block} />
         case BlockTypeNumber.BlockType9:
-            return <BlockType9 data={block} />;
+            return <BlockType9 data={block} />
         case BlockTypeNumber.BlockType2:
             return (
                 <>
                     <BlockType2 data={block} />
                     <BlockType2Mobile data={block} />
                 </>
-            );
+            )
         case BlockTypeNumber.BlockType6:
-            return <BlockType6 data={block} />;
+            return <BlockType6 data={block} />
         case BlockTypeNumber.BlockType8:
-            return <BlockType8 data={block} />;
+            return <BlockType8 data={block} />
         case BlockTypeNumber.BlockType3:
-            return <BlockType3 data={block} />;
+            return (
+                <>
+                    <BlockType3 data={block} />
+                    <BlockType3Mobile data={block} />
+                </>
+            )
         case BlockTypeNumber.BlockType4:
-            return <BlockType4 data={block} />;
+            return (
+                <>
+                    <BlockType4 data={block} />
+                    <BlockType4Mobile data={block} />
+                </>
+            )
         case BlockTypeNumber.BlockType7:
-            return <>
-                <BlockType7 data={block} />
-                {/* <BlockType7Mobile data={block}/> */}
-            </> ;
+            return (
+                <>
+                    <BlockType7 data={block} />
+                    <BlockType7Mobile data={block} />
+                </>
+            )
         case BlockTypeNumber.BlockType5:
-            return <>
-            <BlockType5 data={block} />
-            <BlockType5Mobile data={block}/>
-            </>;
+            return (
+                <>
+                    <BlockType5 data={block} />
+                    <BlockType5Mobile data={block} />
+                </>
+            )
         default:
-            return null;
+            return null
     }
-};
+}
 
 export const Home = () => {
     document.title = "Home"
@@ -120,24 +144,23 @@ export const Home = () => {
     }>("get-data-home-page/ ", getHomeDataFetch, {
         keepPreviousData: true,
         staleTime: Infinity,
-    
     })
 
-    const { data: dataCategories, isLoading: isLoadingCategories } = useQuery< AllCategoriesHomeDataResponse >(
-        "get-data-home-page-categories/",
-        getDataHomePageCategories,
-        {
-            keepPreviousData: true,
-            staleTime: Infinity,
-        }
-    );
+    const { data: dataCategories, isLoading: isLoadingCategories } =
+        useQuery<AllCategoriesHomeDataResponse>(
+            "get-data-home-page-categories/",
+            getDataHomePageCategories,
+            {
+                keepPreviousData: true,
+                staleTime: Infinity,
+            }
+        )
 
-    console.log("------?",data)
+    console.log("------?", data)
 
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [isLoading])
-
 
     if (isLoading || isLoadingCategories) return <LogoLoader />
     return (
@@ -145,12 +168,20 @@ export const Home = () => {
             <main className="gamble__main main-gamble">
                 <div className="main-gamble__body">
                     <Categories
-                        category={
-                            shuffleArray(     [
-                            ...dataCategories?.bonus_categories?.map(item => ({name: item.name, link: `${window.location.origin}/see-all-bonus?id=${item.id}`}))  || [], 
-                            ...dataCategories?.casino_categories?.map(item => ({name: item.name, link: `${window.location.origin}/see-all-casinos?id=${item.id}`}))  || [], 
-                           ]  )
-                        }
+                        category={shuffleArray([
+                            ...(dataCategories?.bonus_categories?.map(
+                                (item) => ({
+                                    name: item.name,
+                                    link: `${window.location.origin}/all-bonus?id=${item.id}`,
+                                })
+                            ) || []),
+                            ...(dataCategories?.casino_categories?.map(
+                                (item) => ({
+                                    name: item.name,
+                                    link: `${window.location.origin}/all-casinos?id=${item.id}`,
+                                })
+                            ) || []),
+                        ])}
                     />
                     {data?.dataHome?.map((block) => renderBlock(block))}
                     {/* {[

@@ -52,7 +52,7 @@ export const BlockType4 = ({ data }: { data: HomeDataBlock | undefined }) => {
                             )}
                         </div>
                         <div className="top__column">
-                        <SeeAllButton type_category={data.items_block.type_category} id={data.items_block.category.id} />
+                        <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} />
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,9 @@ export const BlockType4 = ({ data }: { data: HomeDataBlock | undefined }) => {
                                                                     target="_blank"
                                                                     className="casino-small-card__image-block"
                                                                 >
-                                                                    <div className="casino-small-card__image ibg" >
+                                                                    <div className="casino-small-card__image ibg" style={{
+                                                                    backgroundSize: "125% auto"
+                                                                }}>
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item

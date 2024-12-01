@@ -1,39 +1,23 @@
 import star from "../../assets/img/icons/star.svg"
-import { Pagination } from "swiper/modules"
+
 import "swiper/css"
-import "swiper/css/pagination"
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
-import { useRef, useEffect } from "react"
-import VavadaImage from "../../assets/img/different-casino/vavada.png"
+
+import { Swiper, SwiperSlide } from "swiper/react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
 export default function BlockType7Mobile({
     data,
 }: {
     data: HomeDataBlock | undefined
 }) {
-    const sliderRef = useRef<SwiperRef | null>(null)
-    const paginationRef = useRef<HTMLDivElement | null>(null)
-    useEffect(() => {
-        if (sliderRef.current && paginationRef.current) {
-            const swiper = sliderRef.current.swiper
-            if (swiper && paginationRef.current) {
-                //@ts-ignore
-                swiper.params.pagination.el = paginationRef.current
-                swiper.pagination.init()
-                swiper.pagination.render()
-                swiper.pagination.update()
-            }
-        }
-    }, [])
-
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7)
         return <></>
     return (
-        <section className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
-            <div className="vpn-friendly-casinos-2-gamble__container container">
-                <div className="vpn-friendly-casinos-2-gamble__top top">
+        <section className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+            <div className="crypto-casinos-gamble__container container">
+                <div className="crypto-casinos-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
@@ -58,23 +42,19 @@ export default function BlockType7Mobile({
                         <div className="top__column">
                             <SeeAllButton
                                 type_category={data.items_block.type_category}
-                                id={data.items_block.category.id}
+                                parameter={
+                                    data?.items_block?.category?.name || ""
+                                }
                             />
                         </div>
                     </div>
                 </div>
-                <div className="vpn-friendly-casinos-2-gamble__slider slider">
+                <div className="crypto-casinos-gamble__slider slider">
                     <div className="slider__body">
-                        <div className="vpn-friendly-casinos-2-gamble__swiper slider__swiper swiper">
+                        <div className="crypto-casinos-gamble__swiper slider__swiper swiper">
                             <Swiper
-                                ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
-                                modules={[Pagination]}
-                                pagination={{
-                                    el: paginationRef.current,
-                                    clickable: true,
-                                }}
                                 breakpoints={{
                                     320: {
                                         spaceBetween: 16,
@@ -87,103 +67,63 @@ export default function BlockType7Mobile({
                                     },
                                 }}
                             >
-                                {
-                                    //@ts-ignore
-                                    data.items_block.data_cards
-                                        .sort((a, b) => a.order - b.order)
-                                        //@ts-ignore
-                                        .map((item) => (
-                                            <SwiperSlide className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
-                                                <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
-                                                    <div className="different-casino-standart">
-                                                        <div className="different-casino-standart__body">
-                                                            <a
-                                                                href=""
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
-                                                                className="different-casino-standart__image-block"
-                                                            >
-                                                                <span className="different-casino-standart__image ibg">
-                                                                    <img
-                                                                        src={
-                                                                            VavadaImage
-                                                                        }
-                                                                        alt="vavada"
-                                                                    />
-                                                                </span>
-                                                            </a>
-                                                            <div className="different-casino-standart__content">
-                                                                <div className="different-casino-standart__content-row">
-                                                                    <a
-                                                                        href=""
-                                                                        aria-label="Put your description here."
-                                                                        target="_blank"
-                                                                        className="different-casino-standart__name"
-                                                                    >
-                                                                        200% up
-                                                                        to $200
-                                                                        and 50
-                                                                        spins
-                                                                    </a>
-                                                                    {/* <div className="different-casino-standart__tags tags-casino-card">
-                                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                                            <span className="tags-casino-card__item-label">
-                                                                                WR:
-                                                                            </span>
-                                                                            <span className="tags-casino-card__item-value">
-                                                                                4.0x
-                                                                            </span>
-                                                                        </div>
-                                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                                            <span className="tags-casino-card__item-label">
-                                                                                Min
-                                                                                Dep:
-                                                                            </span>
-                                                                            <span className="tags-casino-card__item-value">
-                                                                                $10
-                                                                            </span>
-                                                                        </div>
-                                                                    </div> */}
-                                                                    <div className="info-casino-card__stake">
-                                                                        {/* <a
-                                                                            href=""
-                                                                            aria-label="Put your description here."
-                                                                            target="_blank"
-                                                                            className="info-casino-card__stake-link"
-                                                                        >
-                                                                            Stake
-                                                                            Casino
-                                                                        </a> */}
-                                                                        <div className="info-casino-card__stake-rating">
-                                                                            <span className="info-casino-card__stake-rating-icon">
-                                                                                <img
-                                                                                    src={
-                                                                                        star
-                                                                                    }
-                                                                                    alt="star"
-                                                                                />
-                                                                            </span>
-                                                                            <span className="info-casino-card__stake__rating-number">
-                                                                                4.7
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                {data.items_block.data_cards
+                                    .sort((a, b) => a.order - b.order)
+                                    .map((item) => (
+                                        <SwiperSlide>
+                                            <div className="slider__slide slide-slider swiper-slide">
+                                                <div className="slide-slider__item different-casino-medium">
+                                                    <a
+                                                        href=""
+                                                        aria-label="Put your description here."
+                                                        target="_blank"
+                                                        className="different-casino-medium__image-block"
+                                                    >
+                                                        <span className="different-casino-medium__image ibg">
+                                                            <LazyCardImg
+                                                                img={
+                                                                    item
+                                                                        .casino_info
+                                                                        .casino_image ||
+                                                                    ""
+                                                                }
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                    <div className="different-casino-medium__content">
+                                                        <a
+                                                            href=""
+                                                            aria-label="Put your description here."
+                                                            target="_blank"
+                                                            className="different-casino-medium__name"
+                                                        >
+                                                            {
+                                                                item.casino_info
+                                                                    .casino_name
+                                                            }
+                                                        </a>
+                                                        <div className="different-casino-medium__rating">
+                                                            <span className="different-casino-medium__rating-icon">
+                                                                <img
+                                                                    src={star}
+                                                                    alt="star"
+                                                                />
+                                                            </span>
+                                                            <span className="different-casino-medium__rationg-number">
+                                                                {
+                                                                    item
+                                                                        .casino_info
+                                                                        .casino_rank
+                                                                }
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </SwiperSlide>
-                                        ))
-                                }
+                                            </div>
+                                        </SwiperSlide>
+                                    ))}
                             </Swiper>
                         </div>
-                    </div>
-                    <div className="slider__bottom bottom-slider">
-                        <div
-                            ref={paginationRef}
-                            className="bottom-slider__pagination vpn-friendly-casinos-2-gamble__pagination swiper-pagination"
-                        ></div>
                     </div>
                 </div>
             </div>

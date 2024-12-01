@@ -4,20 +4,33 @@ import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { Wraper } from "../Wraper"
 import like from "../../assets/img/icons/like.svg"
 import "./style.css"
-import { useSearchParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { lazy, useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import {
+    AllCategoriesHomeDataResponse,
     PAYOUTSPEED,
-    SeeAllCasinosCasino,
+    SeeAllCasinosType,
     SeeAllCasinosCategoryResponse,
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { euroToDolar, NumberAssociaty } from "../../helper"
 const LazyFlag = lazy(() => import("react-world-flags"))
+
+const getDataHomePageCategories = async () => {
+    const response = await $api.get("get-data-home-page-categories/");
+    return response.data 
+};
+
+const getAllCasinosFetchData = async (page: number, queryId:string) => {
+    const response = await $api.get(
+        `get-see-all-casinos-category/${queryId}/?page=${page}&page_size=${countPageSize}`
+    )
+    return response.data
+}
 
 export const rankCasinosSeeAll = (r: number) => {
     if (r >= 8) {
@@ -47,45 +60,63 @@ export const WithdrawalSeeAllCasinos = (n: {
 const countPageSize = 10
 
 export default function SeeAllCasinos() {
-    document.title = "See All Casinos"
+   
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [allData, setAllData] = useState<SeeAllCasinosCasino[]>([])
+    const [allData, setAllData] = useState<SeeAllCasinosType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
-    const [searchParams] = useSearchParams()
+    const { casino_categories } = useParams<{ casino_categories: string }>();
     const [queryId, setQueryId] = useState("")
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
-    useEffect(() => {
-        const id = searchParams.get("id")
-        if (id) {
-            setQueryId(id)
+    const { data: dataCategories} = useQuery< AllCategoriesHomeDataResponse >(
+        "get-data-home-page-categories/",
+        getDataHomePageCategories,
+        {
+            keepPreviousData: true,
+            staleTime: Infinity,
         }
-    }, [searchParams])
+    );
 
-    const getAllCasinosFetchData = async (page: number) => {
-        const response = await $api.get(
-            `get-see-all-casinos-category/${queryId}/?page=${page}&page_size=${countPageSize}`
-        )
-        return response.data
-    }
+
+    
+    useEffect(() => {
+        const el = dataCategories?.casino_categories?.find(item => item.name.toLocaleLowerCase().replace(/\s+/g, "-") === casino_categories)    
+        if (el) {
+            document.title = `All Casinos | ${el?.name}`
+            setQueryId(String(el.id))
+        }
+    }, [casino_categories, dataCategories])
+
+
+
 
     const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(
-        ["get-see-all-loyalties", currentPage], 
-        () => getAllCasinosFetchData(currentPage),
+        ["get-see-all-loyalties", currentPage, queryId], 
+        () => getAllCasinosFetchData(currentPage, queryId),
         {
             keepPreviousData: true,
             enabled: !!queryId,
         }
     )
     useEffect(() => {
-        if (data?.casino.results && isMobile ) {
-            setAllData((s) => ([...s, ...data?.casino.results]) 
-            )
+        if (data?.casino?.results && isMobile ) {
+            setAllData((s) => {
+                const combinedData = [...s, ...data?.casino?.results]
+
+                const uniqueData = combinedData?.reduce((acc, item) => {
+                    if (!acc.some((el) => el?.casino_id === item?.casino_id)) {
+                        acc.push(item)
+                    }
+                    return acc
+                }, [] as SeeAllCasinosType[])
+
+                return uniqueData
+            })
         }
-        if (!allData.length && data?.casino.results){
-            setAllData(data?.casino.results)
+        if (!allData?.length && data?.casino?.results){
+            setAllData(data?.casino?.results)
         }
     }, [data])
 

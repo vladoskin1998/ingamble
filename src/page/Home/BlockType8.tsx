@@ -34,7 +34,7 @@ export const BlockType8 = ({ data }: { data: HomeDataBlock | undefined }) => {
                             )}
                         </div>
                         <div className="top__column">
-                        <SeeAllButton type_category={data.items_block.type_category} id={data.items_block.category.id} />
+                        <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} />
                         </div>
                     </div>
                 </div>

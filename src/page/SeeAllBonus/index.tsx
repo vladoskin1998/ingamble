@@ -2,7 +2,7 @@ import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { Categories } from "../../components/categories/Categories"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { Wraper } from "../Wraper"
-import { useSearchParams } from "react-router-dom"
+
 import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
 import { useEffect, useState } from "react"
@@ -14,54 +14,83 @@ import { useAdaptiveBehavior } from "../../context/AppContext"
 import {
     SeeAllBonus as SeeAllBonusType,
     SeeAllBonusResponse,
+    AllCategoriesHomeDataResponse,
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS } from "../../helper"
+import { useParams } from "react-router-dom";
+
+const getAllBonusFetchData = async (page: number, queryId: string) => {
+    const response = await $api.get(
+        `get-see-all-bonus-category/${queryId}/?page=${page}&page_size=${countPageSize}`
+    )
+    return response.data
+}
+
+const getDataHomePageCategories = async () => {
+    const response = await $api.get("get-data-home-page-categories/");
+    return response.data 
+};
 
 const countPageSize = 60
 
 export default function SeeAllBonus() {
-    document.title = "See All Bonus"
+    // document.title = "All Bonus"
 
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllBonusType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
-
-    const [searchParams] = useSearchParams()
     const [queryId, setQueryId] = useState("")
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const { bonus_categories } = useParams<{ bonus_categories: string }>();
 
-    useEffect(() => {
-        const id = searchParams.get("id")
-        if (id) {
-            setQueryId(id)
+    const { data: dataCategories} = useQuery< AllCategoriesHomeDataResponse >(
+        "get-data-home-page-categories/",
+        getDataHomePageCategories,
+        {
+            keepPreviousData: true,
+            staleTime: Infinity,
         }
-    }, [searchParams])
+    );
+    
+    useEffect(() => {
+        const el = dataCategories?.bonus_categories.find(item => item.name.toLocaleLowerCase().replace(/\s+/g, "-") === bonus_categories)
+        if (el) {
+            document.title = `All Bonuses | ${el?.name}`
+            setQueryId(String(el.id))
+        }
+    }, [bonus_categories, dataCategories])
 
-    const getAllBonusFetchData = async (page: number) => {
-        const response = await $api.get(
-            `get-see-all-bonus-category/${queryId}/?page=${page}&page_size=${countPageSize}`
-        )
-        return response.data
-    }
+
 
     const { data, isLoading } = useQuery<SeeAllBonusResponse>(
-        ["get-see-all-bonus-category/", currentPage],
-        () => getAllBonusFetchData(currentPage),
+        ["get-see-all-bonus-category/", currentPage, queryId],
+        () => getAllBonusFetchData(currentPage, queryId),
         {
             keepPreviousData: true,
             enabled: !!queryId,
         }
     )
 
- 
+  
+
     useEffect(() => {
-        if (data?.bonuses.results && isMobile ) {
-            setAllData((s) => ([...s, ...data?.bonuses.results]) 
-            )
+        if (data?.bonuses?.results && isMobile ) {
+            setAllData((s) => {
+                const combinedData = [...s, ...data?.bonuses?.results]
+
+                const uniqueData = combinedData?.reduce((acc, item) => {
+                    if (!acc.some((el) => el.bonus_id === item.bonus_id)) {
+                        acc.push(item)
+                    }
+                    return acc
+                }, [] as SeeAllBonusType[])
+
+                return uniqueData
+            })
         }
-        if (!allData.length && data?.bonuses.results){
-            setAllData(data?.bonuses.results)
+        if (!allData.length && data?.bonuses?.results){
+            setAllData(data?.bonuses?.results)
         }
     }, [data])
 

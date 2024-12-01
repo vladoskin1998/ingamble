@@ -281,7 +281,7 @@ export enum PAYOUTSPEED {
     Low = "Low"
 }
 
-export interface SeeAllCasinosCasino {
+export interface SeeAllCasinosType {
     casino_id: number;
     casino_name: string;
     casino_rank: string;
@@ -321,7 +321,7 @@ export interface SeeAllCasinosCategoryResponse {
         count: number
         next: string
         previous: string
-        results: SeeAllCasinosCasino[]
+        results: SeeAllCasinosType[]
     };
 }
 
@@ -432,7 +432,7 @@ export type FilterCasinoPostResponse = {
     count: number,
     next: string | null
     previous: string | null
-    results: SeeAllCasinosCasino[]
+    results: SeeAllCasinosType[]
     total_pages: number
 }
 
