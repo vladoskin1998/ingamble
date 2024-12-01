@@ -2,7 +2,7 @@ import MainSlider from "../../components/swiper/MainSlider"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 
-export const BlockType1 = ({ data }: { data: HomeDataBlock | undefined }) => {
+export default function BlockType1  ({ data }: { data: HomeDataBlock | undefined }) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType1)
         return <></>
 

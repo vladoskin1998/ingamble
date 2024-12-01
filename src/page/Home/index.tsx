@@ -5,7 +5,7 @@ import { useAdaptiveBehavior } from "../../context/AppContext"
 
 import { Categories } from "../../components/categories/Categories"
 
-import { BlockType1 } from "./BlockType1"
+import BlockType1 from "./BlockType1"
 
 const BlockType2 = lazy(() => import("./BlockType2"))
 import BlockType2Mobile from "./BlockType2Mobile"
@@ -19,13 +19,14 @@ import BlockType4Mobile from "./BlockType4Mobile"
 const BlockType5 = lazy(() => import("./BlockType5"))
 import BlockType5Mobile from "./BlockType5Mobile"
 
-const BlockType6 = lazy(() => import("./BlockType6"))
+import BlockType6 from "./BlockType6"
 
 const BlockType7 = lazy(() => import("./BlockType7"))
 import BlockType7Mobile from "./BlockType7Mobile"
 
-const BlockType8 = lazy(() => import("./BlockType8"))
-const BlockType9 = lazy(() => import("./BlockType9"))
+import BlockType9 from "./BlockType9"
+import BlockType8 from "./BlockType8"
+
 
 import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
 import $api from "../../http"
@@ -39,6 +40,8 @@ import {
 
 import { sanitizeLink } from "../../helper"
 import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+
+
 
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 // const BlockType7Mobile = lazy(() => import("./BlockType7Mobile"))
