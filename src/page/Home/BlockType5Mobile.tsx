@@ -4,7 +4,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import bg01 from "../../assets/img/bg/01.jpg"
-import girl from "../../assets/img/girls/01.png"
+import girl from "../../assets/img/girls/01.webp"
 
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
