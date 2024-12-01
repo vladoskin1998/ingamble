@@ -51,13 +51,13 @@ const LengthApplyFilter = ({
     return ""
 }
 
-export const Navbar = ({
+export default function Navbar  ({
     isSidebarActive,
     setSidebarActive,
 }: {
     isSidebarActive: boolean
     setSidebarActive: (s: boolean) => void
-}) => {
+})  {
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
     const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>("")
 

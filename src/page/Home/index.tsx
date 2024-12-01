@@ -95,6 +95,10 @@ const renderBlock = (block: any) => {
             return <BlockType1 data={block} />
         case BlockTypeNumber.BlockType9:
             return <BlockType9 data={block} />
+        case BlockTypeNumber.BlockType6:
+            return <BlockType6 data={block} />
+        case BlockTypeNumber.BlockType8:
+            return <BlockType8 data={block} />
         case BlockTypeNumber.BlockType2:
             return (
                 <>
@@ -102,10 +106,7 @@ const renderBlock = (block: any) => {
                     <BlockType2Mobile data={block} />
                 </>
             )
-        case BlockTypeNumber.BlockType6:
-            return <BlockType6 data={block} />
-        case BlockTypeNumber.BlockType8:
-            return <BlockType8 data={block} />
+
         case BlockTypeNumber.BlockType3:
             return (
                 <>
