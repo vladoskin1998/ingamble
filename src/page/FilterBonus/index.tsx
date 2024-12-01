@@ -16,7 +16,7 @@ import {
 import { Wraper } from "../Wraper"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import like from "../../assets/img/icons/like.svg"
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import star from "../../assets/img/icons/star.svg"
 import { COLORS_TAGS, filterEmptyValues } from "../../helper"
@@ -25,7 +25,7 @@ import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllBonus/style.css"
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid"
 
 const countPageSize = 20
 
@@ -95,14 +95,13 @@ export default function FilterBonus() {
                 behavior: "smooth",
                 top: 0,
             })
-        }
-        else{
+        } else {
             setAllData([])
         }
     }, [bonusFilters, refetch])
 
     useEffect(() => {
-        if (data?.results && isMobile ) {
+        if (data?.results && isMobile) {
             setAllData((s) => {
                 const combinedData = [...s, ...data?.results]
 
@@ -116,14 +115,14 @@ export default function FilterBonus() {
                 return uniqueData
             })
         }
-        if (!allData.length && data?.results){
+        if (!allData.length && data?.results) {
             setAllData(data?.results)
         }
     }, [data])
 
     useEffect(() => {
         initializeAdaptiveBehavior()
-    }, [isLoading ])
+    }, [isLoading])
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
@@ -145,8 +144,7 @@ export default function FilterBonus() {
             [v as keyof CasinoFilterBodyType]: findedValueField,
         }))
     }
-    console.log("currentPage", currentPage);
-    
+    console.log("currentPage", currentPage)
 
     if (isDebouncedLoading) return <LogoLoader />
 
@@ -169,7 +167,8 @@ export default function FilterBonus() {
                         clearAll={clearAll}
                         clearOne={(v) => handlerClearOne(v)}
                     />
-                   <section className="see-all__main main-see-all">
+
+                    <section className="see-all__main main-see-all">
                         <div className="main-see-all__container container">
                             <div className="results-filter-scenarios__top top">
                                 <div className="top__title-block">
@@ -179,107 +178,7 @@ export default function FilterBonus() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            <div className="main-see-all__row custom-main-see-all__row" >
-                                {displayedData?.map((item) => (
-                                    <div className="main-see-all__column" >
-                                        <div className="slide-slider__item casino-card">
-                                            <div className="casino-card__top">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="casino-card__image-block"
-                                                    style={{padding: "0 8px 50.432% 8px"}}
-                                                >
-                                                    <div className="casino-card__image see-all-custom__image-custom"  key={uuidv4()} >
-                                                        <LazyCardImg
-                                                            img={
-                                                                item?.bonus_image
-                                                            }
-                                                            height="100%"
-                                                            width="100%"
-                                                        />
-                                                    </div>
-                                                    <a
-                                                        href={
-                                                            item?.casino_affiliate_link
-                                                        }
-                                                        target="_blank"
-                                                        aria-label="Put your description here."
-                                                        className="casino-card__bnt"
-                                                    >
-                                                        Play
-                                                    </a>
-                                                </a>
-                                            </div>
-                                            <div className="casino-card__content">
-                                                <div className="casino-card__tags tags-casino-card">
-                                                    {item?.labels?.map(
-                                                        (it, id) => (
-                                                            <div
-                                                            key={id}
-                                                                className={`tags-casino-card__item ${
-                                                                    COLORS_TAGS[
-                                                                        id % 4
-                                                                    ]
-                                                                }`}
-                                                            >
-                                                                <span className="tags-casino-card__item-label">
-                                                                    {typeof it === "string" ? it : it?.name}
-                                                                </span>
-                                                            </div>
-                                                        )
-                                                    )}
-                                                </div>
-                                                <div className="casino-card__info info-casino-card">
-                                                    <div className="info-casino-card__stake">
-                                                        <a
-                                                            href=""
-                                                            aria-label="Put your description here."
-                                                            target="_blank"
-                                                            className="info-casino-card__stake-link"
-                                                        >
-                                                            {item?.casino_name}
-                                                        </a>
-                                                        <div className="info-casino-card__stake-rating">
-                                                            <span className="info-casino-card__stake-rating-icon">
-                                                                <img
-                                                                    src={star}
-                                                                    alt="star"
-                                                                />
-                                                            </span>
-                                                            <span className="info-casino-card__stake__rating-number">
-                                                                {
-                                                                    item?.casino_rank
-                                                                }
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="info-casino-card__likes">
-                                                        <span className="info-casino-card__likes-icon">
-                                                            <img
-                                                                src={like}
-                                                                alt="like"
-                                                            />
-                                                        </span>
-                                                        <span className="info-casino-card__likes-number">
-                                                            {item?.bonus_likes}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="casino-card__name"
-                                                >
-                                                    {item?.bonus_name}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                            <ListDisplayData displayedData={displayedData} />
                             <PaginationPage
                                 countElem={data?.count}
                                 currentPage={currentPage}
@@ -301,3 +200,100 @@ export default function FilterBonus() {
         </Wraper>
     )
 }
+
+const ListDisplayData = memo(
+    ({ displayedData }: { displayedData: SeeAllBonus[] | undefined }) => {
+        return (
+            <div className="main-see-all__row custom-main-see-all__row">
+                {displayedData?.map((item) => (
+                    <div className="main-see-all__column">
+                        <div className="slide-slider__item casino-card">
+                            <div className="casino-card__top">
+                                <a
+                                    href=""
+                                    aria-label="Put your description here."
+                                    target="_blank"
+                                    className="casino-card__image-block"
+                                    style={{ padding: "0 8px 50.432% 8px" }}
+                                >
+                                    <div
+                                        className="casino-card__image see-all-custom__image-custom"
+                                        key={uuidv4()}
+                                    >
+                                        <LazyCardImg
+                                            img={item?.bonus_image}
+                                            height="100%"
+                                            width="100%"
+                                        />
+                                    </div>
+                                    <a
+                                        href={item?.casino_affiliate_link}
+                                        target="_blank"
+                                        aria-label="Put your description here."
+                                        className="casino-card__bnt"
+                                    >
+                                        Play
+                                    </a>
+                                </a>
+                            </div>
+                            <div className="casino-card__content">
+                                <div className="casino-card__tags tags-casino-card">
+                                    {item?.labels?.map((it, id) => (
+                                        <div
+                                            key={id}
+                                            className={`tags-casino-card__item ${
+                                                COLORS_TAGS[id % 4]
+                                            }`}
+                                        >
+                                            <span className="tags-casino-card__item-label">
+                                                {typeof it === "string"
+                                                    ? it
+                                                    : it?.name}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="casino-card__info info-casino-card">
+                                    <div className="info-casino-card__stake">
+                                        <a
+                                            href=""
+                                            aria-label="Put your description here."
+                                            target="_blank"
+                                            className="info-casino-card__stake-link"
+                                        >
+                                            {item?.casino_name}
+                                        </a>
+                                        <div className="info-casino-card__stake-rating">
+                                            <span className="info-casino-card__stake-rating-icon">
+                                                <img src={star} alt="star" />
+                                            </span>
+                                            <span className="info-casino-card__stake__rating-number">
+                                                {item?.casino_rank}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="info-casino-card__likes">
+                                        <span className="info-casino-card__likes-icon">
+                                            <img src={like} alt="like" />
+                                        </span>
+                                        <span className="info-casino-card__likes-number">
+                                            {item?.bonus_likes}
+                                        </span>
+                                    </div>
+                                </div>
+                                <a
+                                    href=""
+                                    aria-label="Put your description here."
+                                    target="_blank"
+                                    className="casino-card__name"
+                                >
+                                    {item?.bonus_name}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        )
+    }
+)

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import { Categories } from "../../components/categories/Categories"
 import { FilterHeaderList } from "../../components/filter-components/FilterHeaderList"
 import { useAdaptiveBehavior } from "../../context/AppContext"
@@ -20,8 +20,8 @@ import { debounce } from "lodash"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import star from "../../assets/img/icons/star.svg"
-import '../SeeAllEssentialsLoyalty/style.css'
-import { v4 as uuidv4 } from 'uuid';
+import "../SeeAllEssentialsLoyalty/style.css"
+import { v4 as uuidv4 } from "uuid"
 const countPageSize = 15
 
 const debouncedFetchFilter = debounce(
@@ -54,7 +54,8 @@ const getFilteringLoyaltiesList = async (
 export default function FilterLoyalty() {
     document.title = "Filter Loyalties"
 
-    const { initializeAdaptiveBehavior, isSidebarActive } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior, isSidebarActive } =
+        useAdaptiveBehavior()
     const { loyaltiesFilters, setLoyaltiesFilters } = useFilterContext()
 
     const [currentPage, setCurrentPage] = useState(1)
@@ -91,8 +92,7 @@ export default function FilterLoyalty() {
                 behavior: "smooth",
                 top: 0,
             })
-        }
-        else{
+        } else {
             setAllData([])
         }
     }, [loyaltiesFilters, refetch])
@@ -160,7 +160,7 @@ export default function FilterLoyalty() {
                         clearAll={clearAll}
                         clearOne={(v) => handlerClearOne(v)}
                     />
-                       <section className="loyaltie-programs__main main-loyaltie-programs">
+                    <section className="loyaltie-programs__main main-loyaltie-programs">
                         <div className="main-loyaltie-programs__container container">
                             <div className="main-loyaltie-programs__top top">
                                 <div className="top__row">
@@ -173,125 +173,9 @@ export default function FilterLoyalty() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="main-loyaltie-programs__items loyaltie-programs__items">
-                                {displayedData?.map((item) => (
-                                    <div className="loyaltie-programs__item item-loyaltie-programs" >
-                                        <div className="item-loyaltie-programs__row">
-                                            <div className="item-loyaltie-programs__main">
-                                                <a className="item-loyaltie-programs__image loyalty-img-custom " key={uuidv4()}>
-                                                    <LazyCardImg
-                                                        img={
-                                                            item?.casino_image ||
-                                                            ""
-                                                        }
-                                                        height="100%"
-                                                        width="100%"
-                                                    />
-                                                </a>
-                                            </div>
-                                            <div className="item-loyaltie-programs__content content-item-loyaltie-programs">
-                                                <div className="content-item-loyaltie-programs__top top-content-item-loyaltie-programs">
-                                                    <h2 className="top-content-item-loyaltie-programs__name">
-                                                        {item?.casino_name}
-                                                    </h2>
-                                                    <div className="info-casino-card__stake-rating">
-                                                        <span className="info-casino-card__stake-rating-icon">
-                                                            <img
-                                                                src={star}
-                                                                alt="star"
-                                                            />
-                                                        </span>
-                                                        <span className="info-casino-card__stake__rating-number">
-                                                            {item?.casino_rank}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
-                                                    {item?.loyalty_program?.loyalty_keypoint.map(
-                                                        (it) => (
-                                                            <div className="features-essential-programs-gamble__column">
-                                                                <div className="features-essential-programs-gamble__item">
-                                                                    <div className="features-essential-programs-gamble__icon">
-                                                                        <LazyCardImg
-                                                                            img={
-                                                                                it?.image ||
-                                                                                ""
-                                                                            }
-                                                                            width="100%"
-                                                                            size="medium"
-                                                                        />
-                                                                    </div>
-                                                                    <div className="features-essential-programs-gamble__info">
-                                                                        <div className="features-essential-programs-gamble__name">
-                                                                            {
-                                                                                it?.text_1
-                                                                            }
-                                                                        </div>
-                                                                        <div className="features-essential-programs-gamble__text">
-                                                                            {
-                                                                                it?.text_2
-                                                                            }
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        )
-                                                    )}
 
-                                                    <div className="features-essential-programs-gamble__column features-essential-programs-gamble__column_rating">
-                                                        <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
-                                                            <div className="item-essential-programs-gamble__rating">
-                                                                <div className="item-essential-programs-gamble__rating-number">
-                                                                    9/10
-                                                                </div>
-                                                                <div className="item-essential-programs-gamble__rating-body">
-                                                                    <div className="item-essential-programs-gamble__rating-items items-rating-essential-programs-gamble">
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_1 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_2 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_3 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_4 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_5 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_6 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_7 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_8 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_9 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_10"></div>
-                                                                    </div>
-                                                                    <div className="item-essential-programs-gamble__rating-text">
-                                                                        Excellent
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
-                                                    <div className="bottom-content-item-loyaltie-programs__btns">
-                                                        <a
-                                                            href={
-                                                                item?.casino_affiliate_link
-                                                            }
-                                                            target="_blank"
-                                                            aria-label="Put your description here."
-                                                            className="bottom-content-item-loyaltie-programs__btn-view"
-                                                        >
-                                                            View Casino
-                                                        </a>
-                                                        <a
-                                                            href="/loyaltie"
-                                                            target="_blank"
-                                                            aria-label="Put your description here."
-                                                            className="bottom-content-item-loyaltie-programs__btn-more"
-                                                        >
-                                                            Read More
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                            <LisDisplayedData displayedData={displayedData} />
+
                             <PaginationPage
                                 countElem={data?.count}
                                 currentPage={currentPage}
@@ -313,3 +197,123 @@ export default function FilterLoyalty() {
         </Wraper>
     )
 }
+
+const LisDisplayedData = memo(
+    ({
+        displayedData,
+    }: {
+        displayedData: SeeAllEssentialLoyaltyCasino[] | undefined
+    }) => {
+        return (
+            <div className="main-loyaltie-programs__items loyaltie-programs__items">
+                {displayedData?.map((item) => (
+                    <div className="loyaltie-programs__item item-loyaltie-programs">
+                        <div className="item-loyaltie-programs__row">
+                            <div className="item-loyaltie-programs__main">
+                                <a
+                                    className="item-loyaltie-programs__image loyalty-img-custom "
+                                    key={uuidv4()}
+                                >
+                                    <LazyCardImg
+                                        img={item?.casino_image || ""}
+                                        height="100%"
+                                        width="100%"
+                                    />
+                                </a>
+                            </div>
+                            <div className="item-loyaltie-programs__content content-item-loyaltie-programs">
+                                <div className="content-item-loyaltie-programs__top top-content-item-loyaltie-programs">
+                                    <h2 className="top-content-item-loyaltie-programs__name">
+                                        {item?.casino_name}
+                                    </h2>
+                                    <div className="info-casino-card__stake-rating">
+                                        <span className="info-casino-card__stake-rating-icon">
+                                            <img src={star} alt="star" />
+                                        </span>
+                                        <span className="info-casino-card__stake__rating-number">
+                                            {item?.casino_rank}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
+                                    {item?.loyalty_program?.loyalty_keypoint.map(
+                                        (it) => (
+                                            <div className="features-essential-programs-gamble__column">
+                                                <div className="features-essential-programs-gamble__item">
+                                                    <div className="features-essential-programs-gamble__icon">
+                                                        <LazyCardImg
+                                                            img={
+                                                                it?.image || ""
+                                                            }
+                                                            width="100%"
+                                                            size="medium"
+                                                        />
+                                                    </div>
+                                                    <div className="features-essential-programs-gamble__info">
+                                                        <div className="features-essential-programs-gamble__name">
+                                                            {it?.text_1}
+                                                        </div>
+                                                        <div className="features-essential-programs-gamble__text">
+                                                            {it?.text_2}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    )}
+
+                                    <div className="features-essential-programs-gamble__column features-essential-programs-gamble__column_rating">
+                                        <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
+                                            <div className="item-essential-programs-gamble__rating">
+                                                <div className="item-essential-programs-gamble__rating-number">
+                                                    9/10
+                                                </div>
+                                                <div className="item-essential-programs-gamble__rating-body">
+                                                    <div className="item-essential-programs-gamble__rating-items items-rating-essential-programs-gamble">
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_1 full"></div>
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_2 full"></div>
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_3 full"></div>
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_4 full"></div>
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_5 full"></div>
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_6 full"></div>
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_7 full"></div>
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_8 full"></div>
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_9 full"></div>
+                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_10"></div>
+                                                    </div>
+                                                    <div className="item-essential-programs-gamble__rating-text">
+                                                        Excellent
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
+                                    <div className="bottom-content-item-loyaltie-programs__btns">
+                                        <a
+                                            href={item?.casino_affiliate_link}
+                                            target="_blank"
+                                            aria-label="Put your description here."
+                                            className="bottom-content-item-loyaltie-programs__btn-view"
+                                        >
+                                            View Casino
+                                        </a>
+                                        <a
+                                            href="/loyaltie"
+                                            target="_blank"
+                                            aria-label="Put your description here."
+                                            className="bottom-content-item-loyaltie-programs__btn-more"
+                                        >
+                                            Read More
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        )
+    }
+)

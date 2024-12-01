@@ -14,7 +14,7 @@ import {
 import { Wraper } from "../Wraper"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import like from "../../assets/img/icons/like.svg"
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from "../SeeAllCasinos"
 import {
@@ -77,7 +77,7 @@ const LicenseElem: React.FC<LicenseElemProps> = ({
                             alt={selectedLicense.name || ""}
                         />
                     </span>
-                ) }
+                )}
             </>
         </div>
     )
@@ -233,228 +233,14 @@ export default function FilterCasino() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            <div className="main-loyaltie-programs__items loyaltie-programs__items">
-                                {displayedData?.map((item) => (
-                                    <div className="loyaltie-programs__item item-loyaltie-programs">
-                                        <div className="item-loyaltie-programs__row">
-                                            <div className="item-loyaltie-programs__main">
-                                                <div
-                                                    aria-label="Put your description here."
-                                                    className="item-loyaltie-programs__image item-loyaltie-programs__image-custom "
-                                                    key={uuidv4()}
-                                                >
-                                                    <LazyCardImg
-                                                        img={
-                                                            item?.casino_image ||
-                                                            ""
-                                                        }
-                                                        height="100%"
-                                                        width="100%"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="item-loyaltie-programs__content content-item-loyaltie-programs">
-                                                <div className="content-item-loyaltie-programs__row">
-                                                    <div className="content-item-loyaltie-programs__column content-item-loyaltie-programs__column_main">
-                                                        <div className="content-item-loyaltie-programs__top top-content-item-loyaltie-programs">
-                                                            <h2 className="top-content-item-loyaltie-programs__name">
-                                                                {
-                                                                    item?.casino_name
-                                                                }
-                                                            </h2>
-                                                            <div className="info-casino-card__likes">
-                                                                <span className="info-casino-card__likes-icon">
-                                                                    <img
-                                                                        src={
-                                                                            like
-                                                                        }
-                                                                        alt="like"
-                                                                    />
-                                                                </span>
-                                                                <span className="info-casino-card__likes-number">
-                                                                    {
-                                                                        item?.likes
-                                                                    }
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="content-item-loyaltie-programs__info info-content-item-loyaltie-programs">
-                                                            <div className="info-content-item-loyaltie-programs__row">
-                                                                <div className="info-content-item-loyaltie-programs__column">
-                                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs item-info-content-item-loyaltie-programs_index-high">
-                                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                                            Safety
-                                                                            Index
-                                                                        </div>
-                                                                        <div className="item-info-content-item-loyaltie-programs__value">
-                                                                            {
-                                                                                item?.casino_rank
-                                                                            }
-                                                                            <span className="item-info-content-item-loyaltie-programs__value-index">
-                                                                                {rankCasinosSeeAll(
-                                                                                    Number(
-                                                                                        item?.casino_rank
-                                                                                    )
-                                                                                )}
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                                            Min
-                                                                            Dep
-                                                                        </div>
-                                                                        <div className="item-info-content-item-loyaltie-programs__value">
-                                                                            {item
-                                                                                .min_dep?.[0]
-                                                                                ?.value
-                                                                                ? `${
-                                                                                      item
-                                                                                          .min_dep?.[0]
-                                                                                          ?.value
-                                                                                  } ${euroToDolar()}`
-                                                                                : "Unlimited"}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                                            License
-                                                                        </div>
-                                                                        <LicenseElem
-                                                                            filtersDataLicenses={
-                                                                                filtersData
-                                                                                    ?.casino
-                                                                                    ?.licenses
-                                                                            }
-                                                                            casinoFiltersLicenses={
-                                                                                casinoFilters?.licenses
-                                                                            }
-                                                                            itemLicenses={
-                                                                                item?.licenses
-                                                                            }
-                                                                        />
-                                                                       
-                                                                    </div>
-                                                                </div>
-                                                                <div className="info-content-item-loyaltie-programs__column">
-                                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                                            Withdrawal
-                                                                            Limit:
-                                                                        </div>
-                                                                        <div className="item-info-content-item-loyaltie-programs__value">
-                                                                            {`${NumberAssociaty(
-                                                                                item
-                                                                                    ?.withdrawal_limit
-                                                                                    ?.monthly ||
-                                                                                    item
-                                                                                        ?.withdrawal_limit
-                                                                                        ?.weekly ||
-                                                                                    item
-                                                                                        ?.withdrawal_limit
-                                                                                        ?.daily ||
-                                                                                    "Unlimited"
-                                                                            )} ${WithdrawalSeeAllCasinos(
-                                                                                item?.withdrawal_limit
-                                                                            )}`}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                                            Payout
-                                                                            Speed
-                                                                        </div>
-                                                                        <div
-                                                                            className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${item.payout_speed.toLocaleLowerCase()}`}
-                                                                        >
-                                                                            {
-                                                                                item?.payout_speed
-                                                                            }
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                                            VPN
-                                                                            Allowed
-                                                                        </div>
-                                                                        <div
-                                                                            className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${
-                                                                                item?.vpn_usage
-                                                                                    ? "yes"
-                                                                                    : "no"
-                                                                            }`}
-                                                                        >
-                                                                            {item?.vpn_usage
-                                                                                ? "Yes"
-                                                                                : "No"}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
-                                                            <div className="bottom-content-item-loyaltie-programs__btns">
-                                                                <a
-                                                                    href={
-                                                                        item?.casino_affiliate_link
-                                                                    }
-                                                                    target="_blank"
-                                                                    aria-label="Put your description here."
-                                                                    className="bottom-content-item-loyaltie-programs__btn-view"
-                                                                >
-                                                                    View Casino
-                                                                </a>
-                                                                <a
-                                                                    href="/loyaltie"
-                                                                    target="_blank"
-                                                                    aria-label="Put your description here."
-                                                                    className="bottom-content-item-loyaltie-programs__btn-more"
-                                                                >
-                                                                    Read More
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="content-item-loyaltie-programs__column content-item-loyaltie-programs__column_features">
-                                                        <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
-                                                            {item?.loyalty_program?.loyalty_keypoint
-                                                                ?.slice(0, 3)
-                                                                .map((it) => (
-                                                                    <div className="features-essential-programs-gamble__column">
-                                                                        <div className="features-essential-programs-gamble__item">
-                                                                            <div className="features-essential-programs-gamble__icon">
-                                                                                <LazyCardImg
-                                                                                    img={
-                                                                                        it?.image ||
-                                                                                        ""
-                                                                                    }
-                                                                                    size="medium"
-                                                                                    width="100%"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="features-essential-programs-gamble__info">
-                                                                                <div className="features-essential-programs-gamble__name">
-                                                                                    {
-                                                                                        it?.text_1
-                                                                                    }
-                                                                                </div>
-                                                                                <div className="features-essential-programs-gamble__text">
-                                                                                    {
-                                                                                        it?.text_2
-                                                                                    }
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                ))}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                            <ListDisplayData
+                                displayedData={displayedData}
+                                filtersDataLicenses={
+                                    filtersData?.casino?.licenses
+                                }
+                                casinoFiltersLicenses={casinoFilters?.licenses}
+                            />
+
                             <PaginationPage
                                 countElem={data?.count}
                                 currentPage={currentPage}
@@ -476,3 +262,215 @@ export default function FilterCasino() {
         </Wraper>
     )
 }
+
+const ListDisplayData = memo(
+    ({
+        displayedData,
+        filtersDataLicenses,
+        casinoFiltersLicenses,
+    }: {
+        filtersDataLicenses: License[] | undefined
+        casinoFiltersLicenses: number[] | undefined
+
+        displayedData: SeeAllCasinosType[] | undefined
+    }) => {
+        return (
+            <div className="main-loyaltie-programs__items loyaltie-programs__items">
+                {displayedData?.map((item) => (
+                    <div className="loyaltie-programs__item item-loyaltie-programs">
+                        <div className="item-loyaltie-programs__row">
+                            <div className="item-loyaltie-programs__main">
+                                <div
+                                    aria-label="Put your description here."
+                                    className="item-loyaltie-programs__image item-loyaltie-programs__image-custom "
+                                    key={uuidv4()}
+                                >
+                                    <LazyCardImg
+                                        img={item?.casino_image || ""}
+                                        height="100%"
+                                        width="100%"
+                                    />
+                                </div>
+                            </div>
+                            <div className="item-loyaltie-programs__content content-item-loyaltie-programs">
+                                <div className="content-item-loyaltie-programs__row">
+                                    <div className="content-item-loyaltie-programs__column content-item-loyaltie-programs__column_main">
+                                        <div className="content-item-loyaltie-programs__top top-content-item-loyaltie-programs">
+                                            <h2 className="top-content-item-loyaltie-programs__name">
+                                                {item?.casino_name}
+                                            </h2>
+                                            <div className="info-casino-card__likes">
+                                                <span className="info-casino-card__likes-icon">
+                                                    <img
+                                                        src={like}
+                                                        alt="like"
+                                                    />
+                                                </span>
+                                                <span className="info-casino-card__likes-number">
+                                                    {item?.likes}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="content-item-loyaltie-programs__info info-content-item-loyaltie-programs">
+                                            <div className="info-content-item-loyaltie-programs__row">
+                                                <div className="info-content-item-loyaltie-programs__column">
+                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs item-info-content-item-loyaltie-programs_index-high">
+                                                        <div className="item-info-content-item-loyaltie-programs__label">
+                                                            Safety Index
+                                                        </div>
+                                                        <div className="item-info-content-item-loyaltie-programs__value">
+                                                            {item?.casino_rank}
+                                                            <span className="item-info-content-item-loyaltie-programs__value-index">
+                                                                {rankCasinosSeeAll(
+                                                                    Number(
+                                                                        item?.casino_rank
+                                                                    )
+                                                                )}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
+                                                        <div className="item-info-content-item-loyaltie-programs__label">
+                                                            Min Dep
+                                                        </div>
+                                                        <div className="item-info-content-item-loyaltie-programs__value">
+                                                            {item.min_dep?.[0]
+                                                                ?.value
+                                                                ? `${
+                                                                      item
+                                                                          .min_dep?.[0]
+                                                                          ?.value
+                                                                  } ${euroToDolar()}`
+                                                                : "Unlimited"}
+                                                        </div>
+                                                    </div>
+                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
+                                                        <div className="item-info-content-item-loyaltie-programs__label">
+                                                            License
+                                                        </div>
+                                                        <LicenseElem
+                                                            filtersDataLicenses={
+                                                                filtersDataLicenses
+                                                            }
+                                                            casinoFiltersLicenses={
+                                                                casinoFiltersLicenses
+                                                            }
+                                                            itemLicenses={
+                                                                item.licenses
+                                                            }
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="info-content-item-loyaltie-programs__column">
+                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
+                                                        <div className="item-info-content-item-loyaltie-programs__label">
+                                                            Withdrawal Limit:
+                                                        </div>
+                                                        <div className="item-info-content-item-loyaltie-programs__value">
+                                                            {`${NumberAssociaty(
+                                                                item
+                                                                    ?.withdrawal_limit
+                                                                    ?.monthly ||
+                                                                    item
+                                                                        ?.withdrawal_limit
+                                                                        ?.weekly ||
+                                                                    item
+                                                                        ?.withdrawal_limit
+                                                                        ?.daily ||
+                                                                    "Unlimited"
+                                                            )} ${WithdrawalSeeAllCasinos(
+                                                                item?.withdrawal_limit
+                                                            )}`}
+                                                        </div>
+                                                    </div>
+                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
+                                                        <div className="item-info-content-item-loyaltie-programs__label">
+                                                            Payout Speed
+                                                        </div>
+                                                        <div
+                                                            className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${item.payout_speed.toLocaleLowerCase()}`}
+                                                        >
+                                                            {item?.payout_speed}
+                                                        </div>
+                                                    </div>
+                                                    <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
+                                                        <div className="item-info-content-item-loyaltie-programs__label">
+                                                            VPN Allowed
+                                                        </div>
+                                                        <div
+                                                            className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${
+                                                                item?.vpn_usage
+                                                                    ? "yes"
+                                                                    : "no"
+                                                            }`}
+                                                        >
+                                                            {item?.vpn_usage
+                                                                ? "Yes"
+                                                                : "No"}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
+                                            <div className="bottom-content-item-loyaltie-programs__btns">
+                                                <a
+                                                    href={
+                                                        item?.casino_affiliate_link
+                                                    }
+                                                    target="_blank"
+                                                    aria-label="Put your description here."
+                                                    className="bottom-content-item-loyaltie-programs__btn-view"
+                                                >
+                                                    View Casino
+                                                </a>
+                                                <a
+                                                    href="/loyaltie"
+                                                    target="_blank"
+                                                    aria-label="Put your description here."
+                                                    className="bottom-content-item-loyaltie-programs__btn-more"
+                                                >
+                                                    Read More
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="content-item-loyaltie-programs__column content-item-loyaltie-programs__column_features">
+                                        <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
+                                            {item?.loyalty_program?.loyalty_keypoint
+                                                ?.slice(0, 3)
+                                                .map((it) => (
+                                                    <div className="features-essential-programs-gamble__column">
+                                                        <div className="features-essential-programs-gamble__item">
+                                                            <div className="features-essential-programs-gamble__icon">
+                                                                <LazyCardImg
+                                                                    img={
+                                                                        it?.image ||
+                                                                        ""
+                                                                    }
+                                                                    size="medium"
+                                                                    width="100%"
+                                                                />
+                                                            </div>
+                                                            <div className="features-essential-programs-gamble__info">
+                                                                <div className="features-essential-programs-gamble__name">
+                                                                    {it?.text_1}
+                                                                </div>
+                                                                <div className="features-essential-programs-gamble__text">
+                                                                    {it?.text_2}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        )
+    }
+)

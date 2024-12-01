@@ -34,15 +34,18 @@ const LengthApplyFilter = ({
     loyaltiesFilters: LoyaltiesFilterBodyType
 }) => {
     if (currentRouteFilter === RouteToNextFilter.BONUS) {
-        return `(${makeListFilterHeader(bonusFilters).length})`
+        const bl = makeListFilterHeader(bonusFilters).length
+        return bl ? `(${bl})` : ''
     }
 
     if (currentRouteFilter === RouteToNextFilter.CASINOS) {
-        return `(${makeListFilterHeader(casinoFilters).length})`
+        const cl = makeListFilterHeader(casinoFilters).length
+        return  cl ? `(${cl})` : ''
     }
 
     if (currentRouteFilter === RouteToNextFilter.LOYALTIES) {
-        return `(${makeListFilterHeader(loyaltiesFilters).length})`
+        const ll = makeListFilterHeader(loyaltiesFilters).length
+        return ll ? `(${ll})` : ''
     }
 
     return ""
@@ -416,6 +419,7 @@ export const Navbar = ({
                             </div>
                             <div className="bottom-form-filters__column">
                                 <Link
+                                onClick={() => setSidebarActive(false)}
                                     to={
                                         currentRouteFilter ===
                                         RouteToNextFilter.DEFAULT
@@ -429,7 +433,7 @@ export const Navbar = ({
                                         casinoFilters,
                                         bonusFilters,
                                         loyaltiesFilters,
-                                    })}`}</span>
+                                    }) }`}</span>
                                 </Link>
                             </div>
                         </div>

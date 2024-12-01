@@ -18,19 +18,21 @@ import {
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 
 const getAllBonusFetchData = async (page: number, queryId: string) => {
     const response = await $api.get(
-        `get-see-all-bonus-category/${queryId}/?page=${page}&page_size=${countPageSize}`
+        `get-see-all-bonus-category${
+            queryId ? "/" + queryId : ""
+        }/?page=${page}&page_size=${countPageSize}`
     )
     return response.data
 }
 
 const getDataHomePageCategories = async () => {
-    const response = await $api.get("get-data-home-page-categories/");
-    return response.data 
-};
+    const response = await $api.get("get-data-home-page-categories/")
+    return response.data
+}
 
 const countPageSize = 60
 
@@ -42,26 +44,26 @@ export default function SeeAllBonus() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
     const [queryId, setQueryId] = useState("")
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
-    const { bonus_categories } = useParams<{ bonus_categories: string }>();
+    const { bonus_categories } = useParams<{ bonus_categories: string }>()
 
-    const { data: dataCategories} = useQuery< AllCategoriesHomeDataResponse >(
+    const { data: dataCategories } = useQuery<AllCategoriesHomeDataResponse>(
         "get-data-home-page-categories/",
         getDataHomePageCategories,
         {
             keepPreviousData: true,
             staleTime: Infinity,
         }
-    );
-    
+    )
+
     useEffect(() => {
-        const el = dataCategories?.bonus_categories.find(item => sanitizeLink(item.name) === bonus_categories)
+        const el = dataCategories?.bonus_categories.find(
+            (item) => sanitizeLink(item.name) === bonus_categories
+        )
         if (el) {
             document.title = `All Bonuses | ${el?.name}`
             setQueryId(String(el.id))
         }
     }, [bonus_categories, dataCategories])
-
-
 
     const { data, isLoading } = useQuery<SeeAllBonusResponse>(
         ["get-see-all-bonus-category/", currentPage, queryId],
@@ -72,10 +74,8 @@ export default function SeeAllBonus() {
         }
     )
 
-  
-
     useEffect(() => {
-        if (data?.bonuses?.results && isMobile ) {
+        if (data?.bonuses?.results && isMobile) {
             setAllData((s) => {
                 const combinedData = [...s, ...data?.bonuses?.results]
 
@@ -89,7 +89,7 @@ export default function SeeAllBonus() {
                 return uniqueData
             })
         }
-        if (!allData.length && data?.bonuses?.results){
+        if (!allData.length && data?.bonuses?.results) {
             setAllData(data?.bonuses?.results)
         }
     }, [data])
@@ -159,7 +159,10 @@ export default function SeeAllBonus() {
                                                     href=""
                                                     aria-label="Put your description here."
                                                     target="_blank"
-                                                    style={{padding: "0 8px 50.432% 8px"}}
+                                                    style={{
+                                                        padding:
+                                                            "0 8px 50.432% 8px",
+                                                    }}
                                                     className="casino-card__image-block"
                                                 >
                                                     <div className="casino-card__image see-all-custom__image-custom">
@@ -194,7 +197,10 @@ export default function SeeAllBonus() {
                                                                 }`}
                                                             >
                                                                 <span className="tags-casino-card__item-label">
-                                                                    {typeof it === "string" ? it : it.name}
+                                                                    {typeof it ===
+                                                                    "string"
+                                                                        ? it
+                                                                        : it.name}
                                                                 </span>
                                                             </div>
                                                         )
