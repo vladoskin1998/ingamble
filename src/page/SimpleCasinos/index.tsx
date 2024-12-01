@@ -13,8 +13,8 @@ import { Harry } from "./Harry"
 import { PopupReadMore } from "./PopupReadMore"
 import { useEffect, useState } from "react"
 
-export default function Review() {
-    document.title = "Review"
+export default function SimpleCasinos() {
+    document.title = "Simple Casinos"
 
     const [openModal, setOpenModal] = useState(false)
 

@@ -161,7 +161,7 @@ export const Header = ({
                                 <li className="menu-header__item">
                                     <a
                                         rel="nofollow noopener"
-                                        href=""
+                                        href="/all-bonus"
                                         aria-label="Put your description here."
                                         target="_blank"
                                         className="menu-header__link"
@@ -172,7 +172,7 @@ export const Header = ({
                                 <li className="menu-header__item">
                                     <a
                                         rel="nofollow noopener"
-                                        href="/"
+                                        href="/all-casinos"
                                         aria-label="Put your description here."
                                         target="_blank"
                                         className="menu-header__link"
@@ -454,7 +454,7 @@ export const Header = ({
                                     </li>
                                     <li className="menu-header__item">
                                         <a
-                                            href=""
+                                            href="/all-bonus" 
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="menu-header__link"
@@ -464,7 +464,7 @@ export const Header = ({
                                     </li>
                                     <li className="menu-header__item">
                                         <a
-                                            href=""
+                                            href="/all-casinos"
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="menu-header__link"

@@ -17,7 +17,7 @@ import {
     AllCategoriesHomeDataResponse,
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { COLORS_TAGS } from "../../helper"
+import { COLORS_TAGS, sanitizeLink } from "../../helper"
 import { useParams } from "react-router-dom";
 
 const getAllBonusFetchData = async (page: number, queryId: string) => {
@@ -54,7 +54,7 @@ export default function SeeAllBonus() {
     );
     
     useEffect(() => {
-        const el = dataCategories?.bonus_categories.find(item => item.name.toLocaleLowerCase().replace(/\s+/g, "-") === bonus_categories)
+        const el = dataCategories?.bonus_categories.find(item => sanitizeLink(item.name) === bonus_categories)
         if (el) {
             document.title = `All Bonuses | ${el?.name}`
             setQueryId(String(el.id))

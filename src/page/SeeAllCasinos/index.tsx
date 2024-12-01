@@ -5,7 +5,7 @@ import { Wraper } from "../Wraper"
 import like from "../../assets/img/icons/like.svg"
 import "./style.css"
 import { useParams } from "react-router-dom"
-import { lazy, useEffect, useState } from "react"
+import {  useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import $api from "../../http"
 import { useQuery } from "react-query"
@@ -17,15 +17,14 @@ import {
     SeeAllCasinosCategoryResponse,
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { euroToDolar, NumberAssociaty } from "../../helper"
-const LazyFlag = lazy(() => import("react-world-flags"))
+import { euroToDolar, NumberAssociaty, sanitizeLink } from "../../helper"
 
 const getDataHomePageCategories = async () => {
-    const response = await $api.get("get-data-home-page-categories/");
-    return response.data 
-};
+    const response = await $api.get("get-data-home-page-categories/")
+    return response.data
+}
 
-const getAllCasinosFetchData = async (page: number, queryId:string) => {
+const getAllCasinosFetchData = async (page: number, queryId: string) => {
     const response = await $api.get(
         `get-see-all-casinos-category/${queryId}/?page=${page}&page_size=${countPageSize}`
     )
@@ -60,40 +59,35 @@ export const WithdrawalSeeAllCasinos = (n: {
 const countPageSize = 10
 
 export default function SeeAllCasinos() {
-   
-
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllCasinosType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
-    const { casino_categories } = useParams<{ casino_categories: string }>();
+    const { casino_categories } = useParams<{ casino_categories: string }>()
     const [queryId, setQueryId] = useState("")
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
-    const { data: dataCategories} = useQuery< AllCategoriesHomeDataResponse >(
+    const { data: dataCategories } = useQuery<AllCategoriesHomeDataResponse>(
         "get-data-home-page-categories/",
         getDataHomePageCategories,
         {
             keepPreviousData: true,
             staleTime: Infinity,
         }
-    );
+    )
 
-
-    
     useEffect(() => {
-        const el = dataCategories?.casino_categories?.find(item => item.name.toLocaleLowerCase().replace(/\s+/g, "-") === casino_categories)    
+        const el = dataCategories?.casino_categories?.find(
+            (item) => sanitizeLink(item.name) === casino_categories
+        )
         if (el) {
             document.title = `All Casinos | ${el?.name}`
             setQueryId(String(el.id))
         }
     }, [casino_categories, dataCategories])
 
-
-
-
     const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(
-        ["get-see-all-loyalties", currentPage, queryId], 
+        ["get-see-all-loyalties", currentPage, queryId],
         () => getAllCasinosFetchData(currentPage, queryId),
         {
             keepPreviousData: true,
@@ -101,7 +95,7 @@ export default function SeeAllCasinos() {
         }
     )
     useEffect(() => {
-        if (data?.casino?.results && isMobile ) {
+        if (data?.casino?.results && isMobile) {
             setAllData((s) => {
                 const combinedData = [...s, ...data?.casino?.results]
 
@@ -115,7 +109,7 @@ export default function SeeAllCasinos() {
                 return uniqueData
             })
         }
-        if (!allData?.length && data?.casino?.results){
+        if (!allData?.length && data?.casino?.results) {
             setAllData(data?.casino?.results)
         }
     }, [data])
@@ -265,15 +259,25 @@ export default function SeeAllCasinos() {
                                                                                     ?.licenses?.[0]
                                                                                     ?.name
                                                                             }
-                                                                            <span className="item-info-content-item-loyaltie-programs__value-flag">
-                                                                                <LazyFlag
-                                                                                    code={
-                                                                                        item
-                                                                                        ?.licenses?.[0]
-                                                                                        ?.country_code
-                                                                                    }
-                                                                                />
-                                                                            </span>
+                                                                            {item
+                                                                                ?.licenses?.[0]
+                                                                                ?.image && (
+                                                                                <span className="item-info-content-item-loyaltie-programs__value-flag">
+                                                                                    <img
+                                                                                        src={
+                                                                                            item
+                                                                                                ?.licenses?.[0]
+                                                                                                ?.image ||
+                                                                                            ""
+                                                                                        }
+                                                                                        alt={
+                                                                                            item
+                                                                                                ?.licenses?.[0]
+                                                                                                ?.country_code
+                                                                                        }
+                                                                                    />
+                                                                                </span>
+                                                                            )}
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -358,8 +362,9 @@ export default function SeeAllCasinos() {
                                                     </div>
                                                     <div className="content-item-loyaltie-programs__column content-item-loyaltie-programs__column_features">
                                                         <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
-                                                            {item?.loyalty_program?.loyalty_keypoint?.slice(0,3).map(
-                                                                (it) => (
+                                                            {item?.loyalty_program?.loyalty_keypoint
+                                                                ?.slice(0, 3)
+                                                                .map((it) => (
                                                                     <div className="features-essential-programs-gamble__column">
                                                                         <div className="features-essential-programs-gamble__item">
                                                                             <div className="features-essential-programs-gamble__icon">
@@ -386,8 +391,7 @@ export default function SeeAllCasinos() {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                )
-                                                            )}
+                                                                ))}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -396,18 +400,21 @@ export default function SeeAllCasinos() {
                                     </div>
                                 ))}
                             </div>
-                            <PaginationPage countElem={data?.casino?.count} 
-                               currentPage={currentPage}
-                               countPageElem={countPageSize} 
-                               setCurrentPage={(s) => {
-                                setCurrentPage(s)
-                                if(!isMobile){
-                                    window.scrollTo({ behavior: 'smooth',    top: 0,});
-                                }
-                            }}
+                            <PaginationPage
+                                countElem={data?.casino?.count}
+                                currentPage={currentPage}
+                                countPageElem={countPageSize}
+                                setCurrentPage={(s) => {
+                                    setCurrentPage(s)
+                                    if (!isMobile) {
+                                        window.scrollTo({
+                                            behavior: "smooth",
+                                            top: 0,
+                                        })
+                                    }
+                                }}
                             />
                         </div>
-                        
                     </section>
                 </div>
             </main>

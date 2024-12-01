@@ -5,10 +5,10 @@ import likeIcon from "../../assets/img/icons/like.svg"
 import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import giftIcon from "../../assets/img/icons/gift.svg"
-import { useState, useEffect, lazy } from "react"
+import { useState, useEffect } from "react"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { euroToDolar } from "../../helper"
-const LazyFlag = lazy(() => import("react-world-flags"))
+
 
 const color_label = [
     "tags-casino-card__item_green",
@@ -188,8 +188,8 @@ export const HeaderSimpleBonus = ({
                                 <div className="content-casino-info__country country-content-casino-info">
                                     <div className="country-content-casino-info__info">
                                         <div className="country-content-casino-info__icon">
-                                            <LazyFlag code={"LV"} height={20} />
-                                            {/* <LazyLoadImage
+{/*                                    
+                                            <LazyLoadImage
                                                 src={latviaFlag}
                                                 alt="latvia"
                                             /> */}

@@ -17,7 +17,7 @@ const BooleanValue: BooleanValueType = {
 }
 
 
-const makeListFilterHeader = (
+export const makeListFilterHeader = (
     o: any
 ): MakeListFilterHeaderType[] => {
     const result: MakeListFilterHeaderType[] = []

@@ -19,8 +19,8 @@ import { HarryStyles } from "../SimpleBonus/HarryStyles"
 import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
 import  SubscribeForm  from "../SimpleBonus/SubscribeForm"
 import { LoyaltyAcordeon } from "./LoyaltyAcordeon"
-export default function Loyalties() {
-    document.title = "Loyaltie"
+export default function SimpleLoyalties() {
+    document.title = "Simple Loyalties"
     return (
         <Wraper>
             <main className="gamble__loyaltie main-gamble loyaltie">
@@ -34,7 +34,7 @@ export default function Loyalties() {
                                 { name: "Highest RTP Slots" },
                                 { name: " No Deposit Bonuses" },
                                 { name: "  VPN Allowed Casinos" },
-                            ] || []
+                            ] 
                         }
                     />
                     <BreadCrumb

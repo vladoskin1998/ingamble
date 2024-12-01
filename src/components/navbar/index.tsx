@@ -13,8 +13,40 @@ import { Link } from "react-router-dom"
 
 import { BonusFilter } from "./BonusFilter"
 import { LoyaltiesFilter } from "./LoyaltiesFilter"
+import { makeListFilterHeader } from "../filter-components/FilterHeaderList"
+import {
+    BonusFilterBodyType,
+    CasinoFilterBodyType,
+    LoyaltiesFilterBodyType,
+} from "../../types"
 
 type DefaultOpenType = "casinos" | "bonuses" | "loyalties" | "slots" | ""
+
+const LengthApplyFilter = ({
+    currentRouteFilter,
+    casinoFilters,
+    bonusFilters,
+    loyaltiesFilters,
+}: {
+    currentRouteFilter: RouteToNextFilter
+    casinoFilters: CasinoFilterBodyType
+    bonusFilters: BonusFilterBodyType
+    loyaltiesFilters: LoyaltiesFilterBodyType
+}) => {
+    if (currentRouteFilter === RouteToNextFilter.BONUS) {
+        return `(${makeListFilterHeader(bonusFilters).length})`
+    }
+
+    if (currentRouteFilter === RouteToNextFilter.CASINOS) {
+        return `(${makeListFilterHeader(casinoFilters).length})`
+    }
+
+    if (currentRouteFilter === RouteToNextFilter.LOYALTIES) {
+        return `(${makeListFilterHeader(loyaltiesFilters).length})`
+    }
+
+    return ""
+}
 
 export const Navbar = ({
     isSidebarActive,
@@ -27,6 +59,9 @@ export const Navbar = ({
     const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>("")
 
     const {
+        casinoFilters,
+        bonusFilters,
+        loyaltiesFilters,
         currentRouteFilter,
         handlerCurrentRouteFilter,
         handlerClearAllFilters,
@@ -389,7 +424,12 @@ export const Navbar = ({
                                     }
                                     className="bottom-form-filters__btn bottom-form-filters__btn_submit"
                                 >
-                                    <span>Apply Filters</span>
+                                    <span>{`Apply Filters ${LengthApplyFilter({
+                                        currentRouteFilter,
+                                        casinoFilters,
+                                        bonusFilters,
+                                        loyaltiesFilters,
+                                    })}`}</span>
                                 </Link>
                             </div>
                         </div>

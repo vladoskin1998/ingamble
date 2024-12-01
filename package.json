@@ -35,7 +35,6 @@
     "react-router-dom": "^6.26.0",
     "react-virtualized-auto-sizer": "^1.0.24",
     "react-window": "^1.8.10",
-    "react-world-flags": "^1.6.0",
     "swiper": "^11.1.14",
     "uuid": "^11.0.3"
   },

@@ -1,3 +1,4 @@
+import { sanitizeLink } from "../../helper";
 import { DataHomeItemsBlockTypeCategory } from "../../types"
 
 
@@ -17,7 +18,7 @@ export const SeeAllButton = ({
     
     return (
         <a
-            href={`/all-${SeeAllRoutes[type_category]}${parameter ? "/" + parameter.toLocaleLowerCase().replace(/\s+/g, "-") : ''}`}
+            href={`/all-${SeeAllRoutes[type_category]}${parameter ? "/" + sanitizeLink(parameter)  : ''}`}
             aria-label="Put your description here."
             target="_blank"
             className="top__btn"

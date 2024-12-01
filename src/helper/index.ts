@@ -65,7 +65,15 @@ export const sanitizeMaxInput = (value: string, max: number): number => {
     if (max < 10) {
         sanitized = sanitized[sanitized.length - 1];
     }
-
-    // Приводим к числу и ограничиваем максимумом
     return Math.min(Number(sanitized), max);
 };
+
+
+export const sanitizeLink = (s:string | undefined) => {
+    if(!s){
+        return ''
+    }
+
+    return s.toLocaleLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")
+
+}

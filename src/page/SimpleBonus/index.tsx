@@ -6,7 +6,7 @@ import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 
 import "swiper/css"
 import { useQuery } from "react-query"
-import { lazy, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import $api from "../../http"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
@@ -26,7 +26,7 @@ import MainSlider from "../../components/swiper/MainSlider"
 import { CheckMoreWhatSuitsYouBest } from "./CheckMoreWhatSuitsYouBest"
 import { HarryStyles } from "./HarryStyles"
 
-const LazyFlag = lazy(() => import("react-world-flags"))
+
 
 const getBonusDataFetch = async () => {
     const response = await $api.get("get-data-bonus/8/")
@@ -432,12 +432,8 @@ export default function SimpleBonus() {
                                                             overflow: "hidden",
                                                         }}
                                                     >
-                                                        <LazyFlag
-                                                            code={
-                                                                geoLocation.countryCode
-                                                            }
-                                                            height={20}
-                                                        />
+                                                        <img src={geoLocation.countryCode} alt={geoLocation.countryCode} />
+                                                       
                                                     </span>
                                                     <h2 className="top__title">
                                                         Bonuses available in{" "}

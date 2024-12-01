@@ -4,8 +4,8 @@ import { lazy } from "react"
 
 // import { PreloaderPuls, PreloaderSpin } from "../components/loader/Preloader"
 
-const Review = lazy(() => import("../page/Review"))
-const Loyalties = lazy(() => import("../page/Loyalties"))
+const SimpleCasinos = lazy(() => import("../page/SimpleCasinos"))
+const SimpleLoyalties = lazy(() => import("../page/SimpleLoyalties"))
 const SimpleBonus = lazy(() => import("../page/SimpleBonus"))
 const SeeAllEssentialsLoyalty = lazy(
     () => import("../page/SeeAllEssentialsLoyalty")
@@ -28,17 +28,21 @@ export const PublicRouter = () => {
             <Route path="pr2" element={<PreloaderSpin/>}/> */}
 
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="review" element={<Review />} />
-           
 
             <Route path="/filter-casinos" element={<FilterCasino />} />
             <Route path="/filter-bonus" element={<FilterBonus />} />
             <Route path="/filter-loyalties" element={<FilterLoyalty />} />
 
             {/* Страница категорий (see all) по казино  */}
-            <Route path="/all-casinos/:casino_categories" element={<SeeAllCasinos />} />
+            <Route
+                path="/all-casinos/:casino_categories?"
+                element={<SeeAllCasinos />}
+            />
             {/* Страница категорий  (see all) по бонусам */}
-            <Route path="/all-bonus/:bonus_categories" element={<SeeAllBonus />} />
+            <Route
+                path="/all-bonus/:bonus_categories?"
+                element={<SeeAllBonus />}
+            />
 
             {/* Страница лоялки ("Loyalties")*/}
             <Route
@@ -46,14 +50,18 @@ export const PublicRouter = () => {
                 element={<SeeAllEssentialsLoyalty />}
             />
 
+            {/* //Страница конкретного казино */}
+            <Route path="/casino/:casino_name" element={<SimpleCasinos />} />
             {/* //Страница конкретного бонуса */}
             <Route
                 path="/casino/:casino_name/bonuses/:bonus_type"
                 element={<SimpleBonus />}
             />
             {/* Страница конкретной лоялки */}
-            <Route path="/casino/:casino_name/loyalty" element={<Loyalties />} />
-
+            <Route
+                path="/casino/:casino_name/loyalty"
+                element={<SimpleLoyalties />}
+            />
 
             <Route path="/" element={<Home />} />
             <Route path="/" element={<Navigate to="/" />} />

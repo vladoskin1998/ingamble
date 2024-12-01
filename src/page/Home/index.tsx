@@ -36,6 +36,7 @@ import BlockType5Mobile from "./BlockType5Mobile"
 import { BlockType3Mobile } from "./BlockType3Mobile"
 import BlockType7Mobile from "./BlockType7Mobile"
 import BlockType4Mobile from "./BlockType4Mobile"
+import { sanitizeLink } from "../../helper"
 
 const BlockType2Mobile = lazy(() => import("./BlockType2Mobile"))
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
@@ -172,13 +173,13 @@ export const Home = () => {
                             ...(dataCategories?.bonus_categories?.map(
                                 (item) => ({
                                     name: item.name,
-                                    link: `${window.location.origin}/all-bonus?id=${item.id}`,
+                                    link: `${window.location.origin}/all-bonus/${sanitizeLink(item?.name)}`,
                                 })
                             ) || []),
                             ...(dataCategories?.casino_categories?.map(
                                 (item) => ({
                                     name: item.name,
-                                    link: `${window.location.origin}/all-casinos?id=${item.id}`,
+                                    link: `${window.location.origin}/all-casinos/${sanitizeLink(item?.name)}`,
                                 })
                             ) || []),
                         ])}

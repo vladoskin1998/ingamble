@@ -91,7 +91,7 @@ export enum RouteToNextFilter {
     CASINOS = "casinos",
     BONUS = "bonus",
     LOYALTIES = "loyalties",
-    DEFAULT = "home",
+    DEFAULT = "",
 }
 
 type FilterContextType = {
