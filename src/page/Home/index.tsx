@@ -4,25 +4,30 @@ import { Wraper } from "../Wraper"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 
 import { Categories } from "../../components/categories/Categories"
+
 import { BlockType1 } from "./BlockType1"
-import { BlockType2 } from "./BlockType2"
 
-import { BlockType6 } from "./BlockType6"
-import { BlockType3 } from "./BlockType3"
-import { BlockType4 } from "./BlockType4"
-import { BlockType7 } from "./BlockType7"
-import { BlockType5 } from "./BlockType5"
-import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
-import { BlockType8 } from "./BlockType8"
-import { BlockType9 } from "./BlockType9"
+const BlockType2 = lazy(() => import("./BlockType2"))
+import BlockType2Mobile from "./BlockType2Mobile"
+
+const BlockType3 = lazy(() => import("./BlockType3"))
+import BlockType3Mobile from "./BlockType3Mobile"
+
+const BlockType4 = lazy(() => import("./BlockType4"))
+import BlockType4Mobile from "./BlockType4Mobile"
+
+const BlockType5 = lazy(() => import("./BlockType5"))
+import BlockType5Mobile from "./BlockType5Mobile"
+
+const BlockType6 = lazy(() => import("./BlockType6"))
+
+const BlockType7 = lazy(() => import("./BlockType7"))
+import BlockType7Mobile from "./BlockType7Mobile"
+
+const BlockType8 = lazy(() => import("./BlockType8"))
+const BlockType9 = lazy(() => import("./BlockType9"))
+
 import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
-
-// import { VPNFriendlyCasinos } from "./VPNFriendlyCasinos"
-// import { WhatWeArePlayingNow } from "./WhatWeArePlayingNow"
-// import PopularFree from "./PopularFree"
-// import { GreatLiveCasinoBonuses } from "./GreatLiveCasinoBonuses"
-// import { FastestPayoutCasinos } from "./FastestPayoutCasinos"
-
 import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
@@ -31,14 +36,10 @@ import {
     BlockTypeNumber,
     HomeDataBlock,
 } from "../../types"
-// import BlockType7Mobile from "./BlockType7Mobile"
-import BlockType5Mobile from "./BlockType5Mobile"
-import { BlockType3Mobile } from "./BlockType3Mobile"
-import BlockType7Mobile from "./BlockType7Mobile"
-import BlockType4Mobile from "./BlockType4Mobile"
-import { sanitizeLink } from "../../helper"
 
-const BlockType2Mobile = lazy(() => import("./BlockType2Mobile"))
+import { sanitizeLink } from "../../helper"
+import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 // const BlockType7Mobile = lazy(() => import("./BlockType7Mobile"))
 // const TopReloadBonuses = lazy(() => import("./TopReloadBonuses"))
@@ -173,13 +174,17 @@ export const Home = () => {
                             ...(dataCategories?.bonus_categories?.map(
                                 (item) => ({
                                     name: item.name,
-                                    link: `${window.location.origin}/all-bonus/${sanitizeLink(item?.name)}`,
+                                    link: `${
+                                        window.location.origin
+                                    }/all-bonus/${sanitizeLink(item?.name)}`,
                                 })
                             ) || []),
                             ...(dataCategories?.casino_categories?.map(
                                 (item) => ({
                                     name: item.name,
-                                    link: `${window.location.origin}/all-casinos/${sanitizeLink(item?.name)}`,
+                                    link: `${
+                                        window.location.origin
+                                    }/all-casinos/${sanitizeLink(item?.name)}`,
                                 })
                             ) || []),
                         ])}

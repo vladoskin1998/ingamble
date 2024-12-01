@@ -5,7 +5,7 @@ import "swiper/css"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
-export const BlockType9 = ({ data }: { data: HomeDataBlock | undefined }) => {
+export default  function BlockType9 ({ data }: { data: HomeDataBlock | undefined })  {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9)
         return <></>
     return (

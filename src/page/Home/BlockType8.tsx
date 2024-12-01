@@ -5,7 +5,7 @@ import { SeeAllButton } from "./SeeAllButton"
 
 
 
-export const BlockType8 = ({ data }: { data: HomeDataBlock | undefined }) => {
+export default function BlockType8 ({ data }: { data: HomeDataBlock | undefined })  {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType8)
         return <></>
     return (

@@ -10,11 +10,11 @@ import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS } from "../../helper"
 
-export const BlockType3Mobile = ({
+export default function BlockType3Mobile ({
     data,
 }: {
     data: HomeDataBlock | undefined
-}) => {
+}) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {

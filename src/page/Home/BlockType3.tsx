@@ -11,7 +11,7 @@ import { COLORS_TAGS } from "../../helper"
 
 
 
-export const BlockType3 = ({ data }: { data: HomeDataBlock | undefined }) => {
+export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined })  {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     const [screenState, setScreenState] = useState<number | "auto">("auto")

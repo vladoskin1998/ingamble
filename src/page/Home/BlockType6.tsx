@@ -8,7 +8,7 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
 
-export const BlockType6 = ({ data }: { data: HomeDataBlock | undefined }) => {
+export default function BlockType6 ({ data }: { data: HomeDataBlock | undefined })  {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
