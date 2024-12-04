@@ -13,7 +13,7 @@ import {
     SeeAllEssentialLoyaltyCasino,
 } from "../../types"
 import { useQuery } from "react-query"
-import { filterEmptyValues } from "../../helper"
+import { filterEmptyValues, sanitizeLink } from "../../helper"
 import $api from "../../http"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { debounce } from "lodash"
@@ -22,6 +22,8 @@ import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import star from "../../assets/img/icons/star.svg"
 import "../SeeAllEssentialsLoyalty/style.css"
 import { v4 as uuidv4 } from "uuid"
+import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+import SubscribeForm from "../SimpleBonus/SubscribeForm"
 const countPageSize = 15
 
 const debouncedFetchFilter = debounce(
@@ -192,6 +194,79 @@ export default function FilterLoyalty() {
                             />
                         </div>
                     </section>
+                    <CheckMoreWhatSuitsYouBest />
+                    <SubscribeForm />
+                    <section className="main-gamble__bottom-info bottom-info-gamble">
+                        <div className="bottom-info-gamble__container container">
+                            <div className="bottom-info-gamble__row">
+                                <div className="bottom-info-gamble__column">
+                                    <div className="bottom-info-gamble__item">
+                                        <h2 className="bottom-info-gamble__title">
+                                            inGamble - The most popular New
+                                            Casino and Bonus listing and review
+                                            website
+                                        </h2>
+                                        <div className="bottom-info-gamble__text">
+                                            <p>
+                                                inGamble is a well-known and
+                                                respected brand within the
+                                                iGaming industry. We are the
+                                                most popular gambling listing
+                                                and review website. New players
+                                                owners always look for
+                                                opportunities to list their
+                                                projects on our website. That
+                                                ensures that the information on
+                                                our platform is always
+                                                accessible and up to date.
+                                            </p>
+                                            <p>
+                                                Most of the cryptocurrencies are
+                                                listed on CoinMooner even before
+                                                they are listed on CoinMarketCap
+                                                & CoinGecko.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bottom-info-gamble__column">
+                                    <div className="bottom-info-gamble__item">
+                                        <h2 className="bottom-info-gamble__title">
+                                            Find DeFi tokens that will generate
+                                            huge profits
+                                        </h2>
+                                        <div className="bottom-info-gamble__text">
+                                            <p>
+                                                CoinMooner became a platform
+                                                that makes cryptocurrencies more
+                                                accessible to the public and
+                                                provides entertaining features,
+                                                developments, crypto-related
+                                                news, tutorials, and other
+                                                valuable materials. One of the
+                                                main goals is to stay relevant
+                                                and keep up with the rapid
+                                                growth of crypto.
+                                            </p>
+                                            <p>
+                                                To follow our ideology, we
+                                                developed state-of-the-art
+                                                mechanisms and features that
+                                                allow our visitors to analyze
+                                                the tokens. Our visitors can use
+                                                various rankings, filtering
+                                                options, token contract audits,
+                                                charts, trading history, and
+                                                many other valuable options. All
+                                                of this combined brings
+                                                consistent results!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </main>
         </Wraper>
@@ -211,6 +286,7 @@ const LisDisplayedData = memo(
                         <div className="item-loyaltie-programs__row">
                             <div className="item-loyaltie-programs__main">
                                 <a
+                                    href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
                                     className="item-loyaltie-programs__image loyalty-img-custom "
                                     key={uuidv4()}
                                 >
@@ -266,23 +342,32 @@ const LisDisplayedData = memo(
                                         <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
                                             <div className="item-essential-programs-gamble__rating">
                                                 <div className="item-essential-programs-gamble__rating-number">
-                                                    9/10
+                                                    {item?.loyalty_program
+                                                        ?.count_levels || 10}
+                                                    /10
                                                 </div>
                                                 <div className="item-essential-programs-gamble__rating-body">
                                                     <div className="item-essential-programs-gamble__rating-items items-rating-essential-programs-gamble">
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_1 full"></div>
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_2 full"></div>
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_3 full"></div>
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_4 full"></div>
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_5 full"></div>
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_6 full"></div>
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_7 full"></div>
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_8 full"></div>
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_9 full"></div>
-                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_10"></div>
+                                                        {[
+                                                            1, 2, 3, 4, 5, 6, 7,
+                                                            8, 9, 10,
+                                                        ].map((level) => (
+                                                            <div
+                                                                className={`items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_${level} ${
+                                                                    level <=
+                                                                        (item
+                                                                            ?.loyalty_program
+                                                                            ?.count_levels ||
+                                                                            10) &&
+                                                                    "full"
+                                                                }`}
+                                                            ></div>
+                                                        ))}
                                                     </div>
                                                     <div className="item-essential-programs-gamble__rating-text">
-                                                        Excellent
+                                                        {item?.loyalty_program
+                                                            ?.loyalty_level_description ||
+                                                            "Excellent"}
                                                     </div>
                                                 </div>
                                             </div>
@@ -292,7 +377,7 @@ const LisDisplayedData = memo(
                                 <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                         <a
-                                            href={item?.casino_affiliate_link}
+                                            href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
                                             target="_blank"
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-view"
@@ -300,7 +385,7 @@ const LisDisplayedData = memo(
                                             View Casino
                                         </a>
                                         <a
-                                            href="/loyaltie"
+                                            href={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.casino_id}`}
                                             target="_blank"
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-more"

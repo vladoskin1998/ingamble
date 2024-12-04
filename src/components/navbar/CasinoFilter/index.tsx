@@ -58,7 +58,7 @@ export const CasinoFilterContent = ({
                         <RangeSlider
                             initState={casinoFilters.casino_rank}
                             field="casino_rank"
-                            minmax={[0, 10]}
+                            minmax={[1, 10]}
                             setLocalFilters={setCasinoFilters}
                         />
                     }
@@ -81,7 +81,7 @@ export const CasinoFilterContent = ({
                         <RangeSlider
                             initState={casinoFilters.casino_likes}
                             field="casino_likes"
-                            minmax={[0, 10000]}
+                            minmax={[1, 10000]}
                             setLocalFilters={setCasinoFilters}
                         />
                     }

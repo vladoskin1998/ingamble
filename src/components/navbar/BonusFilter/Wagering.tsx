@@ -18,16 +18,16 @@ export const Wagering = ({
     }
     setLocalFilters: React.Dispatch<React.SetStateAction<BonusFilterBodyType>>
 }) => {
-    const [depositOnly, setDepositOnly] = useState(0)
-    const [winningsOnly, setWinningsOnly] = useState(0)
-    const [bonusPlusDeposit, setBonusPlusDeposit] = useState(0)
-    const [bonusOnly, setBonusOnly] = useState(0)
+    const [depositOnly, setDepositOnly] = useState<number | null>(1)
+    const [winningsOnly, setWinningsOnly] = useState<number | null>(1)
+    const [bonusPlusDeposit, setBonusPlusDeposit] = useState<number | null>(1)
+    const [bonusOnly, setBonusOnly] = useState<number | null>(1)
 
     useEffect(() => {
-        setDepositOnly(initState?.deposit_only || 0)
-        setWinningsOnly(initState?.winnings_only || 0)
-        setBonusPlusDeposit(initState?.bonus_plus_deposit || 0)
-        setBonusOnly(initState?.bonus_only || 0)
+        setDepositOnly(initState?.deposit_only || null)
+        setWinningsOnly(initState?.winnings_only || null)
+        setBonusPlusDeposit(initState?.bonus_plus_deposit || null)
+        setBonusOnly(initState?.bonus_only || null)
     }, [initState])
 
     const handleLimitChange = (
@@ -37,7 +37,7 @@ export const Wagering = ({
             | "winnings_only"
             | "bonus_plus_deposit"
             | "bonus_only",
-        setLimit: React.Dispatch<React.SetStateAction<number>>
+        setLimit: React.Dispatch<React.SetStateAction<number | null>>
     ) => {
         const newValue = Math.min(value, MAX_LIMIT)
         setLimit(newValue)
@@ -51,7 +51,7 @@ export const Wagering = ({
 
     const renderLimit = (
         label: string,
-        value: number,
+        value: number | null,
         onChange: (value: number) => void
     ) => (
         <div className="form-filter__range range-form-filter range-form-filter_only">
@@ -61,7 +61,8 @@ export const Wagering = ({
                     <input
                         className="field__input field__input_only"
                         type="number"
-                        value={value}
+                        defaultValue={100}
+                        value={value || ''}
                         onChange={(e) =>
                             onChange(
                                 sanitizeMaxInput(e.target.value, MAX_LIMIT)
@@ -76,7 +77,7 @@ export const Wagering = ({
                     className="input-style-range"
                     min={0}
                     max={MAX_LIMIT}
-                    value={value}
+                    value={value || 0}
                     onChange={(v) => onChange(Number(v))}
                 />
             </div>

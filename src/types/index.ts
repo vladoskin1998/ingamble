@@ -1,3 +1,11 @@
+interface MinimumDeposit {
+    value: number;
+    symbol: {
+        symbol: string;
+        name: string;
+    };
+  }
+
 export interface GetDataBonusResponse {
     slug?: string;
     casino_name: string;
@@ -13,13 +21,7 @@ export interface GetDataBonusResponse {
     bonus_type: string;
     bonus_subtype?: { name: string }[];
     labels: { name: string }[];
-    bonus_amount: {
-        value: number;
-        symbol: {
-            symbol: string;
-            name: string;
-        };
-    }[];
+    bonus_amount: MinimumDeposit[];
     link?: string;
     restriction_rtp_game: number;
     max_bet_automatic?: boolean;
@@ -59,13 +61,7 @@ export interface GetDataBonusResponse {
     special_note?: {
         description: string;
     };
-    max_bet: {
-        value: number;
-        symbol: {
-            symbol: string;
-            name: string;
-        };
-    }[];
+    max_bet: MinimumDeposit[];
     restriction_country: {
         country: {
             name: string;
@@ -247,6 +243,8 @@ export interface SeeAllEssentialLoyaltyKeypoint {
 }
 
 export interface SeeAllEssentialLoyaltyProgram {
+    count_levels?: number;
+    loyalty_level_description?: string; 
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
 }
 
@@ -266,9 +264,6 @@ export interface SeeAllEssentialCasinoResponse {
     results: SeeAllEssentialLoyaltyCasino[];
 }
 
-
-
-
 export interface SeeAllCasinosLoyaltyKeyPoint extends SeeAllEssentialLoyaltyKeypoint { }
 
 export interface SeeAllCasinosLoyaltyProgram {
@@ -281,6 +276,13 @@ export enum PAYOUTSPEED {
     Low = "Low"
 }
 
+interface WithdrawalLimit {
+    daily: number | null;
+    weekly: number | null;
+    monthly: number | null;
+  }
+  
+
 export interface SeeAllCasinosType {
     casino_id: number;
     casino_name: string;
@@ -290,13 +292,7 @@ export interface SeeAllCasinosType {
     casino_image: string;
     casino_affiliate_link: string;
     additional_casino_params: string[];
-    min_dep: {
-        value: number;
-        symbol: {
-            symbol: string;
-            name: string;
-        };
-    }[];
+    min_dep: MinimumDeposit[];
     licenses: {
         name: string;
         image: string | null;
@@ -304,11 +300,7 @@ export interface SeeAllCasinosType {
     }[];
 
     payout_speed: PAYOUTSPEED;
-    withdrawal_limit: {
-        daily: number | null;
-        weekly: number | null;
-        monthly: number | null;
-    };
+    withdrawal_limit: WithdrawalLimit;
     loyalty_program: SeeAllCasinosLoyaltyProgram;
 }
 
@@ -469,7 +461,7 @@ export interface CasinoFilterBodyType {
 
     unlimited_min_wager: boolean | undefined,
     unlimited_min_deposit: boolean | undefined,
-
+    casino_name: string | undefined,
 };
 
 
@@ -530,3 +522,144 @@ export type FilterLoyaltiesPostResponse ={
     results: SeeAllEssentialLoyaltyCasino[]
     total_pages: number
 }
+
+
+
+export interface RewievCasinoDataResponse {
+    id: number;
+    affiliate: null | string;
+    loyalty_program: {
+      loyalty_keypoint: Array<{
+        image: string;
+        text_1: string;
+        text_2: string;
+      }>;
+    };
+    bonuses: Array<{
+      id: number;
+      slug: string;
+      name: string;
+      labels: Array<{ name: string }>;
+      bonus_type: { name: string };
+      bonus_subtype: Array<{ name: string }>;
+      special_promo_category: boolean;
+      special_side_bar: boolean;
+      bonus_image: string | null;
+    }>;
+    withdrawal_limit: {
+      daily: number;
+      weekly: number;
+      monthly: number;
+      unlimited: boolean;
+    };
+    min_wagering: {
+      min_value: number;
+    };
+    min_dep: Array<{
+      min_value: number;
+      symbol: {
+        symbol: string;
+        name: string;
+      };
+    }>;
+    images: string[];
+    social_bonuses: {
+      choice: boolean;
+    };
+    casino_category: string[];
+    payment_methods: Array<{
+      id: number;
+      name: string;
+      image: null | string;
+    }>;
+    crypto_currencies: Array<{
+      id: number;
+      symbol: string;
+      name: string;
+      name2: null | string;
+    }>;
+    classic_currency: Array<{
+      id: number;
+      symbol: string;
+      name: string;
+      name2: null | string;
+    }>;
+    games: string[];
+    game_providers: Array<{
+      id: number;
+      name: string;
+      image: null | string;
+    }>;
+    game_types: Array<{
+      id: number;
+      slug: string;
+      name: string;
+      image: null | string;
+    }>;
+    licenses: Array<{
+      id: number;
+      slug: string;
+      image: null | string;
+      name: string;
+      validator_url: null | string;
+    }>;
+    blocked_countries: Array<{
+      id: number;
+      slug: string;
+      name: string;
+      name2: null | string;
+      name3: null | string;
+      flag_image: null | string;
+      code: null | string;
+    }>;
+    language_live_chat: Array<{
+      id: number;
+      slug: string;
+      name: string;
+      image: null | string;
+    }>;
+    language_website: Array<{
+      id: number;
+      slug: string;
+      name: string;
+      image: null | string;
+    }>;
+    sisters_casinos: Array<{
+      id: number;
+      name: string;
+    }>;
+    payout_speed: string;
+    do_not_send_to_client: boolean;
+    rating_level: string;
+    stars: number;
+    review: string;
+    what_we_dont_like: string;
+    what_we_like: string;
+    image: string;
+    image_loyalty: string;
+    slug: string;
+    name: string;
+    casino_rank: string;
+    likes: number;
+    vpn_usage: boolean;
+    sportsbook: boolean;
+    url: string;
+    owner: string;
+    established: number;
+    wager_limit: boolean;
+    loss_limit: boolean;
+    session_limit: boolean;
+    self_exclusion: boolean;
+    cool_off: boolean;
+    reality_check: boolean;
+    self_assessment: boolean;
+    withdrawal_lock: boolean;
+    deposit_limit: boolean;
+    gamstop_self_exclusion: boolean;
+    bonus_hunt_with_active_bonus: boolean;
+    tournaments: boolean;
+    special_notes: string;
+    live_chat_competence: string;
+    additional_casino_params: number[];
+  }
+  

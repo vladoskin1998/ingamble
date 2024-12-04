@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 import { Pagination } from "swiper/modules"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
+import { RewievCasinoDataResponse } from "../../types"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
-export const CasinoBonuses = () => {
+export const CasinoBonuses = ({data}:{data: undefined | RewievCasinoDataResponse}) => {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 
@@ -63,7 +65,7 @@ export const CasinoBonuses = () => {
                                         Keypoints
                                     </button>
                                 </SwiperSlide>
-                                <SwiperSlide className="tabs__slide slide-tabs swiper-slide">
+                                {/* <SwiperSlide className="tabs__slide slide-tabs swiper-slide">
                                     <button
                                         className={`slide-tabs__btn link-scroll ${active === "review-iwild-casino-special-promo" && "active"}`}
                                      
@@ -71,7 +73,7 @@ export const CasinoBonuses = () => {
                                     >
                                         Special Promo
                                     </button>
-                                </SwiperSlide>
+                                </SwiperSlide> */}
                                 <SwiperSlide className="tabs__slide slide-tabs swiper-slide">
                                     <button
                                         className={`slide-tabs__btn link-scroll  ${active === "review-iwild-casino-review" && "active"}`}
@@ -94,7 +96,7 @@ export const CasinoBonuses = () => {
                         <div className="top__column">
                             <div className="top__title-block">
                                 <h2 className="top__title">
-                                    iWild Casino Bonuses
+                                    {data?.name} Bonuses
                                 </h2>
                             </div>
                         </div>
@@ -124,7 +126,8 @@ export const CasinoBonuses = () => {
                                     },
                                 }}
                             >
-                                <SwiperSlide className="slider__slide slide-slider swiper-slide">
+                                {
+                                    data?.bonuses.map((b) =>       <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                     <div className="slide-slider__item casino-card">
                                         <a
                                             href=""
@@ -133,13 +136,15 @@ export const CasinoBonuses = () => {
                                             className="casino-card__image-block casino-card__image-block_yellow"
                                         >
                                             <div className="casino-card__image ibg">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/10.jpg"
-                                                    alt="Great Bonus Up To 360% For Evening"
-                                                />
+                                            <LazyCardImg
+                                                        img={b?.bonus_image || ""}
+                                                        height="100%"
+                                                        width="100%"
+                                                        imgLoading={"eager"}
+                                                    />
                                             </div>
                                             <a
-                                                href=""
+                                                // href={b}
                                                 target="_blank"
                                                 aria-label="Put your description here."
                                                 className="casino-card__bnt"
@@ -148,200 +153,22 @@ export const CasinoBonuses = () => {
                                             </a>
                                         </a>
                                         <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
+                                            <div
+                                                
                                                 className="casino-card__name"
+                                                dangerouslySetInnerHTML={{ __html: b.name.replace(/([+-]?\s?\€?\$?\d+(\.\d+)?[%,$€&!*#@^+-]?)/g, '<span>$1</span>') }}
                                             >
+{/*                                                 
+                                                  
                                                 Great Bonus Up{" "}
-                                                <span>To 360%</span> For Evening
-                                            </a>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide className="slider__slide slide-slider swiper-slide">
-                                    <div className="slide-slider__item casino-card">
-                                        <a
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="casino-card__image-block casino-card__image-block_blue"
-                                        >
-                                            <div className="casino-card__image ibg">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/11.jpg"
-                                                    alt="Big Fat Race to $100 Moon coins and long Name example"
-                                                />
+                                                <span>To 360%</span> For Evening */}
                                             </div>
-                                            <a
-                                                href=""
-                                                target="_blank"
-                                                aria-label="Put your description here."
-                                                className="casino-card__bnt"
-                                            >
-                                                Play
-                                            </a>
-                                        </a>
-                                        <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
-                                                Big Fat Race to{" "}
-                                                <span>$100</span> Moon coins and
-                                                long Name example
-                                            </a>
                                         </div>
                                     </div>
-                                </SwiperSlide>
-                                <SwiperSlide className="slider__slide slide-slider swiper-slide">
-                                    <div className="slide-slider__item casino-card">
-                                        <a
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="casino-card__image-block casino-card__image-block_green"
-                                        >
-                                            <div className="casino-card__image ibg">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/12.jpg"
-                                                    alt="Crazy Cash Bomb Winnings $1,000"
-                                                />
-                                            </div>
-                                            <a
-                                                href=""
-                                                target="_blank"
-                                                aria-label="Put your description here."
-                                                className="casino-card__bnt"
-                                            >
-                                                Play
-                                            </a>
-                                        </a>
-                                        <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
-                                                Crazy Cash Bomb Winnings{" "}
-                                                <span>$1,000</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide className="slider__slide slide-slider swiper-slide">
-                                    <div className="slide-slider__item casino-card">
-                                        <a
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="casino-card__image-block casino-card__image-block_violet"
-                                        >
-                                            <div className="casino-card__image ibg">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/13.jpg"
-                                                    alt="Big Fat Race to $1000"
-                                                />
-                                            </div>
-                                            <a
-                                                href=""
-                                                target="_blank"
-                                                aria-label="Put your description here."
-                                                className="casino-card__bnt"
-                                            >
-                                                Play
-                                            </a>
-                                        </a>
-                                        <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
-                                                Big Fat Race to{" "}
-                                                <span>$1000</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide className="slider__slide slide-slider swiper-slide">
-                                    <div className="slide-slider__item casino-card">
-                                        <a
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="casino-card__image-block casino-card__image-block_orange"
-                                        >
-                                            <div className="casino-card__image ibg">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/14.jpg"
-                                                    alt="New Year Bet Race - $30,000 Rocket Launcher With 10x Scope"
-                                                />
-                                            </div>
-                                            <a
-                                                href=""
-                                                target="_blank"
-                                                aria-label="Put your description here."
-                                                className="casino-card__bnt"
-                                            >
-                                                Play
-                                            </a>
-                                        </a>
-                                        <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
-                                                New Year Bet Race -{" "}
-                                                <span>$30,000</span> Rocket
-                                                Launcher With 10x Scope
-                                            </a>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide className="slider__slide slide-slider swiper-slide">
-                                    <div className="slide-slider__item casino-card">
-                                        <a
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="casino-card__image-block casino-card__image-block_yellow"
-                                        >
-                                            <div className="casino-card__image ibg">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/10.jpg"
-                                                    alt="Great Bonus Up To 360% For Evening"
-                                                />
-                                            </div>
-                                            <a
-                                                href=""
-                                                target="_blank"
-                                                aria-label="Put your description here."
-                                                className="casino-card__bnt"
-                                            >
-                                                Play
-                                            </a>
-                                        </a>
-                                        <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
-                                                Great Bonus Up{" "}
-                                                <span>To 360%</span> For Evening
-                                            </a>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
+                                </SwiperSlide>)
+                                }
+                          
+                            
                             </Swiper>
                         </div>
                     </div>

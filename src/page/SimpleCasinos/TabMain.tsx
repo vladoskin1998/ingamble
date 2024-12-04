@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import closeIcon from "../../assets/img/icons/close.svg"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { CasinoReview } from "./CasinoReview"
+import { RewievCasinoDataResponse } from "../../types"
 
 enum TabType {
     General = "General",
@@ -22,8 +23,10 @@ const initStateOpenModal = {
 
 export const TabMain = ({
     handlerOpen,
+    data
 }: {
     handlerOpen: (s: boolean) => void
+    data: undefined | RewievCasinoDataResponse
 }) => {
     const [activeTab, setActiveTab] = useState<TabType>(TabType.General)
 
@@ -69,7 +72,7 @@ export const TabMain = ({
         <>
         <section className="review__iwild-review-mob iwild-review-mob item-iwild-review_main-read-mob">
             <div className="iwild-review-mob__container container">
-            <CasinoReview handlerOpen={handlerOpen}/>
+            <CasinoReview handlerOpen={handlerOpen} data={data}/>
             </div>
         </section>
         <section className="review__info info-review tabs-container">

@@ -16,10 +16,7 @@ import "./style.css"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { useEffect, useState } from "react"
-
-
-
-
+import { sanitizeLink } from "../../helper"
 
 const countPageSize = 10
 
@@ -140,7 +137,9 @@ export default function SeeAllEssentialsLoyalty() {
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
-                                                <a className="item-loyaltie-programs__image loyalty-img-custom">
+                                                <a
+                                                        href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
+                                                className="item-loyaltie-programs__image loyalty-img-custom">
                                                     <LazyCardImg
                                                         img={
                                                             item?.casino_image ||
@@ -203,23 +202,21 @@ export default function SeeAllEssentialsLoyalty() {
                                                         <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
                                                             <div className="item-essential-programs-gamble__rating">
                                                                 <div className="item-essential-programs-gamble__rating-number">
-                                                                    9/10
+                                                                    {item?.loyalty_program?.count_levels || 10 }/10
                                                                 </div>
                                                                 <div className="item-essential-programs-gamble__rating-body">
                                                                     <div className="item-essential-programs-gamble__rating-items items-rating-essential-programs-gamble">
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_1 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_2 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_3 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_4 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_5 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_6 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_7 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_8 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_9 full"></div>
-                                                                        <div className="items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_10"></div>
+
+                                                                        {
+                                                                            [1,2,3,4,5,6,7,8,9,10].map(level => 
+                                                                                <div className={`items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_${level} ${level <= (item?.loyalty_program?.count_levels || 10) && "full"}`}></div>
+
+                                                                            )
+                                                                        }
+              
                                                                     </div>
                                                                     <div className="item-essential-programs-gamble__rating-text">
-                                                                        Excellent
+                                                                        {item?.loyalty_program?.loyalty_level_description || 'Excellent'}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -228,24 +225,22 @@ export default function SeeAllEssentialsLoyalty() {
                                                 </div>
                                                 <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                                     <div className="bottom-content-item-loyaltie-programs__btns">
-                                                        <a
-                                                            href={
-                                                                item.casino_affiliate_link
-                                                            }
-                                                            target="_blank"
-                                                            aria-label="Put your description here."
-                                                            className="bottom-content-item-loyaltie-programs__btn-view"
-                                                        >
-                                                            View Casino
-                                                        </a>
-                                                        <a
-                                                            href="/loyaltie"
-                                                            target="_blank"
-                                                            aria-label="Put your description here."
-                                                            className="bottom-content-item-loyaltie-programs__btn-more"
-                                                        >
-                                                            Read More
-                                                        </a>
+                                                    <a
+                                                   href={`/casino/${sanitizeLink(item.casino_name)}`}
+                                                    target="_blank"
+                                                    aria-label="Put your description here."
+                                                    className="bottom-content-item-loyaltie-programs__btn-view"
+                                                >
+                                                    View Casino
+                                                </a>
+                                                <a
+                                                    href={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.casino_id}`}
+                                                    target="_blank"
+                                                    aria-label="Put your description here."
+                                                    className="bottom-content-item-loyaltie-programs__btn-more"
+                                                >
+                                                    Read More
+                                                </a>
                                                     </div>
                                                 </div>
                                             </div>

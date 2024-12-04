@@ -1,11 +1,14 @@
 import closeIcon from "../../assets/img/icons/close.svg"
+import { RewievCasinoDataResponse } from "../../types"
 
 export const PopupReadMore = ({
     openModal,
     handlerOpen,
+    data,
 }: {
     openModal: boolean
     handlerOpen: (s: boolean) => void
+    data: undefined | RewievCasinoDataResponse
 }) => {
     return (
         <div className={`popup popup-review ${openModal && "open"}`} >
@@ -13,7 +16,7 @@ export const PopupReadMore = ({
                 <div className="popup__content">
                     <div className="popup__top top-popup">
                         <h3 className="top-popup__title">
-                            iWild Casino review
+                            {data?.name} review
                         </h3>
                         <button className="top-popup__close popup-close" onClick={() => handlerOpen(false)}>
                             <img src={closeIcon} alt="close" />

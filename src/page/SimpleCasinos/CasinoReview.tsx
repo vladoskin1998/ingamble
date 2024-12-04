@@ -1,16 +1,23 @@
+import { RewievCasinoDataResponse } from "../../types"
 
 
 export const CasinoReview = ({
     handlerOpen,
+    //@ts-ignore
+    data,
 }: {
     handlerOpen: (s: boolean) => void
+    //@ts-ignore
+    data: undefined | RewievCasinoDataResponse
 }) => {
 
+    console.log("CasinoReview", data);
+    
   
     return (
         <>
             <div className="iwild-review__item item-iwild-review item-iwild-review_main">
-            <h2 className="item-iwild-review__title">iWild Casino review</h2>
+            <h2 className="item-iwild-review__title">{data?.name} review</h2>
             <div className="item-iwild-review__text">
                 <p>
                     iWild Casino - is the new era of online casinos. Newly

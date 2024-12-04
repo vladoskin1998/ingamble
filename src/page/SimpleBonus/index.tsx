@@ -705,7 +705,6 @@ export default function SimpleBonus() {
                     {geoLocation.isAllowed && (
                         <>
                             <HarryStyles />
-
                             <CheckMoreWhatSuitsYouBest />
                         </>
                     )}

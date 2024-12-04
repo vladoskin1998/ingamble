@@ -1,3 +1,4 @@
+import { RewievCasinoDataResponse } from "../../types"
 import { CasinoReview } from "./CasinoReview"
 
 const DoYouLike = () => (
@@ -40,8 +41,10 @@ const DoYouLike = () => (
 
 export const Harry = ({
     handlerOpen,
+    data
 }: {
     handlerOpen: (s: boolean) => void
+    data: undefined | RewievCasinoDataResponse
 }) => {
     return (
         <>
@@ -56,7 +59,7 @@ export const Harry = ({
                             className="iwild-review__column iwild-review__column_medium iwild-review__harytitle"
                             data-da="iwild-review-mob__container, 0, 1150"
                         >
-                            <CasinoReview handlerOpen={handlerOpen}/>
+                            <CasinoReview handlerOpen={handlerOpen} data={data}/>
                         </div>
 
                         <div className="iwild-review__column iwild-review__column_medium">

@@ -35,7 +35,10 @@ export const makeListFilterHeader = (
             value &&
             typeof value === "object" &&
             "min" in value &&
-            "max" in value
+            "max" in value 
+           
+            // && value.max 
+            // && value.min
         ) {
             result.push({
                 value: `${key.replace(/_/g, " ")}: ${value.min} - ${value.max}`,

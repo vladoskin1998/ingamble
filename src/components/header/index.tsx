@@ -1,5 +1,4 @@
 import logo from "../../assets/img/logo.svg"
-import moon from "../../assets/img/icons/moon.svg"
 import latviaFlag from "../../assets/img/icons/latvia-flag.svg"
 import english from "../../assets/img/flags/english.svg"
 import ukraine from "../../assets/img/flags/ukraine.svg"
@@ -12,6 +11,8 @@ import italian from "../../assets/img/flags/italian.svg"
 import slovak from "../../assets/img/flags/slovak.svg"
 import { useEffect, useRef, useState } from "react"
 import logoIcon from "../../assets/img/logo-icon.svg"
+import { useFilterContext } from "../../context/FilterContext"
+import { useNavigate } from "react-router-dom"
 type Language = {
     code: string
     name: string
@@ -19,8 +20,8 @@ type Language = {
 }
 
 export const LANGUAGES_WEBSITE: Language[] = [
-    { code: "lv", name: "Latvian", flag: latviaFlag },
     { code: "en", name: "English", flag: english },
+    { code: "lv", name: "Latvian", flag: latviaFlag },
     { code: "uk", name: "Ukrainian", flag: ukraine },
     { code: "bg", name: "Bulgarian", flag: bulgarian },
     { code: "es", name: "Spanish", flag: spanish },
@@ -39,22 +40,27 @@ export const Header = ({
     isSidebarActive: boolean
     setSidebarActive: (s: boolean) => void
 }) => {
+    const navigate = useNavigate()
+    const { searchGlobal: search, handlerSeachGlobal: setSearch } =
+        useFilterContext()
+
+    const [moonBlink, setBoonBlink] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isBodyLocked, setIsBodyLocked] = useState(false)
 
     const [isLanguageOpen, setIsLanguageOpen] = useState<boolean>(false)
-    const [search, setSearch] = useState("")
+
     const [searchFocus, setSearchFocus] = useState(false)
     const [selectedLanguage, setSelectedLanguage] = useState<Language>(
         LANGUAGES_WEBSITE[0]
     )
     const modalLanguageRef = useRef<HTMLDivElement | null>(null)
-  
+
     const [searchShow, setSearchShow] = useState(false)
 
     const handleLanguageSelect = (language: Language) => {
-        console.log("handleLanguageSelect");
-        
+        console.log("handleLanguageSelect")
+
         setSelectedLanguage(language)
         setIsLanguageOpen(false)
     }
@@ -63,13 +69,13 @@ export const Header = ({
     const [logoHide, setLogoHide] = useState(false)
 
     const handleClickOutside = (event: MouseEvent): void => {
-        const isScreenWide = window.innerWidth > 650;
+        const isScreenWide = window.innerWidth > 650
         if (
             modalLanguageRef.current &&
             !modalLanguageRef.current.contains(event.target as Node) &&
-            isScreenWide 
+            isScreenWide
         ) {
-            setIsLanguageOpen(false);
+            setIsLanguageOpen(false)
         }
     }
 
@@ -91,7 +97,6 @@ export const Header = ({
         }
     }
 
-
     useEffect(() => {
         const gambleBody = document.querySelector(".gamble__body")
 
@@ -107,6 +112,16 @@ export const Header = ({
             setLogoHide(false)
         }
     }, [isSidebarActive])
+
+    const navTo = () => {
+        if (
+            window.location.href.includes("filter-casinos") 
+        ) {
+            return
+        } else {
+            navigate("/filter-casinos")
+        }
+    }
 
     return (
         <header className="header">
@@ -195,8 +210,8 @@ export const Header = ({
                         </nav>
                     </div>
                     <div className="header__column header__column_last">
-                        <form
-                            action="#"
+                        <div
+                            
                             className={`header__form form-header ${
                                 searchShow ? "show" : ""
                             }`}
@@ -224,10 +239,7 @@ export const Header = ({
                                     onBlur={() => setSearchFocus(false)}
                                     onFocus={() => setSearchFocus(true)}
                                 />
-                                <a
-                                    rel="nofollow noopener"
-                                    href=""
-                                    aria-label="Put your description here."
+                                <button
                                     className="form-item__icon form-item__icon_delete"
                                     onClick={() => setSearch("")}
                                 >
@@ -236,10 +248,10 @@ export const Header = ({
                                             <path d="M0.346973 0.132108C0.0653443 0.280883 -0.0718153 0.633765 0.0376309 0.927996C0.0601456 0.988482 0.978282 1.93763 2.07982 3.03916L4.08116 5.04039L2.10136 7.02211C1.01244 8.11203 0.0934485 9.06005 0.0591293 9.12878C-0.0700563 9.38755 0.0270772 9.7484 0.273058 9.92338C0.406035 10.018 0.671715 10.0636 0.844562 10.0215C0.919689 10.0032 1.5938 9.35694 2.9772 7.97692L5 5.95905L7.0228 7.97665C9.20875 10.157 9.12143 10.0841 9.47811 10.0262C9.87333 9.96215 10.119 9.48564 9.94087 9.12878C9.90655 9.06005 8.98756 8.11203 7.89864 7.02211L5.91884 5.04039L7.92018 3.03916C9.02172 1.93763 9.93985 0.988482 9.96237 0.927996C10.0718 0.633765 9.93466 0.280883 9.65303 0.132108C9.45391 0.0269117 9.31355 0.0191801 9.11275 0.102393C9.01277 0.143823 8.34831 0.780431 6.98371 2.14217L5 4.1217L3.01629 2.14217C1.65169 0.780431 0.987233 0.143823 0.887246 0.102393C0.686451 0.0191801 0.546087 0.0269117 0.346973 0.132108Z" />
                                         </g>
                                     </svg>
-                                </a>
+                                </button>
                                 <button
-                                    type="submit"
                                     className="form-item__btn"
+                                    onClick={() => navTo()}
                                 >
                                     <svg>
                                         <g>
@@ -253,22 +265,24 @@ export const Header = ({
                                     </svg>
                                 </button>
                             </div>
-                        </form>
+                        </div>
                         <div className="header__theme theme-header">
-                            <a
-                                rel="nofollow noopener"
-                                href=""
-                                aria-label="Put your description here."
-                                className="theme-header__link theme-header__link_moon"
+                            <button
+                                className={`theme-header__link theme-header__link_moon ${
+                                    !moonBlink || "active"
+                                }`}
+                                onClick={() => setBoonBlink((s) => !s)}
                             >
-                                <img alt={"moon"} src={moon} />
-                            </a>
+                                <svg>
+                                    <use xlinkHref="#moon"></use>
+                                </svg>
+                            </button>
                         </div>
                         <div className="header__language language-header">
                             <div className="dropdown language-header__dropdown dropdown-language-header">
                                 <button
                                     className="dropdown__btn dropdown-language-header__btn dropdown-language-header__btn-icon"
-                                    onClick={() => setIsLanguageOpen(true)}
+                                    // onClick={() => setIsLanguageOpen(true)}
                                 >
                                     <img
                                         alt={selectedLanguage.name}
@@ -380,19 +394,17 @@ export const Header = ({
                                         onBlur={() => setSearchFocus(false)}
                                         onFocus={() => setSearchFocus(true)}
                                     />
-                                    <a
-                                        href=""
-                                        aria-label="Put your description here."
+                                    <button
                                         className="form-item__icon form-item__icon_delete"
                                         onClick={() => setSearch("")}
                                     >
                                         <svg>
                                             <use xlinkHref="#delete"></use>
                                         </svg>
-                                    </a>
+                                    </button>
                                     <button
-                                        type="submit"
                                         className="form-item__btn"
+                                        onClick={() => navTo()}
                                     >
                                         <svg>
                                             <use xlinkHref="#arrow"></use>
@@ -454,7 +466,7 @@ export const Header = ({
                                     </li>
                                     <li className="menu-header__item">
                                         <a
-                                            href="/all-bonus" 
+                                            href="/all-bonus"
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="menu-header__link"
@@ -488,15 +500,16 @@ export const Header = ({
                     </div>
                     <div className="mobile-header__top">
                         <div className="header__theme theme-header">
-                            <a
-                                href=""
-                                aria-label="Put your description here."
-                                className="theme-header__link theme-header__link_moon"
+                            <button
+                                className={`theme-header__link theme-header__link_moon ${
+                                    !moonBlink || "active"
+                                }`}
+                                onClick={() => setBoonBlink((s) => !s)}
                             >
                                 <svg>
                                     <use xlinkHref="#moon"></use>
                                 </svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -505,7 +518,7 @@ export const Header = ({
                         <div className="dropdown language-header__dropdown dropdown-language-header">
                             <button
                                 className="dropdown__btn dropdown-language-header__btn"
-                                onClick={() => setIsLanguageOpen(true)}
+                                // onClick={() => setIsLanguageOpen(true)}
                             >
                                 <span className="dropdown-language-header__btn-icon">
                                     <img
@@ -519,36 +532,42 @@ export const Header = ({
                                     {selectedLanguage.name}
                                 </span>
                                 <span className="dropdown-language-header__btn-arrow">
-                                    <svg>
+                                    {/* <svg>
                                         <use xlinkHref="#arrow"></use>
-                                    </svg>
+                                    </svg> */}
                                 </span>
                             </button>
-                            {isLanguageOpen &&   <div
-                                className="dropdown__body dropdown-language-header__body"
-                                style={{ display: "block" }}
-                            >
-                                <button
-                                    aria-label="Put your description here."
-                                    className="dropdown-language-header__btn-back"
-                                    onClick={() => {
-                                        setIsLanguageOpen(false)
-                                    }}
+                            {isLanguageOpen && (
+                                <div
+                                    className="dropdown__body dropdown-language-header__body"
+                                    style={{ display: "block" }}
                                 >
-                                    <span>
-                                        <svg>
-                                            <use xlinkHref="#arrow"></use>
-                                        </svg>
-                                    </span>
-                                    Back
-                                </button>
-                                
-                                    <ul className="dropdown__list dropdown-language-header__list" >
+                                    <button
+                                        aria-label="Put your description here."
+                                        className="dropdown-language-header__btn-back"
+                                        onClick={() => {
+                                            setIsLanguageOpen(false)
+                                        }}
+                                    >
+                                        <span>
+                                            <svg>
+                                                <use xlinkHref="#arrow"></use>
+                                            </svg>
+                                        </span>
+                                        Back
+                                    </button>
+
+                                    <ul className="dropdown__list dropdown-language-header__list">
                                         {LANGUAGES_WEBSITE.map((item) => (
                                             <li
-                                                onClick={() => handleLanguageSelect(item)}
-                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${item.code === selectedLanguage.code && "active"}`}
-                                          
+                                                onClick={() =>
+                                                    handleLanguageSelect(item)
+                                                }
+                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${
+                                                    item.code ===
+                                                        selectedLanguage.code &&
+                                                    "active"
+                                                }`}
                                             >
                                                 <span className="list-item-dropdown-language-header__icon">
                                                     <img
@@ -565,9 +584,8 @@ export const Header = ({
                                             </li>
                                         ))}
                                     </ul>
-                                
-                            </div>}
-                          
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

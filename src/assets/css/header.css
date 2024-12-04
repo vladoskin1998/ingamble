@@ -780,3 +780,8 @@ header {
         padding: 0;
     }
 }
+
+
+.theme-header__link_moon.active svg {
+    fill: var(--Colors-Yellow, #FFCF23);
+  }

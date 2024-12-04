@@ -7,19 +7,33 @@ import bgImage08 from "../../assets/img/bg/08.jpg"
 import bgImage11 from "../../assets/img/bg/11.jpg"
 
 export default function  SubscribeForm () {
+
+
     const [email, setEmail] = useState("")
     const [isSubscribed, setIsSubscribed] = useState(false)
     const [hasError, setHasError] = useState(false)
     const [isChecked, setIsChecked] = useState(false)
+    const [isErrorCheck, setIsErrorCheck] = useState(false)
     const [focus, setFocus] = useState(false)
+    const [isSuccess,setIsSuccess] =  useState(false)
+
     const handleEmailChange = (e: any) => {
         setEmail(e.target.value)
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
+        if (!isChecked) {
+            setIsErrorCheck(true);
+            return;
+          }
         if (validateEmail(email) && isChecked) {
             setIsSubscribed(true)
+            setIsSuccess(true)
+            setTimeout(() => {
+                setIsSuccess(false)
+                setEmail('')
+            }, 5000)
             setHasError(false)
         } else {
             setHasError(true)
@@ -95,23 +109,22 @@ export default function  SubscribeForm () {
                                             className={`item-form-subscribe__input form-item__input ${
                                                 hasError ? "input-error" : ""
                                             }`}
-                                            value={email}
+                                            value={!isSuccess ? email : 'You have successfully subscribed!🎉'}
                                             onChange={handleEmailChange}
                                             required
                                             onFocus={() => setFocus(true)}
                                             onBlur={() => setFocus(false)}
                                         />
 
-                                        <a
-                                            href="#"
-                                            aria-label="Clear email input"
+                                        <button
+                                        
                                             className="form-item__icon form-item__icon_delete item-form-subscribe__icon_delete"
                                             onClick={() => setEmail("")}
                                         >
                                             <svg>
                                                 <use xlinkHref="#delete"></use>
                                             </svg>
-                                        </a>
+                                        </button>
 
                                         {isSubscribed && (
                                             <span className="form-item__icon form-item__icon_confired">
@@ -142,13 +155,13 @@ export default function  SubscribeForm () {
                                             id="formAgreement"
                                             type="checkbox"
                                             name="agreement"
-                                            className="form-subscribe__checkbox-input"
+                                            className={`form-subscribe__checkbox-input `}
                                             checked={isChecked}
                                             onChange={handleCheckboxChange}
                                         />
                                         <label
                                             htmlFor="formAgreement"
-                                            className="form-subscribe__checkbox-label"
+                                            className={`form-subscribe__checkbox-label ${isErrorCheck && 'active'}`}
                                         >
                                             <span>
                                                 Feel free to unsubscribe

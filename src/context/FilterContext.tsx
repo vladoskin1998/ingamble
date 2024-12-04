@@ -48,6 +48,7 @@ export const initialCasinoFilters: CasinoFilterBodyType = {
 
     unlimited_min_wager: undefined,
     unlimited_min_deposit: undefined,
+    casino_name: undefined,
 }
 export const initialBonusFilters: BonusFilterBodyType = {
     bonus_rank: null,
@@ -97,6 +98,9 @@ export enum RouteToNextFilter {
 type FilterContextType = {
     data: GetFilterDataTypeResponse | undefined
 
+    searchGlobal:string,
+    handlerSeachGlobal: (v:string) => void
+
     casinoFilters: CasinoFilterBodyType
     setCasinoFilters: React.Dispatch<React.SetStateAction<CasinoFilterBodyType>>
 
@@ -129,6 +133,10 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         }
     }
 
+    const [searchGlobal,setSeachGlobal] = useState('')
+
+    const handlerSeachGlobal = (v:string) => setSeachGlobal(v)
+
     const [casinoFilters, setCasinoFilters] =
         useState<CasinoFilterBodyType>(initialCasinoFilters)
 
@@ -148,6 +156,8 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         navigation("/")
     }
 
+    console.log("casinoFilters",casinoFilters);
+    
     const { data } = useQuery<GetFilterDataTypeResponse>(
         "get-datas-filter",
         getDatasFilter,
@@ -160,6 +170,8 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         <FilterContext.Provider
             value={{
                 data,
+                searchGlobal,
+                handlerSeachGlobal,
                 casinoFilters,
                 setCasinoFilters,
                 bonusFilters,

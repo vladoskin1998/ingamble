@@ -39,7 +39,7 @@ export const BonusFilter = ({
                         <RangeSlider
                             initState={bonusFilters.bonus_rank}
                             field="bonus_rank"
-                            minmax={[0, 10]}
+                            minmax={[1, 10]}
                             setLocalFilters={setBonusFilters}
                         />
                     }
@@ -63,7 +63,7 @@ export const BonusFilter = ({
                         <RangeSlider
                             initState={bonusFilters.bonus_likes}
                             field="bonus_likes"
-                            minmax={[0, 1000000]}
+                            minmax={[1, 1000000]}
                             setLocalFilters={setBonusFilters}
                         />
                     }
@@ -87,7 +87,7 @@ export const BonusFilter = ({
                         <RangeSlider
                             initState={bonusFilters.bonus_min_dep}
                             field="bonus_min_dep"
-                            minmax={[0, 10000]}
+                            minmax={[1, 10000]}
                             setLocalFilters={setBonusFilters}
                         />
                     }
@@ -112,7 +112,7 @@ export const BonusFilter = ({
                             <RangeSlider
                                 initState={bonusFilters.bonus_max_bet}
                                 field="bonus_max_bet"
-                                minmax={[0, 30]}
+                                minmax={[1, 30]}
                                 setLocalFilters={setBonusFilters}
                                 unlimitedInitStateField="unlimited_bonus_max_bet"
                             />
@@ -150,7 +150,7 @@ export const BonusFilter = ({
                             initState={bonusFilters.free_spin_amount}
                             field="free_spin_amount"
                             minmax={[
-                                0,
+                                1,
                                 datasFilterBonus?.max_free_spin_amount_value ||
                                     100000,
                             ]}
@@ -177,7 +177,7 @@ export const BonusFilter = ({
                         <RangeSlider
                             initState={bonusFilters.bonus_value}
                             field="bonus_value"
-                            minmax={[0, 1000]}
+                            minmax={[1, 1000]}
                             setLocalFilters={setBonusFilters}
                         />
                     }
@@ -203,7 +203,7 @@ export const BonusFilter = ({
                                 initState={bonusFilters.bonus_amount}
                                 field="bonus_amount"
                                 minmax={[
-                                    0,
+                                    1,
                                     datasFilterBonus?.max_bonus_amount_value ||
                                         1000000,
                                 ]}
@@ -245,7 +245,7 @@ export const BonusFilter = ({
                                 initState={bonusFilters.bonus_max_win}
                                 field="bonus_max_win"
                                 minmax={[
-                                    0,
+                                    1,
                                     datasFilterBonus?.max_bonus_max_win_value ||
                                         1000000,
                                 ]}

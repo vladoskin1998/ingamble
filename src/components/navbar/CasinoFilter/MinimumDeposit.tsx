@@ -30,6 +30,15 @@ export const MinimumDeposit = ({
     const handlerChangeValue = (v: number) => {
         const clampedValue = v
         setDeposit(clampedValue);
+        if(!clampedValue){
+         
+            setLocalCasinoFilters((prevFilters) => ({
+                ...prevFilters,
+                [field]: undefined,
+                [unlimitedInitStateField as keyof CasinoFilterBodyType]: undefined
+            }));
+            return
+        }
         setLocalCasinoFilters((prevFilters) => ({
             ...prevFilters,
             [field]: clampedValue,
@@ -56,7 +65,7 @@ export const MinimumDeposit = ({
                     <div className="range-form-filter__field field">
                         <input
                             className="field__input field__input_only"
-                            value={deposit}
+                            value={deposit || ''}
                             onChange={(e) => handlerChangeValue(sanitizeMaxInput(e.target.value, max))}
                         />
                         <span className="field__icon">{keyToValue}</span>
@@ -65,7 +74,7 @@ export const MinimumDeposit = ({
 
                 <Slider
                     className="input-style-range"
-                    min={1}
+               
                     max={max}
                     value={deposit}
                     onChange={(v:any) => handlerChangeValue(v)}

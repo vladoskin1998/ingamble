@@ -521,7 +521,7 @@ export default function Footer() {
                                     </a>
                                 </div>
                             </div>
-                            <div className="socials-top-footer__items">
+                            {/* <div className="socials-top-footer__items">
                                 <div className="socials-top-footer__item">
                                     <a
                                         href=""
@@ -642,7 +642,7 @@ export default function Footer() {
                                         </svg>
                                     </a>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

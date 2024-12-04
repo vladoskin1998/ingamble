@@ -11,7 +11,7 @@ export const RangeSlider = <T extends CasinoFilterBodyType | BonusFilterBodyType
 }: {
     initState: { min: number; max: number } | null
     field: string
-    minmax: number[]
+    minmax: number[] 
     unlimitedInitStateField?: string
     setLocalFilters: React.Dispatch<
         React.SetStateAction<T>
@@ -19,18 +19,25 @@ export const RangeSlider = <T extends CasinoFilterBodyType | BonusFilterBodyType
 }) => {
     const [localRange, setLocalRange] = useState(minmax)
 
-  
 
     const handleRangeChange = (n: number[]) => {
         const [minValue, maxValue] = n
         const clampedMin = Math.max(0, Math.min(minValue, minmax[1]))
         const clampedMax = Math.max(0, Math.min(maxValue, minmax[1]))
         setLocalRange([clampedMin, clampedMax])
+            if(!clampedMin && !clampedMax){
+                setLocalFilters((s) => ({
+                    ...s,
+                    [field]: undefined,
+                    [unlimitedInitStateField as keyof T]: undefined
+                }))
+                return
+            }
         setLocalFilters((s) => ({
             ...s,
             [field]: {
-                min: clampedMin,
-                max: clampedMax,
+                min: isNaN(clampedMin)  ? 0 : clampedMin,
+                max:  isNaN(clampedMax)  ? 0 : clampedMax,
             },
             [unlimitedInitStateField as keyof T]: undefined
         }))
@@ -39,7 +46,7 @@ export const RangeSlider = <T extends CasinoFilterBodyType | BonusFilterBodyType
     useEffect(() => {
         if (initState) setLocalRange([initState.min, initState.max])
         else {
-            setLocalRange(minmax)
+            setLocalRange([minmax[0], minmax[1]])
         }
     }, [initState, minmax])
     return (
@@ -50,7 +57,7 @@ export const RangeSlider = <T extends CasinoFilterBodyType | BonusFilterBodyType
                         <input
                             type="number"
                             className="field__input field__input_min"
-                            value={localRange[0]}
+                            value={localRange[0] || ''}
                             onChange={(v) =>
                                 handleRangeChange([
                                     Number(v.target.value),
@@ -64,7 +71,7 @@ export const RangeSlider = <T extends CasinoFilterBodyType | BonusFilterBodyType
                         <input
                             type="number"
                             className="field__input field__input_max"
-                            value={localRange[1]}
+                            value={localRange[1]  || ''}
                             onChange={(v) =>
                                 handleRangeChange([
                                     localRange?.[0],

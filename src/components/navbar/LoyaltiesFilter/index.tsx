@@ -26,7 +26,7 @@ export const LoyaltiesFilter = () => {
                         <RangeSlider
                             initState={loyaltiesFilters.loyalty_rank}
                             field="loyalty_rank"
-                            minmax={[0, 10]}
+                            minmax={[1, 10]}
                             setLocalFilters={setLoyaltiesFilters}
                         />
                     }
@@ -47,7 +47,7 @@ export const LoyaltiesFilter = () => {
                         <RangeSlider
                             initState={loyaltiesFilters.loyalty_level_count}
                             field="loyalty_level_count"
-                            minmax={[0,50]}
+                            minmax={[1,50]}
                             setLocalFilters={setLoyaltiesFilters}
                         />
                     }

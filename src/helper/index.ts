@@ -57,7 +57,7 @@ export const sanitizeMaxInput = (value: string, max: number): number => {
     let sanitized = value.replace(/^0+(?=\d)/, "");
 
     // Если значение пустое или равно "0", заменяем его на "1"
-    if (sanitized === "" || sanitized === "0") {
+    if ( sanitized === "0") {
          sanitized = "1";
     }
 
