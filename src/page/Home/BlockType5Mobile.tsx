@@ -104,7 +104,7 @@ export default function BlockType5Mobile({
                                         },
                                     }}
                                 >
-                                    {data?.items_block.data_cards
+                                    {[...data?.items_block.data_cards,...data?.items_block.data_cards,]
                                         .sort((a, b) => a?.order - b?.order)
                                         .map((item) => (
                                             <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">

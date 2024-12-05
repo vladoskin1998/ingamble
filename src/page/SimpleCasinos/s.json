@@ -1,0 +1,1491 @@
+{
+    "id": 4,
+    "affiliate": {
+        "name": "Albania",
+        "link_affiliate_program": "https://docs.google.com/document/d/11rAtWEwh-lKhnU1_3ffPpHDNYJVVp-RKzrfspfImyXk/edit",
+        "casino_affiliate_link": "https://docs.google.com/document/d/1Wxxq6vFJBGQiupd5APdtEqD0HPtd60FjtQNTAN0LUus/edit#heading=h.8nqkih1n6q1y"
+    },
+    "loyalty_program": {
+        "loyalty_keypoint": [
+            {
+                "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/4._Cashback_tz34aqa.jpg",
+                "text_1": "Cashback",
+                "text_2": "Up to 10%"
+            },
+            {
+                "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/21._Coin_exchangePoint_exchange.jpg",
+                "text_1": "Exchange Points",
+                "text_2": "For free pins"
+            },
+            {
+                "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/17._Special_occasion_gifts_Exclusive_gifts.jpg",
+                "text_1": "Cash Bonus",
+                "text_2": "Receive extra money"
+            },
+            {
+                "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/7._Level_Up_bonus.jpg",
+                "text_1": "Level Up Bonuses",
+                "text_2": "Cash for moving up"
+            }
+        ]
+    },
+    "bonuses": [
+        {
+            "id": 13,
+            "slug": "reload-bonus-up-to-300",
+            "name": "Up to $300",
+            "labels": [
+                {
+                    "name": "Safe"
+                },
+                {
+                    "name": "Sticky"
+                }
+            ],
+            "bonus_type": {
+                "name": "Reload Bonus"
+            },
+            "bonus_subtype": [
+                {
+                    "name": "Monday bonus"
+                }
+            ],
+            "special_promo_category": false,
+            "special_side_bar": false,
+            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/frame_3_2_V8ZOHUS.webp"
+        },
+        {
+            "id": 14,
+            "slug": "crypto-bonus-up-to-200",
+            "name": "Up to $200",
+            "labels": [],
+            "bonus_type": {
+                "name": "Crypto Bonus"
+            },
+            "bonus_subtype": [],
+            "special_promo_category": false,
+            "special_side_bar": false,
+            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/frame_6_1_jaztAVt.webp"
+        },
+        {
+            "id": 357,
+            "slug": "1st-deposit-100-up-to-c200-75fs-pledoo-casino",
+            "name": "Up to $3000 + 225 Free Spins",
+            "labels": [
+                {
+                    "name": "Safe"
+                },
+                {
+                    "name": "Min Dep: $20"
+                }
+            ],
+            "bonus_type": {
+                "name": "Welcome Bonus"
+            },
+            "bonus_subtype": [
+                {
+                    "name": "1st deposit bonus | 100% up to $200 + 75 Free Spins"
+                }
+            ],
+            "special_promo_category": false,
+            "special_side_bar": false,
+            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/_1_1_pub3kd7.webp"
+        },
+        {
+            "id": 358,
+            "slug": "2nd-deposit-70-up-to-c500-75fs-pledoo-casino",
+            "name": "70% up to €500 + 75FS",
+            "labels": [],
+            "bonus_type": {
+                "name": "Welcome Bonus"
+            },
+            "bonus_subtype": [
+                {
+                    "name": "2nd deposit bonus | 70% up to $500 + 75 Free Spins"
+                }
+            ],
+            "special_promo_category": false,
+            "special_side_bar": false,
+            "bonus_image": null
+        },
+        {
+            "id": 359,
+            "slug": "3rd-deposit-50-up-to-c800-75fs-pledoo-casino",
+            "name": "50% up to €800 + 75FS",
+            "labels": [],
+            "bonus_type": {
+                "name": "Welcome Bonus"
+            },
+            "bonus_subtype": [
+                {
+                    "name": "3rd deposit bonus | 50% up to $800 + 75 Free Spins"
+                }
+            ],
+            "special_promo_category": false,
+            "special_side_bar": false,
+            "bonus_image": null
+        },
+        {
+            "id": 360,
+            "slug": "4th-deposit-150-up-to-c1500-pledoo-casino",
+            "name": "150% up to $1500",
+            "labels": [],
+            "bonus_type": {
+                "name": "Welcome Bonus"
+            },
+            "bonus_subtype": [
+                {
+                    "name": "4th deposit bonus | 150% up to $1500"
+                }
+            ],
+            "special_promo_category": false,
+            "special_side_bar": false,
+            "bonus_image": null
+        },
+        {
+            "id": 922,
+            "slug": "spinoleague-tournament-prize-pool-1000000-pledoo-casino",
+            "name": "SPINOLEAGUE TOURNAMENT PRIZE POOL: $1.000.000",
+            "labels": [],
+            "bonus_type": null,
+            "bonus_subtype": [],
+            "special_promo_category": false,
+            "special_side_bar": true,
+            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/group_175_2_1.webp"
+        }
+    ],
+    "withdrawal_limit": {
+        "daily": 3000,
+        "weekly": 10000,
+        "monthly": 30000,
+        "unlimited": false
+    },
+    "min_wagering": {
+        "min_value": 1.0
+    },
+    "min_dep": [
+        {
+            "min_value": 10.0,
+            "symbol": {
+                "symbol": "USD",
+                "name": "US dollar"
+            }
+        },
+        {
+            "min_value": 10.0,
+            "symbol": {
+                "symbol": "AUD",
+                "name": "Australian dollar"
+            }
+        },
+        {
+            "min_value": 10.0,
+            "symbol": {
+                "symbol": "CAD",
+                "name": "Canadian dollar"
+            }
+        },
+        {
+            "min_value": 1000.0,
+            "symbol": {
+                "symbol": "RUB",
+                "name": "Russian ruble"
+            }
+        },
+        {
+            "min_value": 250.0,
+            "symbol": {
+                "symbol": "UAH",
+                "name": "Ukrainian hryvnia"
+            }
+        },
+        {
+            "min_value": 50.0,
+            "symbol": {
+                "symbol": "BRL",
+                "name": "Brazilian Real"
+            }
+        },
+        {
+            "min_value": 250.0,
+            "symbol": {
+                "symbol": "MXN",
+                "name": "Mexican peso"
+            }
+        },
+        {
+            "min_value": 100.0,
+            "symbol": {
+                "symbol": "TRY",
+                "name": "Turkish lira"
+            }
+        },
+        {
+            "min_value": 200.0,
+            "symbol": {
+                "symbol": "ZAR",
+                "name": "South African rand"
+            }
+        },
+        {
+            "min_value": 100.0,
+            "symbol": {
+                "symbol": "NOK",
+                "name": "Norwegian krone"
+            }
+        }
+    ],
+    "images": [],
+    "social_bonuses": {
+        "choice": false
+    },
+    "casino_category": [],
+    "payment_methods": [
+        {
+            "id": 1,
+            "name": "Mastercard",
+            "image": null
+        },
+        {
+            "id": 2,
+            "name": "VISA",
+            "image": null
+        },
+        {
+            "id": 4,
+            "name": "Skrill",
+            "image": null
+        },
+        {
+            "id": 7,
+            "name": "Neteller",
+            "image": null
+        },
+        {
+            "id": 8,
+            "name": "MuchBetter",
+            "image": null
+        },
+        {
+            "id": 10,
+            "name": "Bank transfer",
+            "image": null
+        },
+        {
+            "id": 12,
+            "name": "Perfect Money",
+            "image": null
+        },
+        {
+            "id": 13,
+            "name": "Piastrix",
+            "image": null
+        },
+        {
+            "id": 14,
+            "name": "Bitcoin",
+            "image": null
+        },
+        {
+            "id": 15,
+            "name": "PaySafeCard",
+            "image": null
+        },
+        {
+            "id": 18,
+            "name": "Bitcoin Cash",
+            "image": null
+        },
+        {
+            "id": 19,
+            "name": "Neosurf",
+            "image": null
+        },
+        {
+            "id": 20,
+            "name": "AstroPay",
+            "image": null
+        },
+        {
+            "id": 30,
+            "name": "Boleto Bancario",
+            "image": null
+        },
+        {
+            "id": 33,
+            "name": "Multibanco",
+            "image": null
+        },
+        {
+            "id": 35,
+            "name": "Ethereum",
+            "image": null
+        },
+        {
+            "id": 36,
+            "name": "Litecoin",
+            "image": null
+        },
+        {
+            "id": 38,
+            "name": "Tether",
+            "image": null
+        },
+        {
+            "id": 40,
+            "name": "Dogecoin",
+            "image": null
+        },
+        {
+            "id": 49,
+            "name": "OXXO",
+            "image": null
+        },
+        {
+            "id": 53,
+            "name": "Trustly",
+            "image": null
+        },
+        {
+            "id": 79,
+            "name": "USD Coin",
+            "image": null
+        },
+        {
+            "id": 93,
+            "name": "Giropay",
+            "image": null
+        },
+        {
+            "id": 94,
+            "name": "Interac e-Transfer",
+            "image": null
+        },
+        {
+            "id": 124,
+            "name": "Jeton",
+            "image": null
+        },
+        {
+            "id": 162,
+            "name": "Rapid Transfer",
+            "image": null
+        },
+        {
+            "id": 182,
+            "name": "CashtoCode",
+            "image": null
+        },
+        {
+            "id": 208,
+            "name": "Dai",
+            "image": null
+        },
+        {
+            "id": 215,
+            "name": "Klarna",
+            "image": null
+        },
+        {
+            "id": 220,
+            "name": "Rapipago",
+            "image": null
+        },
+        {
+            "id": 224,
+            "name": "Zimpler",
+            "image": null
+        },
+        {
+            "id": 233,
+            "name": "Revolut",
+            "image": null
+        },
+        {
+            "id": 245,
+            "name": "Swedbank",
+            "image": null
+        },
+        {
+            "id": 256,
+            "name": "Volt",
+            "image": null
+        },
+        {
+            "id": 272,
+            "name": "PayID",
+            "image": null
+        },
+        {
+            "id": 380,
+            "name": "SPEI",
+            "image": null
+        },
+        {
+            "id": 496,
+            "name": "MB Way",
+            "image": null
+        },
+        {
+            "id": 497,
+            "name": "N26",
+            "image": null
+        },
+        {
+            "id": 966,
+            "name": "Davivienda",
+            "image": null
+        },
+        {
+            "id": 986,
+            "name": "Przelewy24",
+            "image": null
+        },
+        {
+            "id": 987,
+            "name": "blik",
+            "image": null
+        },
+        {
+            "id": 1017,
+            "name": "Payz (ecoPayz) ",
+            "image": null
+        },
+        {
+            "id": 1018,
+            "name": "PAGOFACIL",
+            "image": null
+        },
+        {
+            "id": 1019,
+            "name": "Red Link",
+            "image": null
+        },
+        {
+            "id": 1020,
+            "name": "Payshop",
+            "image": null
+        },
+        {
+            "id": 1021,
+            "name": "satispay",
+            "image": null
+        }
+    ],
+    "crypto_currencies": [
+        {
+            "id": 174,
+            "symbol": "BNB",
+            "name": "Binance Coin",
+            "name2": null
+        },
+        {
+            "id": 177,
+            "symbol": "BCH",
+            "name": "Bitcoin Cash",
+            "name2": null
+        },
+        {
+            "id": 183,
+            "symbol": "ADA",
+            "name": "Cardano",
+            "name2": null
+        },
+        {
+            "id": 189,
+            "symbol": "DOGE",
+            "name": "Dogecoin",
+            "name2": null
+        },
+        {
+            "id": 190,
+            "symbol": "DAI",
+            "name": "Dai",
+            "name2": null
+        },
+        {
+            "id": 198,
+            "symbol": "ETH",
+            "name": "Ethereum",
+            "name2": null
+        },
+        {
+            "id": 210,
+            "symbol": "LTC",
+            "name": "Litecoin",
+            "name2": null
+        },
+        {
+            "id": 224,
+            "symbol": "XRP",
+            "name": "Ripple",
+            "name2": null
+        },
+        {
+            "id": 234,
+            "symbol": "USDT (ERC20)",
+            "name": "Tether (ERC20)",
+            "name2": null
+        },
+        {
+            "id": 236,
+            "symbol": "USDT (TRC20)",
+            "name": "Tether (TRC20)",
+            "name2": null
+        },
+        {
+            "id": 246,
+            "symbol": "TRX",
+            "name": "TRON",
+            "name2": null
+        },
+        {
+            "id": 249,
+            "symbol": "USDC (ERC20)",
+            "name": "USD Coin (ERC20)",
+            "name2": null
+        },
+        {
+            "id": 275,
+            "symbol": "BTC",
+            "name": "Bitcoin",
+            "name2": null
+        }
+    ],
+    "classic_currency": [
+        {
+            "id": 4,
+            "symbol": "MXN",
+            "name": "Mexican peso",
+            "name2": null
+        },
+        {
+            "id": 27,
+            "symbol": "SEK",
+            "name": "Swedish krona",
+            "name2": null
+        },
+        {
+            "id": 41,
+            "symbol": "RUB",
+            "name": "Russian ruble",
+            "name2": null
+        },
+        {
+            "id": 55,
+            "symbol": "AUD",
+            "name": "Australian dollar",
+            "name2": null
+        },
+        {
+            "id": 65,
+            "symbol": "DKK",
+            "name": "Danish krone",
+            "name2": null
+        },
+        {
+            "id": 67,
+            "symbol": "BGN",
+            "name": "Bulgarian lev",
+            "name2": null
+        },
+        {
+            "id": 69,
+            "symbol": "NOK",
+            "name": "Norwegian krone",
+            "name2": null
+        },
+        {
+            "id": 105,
+            "symbol": "UAH",
+            "name": "Ukrainian hryvnia",
+            "name2": null
+        },
+        {
+            "id": 113,
+            "symbol": "COP",
+            "name": "Colombian peso",
+            "name2": null
+        },
+        {
+            "id": 114,
+            "symbol": "USD",
+            "name": "US dollar",
+            "name2": null
+        },
+        {
+            "id": 134,
+            "symbol": "TRY",
+            "name": "Turkish lira",
+            "name2": null
+        },
+        {
+            "id": 138,
+            "symbol": "EUR",
+            "name": "Euro",
+            "name2": null
+        },
+        {
+            "id": 140,
+            "symbol": "CAD",
+            "name": "Canadian dollar",
+            "name2": null
+        }
+    ],
+    "games": [],
+    "game_providers": [
+        {
+            "id": 11,
+            "name": "Big Time Gaming",
+            "image": null
+        },
+        {
+            "id": 12,
+            "name": "Quickspin",
+            "image": null
+        },
+        {
+            "id": 22,
+            "name": "Reel Play",
+            "image": null
+        },
+        {
+            "id": 24,
+            "name": "NetEnt",
+            "image": null
+        },
+        {
+            "id": 26,
+            "name": "Smartsoft Gaming",
+            "image": null
+        },
+        {
+            "id": 39,
+            "name": "3 Oaks",
+            "image": null
+        },
+        {
+            "id": 71,
+            "name": "Novomatic",
+            "image": null
+        },
+        {
+            "id": 103,
+            "name": "SA Gaming",
+            "image": null
+        },
+        {
+            "id": 110,
+            "name": "Ezugi",
+            "image": null
+        },
+        {
+            "id": 129,
+            "name": "Booming Games",
+            "image": null
+        },
+        {
+            "id": 134,
+            "name": "Relax Gaming",
+            "image": null
+        },
+        {
+            "id": 135,
+            "name": "Push Gaming",
+            "image": null
+        },
+        {
+            "id": 168,
+            "name": "Playtech",
+            "image": null
+        },
+        {
+            "id": 219,
+            "name": "Mascot Gaming",
+            "image": null
+        },
+        {
+            "id": 220,
+            "name": "Wazdan",
+            "image": null
+        },
+        {
+            "id": 253,
+            "name": "Spinomenal",
+            "image": null
+        },
+        {
+            "id": 265,
+            "name": "Reevo",
+            "image": null
+        },
+        {
+            "id": 420,
+            "name": "Hacksaw Gaming",
+            "image": null
+        },
+        {
+            "id": 234,
+            "name": "High 5 Games",
+            "image": null
+        },
+        {
+            "id": 291,
+            "name": "Onlyplay",
+            "image": null
+        },
+        {
+            "id": 292,
+            "name": "Gamzix",
+            "image": null
+        },
+        {
+            "id": 490,
+            "name": "Spribe",
+            "image": null
+        },
+        {
+            "id": 208,
+            "name": "Nolimit City",
+            "image": null
+        },
+        {
+            "id": 331,
+            "name": "ELK Studios",
+            "image": null
+        },
+        {
+            "id": 202,
+            "name": "Games Global",
+            "image": null
+        },
+        {
+            "id": 205,
+            "name": "Thunderkick",
+            "image": null
+        },
+        {
+            "id": 250,
+            "name": "Pragmatic Play",
+            "image": null
+        },
+        {
+            "id": 343,
+            "name": "Evolution Gaming",
+            "image": null
+        },
+        {
+            "id": 344,
+            "name": "Playson",
+            "image": null
+        },
+        {
+            "id": 395,
+            "name": "Endorphina",
+            "image": null
+        },
+        {
+            "id": 541,
+            "name": "Play'n GO",
+            "image": null
+        },
+        {
+            "id": 542,
+            "name": "Yggdrasil Gaming",
+            "image": null
+        },
+        {
+            "id": 543,
+            "name": "Red Tiger Gaming",
+            "image": null
+        },
+        {
+            "id": 544,
+            "name": "Betsoft Gaming",
+            "image": null
+        },
+        {
+            "id": 545,
+            "name": "Amatic",
+            "image": null
+        },
+        {
+            "id": 546,
+            "name": "BGaming",
+            "image": null
+        },
+        {
+            "id": 547,
+            "name": "Red Rake Gaming",
+            "image": null
+        },
+        {
+            "id": 553,
+            "name": "PGsoft (Pocket Games Soft)",
+            "image": null
+        },
+        {
+            "id": 563,
+            "name": "Ka Gaming",
+            "image": null
+        },
+        {
+            "id": 564,
+            "name": "Stakelogic",
+            "image": null
+        },
+        {
+            "id": 566,
+            "name": "Amusnet (EGT)",
+            "image": null
+        },
+        {
+            "id": 567,
+            "name": "Digitain",
+            "image": null
+        },
+        {
+            "id": 568,
+            "name": "Atmosfera Live",
+            "image": null
+        },
+        {
+            "id": 569,
+            "name": "Worldmatch",
+            "image": null
+        },
+        {
+            "id": 570,
+            "name": "OneXtwo Gaming",
+            "image": null
+        }
+    ],
+    "game_types": [
+        {
+            "id": 14,
+            "slug": "betting",
+            "name": "Betting",
+            "image": null
+        },
+        {
+            "id": 3,
+            "slug": "esports-betting",
+            "name": "Esports betting",
+            "image": null
+        },
+        {
+            "id": 15,
+            "slug": "baccarat",
+            "name": "Baccarat",
+            "image": null
+        },
+        {
+            "id": 6,
+            "slug": "bingo",
+            "name": "Bingo",
+            "image": null
+        },
+        {
+            "id": 10,
+            "slug": "blackjack",
+            "name": "Blackjack",
+            "image": null
+        },
+        {
+            "id": 11,
+            "slug": "craps-and-dice",
+            "name": "Craps and dice",
+            "image": null
+        },
+        {
+            "id": 12,
+            "slug": "crash-games",
+            "name": "Crash games",
+            "image": null
+        },
+        {
+            "id": 13,
+            "slug": "jackpot-games",
+            "name": "Jackpot games",
+            "image": null
+        },
+        {
+            "id": 4,
+            "slug": "keno",
+            "name": "Keno",
+            "image": null
+        },
+        {
+            "id": 8,
+            "slug": "live-games",
+            "name": "Live games",
+            "image": null
+        },
+        {
+            "id": 9,
+            "slug": "roulette",
+            "name": "Roulette",
+            "image": null
+        },
+        {
+            "id": 5,
+            "slug": "scratch-cards",
+            "name": "Scratch cards",
+            "image": null
+        },
+        {
+            "id": 7,
+            "slug": "slots",
+            "name": "Slots",
+            "image": null
+        },
+        {
+            "id": 2,
+            "slug": "video-poker",
+            "name": "Video poker",
+            "image": null
+        }
+    ],
+    "licenses": [
+        {
+            "id": 96,
+            "slug": "curacao",
+            "image": null,
+            "name": "Curaçao",
+            "validator_url": null
+        }
+    ],
+    "blocked_countries": [
+        {
+            "id": 203,
+            "slug": "american-samoa",
+            "name": "American Samoa",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "AS"
+        },
+        {
+            "id": 213,
+            "slug": "anguilla",
+            "name": "Anguilla",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "AI"
+        },
+        {
+            "id": 238,
+            "slug": "antigua-and-barbuda",
+            "name": "Antigua and Barbuda",
+            "name2": "Antigua & Barbuda",
+            "name3": null,
+            "flag_image": null,
+            "code": "AG"
+        },
+        {
+            "id": 191,
+            "slug": "aruba",
+            "name": "Aruba",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "AW"
+        },
+        {
+            "id": 174,
+            "slug": "belize",
+            "name": "Belize",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "BZ"
+        },
+        {
+            "id": 197,
+            "slug": "bermuda",
+            "name": "Bermuda",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "BM"
+        },
+        {
+            "id": 210,
+            "slug": "caribbean-netherlands",
+            "name": "Bonaire, Sint Eustatius and Saba",
+            "name2": "Caribbean Netherlands",
+            "name3": "Dutch West Indies",
+            "flag_image": null,
+            "code": null
+        },
+        {
+            "id": 224,
+            "slug": "british-indian-ocean-territory",
+            "name": "British Indian Ocean Territory",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "IO"
+        },
+        {
+            "id": 196,
+            "slug": "cayman-islands",
+            "name": "Cayman Islands",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "KY"
+        },
+        {
+            "id": 185,
+            "slug": "curacao",
+            "name": "Curaçao",
+            "name2": "Curacao",
+            "name3": null,
+            "flag_image": null,
+            "code": "CW"
+        },
+        {
+            "id": 217,
+            "slug": "falkland-islands",
+            "name": "Falkland Islands (Malvinas)",
+            "name2": "Falkland Islands",
+            "name3": null,
+            "flag_image": null,
+            "code": "FK"
+        },
+        {
+            "id": 18,
+            "slug": "france",
+            "name": "France",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "FR"
+        },
+        {
+            "id": 180,
+            "slug": "french-guiana",
+            "name": "French Guiana",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "GF"
+        },
+        {
+            "id": 181,
+            "slug": "french-polynesia",
+            "name": "French Polynesia",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "PF"
+        },
+        {
+            "id": 208,
+            "slug": "gibraltar",
+            "name": "Gibraltar",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "GI"
+        },
+        {
+            "id": 175,
+            "slug": "guadeloupe",
+            "name": "Guadeloupe",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "GP"
+        },
+        {
+            "id": 186,
+            "slug": "guam",
+            "name": "Guam",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "GU"
+        },
+        {
+            "id": 229,
+            "slug": "guernsey",
+            "name": "Guernsey",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "GG"
+        },
+        {
+            "id": 193,
+            "slug": "isle-of-man",
+            "name": "Isle of Man",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "IM"
+        },
+        {
+            "id": 251,
+            "slug": "jersey",
+            "name": "Jersey",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "JE"
+        },
+        {
+            "id": 147,
+            "slug": "latvia",
+            "name": "Latvia",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "LV"
+        },
+        {
+            "id": 177,
+            "slug": "martinique",
+            "name": "Martinique",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "MQ"
+        },
+        {
+            "id": 178,
+            "slug": "mayotte",
+            "name": "Mayotte",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "YT"
+        },
+        {
+            "id": 216,
+            "slug": "montserrat",
+            "name": "Montserrat",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "MS"
+        },
+        {
+            "id": 66,
+            "slug": "netherlands",
+            "name": "Netherlands",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "NL"
+        },
+        {
+            "id": 182,
+            "slug": "new-caledonia",
+            "name": "New Caledonia",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "NC"
+        },
+        {
+            "id": 200,
+            "slug": "northern-mariana-islands",
+            "name": "Northern Mariana Islands",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "MP"
+        },
+        {
+            "id": 226,
+            "slug": "pitcairn-islands",
+            "name": "Pitcairn Islands",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "PN"
+        },
+        {
+            "id": 129,
+            "slug": "puerto-rico",
+            "name": "Puerto Rico",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "PR"
+        },
+        {
+            "id": 157,
+            "slug": "reunion",
+            "name": "Réunion",
+            "name2": "Reunion",
+            "name3": null,
+            "flag_image": null,
+            "code": "RE"
+        },
+        {
+            "id": 240,
+            "slug": "saint-helena",
+            "name": "Saint Helena, Ascension and Tristan da Cunha",
+            "name2": "Saint Helena",
+            "name3": "St Helena",
+            "flag_image": null,
+            "code": null
+        },
+        {
+            "id": 242,
+            "slug": "saint-kitts-nevis",
+            "name": "Saint Kitts and Nevis",
+            "name2": "St. Kitts and Nevis",
+            "name3": "St Kitts and Nevis",
+            "flag_image": null,
+            "code": "KN"
+        },
+        {
+            "id": 243,
+            "slug": "saint-lucia",
+            "name": "Saint Lucia",
+            "name2": "St. Lucia",
+            "name3": "St Lucia",
+            "flag_image": null,
+            "code": "LC"
+        },
+        {
+            "id": 246,
+            "slug": "saint-vincent-and-the-grenadines",
+            "name": "Saint Vincent and the Grenadines",
+            "name2": "St. Vincent and the Grenadines",
+            "name3": "St Vincent and the Grenadines",
+            "flag_image": null,
+            "code": "VC"
+        },
+        {
+            "id": 162,
+            "slug": "solomon-islands",
+            "name": "Solomon Islands",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "SB"
+        },
+        {
+            "id": 230,
+            "slug": "turks-and-caicos-islands",
+            "name": "Turks and Caicos Islands",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": null
+        },
+        {
+            "id": 215,
+            "slug": "tuvalu",
+            "name": "Tuvalu",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "TV"
+        },
+        {
+            "id": 140,
+            "slug": "united-kingdom",
+            "name": "United Kingdom",
+            "name2": "Great Britain",
+            "name3": "the United Kingdom",
+            "flag_image": null,
+            "code": "GB"
+        },
+        {
+            "id": 231,
+            "slug": "united-states-minor-outlying-islands",
+            "name": "United States Minor Outlying Islands",
+            "name2": null,
+            "name3": null,
+            "flag_image": null,
+            "code": "UM"
+        },
+        {
+            "id": 139,
+            "slug": "united-states-of-america",
+            "name": "United States of America",
+            "name2": "United States of America",
+            "name3": "The USA",
+            "flag_image": null,
+            "code": "US"
+        },
+        {
+            "id": 209,
+            "slug": "british-virgin-islands",
+            "name": "Virgin Islands (British)",
+            "name2": "British Virgin Islands",
+            "name3": null,
+            "flag_image": null,
+            "code": "VG"
+        },
+        {
+            "id": 192,
+            "slug": "us-virgin-islands",
+            "name": "Virgin Islands (U.S.)",
+            "name2": "U.S. Virgin Islands",
+            "name3": null,
+            "flag_image": null,
+            "code": "VI"
+        },
+        {
+            "id": 249,
+            "slug": "wallis-and-futuna",
+            "name": "Wallis and Futuna",
+            "name2": "Wallis & Futuna",
+            "name3": null,
+            "flag_image": null,
+            "code": "WF"
+        }
+    ],
+    "language_live_chat": [
+        {
+            "id": 23,
+            "slug": "en-gb",
+            "name": "English",
+            "image": null
+        },
+        {
+            "id": 41,
+            "slug": "ru-ru",
+            "name": "Russian",
+            "image": null
+        }
+    ],
+    "language_website": [
+        {
+            "id": 1,
+            "slug": "de-de",
+            "name": "German",
+            "image": null
+        },
+        {
+            "id": 2,
+            "slug": "hi-in",
+            "name": "Hindi",
+            "image": null
+        },
+        {
+            "id": 3,
+            "slug": "pt-pt",
+            "name": "Portuguese",
+            "image": null
+        },
+        {
+            "id": 21,
+            "slug": "el-gr",
+            "name": "Greek",
+            "image": null
+        },
+        {
+            "id": 23,
+            "slug": "en-gb",
+            "name": "English",
+            "image": null
+        },
+        {
+            "id": 27,
+            "slug": "es-es",
+            "name": "Spanish",
+            "image": null
+        },
+        {
+            "id": 40,
+            "slug": "no-no",
+            "name": "Norwegian",
+            "image": null
+        },
+        {
+            "id": 41,
+            "slug": "ru-ru",
+            "name": "Russian",
+            "image": null
+        },
+        {
+            "id": 42,
+            "slug": "fi-fi",
+            "name": "Finnish",
+            "image": null
+        },
+        {
+            "id": 45,
+            "slug": "bg-bg",
+            "name": "Bulgarian",
+            "image": null
+        },
+        {
+            "id": 46,
+            "slug": "fr-fr",
+            "name": "French",
+            "image": null
+        },
+        {
+            "id": 72,
+            "slug": "pl-pl",
+            "name": "Polish",
+            "image": null
+        },
+        {
+            "id": 73,
+            "slug": "da-dk",
+            "name": "Danish",
+            "image": null
+        }
+    ],
+    "sisters_casinos": [
+        {
+            "id": 2,
+            "name": "BetItAll Casino"
+        },
+        {
+            "id": 3,
+            "name": "Wazbee Casino"
+        },
+        {
+            "id": 4,
+            "name": "Royspins Casino"
+        }
+    ],
+    "payout_speed": "High",
+    "do_not_send_to_client": false,
+    "rating_level": "high",
+    "stars": 5,
+    "review": "Casino Overview\r\n\r\nPledoo Casino, founded in 2021, has quickly positioned itself as a dynamic and modern platform in the online gaming industry. Owned and operated by Momus2006 N.V., Pledoo Casino is licensed by the Curacao eGaming Authority, providing a secure and trustworthy environment for players. The platform is designed to cater to both newcomers and experienced gamers, with a focus on innovative features, fast payments, and a wide range of gaming options.\r\nPledoo Casino’s design is sleek, vibrant, and user-friendly, making it easy to navigate whether you're playing on a desktop or mobile device. With its impressive selection of games, generous promotions, and dedicated customer support, Pledoo Casino has quickly earned a reputation as a top destination for online casino enthusiasts.\r\n\r\nGame Selection\r\n\r\nPledoo Casino offers an extensive game library with over 2,000 titles, ensuring there's something for everyone.\r\nSlots: The slots collection is packed with popular titles like Book of Dead, Sweet Bonanza, and Fire Joker. For players seeking bigger thrills, the casino’s progressive jackpot section features games like Divine Fortune and Mega Moolah, offering the chance to win huge payouts.\r\nTable Games: Classic casino lovers will find a solid selection of table games, including multiple versions of blackjack, roulette, baccarat, and poker. Whether you prefer European roulette or classic blackjack, there are tables to match your style and budget.\r\nLive Casino: Powered by leading providers like Evolution and Pragmatic Play Live, the live casino at Pledoo offers an immersive experience. You can enjoy real-time gaming with professional dealers across games like live blackjack, baccarat, and roulette. Popular live game shows like Mega Wheel and Crazy Time add a fun twist to the traditional casino setup.\r\nSpecialty Games: For those who like to mix things up, Pledoo Casino also features bingo, keno, and scratch cards. Virtual sports betting is another option for players looking for something different.\r\nWith games powered by industry giants such as NetEnt, Microgaming, Play’n GO, and Pragmatic Play, Pledoo Casino ensures a high-quality gaming experience for its users.\r\n\r\nPayment Methods\r\n\r\nPledoo Casino supports a broad range of payment options, offering flexibility and convenience to players around the world.\r\nDeposit Options: Players can deposit funds using traditional methods like Visa, MasterCard, and bank transfers, or opt for more modern alternatives like Skrill, Neteller, and cryptocurrencies like Bitcoin, Ethereum, and Litecoin. The minimum deposit is $10, making it accessible for players of all levels.\r\nWithdrawal Options & Processing Times: Withdrawals are processed through the same methods as deposits, ensuring a smooth transaction process. E-wallet withdrawals are typically processed within 24 hours, while card and bank transfer withdrawals may take 3-5 business days. The withdrawal limit is $3,000 per day, $10,000 per week, $30,000 per month and $150,000 per year.\r\nFees: Pledoo Casino does not impose any fees for deposits or withdrawals, though players are advised to check with their payment providers for any external charges.\r\n\r\nMobile Compatibility\r\n\r\nPledoo Casino is fully optimized for mobile play, allowing players to enjoy the full range of games on both iOS and Android devices. The mobile version of the website is smooth and responsive, with quick load times and an intuitive interface that makes navigating the platform effortless, even on smaller screens. Players can access all the features of the desktop site, including deposits, withdrawals, and customer support, without needing to download a separate app.\r\n\r\nUser Experience (UX) & Interface\r\n\r\nPledoo Casino offers a clean and modern user experience, with a layout that is easy to navigate. The homepage highlights popular games and current promotions, while the search function allows players to quickly find their favorite titles. The platform runs efficiently, with games loading fast and minimal lag even during peak times.\r\nThe site supports multiple languages, including English, German, French, and Spanish, making it accessible to a global audience. Players can also choose from a variety of currencies, including USD, EUR, GBP, and cryptocurrencies, adding to the platform’s appeal.\r\n\r\nCustomer Support\r\n\r\nPledoo Casino provides reliable 24/7 customer support, ensuring that any issues or inquiries are handled promptly.\r\nSupport Channels: Players can contact the support team via live chat or email, with live chat being the quickest option for instant assistance. Email responses are typically provided within a few hours.\r\nFAQ Section: The casino also offers a comprehensive FAQ section that addresses common questions regarding account management, bonuses, and payments, providing quick solutions to many issues.\r\n\r\nSecurity & Fairness\r\n\r\nPledoo Casino places a high priority on player safety, employing advanced SSL encryption to protect all personal and financial data. The platform’s games are regularly audited by independent agencies to ensure fairness, and the use of certified Random Number Generators (RNGs) guarantees that all game outcomes are unbiased.\r\n\r\nReputation & Player Feedback\r\n\r\nPledoo Casino has received positive feedback from players for its impressive game variety, easy navigation, and fast withdrawals. The casino’s support for cryptocurrencies and generous bonuses have also been well-received. Some users have noted that the verification process can take a bit longer, but this is a common practice for regulatory compliance.\r\n\r\nResponsible Gambling Features\r\n\r\nPledoo Casino encourages responsible gambling by offering a self-exclusion tool and a cool of/time-out tool. \r\n\r\nFinal Rating/Recommendation\r\n\r\nPledoo Casino offers an exciting and reliable online gaming experience, with a vast game selection, robust security features, and flexible payment methods, including cryptocurrencies. The platform’s sleek design and mobile compatibility make it ideal for players who like to game on the go. With responsive customer support and a commitment to fair play, Pledoo Casino is a solid choice for both casual players and serious gamblers.\r\nBest For: Players looking for a crypto-friendly casino with a broad selection of games and mobile optimization for gaming on the move.",
+    "what_we_dont_like": "High wagering requirements on bonuses.\r\nShort bonus expiration period (3 days).\r\nSome country restrictions apply.",
+    "what_we_like": "Extensive game library.\r\nSupport for both traditional and cryptocurrency payments.\r\nMobile-friendly, with no need for a dedicated app.\r\n24/7 customer support via live chat and email.",
+    "image": "https://adm.incasinowetrust.com/media/base_casino_images/image_436_2_1_1.png",
+    "image_loyalty": "https://adm.incasinowetrust.com/media/casino_loyalty_images/4473_500x250_white_1.png",
+    "slug": "pledoo-casino",
+    "name": "Pledoo Casino",
+    "casino_rank": "8.6",
+    "likes": 666,
+    "vpn_usage": false,
+    "sportsbook": true,
+    "url": "https://3pledoo24.com/",
+    "owner": "Momus2006 N.V.",
+    "established": 2021,
+    "wager_limit": false,
+    "loss_limit": false,
+    "session_limit": false,
+    "self_exclusion": true,
+    "cool_off": true,
+    "reality_check": false,
+    "self_assessment": false,
+    "withdrawal_lock": false,
+    "deposit_limit": false,
+    "gamstop_self_exclusion": false,
+    "bonus_hunt_with_active_bonus": false,
+    "tournaments": false,
+    "special_notes": "",
+    "live_chat_competence": "above_average",
+    "additional_casino_params": [
+        1,
+        2
+    ]
+}

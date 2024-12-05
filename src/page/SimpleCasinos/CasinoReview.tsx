@@ -20,21 +20,7 @@ export const CasinoReview = ({
             <h2 className="item-iwild-review__title">{data?.name} review</h2>
             <div className="item-iwild-review__text">
                 <p>
-                    iWild Casino - is the new era of online casinos. Newly
-                    opened casino launched in 2017 and raised popularity in a
-                    days. Most gamers checked and loved it from first. The new
-                    era of online casinos. Newly opened casino launched in 2017
-                    and raised popularity in a days. Most gamers checked and
-                    loved it. Casino launched in 2017 and raised popularity in a
-                    days. Most gamers checked and loved it. Newly opened casino
-                    launched in 2017 and raised popularity in a days. Newly
-                    opened casino launched in 2017 and raised popularity in a
-                    days. Most gamers checked and loved it from first. The new
-                    era of online casinos. Newly opened casino launched in 2017
-                    and raised popularity in a days. Most gamers checked and
-                    loved it. Casino launched in 2017 and raised popularity in a
-                    days. Most gamers checked and loved it. Newly opened casino
-                    launched in 2017 and raised popularity in a days.
+                    {data?.review}
                 </p>
             </div>
             <button

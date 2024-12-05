@@ -28,7 +28,10 @@ export const PopupReadMore = ({
                                 General info
                             </div>
                             <div className="main-popup__text">
-                                <p>
+                                {
+                                    data?.review
+                                }
+                                {/* <p>
                                     iWild Casino - is the new era of online
                                     casinos. Newly opened casino launched in
                                     2017 and raised popularity in a days. Most
@@ -47,9 +50,9 @@ export const PopupReadMore = ({
                                     Most gamers checked and loved it. Newly
                                     opened casino launched and raised popularity
                                     in a days.
-                                </p>
+                                </p> */}
                             </div>
-                            <div className="main-popup__title">
+                            {/* <div className="main-popup__title">
                                 Zagolovok dlinnyii dliya krasoty
                             </div>
                             <div className="main-popup__text">
@@ -95,7 +98,7 @@ export const PopupReadMore = ({
                                     launched in 2017 and raised popularity in a
                                     days.
                                 </p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

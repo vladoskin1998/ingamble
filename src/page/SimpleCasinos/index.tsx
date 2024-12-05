@@ -32,7 +32,7 @@ const getCurrentCasinosFetchData = async (queryId: string) => {
 }
 
 export default function SimpleCasinos() {
-    document.title = "Simple Casinos"
+    document.title = "Review"
 
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const [openModal, setOpenModal] = useState(false)

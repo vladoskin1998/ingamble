@@ -3,6 +3,8 @@ import closeIcon from "../../assets/img/icons/close.svg"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { CasinoReview } from "./CasinoReview"
 import { RewievCasinoDataResponse } from "../../types"
+import { useAdaptiveBehavior } from "../../context/AppContext"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
 enum TabType {
     General = "General",
@@ -28,9 +30,9 @@ export const TabMain = ({
     handlerOpen: (s: boolean) => void
     data: undefined | RewievCasinoDataResponse
 }) => {
+
+    const {lastUpdate} = useAdaptiveBehavior()
     const [activeTab, setActiveTab] = useState<TabType>(TabType.General)
-
-
     const [openModal, setOpenModal] = useState(initStateOpenModal)
 
 
@@ -205,7 +207,7 @@ export const TabMain = ({
                                         Last update:
                                     </div>
                                     <div className="date-top-block-info-review__value">
-                                        12.01.2023
+                                       {lastUpdate}
                                     </div>
                                 </div>
                             </div>
@@ -216,7 +218,7 @@ export const TabMain = ({
                                             Owner
                                         </div>
                                         <div className="item-block-info-review__value">
-                                            Brivio Limited
+                                            {data?.owner}
                                         </div>
                                     </div>
                                     <div className="block-info-review__item item-block-info-review">
@@ -224,13 +226,13 @@ export const TabMain = ({
                                             License
                                         </div>
                                         <div className="item-block-info-review__value">
-                                            Curaçao{" "}
-                                            <span className="item-block-info-review__flag">
+                                            {data?.licenses?.[0].name}
+                                            {/* <span className="item-block-info-review__flag" >
                                                 <img
                                                     src="/src/assets/img/flags/curacao.svg"
                                                     alt="curacao"
                                                 />
-                                            </span>
+                                            </span> */}
                                         </div>
                                     </div>
                                     <div className="block-info-review__item item-block-info-review">
@@ -238,23 +240,23 @@ export const TabMain = ({
                                             Established In
                                         </div>
                                         <div className="item-block-info-review__value">
-                                            2021
+                                            {data?.established }
                                         </div>
                                     </div>
                                     <div className="block-info-review__item item-block-info-review">
                                         <div className="item-block-info-review__label">
                                             VPN Allowed
                                         </div>
-                                        <div className="item-block-info-review__value item-block-info-review__value_yes">
-                                            Yes
+                                        <div className={`item-block-info-review__value item-block-info-review__value_${data?.vpn_usage ? "yes" : 'no'}`}>
+                                            {data?.vpn_usage ? "Yes" : 'No'}
                                         </div>
                                     </div>
                                     <div className="block-info-review__item item-block-info-review">
                                         <div className="item-block-info-review__label">
                                             Fast Payout
                                         </div>
-                                        <div className="item-block-info-review__value item-block-info-review__value_medium">
-                                            Medium
+                                        <div className={`item-block-info-review__value item-block-info-review__value_${data?.payout_speed.toLocaleLowerCase()}`}>
+                                            {data?.payout_speed}
                                         </div>
                                         {/* <!-- <div
                                     className="item-block-info-review__value item-block-info-review__value_low">
@@ -270,7 +272,7 @@ export const TabMain = ({
                                             Minimal Wagering
                                         </div>
                                         <div className="item-block-info-review__value">
-                                            3X
+                                            {data?.min_wagering?.min_value || 1}X
                                         </div>
                                     </div>
                                 </div>
@@ -295,16 +297,16 @@ export const TabMain = ({
                                                 </span>
                                             </span>
                                         </div>
-                                        <div className="item-block-info-review__value item-block-info-review__value_yes">
-                                            Yes
+                                        <div className={`item-block-info-review__value item-block-info-review__value_${data?.bonus_hunt_with_active_bonus ? "yes" : 'no'}`}>
+                                            {data?.bonus_hunt_with_active_bonus ? "Yes" : 'No'}
                                         </div>
                                     </div>
                                     <div className="block-info-review__item item-block-info-review">
                                         <div className="item-block-info-review__label">
                                             Sportsbook
                                         </div>
-                                        <div className="item-block-info-review__value item-block-info-review__value_no">
-                                            No
+                                        <div className={`item-block-info-review__value item-block-info-review__value_${data?.sportsbook ? "yes" : 'no'}`}>
+                                            {data?.sportsbook ? "Yes" : 'No'}
                                         </div>
                                     </div>
                                     <div className="block-info-review__item item-block-info-review">
@@ -317,7 +319,7 @@ export const TabMain = ({
                                                     Daily
                                                 </div>
                                                 <div className="item-block-info-review__value">
-                                                    1,200
+                                                    {data?.withdrawal_limit.daily.toLocaleString("en-US") || "-"}
                                                 </div>
                                             </div>
                                             <div className="item-block-info-review__label-more-item">
@@ -325,7 +327,7 @@ export const TabMain = ({
                                                     Weekly
                                                 </div>
                                                 <div className="item-block-info-review__value">
-                                                    -
+                                                {data?.withdrawal_limit.weekly.toLocaleString("en-US") || "-"}
                                                 </div>
                                             </div>
                                             <div className="item-block-info-review__label-more-item">
@@ -333,7 +335,7 @@ export const TabMain = ({
                                                     Monthly
                                                 </div>
                                                 <div className="item-block-info-review__value">
-                                                    20,000
+                                                {data?.withdrawal_limit.monthly.toLocaleString("en-US") || "-"}
                                                 </div>
                                             </div>
                                         </div>
@@ -343,7 +345,7 @@ export const TabMain = ({
                                             Minimal Deposit
                                         </div>
                                         <div className="item-block-info-review__value">
-                                            10
+                                            {data?.min_dep?.[0].min_value}$
                                         </div>
                                     </div>
                                 </div>
@@ -371,7 +373,8 @@ export const TabMain = ({
                                     aria-label="Put your description here."
                                     className="item-content-bonus-information__link info-popup-open"
                                 >
-                                    Show All (64)
+                                    Show All (36)
+                                     {/* {"("}{data?.payment_methods?.length}{")"} */}
                                 </button>
                                 <div
                                     className={`block-info-review__popup popup-item-content-bonus-information  ${
@@ -384,7 +387,7 @@ export const TabMain = ({
                                             <div className="top-popup-item-content-bonus-information__title">
                                                 All Payment Methods
                                                 <div className="top-popup-item-content-bonus-information__number">
-                                                    (64)
+                                                    (36)
                                                 </div>
                                             </div>
                                             <button
@@ -1160,7 +1163,7 @@ export const TabMain = ({
                                     aria-label="Put your description here."
                                     className="item-content-bonus-information__link info-popup-open"
                                 >
-                                    Show All (12)
+                                    Show All {`(${data?.language_website.length})`}
                                 </button>
                                 <div
                                     className={`block-info-review__popup popup-item-content-bonus-information ${
@@ -1173,7 +1176,7 @@ export const TabMain = ({
                                             <div className="top-popup-item-content-bonus-information__title">
                                                 All Languages
                                                 <div className="top-popup-item-content-bonus-information__number">
-                                                    (12)
+                                                {`(${data?.language_website.length})`}
                                                 </div>
                                             </div>
                                             <button
@@ -1196,162 +1199,24 @@ export const TabMain = ({
                                         <div className="popup-item-content-bonus-information__content">
                                             <div className="block-info-review__elements">
                                                 <div className="block-info-review__elements-row">
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/english.svg"
-                                                                    alt="english"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                English
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/french.svg"
-                                                                    alt="French"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                French
+                                                    {
+                                                        data?.language_website.map(lw => <div className="block-info-review__elements-column">
+                                                            <div className="block-info-review__element element-block-info-review">
+                                                                <div className="element-block-info-review__icon">
+                                                                        <LazyCardImg
+                                                                            img={lw?.image ||  ''}
+                                                                             size='medium'
+                                                                             height="auto"
+                                                                        />
+                                                                </div>
+                                                                <div className="element-block-info-review__value">
+                                                                    {lw.name}
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/german.svg"
-                                                                    alt="German"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                German
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/italian.svg"
-                                                                    alt="Italian"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                Italian
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/spanish.svg"
-                                                                    alt="Spanish"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                Spanish
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/czech.png"
-                                                                    alt="Czech"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                Czech
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/finnish.svg"
-                                                                    alt="Finnish"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                Finnish
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/greek.svg"
-                                                                    alt="Greek"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                Greek
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/hungarian.svg"
-                                                                    alt="Hungarian"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                Hungarian
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/norwegian.svg"
-                                                                    alt="Norwegian"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                Norwegian
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/polish.svg"
-                                                                    alt="Polish"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                Polish
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__icon">
-                                                                <img
-                                                                    src="/src/assets/img/flags/portuguese.svg"
-                                                                    alt="Portuguese"
-                                                                />
-                                                            </div>
-                                                            <div className="element-block-info-review__value">
-                                                                Portuguese
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                        )
+                                                    }
+                                                  
                                                 </div>
                                             </div>
                                         </div>
@@ -1360,162 +1225,28 @@ export const TabMain = ({
                             </div>
                             <div className="block-info-review__elements">
                                 <div className="block-info-review__elements-row">
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/english.svg"
-                                                    alt="english"
-                                                />
+                                    {
+                                          
+                                            data?.language_website.map(lw =>     <div className="block-info-review__elements-column">
+                                                <div className="block-info-review__element element-block-info-review">
+                                                    <div className="element-block-info-review__icon">
+                                                    <LazyCardImg
+                                                                            img={lw?.image ||  ''}
+                                                                            height="auto"
+                                                                            size='medium'
+                                                                        />
+                                                    </div>
+                                                    <div className="element-block-info-review__value">
+                                                    {lw.name}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="element-block-info-review__value">
-                                                English
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/french.svg"
-                                                    alt="French"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                French
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/german.svg"
-                                                    alt="German"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                German
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/italian.svg"
-                                                    alt="Italian"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                Italian
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/spanish.svg"
-                                                    alt="Spanish"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                Spanish
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/czech.png"
-                                                    alt="Czech"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                Czech
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/finnish.svg"
-                                                    alt="Finnish"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                Finnish
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/greek.svg"
-                                                    alt="Greek"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                Greek
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/hungarian.svg"
-                                                    alt="Hungarian"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                Hungarian
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/norwegian.svg"
-                                                    alt="Norwegian"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                Norwegian
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/polish.svg"
-                                                    alt="Polish"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                Polish
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__icon">
-                                                <img
-                                                    src="/src/assets/img/flags/portuguese.svg"
-                                                    alt="Portuguese"
-                                                />
-                                            </div>
-                                            <div className="element-block-info-review__value">
-                                                Portuguese
-                                            </div>
-                                        </div>
-                                    </div>
+                                            )
+                                    
+                                      
+                                    }
+                                
+                               
                                 </div>
                             </div>
                         </div>
@@ -3236,25 +2967,24 @@ export const TabMain = ({
                     </div>
                     <div className="info-review__bonus bonus-info-review">
                         <div className="bonus-info-review__image-block">
-                            <div className="bonus-info-review__image ibg">
-                                <img
-                                    src="/src/assets/img/casino-cards/17.jpg"
-                                    alt="Get 200% up to 3 Deposits and 150 Free Spins"
-                                />
+                            <div className="bonus-info-review__image ibg--custom">
+                                                <LazyCardImg
+                                                    img={data?.bonuses.find(ssb => ssb.special_side_bar )?.bonus_image || ''}
+                                                />
                             </div>
-                            <a
+                            {/* <a
                                 href="https://www.youtube.com/watch?v=IBcwhaYP6Uk"
                                 data-fancybox="gallery-20"
                                 data-caption="Caption"
                                 className="bonus-info-review__btn-play casino-card__btn-play"
-                            ></a>
+                            ></a> */}
                         </div>
                         <div className="bonus-info-review__content">
                             <h2 className="bonus-info-review__title">
-                                Get 200% up to 3 Deposits and 150 Free Spins
+                                {data?.bonuses.find(ssb => ssb.special_side_bar )?.name || ''}
                             </h2>
                             <a
-                                href=""
+                                href={data?.url}
                                 aria-label="Put your description here."
                                 target="_blank"
                                 className="bonus-info-review__btn main-get-bonus__btn main-get-bonus__btn_bonus"
