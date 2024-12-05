@@ -177,15 +177,14 @@ export default function BlockMType3M(
                                                                         </div>
                                                                     </div> */}
                                                                     <div className="info-casino-card__stake">
-                                                                        {/* <a
+                                                                        <a
                                                                             href=""
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
                                                                             className="info-casino-card__stake-link"
                                                                         >
-                                                                            Stake
-                                                                            Casino
-                                                                        </a> */}
+                                                                            {item?.casino_info?.casino_name}
+                                                                        </a>
                                                                         <div className="info-casino-card__stake-rating">
                                                                             <span className="info-casino-card__stake-rating-icon">
                                                                                 <img
