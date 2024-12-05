@@ -28,7 +28,12 @@ const SafetyIndexRatingLevel = (n: number, s?: string) => {
 
 const getCurrentCasinosFetchData = async (queryId: string) => {
     const response = await $api.get(`get-data-casino/${queryId}/`)
-    return response.data
+
+    
+    const headers = response.headers
+
+    return { dataCurrentCasinos: response.data, headers }
+   
 }
 
 export default function SimpleCasinos() {
@@ -39,7 +44,7 @@ export default function SimpleCasinos() {
     const [searchParams] = useSearchParams()
     const queryId = searchParams.get("queryId")
 
-    const { data, isLoading } = useQuery<RewievCasinoDataResponse>(
+    const { data, isLoading } = useQuery<{dataCurrentCasinos:RewievCasinoDataResponse, headers:any}>(
         ["get-data-casino", queryId],
         () => getCurrentCasinosFetchData(queryId!),
         {
@@ -74,7 +79,7 @@ export default function SimpleCasinos() {
 
     return (
         <>
-            <PopupReadMore openModal={openModal} handlerOpen={handlerOpen} data={data}/>
+            <PopupReadMore openModal={openModal} handlerOpen={handlerOpen} data={data?.dataCurrentCasinos}/>
 
             <Wraper>
                 <main className="gamble__review main-gamble review">
@@ -113,7 +118,7 @@ export default function SimpleCasinos() {
                                             <div className="main-casino-info__image-block">
                                                 <div className="main-casino-info__image ibg--custom">
                                                     <LazyCardImg
-                                                        img={data?.image || ""}
+                                                        img={data?.dataCurrentCasinos?.image || ""}
                                                         height="100%"
                                                         width="100%"
                                                         imgLoading={"eager"}
@@ -134,25 +139,25 @@ export default function SimpleCasinos() {
                                                         />
                                                     </span>
                                                     <span className="info-casino-card__likes-number">
-                                                        {data?.likes || 0}
+                                                        {data?.dataCurrentCasinos?.likes || 0}
                                                     </span>
                                                 </div>
                                                 <div className="content-casino-info__top">
                                                     <h2 className="content-casino-info__title">
-                                                        {data?.name || 0}
+                                                        {data?.dataCurrentCasinos?.name || 0}
                                                     </h2>
                                                 </div>
                                                 <div className="content-casino-info__country country-content-casino-info">
                                                     <div className="country-content-casino-info__info">
-                                                        <div className="country-content-casino-info__icon">
+                                                        {/* <div className="country-content-casino-info__icon">
                                                             <img
                                                                 src="/src/assets/img/icons/latvia-flag.svg"
                                                                 alt="latvia"
                                                             />
-                                                        </div>
+                                                        </div> */}
                                                         <div className="country-content-casino-info__text">
-                                                            Accepts players from
-                                                            Latvia
+                                                            Accepts players from {" "}
+                                                            { data?.headers?.["cf-ipcountry"]}
                                                         </div>
                                                     </div>
                                                     <a
@@ -165,7 +170,7 @@ export default function SimpleCasinos() {
                                                     </a>
                                                 </div>
                                                 <a
-                                                    href={data?.url}
+                                                    href={data?.dataCurrentCasinos?.url}
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
@@ -187,19 +192,19 @@ export default function SimpleCasinos() {
                                                                     className={`item-features-content-casino-info__number 
                                                                     item-features-content-casino-info_${SafetyIndexRatingLevel(
                                                                         Number(
-                                                                            data?.casino_rank
+                                                                            data?.dataCurrentCasinos?.casino_rank
                                                                         ) || 10
                                                                     )}`}
                                                                 >
                                                                     {
-                                                                        data?.casino_rank
+                                                                        data?.dataCurrentCasinos?.casino_rank
                                                                     }{" "}
                                                                     <span
                                                                         className={`item-features-content-casino-info__number-level`}
                                                                     >
                                                                         {SafetyIndexRatingLevel(
                                                                             Number(
-                                                                                data?.casino_rank
+                                                                                data?.dataCurrentCasinos?.casino_rank
                                                                             ) ||
                                                                                 10
                                                                         )}
@@ -207,7 +212,7 @@ export default function SimpleCasinos() {
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__rating">
                                                                     {Array(
-                                                                        data?.stars ||
+                                                                        data?.dataCurrentCasinos?.stars ||
                                                                             5
                                                                     )
                                                                         .fill(0)
@@ -246,7 +251,7 @@ export default function SimpleCasinos() {
                                                             </div>
                                                             <div className="item-features-content-casino-info__body">
                                                                 <div className="item-features-content-casino-info__number">
-                                                                    {data?.withdrawal_limit?.monthly || 0}
+                                                                    {data?.dataCurrentCasinos?.withdrawal_limit?.monthly || 0}
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value">
                                                                     Monthly
@@ -263,7 +268,7 @@ export default function SimpleCasinos() {
                                                             </div>
                                                             <div className="item-features-content-casino-info__body">
                                                                 <div className="item-features-content-casino-info__number">
-                                                                    {data?.min_dep[0].min_value|| 0}$
+                                                                    {data?.dataCurrentCasinos?.min_dep[0].min_value|| 0}$
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value">
                                                                     To Activate
@@ -281,7 +286,7 @@ export default function SimpleCasinos() {
                                                             
                                                             <div className="item-features-content-casino-info__body ">
                                                                 <div className="item-features-content-casino-info__number">
-                                                                    {data?.payout_speed}
+                                                                    {data?.dataCurrentCasinos?.payout_speed}
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value" style={{opacity:0}}>
                                                                   1
@@ -297,7 +302,7 @@ export default function SimpleCasinos() {
                             </div>
                         </section>
 
-                        <CasinoBonuses data={data}/>
+                        <CasinoBonuses data={data?.dataCurrentCasinos}/>
 
                         <section className="review__loyalty loyalty-review">
                             <div className="loyalty-review__container container">
@@ -329,7 +334,7 @@ export default function SimpleCasinos() {
                                 </div>
                                 <div className="loyalty-review__body">
                                     {
-                                        data?.loyalty_program?.loyalty_keypoint?.slice(0,6).map(lk =>       <div className="loyalty-review__column">
+                                        data?.dataCurrentCasinos?.loyalty_program?.loyalty_keypoint?.slice(0,6).map(lk =>       <div className="loyalty-review__column">
                                             <div className="loyalty-review__item item-loyalty-review">
                                                 <div className="item-loyalty-review__image">
                                                     <LazyCardImg 
@@ -366,8 +371,8 @@ export default function SimpleCasinos() {
                         >
                             <div className="iwild-review-mob__container container"></div>
                         </section>
-                        <TabMain handlerOpen={handlerOpen} data={data}/>
-                        <Harry handlerOpen={handlerOpen} data={data}/>
+                        <TabMain handlerOpen={handlerOpen} data={data?.dataCurrentCasinos}/>
+                        <Harry handlerOpen={handlerOpen} data={data?.dataCurrentCasinos}/>
                         {/* <SpecialPromo /> */}
                         <section className="review__iwild-casino-safety iwild-casino-safety">
                             <div className="iwild-casino-safety__container container">
@@ -377,7 +382,7 @@ export default function SimpleCasinos() {
                                             <div className="iwild-casino-safety__item item-iwild-casino-safety">
                                                 <h3 className="item-iwild-casino-safety__title">
                                                     Safety Index of{" "}
-                                                    <span>iWild Casino</span>{" "}
+                                                    <span>{data?.dataCurrentCasinos?.name}</span>{" "}
                                                     explained
                                                 </h3>
                                                 <div className="item-iwild-casino-safety__text">
@@ -402,8 +407,13 @@ export default function SimpleCasinos() {
                                                     <div className="index-item-iwild-casino-safety__label">
                                                         Safety Index:
                                                     </div>
-                                                    <div className="index-item-iwild-casino-safety__value">
-                                                        High
+                                                    <div className="index-item-iwild-casino-safety__value" style={{textTransform:'capitalize'}}>
+                                                    {SafetyIndexRatingLevel(
+                                                                            Number(
+                                                                                data?.dataCurrentCasinos?.casino_rank
+                                                                            ) ||
+                                                                                10
+                                                                        )}
                                                     </div>
                                                 </div>
                                                 {/* <!-- <div

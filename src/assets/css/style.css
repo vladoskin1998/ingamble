@@ -10399,6 +10399,8 @@ h3 {
   display: flex;
   flex-direction: column;
 }
+
+
 .block-info-review__popup .popup-item-content-bonus-information__content .block-info-review__elements::-webkit-scrollbar-track {
   background: var(--BG-Bg_2, #232320);
 }
@@ -15605,6 +15607,18 @@ h3 {
   }
 }
 
+.item-iwild-review__btn_like.active{
+  border-color: var(--Colors-Yellow, #FFCF23);
+  background-color: transparent;
+}
+
+.item-iwild-review__btn_like.active svg{
+  fill: var(--Colors-Yellow, #FFCF23);
+}
+
+.item-iwild-review__btn_dislike.active svg{
+  fill: var(--Colors-Red, #FF3232);
+}
 
 /* custom dont delete */
 /* custom dont delete */

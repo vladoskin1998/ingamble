@@ -293,6 +293,10 @@ export interface SeeAllCasinosType {
     casino_id: number;
     casino_name: string;
     casino_rank: string;
+    casino_likes: number | undefined,
+    bonus_info: {
+        labels: string[];
+    } | undefined
     likes: number;
     vpn_usage: boolean;
     casino_image: string;

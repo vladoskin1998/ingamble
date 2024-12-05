@@ -1,47 +1,72 @@
 import { RewievCasinoDataResponse } from "../../types"
 import { CasinoReview } from "./CasinoReview"
-import HarryImg from '../../assets/img/casino-person/02.jpg'
-const DoYouLike = () => (
-    <div className="iwild-review__item item-iwild-review item-iwild-review_like-bonus">
-        <h2 className="item-iwild-review__title">Do You Like This Casino?</h2>
-        <div className="item-iwild-review__btns">
-            <div className="item-iwild-review__btns-item">
-                <a
-                    href=""
-                    target="_blank"
-                    aria-label="Put your description here."
-                    className="item-iwild-review__btn item-iwild-review__btn_like"
-                >
-                    <span className="item-iwild-review__btn-icon">
-                        <svg>
-                            <use xlinkHref="#like"></use>
-                        </svg>
-                    </span>
-                    <span className="item-iwild-review__btn-number">14K</span>
-                </a>
-            </div>
-            <div className="item-iwild-review__btns-item">
-                <a
-                    href=""
-                    target="_blank"
-                    aria-label="Put your description here."
-                    className="item-iwild-review__btn item-iwild-review__btn_dislike"
-                >
-                    <span className="item-iwild-review__btn-icon">
-                        <svg>
-                            <use xlinkHref="#like"></use>
-                        </svg>
-                    </span>
-                    <span className="item-iwild-review__btn-number"></span>
-                </a>
+import HarryImg from "../../assets/img/casino-person/02.jpg"
+import { useState } from "react"
+const DoYouLike = ({ likes: DataLike }: { likes: number }) => {
+    const [like, setLike] = useState<"" | "like" | "dislike">("")
+
+    // className={`like-get-bonus__btn like-get-bonus__btn_like ${
+    //     like === "like" &&
+    //     "active"
+    // }`}
+
+    // onClick={() =>
+    //     setLike("dislike")
+    // }
+    // className={`like-get-bonus__btn like-get-bonus__btn_dislike ${
+    //     like ===
+    //         "dislike" &&
+    //     "active"
+    // }`}
+
+    return (
+        <div className="iwild-review__item item-iwild-review item-iwild-review_like-bonus">
+            <h2 className="item-iwild-review__title">
+                Do You Like This Casino?
+            </h2>
+            <div className="item-iwild-review__btns">
+                <div className="item-iwild-review__btns-item">
+                    <button
+                        aria-label="Put your description here."
+                        className={`item-iwild-review__btn item-iwild-review__btn_like  ${
+                            like === "like" && "active"
+                        }`}
+                        onClick={() => setLike("like")}
+                    >
+                        <span className="item-iwild-review__btn-icon">
+                            <svg>
+                                <use xlinkHref="#like"></use>
+                            </svg>
+                        </span>
+                        <span className="item-iwild-review__btn-number">
+                            {DataLike + (like === "like" ? 1 : 0)}
+                        </span>
+                    </button>
+                </div>
+                <div className="item-iwild-review__btns-item">
+                    <button
+                        aria-label="Put your description here."
+                        className={`item-iwild-review__btn item-iwild-review__btn_dislike ${
+                            like === "dislike" && "active"
+                        }`}
+                        onClick={() => setLike("dislike")}
+                    >
+                        <span className="item-iwild-review__btn-icon">
+                            <svg>
+                                <use xlinkHref="#like"></use>
+                            </svg>
+                        </span>
+                        <span className="item-iwild-review__btn-number"></span>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-)
+    )
+}
 
 export const Harry = ({
     handlerOpen,
-    data
+    data,
 }: {
     handlerOpen: (s: boolean) => void
     data: undefined | RewievCasinoDataResponse
@@ -59,7 +84,10 @@ export const Harry = ({
                             className="iwild-review__column iwild-review__column_medium iwild-review__harytitle"
                             data-da="iwild-review-mob__container, 0, 1150"
                         >
-                            <CasinoReview handlerOpen={handlerOpen} data={data}/>
+                            <CasinoReview
+                                handlerOpen={handlerOpen}
+                                data={data}
+                            />
                         </div>
 
                         <div className="iwild-review__column iwild-review__column_medium">
@@ -130,9 +158,9 @@ export const Harry = ({
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="iwild-review__column iwild-review__column_small iwild-review__do-you-like-mob">
-                            <DoYouLike />
+                            <DoYouLike likes={data?.likes || 0} />
                         </div>
                     </div>
                     <h2 className="iwild-review__title-mob">
@@ -147,15 +175,13 @@ export const Harry = ({
                                         What we like:
                                     </h3>
                                     <ul className="item-iwild-review__list">
-                                        <li className="item-iwild-review__list-item">
-                                            Fast Withdrawals
-                                        </li>
-                                        <li className="item-iwild-review__list-item">
-                                            Excellent choice of payment methods
-                                        </li>
-                                        <li className="item-iwild-review__list-item">
-                                            Excellent game choice
-                                        </li>
+                                        {data?.what_we_like
+                                            ?.split("\r\n")
+                                            .map((item) => (
+                                                <li className="item-iwild-review__list-item">
+                                                    {item}
+                                                </li>
+                                            ))}
                                     </ul>
                                 </div>
                             </div>
@@ -168,18 +194,19 @@ export const Harry = ({
                                         What we don’t like:
                                     </h3>
                                     <ul className="item-iwild-review__list">
-                                        <li className="item-iwild-review__list-item">
-                                            Low withdrawal limits
-                                        </li>
-                                        <li className="item-iwild-review__list-item">
-                                            Payment fees
-                                        </li>
+                                        {data?.what_we_dont_like
+                                            ?.split("\r\n")
+                                            .map((item) => (
+                                                <li className="item-iwild-review__list-item">
+                                                    {item}
+                                                </li>
+                                            ))}
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div className="iwild-review__column iwild-review__column_small iwild-review__do-you-like-pc">
-                            <DoYouLike />
+                            <DoYouLike likes={data?.likes || 0} />
                         </div>
                     </div>
                 </div>

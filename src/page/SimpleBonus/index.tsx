@@ -425,7 +425,7 @@ export default function SimpleBonus() {
                                                 </h2>
                                             ) : (
                                                 <>
-                                                    <span
+                                                    {/* <span
                                                         className="top__title-icon"
                                                         style={{
                                                             borderRadius: "4px",
@@ -434,7 +434,7 @@ export default function SimpleBonus() {
                                                     >
                                                         <img src={geoLocation.countryCode} alt={geoLocation.countryCode} />
                                                        
-                                                    </span>
+                                                    </span> */}
                                                     <h2 className="top__title">
                                                         Bonuses available in{" "}
                                                         {
