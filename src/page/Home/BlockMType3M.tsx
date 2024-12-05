@@ -4,15 +4,19 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import { useRef, useEffect } from "react"
-import VavadaImage from "../../assets/img/different-casino/vavada.png"
+
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { COLORS_TAGS } from "../../helper"
 
-export default function VpnFriendly({
+export default function BlockMType3M(
+    {
     data,
 }: {
     data: HomeDataBlock | undefined
-}) {
+}
+) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -28,7 +32,7 @@ export default function VpnFriendly({
         }
     }, [])
 
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7)
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3M )
         return <></>
     return (
         <section className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
@@ -46,7 +50,7 @@ export default function VpnFriendly({
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    Type 7 Mobile {data.items_block.block_title}
+                                    Type 33333MM {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -104,11 +108,12 @@ export default function VpnFriendly({
                                                                 className="different-casino-standart__image-block"
                                                             >
                                                                 <span className="different-casino-standart__image ibg">
-                                                                    <img
-                                                                        src={
-                                                                            VavadaImage
+                                                                <LazyCardImg
+                                                                        img={
+                                                                            item?.casino_info
+                                                                                ?.casino_image ||
+                                                                            ""
                                                                         }
-                                                                        alt="vavada"
                                                                     />
                                                                 </span>
                                                             </a>
@@ -120,11 +125,38 @@ export default function VpnFriendly({
                                                                         target="_blank"
                                                                         className="different-casino-standart__name"
                                                                     >
-                                                                        200% up
-                                                                        to $200
-                                                                        and 50
-                                                                        spins
+                                                                        {
+                                                                            item?.bonus_info?.bonus_name
+                                                                        }
+                                                            
                                                                     </a>
+                                                                    {item?.bonus_info
+                                                                            ?.labels
+                                                                            ?.length && (
+                                                                            <div className="different-casino-standart__tags tags-casino-card">
+                                                                                {item?.bonus_info?.labels.map(
+                                                                                    (
+                                                                                        item,
+                                                                                        index
+                                                                                    ) => (
+                                                                                        <div
+                                                                                            className={`tags-casino-card__item ${
+                                                                                                COLORS_TAGS[
+                                                                                                    index %
+                                                                                                        4
+                                                                                                ]
+                                                                                            }`}
+                                                                                        >
+                                                                                            <span className="tags-casino-card__item-label">
+                                                                                                {
+                                                                                                    item
+                                                                                                }
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    )
+                                                                                )}
+                                                                            </div>
+                                                                        )}
                                                                     {/* <div className="different-casino-standart__tags tags-casino-card">
                                                                         <div className="tags-casino-card__item tags-casino-card__item_green">
                                                                             <span className="tags-casino-card__item-label">
@@ -164,7 +196,9 @@ export default function VpnFriendly({
                                                                                 />
                                                                             </span>
                                                                             <span className="info-casino-card__stake__rating-number">
-                                                                                4.7
+                                                                              {
+                                                                                item?.casino_info?.casino_rank
+                                                                              }
                                                                             </span>
                                                                         </div>
                                                                     </div>

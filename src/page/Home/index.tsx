@@ -35,6 +35,7 @@ import {
     AllCategoriesHomeDataResponse,
     BlockTypeNumber,
     HomeDataBlock,
+    HomeDataBlockMobile,
 } from "../../types"
 
 import { sanitizeLink } from "../../helper"
@@ -44,6 +45,8 @@ import BlockType3 from "./BlockType3"
 import BlockType4 from "./BlockType4"
 import BlockType7 from "./BlockType7"
 import BlockType5 from "./BlockType5"
+import BlockMType2M from "./BlockMType2M"
+import BlockMType3M from "./BlockMType3M"
 
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 // const BlockType7Mobile = lazy(() => import("./BlockType7Mobile"))
@@ -80,6 +83,10 @@ const getHomeDataFetch = async () => {
             (a: any, b: any) =>
                 a?.blocks_sequence_number - b?.blocks_sequence_number
         ),
+        dataHomeMobile: response?.data?.data_blocks_m?.sort(
+            (a: any, b: any) =>
+                a?.blocks_sequence_number - b?.blocks_sequence_number
+        ),
         headers,
     }
 }
@@ -90,6 +97,8 @@ const getDataHomePageCategories = async () => {
 }
 
 const renderBlock = (block: any) => {
+    console.log("block", block)
+
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} />
@@ -135,6 +144,11 @@ const renderBlock = (block: any) => {
                     <BlockType5Mobile data={block} />
                 </>
             )
+
+        case BlockTypeNumber.BlockType2M:
+            return <BlockMType2M data={block} />
+        case BlockTypeNumber.BlockType3M:
+            return <BlockMType3M data={block} />
         default:
             return null
     }
@@ -148,6 +162,7 @@ export const Home = () => {
 
     const { data, isLoading } = useQuery<{
         dataHome: { data_blocks: HomeDataBlock[] }[]
+        dataHomeMobile: { data_blocks_m: HomeDataBlockMobile[] }[]
         headers: any
     }>("get-data-home-page/ ", getHomeDataFetch, {
         keepPreviousData: true,
@@ -163,8 +178,6 @@ export const Home = () => {
                 staleTime: Infinity,
             }
         )
-
-    console.log("------?", data)
 
     useEffect(() => {
         initializeAdaptiveBehavior()
@@ -196,89 +209,7 @@ export const Home = () => {
                         ])}
                     />
                     {data?.dataHome?.map((block) => renderBlock(block))}
-                    {/* {[
-                        <BlockType1
-                            data={data?.dataHome?.data_blocks?.find(
-                                (item) =>
-                                    item.items_block.type_block ===
-                                    BlockTypeNumber.BlockType1
-                            )}
-                        />,
-                        <BlockType9
-                            data={data?.dataHome?.data_blocks?.find(
-                                (item) =>
-                                    item.items_block.type_block ===
-                                    BlockTypeNumber.BlockType9
-                            )}
-                        />,
-                        <>
-                            <BlockType2
-                                data={data?.dataHome?.data_blocks?.find(
-                                    (item) =>
-                                        item.items_block.type_block ===
-                                        BlockTypeNumber.BlockType2
-                                )}
-                            />
-                            <BlockType2Mobile
-                                data={data?.dataHome?.data_blocks?.find(
-                                    (item) =>
-                                        item.items_block.type_block ===
-                                        BlockTypeNumber.BlockType2
-                                )}
-                            />
-                        </>,
-
-                        <BlockType6
-                            data={data?.dataHome?.data_blocks?.find(
-                                (item) =>
-                                    item.items_block.type_block ===
-                                    BlockTypeNumber.BlockType6
-                            )}
-                        />,
-                        <BlockType8
-                            data={data?.dataHome?.data_blocks?.find(
-                                (item) =>
-                                    item.items_block.type_block ===
-                                    BlockTypeNumber.BlockType8
-                            )}
-                        />,
-                        <BlockType3
-                            data={data?.dataHome?.data_blocks?.find(
-                                (item) =>
-                                    item.items_block.type_block ===
-                                    BlockTypeNumber.BlockType3
-                            )}
-                        />,
-                        <BlockType4
-                            data={data?.dataHome?.data_blocks?.find(
-                                (item) =>
-                                    item.items_block.type_block ===
-                                    BlockTypeNumber.BlockType4
-                            )}
-                        />,
-                        <BlockType8
-                            data={data?.dataHome?.data_blocks?.find(
-                                (item) =>
-                                    item.items_block.type_block ===
-                                    BlockTypeNumber.BlockType8
-                            )}
-                        />,
-                        <BlockType7
-                            data={data?.dataHome?.data_blocks?.find(
-                                (item) =>
-                                    item.items_block.type_block ===
-                                    BlockTypeNumber.BlockType7
-                            )}
-                        />,
-                        
-                        <BlockType5
-                            data={data?.dataHome?.data_blocks?.find(
-                                (item) =>
-                                    item.items_block.type_block ===
-                                    BlockTypeNumber.BlockType5
-                            )}
-                        />,
-                    ]} */}
+                    {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
                     {/* <FastestPayoutCasinos /> */}
 

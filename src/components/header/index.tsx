@@ -41,7 +41,7 @@ export const Header = ({
     setSidebarActive: (s: boolean) => void
 }) => {
     const navigate = useNavigate()
-    const { searchGlobal: search, handlerSeachGlobal: setSearch } =
+    const { casinoFilters, setCasinoFilters} =
         useFilterContext()
 
     const [moonBlink, setBoonBlink] = useState(false)
@@ -218,7 +218,7 @@ export const Header = ({
                         >
                             <div
                                 className={`form-header__item form-item ${
-                                    search && "filled"
+                                    casinoFilters.casino_name && "filled"
                                 } ${searchFocus && "focus"}`}
                             >
                                 <span className="form-item__icon form-item__icon_search">
@@ -234,14 +234,14 @@ export const Header = ({
                                     type="text"
                                     name="form[]"
                                     className="form-item__input form-item__input_search"
-                                    value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
+                                    value={casinoFilters.casino_name || ''}
+                                    onChange={(e) =>    setCasinoFilters(s => ({...s,casino_name: e.target.value || undefined}))}
                                     onBlur={() => setSearchFocus(false)}
                                     onFocus={() => setSearchFocus(true)}
                                 />
                                 <button
                                     className="form-item__icon form-item__icon_delete"
-                                    onClick={() => setSearch("")}
+                                    onClick={() =>    setCasinoFilters(s => ({...s, casino_name:  undefined}))}
                                 >
                                     <svg>
                                         <g>
@@ -371,7 +371,7 @@ export const Header = ({
                             >
                                 <div
                                     className={`form-header__item form-item ${
-                                        search && "filled"
+                                        casinoFilters.casino_name && "filled"
                                     } ${searchFocus && "focus"}`}
                                 >
                                     <span
@@ -387,16 +387,16 @@ export const Header = ({
                                         type="text"
                                         name="form[]"
                                         className="form-item__input form-item__input_search"
-                                        value={search}
+                                        value={casinoFilters.casino_name || ''}
                                         onChange={(e) =>
-                                            setSearch(e.target.value)
+                                            setCasinoFilters(s => ({...s,casino_name: e.target.value || undefined}))
                                         }
                                         onBlur={() => setSearchFocus(false)}
                                         onFocus={() => setSearchFocus(true)}
                                     />
                                     <button
                                         className="form-item__icon form-item__icon_delete"
-                                        onClick={() => setSearch("")}
+                                        onClick={() =>  setCasinoFilters(s => ({...s,casino_name: undefined}))}
                                     >
                                         <svg>
                                             <use xlinkHref="#delete"></use>

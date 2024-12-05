@@ -131,6 +131,8 @@ export enum BlockTypeNumber {
     BlockType8 = "type_8",
     BlockType9 = "type_9",
     BlockType10 = "type_10",
+    BlockType2M = "type_2m",
+    BlockType3M = "type_3m",
 }
 export interface HomeAdditionalCasinoParams {
     [key: string]: string;
@@ -192,7 +194,7 @@ export interface DataHomeItemsBlock {
     block_title: string;
     subtitle: string | null;
     title_image: string | null;
-    type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5 | BlockTypeNumber.BlockType3 | BlockTypeNumber.BlockType8;
+    type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5 | BlockTypeNumber.BlockType3 | BlockTypeNumber.BlockType8 | BlockTypeNumber.BlockType3M | BlockTypeNumber.BlockType2M;
     data_cards: (HomeDataCard)[];
 }
 
@@ -209,6 +211,10 @@ export interface HomeDataBlock {
     items_block: DataHomeItemsBlock | EssentialItemsBlock;
 }
 
+export interface HomeDataBlockMobile{
+    blocks_sequence_number: number;
+    items_block: DataHomeItemsBlock
+}
 
 
 export type SeeAllBonusResponse = {

@@ -38,17 +38,30 @@ export const sliceString = (s:string | undefined,l:number) => {
     return   s.length > l ? `${ s.slice(0, l)}...` : s
 }
   
-export const filterEmptyValues = <T>(
-    body: T
-): Partial<T> => {
+export const filterEmptyValues = <T>(body: T): Partial<T> => {
+    const isEmptyObject = (value: unknown): boolean => {
+        if (typeof value !== "object" || value === null) return false;
+
+        const obj = value as Record<string, unknown>;
+        return Object.values(obj).every(
+            (val) =>
+                val === null ||
+                val === undefined ||
+                (Array.isArray(val) && val.length === 0) ||
+                (typeof val === "object" && val !== null && isEmptyObject(val))
+        );
+    };
+
     return Object.fromEntries(
         Object.entries(body as Record<string, unknown>).filter(([_, value]) => {
             if (value === null || value === undefined) return false;
             if (Array.isArray(value) && value.length === 0) return false;
+            if (typeof value === "object" && value !== null && isEmptyObject(value)) return false;
             return true;
         })
     ) as Partial<T>;
-}
+};
+
 
 
 
