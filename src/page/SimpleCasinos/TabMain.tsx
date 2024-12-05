@@ -5,7 +5,7 @@ import { CasinoReview } from "./CasinoReview"
 import { RewievCasinoDataResponse } from "../../types"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-
+import gift from '../../assets/img/icons/gift.svg'
 enum TabType {
     General = "General",
     Payment = "Payment",
@@ -1205,8 +1205,9 @@ export const TabMain = ({
                                                                 <div className="element-block-info-review__icon">
                                                                         <LazyCardImg
                                                                             img={lw?.image ||  ''}
-                                                                             size='medium'
+                                                                             size='small'
                                                                              height="auto"
+                                                                             width="100%"
                                                                         />
                                                                 </div>
                                                                 <div className="element-block-info-review__value">
@@ -1233,7 +1234,7 @@ export const TabMain = ({
                                                     <LazyCardImg
                                                                             img={lw?.image ||  ''}
                                                                             height="auto"
-                                                                            size='medium'
+                                                                            size='small'
                                                                         />
                                                     </div>
                                                     <div className="element-block-info-review__value">
@@ -1272,7 +1273,7 @@ export const TabMain = ({
                                     aria-label="Put your description here."
                                     className="item-content-bonus-information__link info-popup-open"
                                 >
-                                    Show All (130)
+                                    Show All {`(${data?.game_providers.length})`}
                                 </button>
                                 <div
                                     className={`block-info-review__popup popup-item-content-bonus-information ${
@@ -1285,7 +1286,7 @@ export const TabMain = ({
                                             <div className="top-popup-item-content-bonus-information__title">
                                                 All Game Providers
                                                 <div className="top-popup-item-content-bonus-information__number">
-                                                    (130)
+                                                {`(${data?.game_providers.length})`}
                                                 </div>
                                             </div>
                                             <button
@@ -1307,366 +1308,20 @@ export const TabMain = ({
                                         <div className="popup-item-content-bonus-information__content">
                                             <div className="block-info-review__elements">
                                                 <div className="block-info-review__elements-row">
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/01.svg"
-                                                                    alt="providers-img"
-                                                                />
+                                                    {
+                                                        data?.game_providers.map(gp =>  <div className="block-info-review__elements-column">
+                                                            <div className="block-info-review__element element-block-info-review">
+                                                                <div className="element-block-info-review__image ibg--custom ibg--bg ibg-center">
+                                                                    <LazyCardImg
+                                                                        img={gp?.image || ''}
+                                                                        size="medium"
+                                                                        height="auto"
+                                                                        width="100%"
+                                                                    />
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/02.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/03.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/04.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/05.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/06.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/07.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/08.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/09.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/10.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/11.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/12.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/13.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/14.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/15.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/16.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/17.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/18.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/19.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/20.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/21.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/22.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/23.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/24.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/25.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/26.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/27.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/28.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/29.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/30.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/31.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/32.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/33.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/34.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/35.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="block-info-review__elements-column">
-                                                        <div className="block-info-review__element element-block-info-review">
-                                                            <div className="element-block-info-review__image">
-                                                                <img
-                                                                    src="/src/assets/img/info-review/providers/36.svg"
-                                                                    alt="providers-img"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                        </div>)
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -1675,366 +1330,23 @@ export const TabMain = ({
                             </div>
                             <div className="block-info-review__elements">
                                 <div className="block-info-review__elements-row">
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/01.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/02.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/03.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/04.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/05.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/06.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/07.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/08.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/09.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/10.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/11.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/12.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/13.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/14.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/15.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/16.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/17.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/18.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/19.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/20.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/21.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/22.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/23.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/24.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/25.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/26.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/27.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/28.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/29.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/30.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/31.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/32.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/33.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/34.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/35.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="block-info-review__elements-column">
-                                        <div className="block-info-review__element element-block-info-review">
-                                            <div className="element-block-info-review__image">
-                                                <img
-                                                    src="/src/assets/img/info-review/providers/36.svg"
-                                                    alt="providers-img"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                {
+                                                        data?.game_providers.map(gp =>  <div className="block-info-review__elements-column">
+                                                            <div className="block-info-review__element element-block-info-review">
+                                                                <div className="element-block-info-review__image ibg--custom ibg--bg ibg-center">
+                                                                    <LazyCardImg
+                                                                        img={gp?.image || ''}
+                                                                        size="medium"
+                                                                        height="auto"
+                                                                        width="100%"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                        </div>)
+                                                    }
+                                   
+                          
                                 </div>
                             </div>
                         </div>
@@ -2059,7 +1371,7 @@ export const TabMain = ({
                                 }
                                     className="item-content-bonus-information__link info-popup-open"
                                 >
-                                    Show All (14)
+                                    Show All    {`(${data?.game_types.length})`}
                                 </button>
                                 <div
                                     className={`block-info-review__popup popup-item-content-bonus-information ${
@@ -2991,7 +2303,7 @@ export const TabMain = ({
                             >
                                 <span>
                                     <img
-                                        src="/src/assets/img/icons/gift.svg"
+                                        src={gift}
                                         alt="gift"
                                     />
                                 </span>

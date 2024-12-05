@@ -126,6 +126,26 @@
 
 }
 
+.loader-body-size-small .lds-spinner{
+  width: 16px;
+  height: 16px;
+}
+
+.loader-body-size-small .lds-spinner div{
+  transform-origin: 8px 8px;
+}
+
+.loader-body-size-small .lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0px;
+  left:7.2px;
+  width: 1.1px;
+  height: 3.5px;
+
+}
+
 @keyframes lds-spinner {
   0% {
     opacity: 1;

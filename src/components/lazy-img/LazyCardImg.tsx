@@ -10,7 +10,7 @@ export const LazyCardImg = ({
 }: {
     height?: string
     img: string
-    size?: "large" | "medium"
+    size?: "large" | "medium" | "small"
     width?: string
     imgLoading?: "lazy" | "eager" | undefined
 }) => {

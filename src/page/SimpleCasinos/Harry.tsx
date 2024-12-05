@@ -1,6 +1,6 @@
 import { RewievCasinoDataResponse } from "../../types"
 import { CasinoReview } from "./CasinoReview"
-
+import HarryImg from '../../assets/img/casino-person/02.jpg'
 const DoYouLike = () => (
     <div className="iwild-review__item item-iwild-review item-iwild-review_like-bonus">
         <h2 className="item-iwild-review__title">Do You Like This Casino?</h2>
@@ -67,7 +67,7 @@ export const Harry = ({
                                 <div className="item-iwild-review__content content-item-iwild-review">
                                     <div className="content-item-iwild-review__image">
                                         <img
-                                            src="/src/assets/img/casino-person/02.jpg"
+                                            src={HarryImg}
                                             alt="HARRY STYLES"
                                         />
                                     </div>
