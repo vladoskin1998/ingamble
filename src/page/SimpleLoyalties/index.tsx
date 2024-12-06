@@ -16,7 +16,7 @@ import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
 import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 import { SimpleBonusEssentialPrograms } from "../SimpleBonus/SimpleBonusEssentialPrograms"
 import { HarryStyles } from "../SimpleBonus/HarryStyles"
-import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import  SubscribeForm  from "../SimpleBonus/SubscribeForm"
 import { LoyaltyAcordeon } from "./LoyaltyAcordeon"
 export default function SimpleLoyalties() {
@@ -26,16 +26,7 @@ export default function SimpleLoyalties() {
             <main className="gamble__loyaltie main-gamble loyaltie">
                 <div className="main-gamble__body">
                     <Categories
-                        category={
-                            [
-                                { name: "All" },
-                                { name: "Hot Events" },
-                                { name: "Best Cash Back Casinos" },
-                                { name: "Highest RTP Slots" },
-                                { name: " No Deposit Bonuses" },
-                                { name: "  VPN Allowed Casinos" },
-                            ] 
-                        }
+                       
                     />
                     <BreadCrumb
                         path={[

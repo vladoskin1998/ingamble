@@ -22,7 +22,7 @@ import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import star from "../../assets/img/icons/star.svg"
 import "../SeeAllEssentialsLoyalty/style.css"
 import { v4 as uuidv4 } from "uuid"
-import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 const countPageSize = 15
 
@@ -148,14 +148,7 @@ export default function FilterLoyalty() {
             <main className="gamble__casinos-filtered main-gamble casinos-filtered loyaltie-filtered__main">
                 <div className="main-gamble__body">
                     <Categories
-                        category={[
-                            { name: "All" },
-                            { name: "Hot Events" },
-                            { name: "Best Cash Back Casinos" },
-                            { name: "Highest RTP Slots" },
-                            { name: "No Deposit Bonuses" },
-                            { name: "VPN Allowed Casinos" },
-                        ]}
+                       
                     />
                     <FilterHeaderList
                         initList={loyaltiesFilters}

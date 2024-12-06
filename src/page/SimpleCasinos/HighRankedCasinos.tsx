@@ -1,5 +1,6 @@
 import starIcon from "../../assets/img/icons/star.svg"
 import likeIcon from "../../assets/img/icons/like.svg"
+import playingCards from "../../assets/img/playing-cards.png"
 import { useEffect, useRef, useState } from "react"
 import { Pagination } from "swiper/modules"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
@@ -8,7 +9,7 @@ import { FilterCasinoPostResponse, SeeAllCasinosType } from "../../types"
 import { useQuery } from "react-query"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS } from "../../helper"
-
+ 
 const countPageSize = 8
 
 const getFilteringCasinoList = async (
@@ -131,7 +132,7 @@ export const HighRankedCasinos = () => {
                             </div>
                             <div className="baner-row-block__image">
                                 <img
-                                    src="/src/assets/img/playing-cards.png"
+                                  src={playingCards}
                                     alt="playing-cards"
                                 />
                             </div>
@@ -271,7 +272,7 @@ export const HighRankedCasinos = () => {
                                                                 </span>
                                                                 <span className="info-casino-card__likes-number">
                                                                     {item?.[0]
-                                                                        ?.casino_likes ||
+                                                                        ?.likes ||
                                                                         0}
                                                                 </span>
                                                             </div>
@@ -355,7 +356,7 @@ export const HighRankedCasinos = () => {
                                                                 </span>
                                                                 <span className="info-casino-card__likes-number">
                                                                     {item?.[1]
-                                                                        ?.casino_likes ||
+                                                                        ?.likes ||
                                                                         0}
                                                                 </span>
                                                             </div>
@@ -469,7 +470,7 @@ export const HighRankedCasinos = () => {
                                                                 </span>
                                                                 <span className="info-casino-card__likes-number">
                                                                     {
-                                                                        item.casino_likes
+                                                                        item.likes
                                                                     }
                                                                 </span>
                                                             </div>

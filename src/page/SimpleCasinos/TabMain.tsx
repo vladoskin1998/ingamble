@@ -6,6 +6,8 @@ import { RewievCasinoDataResponse } from "../../types"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import gift from "../../assets/img/icons/gift.svg"
+import infoReviewCheck from "../../assets/img/icons/info-review-check.svg"
+
 enum TabType {
     General = "General",
     Payment = "Payment",
@@ -914,7 +916,8 @@ export const TabMain = ({
                         <div className="block-info-review__element element-block-info-review">
                             <div className="element-block-info-review__icon">
                                 <img
-                                    src="/src/assets/img/icons/info-review-check.svg"
+                                src={infoReviewCheck}
+                                   
                                     alt="check"
                                 />
                             </div>
@@ -944,7 +947,7 @@ export const TabMain = ({
                         <div className="block-info-review__element element-block-info-review">
                             <div className="element-block-info-review__icon">
                                 <img
-                                    src="/src/assets/img/icons/info-review-check.svg"
+                                    src={infoReviewCheck}
                                     alt="check"
                                 />
                             </div>

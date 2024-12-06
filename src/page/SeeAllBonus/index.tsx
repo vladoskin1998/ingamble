@@ -20,7 +20,7 @@ import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
 import { useParams } from "react-router-dom"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
-import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 
 const getAllBonusFetchData = async (page: number, queryId: string) => {
     const response = await $api.get(
@@ -120,14 +120,7 @@ export default function SeeAllBonus() {
             <main className="gamble__see-all main-gamble see-all">
                 <div className="main-gamble__body">
                     <Categories
-                        category={[
-                            { name: "All" },
-                            { name: "Hot Events" },
-                            { name: "Best Cash Back Casinos" },
-                            { name: "Highest RTP Slots" },
-                            { name: "No Deposit Bonuses" },
-                            { name: "VPN Allowed Casinos" },
-                        ]}
+                     
                     />
                     <BreadCrumb
                         path={[

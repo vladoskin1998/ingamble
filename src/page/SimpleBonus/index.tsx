@@ -23,7 +23,7 @@ import { LogoLoader } from "../../components/loader/LogoLoader"
 import { HeaderSimpleBonus } from "./HeaderSimpleBonus"
 import { HowToGetBonus } from "./HowToGetBonus"
 import MainSlider from "../../components/swiper/MainSlider"
-import { CheckMoreWhatSuitsYouBest } from "./CheckMoreWhatSuitsYouBest"
+import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import { HarryStyles } from "./HarryStyles"
 
 
@@ -93,14 +93,7 @@ export default function SimpleBonus() {
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
                     <Categories
-                        category={
-                            data?.dataBonus?.category?.map((item) => ({
-                                name: item.name,
-                                link: `${window.location.origin}/${item?.name
-                                    .toLocaleLowerCase()
-                                    .replace(/\s/g, "-")}`,
-                            })) || []
-                        }
+                       
                     />
 
                     <BreadCrumb

@@ -1,7 +1,7 @@
 import { Wraper } from "../Wraper"
 import starIcon from "../../assets/img/icons/star.svg"
 import likeIcon from "../../assets/img/icons/like.svg"
-import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { Categories } from "../../components/categories/Categories"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
@@ -21,19 +21,17 @@ import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
 const SafetyIndexRatingLevel = (n: number, s?: string) => {
-    if (n < 3 ||  s?.toLocaleLowerCase() === 'medium') return "medium"
-    else if (n < 7 || s?.toLocaleLowerCase() === 'medium') return "low"
+    if (n < 3 || s?.toLocaleLowerCase() === "medium") return "medium"
+    else if (n < 7 || s?.toLocaleLowerCase() === "medium") return "low"
     else return "hight"
 }
 
 const getCurrentCasinosFetchData = async (queryId: string) => {
     const response = await $api.get(`get-data-casino/${queryId}/`)
 
-    
     const headers = response.headers
 
     return { dataCurrentCasinos: response.data, headers }
-   
 }
 
 export default function SimpleCasinos() {
@@ -44,7 +42,10 @@ export default function SimpleCasinos() {
     const [searchParams] = useSearchParams()
     const queryId = searchParams.get("queryId")
 
-    const { data, isLoading } = useQuery<{dataCurrentCasinos:RewievCasinoDataResponse, headers:any}>(
+    const { data, isLoading } = useQuery<{
+        dataCurrentCasinos: RewievCasinoDataResponse
+        headers: any
+    }>(
         ["get-data-casino", queryId],
         () => getCurrentCasinosFetchData(queryId!),
         {
@@ -79,21 +80,16 @@ export default function SimpleCasinos() {
 
     return (
         <>
-            <PopupReadMore openModal={openModal} handlerOpen={handlerOpen} data={data?.dataCurrentCasinos}/>
+            <PopupReadMore
+                openModal={openModal}
+                handlerOpen={handlerOpen}
+                data={data?.dataCurrentCasinos}
+            />
 
             <Wraper>
                 <main className="gamble__review main-gamble review">
                     <div className="main-gamble__body">
-                        <Categories
-                            category={[
-                                { name: "All" },
-                                { name: "Hot Events" },
-                                { name: "Best Cash Back Casinos" },
-                                { name: "Highest RTP Slots" },
-                                { name: "No Deposit Bonuses" },
-                                { name: "VPN Allowed Casinos" },
-                            ]}
-                        />
+                        <Categories />
                         <BreadCrumb
                             path={[
                                 {
@@ -118,7 +114,11 @@ export default function SimpleCasinos() {
                                             <div className="main-casino-info__image-block">
                                                 <div className="main-casino-info__image ibg--custom">
                                                     <LazyCardImg
-                                                        img={data?.dataCurrentCasinos?.image || ""}
+                                                        img={
+                                                            data
+                                                                ?.dataCurrentCasinos
+                                                                ?.image || ""
+                                                        }
                                                         height="100%"
                                                         width="100%"
                                                         imgLoading={"eager"}
@@ -139,12 +139,16 @@ export default function SimpleCasinos() {
                                                         />
                                                     </span>
                                                     <span className="info-casino-card__likes-number">
-                                                        {data?.dataCurrentCasinos?.likes || 0}
+                                                        {data
+                                                            ?.dataCurrentCasinos
+                                                            ?.likes || 0}
                                                     </span>
                                                 </div>
                                                 <div className="content-casino-info__top">
                                                     <h2 className="content-casino-info__title">
-                                                        {data?.dataCurrentCasinos?.name || 0}
+                                                        {data
+                                                            ?.dataCurrentCasinos
+                                                            ?.name || 0}
                                                     </h2>
                                                 </div>
                                                 <div className="content-casino-info__country country-content-casino-info">
@@ -156,8 +160,12 @@ export default function SimpleCasinos() {
                                                             />
                                                         </div> */}
                                                         <div className="country-content-casino-info__text">
-                                                            Accepts players from {" "}
-                                                            { data?.headers?.["cf-ipcountry"]}
+                                                            Accepts players from{" "}
+                                                            {
+                                                                data?.headers?.[
+                                                                    "cf-ipcountry"
+                                                                ]
+                                                            }
                                                         </div>
                                                     </div>
                                                     <a
@@ -170,7 +178,10 @@ export default function SimpleCasinos() {
                                                     </a>
                                                 </div>
                                                 <a
-                                                    href={data?.dataCurrentCasinos?.url}
+                                                    href={
+                                                        data?.dataCurrentCasinos
+                                                            ?.url
+                                                    }
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
@@ -192,19 +203,25 @@ export default function SimpleCasinos() {
                                                                     className={`item-features-content-casino-info__number 
                                                                     item-features-content-casino-info_${SafetyIndexRatingLevel(
                                                                         Number(
-                                                                            data?.dataCurrentCasinos?.casino_rank
+                                                                            data
+                                                                                ?.dataCurrentCasinos
+                                                                                ?.casino_rank
                                                                         ) || 10
                                                                     )}`}
                                                                 >
                                                                     {
-                                                                        data?.dataCurrentCasinos?.casino_rank
+                                                                        data
+                                                                            ?.dataCurrentCasinos
+                                                                            ?.casino_rank
                                                                     }{" "}
                                                                     <span
                                                                         className={`item-features-content-casino-info__number-level`}
                                                                     >
                                                                         {SafetyIndexRatingLevel(
                                                                             Number(
-                                                                                data?.dataCurrentCasinos?.casino_rank
+                                                                                data
+                                                                                    ?.dataCurrentCasinos
+                                                                                    ?.casino_rank
                                                                             ) ||
                                                                                 10
                                                                         )}
@@ -212,7 +229,9 @@ export default function SimpleCasinos() {
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__rating">
                                                                     {Array(
-                                                                        data?.dataCurrentCasinos?.stars ||
+                                                                        data
+                                                                            ?.dataCurrentCasinos
+                                                                            ?.stars ||
                                                                             5
                                                                     )
                                                                         .fill(0)
@@ -240,18 +259,22 @@ export default function SimpleCasinos() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                      
                                                     </div>
                                                     <div className="features-content-casino-info__column">
                                                         <div className="features-content-casino-info__item item-features-content-casino-info">
                                                             <div className="item-features-content-casino-info__top">
                                                                 <div className="item-features-content-casino-info__label">
-                                                                    Withdrawal Limit
+                                                                    Withdrawal
+                                                                    Limit
                                                                 </div>
                                                             </div>
                                                             <div className="item-features-content-casino-info__body">
                                                                 <div className="item-features-content-casino-info__number">
-                                                                    {data?.dataCurrentCasinos?.withdrawal_limit?.monthly || 0}
+                                                                    {data
+                                                                        ?.dataCurrentCasinos
+                                                                        ?.withdrawal_limit
+                                                                        ?.monthly ||
+                                                                        0}
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value">
                                                                     Monthly
@@ -268,7 +291,12 @@ export default function SimpleCasinos() {
                                                             </div>
                                                             <div className="item-features-content-casino-info__body">
                                                                 <div className="item-features-content-casino-info__number">
-                                                                    {data?.dataCurrentCasinos?.min_dep[0].min_value|| 0}$
+                                                                    {data
+                                                                        ?.dataCurrentCasinos
+                                                                        ?.min_dep[0]
+                                                                        .min_value ||
+                                                                        0}
+                                                                    $
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value">
                                                                     To Activate
@@ -283,13 +311,22 @@ export default function SimpleCasinos() {
                                                                     Payout Speed
                                                                 </div>
                                                             </div>
-                                                            
+
                                                             <div className="item-features-content-casino-info__body ">
                                                                 <div className="item-features-content-casino-info__number">
-                                                                    {data?.dataCurrentCasinos?.payout_speed}
+                                                                    {
+                                                                        data
+                                                                            ?.dataCurrentCasinos
+                                                                            ?.payout_speed
+                                                                    }
                                                                 </div>
-                                                                <div className="item-features-content-casino-info__value" style={{opacity:0}}>
-                                                                  1
+                                                                <div
+                                                                    className="item-features-content-casino-info__value"
+                                                                    style={{
+                                                                        opacity: 0,
+                                                                    }}
+                                                                >
+                                                                    1
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -302,7 +339,7 @@ export default function SimpleCasinos() {
                             </div>
                         </section>
 
-                        <CasinoBonuses data={data?.dataCurrentCasinos}/>
+                        <CasinoBonuses data={data?.dataCurrentCasinos} />
 
                         <section className="review__loyalty loyalty-review">
                             <div className="loyalty-review__container container">
@@ -333,34 +370,33 @@ export default function SimpleCasinos() {
                                     </div>
                                 </div>
                                 <div className="loyalty-review__body">
-                                    {
-                                        data?.dataCurrentCasinos?.loyalty_program?.loyalty_keypoint?.slice(0,6).map(lk =>       <div className="loyalty-review__column">
-                                            <div className="loyalty-review__item item-loyalty-review">
-                                                <div className="item-loyalty-review__image">
-                                                    <LazyCardImg 
-                                                             img={lk?.image || ""}
-                                                             height="100%"
-                                                             width="100%"
-                                                             imgLoading='eager'
-                                                    />
-                                                    <img
-                                                        src=" /src/assets/img/review-loyalty/01.jpg"
-                                                        alt="review-loyalty-img"
-                                                    />
-                                                </div>
-                                                <div className="item-loyalty-review__content">
-                                                    <div className="item-loyalty-review__label">
-                                                        {lk.text_1}
+                                    {data?.dataCurrentCasinos?.loyalty_program?.loyalty_keypoint
+                                        ?.slice(0, 6)
+                                        .map((lk) => (
+                                            <div className="loyalty-review__column">
+                                                <div className="loyalty-review__item item-loyalty-review">
+                                                    <div className="item-loyalty-review__image">
+                                                        <LazyCardImg
+                                                            img={
+                                                                lk?.image || ""
+                                                            }
+                                                            height="100%"
+                                                            width="100%"
+                                                            imgLoading="eager"
+                                                        />
+                                                      
                                                     </div>
-                                                    <div className="item-loyalty-review__value">
-                                                        {lk.text_2}
+                                                    <div className="item-loyalty-review__content">
+                                                        <div className="item-loyalty-review__label">
+                                                            {lk.text_1}
+                                                        </div>
+                                                        <div className="item-loyalty-review__value">
+                                                            {lk.text_2}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>)
-                                    }
-                              
-                                    
+                                        ))}
                                 </div>
                             </div>
                         </section>
@@ -371,8 +407,14 @@ export default function SimpleCasinos() {
                         >
                             <div className="iwild-review-mob__container container"></div>
                         </section>
-                        <TabMain handlerOpen={handlerOpen} data={data?.dataCurrentCasinos}/>
-                        <Harry handlerOpen={handlerOpen} data={data?.dataCurrentCasinos}/>
+                        <TabMain
+                            handlerOpen={handlerOpen}
+                            data={data?.dataCurrentCasinos}
+                        />
+                        <Harry
+                            handlerOpen={handlerOpen}
+                            data={data?.dataCurrentCasinos}
+                        />
                         {/* <SpecialPromo /> */}
                         <section className="review__iwild-casino-safety iwild-casino-safety">
                             <div className="iwild-casino-safety__container container">
@@ -382,7 +424,13 @@ export default function SimpleCasinos() {
                                             <div className="iwild-casino-safety__item item-iwild-casino-safety">
                                                 <h3 className="item-iwild-casino-safety__title">
                                                     Safety Index of{" "}
-                                                    <span>{data?.dataCurrentCasinos?.name}</span>{" "}
+                                                    <span>
+                                                        {
+                                                            data
+                                                                ?.dataCurrentCasinos
+                                                                ?.name
+                                                        }
+                                                    </span>{" "}
                                                     explained
                                                 </h3>
                                                 <div className="item-iwild-casino-safety__text">
@@ -407,13 +455,20 @@ export default function SimpleCasinos() {
                                                     <div className="index-item-iwild-casino-safety__label">
                                                         Safety Index:
                                                     </div>
-                                                    <div className="index-item-iwild-casino-safety__value" style={{textTransform:'capitalize'}}>
-                                                    {SafetyIndexRatingLevel(
-                                                                            Number(
-                                                                                data?.dataCurrentCasinos?.casino_rank
-                                                                            ) ||
-                                                                                10
-                                                                        )}
+                                                    <div
+                                                        className="index-item-iwild-casino-safety__value"
+                                                        style={{
+                                                            textTransform:
+                                                                "capitalize",
+                                                        }}
+                                                    >
+                                                        {SafetyIndexRatingLevel(
+                                                            Number(
+                                                                data
+                                                                    ?.dataCurrentCasinos
+                                                                    ?.casino_rank
+                                                            ) || 10
+                                                        )}
                                                     </div>
                                                 </div>
                                                 {/* <!-- <div
@@ -525,7 +580,7 @@ export default function SimpleCasinos() {
                                 </div>
                             </div>
                         </section>
-                    
+
                         <HighRankedCasinos />
                         <CheckMoreWhatSuitsYouBest />
                         <SubscribeForm />

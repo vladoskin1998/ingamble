@@ -18,7 +18,7 @@ import {
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { euroToDolar, NumberAssociaty, sanitizeLink } from "../../helper"
-import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 
 const getDataHomePageCategories = async () => {
@@ -138,14 +138,7 @@ export default function SeeAllCasinos() {
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
                     <Categories
-                        category={[
-                            { name: "All" },
-                            { name: "Hot Events" },
-                            { name: "Best Cash Back Casinos" },
-                            { name: "Highest RTP Slots" },
-                            { name: "No Deposit Bonuses" },
-                            { name: "VPN Allowed Casinos" },
-                        ]}
+                      
                     />
                     <BreadCrumb
                         path={[

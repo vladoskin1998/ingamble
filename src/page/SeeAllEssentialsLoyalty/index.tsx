@@ -4,7 +4,7 @@ import { Categories } from "../../components/categories/Categories"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
-import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import $api from "../../http"
 import { useQuery } from "react-query"
 import {
@@ -94,14 +94,7 @@ export default function SeeAllEssentialsLoyalty() {
             <main className="gamble__loyaltie-programs main-gamble loyaltie-programs loyaltie-filtered__main">
                 <div className="main-gamble__body">
                     <Categories
-                        category={[
-                            { name: "All" },
-                            { name: "Hot Events" },
-                            { name: "Best Cash Back Casinos" },
-                            { name: "Highest RTP Slots" },
-                            { name: " No Deposit Bonuses" },
-                            { name: "  VPN Allowed Casinos" },
-                        ]}
+                      
                     />
                     <BreadCrumb
                         path={[

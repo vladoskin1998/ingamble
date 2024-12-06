@@ -32,14 +32,13 @@ import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import {
-    AllCategoriesHomeDataResponse,
+
     BlockTypeNumber,
     HomeDataBlock,
     HomeDataBlockMobile,
 } from "../../types"
 
-import { sanitizeLink } from "../../helper"
-import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import BlockType2 from "./BlockType2"
 import BlockType3 from "./BlockType3"
 import BlockType4 from "./BlockType4"
@@ -66,13 +65,6 @@ const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 //     () => import("./GetStartedWithPowerfulWelcomeBonusPacks")
 // )
 
-const shuffleArray = (array: any) => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        ;[array[i], array[j]] = [array[j], array[i]]
-    }
-    return array
-}
 
 const getHomeDataFetch = async () => {
     const response = await $api.get("get-data-home-page/")
@@ -91,10 +83,7 @@ const getHomeDataFetch = async () => {
     }
 }
 
-const getDataHomePageCategories = async () => {
-    const response = await $api.get("get-data-home-page-categories/")
-    return response.data
-}
+
 
 const renderBlock = (block: any) => {
     console.log("block", block)
@@ -169,45 +158,18 @@ export const Home = () => {
         staleTime: Infinity,
     })
 
-    const { data: dataCategories, isLoading: isLoadingCategories } =
-        useQuery<AllCategoriesHomeDataResponse>(
-            "get-data-home-page-categories/",
-            getDataHomePageCategories,
-            {
-                keepPreviousData: true,
-                staleTime: Infinity,
-            }
-        )
+  
 
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    if (isLoading || isLoadingCategories) return <LogoLoader />
+    if (isLoading ) return <LogoLoader />
     return (
         <Wraper>
             <main className="gamble__main main-gamble">
                 <div className="main-gamble__body">
-                    <Categories
-                        category={shuffleArray([
-                            ...(dataCategories?.bonus_categories?.map(
-                                (item) => ({
-                                    name: item.name,
-                                    link: `${
-                                        window.location.origin
-                                    }/all-bonus/${sanitizeLink(item?.name)}`,
-                                })
-                            ) || []),
-                            ...(dataCategories?.casino_categories?.map(
-                                (item) => ({
-                                    name: item.name,
-                                    link: `${
-                                        window.location.origin
-                                    }/all-casinos/${sanitizeLink(item?.name)}`,
-                                })
-                            ) || []),
-                        ])}
-                    />
+                    <Categories  />
                     {data?.dataHome?.map((block) => renderBlock(block))}
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 

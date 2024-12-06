@@ -26,7 +26,7 @@ import { LogoLoader } from "../../components/loader/LogoLoader"
 import searchImg from "../../assets/img/icons/search-filter.svg"
 import "../SeeAllBonus/style.css"
 import { v4 as uuidv4 } from "uuid"
-import { CheckMoreWhatSuitsYouBest } from "../SimpleBonus/CheckMoreWhatSuitsYouBest"
+import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 
 const countPageSize = 20
@@ -155,14 +155,7 @@ export default function FilterBonus() {
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
                     <Categories
-                        category={[
-                            { name: "All" },
-                            { name: "Hot Events" },
-                            { name: "Best Cash Back Casinos" },
-                            { name: "Highest RTP Slots" },
-                            { name: "No Deposit Bonuses" },
-                            { name: "VPN Allowed Casinos" },
-                        ]}
+                      
                     />
                     <FilterHeaderList
                         initList={bonusFilters}
