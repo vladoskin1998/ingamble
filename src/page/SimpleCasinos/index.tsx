@@ -23,7 +23,7 @@ import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 const SafetyIndexRatingLevel = (n: number, s?: string) => {
     if (n < 3 || s?.toLocaleLowerCase() === "medium") return "medium"
     else if (n < 7 || s?.toLocaleLowerCase() === "medium") return "low"
-    else return "hight"
+    else return "high"
 }
 
 const getCurrentCasinosFetchData = async (queryId: string) => {
@@ -110,8 +110,8 @@ export default function SimpleCasinos() {
                             <div className="casino-info__container container">
                                 <div className="casino-info__body">
                                     <div className="casino-info__row">
-                                        <div className="casino-info__main main-casino-info">
-                                            <div className="main-casino-info__image-block">
+                                        <div className="casino-info__main main-casino-info ">
+                                            <div className="">
                                                 <div className="main-casino-info__image ibg--custom">
                                                     <LazyCardImg
                                                         img={
@@ -340,66 +340,68 @@ export default function SimpleCasinos() {
                         </section>
 
                         <CasinoBonuses data={data?.dataCurrentCasinos} />
-
-                        <section className="review__loyalty loyalty-review">
-                            <div className="loyalty-review__container container">
-                                <div className="loyalty-review__top top">
-                                    <div className="top__row">
-                                        <div className="top__column">
-                                            <div className="top__title-block">
-                                                <h2 className="top__title">
-                                                    Loyalty Keypoints
-                                                </h2>
+                        {data?.dataCurrentCasinos?.loyalty_program
+                            ?.loyalty_keypoint?.length && (
+                            <section className="review__loyalty loyalty-review">
+                                <div className="loyalty-review__container container">
+                                    <div className="loyalty-review__top top">
+                                        <div className="top__row">
+                                            <div className="top__column">
+                                                <div className="top__title-block">
+                                                    <h2 className="top__title">
+                                                        Loyalty Keypoints
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                            <div className="top__column">
+                                                <a
+                                                    href="/all-loyalties"
+                                                    aria-label="Put your description here."
+                                                    target="_blank"
+                                                    className="top__btn"
+                                                >
+                                                    <span>View More</span>
+                                                    <span className="top__btn-arrow">
+                                                        <svg>
+                                                            <use xlinkHref="#arrow"></use>
+                                                        </svg>
+                                                    </span>
+                                                </a>
                                             </div>
                                         </div>
-                                        <div className="top__column">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="top__btn"
-                                            >
-                                                <span>View More</span>
-                                                <span className="top__btn-arrow">
-                                                    <svg>
-                                                        <use xlinkHref="#arrow"></use>
-                                                    </svg>
-                                                </span>
-                                            </a>
-                                        </div>
                                     </div>
-                                </div>
-                                <div className="loyalty-review__body">
-                                    {data?.dataCurrentCasinos?.loyalty_program?.loyalty_keypoint
-                                        ?.slice(0, 6)
-                                        .map((lk) => (
-                                            <div className="loyalty-review__column">
-                                                <div className="loyalty-review__item item-loyalty-review">
-                                                    <div className="item-loyalty-review__image">
-                                                        <LazyCardImg
-                                                            img={
-                                                                lk?.image || ""
-                                                            }
-                                                            height="100%"
-                                                            width="100%"
-                                                            imgLoading="eager"
-                                                        />
-                                                      
-                                                    </div>
-                                                    <div className="item-loyalty-review__content">
-                                                        <div className="item-loyalty-review__label">
-                                                            {lk.text_1}
+                                    <div className="loyalty-review__body">
+                                        {data?.dataCurrentCasinos?.loyalty_program?.loyalty_keypoint
+                                            ?.slice(0, 6)
+                                            .map((lk) => (
+                                                <div className="loyalty-review__column">
+                                                    <div className="loyalty-review__item item-loyalty-review">
+                                                        <div className="item-loyalty-review__image">
+                                                            <LazyCardImg
+                                                                img={
+                                                                    lk?.image ||
+                                                                    ""
+                                                                }
+                                                                height="100%"
+                                                                width="100%"
+                                                                imgLoading="eager"
+                                                            />
                                                         </div>
-                                                        <div className="item-loyalty-review__value">
-                                                            {lk.text_2}
+                                                        <div className="item-loyalty-review__content">
+                                                            <div className="item-loyalty-review__label">
+                                                                {lk.text_1}
+                                                            </div>
+                                                            <div className="item-loyalty-review__value">
+                                                                {lk.text_2}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        )}
                         {/* <SpecialPromo /> */}
                         <section
                             className="review__iwild-review-mob iwild-review-mob"

@@ -364,7 +364,7 @@ export const TabMain = ({
                                                         Daily
                                                     </div>
                                                     <div className="item-block-info-review__value">
-                                                        {data?.withdrawal_limit.daily.toLocaleString(
+                                                        {data?.withdrawal_limit?.daily?.toLocaleString(
                                                             "en-US"
                                                         ) || "-"}
                                                     </div>
@@ -374,7 +374,7 @@ export const TabMain = ({
                                                         Weekly
                                                     </div>
                                                     <div className="item-block-info-review__value">
-                                                        {data?.withdrawal_limit.weekly.toLocaleString(
+                                                        {data?.withdrawal_limit?.weekly?.toLocaleString(
                                                             "en-US"
                                                         ) || "-"}
                                                     </div>
@@ -384,7 +384,7 @@ export const TabMain = ({
                                                         Monthly
                                                     </div>
                                                     <div className="item-block-info-review__value">
-                                                        {data?.withdrawal_limit.monthly.toLocaleString(
+                                                        {data?.withdrawal_limit?.monthly?.toLocaleString(
                                                             "en-US"
                                                         ) || "-"}
                                                     </div>
@@ -607,6 +607,7 @@ export const TabMain = ({
                                                             }
                                                             height="auto"
                                                             size="small"
+                                                               width="100%"
                                                         />
                                                     </div>
                                                     <div className="element-block-info-review__value">
@@ -973,7 +974,9 @@ export const TabMain = ({
                                             data?.bonuses.find(
                                                 (ssb) => ssb.special_side_bar
                                             )?.bonus_image || ""
+                                            
                                         }
+                                        width="100%"
                                     />
                                 </div>
                                 {/* <a

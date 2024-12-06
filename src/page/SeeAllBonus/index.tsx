@@ -64,9 +64,8 @@ export default function SeeAllBonus() {
         if (el) {
             document.title = `All Bonuses | ${el?.name}`
             setQueryId(String(el.id))
-        }
-        else{
-                  document.title = `All Bonuses`
+        } else {
+            document.title = `All Bonuses`
         }
     }, [bonus_categories, dataCategories])
 
@@ -107,21 +106,19 @@ export default function SeeAllBonus() {
 
     const displayedData = isMobile ? allData : data?.bonuses?.results
 
-    console.log("displayedData",displayedData);
-    
+    console.log("displayedData", displayedData)
+
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    if (isLoading ) return <LogoLoader />
+    if (isLoading) return <LogoLoader />
 
     return (
         <Wraper>
             <main className="gamble__see-all main-gamble see-all">
                 <div className="main-gamble__body">
-                    <Categories
-                     
-                    />
+                    <Categories />
                     <BreadCrumb
                         path={[
                             {
@@ -156,24 +153,31 @@ export default function SeeAllBonus() {
                                     <div className="main-see-all__column">
                                         <div className="slide-slider__item casino-card">
                                             <div className="casino-card__top">
-                                                <a
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
+                                                <div
                                                     style={{
                                                         padding:
                                                             "0 8px 50.432% 8px",
                                                     }}
                                                     className="casino-card__image-block"
                                                 >
-                                                    <div className="casino-card__image see-all-custom__image-custom">
+                                                    <a
+                                                        href={`/casino/${sanitizeLink(
+                                                            item.casino_name
+                                                        )}/bonuses/${sanitizeLink(
+                                                            item.bonus_name
+                                                        )}?queryId=${
+                                                            item.bonus_id
+                                                        }`}
+                                                        target="_blank"
+                                                        className="casino-card__image see-all-custom__image-custom"
+                                                    >
                                                         <LazyCardImg
                                                             img={
                                                                 item.bonus_image
                                                             }
                                                             width="100%"
                                                         />
-                                                    </div>
+                                                    </a>
                                                     <a
                                                         href={
                                                             item.casino_affiliate_link
@@ -184,7 +188,7 @@ export default function SeeAllBonus() {
                                                     >
                                                         Play
                                                     </a>
-                                                </a>
+                                                </div>
                                             </div>
                                             <div className="casino-card__content">
                                                 <div className="casino-card__tags tags-casino-card">
@@ -244,8 +248,13 @@ export default function SeeAllBonus() {
                                                     </div>
                                                 </div>
                                                 <a
-                                                    href=""
-                                                    aria-label="Put your description here."
+                                                    href={`/casino/${sanitizeLink(
+                                                        item.casino_name
+                                                    )}/bonuses/${sanitizeLink(
+                                                        item.bonus_name
+                                                    )}?queryId=${
+                                                        item.bonus_id
+                                                    }`}
                                                     target="_blank"
                                                     className="casino-card__name"
                                                 >
@@ -272,7 +281,7 @@ export default function SeeAllBonus() {
                             />
                         </div>
                     </section>
-                    <CheckMoreWhatSuitsYouBest/>
+                    <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />
                     <section className="main-gamble__bottom-info bottom-info-gamble">
                         <div className="bottom-info-gamble__container container">

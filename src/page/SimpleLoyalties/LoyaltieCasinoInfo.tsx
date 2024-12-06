@@ -2,7 +2,9 @@ import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
 import mainimg3 from "../../assets/img/casino-info/main-img-3.png"
 import latviaFlag from "../../assets/img/icons/latvia-flag.svg"
-export const LoyaltieCasinoInfo = () => {
+import { LoyaltieProgramDataResponse } from "../../types"
+
+export const LoyaltieCasinoInfo = ({data}:{data:LoyaltieProgramDataResponse | undefined}) => {
   return (
     <section className="loyaltie__casino-info casino-info">
     <div className="casino-info__container container">
@@ -24,7 +26,7 @@ export const LoyaltieCasinoInfo = () => {
                                     <img src={star} alt="star" />
                                 </span>
                                 <span className="info-casino-card__stake__rating-number">
-                                    9.9
+                                    {data?.loyalty_rank}
                                 </span>
                             </div>
                             <div className="info-casino-card__likes name-main-casino-info__likes">
@@ -32,7 +34,7 @@ export const LoyaltieCasinoInfo = () => {
                                     <img src={like} alt="like" />
                                 </span>
                                 <span className="info-casino-card__likes-number">
-                                    34K
+                                    {data?.likes}
                                 </span>
                             </div>
                         </div>

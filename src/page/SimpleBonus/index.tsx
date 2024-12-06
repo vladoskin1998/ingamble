@@ -25,11 +25,12 @@ import { HowToGetBonus } from "./HowToGetBonus"
 import MainSlider from "../../components/swiper/MainSlider"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import { HarryStyles } from "./HarryStyles"
+import { useSearchParams } from "react-router-dom"
 
 
 
-const getBonusDataFetch = async () => {
-    const response = await $api.get("get-data-bonus/8/")
+const getBonusDataFetch = async ({queryId}:{queryId:string | null}) => {
+    const response = await $api.get(`get-data-bonus/${queryId}/`)
     const headers = response.headers
 
     return { dataBonus: response.data, headers }
@@ -38,6 +39,9 @@ const getBonusDataFetch = async () => {
 export default function SimpleBonus() {
     document.title = "Simple Bonus"
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+
+    const [searchParams] = useSearchParams()
+    const queryId = searchParams.get("queryId")
 
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: "LV",
@@ -49,8 +53,9 @@ export default function SimpleBonus() {
     const { data, isLoading } = useQuery<{
         dataBonus: GetDataBonusResponse
         headers: any
-    }>("get-data-bonus", getBonusDataFetch, {
+    }>(["get-data-bonus", queryId,], () => getBonusDataFetch({queryId}), {
         keepPreviousData: true,
+        enabled: !!queryId,
     })
 
     useEffect(() => {
@@ -58,9 +63,9 @@ export default function SimpleBonus() {
             const headers = data?.headers
             const countryCode = headers?.["cf-ipcountry-code"]
             const countryName = headers?.["cf-ipcountry"]
-            const isAllowed = !data.dataBonus.restriction_country.country.find(
+            const isAllowed = !data.dataBonus?.restriction_country?.country.find(
                 (item) =>
-                    item.code?.toLocaleLowerCase() ===
+                    item?.code?.toLocaleLowerCase() ===
                     countryCode?.toLocaleLowerCase()
             )
 
@@ -73,13 +78,13 @@ export default function SimpleBonus() {
         }
         initializeAdaptiveBehavior()
 
-        const newUrl = `/casino/${data?.dataBonus?.casino_name
-            .replace(/\s/g, "-")
-            .toLocaleLowerCase()}/bonuses/${data?.dataBonus?.bonus_type
-            .replace(/\s/g, "-")
-            .toLocaleLowerCase()}`
+        // const newUrl = `/casino/${data?.dataBonus?.casino_name
+        //     .replace(/\s/g, "-")
+        //     .toLocaleLowerCase()}/bonuses/${data?.dataBonus?.bonus_type
+        //     .replace(/\s/g, "-")
+        //     .toLocaleLowerCase()}`f
 
-        window.history.pushState({}, "", newUrl)
+        // window.history.pushState({}, "", newUrl)
     }, [data])
 
     useEffect(() => {
@@ -431,7 +436,7 @@ export default function SimpleBonus() {
                                                     <h2 className="top__title">
                                                         Bonuses available in{" "}
                                                         {
-                                                            geoLocation.countryName
+                                                            geoLocation?.countryName
                                                         }
                                                     </h2>
                                                 </>

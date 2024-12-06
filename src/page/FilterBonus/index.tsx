@@ -19,7 +19,7 @@ import like from "../../assets/img/icons/like.svg"
 import { memo, useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import star from "../../assets/img/icons/star.svg"
-import { COLORS_TAGS, filterEmptyValues } from "../../helper"
+import { COLORS_TAGS, filterEmptyValues, sanitizeLink } from "../../helper"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
@@ -279,14 +279,15 @@ const ListDisplayData = memo(
                     <div className="main-see-all__column">
                         <div className="slide-slider__item casino-card">
                             <div className="casino-card__top">
-                                <a
-                                    href=""
-                                    aria-label="Put your description here."
-                                    target="_blank"
+                                <div
+                                    
                                     className="casino-card__image-block"
                                     style={{ padding: "0 8px 50.432% 8px" }}
                                 >
-                                    <div
+                                    <a
+                                    href={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`}
+                                    aria-label="Put your description here."
+                                    target="_blank"
                                         className="casino-card__image see-all-custom__image-custom"
                                         key={uuidv4()}
                                     >
@@ -295,7 +296,7 @@ const ListDisplayData = memo(
                                             height="100%"
                                             width="100%"
                                         />
-                                    </div>
+                                    </a>
                                     <a
                                         href={item?.casino_affiliate_link}
                                         target="_blank"
@@ -304,7 +305,7 @@ const ListDisplayData = memo(
                                     >
                                         Play
                                     </a>
-                                </a>
+                                </div>
                             </div>
                             <div className="casino-card__content">
                                 <div className="casino-card__tags tags-casino-card">
@@ -326,7 +327,7 @@ const ListDisplayData = memo(
                                 <div className="casino-card__info info-casino-card">
                                     <div className="info-casino-card__stake">
                                         <a
-                                            href=""
+                                             //href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="info-casino-card__stake-link"
@@ -352,7 +353,7 @@ const ListDisplayData = memo(
                                     </div>
                                 </div>
                                 <a
-                                    href=""
+                                    href={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`}
                                     aria-label="Put your description here."
                                     target="_blank"
                                     className="casino-card__name"

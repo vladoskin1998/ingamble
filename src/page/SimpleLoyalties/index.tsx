@@ -17,17 +17,57 @@ import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
 import { SimpleBonusEssentialPrograms } from "../SimpleBonus/SimpleBonusEssentialPrograms"
 import { HarryStyles } from "../SimpleBonus/HarryStyles"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
-import  SubscribeForm  from "../SimpleBonus/SubscribeForm"
+import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { LoyaltyAcordeon } from "./LoyaltyAcordeon"
+import $api from "../../http"
+import { useAdaptiveBehavior } from "../../context/AppContext"
+import { useSearchParams } from "react-router-dom"
+import { useQuery } from "react-query"
+import { LoyaltieProgramDataResponse } from "../../types"
+import { LogoLoader } from "../../components/loader/LogoLoader"
+import { useEffect } from "react"
+
+
+const getCurrentLoyaltiesFetchData = async (queryId: string) => {
+    const response = await $api.get(`get-data-loyalty-program/${queryId}/`);
+
+    const headers = response.headers;
+
+    return { dataCurrentLoyaltie: response.data, headers };
+};
+
 export default function SimpleLoyalties() {
     document.title = "Simple Loyalties"
+
+    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+
+    const [searchParams] = useSearchParams()
+    const queryId = searchParams.get("queryId")
+    
+    const { data, isLoading } = useQuery<{
+        dataCurrentLoyaltie: LoyaltieProgramDataResponse;
+        headers: any;
+    }>(
+        ["get-data-casino", queryId],
+        () => getCurrentLoyaltiesFetchData(queryId!),
+        {
+            staleTime: Infinity,
+            enabled: !!queryId,
+        }
+    );
+
+
+    useEffect(() => {
+        initializeAdaptiveBehavior()
+    }, [isLoading])
+
+    if (isLoading) return <LogoLoader />
+
     return (
         <Wraper>
             <main className="gamble__loyaltie main-gamble loyaltie">
                 <div className="main-gamble__body">
-                    <Categories
-                       
-                    />
+                    <Categories />
                     <BreadCrumb
                         path={[
                             {
@@ -52,8 +92,8 @@ export default function SimpleLoyalties() {
                             },
                         ]}
                     />
-                    <LoyaltieCasinoInfo />
-                    
+                    <LoyaltieCasinoInfo data={data?.dataCurrentLoyaltie}/>
+
                     <LoyaltyRewnew
                         loyalty_subtype={[
                             {
@@ -70,7 +110,7 @@ export default function SimpleLoyalties() {
                             },
                         ]}
                     />
-                    <LoyaltyAcordeon/>
+                    <LoyaltyAcordeon />
                     <LoyaltyText />
                     <HowToStartVipJorney />
                     <section className="simple-bonus__more-stake more-staket-simple-bonus">
@@ -80,10 +120,9 @@ export default function SimpleLoyalties() {
                                     <div className="top__column">
                                         <div className="top__title-block">
                                             <h2 className="top__title">
-                                                {`More ${"casino Name".replace(
-                                                    /casino/i,
-                                                    ""
-                                                )} Casino Loyalty`}
+                                            {/* {dataCurrent?.dataCurrentLoyaltie?.casino
+                                                    ? `More ${dataCurrent?.dataCurrentLoyaltie?.?.replace(/casino/i, "")} Casino Loyalty`
+                                                    : "More Casino Loyalty Casino Loyalty"} */}
                                             </h2>
                                         </div>
                                     </div>

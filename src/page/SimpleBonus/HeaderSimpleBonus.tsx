@@ -47,7 +47,7 @@ export const HeaderSimpleBonus = ({
     return (
         <section
             className={`simple-bonus__casino-info casino-info ${
-                !geoLocation.isAllowed && "casino-info_not-available"
+                !geoLocation?.isAllowed && "casino-info_not-available"
             } `}
         >
             <div className="casino-info__container container">
@@ -180,28 +180,28 @@ export const HeaderSimpleBonus = ({
                                         >
                                             <span className="tags-casino-card__item-label"></span>
                                             <span className="tags-casino-card__item-value">
-                                                {item.name}
+                                                {item?.name}
                                             </span>
                                         </div>
                                     ))}
                                 </div>
                                 <div className="content-casino-info__country country-content-casino-info">
                                     <div className="country-content-casino-info__info">
-                                        <div className="country-content-casino-info__icon">
-{/*                                    
+   {/*                                      <div className="country-content-casino-info__icon">
+                                   
                                             <LazyLoadImage
                                                 src={latviaFlag}
                                                 alt="latvia"
-                                            /> */}
-                                        </div>
+                                            />
+                                        </div> */}
                                         <div
                                             className={`country-content-casino-info__text `}
                                         >
                                             {`${
-                                                geoLocation.isAllowed
+                                                geoLocation?.isAllowed
                                                     ? "Accepts players from"
                                                     : "Doesn’t accept players from"
-                                            } ${geoLocation.countryName}`}
+                                            } ${geoLocation?.countryName}`}
                                         </div>
                                     </div>
                                     <span className="main-get-bonus__btn main-get-bonus__btn_apply">
@@ -212,8 +212,8 @@ export const HeaderSimpleBonus = ({
                                     rel="nofollow noopener"
                                     href={`go/${
                                         data?.casino_name
-                                            .toLocaleLowerCase()
-                                            .replace(/\s/g, "-") || ""
+                                            ?.toLocaleLowerCase()
+                                            ?.replace(/\s/g, "-") || ""
                                     }`}
                                     aria-label="Put your description here."
                                     target="_blank"
@@ -227,7 +227,7 @@ export const HeaderSimpleBonus = ({
                                             alt="gift"
                                         />
                                     </span>
-                                    {geoLocation.isAllowed
+                                    {geoLocation?.isAllowed
                                         ? "Get Bonus and Play "
                                         : "Browse Recommended Bonuses"}
                                 </a>
@@ -322,7 +322,7 @@ export const HeaderSimpleBonus = ({
                                                             ?.min_value || 0
                                                     }${euroToDolar(
                                                         data?.bonus_min_dep?.[0]
-                                                            .symbol.symbol || ""
+                                                            ?.symbol?.symbol || "$"
                                                     )}
 
                                                     `}
@@ -347,7 +347,7 @@ export const HeaderSimpleBonus = ({
                                                             ?.value || 0
                                                     }${euroToDolar(
                                                         data?.max_bet?.[0]
-                                                            .symbol.symbol || ""
+                                                            ?.symbol?.symbol || "$"
                                                     )}`}
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">

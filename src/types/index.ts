@@ -538,11 +538,7 @@ export interface RewievCasinoDataResponse {
     id: number;
     affiliate: null | string;
     loyalty_program: {
-      loyalty_keypoint: Array<{
-        image: string;
-        text_1: string;
-        text_2: string;
-      }>;
+      loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
     };
     bonuses: Array<{
       id: number;
@@ -672,3 +668,46 @@ export interface RewievCasinoDataResponse {
     additional_casino_params: number[];
   }
   
+
+  export interface LoyaltieProgramDataResponse {
+    id: number;
+    casino_name:string;
+    casino_image: string;
+    casino_affiliate_link: string;
+    loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
+    loyalty_parameter: any[]; 
+    level_loyalty: Array<{
+        level: string;
+        vip_manager_access: boolean;
+        special_notes: string;
+        point_accumulation: {
+            point: number;
+            value: number | null;
+            next_lvl: number | null;
+            level_value: number | null;
+        } | null;
+        cashback: number | null;
+        level_up_bonus: {
+            bonus: string;
+            wager: number | null;
+            freespins: number | null;
+        } | null;
+        withdrawals: string | null;
+        special_prize: string | null;
+        gifts: string | null;
+        loyalty_level_bonuses: string | null;
+        images: Array<{
+            image: string;
+        }>;
+    }>;
+    level_description: string;
+    do_not_send_to_client: boolean;
+    likes: number;
+    stars: number;
+    link: string;
+    loyalty_understandable: string;
+    description: string;
+    vip_manager: string;
+    loyalty_rank: string;
+    casino: number;
+}

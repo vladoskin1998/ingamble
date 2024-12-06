@@ -33,7 +33,7 @@ export const PopupReadMore = ({
                             <div className="main-popup__title">
                                 General info
                             </div>
-                            <div className="main-popup__text">
+                            <pre className="main-popup__text">
                                 {
                                     data?.review
                                 }
@@ -57,7 +57,7 @@ export const PopupReadMore = ({
                                     opened casino launched and raised popularity
                                     in a days.
                                 </p> */}
-                            </div>
+                            </pre>
                             {/* <div className="main-popup__title">
                                 Zagolovok dlinnyii dliya krasoty
                             </div>

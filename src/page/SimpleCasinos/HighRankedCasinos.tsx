@@ -138,8 +138,8 @@ export const HighRankedCasinos = () => {
                             </div>
                             <div className="baner-row-block__content">
                                 <div className="baner-row-block__text">
-                                    Other <span>High Ranked</span>
-                                    Casinos
+                                    {"Other "} <span>High Ranked</span>
+                                    {" Casinos"}
                                 </div>
                                 <a
                                     href="/all-casinos"

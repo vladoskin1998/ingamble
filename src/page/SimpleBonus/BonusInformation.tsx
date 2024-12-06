@@ -113,7 +113,7 @@ export const BonusInformation = ({
                                                 {data?.bonus_amount?.[0]?.value}{" "}
                                                 {
                                                    euroToDolar(  data?.bonus_amount?.[0]
-                                                        ?.symbol.symbol || '')
+                                                        ?.symbol?.symbol || '$')
                                                 }
                                             </div>
                                         </div>
@@ -126,8 +126,8 @@ export const BonusInformation = ({
                                                     data?.max_bet?.[0].value ||
                                                     0
                                                 } ${
-                                                    euroToDolar( data?.max_bet?.[0].symbol
-                                                        .symbol || "")
+                                                    euroToDolar( data?.max_bet?.[0]?.symbol
+                                                        ?.symbol || "$")
                                                    
                                                 }`}
                                             </div>
@@ -296,7 +296,7 @@ export const BonusInformation = ({
                                                             <use xlinkHref="#info"></use>
                                                         </svg>
                                                     </span>
-                                                    <span className="item-content-bonus-information__info-text">
+                                                    <span className="item-content-bonus-information__info-text" style={{zIndex:10}}>
                                                         Text field,{" "}
                                                         <span>
                                                             with poyasnenie
@@ -798,10 +798,10 @@ export const BonusInformation = ({
                                                 </button>
                                                 <div
                                                     className={`item-content-bonus-information__popup popup-item-content-bonus-information ${
-                                                        openModal.CountryRestrictions &&
+                                                        openModal?.CountryRestrictions &&
                                                         "active"
                                                     }`}
-                                                    ref={modalRefs.CountryRestrictions} 
+                                                    ref={modalRefs?.CountryRestrictions} 
                                                 >
                                                     <div className="popup-item-content-bonus-information__body">
                                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
