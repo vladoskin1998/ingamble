@@ -63,8 +63,8 @@ export const CheckMoreWhatSuitsYouBest = () => {
                     </div>
                 </div>
                 <div className="bottom-filter-tags__row">
-                    {category.map((item) => (
-                        <div className="bottom-filter-tags__column">
+                    {category.map((item, index) => (
+                        <div className="bottom-filter-tags__column" key={index}>
                             <a
                                 rel="nofollow noopener"
                                 href={item?.link || "/"}

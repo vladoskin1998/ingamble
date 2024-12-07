@@ -5,6 +5,11 @@ import checkIcon from "../../assets/img/icons/check-icon.svg"
 import errorIcon from "../../assets/img/icons/error-icon.svg"
 import bgImage08 from "../../assets/img/bg/08.jpg"
 import bgImage11 from "../../assets/img/bg/11.jpg"
+import $api from "../../http"
+
+const saveUserMail = async (email: string) => {
+    $api.post('save-user-email/',{email})
+}
 
 export default function  SubscribeForm () {
 
@@ -30,6 +35,7 @@ export default function  SubscribeForm () {
         if (validateEmail(email) && isChecked) {
             setIsSubscribed(true)
             setIsSuccess(true)
+            saveUserMail(email)
             setTimeout(() => {
                 setIsSuccess(false)
                 setEmail('')
@@ -167,7 +173,7 @@ export default function  SubscribeForm () {
                                                 Feel free to unsubscribe
                                                 anytime. Check our{" "}
                                                 <a
-                                                    href="#"
+                                                     href="/privacy-policy"
                                                     aria-label="Terms of use"
                                                     target="_blank"
                                                     rel="noopener noreferrer"

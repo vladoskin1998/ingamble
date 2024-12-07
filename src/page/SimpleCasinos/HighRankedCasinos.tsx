@@ -8,9 +8,9 @@ import $api from "../../http"
 import { FilterCasinoPostResponse, SeeAllCasinosType } from "../../types"
 import { useQuery } from "react-query"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { COLORS_TAGS } from "../../helper"
- 
-const countPageSize = 8
+import { COLORS_TAGS, sanitizeLink } from "../../helper"
+
+const countPageSize = 6
 
 const getFilteringCasinoList = async (
     payload: { min: number; max: number },
@@ -40,7 +40,6 @@ export const HighRankedCasinos = () => {
     )
 
     const dataCasino = data?.dataCasinosRes
-
 
     const [isBeginning, setIsBeginning] = useState<boolean>(true)
     const [isEnd, setIsEnd] = useState<boolean>(false)
@@ -131,10 +130,7 @@ export const HighRankedCasinos = () => {
                                 <span></span>
                             </div>
                             <div className="baner-row-block__image">
-                                <img
-                                  src={playingCards}
-                                    alt="playing-cards"
-                                />
+                                <img src={playingCards} alt="playing-cards" />
                             </div>
                             <div className="baner-row-block__content">
                                 <div className="baner-row-block__text">
@@ -197,7 +193,7 @@ export const HighRankedCasinos = () => {
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
                                                     <a
-                                                        href=""
+                                                        href={item?.[0].casino_affiliate_link}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="item-slide-slider__image-block"
@@ -216,7 +212,7 @@ export const HighRankedCasinos = () => {
                                                     </a>
                                                     <div className="item-slide-slider__content">
                                                         <a
-                                                            href=""
+                                                            href={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
                                                             aria-label="Put your description here."
                                                             target="_blank"
                                                             className="item-slide-slider__name"
@@ -227,21 +223,29 @@ export const HighRankedCasinos = () => {
                                                             }
                                                         </a>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[0]?.bonus_info?.labels?.map(
-                                                                (l, id) => (
-                                                                    <div
-                                                                        className={`tags-casino-card__item ${
-                                                                            COLORS_TAGS[
-                                                                                id %
-                                                                                    4
-                                                                            ]
-                                                                        }`}
-                                                                    >
-                                                                        <span className="tags-casino-card__item-label">
-                                                                            {l}
-                                                                        </span>
-                                                                    </div>
-                                                                )
+                                                            {item?.[0]?.bonuses?.map(
+                                                                (bon) =>
+                                                                    bon.labels.map(
+                                                                        (
+                                                                            l,
+                                                                            ct
+                                                                        ) => (
+                                                                            <div
+                                                                                className={`tags-casino-card__item ${
+                                                                                    COLORS_TAGS[
+                                                                                        ct %
+                                                                                            4
+                                                                                    ]
+                                                                                }`}
+                                                                            >
+                                                                                <span className="tags-casino-card__item-label">
+                                                                                    {
+                                                                                        l.name
+                                                                                    }
+                                                                                </span>
+                                                                            </div>
+                                                                        )
+                                                                    )
                                                             )}
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
@@ -281,7 +285,7 @@ export const HighRankedCasinos = () => {
                                                 </div>
                                                 <div className="slide-slider__item item-slide-slider">
                                                     <a
-                                                        href=""
+                                                         href={item?.[1]?.casino_affiliate_link || ""}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="item-slide-slider__image-block"
@@ -300,7 +304,7 @@ export const HighRankedCasinos = () => {
                                                     </a>
                                                     <div className="item-slide-slider__content">
                                                         <a
-                                                            href=""
+                                                           href={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
                                                             aria-label="Put your description here."
                                                             target="_blank"
                                                             className="item-slide-slider__name"
@@ -311,21 +315,29 @@ export const HighRankedCasinos = () => {
                                                             }
                                                         </a>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[1]?.bonus_info?.labels?.map(
-                                                                (l, id) => (
-                                                                    <div
-                                                                        className={`tags-casino-card__item ${
-                                                                            COLORS_TAGS[
-                                                                                id %
-                                                                                    4
-                                                                            ]
-                                                                        }`}
-                                                                    >
-                                                                        <span className="tags-casino-card__item-label">
-                                                                            {l}
-                                                                        </span>
-                                                                    </div>
-                                                                )
+                                                            {item?.[1]?.bonuses?.map(
+                                                                (bon) =>
+                                                                    bon.labels.map(
+                                                                        (
+                                                                            l,
+                                                                            ct
+                                                                        ) => (
+                                                                            <div
+                                                                                className={`tags-casino-card__item ${
+                                                                                    COLORS_TAGS[
+                                                                                        ct %
+                                                                                            4
+                                                                                    ]
+                                                                                }`}
+                                                                            >
+                                                                                <span className="tags-casino-card__item-label">
+                                                                                    {
+                                                                                        l.name
+                                                                                    }
+                                                                                </span>
+                                                                            </div>
+                                                                        )
+                                                                    )
                                                             )}
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
@@ -426,21 +438,29 @@ export const HighRankedCasinos = () => {
                                                             {item.casino_name}
                                                         </a>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.bonus_info?.labels?.map(
-                                                                (l, id) => (
-                                                                    <div
-                                                                        className={`tags-casino-card__item ${
-                                                                            COLORS_TAGS[
-                                                                                id %
-                                                                                    4
-                                                                            ]
-                                                                        }`}
-                                                                    >
-                                                                        <span className="tags-casino-card__item-label">
-                                                                            {l}
-                                                                        </span>
-                                                                    </div>
-                                                                )
+                                                            {item?.bonuses?.map(
+                                                                (bon) =>
+                                                                    bon.labels.map(
+                                                                        (
+                                                                            l,
+                                                                            ct
+                                                                        ) => (
+                                                                            <div
+                                                                                className={`tags-casino-card__item ${
+                                                                                    COLORS_TAGS[
+                                                                                        ct %
+                                                                                            4
+                                                                                    ]
+                                                                                }`}
+                                                                            >
+                                                                                <span className="tags-casino-card__item-label">
+                                                                                    {
+                                                                                        l.name
+                                                                                    }
+                                                                                </span>
+                                                                            </div>
+                                                                        )
+                                                                    )
                                                             )}
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
@@ -469,9 +489,7 @@ export const HighRankedCasinos = () => {
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__likes-number">
-                                                                    {
-                                                                        item.likes
-                                                                    }
+                                                                    {item.likes}
                                                                 </span>
                                                             </div>
                                                         </div>

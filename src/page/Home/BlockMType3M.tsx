@@ -8,15 +8,13 @@ import { useRef, useEffect } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { COLORS_TAGS } from "../../helper"
+import { COLORS_TAGS, sanitizeLink } from "../../helper"
 
-export default function BlockMType3M(
-    {
+export default function BlockMType3M({
     data,
 }: {
     data: HomeDataBlock | undefined
-}
-) {
+}) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -32,10 +30,10 @@ export default function BlockMType3M(
         }
     }, [])
 
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3M )
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3M)
         return <></>
     return (
-        <section className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+        <section aria-label="BlockTypeNumber.BlockType3M" className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="vpn-friendly-casinos-2-gamble__container container">
                 <div className="vpn-friendly-casinos-2-gamble__top top">
                     <div className="top__row">
@@ -50,7 +48,7 @@ export default function BlockMType3M(
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    Type 33333MM {data.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -62,7 +60,9 @@ export default function BlockMType3M(
                         <div className="top__column">
                             <SeeAllButton
                                 type_category={data.items_block.type_category}
-                                parameter={data?.items_block?.category?.name || ''}
+                                parameter={
+                                    data?.items_block?.category?.name || ""
+                                }
                             />
                         </div>
                     </div>
@@ -102,15 +102,16 @@ export default function BlockMType3M(
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
                                                             <a
-                                                                href=""
+                                                                href={item.casino_info.casino_affiliate_link}
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
                                                             >
                                                                 <span className="different-casino-standart__image ibg">
-                                                                <LazyCardImg
+                                                                    <LazyCardImg
                                                                         img={
-                                                                            item?.casino_info
+                                                                            item
+                                                                                ?.casino_info
                                                                                 ?.casino_image ||
                                                                             ""
                                                                         }
@@ -120,70 +121,58 @@ export default function BlockMType3M(
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <a
-                                                                        href=""
+                                                                        href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
                                                                         className="different-casino-standart__name"
                                                                     >
                                                                         {
-                                                                            item?.bonus_info?.bonus_name
+                                                                            item
+                                                                                ?.bonus_info
+                                                                                ?.bonus_name
                                                                         }
-                                                            
                                                                     </a>
-                                                                    {item?.bonus_info
-                                                                            ?.labels
-                                                                            ?.length && (
-                                                                            <div className="different-casino-standart__tags tags-casino-card">
-                                                                                {item?.bonus_info?.labels.map(
-                                                                                    (
-                                                                                        item,
-                                                                                        index
-                                                                                    ) => (
-                                                                                        <div
-                                                                                            className={`tags-casino-card__item ${
-                                                                                                COLORS_TAGS[
-                                                                                                    index %
-                                                                                                        4
-                                                                                                ]
-                                                                                            }`}
-                                                                                        >
-                                                                                            <span className="tags-casino-card__item-label">
-                                                                                                {
-                                                                                                    item
-                                                                                                }
-                                                                                            </span>
-                                                                                        </div>
-                                                                                    )
-                                                                                )}
-                                                                            </div>
-                                                                        )}
-                                                                    {/* <div className="different-casino-standart__tags tags-casino-card">
-                                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                                            <span className="tags-casino-card__item-label">
-                                                                                WR:
-                                                                            </span>
-                                                                            <span className="tags-casino-card__item-value">
-                                                                                4.0x
-                                                                            </span>
+                                                                    {item
+                                                                        ?.bonus_info
+                                                                        ?.labels
+                                                                        ?.length && (
+                                                                        <div className="different-casino-standart__tags tags-casino-card">
+                                                                            {item?.bonus_info?.labels.map(
+                                                                                (
+                                                                                    item,
+                                                                                    index
+                                                                                ) => (
+                                                                                    <div
+                                                                                        className={`tags-casino-card__item ${
+                                                                                            COLORS_TAGS[
+                                                                                                index %
+                                                                                                    4
+                                                                                            ]
+                                                                                        }`}
+                                                                                    >
+                                                                                        <span className="tags-casino-card__item-label">
+                                                                                            {
+                                                                                                item
+                                                                                            }
+                                                                                        </span>
+                                                                                    </div>
+                                                                                )
+                                                                            )}
                                                                         </div>
-                                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                                            <span className="tags-casino-card__item-label">
-                                                                                Min
-                                                                                Dep:
-                                                                            </span>
-                                                                            <span className="tags-casino-card__item-value">
-                                                                                $10
-                                                                            </span>
-                                                                        </div>
-                                                                    </div> */}
+                                                                    )}
+                                                                    
                                                                     <div className="info-casino-card__stake">
                                                                         <a
-                                                                            href=""
+                                                                            href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
                                                                             className="info-casino-card__stake-link"
                                                                         >
-                                                                            {item?.casino_info?.casino_name}
+                                                                            {
+                                                                                item
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
+                                                                            }
                                                                         </a>
                                                                         <div className="info-casino-card__stake-rating">
                                                                             <span className="info-casino-card__stake-rating-icon">
@@ -195,9 +184,11 @@ export default function BlockMType3M(
                                                                                 />
                                                                             </span>
                                                                             <span className="info-casino-card__stake__rating-number">
-                                                                              {
-                                                                                item?.casino_info?.casino_rank
-                                                                              }
+                                                                                {
+                                                                                    item
+                                                                                        ?.casino_info
+                                                                                        ?.casino_rank
+                                                                                }
                                                                             </span>
                                                                         </div>
                                                                     </div>

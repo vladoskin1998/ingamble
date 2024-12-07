@@ -117,6 +117,7 @@ export type GeoLocationAllowdType = {
     countryName: string;
     isAllowed: boolean;
     isLoadedGeo: boolean;
+    countryImg: string | undefined | null;
 }
 
 
@@ -162,7 +163,7 @@ export interface HomeDataCard {
     bonus_info: HomeBonusInfo;
 }
 
-interface EssentialKeypoint {
+export interface EssentialKeypoint {
     image: string;
     text_1: string;
     text_2: string;
@@ -238,6 +239,7 @@ export type SeeAllBonus = {
     labels: string[] | { name: string }[];
     casino_affiliate_link: string;
     casino_name: string;
+    casino_id?: string;
 };
 
 
@@ -249,9 +251,12 @@ export interface SeeAllEssentialLoyaltyKeypoint {
 }
 
 export interface SeeAllEssentialLoyaltyProgram {
+    id?:number;
     count_levels?: number;
     loyalty_level_description?: string; 
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
+    loyalty_rank?: number | string | undefined; 
+    stars: number;
 }
 
 export interface SeeAllEssentialLoyaltyCasino {
@@ -261,6 +266,7 @@ export interface SeeAllEssentialLoyaltyCasino {
     casino_image?: string;
     casino_affiliate_link: string;
     loyalty_program: SeeAllEssentialLoyaltyProgram;
+    casino_likes:string | number | undefined 
 }
 
 export interface SeeAllEssentialCasinoResponse {
@@ -273,6 +279,7 @@ export interface SeeAllEssentialCasinoResponse {
 export interface SeeAllCasinosLoyaltyKeyPoint extends SeeAllEssentialLoyaltyKeypoint { }
 
 export interface SeeAllCasinosLoyaltyProgram {
+    id: number
     loyalty_keypoint: SeeAllCasinosLoyaltyKeyPoint[];
 }
 
@@ -293,9 +300,8 @@ export interface SeeAllCasinosType {
     casino_id: number;
     casino_name: string;
     casino_rank: string;
-    bonus_info: {
-        labels: string[];
-    } | undefined
+    bonuses: {bonus_id: number, labels: {name: string}[]}[],
+
     likes: number;
     vpn_usage: boolean;
     casino_image: string;
@@ -350,7 +356,7 @@ export type GeneralFilterDataType = {
         name2: string | null;
         code: string;
         allowed_casinos_count?: number | null;
-        image: string | null;
+        flag_image: string | null;
     }[];
     game_providers: {
         id: number;
@@ -673,9 +679,10 @@ export interface RewievCasinoDataResponse {
     id: number;
     casino_name:string;
     casino_image: string;
+    casino_id: string;
     casino_affiliate_link: string;
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
-    loyalty_parameter: any[]; 
+    loyalty_parameter: {text_1:string, text_2:string}[]; 
     level_loyalty: Array<{
         level: string;
         vip_manager_access: boolean;
@@ -686,15 +693,36 @@ export interface RewievCasinoDataResponse {
             next_lvl: number | null;
             level_value: number | null;
         } | null;
-        cashback: number | null;
+        cashback: {
+            cashback_period: string
+            cashback_type: "Cashback"
+            percentage:number
+            wager:number
+
+        } | null;
         level_up_bonus: {
             bonus: string;
             wager: number | null;
             freespins: number | null;
         } | null;
-        withdrawals: string | null;
-        special_prize: string | null;
-        gifts: string | null;
+        withdrawals: {          
+faster_withdrawal:string | null;
+withdrawal_limits:string | null;
+
+        }
+        special_prize: {
+            free_bet:string | null;
+            freespins:string | null;
+            other:string | null;
+        }
+      
+        gifts: {
+            birthday: string | null;
+            exclusive: string | null;
+            holiday: string | null;
+            offline: string | null;
+            personalized: string | null;
+        }
         loyalty_level_bonuses: string | null;
         images: Array<{
             image: string;

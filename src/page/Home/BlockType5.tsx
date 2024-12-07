@@ -11,8 +11,13 @@ import gift from "../../assets/img/icons/gift.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
+import { sanitizeLink } from "../../helper"
 
-export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined })  {
+export default function BlockType5({
+    data,
+}: {
+    data: HomeDataBlock | undefined
+}) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -31,8 +36,7 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
     const [isBeginning, setIsBeginning] = useState<boolean>(true)
     const [isEnd, setIsEnd] = useState<boolean>(false)
 
-
-   const handleSlideChange = () => {
+    const handleSlideChange = () => {
         if (sliderRef.current) {
             setIsBeginning(sliderRef.current.swiper.isBeginning)
             setIsEnd(sliderRef.current.swiper.isEnd)
@@ -53,12 +57,11 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
         }
     }
 
- 
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5)
         return <></>
 
     return (
-        <section className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble  main-gamble__different-casino-bg main-gamble__baner-block">
+        <section aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble  main-gamble__different-casino-bg main-gamble__baner-block">
             <div className="best-live-dealer-casinos-gamble__container container">
                 <div className="best-live-dealer-casinos-gamble__top top">
                     <div className="top__row">
@@ -73,7 +76,7 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                Type 5          {data.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -83,7 +86,12 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
                             )}
                         </div>
                         <div className="top__column">
-                        <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} />
+                            <SeeAllButton
+                                type_category={data.items_block.type_category}
+                                parameter={
+                                    data?.items_block?.category?.name || ""
+                                }
+                            />
                         </div>
                     </div>
                 </div>
@@ -131,7 +139,6 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
                                         onSlideChange={handleSlideChange}
                                         className="slider__wrapper swiper-wrapper"
                                         slidesPerView="auto"
-                                       
                                         modules={[Pagination]}
                                         ref={sliderRef}
                                         pagination={{
@@ -153,7 +160,10 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
                                         {data.items_block.data_cards
                                             .sort((a, b) => a.order - b.order)
                                             .map((item, index) => (
-                                                <SwiperSlide key={index} className="slider__slide slide-slider swiper-slide">
+                                                <SwiperSlide
+                                                    key={index}
+                                                    className="slider__slide slide-slider swiper-slide"
+                                                >
                                                     <a
                                                         href=""
                                                         target="_blank"
@@ -173,12 +183,17 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
                                                         <div className="casino-big-card__top">
                                                             <div className="casino-big-card__top-small-card casino-small-card">
                                                                 <a
-                                                                    href=""
+                                                                    href={
+                                                                        item
+                                                                            .casino_info
+                                                                            .casino_affiliate_link ||
+                                                                        ""
+                                                                    }
                                                                     aria-label="Put your description here."
                                                                     target="_blank"
                                                                     className="casino-small-card__image-block"
                                                                 >
-                                                                    <div className="casino-small-card__image ibg" >
+                                                                    <div className="casino-small-card__image ibg">
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item
@@ -192,7 +207,7 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
                                                                 </a>
                                                                 <div className="casino-small-card__body">
                                                                     <a
-                                                                        href=""
+                                                                        href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
                                                                         className="casino-small-card__name"
@@ -206,9 +221,16 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
                                                                     <div className="casino-small-card__info">
                                                                         {item.casino_info.additional_casino_params.map(
                                                                             (
-                                                                                it, id
+                                                                                it,
+                                                                                id
                                                                             ) => (
-                                                                                <span key={id+100}className="casino-small-card__info-link">
+                                                                                <span
+                                                                                    key={
+                                                                                        id +
+                                                                                        100
+                                                                                    }
+                                                                                    className="casino-small-card__info-link"
+                                                                                >
                                                                                     {
                                                                                         it
                                                                                     }
@@ -238,7 +260,7 @@ export default function BlockType5 ({ data }: { data: HomeDataBlock | undefined 
                                                         </div>
                                                         <div className="casino-big-card__bottom">
                                                             <a
-                                                                href=""
+                                                                href={  `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="casino-big-card__title"

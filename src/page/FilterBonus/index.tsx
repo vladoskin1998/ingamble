@@ -46,7 +46,7 @@ const debouncedFetchPagination = debounce(
     }
 )
 
-const getFilteringCasinoList = async (
+const getFilteringBonusList = async (
     payload: BonusFilterBodyType,
     page: number
 ) => {
@@ -73,7 +73,7 @@ export default function FilterBonus() {
 
     const { data, isLoading, refetch } = useQuery<FilterBonusPostResponse>(
         ["filter/bonus", bonusFilters, currentPage],
-        () => getFilteringCasinoList(bonusFilters, currentPage),
+        () => getFilteringBonusList(bonusFilters, currentPage),
         {
             keepPreviousData: true,
             enabled: false,
@@ -285,6 +285,7 @@ const ListDisplayData = memo(
                                     style={{ padding: "0 8px 50.432% 8px" }}
                                 >
                                     <a
+                                   
                                     href={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`}
                                     aria-label="Put your description here."
                                     target="_blank"
@@ -327,7 +328,7 @@ const ListDisplayData = memo(
                                 <div className="casino-card__info info-casino-card">
                                     <div className="info-casino-card__stake">
                                         <a
-                                             //href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
+                                            href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="info-casino-card__stake-link"

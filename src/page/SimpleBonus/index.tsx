@@ -1,8 +1,4 @@
-import casinoCards09 from "../../assets/img/casino-cards/09.jpg"
-import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
-import casinoCards07 from "../../assets/img/casino-cards/07.jpg"
-import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
-import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
+
 
 import "swiper/css"
 import { useQuery } from "react-query"
@@ -10,22 +6,20 @@ import { useEffect, useState } from "react"
 import $api from "../../http"
 import { BreadCrumb } from "../../components/breadcrumb/BreadCrumb"
 import { GeoLocationAllowdType, GetDataBonusResponse } from "../../types"
-import { SimpleBonusEssentialPrograms } from "./SimpleBonusEssentialPrograms"
 import { BonusSubType } from "./BonusSubType"
 import { Categories } from "../../components/categories/Categories"
-
 import { LastUpdate } from "./LastUpdate"
 import { Wraper } from "../Wraper"
 import { useAdaptiveBehavior } from "../../context/AppContext"
-
 import SubscribeForm from "./SubscribeForm"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { HeaderSimpleBonus } from "./HeaderSimpleBonus"
 import { HowToGetBonus } from "./HowToGetBonus"
-import MainSlider from "../../components/swiper/MainSlider"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import { HarryStyles } from "./HarryStyles"
 import { useSearchParams } from "react-router-dom"
+import { HighRankSwiper } from "./HighRankSwiper"
+import { useFilterContext } from "../../context/FilterContext"
 
 
 
@@ -39,15 +33,17 @@ const getBonusDataFetch = async ({queryId}:{queryId:string | null}) => {
 export default function SimpleBonus() {
     document.title = "Simple Bonus"
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const {data: Country} = useFilterContext()
 
     const [searchParams] = useSearchParams()
     const queryId = searchParams.get("queryId")
 
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
-        countryCode: "LV",
-        countryName: "Latvia",
+        countryCode: "",
+        countryName: "",
         isAllowed: false,
         isLoadedGeo: false,
+        countryImg: undefined
     })
 
     const { data, isLoading } = useQuery<{
@@ -59,10 +55,18 @@ export default function SimpleBonus() {
     })
 
     useEffect(() => {
-        if (data?.headers) {
+        if (data?.headers && Country?.general?.countries?.length) {
             const headers = data?.headers
             const countryCode = headers?.["cf-ipcountry-code"]
             const countryName = headers?.["cf-ipcountry"]
+            
+            const countryImg = Country?.general?.countries?.find(
+                it => {
+                    
+                    return it.code ===  countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase() }
+            )?.flag_image;
+            
+  
             const isAllowed = !data.dataBonus?.restriction_country?.country.find(
                 (item) =>
                     item?.code?.toLocaleLowerCase() ===
@@ -74,6 +78,7 @@ export default function SimpleBonus() {
                 countryName,
                 isAllowed,
                 isLoadedGeo: true,
+                 countryImg
             })
         }
         initializeAdaptiveBehavior()
@@ -85,13 +90,16 @@ export default function SimpleBonus() {
         //     .toLocaleLowerCase()}`f
 
         // window.history.pushState({}, "", newUrl)
-    }, [data])
+    }, [data, Country])
+
+    console.log(geoLocation);
+    
 
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [geoLocation])
 
-    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
+    if (isLoading && !Country) return <LogoLoader />
 
     return (
         <Wraper>
@@ -141,565 +149,10 @@ export default function SimpleBonus() {
                             />
                             <LastUpdate data={data?.dataBonus} />
                             <HowToGetBonus data={data?.dataBonus} />
-                            <section className="simple-bonus__more-stake more-staket-simple-bonus">
-                                <div className="more-staket-simple-bonus__container container">
-                                    <div className="more-staket-simple-bonus__top top">
-                                        <div className="top__row">
-                                            <div className="top__column">
-                                                <div className="top__title-block">
-                                                    <h2 className="top__title">
-                                                        {`More ${data?.dataBonus.casino_name.replace(
-                                                            /casino/i,
-                                                            ""
-                                                        )} Casino Bonuses`}
-                                                    </h2>
-                                                </div>
-                                            </div>
-                                            <div className="top__column">
-                                                <a
-                                                    rel="nofollow noopener"
-                                                    href=""
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
-                                                    className="top__btn"
-                                                >
-                                                    <span>See All</span>
-                                                    <span className="top__btn-arrow">
-                                                        <svg>
-                                                            <use xlinkHref="#arrow"></use>
-                                                        </svg>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <MainSlider
-                                        data={[
-                                            {
-                                                img: casinoCards09,
-                                                raiting: "4.8",
-                                                likes: "34k",
-                                                nameCasino: "Stake Casino",
-                                                comment:
-                                                    "New Year Bet Race - $30,000 Rocket...",
-                                                tags: (
-                                                    <>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                10$
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                $5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </>
-                                                ),
-                                            },
-                                            {
-                                                img: casinoCards01,
-                                                raiting: "4.8",
-                                                likes: "34k",
-                                                nameCasino: "Stake Casino",
-                                                comment:
-                                                    "New Year Bet Race - $30,000 Rocket...",
-                                                tags: (
-                                                    <>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                10$
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                $5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </>
-                                                ),
-                                            },
-                                            {
-                                                img: casinoCards04,
-                                                raiting: "4.8",
-                                                likes: "34k",
-                                                nameCasino: "Stake Casino",
-                                                comment:
-                                                    " Big Fat Race to $100 Moon coins",
-                                                tags: (
-                                                    <>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                10$
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                $5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </>
-                                                ),
-                                            },
-                                            {
-                                                img: casinoCards07,
-                                                raiting: "4.8",
-                                                likes: "34k",
-                                                nameCasino: "Stake Casino",
-                                                comment:
-                                                    "New Year Bet Race - $30,000 Rocket...",
-                                                tags: (
-                                                    <>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                10$
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                $5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </>
-                                                ),
-                                            },
-                                            {
-                                                img: casinoCards07,
-                                                raiting: "4.8",
-                                                likes: "34k",
-                                                nameCasino: "Stake Casino",
-                                                comment:
-                                                    " Big Fat Race to $100 Moon coins",
-                                                tags: (
-                                                    <>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                            <span className="tags-casino-card__item-label">
-                                                                WR:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                4.0x
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Min Dep:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                10$
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                            <span className="tags-casino-card__item-label">
-                                                                Max bet:
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                $5
-                                                            </span>
-                                                        </div>
-                                                        <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                            <span className="tags-casino-card__item-label">
-                                                                <svg>
-                                                                    <use xlinkHref="#check-grass"></use>
-                                                                </svg>
-                                                            </span>
-                                                            <span className="tags-casino-card__item-value">
-                                                                Safe
-                                                            </span>
-                                                        </div>
-                                                    </>
-                                                ),
-                                            },
-                                        ]}
-                                    />
-                                </div>
-                            </section>
+                           
                         </>
                     )}
-                    <section className="simple-bonus__more-stake more-staket-simple-bonus">
-                        <div className="more-staket-simple-bonus__container container">
-                            <div className="more-staket-simple-bonus__top top">
-                                <div className="top__row">
-                                    <div className="top__column">
-                                        <div className="top__title-block">
-                                            {geoLocation.isAllowed ? (
-                                                <h2 className="top__title">
-                                                    Other Best Reload bonuses
-                                                </h2>
-                                            ) : (
-                                                <>
-                                                    {/* <span
-                                                        className="top__title-icon"
-                                                        style={{
-                                                            borderRadius: "4px",
-                                                            overflow: "hidden",
-                                                        }}
-                                                    >
-                                                        <img src={geoLocation.countryCode} alt={geoLocation.countryCode} />
-                                                       
-                                                    </span> */}
-                                                    <h2 className="top__title">
-                                                        Bonuses available in{" "}
-                                                        {
-                                                            geoLocation?.countryName
-                                                        }
-                                                    </h2>
-                                                </>
-                                            )}
-                                        </div>
-                                    </div>
-                                    <div className="top__column">
-                                        <a
-                                            rel="nofollow noopener"
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="top__btn"
-                                        >
-                                            <span>See All</span>
-                                            <span className="top__btn-arrow">
-                                                <svg>
-                                                    <use xlinkHref="#arrow"></use>
-                                                </svg>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <MainSlider
-                                key={"112231"}
-                                data={[
-                                    {
-                                        img: "/src/assets/img/casino-cards/09.jpg",
-                                        raiting: "4.8",
-                                        likes: "34k",
-                                        nameCasino: "Stake Casino",
-                                        comment:
-                                            "New Year Bet Race - $30,000 Rocket...",
-                                        tags: (
-                                            <>
-                                                <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                    <span className="tags-casino-card__item-label">
-                                                        WR:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        4.0x
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Min Dep:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        10$
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Max bet:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        $5
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                    <span className="tags-casino-card__item-label">
-                                                        <svg>
-                                                            <use xlinkHref="#check-grass"></use>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        Safe
-                                                    </span>
-                                                </div>
-                                            </>
-                                        ),
-                                    },
-                                    {
-                                        img: casinoCards03,
-                                        raiting: "4.8",
-                                        likes: "34k",
-                                        nameCasino: "Stake Casino",
-                                        comment:
-                                            "New Year Bet Race - $30,000 Rocket...",
-                                        tags: (
-                                            <>
-                                                <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                    <span className="tags-casino-card__item-label">
-                                                        WR:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        4.0x
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Min Dep:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        10$
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Max bet:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        $5
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                    <span className="tags-casino-card__item-label">
-                                                        <svg>
-                                                            <use xlinkHref="#check-grass"></use>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        Safe
-                                                    </span>
-                                                </div>
-                                            </>
-                                        ),
-                                    },
-                                    {
-                                        img: casinoCards07,
-                                        raiting: "4.8",
-                                        likes: "34k",
-                                        nameCasino: "Stake Casino",
-                                        comment:
-                                            " Big Fat Race to $100 Moon coins",
-                                        tags: (
-                                            <>
-                                                <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                    <span className="tags-casino-card__item-label">
-                                                        WR:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        4.0x
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Min Dep:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        10$
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Max bet:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        $5
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                    <span className="tags-casino-card__item-label">
-                                                        <svg>
-                                                            <use xlinkHref="#check-grass"></use>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        Safe
-                                                    </span>
-                                                </div>
-                                            </>
-                                        ),
-                                    },
-                                    {
-                                        img: casinoCards01,
-                                        raiting: "4.8",
-                                        likes: "34k",
-                                        nameCasino: "Stake Casino",
-                                        comment:
-                                            "New Year Bet Race - $30,000 Rocket...",
-                                        tags: (
-                                            <>
-                                                <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                    <span className="tags-casino-card__item-label">
-                                                        WR:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        4.0x
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Min Dep:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        10$
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Max bet:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        $5
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                    <span className="tags-casino-card__item-label">
-                                                        <svg>
-                                                            <use xlinkHref="#check-grass"></use>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        Safe
-                                                    </span>
-                                                </div>
-                                            </>
-                                        ),
-                                    },
-                                    {
-                                        img: casinoCards04,
-                                        raiting: "4.8",
-                                        likes: "34k",
-                                        nameCasino: "Stake Casino",
-                                        comment:
-                                            " Big Fat Race to $100 Moon coins",
-                                        tags: (
-                                            <>
-                                                <div className="tags-casino-card__item tags-casino-card__item_green">
-                                                    <span className="tags-casino-card__item-label">
-                                                        WR:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        4.0x
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_blue">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Min Dep:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        10$
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_purple">
-                                                    <span className="tags-casino-card__item-label">
-                                                        Max bet:
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        $5
-                                                    </span>
-                                                </div>
-                                                <div className="tags-casino-card__item tags-casino-card__item_grass">
-                                                    <span className="tags-casino-card__item-label">
-                                                        <svg>
-                                                            <use xlinkHref="#check-grass"></use>
-                                                        </svg>
-                                                    </span>
-                                                    <span className="tags-casino-card__item-value">
-                                                        Safe
-                                                    </span>
-                                                </div>
-                                            </>
-                                        ),
-                                    },
-                                ]}
-                            />
-                        </div>
-                    </section>
-
-                    <SimpleBonusEssentialPrograms />
+                    <HighRankSwiper />
                     {geoLocation.isAllowed && (
                         <>
                             <HarryStyles />

@@ -18,7 +18,8 @@ const MainSliderImg = ({ img }: { img: string }) => {
             <img
                 style={{
                     width: loading? "0" :"100%",
-                    height: "100%"
+                    height: "100%",
+                    objectFit: "cover"
                 }}
                 src={img}
                 alt=""
@@ -35,11 +36,13 @@ const MainSlider = ({
     data?: {
         img: string | null
         nameCasino: string
-        comment: string
-        raiting: string
+        comment?: string
+        raiting: string | number
         likes: string | number
         tags?: React.ReactNode
         link?: string
+        casinoLink?: string,
+        bonuseLink?: string,
     }[]
 }) => {
     const sliderRef = useRef<SwiperRef | null>(null)
@@ -116,7 +119,7 @@ const MainSlider = ({
                                                     <div className="info-casino-card__stake">
                                                         <a
                                                             rel="nofollow noopener"
-                                                            href=""
+                                                            href={item?.casinoLink}
                                                             aria-label="Put your description here."
                                                             target="_blank"
                                                             className="info-casino-card__stake-link"
@@ -152,7 +155,7 @@ const MainSlider = ({
                                                 
                                                 <a
                                                     rel="nofollow noopener"
-                                                    href=""
+                                                    href={item?.bonuseLink}
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="casino-card__name"

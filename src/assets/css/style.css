@@ -42,6 +42,15 @@
   font-weight: 300;
   font-style: normal;
 }
+
+pre {
+  max-width: 100%; 
+  white-space: pre-wrap; 
+  word-wrap: break-word; 
+  overflow: auto;
+  font-family: inherit;
+}
+
 :root {
   --BG-Bg_1: #171719;
   --BG-Bg_2: #232320;
@@ -12005,7 +12014,7 @@ h3 {
 }
 .item-inner-information-loyaltie_only .item-inner-information-loyaltie__body .item-inner-information-loyaltie__column {
   flex: 1 1 100%;
-  padding: 0;
+  /* padding: 0; */
 }
 .item-inner-information-loyaltie_only .item-inner-information-loyaltie__wrapper {
   padding: 16px 0 0 0;

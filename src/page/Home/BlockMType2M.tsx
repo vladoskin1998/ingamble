@@ -4,10 +4,10 @@ import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import { useRef, useEffect } from "react"
 
-
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { sanitizeLink } from "../../helper"
 
 export default function BlockMType2M({
     data,
@@ -17,11 +17,11 @@ export default function BlockMType2M({
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
-        if (sliderRef.current && paginationRef.current) {
-            const swiper = sliderRef.current.swiper
-            if (swiper && paginationRef.current) {
+        if (sliderRef?.current && paginationRef?.current) {
+            const swiper = sliderRef?.current?.swiper
+            if (swiper && paginationRef?.current) {
                 //@ts-ignore
-                swiper.params.pagination.el = paginationRef.current
+                swiper.params.pagination.el = paginationRef?.current
                 swiper.pagination.init()
                 swiper.pagination.render()
                 swiper.pagination.update()
@@ -29,10 +29,10 @@ export default function BlockMType2M({
         }
     }, [])
 
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType2M)
+    if (!data || data?.items_block?.type_block !== BlockTypeNumber.BlockType2M)
         return <></>
     return (
-        <section className="main-gamble__payn-play-casinos payn-play-casinos-gamble">
+        <section aria-label="BlockTypeNumber.BlockType2M" className="main-gamble__payn-play-casinos payn-play-casinos-gamble">
             <div className="payn-play-casinos-gamble__container container">
                 <div className="vpn-friendly-casinos-2-gamble__top top">
                     <div className="top__row">
@@ -47,7 +47,7 @@ export default function BlockMType2M({
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    Type 2222MM {data?.items_block?.block_title}
+                                    {data?.items_block?.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -58,7 +58,7 @@ export default function BlockMType2M({
                         </div>
                         <div className="top__column">
                             <SeeAllButton
-                                type_category={data.items_block.type_category}
+                                type_category={data?.items_block?.type_category}
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
@@ -117,7 +117,12 @@ export default function BlockMType2M({
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
                                                             <a
-                                                                href=""
+                                                                href={
+                                                                    item?.[0]
+                                                                        .casino_info
+                                                                        .casino_affiliate_link ||
+                                                                    ""
+                                                                }
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
@@ -136,7 +141,15 @@ export default function BlockMType2M({
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <a
-                                                                        href=""
+                                                                        href={`/casino/${sanitizeLink(
+                                                                            item?.[0]
+                                                                                ?.casino_info
+                                                                                ?.casino_name 
+                                                                        )}?queryId=${
+                                                                            item?.[0]
+                                                                                ?.casino_info
+                                                                                ?.casino_id
+                                                                        }`}
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
                                                                         className="different-casino-standart__name"
@@ -149,7 +162,19 @@ export default function BlockMType2M({
                                                                     </a>
                                                                     <div className="different-casino-standart__info">
                                                                         <a
-                                                                            href=""
+                                                                            href={`/casino/${sanitizeLink(
+                                                                                item?.[0]
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
+                                                                            )}/bonuses/${sanitizeLink(
+                                                                                item?.[0]
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_name
+                                                                            )}?queryId=${
+                                                                                item?.[0]
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_id
+                                                                            }`}
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
                                                                             className="different-casino-standart__info-link"
@@ -182,7 +207,12 @@ export default function BlockMType2M({
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
                                                             <a
-                                                                href=""
+                                                                href={
+                                                                    item?.[1]
+                                                                        ?.casino_info
+                                                                        ?.casino_affiliate_link ||
+                                                                    ""
+                                                                }
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
@@ -201,7 +231,15 @@ export default function BlockMType2M({
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <a
-                                                                        href=""
+                                                                        href={`/casino/${sanitizeLink(
+                                                                            item?.[1]
+                                                                                ?.casino_info
+                                                                                ?.casino_name
+                                                                        )}?queryId=${
+                                                                            item?.[1]
+                                                                                ?.casino_info
+                                                                                ?.casino_id
+                                                                        }`}
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
                                                                         className="different-casino-standart__name"
@@ -214,7 +252,19 @@ export default function BlockMType2M({
                                                                     </a>
                                                                     <div className="different-casino-standart__info">
                                                                         <a
-                                                                            href=""
+                                                                            href={`/casino/${sanitizeLink(
+                                                                                item?.[1]
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
+                                                                            )}/bonuses/${sanitizeLink(
+                                                                                item?.[1]
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_name
+                                                                            )}?queryId=${
+                                                                                item?.[1]
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_id
+                                                                            }`}
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
                                                                             className="different-casino-standart__info-link"
@@ -247,7 +297,12 @@ export default function BlockMType2M({
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
                                                             <a
-                                                                href=""
+                                                                href={
+                                                                    item?.[2]
+                                                                        ?.casino_info
+                                                                        ?.casino_affiliate_link ||
+                                                                    ""
+                                                                }
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
@@ -266,7 +321,15 @@ export default function BlockMType2M({
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <a
-                                                                        href=""
+                                                                        href={`/casino/${sanitizeLink(
+                                                                            item?.[2]
+                                                                                ?.casino_info
+                                                                                ?.casino_name
+                                                                        )}?queryId=${
+                                                                            item?.[2]
+                                                                                ?.casino_info
+                                                                                ?.casino_id
+                                                                        }`}
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
                                                                         className="different-casino-standart__name"
@@ -279,7 +342,19 @@ export default function BlockMType2M({
                                                                     </a>
                                                                     <div className="different-casino-standart__info">
                                                                         <a
-                                                                            href=""
+                                                                            href={`/casino/${sanitizeLink(
+                                                                                item?.[1]
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
+                                                                            )}/bonuses/${sanitizeLink(
+                                                                                item?.[2]
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_name
+                                                                            )}?queryId=${
+                                                                                item?.[2]
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_id
+                                                                            }`}
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
                                                                             className="different-casino-standart__info-link"

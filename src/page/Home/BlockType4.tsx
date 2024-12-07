@@ -7,8 +7,13 @@ import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
+import { sanitizeLink } from "../../helper"
 
-export default function BlockType4({ data }: { data: HomeDataBlock | undefined })  {
+export default function BlockType4({
+    data,
+}: {
+    data: HomeDataBlock | undefined
+}) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -27,7 +32,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType4)
         return <></>
     return (
-        <section className="main-gamble__highest-max-bet-bonuses-2 highest-max-bet-bonuses-2-gamble main-gamble__casino-big-cards">
+        <section aria-label="BlockTypeNumber.BlockType4" className="main-gamble__highest-max-bet-bonuses-2 highest-max-bet-bonuses-2-gamble main-gamble__casino-big-cards">
             <div className="highest-max-bet-bonuses-2-gamble__container container">
                 <div className="highest-max-bet-bonuses-2-gamble__top top">
                     <div className="top__row">
@@ -42,7 +47,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                Type 4        {data.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -52,7 +57,12 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                             )}
                         </div>
                         <div className="top__column">
-                        <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} />
+                            <SeeAllButton
+                                type_category={data.items_block.type_category}
+                                parameter={
+                                    data?.items_block?.category?.name || ""
+                                }
+                            />
                         </div>
                     </div>
                 </div>
@@ -63,7 +73,6 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                 <Swiper
                                     className="slider__wrapper swiper-wrapper"
                                     slidesPerView="auto"
-                                 
                                     modules={[Pagination]}
                                     ref={sliderRef}
                                     pagination={{
@@ -87,9 +96,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                         .map((item, index) => (
                                             <SwiperSlide key={index}>
                                                 <div className="slider__slide slide-slider swiper-slide">
-                                                    <a
-                                                        href=""
-                                                        target="_blank"
+                                                    <div
                                                         aria-label="Put your description here."
                                                         className="slide-slider__item casino-big-card"
                                                     >
@@ -106,14 +113,23 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                                         <div className="casino-big-card__top">
                                                             <div className="casino-big-card__top-small-card casino-small-card">
                                                                 <a
-                                                                    href=""
+                                                                    href={
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_affiliate_link ||
+                                                                        ""
+                                                                    }
                                                                     aria-label="Put your description here."
                                                                     target="_blank"
                                                                     className="casino-small-card__image-block"
                                                                 >
-                                                                    <div className="casino-small-card__image ibg" style={{
-                                                                    backgroundSize: "125% auto"
-                                                                }}>
+                                                                    <div
+                                                                        className="casino-small-card__image ibg"
+                                                                        style={{
+                                                                            backgroundSize:
+                                                                                "125% auto",
+                                                                        }}
+                                                                    >
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item
@@ -127,7 +143,15 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                                                 </a>
                                                                 <div className="casino-small-card__body">
                                                                     <a
-                                                                        href=""
+                                                                        href={`/casino/${sanitizeLink(
+                                                                            item
+                                                                                ?.casino_info
+                                                                                ?.casino_name
+                                                                        )}?queryId=${
+                                                                            item
+                                                                                ?.casino_info
+                                                                                ?.casino_id
+                                                                        }`}
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
                                                                         className="casino-small-card__name"
@@ -173,7 +197,19 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                                         </div>
                                                         <div className="casino-big-card__bottom">
                                                             <a
-                                                                href=""
+                                                                href={`/casino/${sanitizeLink(
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_name
+                                                                )}/bonuses/${sanitizeLink(
+                                                                    item
+                                                                        ?.bonus_info
+                                                                        ?.bonus_name
+                                                                )}?queryId=${
+                                                                    item
+                                                                        ?.bonus_info
+                                                                        ?.bonus_id
+                                                                }`}
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="casino-big-card__title"
@@ -203,7 +239,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                                                 Play
                                                             </a>
                                                         </div>
-                                                    </a>
+                                                    </div>
                                                 </div>
                                             </SwiperSlide>
                                         ))}

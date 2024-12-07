@@ -1,26 +1,31 @@
+import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { SeeAllEssentialLoyaltyKeypoint } from "../../types"
+
 const color_gifts = [
     "item-deposits_grass",
     "item-deposits_ocean",
     "item-deposits_purple",
     "item-deposits_green",
 ]
+const blockWidth = (l: number | undefined) => {
+    if (!l) {
+        return "deposits__column_medium"
+    }
+    switch (l) {
+        case 2:
+            return "deposits__column_big"
+        case 4:
+            return "deposits__column_small"
+        default:
+            return "deposits__column_medium"
+    }
+}
 
 export const LoyaltyRewnew = ({
     loyalty_subtype,
 }: {
-    loyalty_subtype: { name: string; img: string }[]
+    loyalty_subtype: SeeAllEssentialLoyaltyKeypoint[] | undefined
 }) => {
-    const blockWidth = (l: number) => {
-        switch (l) {
-            case 2:
-                return "deposits__column_big"
-            case 4:
-                return "deposits__column_small"
-            default:
-                return "deposits__column_medium"
-        }
-    }
-
     return (
         <section className="simple-bonus__deposits deposits loyaltie__loyalty loyalty-review">
             <div className="deposits__container container loyalty-review__container ">
@@ -38,15 +43,11 @@ export const LoyaltyRewnew = ({
                 <div className="deposits__body">
                     <div className="deposits__block">
                         <div className="deposits__row">
-                            {(loyalty_subtype || []).map((item, index) => {
-                                const [part1, part2] = item.name
-                                    .split("|")
-                                    .map((s) => s.trim())
-
+                            {loyalty_subtype?.map((item, index) => {
                                 return (
                                     <div
                                         className={`deposits__column ${blockWidth(
-                                            loyalty_subtype.length
+                                            loyalty_subtype?.length
                                         )}`}
                                     >
                                         <div
@@ -55,17 +56,18 @@ export const LoyaltyRewnew = ({
                                             }`}
                                         >
                                             <div className="item-loyalty-review__image">
-                                                <img
-                                                    src={item.img}
-                                                    alt="review-loyalty-img"
+                                                <LazyCardImg
+                                                    img={item?.image || ""}
+                                                    height="100%"
+                                                    width="100%"
                                                 />
                                             </div>
                                             <div className="item-loyalty-review__content">
                                                 <div className="item-loyalty-review__label">
-                                                    {part1}
+                                                    {item?.text_1}
                                                 </div>
                                                 <div className="item-loyalty-review__value">
-                                                    {part2}
+                                                    {item?.text_2}
                                                 </div>
                                             </div>
                                         </div>

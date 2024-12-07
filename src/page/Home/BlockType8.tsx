@@ -1,11 +1,13 @@
 import MainSlider from "../../components/swiper/MainSlider"
-import { COLORS_TAGS } from "../../helper"
+import { COLORS_TAGS, sanitizeLink } from "../../helper"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 
-
-
-export default function BlockType8 ({ data }: { data: HomeDataBlock | undefined })  {
+export default function BlockType8({
+    data,
+}: {
+    data: HomeDataBlock | undefined
+}) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType8)
         return <></>
     return (
@@ -24,7 +26,7 @@ export default function BlockType8 ({ data }: { data: HomeDataBlock | undefined 
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                Type 8       {data.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -34,7 +36,12 @@ export default function BlockType8 ({ data }: { data: HomeDataBlock | undefined 
                             )}
                         </div>
                         <div className="top__column">
-                        <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} />
+                            <SeeAllButton
+                                type_category={data.items_block.type_category}
+                                parameter={
+                                    data?.items_block?.category?.name || ""
+                                }
+                            />
                         </div>
                     </div>
                 </div>
@@ -48,6 +55,8 @@ export default function BlockType8 ({ data }: { data: HomeDataBlock | undefined 
                             likes: item.bonus_info.bonus_likes,
                             nameCasino: item.casino_info.casino_name,
                             comment: item.bonus_info.bonus_name,
+                            casinoLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`,
+                            bonuseLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`,
                             tags: (
                                 <>
                                     {item?.bonus_info?.labels?.length ? (

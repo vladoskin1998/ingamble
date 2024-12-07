@@ -180,7 +180,8 @@ export default function SeeAllBonus() {
                                                     </a>
                                                     <a
                                                         href={
-                                                            item.casino_affiliate_link
+                                                            item?.casino_affiliate_link ||
+                                                            ""
                                                         }
                                                         target="_blank"
                                                         aria-label="Put your description here."
@@ -214,7 +215,11 @@ export default function SeeAllBonus() {
                                                 <div className="casino-card__info info-casino-card">
                                                     <div className="info-casino-card__stake">
                                                         <a
-                                                            href=""
+                                                            href={`/casino/${sanitizeLink(
+                                                                item?.casino_name
+                                                            )}?queryId=${
+                                                                item?.casino_id
+                                                            }`}
                                                             aria-label="Put your description here."
                                                             target="_blank"
                                                             className="info-casino-card__stake-link"

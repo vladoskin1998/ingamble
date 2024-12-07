@@ -7,11 +7,13 @@ import { useEffect, useRef, useState } from "react"
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
-import { COLORS_TAGS } from "../../helper"
+import { COLORS_TAGS, sanitizeLink } from "../../helper"
 
-
-
-export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined })  {
+export default function BlockType3({
+    data,
+}: {
+    data: HomeDataBlock | undefined
+}) {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     const [screenState, setScreenState] = useState<number | "auto">("auto")
@@ -53,7 +55,7 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
         return <></>
 
     return (
-        <section className="main-gamble__top-gainers-casinos top-gainers-casinos-gamble main-gamble__baner-block">
+        <section aria-label="BlockTypeNumber.BlockType3" className="main-gamble__top-gainers-casinos top-gainers-casinos-gamble main-gamble__baner-block">
             <div className="top-gainers-casinos-gamble__container container">
                 <div className="top-gainers-casinos-gamble__top top">
                     <div className="top__row">
@@ -68,7 +70,7 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                Type 3             {data.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -78,7 +80,12 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                             )}
                         </div>
                         <div className="top__column">
-                        <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} />
+                            <SeeAllButton
+                                type_category={data.items_block.type_category}
+                                parameter={
+                                    data?.items_block?.category?.name || ""
+                                }
+                            />
                         </div>
                     </div>
                 </div>
@@ -92,7 +99,6 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                 <Swiper
                                     slidesPerView={screenState}
                                     className="slider__wrapper swiper-wrapper"
-                     
                                     breakpoints={{
                                         320: {
                                             spaceBetween: 16,
@@ -129,20 +135,28 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                         )
                                         .map((item) => (
                                             //////main slide
-                                            <SwiperSlide className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide" style={{     minHeight: "260px",
-                                                height: "100%",}}>
-                                                <
-                                                >
+                                            <SwiperSlide
+                                                className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide"
+                                                style={{
+                                                    minHeight: "260px",
+                                                    height: "100%",
+                                                }}
+                                            >
+                                                <>
                                                     <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                         <div className="different-casino-standart">
                                                             <div className="different-casino-standart__body">
                                                                 <a
-                                                                    href=""
+                                                                    href={
+                                                                        item?.[0]
+                                                                            .casino_info
+                                                                            .casino_affiliate_link
+                                                                    }
                                                                     aria-label="Put your description here."
                                                                     target="_blank"
                                                                     className="different-casino-standart__image-block"
                                                                 >
-                                                                    <span className="different-casino-standart__image ibg"  >
+                                                                    <span className="different-casino-standart__image ibg">
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item?.[0]
@@ -156,7 +170,19 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                                                 <div className="different-casino-standart__content">
                                                                     <div className="different-casino-standart__content-row">
                                                                         <a
-                                                                            href=""
+                                                                            href={`/casino/${sanitizeLink(
+                                                                                item?.[0]
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
+                                                                            )}/bonuses/${sanitizeLink(
+                                                                                item?.[0]
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_name
+                                                                            )}?queryId=${
+                                                                                item?.[0]
+                                                                                    .bonus_info
+                                                                                    .bonus_id
+                                                                            }`}
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
                                                                             className="different-casino-standart__name"
@@ -197,7 +223,15 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                                                         )}
                                                                         <div className="info-casino-card__stake">
                                                                             <a
-                                                                                href=""
+                                                                                href={`/casino/${sanitizeLink(
+                                                                                    item?.[0]
+                                                                                        ?.casino_info
+                                                                                        ?.casino_name
+                                                                                )}?queryId=${
+                                                                                    item?.[0]
+                                                                                        ?.casino_info
+                                                                                        ?.casino_id
+                                                                                }`}
                                                                                 aria-label="Put your description here."
                                                                                 target="_blank"
                                                                                 className="info-casino-card__stake-link"
@@ -236,12 +270,16 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                                             <div className="different-casino-standart">
                                                                 <div className="different-casino-standart__body">
                                                                     <a
-                                                                        href=""
+                                                                        href={
+                                                                            item?.[1]
+                                                                                .casino_info
+                                                                                .casino_affiliate_link
+                                                                        }
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
                                                                         className="different-casino-standart__image-block"
                                                                     >
-                                                                        <span className="different-casino-standart__image ibg" >
+                                                                        <span className="different-casino-standart__image ibg">
                                                                             <LazyCardImg
                                                                                 img={
                                                                                     item?.[1]
@@ -255,7 +293,19 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                                                     <div className="different-casino-standart__content">
                                                                         <div className="different-casino-standart__content-row">
                                                                             <a
-                                                                                href=""
+                                                                                href={`/casino/${sanitizeLink(
+                                                                                    item?.[1]
+                                                                                        ?.casino_info
+                                                                                        ?.casino_name
+                                                                                )}/bonuses/${sanitizeLink(
+                                                                                    item?.[1]
+                                                                                        ?.bonus_info
+                                                                                        ?.bonus_name
+                                                                                )}?queryId=${
+                                                                                    item?.[1]
+                                                                                        .bonus_info
+                                                                                        .bonus_id
+                                                                                }`}
                                                                                 aria-label="Put your description here."
                                                                                 target="_blank"
                                                                                 className="different-casino-standart__name"
@@ -299,7 +349,15 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                                                             )}
                                                                             <div className="info-casino-card__stake">
                                                                                 <a
-                                                                                    href=""
+                                                                                    href={`/casino/${sanitizeLink(
+                                                                                        item?.[1]
+                                                                                            ?.casino_info
+                                                                                            ?.casino_name
+                                                                                    )}?queryId=${
+                                                                                        item?.[1]
+                                                                                            ?.casino_info
+                                                                                            ?.casino_id
+                                                                                    }`}
                                                                                     aria-label="Put your description here."
                                                                                     target="_blank"
                                                                                     className="info-casino-card__stake-link"
@@ -347,10 +405,8 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                 <div className="baner-row-block__swiper top-gainers-casinos-baner__swiper swiper">
                                     <div className="baner-row-block__wrapper swiper-wrapper">
                                         <Swiper
-                                        
                                             slidesPerView={1}
                                             ref={sliderRef}
-                                
                                             modules={[Pagination]}
                                             pagination={{
                                                 el: paginationRef.current,
@@ -372,105 +428,103 @@ export default function BlockType3  ({ data }: { data: HomeDataBlock | undefined
                                                 .filter((item) => item.big_card)
                                                 .map((item) => (
                                                     <SwiperSlide className="baner-row-block__slide slide-baner-row-block swiper-slide">
-                                                  
-                                                            <div className="slide-baner-row-block__item item-baner-row-block">
-                                                                <div className="item-baner-row-block__image ibg">
-                                                                    <LazyCardImg
-                                                                        img={
-                                                                            item
-                                                                                .bonus_info
-                                                                                .bonus_image ||
-                                                                            ""
-                                                                        }
-                                                                    />
-                                                                </div>
-                                                                <a
-                                                                    href=""
-                                                                    target="_blank"
-                                                                    aria-label="Put your description here."
-                                                                    className="item-baner-row-block__row"
-                                                                >
-                                                                    <div className="item-baner-row-block__column">
-                                                                        <div className="item-baner-row-block__small-card casino-small-card">
+                                                        <div className="slide-baner-row-block__item item-baner-row-block">
+                                                            <div className="item-baner-row-block__image ibg">
+                                                                <LazyCardImg
+                                                                    img={
+                                                                        item
+                                                                            .bonus_info
+                                                                            .bonus_image ||
+                                                                        ""
+                                                                    }
+                                                                />
+                                                            </div>
+                                                            <a
+                                                                href=""
+                                                                target="_blank"
+                                                                aria-label="Put your description here."
+                                                                className="item-baner-row-block__row"
+                                                            >
+                                                                <div className="item-baner-row-block__column">
+                                                                    <div className="item-baner-row-block__small-card casino-small-card">
+                                                                        <a
+                                                                            href=""
+                                                                            aria-label="Put your description here."
+                                                                            target="_blank"
+                                                                            className="casino-small-card__image-block"
+                                                                        >
+                                                                            <div className="casino-small-card__image ibg">
+                                                                                <LazyCardImg
+                                                                                    img={
+                                                                                        item
+                                                                                            .casino_info
+                                                                                            .casino_image ||
+                                                                                        ""
+                                                                                    }
+                                                                                    size="medium"
+                                                                                />
+                                                                            </div>
+                                                                        </a>
+                                                                        <div className="casino-small-card__body">
                                                                             <a
                                                                                 href=""
                                                                                 aria-label="Put your description here."
                                                                                 target="_blank"
-                                                                                className="casino-small-card__image-block"
+                                                                                className="casino-small-card__name"
                                                                             >
-                                                                                <div className="casino-small-card__image ibg" >
-                                                                                    <LazyCardImg
-                                                                                        img={
-                                                                                            item
-                                                                                                .casino_info
-                                                                                                .casino_image ||
-                                                                                            ""
-                                                                                        }
-                                                                                        size="medium"
-                                                                                    />
-                                                                                </div>
+                                                                                {
+                                                                                    item
+                                                                                        .casino_info
+                                                                                        .casino_name
+                                                                                }
                                                                             </a>
-                                                                            <div className="casino-small-card__body">
-                                                                                <a
-                                                                                    href=""
-                                                                                    aria-label="Put your description here."
-                                                                                    target="_blank"
-                                                                                    className="casino-small-card__name"
-                                                                                >
+                                                                            <div className="casino-small-card__rating">
+                                                                                <span className="casino-small-card__rating-icon">
+                                                                                    <img
+                                                                                        src={
+                                                                                            star
+                                                                                        }
+                                                                                        alt="star"
+                                                                                    />
+                                                                                </span>
+                                                                                <span className="casino-small-card__rating-number">
                                                                                     {
                                                                                         item
                                                                                             .casino_info
-                                                                                            .casino_name
+                                                                                            .casino_rank
                                                                                     }
-                                                                                </a>
-                                                                                <div className="casino-small-card__rating">
-                                                                                    <span className="casino-small-card__rating-icon">
-                                                                                        <img
-                                                                                            src={
-                                                                                                star
-                                                                                            }
-                                                                                            alt="star"
-                                                                                        />
-                                                                                    </span>
-                                                                                    <span className="casino-small-card__rating-number">
-                                                                                        {
-                                                                                            item
-                                                                                                .casino_info
-                                                                                                .casino_rank
-                                                                                        }
-                                                                                    </span>
-                                                                                </div>
+                                                                                </span>
                                                                             </div>
                                                                         </div>
-                                                                        <a
-                                                                            href=""
-                                                                            aria-label="Put your description here."
-                                                                            className="item-baner-row-block__title"
-                                                                        >
-                                                                            {
-                                                                                item
-                                                                                    .bonus_info
-                                                                                    .bonus_name
-                                                                            }
-                                                                        </a>
                                                                     </div>
-                                                                    <div className="item-baner-row-block__column">
-                                                                        <a
-                                                                            href={
-                                                                                item
-                                                                                    .casino_info
-                                                                                    .casino_affiliate_link
-                                                                            }
-                                                                            aria-label="Put your description here."
-                                                                            target="_blank"
-                                                                            className="item-baner-row-block__btn casino-card__bnt"
-                                                                        >
-                                                                            Play
-                                                                        </a>
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                    
+                                                                    <a
+                                                                        href=""
+                                                                        aria-label="Put your description here."
+                                                                        className="item-baner-row-block__title"
+                                                                    >
+                                                                        {
+                                                                            item
+                                                                                .bonus_info
+                                                                                .bonus_name
+                                                                        }
+                                                                    </a>
+                                                                </div>
+                                                                <div className="item-baner-row-block__column">
+                                                                    <a
+                                                                        href={
+                                                                            item
+                                                                                .casino_info
+                                                                                .casino_affiliate_link
+                                                                        }
+                                                                        aria-label="Put your description here."
+                                                                        target="_blank"
+                                                                        className="item-baner-row-block__btn casino-card__bnt"
+                                                                    >
+                                                                        Play
+                                                                    </a>
+                                                                </div>
+                                                            </a>
+                                                        </div>
                                                     </SwiperSlide>
                                                 ))}
                                         </Swiper>

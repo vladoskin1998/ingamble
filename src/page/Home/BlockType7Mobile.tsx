@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { sanitizeLink } from "../../helper"
 
 export default function BlockType7Mobile({
     data,
@@ -30,7 +31,7 @@ export default function BlockType7Mobile({
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    Type 7 Mobile {data.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -74,7 +75,7 @@ export default function BlockType7Mobile({
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item different-casino-medium">
                                                     <a
-                                                        href=""
+                                                        href={item?.casino_info?.casino_affiliate_link}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="different-casino-medium__image-block"
@@ -92,8 +93,8 @@ export default function BlockType7Mobile({
                                                     </a>
                                                     <div className="different-casino-medium__content">
                                                         <a
-                                                            href=""
-                                                            aria-label="Put your description here."
+                                                            href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                            aria-label="Put your descripton here."
                                                             target="_blank"
                                                             className="different-casino-medium__name"
                                                         >

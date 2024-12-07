@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
+import { sanitizeLink } from "../../helper"
 
 export default function BlockType4Mobile({
     data,
@@ -31,7 +32,7 @@ export default function BlockType4Mobile({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType4)
         return <></>
     return (
-        <section className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+        <section aria-label="BlockTypeNumber.BlockType4" className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="new-bonuses-gamble__container container">
                 <div className="new-bonuses-gamble__top top">
                     <div className="top__row">
@@ -46,7 +47,7 @@ export default function BlockType4Mobile({
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                Type 4 Mobile                {data.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -56,7 +57,12 @@ export default function BlockType4Mobile({
                             )}
                         </div>
                         <div className="top__column">
-                        <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} />
+                            <SeeAllButton
+                                type_category={data.items_block.type_category}
+                                parameter={
+                                    data?.items_block?.category?.name || ""
+                                }
+                            />
                         </div>
                     </div>
                 </div>
@@ -67,7 +73,6 @@ export default function BlockType4Mobile({
                                 ref={sliderRef}
                                 className="slider__wrapper swiper-wrapper"
                                 slidesPerView="auto"
-                    
                                 modules={[Pagination]}
                                 pagination={{
                                     el: paginationRef.current,
@@ -123,7 +128,11 @@ export default function BlockType4Mobile({
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">
                                                             <a
-                                                                href=""
+                                                               href={
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_affiliate_link
+                                                            }
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="casino-small-card__image-block"
@@ -141,7 +150,7 @@ export default function BlockType4Mobile({
                                                             </a>
                                                             <div className="casino-small-card__body">
                                                                 <a
-                                                                    href=""
+                                                                    href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                     aria-label="Put your description here."
                                                                     target="_blank"
                                                                     className="casino-small-card__name"

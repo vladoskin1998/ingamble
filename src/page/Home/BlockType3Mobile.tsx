@@ -8,9 +8,9 @@ import { useRef, useEffect } from "react"
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { COLORS_TAGS } from "../../helper"
+import { COLORS_TAGS, sanitizeLink } from "../../helper"
 
-export default function BlockType3Mobile ({
+export default function BlockType3Mobile({
     data,
 }: {
     data: HomeDataBlock | undefined
@@ -33,7 +33,7 @@ export default function BlockType3Mobile ({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3)
         return <></>
     return (
-        <section className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+        <section  aria-label="BlockTypeNumber.BlockType3" className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="vpn-friendly-casinos-2-gamble__container container">
                 <div className="vpn-friendly-casinos-2-gamble__top top">
                     <div className="top__row">
@@ -48,7 +48,6 @@ export default function BlockType3Mobile ({
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    Type 3 Mobile{" "}
                                     {data?.items_block.block_title}
                                 </h2>
                             </div>
@@ -119,7 +118,12 @@ export default function BlockType3Mobile ({
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
                                                             <a
-                                                                href=""
+                                                                href={
+                                                                    item?.[0]
+                                                                        ?.casino_info
+                                                                        ?.casino_affiliate_link ||
+                                                                    ""
+                                                                }
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
@@ -138,7 +142,19 @@ export default function BlockType3Mobile ({
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <a
-                                                                        href=""
+                                                                        href={`/casino/${sanitizeLink(
+                                                                            item?.[0]
+                                                                                ?.casino_info
+                                                                                ?.casino_name
+                                                                        )}/bonuses/${sanitizeLink(
+                                                                            item?.[0]
+                                                                                ?.bonus_info
+                                                                                ?.bonus_name
+                                                                        )}?queryId=${
+                                                                            item?.[0]
+                                                                                ?.bonus_info
+                                                                                ?.bonus_id
+                                                                        }`}
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
                                                                         className="different-casino-standart__name"
@@ -180,7 +196,15 @@ export default function BlockType3Mobile ({
                                                                     )}
                                                                     <div className="info-casino-card__stake">
                                                                         <a
-                                                                            href=""
+                                                                            href={`/casino/${sanitizeLink(
+                                                                                item?.[0]
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
+                                                                            )}?queryId=${
+                                                                                item?.[0]
+                                                                                    ?.casino_info
+                                                                                    ?.casino_id
+                                                                            }`}
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
                                                                             className="info-casino-card__stake-link"
@@ -215,11 +239,16 @@ export default function BlockType3Mobile ({
                                                     </div>
                                                 </div>
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
-                                                    {item?.[1] &&
+                                                    {item?.[1] && (
                                                         <div className="different-casino-standart">
                                                             <div className="different-casino-standart__body">
                                                                 <a
-                                                                    href=""
+                                                                    href={
+                                                                        item?.[1]
+                                                                            ?.casino_info
+                                                                            ?.casino_affiliate_link ||
+                                                                        ""
+                                                                    }
                                                                     aria-label="Put your description here."
                                                                     target="_blank"
                                                                     className="different-casino-standart__image-block"
@@ -238,7 +267,19 @@ export default function BlockType3Mobile ({
                                                                 <div className="different-casino-standart__content">
                                                                     <div className="different-casino-standart__content-row">
                                                                         <a
-                                                                            href=""
+                                                                            href={`/casino/${sanitizeLink(
+                                                                                item?.[1]
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
+                                                                            )}/bonuses/${sanitizeLink(
+                                                                                item?.[1]
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_name
+                                                                            )}?queryId=${
+                                                                                item?.[1]
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_id
+                                                                            }`}
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
                                                                             className="different-casino-standart__name"
@@ -280,7 +321,15 @@ export default function BlockType3Mobile ({
                                                                         )}
                                                                         <div className="info-casino-card__stake">
                                                                             <a
-                                                                                href=""
+                                                                                href={`/casino/${sanitizeLink(
+                                                                                    item?.[1]
+                                                                                        ?.casino_info
+                                                                                        ?.casino_name
+                                                                                )}?queryId=${
+                                                                                    item?.[1]
+                                                                                        ?.casino_info
+                                                                                        ?.casino_id
+                                                                                }`}
                                                                                 aria-label="Put your description here."
                                                                                 target="_blank"
                                                                                 className="info-casino-card__stake-link"
@@ -313,7 +362,7 @@ export default function BlockType3Mobile ({
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    }
+                                                    )}
                                                 </div>
                                             </SwiperSlide>
                                         )

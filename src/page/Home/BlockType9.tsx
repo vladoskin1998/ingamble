@@ -4,8 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { sanitizeLink } from "../../helper"
 
-export default  function BlockType9 ({ data }: { data: HomeDataBlock | undefined })  {
+export default function BlockType9({
+    data,
+}: {
+    data: HomeDataBlock | undefined
+}) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9)
         return <></>
     return (
@@ -24,7 +29,7 @@ export default  function BlockType9 ({ data }: { data: HomeDataBlock | undefined
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                Type 9                 {data.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -57,7 +62,6 @@ export default  function BlockType9 ({ data }: { data: HomeDataBlock | undefined
                         <Swiper
                             slidesPerView="auto"
                             allowTouchMove={true}
-                          
                             breakpoints={{
                                 320: {
                                     spaceBetween: 16,
@@ -71,12 +75,15 @@ export default  function BlockType9 ({ data }: { data: HomeDataBlock | undefined
                             }}
                             className="slider__wrapper swiper-wrapper"
                         >
-                            {data.items_block.data_cards.map((item,index) => (
-                                <SwiperSlide key={index}className="slider__slide slide-slider ">
+                            {data.items_block.data_cards.map((item, index) => (
+                                <SwiperSlide
+                                    key={index}
+                                    className="slider__slide slide-slider "
+                                >
                                     <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                         <div className="item-essential-programs-gamble__top">
                                             <a
-                                                href=""
+                                                href={item?.casino_affiliate_link}
                                                 aria-label="Put your description here."
                                                 target="_blank"
                                                 className="item-essential-programs-gamble__logo"
@@ -130,9 +137,16 @@ export default  function BlockType9 ({ data }: { data: HomeDataBlock | undefined
                                                                 <div className="value-item-stats-essential-programs-gamble__stars value-item-stats-essential-programs-gamble__stars_5">
                                                                     {item.stars.map(
                                                                         (
-                                                                            it, idstar
+                                                                            it,
+                                                                            idstar
                                                                         ) => (
-                                                                            <div key={idstar+111} className="value-item-stats-essential-programs-gamble__star">
+                                                                            <div
+                                                                                key={
+                                                                                    idstar +
+                                                                                    111
+                                                                                }
+                                                                                className="value-item-stats-essential-programs-gamble__star"
+                                                                            >
                                                                                 <img
                                                                                     src={
                                                                                         star
@@ -171,34 +185,39 @@ export default  function BlockType9 ({ data }: { data: HomeDataBlock | undefined
                                                 </div>
                                             </div>
                                             <div className="item-essential-programs-gamble__features features-essential-programs-gamble">
-                                                {item.keypoints.map((itp, idk) => (
-                                                    <div className="features-essential-programs-gamble__item" key={idk+222}>
-                                                        <div className="features-essential-programs-gamble__icon">
-                                                            <LazyCardImg
-                                                                img={
-                                                                    itp.image ||
-                                                                    ""
-                                                                }
-                                                                size="medium"
-                                                            />
-                                                        </div>
-                                                        <div className="features-essential-programs-gamble__info">
-                                                            <div className="features-essential-programs-gamble__name">
-                                                                {itp.text_1}
+                                                {item.keypoints.map(
+                                                    (itp, idk) => (
+                                                        <div
+                                                            className="features-essential-programs-gamble__item"
+                                                            key={idk + 222}
+                                                        >
+                                                            <div className="features-essential-programs-gamble__icon">
+                                                                <LazyCardImg
+                                                                    img={
+                                                                        itp.image ||
+                                                                        ""
+                                                                    }
+                                                                    size="medium"
+                                                                />
                                                             </div>
-                                                            <div className="features-essential-programs-gamble__text">
-                                                                {itp.text_2}
+                                                            <div className="features-essential-programs-gamble__info">
+                                                                <div className="features-essential-programs-gamble__name">
+                                                                    {itp.text_1}
+                                                                </div>
+                                                                <div className="features-essential-programs-gamble__text">
+                                                                    {itp.text_2}
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    )
+                                                )}
                                             </div>
                                         </div>
                                         <div className="item-essential-programs-gamble__bottom">
                                             <div className="item-essential-programs-gamble__bottom-column">
                                                 <a
                                                     href={
-                                                        item.casino_affiliate_link
+                                                        item?.casino_affiliate_link || "" 
                                                     }
                                                     aria-label="Put your description here."
                                                     target="_blank"
@@ -209,7 +228,7 @@ export default  function BlockType9 ({ data }: { data: HomeDataBlock | undefined
                                             </div>
                                             <div className="item-essential-programs-gamble__bottom-column">
                                                 <a
-                                                    href="/loyaltie"
+                                                    href={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item.casino_id}`}
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="item-essential-programs-gamble__btn"

@@ -370,15 +370,15 @@ const LisDisplayedData = memo(
                                 <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                         <a
-                                            href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
+                                               href={item.casino_affiliate_link}
                                             target="_blank"
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-view"
                                         >
-                                            View Casino
+                                            Visit Casino
                                         </a>
                                         <a
-                                            href={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.casino_id}`}
+                                            href={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.loyalty_program.id}`}
                                             target="_blank"
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-more"

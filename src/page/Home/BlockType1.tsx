@@ -1,16 +1,24 @@
 import MainSlider from "../../components/swiper/MainSlider"
+import { sanitizeLink } from "../../helper"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 
-export default function BlockType1  ({ data }: { data: HomeDataBlock | undefined }) {
+export default function BlockType1({
+    data,
+}: {
+    data: HomeDataBlock | undefined
+}) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType1)
         return <></>
 
+    console.log(
+        "data id",
+        data.items_block.type_category,
+        data?.items_block?.category?.id
+    )
 
-    console.log("data id",data.items_block.type_category, data?.items_block?.category?.id);
-    
     return (
-        <section className="main-gamble__todays-hot todays-hot-gamble">
+        <section aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
             <div className="todays-hot-gamble__container container">
                 <div className="todays-hot-gamble__top top">
                     <div className="top__row">
@@ -25,7 +33,7 @@ export default function BlockType1  ({ data }: { data: HomeDataBlock | undefined
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                  Type 1  {data.items_block.block_title}
+                                    {data.items_block.block_title}
                                 </h2>
                             </div>
                             {data.items_block.subtitle && (
@@ -35,7 +43,12 @@ export default function BlockType1  ({ data }: { data: HomeDataBlock | undefined
                             )}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} />
+                            <SeeAllButton
+                                type_category={data.items_block.type_category}
+                                parameter={
+                                    data?.items_block?.category?.name || ""
+                                }
+                            />
                         </div>
                     </div>
                 </div>
@@ -49,6 +62,8 @@ export default function BlockType1  ({ data }: { data: HomeDataBlock | undefined
                             nameCasino: item?.casino_info?.casino_name,
                             comment: item?.bonus_info?.bonus_name,
                             link: item?.casino_info?.casino_affiliate_link,
+                            casinoLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`,
+                            bonuseLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`
                         }))}
                 />
             </div>

@@ -16,9 +16,10 @@ import $api from "../../http"
 import { useSearchParams } from "react-router-dom"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
-import { RewievCasinoDataResponse } from "../../types"
+import { GeoLocationAllowdType, RewievCasinoDataResponse } from "../../types"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { useFilterContext } from "../../context/FilterContext"
 
 const SafetyIndexRatingLevel = (n: number, s?: string) => {
     if (n < 3 || s?.toLocaleLowerCase() === "medium") return "medium"
@@ -54,7 +55,47 @@ export default function SimpleCasinos() {
         }
     )
 
-    console.log(data)
+    const {data: Country} = useFilterContext()
+
+    const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
+        countryCode: "",
+        countryName: "",
+        isAllowed: false,
+        isLoadedGeo: false,
+        countryImg: undefined
+    })
+
+    useEffect(() => {
+        if (data?.headers && Country?.general?.countries?.length) {
+        
+            const countryCode = data?.headers?.["cf-ipcountry-code"]
+            const countryName = data?.headers?.["cf-ipcountry"]
+            
+            const countryImg = Country?.general?.countries?.find(
+                it => {
+                    
+                    return it.code ===  countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase() }
+            )?.flag_image;
+            
+  
+            const isAllowed = true
+            
+            // !data.dataBonus?.restriction_country?.country.find(
+            //     (item) =>
+            //         item?.code?.toLocaleLowerCase() ===
+            //         countryCode?.toLocaleLowerCase()
+            // )
+
+            setGeoLocation({
+                countryCode,
+                countryName,
+                isAllowed,
+                isLoadedGeo: true,
+                 countryImg
+            })
+        }
+
+    }, [ data ,Country])
 
     const handlerOpen = (s: boolean) => {
         setOpenModal(s)
@@ -76,7 +117,7 @@ export default function SimpleCasinos() {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    if (isLoading) return <LogoLoader />
+    if (isLoading && !Country) return <LogoLoader />
 
     return (
         <>
@@ -153,18 +194,16 @@ export default function SimpleCasinos() {
                                                 </div>
                                                 <div className="content-casino-info__country country-content-casino-info">
                                                     <div className="country-content-casino-info__info">
-                                                        {/* <div className="country-content-casino-info__icon">
+                                                        { geoLocation?.countryImg && <div className="country-content-casino-info__icon">
                                                             <img
-                                                                src="/src/assets/img/icons/latvia-flag.svg"
-                                                                alt="latvia"
+                                                                src={geoLocation?.countryImg}
+                                                                alt={geoLocation?.countryName}
                                                             />
-                                                        </div> */}
+                                                        </div> }
                                                         <div className="country-content-casino-info__text">
                                                             Accepts players from{" "}
                                                             {
-                                                                data?.headers?.[
-                                                                    "cf-ipcountry"
-                                                                ]
+                                                                geoLocation?.countryName
                                                             }
                                                         </div>
                                                     </div>
@@ -473,24 +512,7 @@ export default function SimpleCasinos() {
                                                         )}
                                                     </div>
                                                 </div>
-                                                {/* <!-- <div
-                                                    className="item-iwild-casino-safety__index index-item-iwild-casino-safety index-item-iwild-casino-safety_medium">
-                                                    <div className="index-item-iwild-casino-safety__bg"></div>
-                                                    <div className="index-item-iwild-casino-safety__icon"></div>
-                                                    <div className="index-item-iwild-casino-safety__label">
-                                                        Safety Index:
-                                                    </div>
-                                                    <div className="index-item-iwild-casino-safety__value">Medium</div>
-                                                </div> -->
-                                                <!-- <div
-                                                    className="item-iwild-casino-safety__index index-item-iwild-casino-safety index-item-iwild-casino-safety_low">
-                                                    <div className="index-item-iwild-casino-safety__bg"></div>
-                                                    <div className="index-item-iwild-casino-safety__icon"></div>
-                                                    <div className="index-item-iwild-casino-safety__label">
-                                                        Safety Index:
-                                                    </div>
-                                                    <div className="index-item-iwild-casino-safety__value">Low</div>
-                                                </div> --> */}
+                                             
                                             </div>
                                         </div>
                                         <div className="iwild-casino-safety__column iwild-casino-safety__column_content">

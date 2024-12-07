@@ -4,11 +4,15 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import { RewievCasinoDataResponse } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 
-export const CasinoBonuses = ({data}:{data: undefined | RewievCasinoDataResponse}) => {
+export const CasinoBonuses = ({
+    data,
+}: {
+    data: undefined | RewievCasinoDataResponse
+}) => {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 
-    const [active,setActive] = useState<string>("review-iwild-casino-bonuses")
+    const [active, setActive] = useState<string>("review-iwild-casino-bonuses")
 
     useEffect(() => {
         if (sliderRef.current && paginationRef.current) {
@@ -25,11 +29,11 @@ export const CasinoBonuses = ({data}:{data: undefined | RewievCasinoDataResponse
 
     const scrollToElement = (id: string) => {
         setActive(id)
-        const element = document.querySelector(`#${id}`);
+        const element = document.querySelector(`#${id}`)
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+            element.scrollIntoView({ behavior: "smooth" })
         }
-      };
+    }
 
     return (
         <section className="review__iwild-casino-bonuses iwild-casino-bonuses">
@@ -49,18 +53,32 @@ export const CasinoBonuses = ({data}:{data: undefined | RewievCasinoDataResponse
                             >
                                 <SwiperSlide className="tabs__slide slide-tabs swiper-slide">
                                     <button
-                                        className={`slide-tabs__btn link-scroll ${active === "review-iwild-casino-bonuses" && "active"}`}
-                                     
-                                        onClick={() => scrollToElement("review-iwild-casino-bonuses")}
+                                        className={`slide-tabs__btn link-scroll ${
+                                            active ===
+                                                "review-iwild-casino-bonuses" &&
+                                            "active"
+                                        }`}
+                                        onClick={() =>
+                                            scrollToElement(
+                                                "review-iwild-casino-bonuses"
+                                            )
+                                        }
                                     >
                                         Bonuses
                                     </button>
                                 </SwiperSlide>
                                 <SwiperSlide className="tabs__slide slide-tabs swiper-slide">
                                     <button
-                                        className={`slide-tabs__btn link-scroll ${active === "review-general-information" && "active"}`}
-                                     
-                                        onClick={() => scrollToElement("review-general-information")}
+                                        className={`slide-tabs__btn link-scroll ${
+                                            active ===
+                                                "review-general-information" &&
+                                            "active"
+                                        }`}
+                                        onClick={() =>
+                                            scrollToElement(
+                                                "review-general-information"
+                                            )
+                                        }
                                     >
                                         Keypoints
                                     </button>
@@ -76,8 +94,16 @@ export const CasinoBonuses = ({data}:{data: undefined | RewievCasinoDataResponse
                                 </SwiperSlide> */}
                                 <SwiperSlide className="tabs__slide slide-tabs swiper-slide">
                                     <button
-                                        className={`slide-tabs__btn link-scroll  ${active === "review-iwild-casino-review" && "active"}`}
-                                        onClick={() => scrollToElement("review-iwild-casino-review")}
+                                        className={`slide-tabs__btn link-scroll  ${
+                                            active ===
+                                                "review-iwild-casino-review" &&
+                                            "active"
+                                        }`}
+                                        onClick={() =>
+                                            scrollToElement(
+                                                "review-iwild-casino-review"
+                                            )
+                                        }
                                     >
                                         Casino Review
                                     </button>
@@ -126,49 +152,53 @@ export const CasinoBonuses = ({data}:{data: undefined | RewievCasinoDataResponse
                                     },
                                 }}
                             >
-                                {
-                                    data?.bonuses.map((b) =>       <SwiperSlide className="slider__slide slide-slider swiper-slide">
-                                    <div className="slide-slider__item casino-card">
-                                        <a
-                                            href=""
-                                            aria-label="Put your description here."
-                                            target="_blank"
-                                            className="casino-card__image-block casino-card__image-block_yellow"
-                                        >
-                                            <div className="casino-card__image ibg">
-                                            <LazyCardImg
-                                                        img={b?.bonus_image || ""}
+                                {data?.bonuses.map((b) => (
+                                    <SwiperSlide className="slider__slide slide-slider swiper-slide">
+                                        <div className="slide-slider__item casino-card">
+                                            <a
+                                                href=""
+                                                aria-label="Put your description here."
+                                                target="_blank"
+                                                className="casino-card__image-block casino-card__image-block_yellow"
+                                            >
+                                                <div className="casino-card__image ibg">
+                                                    <LazyCardImg
+                                                        img={
+                                                            b?.bonus_image || ""
+                                                        }
                                                         height="100%"
                                                         width="100%"
                                                         imgLoading={"eager"}
                                                     />
-                                            </div>
-                                            <a
-                                                // href={b}
-                                                target="_blank"
-                                                aria-label="Put your description here."
-                                                className="casino-card__bnt"
-                                            >
-                                                Play
+                                                </div>
+                                                <a
+                                                     href=""
+                                                    target="_blank"
+                                                    aria-label="Put your description here."
+                                                    className="casino-card__bnt"
+                                                >
+                                                    Play
+                                                </a>
                                             </a>
-                                        </a>
-                                        <div className="casino-card__content">
-                                            <div
-                                                
-                                                className="casino-card__name"
-                                                dangerouslySetInnerHTML={{ __html: b.name.replace(/([+-]?\s?\€?\$?\d+(\.\d+)?[%,$€&!*#@^+-]?)/g, '<span>$1</span>') }}
-                                            >
-{/*                                                 
+                                            <div className="casino-card__content">
+                                                <div
+                                                    className="casino-card__name"
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: b.name.replace(
+                                                            /([+-]?\s?\€?\$?\d+(\.\d+)?[%,$€&!*#@^+-]?)/g,
+                                                            "<span>$1</span>"
+                                                        ),
+                                                    }}
+                                                >
+                                                    {/*                                                 
                                                   
                                                 Great Bonus Up{" "}
                                                 <span>To 360%</span> For Evening */}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </SwiperSlide>)
-                                }
-                          
-                            
+                                    </SwiperSlide>
+                                ))}
                             </Swiper>
                         </div>
                     </div>

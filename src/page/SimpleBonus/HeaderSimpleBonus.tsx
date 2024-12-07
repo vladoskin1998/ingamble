@@ -24,9 +24,7 @@ export const HeaderSimpleBonus = ({
     data?: GetDataBonusResponse | undefined
     geoLocation: GeoLocationAllowdType
 }) => {
-    const handleClick = () => {
-        window.location.href = data?.casino_affiliate_link || ""
-    }
+  
 
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(
         window.innerWidth <= 1023.98
@@ -58,6 +56,7 @@ export const HeaderSimpleBonus = ({
                                 <div className="main-casino-info__image ibg">
                                     <LazyCardImg
                                         img={data?.bonus_image || ""}
+                                        imgLoading={"eager"}
                                     />
                                     {/* <img
                                         src={data?.bonus_image || mainImg}
@@ -187,13 +186,16 @@ export const HeaderSimpleBonus = ({
                                 </div>
                                 <div className="content-casino-info__country country-content-casino-info">
                                     <div className="country-content-casino-info__info">
-   {/*                                      <div className="country-content-casino-info__icon">
+                                        {
+                                            geoLocation?.countryImg && 
+                                            <div className="country-content-casino-info__icon">
                                    
-                                            <LazyLoadImage
-                                                src={latviaFlag}
-                                                alt="latvia"
+                                            <img
+                                                src={geoLocation?.countryImg}
+                                                alt={geoLocation?.countryImg}
                                             />
-                                        </div> */}
+                                        </div>
+                                        }
                                         <div
                                             className={`country-content-casino-info__text `}
                                         >
@@ -210,16 +212,12 @@ export const HeaderSimpleBonus = ({
                                 </div>
                                 <a
                                     rel="nofollow noopener"
-                                    href={`go/${
-                                        data?.casino_name
-                                            ?.toLocaleLowerCase()
-                                            ?.replace(/\s/g, "-") || ""
-                                    }`}
+                                    href={`/all-bonus`}
                                     aria-label="Put your description here."
                                     target="_blank"
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
-                                    title="link"
-                                    onClick={handleClick}
+                           
+                                    
                                 >
                                     <span>
                                         <LazyLoadImage

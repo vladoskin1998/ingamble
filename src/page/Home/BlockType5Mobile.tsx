@@ -9,6 +9,7 @@ import girl from "../../assets/img/girls/01.webp"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { sanitizeLink } from "../../helper"
 //@ts-ignore
 export default function BlockType5Mobile({
     data,
@@ -21,7 +22,7 @@ export default function BlockType5Mobile({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5)
         return <></>
     return (
-        <div className="main-gamble__best-casinos-2024 best-casinos-2024-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+        <div aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-casinos-2024 best-casinos-2024-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="best-casinos-2024-gamble__container container">
                 <div className="best-casinos-2024-gamble__body">
                     <div className="best-casinos-2024-gamble__bg ibg">
@@ -60,7 +61,6 @@ export default function BlockType5Mobile({
                                             </span>
                                         )}
                                         <h2 className="top__title">
-                                            Type 5 Mobile{" "}
                                             {data.items_block.block_title}
                                         </h2>
                                     </div>
@@ -104,13 +104,16 @@ export default function BlockType5Mobile({
                                         },
                                     }}
                                 >
-                                    {[...data?.items_block.data_cards,...data?.items_block.data_cards,]
+                                    {[
+                                        ...data?.items_block.data_cards,
+                                        ...data?.items_block.data_cards,
+                                    ]
                                         .sort((a, b) => a?.order - b?.order)
                                         .map((item) => (
                                             <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
                                                 <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
                                                     <a
-                                                        href=""
+                                                        href={item?.casino_info?.casino_image || ''}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="different-casino-medium__image-block"
@@ -129,7 +132,7 @@ export default function BlockType5Mobile({
                                                     </a>
                                                     <div className="different-casino-medium__content">
                                                         <a
-                                                            href=""
+                                                            href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                             aria-label="Put your description here."
                                                             target="_blank"
                                                             className="different-casino-medium__name"

@@ -827,7 +827,7 @@ export const TabMain = ({
                                         {data?.game_types?.map((gt) => (
                                             <div className="block-info-review__elements-column  ">
                                                 <a
-                                                    href=""
+                                                    // href=""
                                                     target="_blank"
                                                     aria-label="Put your description here."
                                                     className="block-info-review__element element-block-info-review"
