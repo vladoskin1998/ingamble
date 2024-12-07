@@ -41,7 +41,7 @@ export default function SimpleBonus() {
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: "",
         countryName: "",
-        isAllowed: false,
+        isAllowed: true,
         isLoadedGeo: false,
         countryImg: undefined
     })
