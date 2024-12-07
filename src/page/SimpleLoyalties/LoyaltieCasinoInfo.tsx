@@ -1,63 +1,23 @@
 import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
 
-import { GeoLocationAllowdType, GetFilterDataTypeResponse, LoyaltieProgramDataResponse } from "../../types"
+import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { useEffect, useState } from "react"
+
 
 export const LoyaltieCasinoInfo = (
     {
     data,
-    header,
-    Country,
+    geoLocation,
 }: {
     data: LoyaltieProgramDataResponse | undefined
-    header: any
-    Country: GetFilterDataTypeResponse | undefined
+
+    geoLocation: GeoLocationAllowdType 
 }
 ) => {
 
 
 
-    const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
-        countryCode: "",
-        countryName: "",
-        isAllowed: false,
-        isLoadedGeo: false,
-        countryImg: undefined
-    })
-
-    useEffect(() => {
-        if (header && Country?.general?.countries?.length) {
-        
-            const countryCode = header?.["cf-ipcountry-code"]
-            const countryName = header?.["cf-ipcountry"]
-            
-            const countryImg = Country?.general?.countries?.find(
-                it => {
-                    
-                    return it.code ===  countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase() }
-            )?.flag_image;
-            
-  
-            const isAllowed = true
-            
-            // !data.dataBonus?.restriction_country?.country.find(
-            //     (item) =>
-            //         item?.code?.toLocaleLowerCase() ===
-            //         countryCode?.toLocaleLowerCase()
-            // )
-
-            setGeoLocation({
-                countryCode,
-                countryName,
-                isAllowed,
-                isLoadedGeo: true,
-                 countryImg
-            })
-        }
-
-    }, [ Country])
     return (
         <section className="loyaltie__casino-info casino-info">
             <div className="casino-info__container container">

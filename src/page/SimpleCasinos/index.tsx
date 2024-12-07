@@ -117,7 +117,7 @@ export default function SimpleCasinos() {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    if (isLoading && !Country) return <LogoLoader />
+    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
 
     return (
         <>

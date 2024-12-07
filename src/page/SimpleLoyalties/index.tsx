@@ -13,9 +13,9 @@ import $api from "../../http"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { useSearchParams } from "react-router-dom"
 import { useQuery } from "react-query"
-import { LoyaltieProgramDataResponse } from "../../types"
+import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from "../../types"
 import { LogoLoader } from "../../components/loader/LogoLoader"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { HighRankSwiper } from "../SimpleBonus/HighRankSwiper"
 import { useFilterContext } from "../../context/FilterContext"
 
@@ -47,11 +47,52 @@ export default function SimpleLoyalties() {
         }
     )
 
+    
+    const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
+        countryCode: "",
+        countryName: "",
+        isAllowed: true,
+        isLoadedGeo: false,
+        countryImg: undefined
+    })
+
+    useEffect(() => {
+        if (data?.headers && Country?.general?.countries?.length) {
+        
+            const countryCode = data?.headers?.["cf-ipcountry-code"]
+            const countryName = data?.headers?.["cf-ipcountry"]
+            
+            const countryImg = Country?.general?.countries?.find(
+                it => {
+                    
+                    return it.code ===  countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase() }
+            )?.flag_image;
+            
+  
+            const isAllowed = true
+            
+            // !data.dataBonus?.restriction_country?.country.find(
+            //     (item) =>
+            //         item?.code?.toLocaleLowerCase() ===
+            //         countryCode?.toLocaleLowerCase()
+            // )
+
+            setGeoLocation({
+                countryCode,
+                countryName,
+                isAllowed,
+                isLoadedGeo: true,
+                 countryImg
+            })
+        }
+
+    }, [ Country])
+
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    if (isLoading && !Country) return <LogoLoader />
+    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
 
     return (
         <Wraper>
@@ -84,8 +125,8 @@ export default function SimpleLoyalties() {
                     />
                     <LoyaltieCasinoInfo
                         data={data?.dataCurrentLoyaltie}
-                        header={data?.headers}
-                        Country={Country}
+              
+                        geoLocation={geoLocation}
                     />
                     {data?.dataCurrentLoyaltie?.loyalty_keypoint.length && (
                         <LoyaltyRewnew

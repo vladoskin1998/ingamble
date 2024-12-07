@@ -99,7 +99,7 @@ export default function SimpleBonus() {
         initializeAdaptiveBehavior()
     }, [geoLocation])
 
-    if (isLoading && !Country) return <LogoLoader />
+    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
 
     return (
         <Wraper>
