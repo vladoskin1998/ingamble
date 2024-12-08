@@ -20,6 +20,7 @@ import { GeoLocationAllowdType, RewievCasinoDataResponse } from "../../types"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { useFilterContext } from "../../context/FilterContext"
+// import { sanitizeLink } from "../../helper"
 
 const SafetyIndexRatingLevel = (n: number,) => {
     if ((n < 3 ) ) return "low"
@@ -393,7 +394,7 @@ export default function SimpleCasinos() {
                                             </div>
                                             <div className="top__column">
                                                 <a
-                                                    href="/all-loyalties"
+                                                    // href={`/casino/${sanitizeLink(data?.dataCurrentCasinos?.name)}/loyalty?queryId=${}`}
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="top__btn "

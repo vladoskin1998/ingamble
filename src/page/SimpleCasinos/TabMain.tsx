@@ -378,9 +378,9 @@ export const TabMain = ({
                                                         Daily
                                                     </div>
                                                     <div className="item-block-info-review__value">
-                                                        {data?.withdrawal_limit?.daily?.toLocaleString(
+                                                        {data?.withdrawal_limit?.unlimited ? 'Unlimited' : data?.withdrawal_limit?.daily?.toLocaleString(
                                                             "en-US"
-                                                        ) || "Unlimited"}
+                                                        ) || "-"}
                                                     </div>
                                                 </div>
                                                 <div className="item-block-info-review__label-more-item">
@@ -388,9 +388,9 @@ export const TabMain = ({
                                                         Weekly
                                                     </div>
                                                     <div className="item-block-info-review__value">
-                                                        {data?.withdrawal_limit?.weekly?.toLocaleString(
+                                                        {data?.withdrawal_limit?.unlimited ? 'Unlimited' : data?.withdrawal_limit?.weekly?.toLocaleString(
                                                             "en-US"
-                                                        ) || "Unlimited"}
+                                                        ) || "-"}
                                                     </div>
                                                 </div>
                                                 <div className="item-block-info-review__label-more-item">
@@ -398,9 +398,9 @@ export const TabMain = ({
                                                         Monthly
                                                     </div>
                                                     <div className="item-block-info-review__value">
-                                                        {data?.withdrawal_limit?.monthly?.toLocaleString(
+                                                        {data?.withdrawal_limit?.unlimited ? 'Unlimited' : data?.withdrawal_limit?.monthly?.toLocaleString(
                                                             "en-US"
-                                                        ) || "Unlimited "}
+                                                        ) || "- "}
                                                     </div>
                                                 </div>
                                             </div>
