@@ -313,7 +313,7 @@ export const TabMain = ({
                                             </div>
                                             <div className="item-block-info-review__value">
                                                 {data?.min_wagering
-                                                    ?.min_value || 1}
+                                                    ?.min_value || 'Unlimited'}
                                                 X
                                             </div>
                                         </div>

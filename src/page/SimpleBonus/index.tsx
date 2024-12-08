@@ -99,8 +99,8 @@ export default function SimpleBonus() {
         initializeAdaptiveBehavior()
     }, [geoLocation])
 
-    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
-
+    // if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
+    if (isLoading ) return <LogoLoader />
     return (
         <Wraper>
             <main className="gamble__simple-bonus main-gamble simple-bonus">
