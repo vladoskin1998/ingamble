@@ -161,7 +161,7 @@ export const CasinoBonuses = ({
                                                 target="_blank"
                                                 className="casino-card__image-block casino-card__image-block_yellow"
                                             >
-                                                <div className="casino-card__image ibg">
+                                                <div className="casino-card__image ibg--custom">
                                                     <LazyCardImg
                                                         img={
                                                             b?.bonus_image || ""

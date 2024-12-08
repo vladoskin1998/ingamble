@@ -3922,8 +3922,9 @@ h3 {
   display: flex;
   justify-content: space-between;
   border-radius: var(--SystemCorners-Medium, 12px);
-  background: url("../img/bg.jpg") center repeat;
-  background-size: 40%;
+  background: url("../img/bg/10.png") center repeat;
+  background-size: 70%;
+  /* background-size: 40%; */
   min-height: 290px;
 }
 @media (max-width: 1023.98px) {
@@ -4341,6 +4342,7 @@ h3 {
   background: transparent;
   border: 1px solid #5B1F20;
 }
+
 .item-features-content-casino-info_low::before {
   position: absolute;
   content: "";
@@ -7442,8 +7444,8 @@ h3 {
 .deposits__block {
   border-radius: var(--SystemCorners-Medium, 12px);
   overflow: hidden;
-  background: url("../img/bg.jpg") center repeat;
-  background-size: 25%;
+  background: url("../img/bg/10.png") center repeat;
+  background-size: 48%;
   padding: 20px 20px 8px 20px;
 }
 .deposits__block:not(:last-child) {

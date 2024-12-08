@@ -1,114 +1,69 @@
+import closeIcon from "../../assets/img/icons/close.svg";
+import { RewievCasinoDataResponse } from "../../types";
 
-import closeIcon from "../../assets/img/icons/close.svg"
-
-import {  RewievCasinoDataResponse } from "../../types"
-
-
-
-export const PopupReadMore = ({
-    openModal,
-    handlerOpen,
-    data,
-}: {
-    openModal: boolean
-    handlerOpen: (s: boolean) => void
-    data: undefined | RewievCasinoDataResponse
-}) => {
-
-   
-    return (
-        <div className={`popup popup-review ${openModal && "open"}`} >
-            <div className="popup__body">
-                <div className="popup__content">
-                    <div className="popup__top top-popup">
-                        <h3 className="top-popup__title">
-                            {data?.name} review
-                        </h3>
-                        <button className="top-popup__close popup-close" onClick={() => handlerOpen(false)}>
-                            <img src={closeIcon} alt="close" />
-                        </button>
-                    </div>
-                    <div className="popup__main main-popup">
-                        <div className="main-popup__text-block">
-                            <div className="main-popup__title">
-                                General info
-                            </div>
-                            <pre className="main-popup__text">
-                                {
-                                    data?.review
-                                }
-                                {/* <p>
-                                    iWild Casino - is the new era of online
-                                    casinos. Newly opened casino launched in
-                                    2017 and raised popularity in a days. Most
-                                    gamers checked and loved it from first. The
-                                    new era of online casinos. Newly opened
-                                    casino launched in 2017 and raised
-                                    popularity in a days. Most gamers checked
-                                    and loved it. Casino launched in 2017 and
-                                    raised popularity in a days. Most gamers
-                                    checked and loved it. Newly opened casino
-                                    launched in 2017 and raised popularity in a
-                                    days. Most gamers checked and loved it from
-                                    first.
-                                </p>
-                                <p>
-                                    Most gamers checked and loved it. Newly
-                                    opened casino launched and raised popularity
-                                    in a days.
-                                </p> */}
-                            </pre>
-                            {/* <div className="main-popup__title">
-                                Zagolovok dlinnyii dliya krasoty
-                            </div>
-                            <div className="main-popup__text">
-                                <p>
-                                    Most gamers checked and loved it from first.
-                                    The new era of online casinos. Newly opened
-                                    casino launched in 2017 and raised
-                                    popularity in a days. Most gamers checked
-                                    and loved it. Casino launched in 2017 and
-                                    raised popularity in a days. Most gamers
-                                    checked and loved it. Newly opened casino
-                                    launched in 2017 and raised popularity in a
-                                    days.Most gamers checked and loved it from
-                                    first. Most gamers checked and loved it from
-                                    first. The new era of online casinos. Newly
-                                    opened casino launched in 2017 and raised
-                                    popularity in a days. Most gamers checked
-                                    and loved it. Casino launched in 2017 and
-                                    raised popularity in a days. Most gamers
-                                    checked and loved it. Newly opened casino
-                                    launched in 2017 and raised popularity in a
-                                    days.
-                                </p>
-                            </div>
-                            <div className="main-popup__text">
-                                <p>
-                                    Most gamers checked and loved it from first.
-                                    The new era of online casinos. Newly opened
-                                    casino launched in 2017 and raised
-                                    popularity in a days. Most gamers checked
-                                    and loved it. Casino launched in 2017 and
-                                    raised popularity in a days. Most gamers
-                                    checked and loved it. Newly opened casino
-                                    launched in 2017 and raised popularity in a
-                                    days.Most gamers checked and loved it from
-                                    first. Most gamers checked and loved it from
-                                    first. The new era of online casinos. Newly
-                                    opened casino launched in 2017 and raised
-                                    popularity in a days. Most gamers checked
-                                    and loved it. Casino launched in 2017 and
-                                    raised popularity in a days. Most gamers
-                                    checked and loved it. Newly opened casino
-                                    launched in 2017 and raised popularity in a
-                                    days.
-                                </p>
-                            </div> */}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+interface TextWithDynamicHeadingsProps {
+  text: string;
 }
+
+const TextWithDynamicHeadings: React.FC<TextWithDynamicHeadingsProps> = ({ text }) => {
+  // Разделяем текст по двойным переносам строк
+  const sections = text.split(/\r\n\r\n/);
+
+  // Проверяем, можно ли считать строку заголовком
+  const isHeading = (line: string): boolean => {
+    const wordCount = line.trim().split(/\s+/).length;
+    return wordCount > 0 && wordCount <= 5;
+  };
+
+  return (
+    <div className="main-popup__text">
+      {sections.map((section, index) => {
+        const trimmedSection = section.trim();
+        if (isHeading(trimmedSection)) {
+          return (
+            <h2 key={index} className="main-popup__title">
+              {trimmedSection}
+            </h2>
+          );
+        }
+        return (
+          <p key={index} style={{ marginBottom: "0.5rem" }}>
+            {trimmedSection}
+          </p>
+        );
+      })}
+    </div>
+  );
+};
+
+interface PopupReadMoreProps {
+  openModal: boolean;
+  handlerOpen: (s: boolean) => void;
+  data: RewievCasinoDataResponse | undefined;
+}
+
+export const PopupReadMore: React.FC<PopupReadMoreProps> = ({ openModal, handlerOpen, data }) => {
+  return (
+    <div className={`popup popup-review ${openModal ? "open" : ""}`}>
+      <div className="popup__body">
+        <div className="popup__content">
+          <div className="popup__top top-popup">
+            <h3 className="top-popup__title">{data?.name} review</h3>
+            <button
+              className="top-popup__close popup-close"
+              onClick={() => handlerOpen(false)}
+            >
+              <img src={closeIcon} alt="close" />
+            </button>
+          </div>
+          <div className="popup__main main-popup">
+            <div className="main-popup__text-block">
+              {/* <div className="main-popup__title">General info</div> */}
+              <TextWithDynamicHeadings text={data?.review || ""} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

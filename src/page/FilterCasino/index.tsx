@@ -493,7 +493,7 @@ const ListDisplayData = memo(
                                                     View Casino
                                                 </a>
                                                 <a
-                                                    href={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.casino_id}`}
+                                                    href={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.loyalty_program.id}`}
                                                     target="_blank"
                                                     aria-label="Put your description here."
                                                     className="bottom-content-item-loyaltie-programs__btn-more"

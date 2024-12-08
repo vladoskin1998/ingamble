@@ -21,9 +21,9 @@ import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { useFilterContext } from "../../context/FilterContext"
 
-const SafetyIndexRatingLevel = (n: number, s?: string) => {
-    if (n < 3 || s?.toLocaleLowerCase() === "medium") return "medium"
-    else if (n < 7 || s?.toLocaleLowerCase() === "medium") return "low"
+const SafetyIndexRatingLevel = (n: number,) => {
+    if ((n < 3 ) ) return "low"
+    else if (n >=3 && n < 7) return "medium"
     else return "high"
 }
 
@@ -73,7 +73,6 @@ export default function SimpleCasinos() {
             
             const countryImg = Country?.general?.countries?.find(
                 it => {
-                    
                     return it.code ===  countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase() }
             )?.flag_image;
             
@@ -231,7 +230,13 @@ export default function SimpleCasinos() {
                                             <div className="content-casino-info__features features-content-casino-info">
                                                 <div className="features-content-casino-info__row">
                                                     <div className="features-content-casino-info__column">
-                                                        <div className="features-content-casino-info__item item-features-content-casino-info item-features-content-casino-info_high">
+                                                        <div className={`features-content-casino-info__item item-features-content-casino-info item-features-content-casino-info_${SafetyIndexRatingLevel(
+                                                                        Number(
+                                                                            data
+                                                                                ?.dataCurrentCasinos
+                                                                                ?.casino_rank
+                                                                        ) || 10
+                                                                    )}`}>
                                                             <div className="item-features-content-casino-info__top">
                                                                 <div className="item-features-content-casino-info__label">
                                                                     Safety Index
@@ -239,14 +244,9 @@ export default function SimpleCasinos() {
                                                             </div>
                                                             <div className="item-features-content-casino-info__body">
                                                                 <div
+                                                                
                                                                     className={`item-features-content-casino-info__number 
-                                                                    item-features-content-casino-info_${SafetyIndexRatingLevel(
-                                                                        Number(
-                                                                            data
-                                                                                ?.dataCurrentCasinos
-                                                                                ?.casino_rank
-                                                                        ) || 10
-                                                                    )}`}
+                                                                   `}
                                                                 >
                                                                     {
                                                                         data
@@ -255,6 +255,7 @@ export default function SimpleCasinos() {
                                                                     }{" "}
                                                                     <span
                                                                         className={`item-features-content-casino-info__number-level`}
+                                                                        style={{textTransform: 'capitalize'}}
                                                                     >
                                                                         {SafetyIndexRatingLevel(
                                                                             Number(
@@ -270,8 +271,8 @@ export default function SimpleCasinos() {
                                                                     {Array(
                                                                         data
                                                                             ?.dataCurrentCasinos
-                                                                            ?.stars ||
-                                                                            5
+                                                                            ?.stars  ||
+                                                                            4
                                                                     )
                                                                         .fill(0)
                                                                         .map(
@@ -361,11 +362,9 @@ export default function SimpleCasinos() {
                                                                 </div>
                                                                 <div
                                                                     className="item-features-content-casino-info__value"
-                                                                    style={{
-                                                                        opacity: 0,
-                                                                    }}
+                                                                   
                                                                 >
-                                                                    1
+                                                                    Quick and Reliable
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -397,7 +396,8 @@ export default function SimpleCasinos() {
                                                     href="/all-loyalties"
                                                     aria-label="Put your description here."
                                                     target="_blank"
-                                                    className="top__btn"
+                                                    className="top__btn "
+                                                    style={{display: 'flex'}}
                                                 >
                                                     <span>View More</span>
                                                     <span className="top__btn-arrow">
@@ -449,6 +449,7 @@ export default function SimpleCasinos() {
                             <div className="iwild-review-mob__container container"></div>
                         </section>
                         <TabMain
+                            Country = {Country?.general?.countries}
                             handlerOpen={handlerOpen}
                             data={data?.dataCurrentCasinos}
                         />
@@ -480,8 +481,11 @@ export default function SimpleCasinos() {
                                                         explanation of factors
                                                         that we consider when
                                                         calculating the Safety
-                                                        Index rating of Spinanga
-                                                        Casino. The Safety Index
+                                                        Index rating of  {
+                                                            data
+                                                                ?.dataCurrentCasinos
+                                                                ?.name
+                                                        }. The Safety Index
                                                         is the main metric we
                                                         use to describe the
                                                         trustworthiness,
@@ -566,7 +570,7 @@ export default function SimpleCasinos() {
                                                                 factors, which
                                                                 had a
                                                                 <span>
-                                                                    neutral
+                                                                {" "}neutral
                                                                     impact
                                                                 </span>{" "}
                                                                 on the casino's

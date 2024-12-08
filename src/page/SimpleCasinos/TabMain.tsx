@@ -28,14 +28,28 @@ const initStateOpenModal = {
 export const TabMain = ({
     handlerOpen,
     data,
+    Country
 }: {
     handlerOpen: (s: boolean) => void
     data: undefined | RewievCasinoDataResponse
+    Country: {
+        id: number;
+        name: string;
+        name2: string | null;
+        code: string;
+        allowed_casinos_count?: number | null;
+        flag_image: string | null;
+    }[] | undefined
 }) => {
     const { lastUpdate } = useAdaptiveBehavior()
     const [activeTab, setActiveTab] = useState<TabType>(TabType.General)
     const [openModal, setOpenModal] = useState(initStateOpenModal)
-
+   
+    const countryImg = Country?.find(
+        it => {
+            return it.code ===  data?.licenses?.[0].slug || it.name.toLocaleLowerCase() === data?.licenses?.[0].name.toLocaleLowerCase() }
+    )?.flag_image;
+    
     const modalRefs = {
         paymantPopup: useRef<HTMLDivElement | null>(null),
         languagePopup: useRef<HTMLDivElement | null>(null),
@@ -252,12 +266,12 @@ export const TabMain = ({
                                             </div>
                                             <div className="item-block-info-review__value">
                                                 {data?.licenses?.[0].name}
-                                                {/* <span className="item-block-info-review__flag" >
+                                                {countryImg && <span className="item-block-info-review__flag" >
                                                 <img
-                                                    src="/src/assets/img/flags/curacao.svg"
+                                                    src={countryImg}
                                                     alt="curacao"
                                                 />
-                                            </span> */}
+                                            </span>}
                                             </div>
                                         </div>
                                         <div className="block-info-review__item item-block-info-review">
@@ -284,7 +298,7 @@ export const TabMain = ({
                                         </div>
                                         <div className="block-info-review__item item-block-info-review">
                                             <div className="item-block-info-review__label">
-                                                Fast Payout
+                                            Payout Speed
                                             </div>
                                             <div
                                                 className={`item-block-info-review__value item-block-info-review__value_${data?.payout_speed.toLocaleLowerCase()}`}
@@ -366,7 +380,7 @@ export const TabMain = ({
                                                     <div className="item-block-info-review__value">
                                                         {data?.withdrawal_limit?.daily?.toLocaleString(
                                                             "en-US"
-                                                        ) || "-"}
+                                                        ) || "Unlimited"}
                                                     </div>
                                                 </div>
                                                 <div className="item-block-info-review__label-more-item">
@@ -376,7 +390,7 @@ export const TabMain = ({
                                                     <div className="item-block-info-review__value">
                                                         {data?.withdrawal_limit?.weekly?.toLocaleString(
                                                             "en-US"
-                                                        ) || "-"}
+                                                        ) || "Unlimited"}
                                                     </div>
                                                 </div>
                                                 <div className="item-block-info-review__label-more-item">
@@ -386,7 +400,7 @@ export const TabMain = ({
                                                     <div className="item-block-info-review__value">
                                                         {data?.withdrawal_limit?.monthly?.toLocaleString(
                                                             "en-US"
-                                                        ) || "-"}
+                                                        ) || "Unlimited "}
                                                     </div>
                                                 </div>
                                             </div>
@@ -425,7 +439,7 @@ export const TabMain = ({
                                         className="item-content-bonus-information__link info-popup-open"
                                     >
                                         Show All
-                                        {`(${data?.payment_methods?.length})`}
+                                        {`(${data?.payment_methods?.filter(pm => pm.image)?.length})`}
                                     </button>
                                     <div
                                         className={`block-info-review__popup popup-item-content-bonus-information  ${
@@ -438,7 +452,7 @@ export const TabMain = ({
                                                 <div className="top-popup-item-content-bonus-information__title">
                                                     All Payment Methods
                                                     <div className="top-popup-item-content-bonus-information__number">
-                                                        {`(${data?.payment_methods?.length})`}
+                                                        {`(${data?.payment_methods?.filter(pm => pm.image)?.length})`}
                                                     </div>
                                                 </div>
                                                 <button
@@ -460,7 +474,7 @@ export const TabMain = ({
                                             <div className="popup-item-content-bonus-information__content">
                                                 <div className="block-info-review__elements">
                                                     <div className="block-info-review__elements-row">
-                                                        {data?.payment_methods.map(
+                                                        {data?.payment_methods?.filter(pm => pm.image)?.map(
                                                             (pm) => (
                                                                 <div className="block-info-review__elements-column">
                                                                     <div className="block-info-review__element element-block-info-review">
@@ -487,7 +501,7 @@ export const TabMain = ({
                                 </div>
                                 <div className="block-info-review__elements">
                                     <div className="block-info-review__elements-row">
-                                        {data?.payment_methods.map((pm) => (
+                                        {data?.payment_methods?.filter(pm => pm.image)?.map((pm) => (
                                             <div className="block-info-review__elements-column">
                                                 <div className="block-info-review__element element-block-info-review">
                                                     <div className="element-block-info-review__image ibg--custom ibg--bg ibg-center">
@@ -642,7 +656,7 @@ export const TabMain = ({
                                         className="item-content-bonus-information__link info-popup-open"
                                     >
                                         Show All{" "}
-                                        {`(${data?.game_providers.length})`}
+                                        {`(${data?.game_providers?.filter(pm => pm.image)?.length})`}
                                     </button>
                                     <div
                                         className={`block-info-review__popup popup-item-content-bonus-information ${
@@ -655,7 +669,7 @@ export const TabMain = ({
                                                 <div className="top-popup-item-content-bonus-information__title">
                                                     All Game Providers
                                                     <div className="top-popup-item-content-bonus-information__number">
-                                                        {`(${data?.game_providers.length})`}
+                                                        {`(${data?.game_providers?.filter(pm => pm.image)?.length})`}
                                                     </div>
                                                 </div>
                                                 <button
@@ -677,7 +691,7 @@ export const TabMain = ({
                                             <div className="popup-item-content-bonus-information__content">
                                                 <div className="block-info-review__elements">
                                                     <div className="block-info-review__elements-row">
-                                                        {data?.game_providers.map(
+                                                        {data?.game_providers?.filter(gp => gp.image)?.map(
                                                             (gp) => (
                                                                 <div className="block-info-review__elements-column">
                                                                     <div className="block-info-review__element element-block-info-review">
@@ -704,7 +718,7 @@ export const TabMain = ({
                                 </div>
                                 <div className="block-info-review__elements ">
                                     <div className="block-info-review__elements-row">
-                                        {data?.game_providers.map((gp) => (
+                                        {data?.game_providers?.filter(gp => gp.image)?.map((gp) => (
                                             <div className="block-info-review__elements-column ">
                                                 <div className="block-info-review__element element-block-info-review">
                                                     <div className="element-block-info-review__image ibg--custom ibg--bg ibg-center">
@@ -1001,7 +1015,7 @@ export const TabMain = ({
                                     <span>
                                         <img src={gift} alt="gift" />
                                     </span>
-                                    Take Bonus
+                                    Participate
                                 </a>
                             </div>
                         </div>
