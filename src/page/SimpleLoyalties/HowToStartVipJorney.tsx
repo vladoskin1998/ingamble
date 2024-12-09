@@ -9,6 +9,7 @@ export const HowToStartVipJorney = (data: {
     casino_name?: string
     likes?: number
     queryId:string | undefined
+    link_tc: string | undefined
 }) => {
     const [like, setLike] = useState<"" | "like" | "dislike">("")
     
@@ -72,7 +73,7 @@ export const HowToStartVipJorney = (data: {
                                     <div className="main-get-bonus__btns-item">
                                         <a
                                             rel="nofollow noopener"
-                                            href=""
+                                            href={data?.link_tc}
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="main-get-bonus__btn main-get-bonus__btn_apply"

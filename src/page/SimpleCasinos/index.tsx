@@ -208,7 +208,7 @@ export default function SimpleCasinos() {
                                                         </div>
                                                     </div>
                                                     <a
-                                                        href=""
+                                                        href={data?.dataCurrentCasinos?.link_tc || ''}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="main-get-bonus__btn main-get-bonus__btn_apply"
@@ -335,9 +335,11 @@ export default function SimpleCasinos() {
                                                                     {data
                                                                         ?.dataCurrentCasinos
                                                                         ?.min_dep[0]
-                                                                        .min_value ||
-                                                                        0}
-                                                                    $
+                                                                        .min_value ? `${data
+                                                                            ?.dataCurrentCasinos
+                                                                            ?.min_dep[0]
+                                                                            .min_value}$` : 'Unlimited'}
+                                                                    
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value">
                                                                     To Activate

@@ -168,7 +168,7 @@ export const CasinoBonuses = ({
                                                         }
                                                         height="100%"
                                                         width="100%"
-                                                        imgLoading={"eager"}
+                                                        imgLoading={"lazy"}
                                                     />
                                                 </div>
                                                 <a

@@ -8,6 +8,7 @@ interface MinimumDeposit {
 
 export interface GetDataBonusResponse {
     slug?: string;
+    link_tc : string;
     casino_name: string;
     casino_logo: string;
     casino_rank: string;
@@ -543,6 +544,7 @@ export type FilterLoyaltiesPostResponse ={
 export interface RewievCasinoDataResponse {
     id: number;
     affiliate: null | string;
+    link_tc: null | string;
     loyalty_program: {
       loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
     };
@@ -680,6 +682,7 @@ export interface RewievCasinoDataResponse {
     casino_name:string;
     casino_image: string;
     casino_id: string;
+    link_tc: string | null;
     casino_affiliate_link: string;
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
     loyalty_parameter: {text_1:string, text_2:string}[]; 

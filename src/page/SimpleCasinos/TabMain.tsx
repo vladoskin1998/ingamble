@@ -411,7 +411,7 @@ export const TabMain = ({
                                                 Minimal Deposit
                                             </div>
                                             <div className="item-block-info-review__value">
-                                                {data?.min_dep?.[0].min_value}$
+                                                {data?.min_dep?.[0].min_value ? `${data?.min_dep?.[0].min_value}$`: 'Unlimited'}
                                             </div>
                                         </div>
                                     </div>

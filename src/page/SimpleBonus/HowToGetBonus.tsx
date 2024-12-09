@@ -89,7 +89,7 @@ export const HowToGetBonus = ({data}:{data:GetDataBonusResponse | undefined}) =>
                             <div className="main-get-bonus__btns-item">
                                 <a
                                     rel="nofollow noopener"
-                                    href=""
+                                    href={data?.link_tc || ''}
                                     aria-label="Put your description here."
                                     target="_blank"
                                     className="main-get-bonus__btn main-get-bonus__btn_apply"

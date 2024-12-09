@@ -146,6 +146,7 @@ export default function SimpleLoyalties() {
                         casino_name={data?.dataCurrentLoyaltie?.casino_name}
                         likes={data?.dataCurrentLoyaltie?.likes}
                         queryId={data?.dataCurrentLoyaltie?.casino_id}
+                        link_tc={data?.dataCurrentLoyaltie?.link_tc || ''}
                     />
                     <HighRankSwiper />
                     <HarryStyles />
