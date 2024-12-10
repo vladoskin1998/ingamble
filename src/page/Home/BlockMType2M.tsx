@@ -8,6 +8,7 @@ import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockMType2M({
     data,
@@ -32,7 +33,10 @@ export default function BlockMType2M({
     if (!data || data?.items_block?.type_block !== BlockTypeNumber.BlockType2M)
         return <></>
     return (
-        <section aria-label="BlockTypeNumber.BlockType2M" className="main-gamble__payn-play-casinos payn-play-casinos-gamble">
+        <section
+            aria-label="BlockTypeNumber.BlockType2M"
+            className="main-gamble__payn-play-casinos payn-play-casinos-gamble"
+        >
             <div className="payn-play-casinos-gamble__container container">
                 <div className="vpn-friendly-casinos-2-gamble__top top">
                     <div className="top__row">
@@ -123,7 +127,7 @@ export default function BlockMType2M({
                                                                         .casino_affiliate_link ||
                                                                     ""
                                                                 }
-                                                                          rel="nofollow noopener"
+                                                                rel="nofollow noopener"
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
@@ -141,19 +145,19 @@ export default function BlockMType2M({
                                                             </a>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
-                                                                    <a
-                                                                              rel="nofollow noopener"
-                                                                        href={`/casino/${sanitizeLink(
+                                                                    <Link
+                                                                        rel="nofollow noopener"
+                                                                        to={`/casino/${sanitizeLink(
                                                                             item?.[0]
                                                                                 ?.casino_info
-                                                                                ?.casino_name 
+                                                                                ?.casino_name
                                                                         )}?queryId=${
                                                                             item?.[0]
                                                                                 ?.casino_info
                                                                                 ?.casino_id
                                                                         }`}
                                                                         aria-label="Put your description here."
-                                                                        target="_blank"
+                                                                       
                                                                         className="different-casino-standart__name"
                                                                     >
                                                                         {
@@ -161,10 +165,10 @@ export default function BlockMType2M({
                                                                                 ?.casino_info
                                                                                 ?.casino_name
                                                                         }
-                                                                    </a>
+                                                                    </Link>
                                                                     <div className="different-casino-standart__info">
-                                                                        <a
-                                                                            href={`/casino/${sanitizeLink(
+                                                                        <Link
+                                                                            to={`/casino/${sanitizeLink(
                                                                                 item?.[0]
                                                                                     ?.casino_info
                                                                                     ?.casino_name
@@ -177,9 +181,8 @@ export default function BlockMType2M({
                                                                                     ?.bonus_info
                                                                                     ?.bonus_id
                                                                             }`}
-                                                                                      rel="nofollow noopener"
+                                                                            rel="nofollow noopener"
                                                                             aria-label="Put your description here."
-                                                                            target="_blank"
                                                                             className="different-casino-standart__info-link"
                                                                         >
                                                                             {
@@ -187,7 +190,7 @@ export default function BlockMType2M({
                                                                                     ?.bonus_info
                                                                                     ?.bonus_name
                                                                             }
-                                                                        </a>
+                                                                        </Link>
                                                                     </div>
                                                                 </div>
                                                                 <a
@@ -196,7 +199,7 @@ export default function BlockMType2M({
                                                                             ?.casino_info
                                                                             ?.casino_affiliate_link
                                                                     }
-                                                                              rel="nofollow noopener"
+                                                                    rel="nofollow noopener"
                                                                     aria-label="Put your description here."
                                                                     target="_blank"
                                                                     className="different-casino-standart__btn-visit"
@@ -217,7 +220,7 @@ export default function BlockMType2M({
                                                                         ?.casino_affiliate_link ||
                                                                     ""
                                                                 }
-                                                                          rel="nofollow noopener"
+                                                                rel="nofollow noopener"
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
@@ -235,8 +238,8 @@ export default function BlockMType2M({
                                                             </a>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
-                                                                    <a
-                                                                        href={`/casino/${sanitizeLink(
+                                                                    <Link
+                                                                        to={`/casino/${sanitizeLink(
                                                                             item?.[1]
                                                                                 ?.casino_info
                                                                                 ?.casino_name
@@ -245,9 +248,8 @@ export default function BlockMType2M({
                                                                                 ?.casino_info
                                                                                 ?.casino_id
                                                                         }`}
-                                                                                  rel="nofollow noopener"
+                                                                        rel="nofollow noopener"
                                                                         aria-label="Put your description here."
-                                                                        target="_blank"
                                                                         className="different-casino-standart__name"
                                                                     >
                                                                         {
@@ -255,11 +257,11 @@ export default function BlockMType2M({
                                                                                 ?.casino_info
                                                                                 ?.casino_name
                                                                         }
-                                                                    </a>
+                                                                    </Link>
                                                                     <div className="different-casino-standart__info">
-                                                                        <a
-                                                                                  rel="nofollow noopener"
-                                                                            href={`/casino/${sanitizeLink(
+                                                                        <Link
+                                                                            rel="nofollow noopener"
+                                                                            to={`/casino/${sanitizeLink(
                                                                                 item?.[1]
                                                                                     ?.casino_info
                                                                                     ?.casino_name
@@ -273,7 +275,6 @@ export default function BlockMType2M({
                                                                                     ?.bonus_id
                                                                             }`}
                                                                             aria-label="Put your description here."
-                                                                            target="_blank"
                                                                             className="different-casino-standart__info-link"
                                                                         >
                                                                             {
@@ -281,11 +282,11 @@ export default function BlockMType2M({
                                                                                     ?.bonus_info
                                                                                     ?.bonus_name
                                                                             }
-                                                                        </a>
+                                                                        </Link>
                                                                     </div>
                                                                 </div>
                                                                 <a
-                                                                          rel="nofollow noopener"
+                                                                    rel="nofollow noopener"
                                                                     href={
                                                                         item?.[1]
                                                                             ?.casino_info
@@ -305,7 +306,7 @@ export default function BlockMType2M({
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
                                                             <a
-                                                                      rel="nofollow noopener"
+                                                                rel="nofollow noopener"
                                                                 href={
                                                                     item?.[2]
                                                                         ?.casino_info
@@ -329,9 +330,9 @@ export default function BlockMType2M({
                                                             </a>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
-                                                                    <a
-                                                                              rel="nofollow noopener"
-                                                                        href={`/casino/${sanitizeLink(
+                                                                    <Link
+                                                                        rel="nofollow noopener"
+                                                                        to={`/casino/${sanitizeLink(
                                                                             item?.[2]
                                                                                 ?.casino_info
                                                                                 ?.casino_name
@@ -341,7 +342,6 @@ export default function BlockMType2M({
                                                                                 ?.casino_id
                                                                         }`}
                                                                         aria-label="Put your description here."
-                                                                        target="_blank"
                                                                         className="different-casino-standart__name"
                                                                     >
                                                                         {
@@ -349,11 +349,11 @@ export default function BlockMType2M({
                                                                                 ?.casino_info
                                                                                 ?.casino_name
                                                                         }
-                                                                    </a>
+                                                                    </Link>
                                                                     <div className="different-casino-standart__info">
-                                                                        <a
-                                                                                  rel="nofollow noopener"
-                                                                            href={`/casino/${sanitizeLink(
+                                                                        <Link
+                                                                            rel="nofollow noopener"
+                                                                            to={`/casino/${sanitizeLink(
                                                                                 item?.[1]
                                                                                     ?.casino_info
                                                                                     ?.casino_name
@@ -367,7 +367,6 @@ export default function BlockMType2M({
                                                                                     ?.bonus_id
                                                                             }`}
                                                                             aria-label="Put your description here."
-                                                                            target="_blank"
                                                                             className="different-casino-standart__info-link"
                                                                         >
                                                                             {
@@ -375,11 +374,11 @@ export default function BlockMType2M({
                                                                                     ?.bonus_info
                                                                                     ?.bonus_name
                                                                             }
-                                                                        </a>
+                                                                        </Link>
                                                                     </div>
                                                                 </div>
                                                                 <a
-                                                                          rel="nofollow noopener"
+                                                                    rel="nofollow noopener"
                                                                     href={
                                                                         item?.[2]
                                                                             ?.casino_info

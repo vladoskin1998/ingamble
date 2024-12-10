@@ -10,6 +10,7 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 //@ts-ignore
 export default function BlockType5Mobile({
     data,
@@ -113,7 +114,7 @@ export default function BlockType5Mobile({
                                             <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
                                                 <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
                                                     <a
-                                                        href={item?.casino_info?.casino_image || ''}
+                                                        href={item?.casino_info?.casino_affiliate_link || ''}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="different-casino-medium__image-block"
@@ -131,10 +132,9 @@ export default function BlockType5Mobile({
                                                         </span>
                                                     </a>
                                                     <div className="different-casino-medium__content">
-                                                        <a
-                                                            href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                        <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                             aria-label="Put your description here."
-                                                            target="_blank"
+                                                  
                                                             className="different-casino-medium__name"
                                                         >
                                                             {
@@ -142,7 +142,7 @@ export default function BlockType5Mobile({
                                                                     ?.casino_info
                                                                     ?.casino_name
                                                             }
-                                                        </a>
+                                                        </Link>
                                                         <div className="different-casino-medium__rating">
                                                             <span className="different-casino-medium__rating-icon">
                                                                 <img

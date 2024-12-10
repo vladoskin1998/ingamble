@@ -28,6 +28,7 @@ import "../SeeAllBonus/style.css"
 import { v4 as uuidv4 } from "uuid"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
+import { Link } from "react-router-dom"
 
 const countPageSize = 20
 
@@ -122,8 +123,6 @@ export default function FilterBonus() {
         }
     }, [data])
 
-   
-
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
         window.addEventListener("resize", handleResize)
@@ -156,9 +155,7 @@ export default function FilterBonus() {
         <Wraper>
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
-                    <Categories
-                      
-                    />
+                    <Categories />
                     <FilterHeaderList
                         initList={bonusFilters}
                         clearAll={clearAll}
@@ -192,7 +189,7 @@ export default function FilterBonus() {
                             />
                         </div>
                     </section>
-                    <CheckMoreWhatSuitsYouBest/>
+                    <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />
                     <section className="main-gamble__bottom-info bottom-info-gamble">
                         <div className="bottom-info-gamble__container container">
@@ -266,9 +263,7 @@ export default function FilterBonus() {
                         </div>
                     </section>
                 </div>
-                
             </main>
-         
         </Wraper>
     )
 }
@@ -282,15 +277,18 @@ const ListDisplayData = memo(
                         <div className="slide-slider__item casino-card">
                             <div className="casino-card__top">
                                 <div
-                                    
                                     className="casino-card__image-block"
                                     style={{ padding: "0 8px 50.432% 8px" }}
                                 >
-                                    <a
-                                             rel="nofollow noopener"
-                                    href={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`}
-                                    aria-label="Put your description here."
-                                    target="_blank"
+                                    <Link
+                                        rel="nofollow noopener"
+                                        to={`/casino/${sanitizeLink(
+                                            item.casino_name
+                                        )}/bonuses/${sanitizeLink(
+                                            item.bonus_name
+                                        )}?queryId=${item.bonus_id}`}
+                                        aria-label="Put your description here."
+                                     
                                         className="casino-card__image see-all-custom__image-custom"
                                         key={uuidv4()}
                                     >
@@ -299,9 +297,9 @@ const ListDisplayData = memo(
                                             height="100%"
                                             width="100%"
                                         />
-                                    </a>
+                                    </Link>
                                     <a
-                                              rel="nofollow noopener"
+                                        rel="nofollow noopener"
                                         href={item?.casino_affiliate_link}
                                         target="_blank"
                                         aria-label="Put your description here."
@@ -330,15 +328,17 @@ const ListDisplayData = memo(
                                 </div>
                                 <div className="casino-card__info info-casino-card">
                                     <div className="info-casino-card__stake">
-                                        <a
-                                                  rel="nofollow noopener"
-                                            href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
+                                        <Link
+                                            rel="nofollow noopener"
+                                            to={`/casino/${sanitizeLink(
+                                                item.casino_name
+                                            )}?queryId=${item.casino_id}`}
                                             aria-label="Put your description here."
-                                            target="_blank"
+                                         
                                             className="info-casino-card__stake-link"
                                         >
                                             {item?.casino_name}
-                                        </a>
+                                        </Link>
                                         <div className="info-casino-card__stake-rating">
                                             <span className="info-casino-card__stake-rating-icon">
                                                 <img src={star} alt="star" />
@@ -357,15 +357,19 @@ const ListDisplayData = memo(
                                         </span>
                                     </div>
                                 </div>
-                                <a
+                                <Link
                                     rel="nofollow noopener"
-                                    href={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`}
+                                    to={`/casino/${sanitizeLink(
+                                        item.casino_name
+                                    )}/bonuses/${sanitizeLink(
+                                        item.bonus_name
+                                    )}?queryId=${item.bonus_id}`}
                                     aria-label="Put your description here."
-                                    target="_blank"
+                                
                                     className="casino-card__name"
                                 >
                                     {item?.bonus_name}
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

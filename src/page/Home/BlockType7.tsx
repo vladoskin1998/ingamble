@@ -9,6 +9,7 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockType7({
     data,
@@ -115,17 +116,16 @@ export default function BlockType7({
                                                     </span>
                                                 </a>
                                                 <div className="different-casino-bg__content">
-                                                    <a
-                                                        href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                    <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                         aria-label="Put your description here."
-                                                        target="_blank"
+                                                     
                                                         className="different-casino-bg__name"
                                                     >
                                                         {
                                                             item.casino_info
                                                                 .casino_name
                                                         }
-                                                    </a>
+                                                    </Link>
                                                     <div className="different-casino-bg__info">
                                                         {item.casino_info.additional_casino_params.map(
                                                             (it, id) => (

@@ -6,6 +6,7 @@ import errorIcon from "../../assets/img/icons/error-icon.svg"
 import bgImage08 from "../../assets/img/bg/08.jpg"
 import bgImage11 from "../../assets/img/bg/11.jpg"
 import $api from "../../http"
+import { Link } from "react-router-dom"
 
 const saveUserMail = async (email: string) => {
     $api.post('save-user-email/',{email})
@@ -65,15 +66,15 @@ export default function  SubscribeForm () {
                     </div>
                     <div className="subscribe__row">
                         <div className="subscribe__column">
-                            <a
-                                href="#"
+                            <Link
+                                to="/"
                                 aria-label="Put your description here."
-                                target="_blank"
+                               
                                 rel="noopener noreferrer"
                                 className="subscribe__logo"
                             >
                                 <LazyLoadImage src={logoIcon} alt="logo" />
-                            </a>
+                            </Link>
                             <div className="subscribe__content">
                                 <div className="subscribe__title">
                                     <span>Subscribe</span> to our newsletter
@@ -172,23 +173,21 @@ export default function  SubscribeForm () {
                                             <span>
                                                 Feel free to unsubscribe
                                                 anytime. Check our{" "}
-                                                <a
-                                                     href="/privacy-policy"
+                                                <Link to="/privacy-policy"
                                                     aria-label="Terms of use"
-                                                    target="_blank"
+                                                
                                                     rel="noopener noreferrer"
                                                 >
                                                     Terms of use
-                                                </a>{" "}
+                                                </Link>{" "}
                                                 and{" "}
-                                                <a
-                                                    href="/privacy-policy"
+                                                <Link to="/privacy-policy"
                                                     aria-label="Privacy Policy"
-                                                    target="_blank"
+                                                 
                                                     rel="noopener noreferrer"
                                                 >
                                                     Privacy Policy
-                                                </a>{" "}
+                                                </Link>{" "}
                                                 here.
                                             </span>
                                         </label>

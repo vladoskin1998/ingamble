@@ -18,7 +18,7 @@ import {
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 
@@ -160,15 +160,14 @@ export default function SeeAllBonus() {
                                                     }}
                                                     className="casino-card__image-block"
                                                 >
-                                                    <a
-                                                        href={`/casino/${sanitizeLink(
+                                                    <Link to={`/casino/${sanitizeLink(
                                                             item.casino_name
                                                         )}/bonuses/${sanitizeLink(
                                                             item.bonus_name
                                                         )}?queryId=${
                                                             item.bonus_id
                                                         }`}
-                                                        target="_blank"
+                                                       
                                                         className="casino-card__image see-all-custom__image-custom"
                                                     >
                                                         <LazyCardImg
@@ -177,7 +176,7 @@ export default function SeeAllBonus() {
                                                             }
                                                             width="100%"
                                                         />
-                                                    </a>
+                                                    </Link>
                                                     <a
                                                         href={
                                                             item?.casino_affiliate_link ||
@@ -214,18 +213,17 @@ export default function SeeAllBonus() {
                                                 </div>
                                                 <div className="casino-card__info info-casino-card">
                                                     <div className="info-casino-card__stake">
-                                                        <a
-                                                            href={`/casino/${sanitizeLink(
+                                                        <Link to={`/casino/${sanitizeLink(
                                                                 item?.casino_name
                                                             )}?queryId=${
                                                                 item?.casino_id
                                                             }`}
                                                             aria-label="Put your description here."
-                                                            target="_blank"
+                                                        
                                                             className="info-casino-card__stake-link"
                                                         >
                                                             {item?.casino_name}
-                                                        </a>
+                                                        </Link>
                                                         <div className="info-casino-card__stake-rating">
                                                             <span className="info-casino-card__stake-rating-icon">
                                                                 <img
@@ -252,19 +250,18 @@ export default function SeeAllBonus() {
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <a
-                                                    href={`/casino/${sanitizeLink(
+                                                <Link to={`/casino/${sanitizeLink(
                                                         item.casino_name
                                                     )}/bonuses/${sanitizeLink(
                                                         item.bonus_name
                                                     )}?queryId=${
                                                         item.bonus_id
                                                     }`}
-                                                    target="_blank"
+                                              
                                                     className="casino-card__name"
                                                 >
                                                     {item.bonus_name}
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

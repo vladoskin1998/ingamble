@@ -7,6 +7,7 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockType7Mobile({
     data,
@@ -92,17 +93,16 @@ export default function BlockType7Mobile({
                                                         </span>
                                                     </a>
                                                     <div className="different-casino-medium__content">
-                                                        <a
-                                                            href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                        <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                             aria-label="Put your descripton here."
-                                                            target="_blank"
+                                                           
                                                             className="different-casino-medium__name"
                                                         >
                                                             {
                                                                 item.casino_info
                                                                     .casino_name
                                                             }
-                                                        </a>
+                                                        </Link>
                                                         <div className="different-casino-medium__rating">
                                                             <span className="different-casino-medium__rating-icon">
                                                                 <img

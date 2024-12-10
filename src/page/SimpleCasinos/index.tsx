@@ -13,7 +13,7 @@ import { Harry } from "./Harry"
 import { PopupReadMore } from "./PopupReadMore"
 import { useEffect, useState } from "react"
 import $api from "../../http"
-import { useSearchParams } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { GeoLocationAllowdType, RewievCasinoDataResponse } from "../../types"
@@ -396,10 +396,9 @@ export default function SimpleCasinos() {
                                                 </div>
                                             </div>
                                             <div className="top__column">
-                                                <a
-                                                    href={`/casino/${sanitizeLink(data?.dataCurrentCasinos?.name)}/loyalty?queryId=${data?.dataCurrentCasinos?.loyaltie_id}`}
+                                                <Link to={`/casino/${sanitizeLink(data?.dataCurrentCasinos?.name)}/loyalty?queryId=${data?.dataCurrentCasinos?.loyaltie_id}`}
                                                     aria-label="Put your description here."
-                                                    target="_blank"
+                                                  
                                                     className="top__btn "
                                                     style={{display: 'flex'}}
                                                 >
@@ -409,7 +408,7 @@ export default function SimpleCasinos() {
                                                             <use xlinkHref="#arrow"></use>
                                                         </svg>
                                                     </span>
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

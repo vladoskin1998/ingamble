@@ -4,8 +4,8 @@ import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { Wraper } from "../Wraper"
 import like from "../../assets/img/icons/like.svg"
 import "./style.css"
-import { useParams } from "react-router-dom"
-import {  useEffect, useState } from "react"
+import { Link, useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import $api from "../../http"
 import { useQuery } from "react-query"
@@ -88,7 +88,7 @@ export default function SeeAllCasinos() {
             document.title = `All Casinos | ${el?.name}`
             setQueryId(String(el.id))
         }
-         document.title = `Casinos`
+        document.title = `Casinos`
     }, [casino_categories, dataCategories])
 
     const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(
@@ -96,7 +96,6 @@ export default function SeeAllCasinos() {
         () => getAllCasinosFetchData(currentPage, queryId),
         {
             keepPreviousData: true,
-    
         }
     )
     useEffect(() => {
@@ -131,15 +130,13 @@ export default function SeeAllCasinos() {
 
     const displayedData = isMobile ? allData : data?.casino?.results
 
-    if (isLoading ) return <LogoLoader />
+    if (isLoading) return <LogoLoader />
 
     return (
         <Wraper>
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
-                    <Categories
-                      
-                    />
+                    <Categories />
                     <BreadCrumb
                         path={[
                             {
@@ -174,8 +171,12 @@ export default function SeeAllCasinos() {
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
-                                                <a
-                                                 href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
+                                                <Link
+                                                    to={`/casino/${sanitizeLink(
+                                                        item.casino_name
+                                                    )}?queryId=${
+                                                        item.casino_id
+                                                    }`}
                                                     aria-label="Put your description here."
                                                     className="item-loyaltie-programs__image item-loyaltie-programs__image-custom"
                                                 >
@@ -187,7 +188,7 @@ export default function SeeAllCasinos() {
                                                         height="auto"
                                                         width="100%"
                                                     />
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div className="item-loyaltie-programs__content content-item-loyaltie-programs">
                                                 <div className="content-item-loyaltie-programs__row">
@@ -338,22 +339,28 @@ export default function SeeAllCasinos() {
                                                         </div>
                                                         <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                                             <div className="bottom-content-item-loyaltie-programs__btns">
-                                                            <a
-                                                   href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
-                                                    target="_blank"
-                                                    aria-label="Put your description here."
-                                                    className="bottom-content-item-loyaltie-programs__btn-view"
-                                                >
-                                                    View Casino
-                                                </a>
-                                                <a
-                                                    href={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.casino_id}`}
-                                                    target="_blank"
-                                                    aria-label="Put your description here."
-                                                    className="bottom-content-item-loyaltie-programs__btn-more"
-                                                >
-                                                    Read More
-                                                </a>
+                                                                <Link
+                                                                    to={`/casino/${sanitizeLink(
+                                                                        item.casino_name
+                                                                    )}?queryId=${
+                                                                        item.casino_id
+                                                                    }`}
+                                                                    aria-label="Put your description here."
+                                                                    className="bottom-content-item-loyaltie-programs__btn-view"
+                                                                >
+                                                                    View Casino
+                                                                </Link>
+                                                                <Link
+                                                                    to={`/casino/${sanitizeLink(
+                                                                        item.casino_name
+                                                                    )}/loyalty?queryId=${
+                                                                        item.casino_id
+                                                                    }`}
+                                                                    aria-label="Put your description here."
+                                                                    className="bottom-content-item-loyaltie-programs__btn-more"
+                                                                >
+                                                                    Read More
+                                                                </Link>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -413,7 +420,7 @@ export default function SeeAllCasinos() {
                             />
                         </div>
                     </section>
-                    <CheckMoreWhatSuitsYouBest/>
+                    <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />
                     <section className="main-gamble__bottom-info bottom-info-gamble">
                         <div className="bottom-info-gamble__container container">

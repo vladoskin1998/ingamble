@@ -8,6 +8,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { SwiperRef } from "swiper/react"
 import { LineLoader } from "../loader/LineLoader"
+import { Link } from "react-router-dom"
 
 const MainSliderImg = ({ img }: { img: string }) => {
     const [loading, setLoading] = useState(true)
@@ -93,7 +94,7 @@ const MainSlider = ({
                                                 rel="nofollow noopener"
                                                 href=""
                                                 aria-label="Put your description here."
-                                                target="_blank"
+                                             
                                                 className="casino-card__image-block"
                                             >
                                                 <MainSliderImg
@@ -117,15 +118,15 @@ const MainSlider = ({
                                             <div className="casino-card__content">
                                                 <div className="casino-card__info info-casino-card">
                                                     <div className="info-casino-card__stake">
-                                                        <a
+                                                        <Link
                                                             rel="nofollow noopener"
-                                                            href={item?.casinoLink}
+                                                            to={item?.casinoLink || ''}
                                                             aria-label="Put your description here."
-                                                            target="_blank"
+                                                         
                                                             className="info-casino-card__stake-link"
                                                         >
                                                             {item.nameCasino}
-                                                        </a>
+                                                        </Link>
                                                         <div className="info-casino-card__stake-rating">
                                                             <span className="info-casino-card__stake-rating-icon casino-small-card__rating-icon">
                                                                 <img
@@ -153,15 +154,15 @@ const MainSlider = ({
                                                     </div>
                                                 </div>
                                                 
-                                                <a
+                                                <Link
                                                     rel="nofollow noopener"
-                                                    href={item?.bonuseLink}
+                                                    to={item?.bonuseLink || "/"}
                                                     aria-label="Put your description here."
-                                                    target="_blank"
+                                                    
                                                     className="casino-card__name"
                                                 >
                                                     {item?.comment}
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

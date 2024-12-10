@@ -4,6 +4,7 @@ import { AllCategoriesHomeDataResponse } from "../../types";
 import { useQuery } from "react-query";
 import $api from "../../http";
 import { sanitizeLink } from "../../helper";
+import { Link } from "react-router-dom";
 
 const shuffleArray = (array: any): {link:string,name:string} [] => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -82,15 +83,15 @@ useQuery<AllCategoriesHomeDataResponse>(
                 <Swiper slidesPerView="auto" spaceBetween={10} style={{margin: 0}}>
                     {category?.map((item, index) => (
                         <SwiperSlide key={index} style={{ width: "auto" }}>
-                            <a
+                            <Link
                                 rel="nofollow noopener"
-                                target="_blank"
-                                href={item?.link || "/"}
+                                
+                                to={item?.link || "/"}
                                 aria-label="Put your description here."
                                 className="slide-filter-tags-gamble__btn"
                             >
                                 {item?.name}
-                            </a>
+                            </Link>
                         </SwiperSlide>
                     ))}
                 </Swiper>

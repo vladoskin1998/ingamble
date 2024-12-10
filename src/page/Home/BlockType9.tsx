@@ -5,6 +5,7 @@ import "swiper/css"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockType9({
     data,
@@ -39,11 +40,11 @@ export default function BlockType9({
                             )}
                         </div>
                         <div className="top__column">
-                            <a
+                            <Link
                                 rel="nofollow noopener"
-                                href="/all-loyalties"
+                                to="/all-loyalties"
                                 aria-label="Put your description here."
-                                target="_blank"
+                               
                                 className="top__btn"
                             >
                                 <span>See All</span>
@@ -52,7 +53,7 @@ export default function BlockType9({
                                         <use xlinkHref="#arrow"></use>
                                     </svg>
                                 </span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -227,14 +228,13 @@ export default function BlockType9({
                                                 </a>
                                             </div>
                                             <div className="item-essential-programs-gamble__bottom-column">
-                                                <a
-                                                    href={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item.casino_id}`}
+                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item.casino_id}`}
                                                     aria-label="Put your description here."
-                                                    target="_blank"
+                                           
                                                     className="item-essential-programs-gamble__btn"
                                                 >
                                                     Read More
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

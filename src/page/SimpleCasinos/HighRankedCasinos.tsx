@@ -9,6 +9,7 @@ import { FilterCasinoPostResponse, SeeAllCasinosType } from "../../types"
 import { useQuery } from "react-query"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 const countPageSize = 6
 
@@ -137,14 +138,13 @@ export const HighRankedCasinos = () => {
                                     {"Other "} <span>High Ranked</span>
                                     {" Casinos"}
                                 </div>
-                                <a
-                                    href="/all-casinos"
+                                <Link to="/all-casinos"
                                     aria-label="Put your description here."
-                                    target="_blank"
+                            
                                     className="baner-row-block__btn best-casinos-2024-2-gamble__btn"
                                 >
                                     See All
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -192,10 +192,9 @@ export const HighRankedCasinos = () => {
                                         .map((item) => (
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <a
-                                                         href={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
+                                                    <Link to={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
                                                         aria-label="Put your description here."
-                                                        target="_blank"
+                                                       
                                                         className="item-slide-slider__image-block"
                                                     >
                                                         <span className="item-slide-slider__image ibg--custom">
@@ -209,19 +208,18 @@ export const HighRankedCasinos = () => {
                                                                 width="100%"
                                                             />
                                                         </span>
-                                                    </a>
+                                                    </Link>
                                                     <div className="item-slide-slider__content">
-                                                        <a
-                                                            href={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
+                                                        <Link to={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
                                                             aria-label="Put your description here."
-                                                            target="_blank"
+                                                          
                                                             className="item-slide-slider__name"
                                                         >
                                                             {
                                                                 item?.[0]
                                                                     ?.casino_name
                                                             }
-                                                        </a>
+                                                        </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
                                                             {item?.[0]?.bonuses?.map(
                                                                 (bon) =>
@@ -284,10 +282,9 @@ export const HighRankedCasinos = () => {
                                                     </div>
                                                 </div>
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <a
-                                                         href={`/casino/${sanitizeLink(item?.[1]?.casino_name)}?queryId=${item?.[1]?.casino_id}`}
+                                                    <Link to={`/casino/${sanitizeLink(item?.[1]?.casino_name)}?queryId=${item?.[1]?.casino_id}`}
                                                         aria-label="Put your description here."
-                                                        target="_blank"
+                                                     
                                                         className="item-slide-slider__image-block"
                                                     >
                                                         <span className="item-slide-slider__image ibg--custom">
@@ -301,19 +298,18 @@ export const HighRankedCasinos = () => {
                                                                 width="100%"
                                                             />
                                                         </span>
-                                                    </a>
+                                                    </Link>
                                                     <div className="item-slide-slider__content">
-                                                        <a
-                                                           href={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
+                                                        <Link to={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
                                                             aria-label="Put your description here."
-                                                            target="_blank"
+                                                   
                                                             className="item-slide-slider__name"
                                                         >
                                                             {
                                                                 item?.[1]
                                                                     ?.casino_name
                                                             }
-                                                        </a>
+                                                        </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
                                                             {item?.[1]?.bonuses?.map(
                                                                 (bon) =>
@@ -411,10 +407,9 @@ export const HighRankedCasinos = () => {
                                         {dataCasino?.results.map((item) => (
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <a
-                                                        href={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`}
+                                                    <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`}
                                                         aria-label="Put your description here."
-                                                        target="_blank"
+                                               
                                                         className="item-slide-slider__image-block"
                                                     >
                                                         <span className="item-slide-slider__image ibg--custom">
@@ -427,7 +422,7 @@ export const HighRankedCasinos = () => {
                                                                 width="100%"
                                                             />
                                                         </span>
-                                                    </a>
+                                                    </Link>
                                                     <div className="item-slide-slider__content">
                                                         <a
                                                             href=""

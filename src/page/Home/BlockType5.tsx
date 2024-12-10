@@ -12,6 +12,7 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockType5({
     data,
@@ -206,10 +207,9 @@ export default function BlockType5({
                                                                     </div>
                                                                 </a>
                                                                 <div className="casino-small-card__body">
-                                                                    <a
-                                                                        href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                    <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                         aria-label="Put your description here."
-                                                                        target="_blank"
+                                                                      
                                                                         className="casino-small-card__name"
                                                                     >
                                                                         {
@@ -217,7 +217,7 @@ export default function BlockType5({
                                                                                 .casino_info
                                                                                 .casino_name
                                                                         }
-                                                                    </a>
+                                                                    </Link>
                                                                     <div className="casino-small-card__info">
                                                                         {item.casino_info.additional_casino_params.map(
                                                                             (
@@ -259,10 +259,9 @@ export default function BlockType5({
                                                             </div>
                                                         </div>
                                                         <div className="casino-big-card__bottom">
-                                                            <a
-                                                                href={  `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                            <Link to={  `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                                 aria-label="Put your description here."
-                                                                target="_blank"
+                                                          
                                                                 className="casino-big-card__title"
                                                             >
                                                                 <span className="casino-big-card__title-label">
@@ -272,7 +271,7 @@ export default function BlockType5({
                                                                             .bonus_name
                                                                     }
                                                                 </span>
-                                                            </a>
+                                                            </Link>
                                                             <a
                                                                 href={
                                                                     item

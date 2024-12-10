@@ -24,6 +24,7 @@ import "../SeeAllEssentialsLoyalty/style.css"
 import { v4 as uuidv4 } from "uuid"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
+import { Link } from "react-router-dom"
 const countPageSize = 15
 
 const debouncedFetchFilter = debounce(
@@ -278,9 +279,9 @@ const LisDisplayedData = memo(
                     <div className="loyaltie-programs__item item-loyaltie-programs">
                         <div className="item-loyaltie-programs__row">
                             <div className="item-loyaltie-programs__main">
-                                <a
+                                <Link
                                           rel="nofollow noopener"
-                                    href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
+                                    to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
                                     className="item-loyaltie-programs__image loyalty-img-custom "
                                     key={uuidv4()}
                                 >
@@ -289,7 +290,7 @@ const LisDisplayedData = memo(
                                         height="100%"
                                         width="100%"
                                     />
-                                </a>
+                                </Link>
                             </div>
                             <div className="item-loyaltie-programs__content content-item-loyaltie-programs">
                                 <div className="content-item-loyaltie-programs__top top-content-item-loyaltie-programs">
@@ -379,15 +380,15 @@ const LisDisplayedData = memo(
                                         >
                                             Visit Casino
                                         </a>
-                                        <a
+                                        <Link
                                                   rel="nofollow noopener"
-                                            href={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.loyalty_program.id}`}
-                                            target="_blank"
+                                            to={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.loyalty_program.id}`}
+                                       
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-more"
                                         >
                                             Read More
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

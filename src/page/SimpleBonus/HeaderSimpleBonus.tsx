@@ -8,6 +8,7 @@ import giftIcon from "../../assets/img/icons/gift.svg"
 import { useState, useEffect } from "react"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { euroToDolar } from "../../helper"
+import { Link } from "react-router-dom"
 
 
 const color_label = [
@@ -210,11 +211,11 @@ export const HeaderSimpleBonus = ({
                                         T&C Apply
                                     </span>
                                 </div>
-                                <a
+                                <Link
                                     rel="nofollow noopener"
-                                    href={`/all-bonus`}
+                                    to={`/all-bonus`}
                                     aria-label="Put your description here."
-                                    target="_blank"
+                                   
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
                            
                                     
@@ -228,7 +229,7 @@ export const HeaderSimpleBonus = ({
                                     {geoLocation?.isAllowed
                                         ? "Get Bonus and Play "
                                         : "Browse Recommended Bonuses"}
-                                </a>
+                                </Link>
                             </div>
                             <div className="content-casino-info__features features-content-casino-info">
                                 <div className="features-content-casino-info__row">

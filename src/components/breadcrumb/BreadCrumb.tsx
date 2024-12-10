@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export const BreadCrumb = ({ path }: { path: {name:string,link:string}[] }) => {
     return (
         <div className="simple-bonus__breadcrumbs breadcrumbs">
@@ -6,14 +8,14 @@ export const BreadCrumb = ({ path }: { path: {name:string,link:string}[] }) => {
                     {path.slice(0, path?.length -1).map((item) => (
                         
                         <div className="breadcrumbs__item">
-                            <a rel="nofollow noopener"
-                                href={item.link}
-                                target="_blank"
+                            <Link rel="nofollow noopener"
+                                to={item.link}
+                          
                                 aria-label="Put your description here."
                                 className="breadcrumbs__link"
                             >
                                 {item.name}
-                            </a>
+                            </Link>
                         </div>
                     ))}
                     <a href={path?.[path?.length -1].link} target="_black">

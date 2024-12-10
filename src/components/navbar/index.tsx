@@ -136,14 +136,14 @@ export default function Navbar  ({
                 className="sidebar-gamble__top top-sidebar-gamble"
                 data-da="mobile-header__top, 0, 650.98"
             >
-                <a
+                <Link
                     rel="nofollow noopener"
-                    href=""
-                    target="_blank"
+                       to="/"
+                 
                     className="top-sidebar-gamble__logo"
                 >
                     <img alt={"logo-icon"} src={logoIcon} />
-                </a>
+                </Link>
             </div>
             <div className="sidebar-gamble__filters filters-sidebar-gamble">
                 <div className="filters-sidebar-gamble__title title-filters-sidebar-gamble">

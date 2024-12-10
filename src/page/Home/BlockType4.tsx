@@ -8,6 +8,7 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockType4({
     data,
@@ -142,8 +143,7 @@ export default function BlockType4({
                                                                     </div>
                                                                 </a>
                                                                 <div className="casino-small-card__body">
-                                                                    <a
-                                                                        href={`/casino/${sanitizeLink(
+                                                                    <Link to={`/casino/${sanitizeLink(
                                                                             item
                                                                                 ?.casino_info
                                                                                 ?.casino_name
@@ -153,7 +153,7 @@ export default function BlockType4({
                                                                                 ?.casino_id
                                                                         }`}
                                                                         aria-label="Put your description here."
-                                                                        target="_blank"
+                                                                   
                                                                         className="casino-small-card__name"
                                                                     >
                                                                         {
@@ -161,7 +161,7 @@ export default function BlockType4({
                                                                                 .casino_info
                                                                                 .casino_name
                                                                         }
-                                                                    </a>
+                                                                    </Link>
                                                                     <div className="casino-small-card__info">
                                                                         {item.casino_info.additional_casino_params.map(
                                                                             (
@@ -196,8 +196,7 @@ export default function BlockType4({
                                                             </div>
                                                         </div>
                                                         <div className="casino-big-card__bottom">
-                                                            <a
-                                                                href={`/casino/${sanitizeLink(
+                                                            <Link to={`/casino/${sanitizeLink(
                                                                     item
                                                                         ?.casino_info
                                                                         ?.casino_name
@@ -211,7 +210,7 @@ export default function BlockType4({
                                                                         ?.bonus_id
                                                                 }`}
                                                                 aria-label="Put your description here."
-                                                                target="_blank"
+                                                              
                                                                 className="casino-big-card__title"
                                                                 style={{
                                                                     maxWidth:
@@ -225,7 +224,7 @@ export default function BlockType4({
                                                                             .bonus_name
                                                                     }
                                                                 </span>
-                                                            </a>
+                                                            </Link>
                                                             <a
                                                                 href={
                                                                     item

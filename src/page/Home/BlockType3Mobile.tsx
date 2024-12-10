@@ -9,6 +9,7 @@ import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockType3Mobile({
     data,
@@ -141,8 +142,8 @@ export default function BlockType3Mobile({
                                                             </a>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
-                                                                    <a
-                                                                        href={`/casino/${sanitizeLink(
+                                                                    <Link
+                                                                        to={`/casino/${sanitizeLink(
                                                                             item?.[0]
                                                                                 ?.casino_info
                                                                                 ?.casino_name
@@ -156,7 +157,7 @@ export default function BlockType3Mobile({
                                                                                 ?.bonus_id
                                                                         }`}
                                                                         aria-label="Put your description here."
-                                                                        target="_blank"
+                                                                      
                                                                         className="different-casino-standart__name"
                                                                     >
                                                                         {
@@ -164,7 +165,7 @@ export default function BlockType3Mobile({
                                                                                 ?.bonus_info
                                                                                 ?.bonus_name
                                                                         }
-                                                                    </a>
+                                                                    </Link>
 
                                                                     {item?.[0]
                                                                         .bonus_info
@@ -195,8 +196,8 @@ export default function BlockType3Mobile({
                                                                         </div>
                                                                     )}
                                                                     <div className="info-casino-card__stake">
-                                                                        <a
-                                                                            href={`/casino/${sanitizeLink(
+                                                                        <Link
+                                                                            to={`/casino/${sanitizeLink(
                                                                                 item?.[0]
                                                                                     ?.casino_info
                                                                                     ?.casino_name
@@ -206,7 +207,7 @@ export default function BlockType3Mobile({
                                                                                     ?.casino_id
                                                                             }`}
                                                                             aria-label="Put your description here."
-                                                                            target="_blank"
+                                                                         
                                                                             className="info-casino-card__stake-link"
                                                                         >
                                                                             {
@@ -214,7 +215,7 @@ export default function BlockType3Mobile({
                                                                                     .casino_info
                                                                                     .casino_name
                                                                             }
-                                                                        </a>
+                                                                        </Link>
                                                                         <div className="info-casino-card__stake-rating">
                                                                             <span className="info-casino-card__stake-rating-icon">
                                                                                 <img
@@ -266,8 +267,8 @@ export default function BlockType3Mobile({
                                                                 </a>
                                                                 <div className="different-casino-standart__content">
                                                                     <div className="different-casino-standart__content-row">
-                                                                        <a
-                                                                            href={`/casino/${sanitizeLink(
+                                                                        <Link
+                                                                            to={`/casino/${sanitizeLink(
                                                                                 item?.[1]
                                                                                     ?.casino_info
                                                                                     ?.casino_name
@@ -281,7 +282,7 @@ export default function BlockType3Mobile({
                                                                                     ?.bonus_id
                                                                             }`}
                                                                             aria-label="Put your description here."
-                                                                            target="_blank"
+                                                                          
                                                                             className="different-casino-standart__name"
                                                                         >
                                                                             {
@@ -289,7 +290,7 @@ export default function BlockType3Mobile({
                                                                                     ?.bonus_info
                                                                                     ?.bonus_name
                                                                             }
-                                                                        </a>
+                                                                        </Link>
 
                                                                         {item?.[1]
                                                                             .bonus_info
@@ -320,8 +321,8 @@ export default function BlockType3Mobile({
                                                                             </div>
                                                                         )}
                                                                         <div className="info-casino-card__stake">
-                                                                            <a
-                                                                                href={`/casino/${sanitizeLink(
+                                                                            <Link
+                                                                                to={`/casino/${sanitizeLink(
                                                                                     item?.[1]
                                                                                         ?.casino_info
                                                                                         ?.casino_name
@@ -331,7 +332,7 @@ export default function BlockType3Mobile({
                                                                                         ?.casino_id
                                                                                 }`}
                                                                                 aria-label="Put your description here."
-                                                                                target="_blank"
+                                                                                
                                                                                 className="info-casino-card__stake-link"
                                                                             >
                                                                                 {
@@ -339,7 +340,7 @@ export default function BlockType3Mobile({
                                                                                         .casino_info
                                                                                         .casino_name
                                                                                 }
-                                                                            </a>
+                                                                            </Link>
                                                                             <div className="info-casino-card__stake-rating">
                                                                                 <span className="info-casino-card__stake-rating-icon">
                                                                                     <img

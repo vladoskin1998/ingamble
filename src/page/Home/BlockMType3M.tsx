@@ -9,6 +9,7 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockMType3M({
     data,
@@ -102,8 +103,8 @@ export default function BlockMType3M({
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
                                                             <a
-                                                                      rel="nofollow noopener"
-                                                                href={item.casino_info.casino_affiliate_link}
+                                                                rel="nofollow noopener"
+                                                                href={item?.casino_info?.casino_affiliate_link}
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
@@ -121,11 +122,11 @@ export default function BlockMType3M({
                                                             </a>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
-                                                                    <a
+                                                                    <Link
                                                                               rel="nofollow noopener"
-                                                                        href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                                        to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                                         aria-label="Put your description here."
-                                                                        target="_blank"
+                                                                       
                                                                         className="different-casino-standart__name"
                                                                     >
                                                                         {
@@ -133,7 +134,7 @@ export default function BlockMType3M({
                                                                                 ?.bonus_info
                                                                                 ?.bonus_name
                                                                         }
-                                                                    </a>
+                                                                    </Link>
                                                                     {item
                                                                         ?.bonus_info
                                                                         ?.labels
@@ -164,11 +165,11 @@ export default function BlockMType3M({
                                                                     )}
                                                                     
                                                                     <div className="info-casino-card__stake">
-                                                                        <a
+                                                                        <Link
                                                                                   rel="nofollow noopener"
-                                                                            href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                             aria-label="Put your description here."
-                                                                            target="_blank"
+                                                                           
                                                                             className="info-casino-card__stake-link"
                                                                         >
                                                                             {
@@ -176,7 +177,7 @@ export default function BlockMType3M({
                                                                                     ?.casino_info
                                                                                     ?.casino_name
                                                                             }
-                                                                        </a>
+                                                                        </Link>
                                                                         <div className="info-casino-card__stake-rating">
                                                                             <span className="info-casino-card__stake-rating-icon">
                                                                                 <img

@@ -4,6 +4,7 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import { RewievCasinoDataResponse } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export const CasinoBonuses = ({
     data,
@@ -156,13 +157,11 @@ export const CasinoBonuses = ({
                                 {data?.bonuses.map((b) => (
                                     <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                         <div className="slide-slider__item casino-card">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
+                                            <div
+                                               
                                                 className="casino-card__image-block casino-card__image-block_yellow"
                                             >
-                                                <a className="casino-card__image ibg--custom" target="_blank" href={`/casino/${sanitizeLink( data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
+                                                <Link className="casino-card__image ibg--custom" to={`/casino/${sanitizeLink( data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
                                                     <LazyCardImg
                                                         img={
                                                             b?.bonus_image || ""
@@ -171,7 +170,7 @@ export const CasinoBonuses = ({
                                                         width="100%"
                                                         imgLoading={"lazy"}
                                                     />
-                                                </a>
+                                                </Link>
                                                 <a
                                                     href={data.url}
                                                     target="_blank"
@@ -180,8 +179,8 @@ export const CasinoBonuses = ({
                                                 >
                                                     Play
                                                 </a>
-                                            </a>
-                                            <a className="casino-card__content" target="_blank" href={`/casino/${sanitizeLink( data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
+                                            </div>
+                                            <Link className="casino-card__content" to={`/casino/${sanitizeLink( data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
                                                 <div
                                                     className="casino-card__name"
                                                     dangerouslySetInnerHTML={{
@@ -196,7 +195,7 @@ export const CasinoBonuses = ({
                                                 Great Bonus Up{" "}
                                                 <span>To 360%</span> For Evening */}
                                                 </div>
-                                            </a>
+                                            </Link>
                                         </div>
                                     </SwiperSlide>
                                 ))}

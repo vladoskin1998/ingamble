@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
+import { Link } from "react-router-dom"
 
 const getFilteringCasinoList = async (
     payload: { min: number; max: number },
@@ -93,11 +94,11 @@ export const HighRankSwiper = ({
                                 </div>
                             </div>
                             <div className="top__column">
-                                <a
+                                <Link
                                     rel="nofollow noopener"
-                                    href="/all-casinos"
+                                    to="/all-casinos"
                                     aria-label="Put your description here."
-                                    target="_blank"
+                                   
                                     className="top__btn"
                                 >
                                     <span>See All</span>
@@ -106,7 +107,7 @@ export const HighRankSwiper = ({
                                             <use xlinkHref="#arrow"></use>
                                         </svg>
                                     </span>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -153,11 +154,11 @@ export const HighRankSwiper = ({
                                 </div>
                             </div>
                             <div className="top__column">
-                                <a
+                                <Link
                                     rel="nofollow noopener"
-                                    href="/all-bonus"
+                                    to="/all-bonus"
                                     aria-label="Put your description here."
-                                    target="_blank"
+                                   
                                     className="top__btn"
                                 >
                                     <span>See All</span>
@@ -166,7 +167,7 @@ export const HighRankSwiper = ({
                                             <use xlinkHref="#arrow"></use>
                                         </svg>
                                     </span>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -216,11 +217,11 @@ export const HighRankSwiper = ({
                                 </div>
                             </div>
                             <div className="top__column">
-                                <a
+                                <Link
                                     rel="nofollow noopener"
-                                    href="/all-loyalties"
+                                    to="/all-loyalties"
                                     aria-label="Put your description here."
-                                    target="_blank"
+                                 
                                     className="top__btn"
                                 >
                                     <span>See All</span>
@@ -229,7 +230,7 @@ export const HighRankSwiper = ({
                                             <use xlinkHref="#arrow"></use>
                                         </svg>
                                     </span>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -381,7 +382,10 @@ export const HighRankSwiper = ({
                                                         {l?.loyalty_program?.loyalty_keypoint.map(
                                                             (lk) => (
                                                                 <div className="features-essential-programs-gamble__item">
-                                                                    <div className="features-essential-programs-gamble__icon">
+                                                                    <Link className="features-essential-programs-gamble__icon" 
+                                                                    rel="nofollow noopener"
+                                                              
+                                                                    to={`/casino/${sanitizeLink(l?.casino_name)}?queryId=${l?.casino_id}`}>
                                                                         <LazyCardImg
                                                                             img={
                                                                                 lk?.image ||
@@ -391,7 +395,7 @@ export const HighRankSwiper = ({
                                                                             width="100%"
                                                                             size="medium"
                                                                         />
-                                                                    </div>
+                                                                    </Link>
                                                                     <div className="features-essential-programs-gamble__info">
                                                                         <div className="features-essential-programs-gamble__name">
                                                                             {
@@ -412,23 +416,23 @@ export const HighRankSwiper = ({
                                                 <div className="item-essential-programs-gamble__bottom">
                                                     <div className="item-essential-programs-gamble__bottom-column">
                                                         <a
+                                                            rel="nofollow noopener"
                                                             href={l.casino_affiliate_link}
                                                             aria-label="Put your description here."
                                                             target="_blank"
                                                             className="item-essential-programs-gamble__btn item-essential-programs-gamble__btn_yellow"
                                                         >
-                                                            View Casino
+                                                            Visit Casino
                                                         </a>
                                                     </div>
                                                     <div className="item-essential-programs-gamble__bottom-column">
-                                                        <a
-                                                            href={`/casino/${sanitizeLink(l?.casino_name)}/loyalty?queruId=${l?.loyalty_program?.id}`}
+                                                        <Link to={`/casino/${sanitizeLink(l?.casino_name)}/loyalty?queruId=${l?.loyalty_program?.id}`}
                                                             aria-label="Put your description here."
-                                                            target="_blank"
+                                                        
                                                             className="item-essential-programs-gamble__btn"
                                                         >
                                                             Read More
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>

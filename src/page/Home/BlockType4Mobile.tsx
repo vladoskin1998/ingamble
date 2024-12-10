@@ -8,6 +8,7 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockType4Mobile({
     data,
@@ -149,10 +150,9 @@ export default function BlockType4Mobile({
                                                                 </div>
                                                             </a>
                                                             <div className="casino-small-card__body">
-                                                                <a
-                                                                    href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                     aria-label="Put your description here."
-                                                                    target="_blank"
+                                                                
                                                                     className="casino-small-card__name"
                                                                 >
                                                                     {
@@ -160,7 +160,7 @@ export default function BlockType4Mobile({
                                                                             .casino_info
                                                                             .casino_name
                                                                     }
-                                                                </a>
+                                                                </Link>
                                                                 <div className="casino-small-card__info">
                                                                     {item.casino_info.additional_casino_params.map(
                                                                         (

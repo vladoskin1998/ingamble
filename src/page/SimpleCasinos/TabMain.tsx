@@ -841,9 +841,9 @@ export const TabMain = ({
                                     <div className="block-info-review__elements-row">
                                         {data?.game_types?.map((gt) => (
                                             <div className="block-info-review__elements-column  ">
-                                                <a
+                                                <div
                                                     // href=""
-                                                    target="_blank"
+                                                   
                                                     aria-label="Put your description here."
                                                     className="block-info-review__element element-block-info-review"
                                                 >
@@ -860,7 +860,7 @@ export const TabMain = ({
                                                     <div className="element-block-info-review__value">
                                                         {gt.name}
                                                     </div>
-                                                </a>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>

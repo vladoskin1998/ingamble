@@ -12,7 +12,7 @@ import slovak from "../../assets/img/flags/slovak.svg"
 import { useEffect, useRef, useState } from "react"
 import logoIcon from "../../assets/img/logo-icon.svg"
 import { useFilterContext } from "../../context/FilterContext"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 type Language = {
     code: string
     name: string
@@ -147,64 +147,64 @@ export const Header = ({
                                 <span></span>
                             </a>
 
-                            <a
+                            <Link
                                 rel="nofollow noopener"
-                                href=""
-                                target="_blank"
+                                to="/"
+                               
                                 className="header__logo logo"
                             >
                                 <div className="logo__img">
                                     <img alt={"logo"} src={logo} />
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     }
                     <div className="header__column header__column-nav">
                         <nav className="header__menu menu-header">
                             <ul className="menu-header__list">
                                 <li className="menu-header__item">
-                                    <a
+                                    <Link
                                         rel="nofollow noopener"
-                                        href=""
+                                        to=""
                                         aria-label="Put your description here."
-                                        target="_blank"
+                                    
                                         className="menu-header__link current"
                                     >
                                         <span>Gambling Hub</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="menu-header__item">
-                                    <a
+                                    <Link
                                         rel="nofollow noopener"
-                                        href="/all-bonus"
+                                        to="/all-bonus"
                                         aria-label="Put your description here."
-                                        target="_blank"
+                                    
                                         className="menu-header__link"
                                     >
                                         <span>All Bonuses</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="menu-header__item">
-                                    <a
+                                    <Link
                                         rel="nofollow noopener"
-                                        href="/all-casinos"
+                                        to="/all-casinos"
                                         aria-label="Put your description here."
-                                        target="_blank"
+                                        
                                         className="menu-header__link"
                                     >
                                         <span>Casinos</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="menu-header__item">
-                                    <a
+                                    <Link
                                         rel="nofollow noopener"
-                                        href="/all-loyalties"
+                                        to="/all-loyalties"
                                         aria-label="Put your description here."
-                                        target="_blank"
+                                
                                         className="menu-header__link"
                                     >
                                         <span>Loyalties</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </nav>
@@ -340,23 +340,21 @@ export const Header = ({
                     <div className="header__row">
                         <div className="header__column header__column_first">
                             <div className="sidebar-gamble__top top-sidebar-gamble">
-                                <a
-                                    href=""
-                                    target="_blank"
+                                <Link
+                                    to="/"
                                     className="top-sidebar-gamble__logo"
                                 >
                                     <img src={logoIcon} alt="logo-icon" />
-                                </a>
+                                </Link>
                             </div>
-                            <a
-                                href=""
-                                target="_blank"
+                            <Link
+                                to="/"
                                 className="header__logo logo"
                             >
                                 <div className="logo__img">
                                     <img alt={"logo"} src={logo} />
                                 </div>
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="header__column header__column_last">
@@ -455,44 +453,44 @@ export const Header = ({
                             <nav className="header__menu menu-header">
                                 <ul className="menu-header__list">
                                     <li className="menu-header__item">
-                                        <a
-                                            href=""
+                                        <Link
+                                            to="/"
                                             aria-label="Put your description here."
-                                            target="_blank"
+                                        
                                             className="menu-header__link current"
                                         >
                                             <span>Gambling Hub</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="menu-header__item">
-                                        <a
-                                            href="/all-bonus"
+                                        <Link
+                                            to="/all-bonus"
                                             aria-label="Put your description here."
-                                            target="_blank"
+                                          
                                             className="menu-header__link"
                                         >
                                             <span>All Bonuses</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="menu-header__item">
-                                        <a
-                                            href="/all-casinos"
+                                        <Link
+                                            to="/all-casinos"
                                             aria-label="Put your description here."
-                                            target="_blank"
+                                          
                                             className="menu-header__link"
                                         >
                                             <span>Casinos</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="menu-header__item">
-                                        <a
-                                            href="/all-loyalties"
+                                        <Link
+                                            to="/all-loyalties"
                                             aria-label="Put your description here."
-                                            target="_blank"
+                                     
                                             className="menu-header__link"
                                         >
                                             <span>Loyalties</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </nav>

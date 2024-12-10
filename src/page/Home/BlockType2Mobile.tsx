@@ -8,6 +8,7 @@ import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export default function BlockType2Mobile({
     data,
@@ -152,9 +153,9 @@ export default function BlockType2Mobile({
                                                                 </div>
                                                             </a>
                                                             <div className="casino-small-card__body">
-                                                                <a
+                                                                <Link
                                                                           rel="nofollow noopener"
-                                                                    href={`/casino/${sanitizeLink(
+                                                                    to={`/casino/${sanitizeLink(
                                                                         item
                                                                             ?.casino_info
                                                                             ?.casino_name
@@ -164,7 +165,7 @@ export default function BlockType2Mobile({
                                                                             ?.casino_id
                                                                     }`}
                                                                     aria-label="Put your description here."
-                                                                    target="_blank"
+                                                                    
                                                                     className="casino-small-card__name"
                                                                 >
                                                                     {
@@ -172,7 +173,7 @@ export default function BlockType2Mobile({
                                                                             .casino_info
                                                                             .casino_name
                                                                     }
-                                                                </a>
+                                                                </Link>
                                                                 <div className="casino-small-card__info">
                                                                     {item.casino_info.additional_casino_params.map(
                                                                         (

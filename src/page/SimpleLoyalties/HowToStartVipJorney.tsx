@@ -3,6 +3,7 @@ import bg08 from "../../assets/img/bg/08.jpg"
 
 import { useState } from "react"
 import { sanitizeLink } from "../../helper"
+import { Link } from "react-router-dom"
 
 export const HowToStartVipJorney = (data: {
     casino_affiliate_link?: string
@@ -51,11 +52,11 @@ export const HowToStartVipJorney = (data: {
                                         </a>
                                     </div>
                                     <div className="main-get-bonus__btns-item">
-                                        <a
+                                        <Link
                                             rel="nofollow noopener"
-                                            href={`/casino/${sanitizeLink(data.casino_name)}?queryId=${data.queryId}`}
+                                            to={`/casino/${sanitizeLink(data.casino_name)}?queryId=${data.queryId}`}
                                             aria-label="Put your description here."
-                                            target="_blank"
+                                        
                                             className="main-get-bonus__btn main-get-bonus__btn_review"
                                         >
                                             <span>
@@ -68,7 +69,7 @@ export const HowToStartVipJorney = (data: {
                                                 ""
                                             )}{" "}
                                             Casino Review
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="main-get-bonus__btns-item">
                                         <a

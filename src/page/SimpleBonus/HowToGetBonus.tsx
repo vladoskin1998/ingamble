@@ -4,6 +4,7 @@ import bg08 from "../../assets/img/bg/08.jpg"
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { GetDataBonusResponse } from '../../types'
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 export const HowToGetBonus = ({data}:{data:GetDataBonusResponse | undefined}) => {
     const [like, setLike] = useState<"" | "like" | "dislike">("")
@@ -36,9 +37,9 @@ export const HowToGetBonus = ({data}:{data:GetDataBonusResponse | undefined}) =>
                         </div>
                         <div className="main-get-bonus__btns">
                             <div className="main-get-bonus__btns-item">
-                                <a
+                                <Link
                                     rel="nofollow noopener"
-                                    href={`go/${
+                                    to={`go/${
                                         data?.casino_name
                                             .toLocaleLowerCase()
                                             .replace(
@@ -47,7 +48,7 @@ export const HowToGetBonus = ({data}:{data:GetDataBonusResponse | undefined}) =>
                                             ) || ""
                                     }`}
                                     aria-label="Put your description here."
-                                    target="_blank"
+                              
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                     title="link"
                                     onClick={handleClick}
@@ -59,19 +60,19 @@ export const HowToGetBonus = ({data}:{data:GetDataBonusResponse | undefined}) =>
                                         />
                                     </span>
                                     Get Bonus
-                                </a>
+                                </Link>
                             </div>
                             <div className="main-get-bonus__btns-item">
-                                <a
+                                <Link
                                     rel="nofollow noopener"
-                                    href={`https://cryptogamblers.pro/casino/${data?.casino_name
+                                    to={`https://cryptogamblers.pro/casino/${data?.casino_name
                                         .toLowerCase()
                                         .replace(
                                             /casino/i,
                                             ""
                                         )}`}
                                     aria-label="Put your description here."
-                                    target="_blank"
+                               
                                     className="main-get-bonus__btn main-get-bonus__btn_review"
                                 >
                                     <span>
@@ -84,12 +85,12 @@ export const HowToGetBonus = ({data}:{data:GetDataBonusResponse | undefined}) =>
                                         ""
                                     )}{" "}
                                     Casino Review
-                                </a>
+                                </Link>
                             </div>
                             <div className="main-get-bonus__btns-item">
                                 <a
                                     rel="nofollow noopener"
-                                    href={data?.link_tc || ''}
+                                    // href={data?.link_tc || ''}
                                     aria-label="Put your description here."
                                     target="_blank"
                                     className="main-get-bonus__btn main-get-bonus__btn_apply"
