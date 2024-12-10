@@ -1,30 +1,49 @@
-import { Link } from "react-router-dom"
 
-export const BreadCrumb = ({ path }: { path: {name:string,link:string}[] }) => {
+//@ts-ignore
+export const BreadCrumb = (path: any) => {
+    const parsePath = (url: string): { name: string; link: string }[] => {
+        const urlSegments = url.split("?")[0] // Убираем query-параметры
+            .split("/") // Разделяем части пути
+            .filter(segment => segment); // Убираем пустые части
+
+        return urlSegments.map((segment, index) => {
+            // Преобразуем slug в читаемую строку
+            const readableName = segment
+                .replace(/-/g, " ") // Заменяем тире на пробелы
+                .replace(/\b\w/g, char => char.toUpperCase()); // Первую букву делаем заглавной
+
+            // Восстанавливаем ссылку для каждой части
+            const link = "/" + urlSegments.slice(0, index + 1).join("/");
+
+            return { name: readableName, link };
+        });
+    };
+
+    const crumbs = parsePath(window.location.pathname);
+
     return (
         <div className="simple-bonus__breadcrumbs breadcrumbs">
             <div className="breadcrumbs__container container">
                 <div className="breadcrumbs__list">
-                    {path.slice(0, path?.length -1).map((item) => (
-                        
-                        <div className="breadcrumbs__item">
-                            <Link rel="nofollow noopener"
-                                to={item.link}
-                          
-                                aria-label="Put your description here."
-                                className="breadcrumbs__link"
-                            >
-                                {item.name}
-                            </Link>
+                    {crumbs.map((item, index) => (
+                        <div className="breadcrumbs__item" key={index}>
+                            {index < crumbs.length - 1 ? (
+                                <div
+                                    rel="nofollow noopener"
+                                   
+                                    aria-label={item.name}
+                                    className="breadcrumbs__link"
+                                    
+                                >
+                                    {item.name}
+                                </div>
+                            ) : (
+                                <span className="breadcrumbs__link">{item.name}</span>
+                            )}
                         </div>
                     ))}
-                    <a href={path?.[path?.length -1].link} target="_black">
-                    <div className="breadcrumbs__item">
-                        <span className="breadcrumbs__link">{path?.[path?.length -1].name}</span>
-                    </div>
-                    </a>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

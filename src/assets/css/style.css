@@ -3540,7 +3540,7 @@ h3 {
   background: url("../img/icons/arrow-yellow.svg") center no-repeat;
   background-size: contain;
 }
-.breadcrumbs__item a {
+.breadcrumbs__item div {
   color: var(--Text-Txt_Sec, rgba(255, 255, 255, 0.5019607843));
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
