@@ -136,16 +136,16 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
     const [isSidebarActive, setSidebarActive] = useState(false)
     
     useEffect(() => {
-        const handleResize = () => {
-            initializeAdaptiveBehavior();
-        };
+        // const handleResize = () => {
+        //     initializeAdaptiveBehavior();
+        // };
      
         initializeAdaptiveBehavior();
-        window.addEventListener('resize', handleResize);
+        // window.addEventListener('resize', handleResize);
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+        // return () => {
+        //     window.removeEventListener('resize', handleResize);
+        // };
     }, [location]);
 
     const [lastUpdate, setLastUpdate] = useState<string>('');

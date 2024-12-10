@@ -1,7 +1,5 @@
 import { AccordionItem } from "../../components/acordion/Acordion"
 
-
-
 export const AccordionItemMultilevel = () => {
   return (
      <div className="information-loyaltie__column">
