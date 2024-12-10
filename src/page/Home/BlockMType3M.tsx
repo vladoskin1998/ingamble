@@ -102,6 +102,7 @@ export default function BlockMType3M({
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
                                                             <a
+                                                                      rel="nofollow noopener"
                                                                 href={item.casino_info.casino_affiliate_link}
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
@@ -121,6 +122,7 @@ export default function BlockMType3M({
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <a
+                                                                              rel="nofollow noopener"
                                                                         href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
@@ -163,6 +165,7 @@ export default function BlockMType3M({
                                                                     
                                                                     <div className="info-casino-card__stake">
                                                                         <a
+                                                                                  rel="nofollow noopener"
                                                                             href={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                             aria-label="Put your description here."
                                                                             target="_blank"

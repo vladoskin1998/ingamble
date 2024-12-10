@@ -78,7 +78,7 @@ export const LoyaltieCasinoInfo = (
                                     </span>
                                 </div>
                                 <a
-                                    href={data?.casino_affiliate_link}
+                                    href={data?.casino_affiliate_link || data?.link}
                                     aria-label="Put your description here."
                                     target="_blank"
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
@@ -127,10 +127,10 @@ export const LoyaltieCasinoInfo = (
                                             </div>
                                             <div className="item-features-content-casino-info__body">
                                                 <div className="item-features-content-casino-info__number">
-                                                    42
+                                                    {data?.count_levels}
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
-                                                    Outstanding
+                                                    {data?.level_description}
                                                 </div>
                                             </div>
                                         </div>

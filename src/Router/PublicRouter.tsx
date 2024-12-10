@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { Home } from "../page/Home"
 import { lazy } from "react"
+import Home from "../page/Home"
 
 // import { PreloaderPuls, PreloaderSpin } from "../components/loader/Preloader"
 

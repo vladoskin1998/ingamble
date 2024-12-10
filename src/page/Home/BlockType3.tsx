@@ -147,6 +147,7 @@ export default function BlockType3({
                                                         <div className="different-casino-standart">
                                                             <div className="different-casino-standart__body">
                                                                 <a
+                                                                          rel="nofollow noopener"
                                                                     href={
                                                                         item?.[0]
                                                                             .casino_info
@@ -170,6 +171,7 @@ export default function BlockType3({
                                                                 <div className="different-casino-standart__content">
                                                                     <div className="different-casino-standart__content-row">
                                                                         <a
+                                                                                  rel="nofollow noopener"
                                                                             href={`/casino/${sanitizeLink(
                                                                                 item?.[0]
                                                                                     ?.casino_info
@@ -223,6 +225,8 @@ export default function BlockType3({
                                                                         )}
                                                                         <div className="info-casino-card__stake">
                                                                             <a
+
+                                                                                      rel="nofollow noopener"
                                                                                 href={`/casino/${sanitizeLink(
                                                                                     item?.[0]
                                                                                         ?.casino_info
@@ -270,6 +274,7 @@ export default function BlockType3({
                                                             <div className="different-casino-standart">
                                                                 <div className="different-casino-standart__body">
                                                                     <a
+                                                                              rel="nofollow noopener"
                                                                         href={
                                                                             item?.[1]
                                                                                 .casino_info
@@ -293,6 +298,7 @@ export default function BlockType3({
                                                                     <div className="different-casino-standart__content">
                                                                         <div className="different-casino-standart__content-row">
                                                                             <a
+                                                                                      rel="nofollow noopener"
                                                                                 href={`/casino/${sanitizeLink(
                                                                                     item?.[1]
                                                                                         ?.casino_info
@@ -348,7 +354,7 @@ export default function BlockType3({
                                                                                 </div>
                                                                             )}
                                                                             <div className="info-casino-card__stake">
-                                                                                <a
+                                                                                <a           rel="nofollow noopener"
                                                                                     href={`/casino/${sanitizeLink(
                                                                                         item?.[1]
                                                                                             ?.casino_info
@@ -439,7 +445,7 @@ export default function BlockType3({
                                                                     }
                                                                 />
                                                             </div>
-                                                            <a
+                                                            <a           rel="nofollow noopener"
                                                                 href=""
                                                                 target="_blank"
                                                                 aria-label="Put your description here."
@@ -447,7 +453,7 @@ export default function BlockType3({
                                                             >
                                                                 <div className="item-baner-row-block__column">
                                                                     <div className="item-baner-row-block__small-card casino-small-card">
-                                                                        <a
+                                                                        <a           rel="nofollow noopener"
                                                                             href=""
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
@@ -466,7 +472,7 @@ export default function BlockType3({
                                                                             </div>
                                                                         </a>
                                                                         <div className="casino-small-card__body">
-                                                                            <a
+                                                                            <a           rel="nofollow noopener"
                                                                                 href=""
                                                                                 aria-label="Put your description here."
                                                                                 target="_blank"
@@ -497,7 +503,7 @@ export default function BlockType3({
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <a
+                                                                    <a           rel="nofollow noopener"
                                                                         href=""
                                                                         aria-label="Put your description here."
                                                                         className="item-baner-row-block__title"
@@ -510,7 +516,7 @@ export default function BlockType3({
                                                                     </a>
                                                                 </div>
                                                                 <div className="item-baner-row-block__column">
-                                                                    <a
+                                                                    <a           rel="nofollow noopener"
                                                                         href={
                                                                             item
                                                                                 .casino_info

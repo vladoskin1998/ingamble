@@ -1,4 +1,4 @@
-import { lazy, useEffect } from "react"
+import { lazy } from "react"
 import { Wraper } from "../Wraper"
 
 import { useAdaptiveBehavior } from "../../context/AppContext"
@@ -143,7 +143,7 @@ const renderBlock = (block: any) => {
     }
 }
 
-export const Home = () => {
+export default function Home ()  {
     document.title = "Home"
     //@ts-ignore
     const { isSidebarActive, setSidebarActive, initializeAdaptiveBehavior } =
@@ -160,9 +160,9 @@ export const Home = () => {
 
   
 
-    useEffect(() => {
-        initializeAdaptiveBehavior()
-    }, [isLoading])
+    // useEffect(() => {
+    //     initializeAdaptiveBehavior()
+    // }, [isLoading])
 
     if (isLoading ) return <LogoLoader />
     return (

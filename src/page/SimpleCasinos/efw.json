@@ -1,497 +1,310 @@
 {
-    "id": 83,
-    "affiliate": null,
-    "loyalty_program": {
-        "loyalty_keypoint": []
-    },
-    "bonuses": [
+    "id": 4,
+    "casino_name": "iWild Casino",
+    "casino_image": "https://adm.incasinowetrust.com/media/base_casino_images/Group_699_9_1_1_4_2.jpg",
+    "casino_affiliate_link": "",
+    "casino_id": 3,
+    "link_tc": "https://iwildcasino.com/en/page/terms-and-conditions",
+    "loyalty_keypoint": [
         {
-            "id": 518,
-            "slug": "100-up-to-1500-100-free-spins-pokerdom-casino",
-            "name": "100% up to 1500$ + 1000 Free Spins",
-            "labels": [],
-            "bonus_type": {
-                "name": "Welcome Bonus"
+            "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/4._Cashback.jpg",
+            "text_1": "Weekly Cashback",
+            "text_2": "Up to 15%"
+        },
+        {
+            "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/2._Vip_manage.jpg",
+            "text_1": "Personal VIP manager",
+            "text_2": "Help with any questions 24/7"
+        },
+        {
+            "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/23._Bonus_on_deposit.jpg",
+            "text_1": "Additional Bonuses",
+            "text_2": "Additional 15% to a deposit"
+        },
+        {
+            "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/10._Increased_Withdrawal_limits_No-fee_withdrawal.jpg",
+            "text_1": "Increased Withdrawal Limits",
+            "text_2": "Ability to raise limits"
+        },
+        {
+            "image": "https://adm.incasinowetrust.com/media/loyalty_keypoint_images/37._Invitations_to_Special_Events__Private_Promotions.jpg",
+            "text_1": "Exclusive gaming activity",
+            "text_2": "Unique bonuses and promotions"
+        }
+    ],
+    "loyalty_parameter": [
+        {
+            "text_1": "5 Levels",
+            "text_2": "Level Up To Get More"
+        },
+        {
+            "text_1": "15% to a deposit",
+            "text_2": "Or Individual Offer"
+        }
+    ],
+    "level_loyalty": [
+        {
+            "level": "Bronze",
+            "vip_manager_access": false,
+            "special_notes": "",
+            "point_accumulation": {
+                "point": null,
+                "value": null,
+                "next_lvl": null,
+                "level_value": null
             },
-            "bonus_subtype": [
-                {
-                    "name": "1st deposit bonus | 100% up to 1500$ + 100 Free Spins"
-                }
-            ],
-            "special_promo_category": false,
-            "special_side_bar": false,
-            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/download_1_1_1_1.webp"
-        },
-        {
-            "id": 519,
-            "slug": "up-to-15-and-1200-pokerdom-casino",
-            "name": "Up to 15% and 1200$",
-            "labels": [],
-            "bonus_type": {
-                "name": "Cashback bonus"
+            "cashback": {
+                "cashback_type": "Cashback",
+                "cashback_period": "Weekly",
+                "percentage": 10.0,
+                "wager": 20.0
             },
-            "bonus_subtype": [
+            "level_up_bonus": {
+                "bonus": null,
+                "wager": null,
+                "freespins": null
+            },
+            "withdrawals": {
+                "faster_withdrawal": null,
+                "withdrawal_limits": "Monthly Withdrawal Limit 20 000 $"
+            },
+            "special_prize": {
+                "freespins": null,
+                "free_bet": null,
+                "other": "Additional 3% to a deposit for every promo or individual offer"
+            },
+            "gifts": {
+                "holiday": null,
+                "birthday": null,
+                "offline": null,
+                "personalized": null,
+                "exclusive": null
+            },
+            "loyalty_level_bonuses": {
+                "real_money": null,
+                "customized": null,
+                "weekly": null,
+                "monthly": null
+            },
+            "images": [
                 {
-                    "name": "Wednesday bonus"
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/cashback.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/level_up_bonus.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/cash_bonus.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/free_spins.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/faster_withdrawal.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/withdrawal_limits.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/special_prize.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/gifts.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/birthday.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/bonus.svg"
                 }
-            ],
-            "special_promo_category": false,
-            "special_side_bar": false,
-            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/group_331_2_1_1.webp"
+            ]
         },
         {
-            "id": 520,
-            "slug": "triple-strike-from-pragmatic-play-pokerdom-casino",
-            "name": "Triple Strike from Pragmatic Play! $30,000,000 marathon!",
-            "labels": [],
-            "bonus_type": null,
-            "bonus_subtype": [],
-            "special_promo_category": true,
-            "special_side_bar": false,
-            "bonus_image": null
+            "level": "Silver",
+            "vip_manager_access": false,
+            "special_notes": "",
+            "point_accumulation": null,
+            "cashback": {
+                "cashback_type": "Cashback",
+                "cashback_period": "Weekly",
+                "percentage": 10.0,
+                "wager": 20.0
+            },
+            "level_up_bonus": null,
+            "withdrawals": {
+                "faster_withdrawal": null,
+                "withdrawal_limits": "Monthly Withdrawal Limit 20 000 $"
+            },
+            "special_prize": {
+                "freespins": null,
+                "free_bet": null,
+                "other": "Additional 5% to a deposit for every promo or individual offer"
+            },
+            "gifts": null,
+            "loyalty_level_bonuses": {
+                "real_money": null,
+                "customized": null,
+                "weekly": null,
+                "monthly": null
+            },
+            "images": [
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/cashback.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/withdrawal_limits.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/special_prize.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/bonus.svg"
+                }
+            ]
         },
         {
-            "id": 522,
-            "slug": "hit-the-multiplier-of-the-month-pokerdom-casino",
-            "name": "Fly and play, win today! $3,000,000 Prize Pool",
-            "labels": [],
-            "bonus_type": null,
-            "bonus_subtype": [],
-            "special_promo_category": true,
-            "special_side_bar": false,
-            "bonus_image": null
+            "level": "Gold",
+            "vip_manager_access": false,
+            "special_notes": "",
+            "point_accumulation": null,
+            "cashback": {
+                "cashback_type": "Cashback",
+                "cashback_period": "Weekly",
+                "percentage": 12.0,
+                "wager": 20.0
+            },
+            "level_up_bonus": null,
+            "withdrawals": {
+                "faster_withdrawal": null,
+                "withdrawal_limits": "Monthly Withdrawal Limit 20 000 $"
+            },
+            "special_prize": {
+                "freespins": null,
+                "free_bet": null,
+                "other": "Additional 7% to a deposit for every promo or individual offer."
+            },
+            "gifts": null,
+            "loyalty_level_bonuses": {
+                "real_money": null,
+                "customized": null,
+                "weekly": null,
+                "monthly": null
+            },
+            "images": [
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/cashback.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/withdrawal_limits.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/special_prize.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/bonus.svg"
+                }
+            ]
         },
         {
-            "id": 815,
-            "slug": "get-20-fs-for-subscribing-to-the-telegram-channel-pokerdom-casino",
-            "name": "Get 20 FS for subscribing to the Telegram channel!",
-            "labels": [],
-            "bonus_type": null,
-            "bonus_subtype": [],
-            "special_promo_category": true,
-            "special_side_bar": false,
-            "bonus_image": null
+            "level": "Diamond",
+            "vip_manager_access": true,
+            "special_notes": "",
+            "point_accumulation": null,
+            "cashback": {
+                "cashback_type": "Cashback",
+                "cashback_period": "Weekly",
+                "percentage": 13.0,
+                "wager": 20.0
+            },
+            "level_up_bonus": null,
+            "withdrawals": {
+                "faster_withdrawal": null,
+                "withdrawal_limits": "Monthly Withdrawal Limit 20 000 $"
+            },
+            "special_prize": {
+                "freespins": null,
+                "free_bet": null,
+                "other": "Additional 10% to a deposit for every promo or individual offer"
+            },
+            "gifts": null,
+            "loyalty_level_bonuses": {
+                "real_money": null,
+                "customized": null,
+                "weekly": null,
+                "monthly": null
+            },
+            "images": [
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/cashback.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/vip_manager_access.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/withdrawal_limits.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/special_prize.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/bonus.svg"
+                }
+            ]
         },
         {
-            "id": 816,
-            "slug": "spinoleague-madness-grab-your-share-of-10000000-pokerdom-casino",
-            "name": "Spinoleague Madness: Grab your share of $10,000,000!",
-            "labels": [],
-            "bonus_type": null,
-            "bonus_subtype": [],
-            "special_promo_category": true,
-            "special_side_bar": true,
-            "bonus_image": "https://adm.incasinowetrust.com/media/bonuses/files/_825580514_1.webp"
+            "level": "Joker",
+            "vip_manager_access": true,
+            "special_notes": "",
+            "point_accumulation": null,
+            "cashback": {
+                "cashback_type": "Cashback",
+                "cashback_period": "Weekly",
+                "percentage": 15.0,
+                "wager": 20.0
+            },
+            "level_up_bonus": null,
+            "withdrawals": {
+                "faster_withdrawal": null,
+                "withdrawal_limits": "Monthly Withdrawal Limit 20 000 $"
+            },
+            "special_prize": {
+                "freespins": null,
+                "free_bet": null,
+                "other": "Additional 15% to a deposit for every promo or individual offer"
+            },
+            "gifts": null,
+            "loyalty_level_bonuses": {
+                "real_money": null,
+                "customized": null,
+                "weekly": null,
+                "monthly": null
+            },
+            "images": [
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/cashback.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/vip_manager_access.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/withdrawal_limits.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/special_prize.svg"
+                },
+                {
+                    "image": "https://adm.incasinowetrust.com/media/svg_icons/bonus.svg"
+                }
+            ]
         }
     ],
-    "withdrawal_limit": {
-        "daily": 5000,
-        "weekly": 10000,
-        "monthly": 20000,
-        "unlimited": false
-    },
-    "min_wagering": {
-        "min_value": null
-    },
-    "min_dep": [
-        {
-            "min_value": 10.0,
-            "symbol": {
-                "symbol": "EUR",
-                "name": "Euro"
-            }
-        },
-        {
-            "min_value": 5.5,
-            "symbol": {
-                "symbol": "USDT (TRC20)",
-                "name": "Tether (TRC20)"
-            }
-        },
-        {
-            "min_value": 5.5,
-            "symbol": {
-                "symbol": "USDT (ERC20)",
-                "name": "Tether (ERC20)"
-            }
-        },
-        {
-            "min_value": 0.01,
-            "symbol": {
-                "symbol": "ETH",
-                "name": "Ethereum"
-            }
-        },
-        {
-            "min_value": 0.00011,
-            "symbol": {
-                "symbol": "BTC",
-                "name": "Bitcoin"
-            }
-        },
-        {
-            "min_value": 0.07,
-            "symbol": {
-                "symbol": "LTC",
-                "name": "Litecoin"
-            }
-        }
-    ],
-    "images": [],
-    "social_bonuses": {
-        "choice": false
-    },
-    "casino_category": [],
-    "payment_methods": [
-        {
-            "id": 13,
-            "name": "Piastrix",
-            "image": "https://adm.incasinowetrust.com/media/payment_images/image_858.png"
-        }
-    ],
-    "crypto_currencies": [
-        {
-            "id": 198,
-            "symbol": "ETH",
-            "name": "Ethereum",
-            "name2": null
-        },
-        {
-            "id": 210,
-            "symbol": "LTC",
-            "name": "Litecoin",
-            "name2": null
-        },
-        {
-            "id": 234,
-            "symbol": "USDT (ERC20)",
-            "name": "Tether (ERC20)",
-            "name2": null
-        },
-        {
-            "id": 236,
-            "symbol": "USDT (TRC20)",
-            "name": "Tether (TRC20)",
-            "name2": null
-        },
-        {
-            "id": 275,
-            "symbol": "BTC",
-            "name": "Bitcoin",
-            "name2": null
-        }
-    ],
-    "classic_currency": [
-        {
-            "id": 36,
-            "symbol": "UZS",
-            "name": "Uzbekistani som",
-            "name2": null
-        },
-        {
-            "id": 41,
-            "symbol": "RUB",
-            "name": "Russian ruble",
-            "name2": null
-        },
-        {
-            "id": 76,
-            "symbol": "KZT",
-            "name": "Kazakhstani tenge",
-            "name2": null
-        },
-        {
-            "id": 103,
-            "symbol": "AZN",
-            "name": "Azerbaijani New manat",
-            "name2": null
-        },
-        {
-            "id": 114,
-            "symbol": "USD",
-            "name": "US dollar",
-            "name2": null
-        },
-        {
-            "id": 138,
-            "symbol": "EUR",
-            "name": "Euro",
-            "name2": null
-        }
-    ],
-    "games": [],
-    "game_providers": [],
-    "game_types": [
-        {
-            "id": 14,
-            "slug": "betting",
-            "name": "Betting",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons.png"
-        },
-        {
-            "id": 3,
-            "slug": "esports-betting",
-            "name": "Esports betting",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_1.png"
-        },
-        {
-            "id": 15,
-            "slug": "baccarat",
-            "name": "Baccarat",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_2.png"
-        },
-        {
-            "id": 6,
-            "slug": "bingo",
-            "name": "Bingo",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_3.png"
-        },
-        {
-            "id": 10,
-            "slug": "blackjack",
-            "name": "Blackjack",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_4.png"
-        },
-        {
-            "id": 11,
-            "slug": "craps-and-dice",
-            "name": "Craps and dice",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_5.png"
-        },
-        {
-            "id": 12,
-            "slug": "crash-games",
-            "name": "Crash games",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_6.png"
-        },
-        {
-            "id": 13,
-            "slug": "jackpot-games",
-            "name": "Jackpot games",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_7.png"
-        },
-        {
-            "id": 4,
-            "slug": "keno",
-            "name": "Keno",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_8.png"
-        },
-        {
-            "id": 8,
-            "slug": "live-games",
-            "name": "Live games",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_9.png"
-        },
-        {
-            "id": 1,
-            "slug": "poker",
-            "name": "Poker",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_10_k3BKUMy.png"
-        },
-        {
-            "id": 9,
-            "slug": "roulette",
-            "name": "Roulette",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_11.png"
-        },
-        {
-            "id": 5,
-            "slug": "scratch-cards",
-            "name": "Scratch cards",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_12.png"
-        },
-        {
-            "id": 7,
-            "slug": "slots",
-            "name": "Slots",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/Union.png"
-        },
-        {
-            "id": 2,
-            "slug": "video-poker",
-            "name": "Video poker",
-            "image": "https://adm.incasinowetrust.com/media/game_type_images/all_games_icons_10.png"
-        }
-    ],
-    "licenses": [
-        {
-            "id": 96,
-            "slug": "curacao",
-            "image": "https://adm.incasinowetrust.com/media/licensing_authority_images/cw.svg",
-            "name": "Curaçao",
-            "validator_url": null
-        }
-    ],
-    "blocked_countries": [
-        {
-            "id": 271,
-            "slug": "crimea",
-            "name": "Crimea",
-            "name2": null,
-            "name3": null,
-            "flag_image": null,
-            "code": null
-        },
-        {
-            "id": 269,
-            "slug": "donetsk",
-            "name": "Donetsk",
-            "name2": null,
-            "name3": null,
-            "flag_image": null,
-            "code": null
-        },
-        {
-            "id": 13,
-            "slug": "iran",
-            "name": "Iran",
-            "name2": "Islamic Republic of Iran",
-            "name3": null,
-            "flag_image": "https://adm.incasinowetrust.com/media/%D1%81ountry_flag_image/Countryiran.png",
-            "code": "IR"
-        },
-        {
-            "id": 50,
-            "slug": "north-korea",
-            "name": "Korea (Democratic People's Republic of Korea))",
-            "name2": "North Korea",
-            "name3": null,
-            "flag_image": "https://adm.incasinowetrust.com/media/%D1%81ountry_flag_image/Countrynorth_korea.png",
-            "code": "KP"
-        },
-        {
-            "id": 270,
-            "slug": "luhansk",
-            "name": "Luhansk",
-            "name2": null,
-            "name3": null,
-            "flag_image": null,
-            "code": null
-        },
-        {
-            "id": 63,
-            "slug": "somalia",
-            "name": "Somalia",
-            "name2": null,
-            "name3": null,
-            "flag_image": "https://adm.incasinowetrust.com/media/%D1%81ountry_flag_image/Countrysomalia.png",
-            "code": "SO"
-        },
-        {
-            "id": 54,
-            "slug": "syria",
-            "name": "Syrian Arab Republic",
-            "name2": "Syria",
-            "name3": null,
-            "flag_image": "https://adm.incasinowetrust.com/media/%D1%81ountry_flag_image/Countrysyria.png",
-            "code": "SY"
-        },
-        {
-            "id": 35,
-            "slug": "ukraine",
-            "name": "Ukraine",
-            "name2": null,
-            "name3": null,
-            "flag_image": "https://adm.incasinowetrust.com/media/%D1%81ountry_flag_image/CountryUkraine.png",
-            "code": "UA"
-        },
-        {
-            "id": 140,
-            "slug": "united-kingdom",
-            "name": "United Kingdom",
-            "name2": "Great Britain",
-            "name3": "the United Kingdom",
-            "flag_image": "https://adm.incasinowetrust.com/media/%D1%81ountry_flag_image/CountryUK_QQzD9oD.png",
-            "code": "GB"
-        },
-        {
-            "id": 139,
-            "slug": "united-states-of-america",
-            "name": "United States of America",
-            "name2": "USA",
-            "name3": "The USA",
-            "flag_image": "https://adm.incasinowetrust.com/media/%D1%81ountry_flag_image/Countryunited_states_KJcW3hc.png",
-            "code": "US"
-        }
-    ],
-    "language_live_chat": [
-        {
-            "id": 59,
-            "slug": "kk-kz",
-            "name": "Kazakh",
-            "image": "https://adm.incasinowetrust.com/media/language_images/image_799.png"
-        },
-        {
-            "id": 41,
-            "slug": "ru-ru",
-            "name": "Russian",
-            "image": "https://adm.incasinowetrust.com/media/language_images/image_817.png"
-        },
-        {
-            "id": 19,
-            "slug": "uz-uz",
-            "name": "Uzbek",
-            "image": "https://adm.incasinowetrust.com/media/language_images/image_837.png"
-        }
-    ],
-    "language_website": [
-        {
-            "id": 59,
-            "slug": "kk-kz",
-            "name": "Kazakh",
-            "image": "https://adm.incasinowetrust.com/media/language_images/image_799.png"
-        },
-        {
-            "id": 41,
-            "slug": "ru-ru",
-            "name": "Russian",
-            "image": "https://adm.incasinowetrust.com/media/language_images/image_817.png"
-        },
-        {
-            "id": 23,
-            "slug": "en-gb",
-            "name": "English",
-            "image": "https://adm.incasinowetrust.com/media/language_images/flag_4.png"
-        },
-        {
-            "id": 19,
-            "slug": "uz-uz",
-            "name": "Uzbek",
-            "image": "https://adm.incasinowetrust.com/media/language_images/image_837.png"
-        }
-    ],
-    "sisters_casinos": [],
-    "payout_speed": "High",
+    "level_description": "Great",
     "do_not_send_to_client": false,
-    "rating_level": "medium",
-    "stars": 4,
-    "review": "General Overview\r\n\r\nPokerdom Casino, established in 2014, is owned by PokerDom N.V. and operates under the licensing and regulation of the Government of Curacao. Known for its extensive library of games, the casino features titles from leading software providers such as NetEnt, Microgaming, Play’n GO, Quickspin, Yggdrasil Gaming, Playson, Endorphina, and Evolution Gaming. Pokerdom Casino is accessible in multiple languages and can be played instantly via web browsers or mobile devices.\r\n\r\nGame Selection\r\n\r\nPokerdom Casino offers a vast and diverse game selection to cater to all types of players. Here’s a closer look at what is available:\r\n\r\n- Slots:  \r\n  Players can explore a rich library of video slots from top providers, including popular titles such as:\r\n  - Book of Dead\r\n  - Immortal Romance\r\n  - Reactoonz\r\n  - Gemtastic\r\n  - Chicago Gangsters  \r\n  The casino features hundreds of slots, allowing players to take advantage of game filters to find their favorites easily.\r\n\r\n- Table Games:  \r\n  For those who prefer traditional gaming, Pokerdom Casino offers a variety of table games, including:\r\n  - Multiple versions of blackjack\r\n  - Various roulette options\r\n  - Different types of poker games  \r\n  This selection ensures that table game enthusiasts have plenty of choices for a classic gaming experience.\r\n\r\n- Live Casino:  \r\n  The live casino section provides an immersive experience with real dealers. Available games include:\r\n  - Live Poker\r\n  - Live Blackjack\r\n  - Live Roulette  \r\n  This interactive format enhances the gaming atmosphere, allowing players to engage in real-time action.\r\n\r\n- Additional Games:  \r\n  In addition to slots and table games, the casino offers a wide assortment of video poker games, including:\r\n  - Double Double Bonus Poker\r\n  - Aces & Faces Power Poker  \r\n  This variety caters to fans of card games looking for something different.\r\n\r\nMobile Compatibility\r\n\r\nPokerdom Casino is fully optimized for mobile gaming, accessible on most devices running iOS or Android without the need for a dedicated app. Players can enjoy a vast selection of popular games that perform seamlessly through mobile browsers, ensuring an enjoyable experience on smartphones and tablets.\r\n\r\nUser Experience\r\n\r\nThe casino is designed for ease of use, featuring an intuitive interface that allows players to navigate effortlessly. Game filters and a search function help players quickly find their favorites or explore new titles. The multi-language support further enhances accessibility for a global audience.\r\n\r\nCustomer Support\r\n\r\nCustomer support at Pokerdom Casino is readily available to assist players with any inquiries. The live chat feature provides quick access to multilingual support agents, available 24/7. For more detailed assistance, players can also reach out via email.\r\n\r\nSecurity & Fairness\r\n\r\nPokerdom Casino prioritizes player security by utilizing advanced encryption technology to safeguard sensitive data during online transactions. Firewall protection adds an additional layer of security.\r\nTo ensure fairness in gaming, the casino employs a random number generator (RNG), which guarantees that game outcomes are always fair and random.\r\n\r\nPayment Methods\r\n\r\nPokerdom Casino supports a variety of payment methods for deposits and withdrawals, including:\r\n\r\n- Credit/Debit Cards: Visa, MasterCard\r\n- E-Wallets: Skrill, Neteller\r\n- Cryptocurrencies: Bitcoin\r\n\r\nMinimum Deposit: $10\r\n\r\nWithdrawal Times:\r\n\r\n- E-Wallets: 0-24 hours\r\n- Card Payments: 0-24 hours\r\n- Pending Time: 0-24 hours\r\n\r\nWithdrawal Limits:\r\n\r\n- Daily: $5,000\r\n- Weekly: $10,000\r\n- Monthly: $20,000\r\n\r\nResponsible Gambling Features\r\n\r\nPokerdom Casino is committed to promoting responsible gambling and offers several tools to help players maintain control over their gaming activities, including:\r\n- Self-Exclusion Tool: Allows players to temporarily exclude themselves from the casino.\r\n- Cool Off/Time-Out Tool: Players can set time limits on their gaming sessions.\r\n- Self-Exclusion Register Participation: Encourages players to engage in self-regulation.\r\nBy providing these features, Pokerdom Casino fosters a safe and responsible gaming environment, ensuring players can enjoy their experience while managing their gambling habits effectively.\r\n\r\nFinal Recommendation\r\n\r\nFor players looking for a diverse selection of games from top providers, Pokerdom Casino stands out as a strong option. It offers 24/7 customer support via live chat, ensuring assistance is readily available. Additionally, mobile gamers will enjoy a seamless experience while playing on the go, making it convenient to access their favorite games anytime. Overall, Pokerdom Casino provides a user-friendly platform that caters to a wide range of player preferences and needs.",
-    "what_we_dont_like": "Regional Restrictions: Not available in all countries.\r\nLimited responsible gaming options.",
-    "what_we_like": "Wide Game Selection.\r\nCrypto-Friendly.\r\nUser-Friendly Interface.\r\nMultilingual live chat support available 24/7.",
-    "image": "https://adm.incasinowetrust.com/media/base_casino_images/Image_Editor_43_1_1.png",
-    "image_loyalty": "https://adm.incasinowetrust.com/media/casino_loyalty_images/pokerdom2x_2_1_2.png",
-    "slug": "pokerdom-casino",
-    "name": "Pokerdom Casino",
-    "casino_rank": "6.3",
-    "likes": 0,
-    "vpn_usage": true,
-    "sportsbook": true,
-    "url": "https://pokerdom.com/",
-    "owner": null,
-    "established": null,
-    "wager_limit": false,
-    "loss_limit": false,
-    "session_limit": false,
-    "self_exclusion": true,
-    "cool_off": true,
-    "reality_check": false,
-    "self_assessment": false,
-    "withdrawal_lock": false,
-    "deposit_limit": false,
-    "gamstop_self_exclusion": false,
-    "bonus_hunt_with_active_bonus": false,
-    "tournaments": true,
-    "special_notes": "",
-    "live_chat_competence": "didn't_answer_to_questions",
-    "additional_casino_params": []
+    "likes": 48,
+    "stars": 5,
+    "link": "https://iwildcasino1.com/en/vip",
+    "loyalty_understandable": "The iWild Casino VIP Program is easy to understand and navigate, thanks to its straightforward tiered levels and transparent rewards. Players progress simply by playing, with each level unlocking clear benefits like increasing cashback, priority withdrawals, and dedicated VIP managers. The program’s structure makes it accessible for both new and experienced players, as rewards are well-defined and built incrementally, ensuring that members can easily see the value of advancing through the ranks.",
+    "description": "The iWild Casino VIP Program is crafted to make every game more rewarding, giving you access to an array of exclusive perks as you progress through the levels. Starting with a generous cashback of up to 15%, you’ll enjoy more returns on your play as you climb the ranks. VIP members receive access to priority withdrawals, allowing for faster cash-outs with a high monthly limit of $20,000. At higher levels, players are assigned a dedicated VIP manager who provides personalized support, exclusive offers, and tailored promotions to enhance your experience. With each level, the benefits grow, unlocking early access to new games and events, exclusive deposit bonuses, and special promotions created just for you. Join the iWild Casino VIP Program and experience gaming at its finest, where every play brings you closer to premium rewards and VIP treatment.",
+    "vip_manager": "yes",
+    "loyalty_rank": "8.3"
 }

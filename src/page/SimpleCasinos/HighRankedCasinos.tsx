@@ -193,7 +193,7 @@ export const HighRankedCasinos = () => {
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
                                                     <a
-                                                        href={item?.[0].casino_affiliate_link}
+                                                         href={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="item-slide-slider__image-block"
@@ -285,7 +285,7 @@ export const HighRankedCasinos = () => {
                                                 </div>
                                                 <div className="slide-slider__item item-slide-slider">
                                                     <a
-                                                         href={item?.[1]?.casino_affiliate_link || ""}
+                                                         href={`/casino/${sanitizeLink(item?.[1]?.casino_name)}?queryId=${item?.[1]?.casino_id}`}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="item-slide-slider__image-block"
@@ -412,7 +412,7 @@ export const HighRankedCasinos = () => {
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
                                                     <a
-                                                        href=""
+                                                        href={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="item-slide-slider__image-block"

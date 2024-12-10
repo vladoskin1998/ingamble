@@ -73,7 +73,7 @@ export const HowToStartVipJorney = (data: {
                                     <div className="main-get-bonus__btns-item">
                                         <a
                                             rel="nofollow noopener"
-                                            href={data?.link_tc}
+                                            // href={data?.link_tc}
                                             aria-label="Put your description here."
                                             target="_blank"
                                             className="main-get-bonus__btn main-get-bonus__btn_apply"

@@ -545,6 +545,7 @@ export interface RewievCasinoDataResponse {
     id: number;
     affiliate: null | string;
     link_tc: null | string;
+    loyaltie_id: number | string;
     loyalty_program: {
       loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
     };
@@ -731,6 +732,7 @@ withdrawal_limits:string | null;
             image: string;
         }>;
     }>;
+    count_levels?: number;
     level_description: string;
     do_not_send_to_client: boolean;
     likes: number;

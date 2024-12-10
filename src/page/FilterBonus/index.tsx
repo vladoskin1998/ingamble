@@ -122,9 +122,7 @@ export default function FilterBonus() {
         }
     }, [data])
 
-    useEffect(() => {
-        initializeAdaptiveBehavior()
-    }, [isLoading])
+   
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
@@ -147,6 +145,10 @@ export default function FilterBonus() {
         }))
     }
     console.log("currentPage", currentPage)
+
+    useEffect(() => {
+        initializeAdaptiveBehavior()
+    }, [isLoading])
 
     if (isDebouncedLoading) return <LogoLoader />
 
@@ -285,7 +287,7 @@ const ListDisplayData = memo(
                                     style={{ padding: "0 8px 50.432% 8px" }}
                                 >
                                     <a
-                                   
+                                             rel="nofollow noopener"
                                     href={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`}
                                     aria-label="Put your description here."
                                     target="_blank"
@@ -299,6 +301,7 @@ const ListDisplayData = memo(
                                         />
                                     </a>
                                     <a
+                                              rel="nofollow noopener"
                                         href={item?.casino_affiliate_link}
                                         target="_blank"
                                         aria-label="Put your description here."
@@ -328,6 +331,7 @@ const ListDisplayData = memo(
                                 <div className="casino-card__info info-casino-card">
                                     <div className="info-casino-card__stake">
                                         <a
+                                                  rel="nofollow noopener"
                                             href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
                                             aria-label="Put your description here."
                                             target="_blank"
@@ -354,6 +358,7 @@ const ListDisplayData = memo(
                                     </div>
                                 </div>
                                 <a
+                                    rel="nofollow noopener"
                                     href={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`}
                                     aria-label="Put your description here."
                                     target="_blank"

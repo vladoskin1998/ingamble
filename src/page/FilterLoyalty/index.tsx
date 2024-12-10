@@ -279,6 +279,7 @@ const LisDisplayedData = memo(
                         <div className="item-loyaltie-programs__row">
                             <div className="item-loyaltie-programs__main">
                                 <a
+                                          rel="nofollow noopener"
                                     href={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
                                     className="item-loyaltie-programs__image loyalty-img-custom "
                                     key={uuidv4()}
@@ -370,6 +371,7 @@ const LisDisplayedData = memo(
                                 <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                         <a
+                                                  rel="nofollow noopener"
                                                href={item.casino_affiliate_link}
                                             target="_blank"
                                             aria-label="Put your description here."
@@ -378,6 +380,7 @@ const LisDisplayedData = memo(
                                             Visit Casino
                                         </a>
                                         <a
+                                                  rel="nofollow noopener"
                                             href={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.loyalty_program.id}`}
                                             target="_blank"
                                             aria-label="Put your description here."

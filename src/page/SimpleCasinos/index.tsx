@@ -20,6 +20,7 @@ import { GeoLocationAllowdType, RewievCasinoDataResponse } from "../../types"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { useFilterContext } from "../../context/FilterContext"
+import { sanitizeLink } from "../../helper"
 // import { sanitizeLink } from "../../helper"
 
 const SafetyIndexRatingLevel = (n: number,) => {
@@ -208,7 +209,7 @@ export default function SimpleCasinos() {
                                                         </div>
                                                     </div>
                                                     <a
-                                                        href={data?.dataCurrentCasinos?.link_tc || ''}
+                                                        // href={data?.dataCurrentCasinos?.link_tc || ''}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="main-get-bonus__btn main-get-bonus__btn_apply"
@@ -315,7 +316,7 @@ export default function SimpleCasinos() {
                                                                         ?.dataCurrentCasinos
                                                                         ?.withdrawal_limit
                                                                         ?.monthly ||
-                                                                        0}
+                                                                        "Unlimited"}
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value">
                                                                     Monthly
@@ -396,7 +397,7 @@ export default function SimpleCasinos() {
                                             </div>
                                             <div className="top__column">
                                                 <a
-                                                    // href={`/casino/${sanitizeLink(data?.dataCurrentCasinos?.name)}/loyalty?queryId=${}`}
+                                                    href={`/casino/${sanitizeLink(data?.dataCurrentCasinos?.name)}/loyalty?queryId=${data?.dataCurrentCasinos?.loyaltie_id}`}
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="top__btn "

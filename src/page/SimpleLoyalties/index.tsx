@@ -141,14 +141,14 @@ export default function SimpleLoyalties() {
                     <LoyaltyText data={data?.dataCurrentLoyaltie} />
                     <HowToStartVipJorney
                         casino_affiliate_link={
-                            data?.dataCurrentLoyaltie?.casino_affiliate_link
+                            data?.dataCurrentLoyaltie?.casino_affiliate_link || data?.dataCurrentLoyaltie.link
                         }
                         casino_name={data?.dataCurrentLoyaltie?.casino_name}
                         likes={data?.dataCurrentLoyaltie?.likes}
                         queryId={data?.dataCurrentLoyaltie?.casino_id}
                         link_tc={data?.dataCurrentLoyaltie?.link_tc || ''}
                     />
-                    <HighRankSwiper />
+                    <HighRankSwiper casinoName={data?.dataCurrentLoyaltie?.casino_name || ''}/>
                     <HarryStyles />
                     <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />

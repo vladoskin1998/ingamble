@@ -1,11 +1,12 @@
 import { AccordionItem } from "../../components/acordion/Acordion"
 
 
+
 export const AccordionItemMultilevel = () => {
   return (
      <div className="information-loyaltie__column">
                         <div className="information-loyaltie__items">
-                            <div className="information-loyaltie__item item-information-loyaltie item-information-loyaltie_begginer ">
+                            <div className={`information-loyaltie__item item-information-loyaltie item-information-loyaltie_begginer `}>
                                 <AccordionItem
                                     heading={
                                         <div className="item-information-loyaltie__top top-item-information-loyaltie accordion--title--element">

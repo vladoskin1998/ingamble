@@ -97,6 +97,7 @@ export default function BlockType2Mobile({
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
                                                     <a
+                                                              rel="nofollow noopener"
                                                         href=""
                                                         aria-label="Put your description here."
                                                         target="_blank"
@@ -113,6 +114,7 @@ export default function BlockType2Mobile({
                                                             />
                                                         </div>
                                                         <a
+                                                                  rel="nofollow noopener"
                                                             href={
                                                                 item
                                                                     ?.casino_info
@@ -128,6 +130,7 @@ export default function BlockType2Mobile({
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">
                                                             <a
+                                                                      rel="nofollow noopener"
                                                                 href={
                                                                     item
                                                                         ?.casino_info
@@ -150,6 +153,7 @@ export default function BlockType2Mobile({
                                                             </a>
                                                             <div className="casino-small-card__body">
                                                                 <a
+                                                                          rel="nofollow noopener"
                                                                     href={`/casino/${sanitizeLink(
                                                                         item
                                                                             ?.casino_info

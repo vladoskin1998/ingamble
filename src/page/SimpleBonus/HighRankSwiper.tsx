@@ -46,7 +46,11 @@ const getFilteringLoyaltiesList = async (
     return response.data
 }
 
-export const HighRankSwiper = () => {
+export const HighRankSwiper = ({
+    casinoName
+}:{
+    casinoName: string
+}) => {
     const { data: CasinoDataHigh } = useQuery<FilterCasinoPostResponse>(
         ["filter/casinos"],
         () => getFilteringCasinoList({ min: 8, max: 10 }, 1),
@@ -83,7 +87,8 @@ export const HighRankSwiper = () => {
                             <div className="top__column">
                                 <div className="top__title-block">
                                     <h2 className="top__title">
-                                        Other High Ranked Casinos
+                                        More {casinoName} Bonuses
+
                                     </h2>
                                 </div>
                             </div>
@@ -249,7 +254,7 @@ export const HighRankSwiper = () => {
                             >
                                 {LoyaltieDataHigh?.results?.map((l) => (
                                     <SwiperSlide>
-                                        <div className="slider__slide slide-slider ">
+                                        <div className="slider__slide slide-slider " style={{height:"100%"}}>
                                             <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                                 <div
                                                     className="item-essential-programs-gamble__top"
@@ -366,7 +371,7 @@ export const HighRankSwiper = () => {
                                                                         }
                                                                     </div>
                                                                     <div className="value-item-stats-essential-programs-gamble__content">
-                                                                        Outstanding
+                                                                        {l?.loyalty_program?.loyalty_level_description}
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -152,7 +152,7 @@ export default function SimpleBonus() {
                            
                         </>
                     )}
-                    <HighRankSwiper />
+                    <HighRankSwiper casinoName={data?.dataBonus?.casino_name || ''}/>
                     {geoLocation.isAllowed && (
                         <>
                             <HarryStyles />
