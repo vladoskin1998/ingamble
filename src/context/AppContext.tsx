@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, ReactNode, useState } from 'react';
+import React, { createContext, useContext, useEffect, ReactNode, useState, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
 import { AllCategoriesHomeDataResponse } from '../types';
@@ -205,20 +205,18 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
             }
         )
 
-    const category = shuffleArray([
-        ...(dataCategories?.bonus_categories?.map((item) => ({
-            name: item.name,
-            link: `${window.location.origin}/all-bonus/${sanitizeLink(
-                item?.name
-            )}`,
-        })) || []),
-        ...(dataCategories?.casino_categories?.map((item) => ({
-            name: item.name,
-            link: `${window.location.origin}/all-casinos/${sanitizeLink(
-                item?.name
-            )}`,
-        })) || []),
-    ])
+        const category = useMemo(() => {
+            return shuffleArray([
+                ...(dataCategories?.bonus_categories?.map((item) => ({
+                    name: item.name,
+                    link: `${window.location.origin}/all-bonus/${sanitizeLink(item?.name)}`,
+                })) || []),
+                ...(dataCategories?.casino_categories?.map((item) => ({
+                    name: item.name,
+                    link: `${window.location.origin}/all-casinos/${sanitizeLink(item?.name)}`,
+                })) || []),
+            ]);
+        }, [dataCategories])
 
 
     return (

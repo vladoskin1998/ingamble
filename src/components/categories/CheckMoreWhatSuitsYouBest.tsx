@@ -1,50 +1,12 @@
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
-import $api from "../../http"
-import { AllCategoriesHomeDataResponse } from "../../types"
-import { sanitizeLink } from "../../helper"
-import { useQuery } from "react-query"
 
-const shuffleArray = (array: any): { link: string; name: string }[] => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        ;[array[i], array[j]] = [array[j], array[i]]
-    }
-    return array
-}
 
-const getDataHomePageCategories = async () => {
-    const response = await $api.get("get-data-home-page-categories/")
-    return response.data
-}
 
 export const CheckMoreWhatSuitsYouBest = () => {
-    const { isSidebarActive, setSidebarActive } = useAdaptiveBehavior()
+    const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
 
-    const { data: dataCategories } = useQuery<AllCategoriesHomeDataResponse>(
-        "get-data-home-page-categories/",
-        getDataHomePageCategories,
-        {
-            keepPreviousData: true,
-            staleTime: Infinity,
-        }
-    )
-
-    const category = shuffleArray([
-        ...(dataCategories?.bonus_categories?.map((item: any) => ({
-            name: item.name,
-            link: `${window.location.origin}/all-bonus/${sanitizeLink(
-                item?.name
-            )}`,
-        })) || []),
-        ...(dataCategories?.casino_categories?.map((item: any) => ({
-            name: item.name,
-            link: `${window.location.origin}/all-casinos/${sanitizeLink(
-                item?.name
-            )}`,
-        })) || []),
-    ])
 
     return (
         <section className="main-gamble__bottom-filter-tags bottom-filter-tags check-bottom-filter-tags">
