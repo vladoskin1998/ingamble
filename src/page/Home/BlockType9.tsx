@@ -15,7 +15,7 @@ export default function BlockType9({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9)
         return <></>
     return (
-        <section className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
+        <section aria-label="BlockTypeNumber.BlockType9" className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
             <div className="essential-programs-gamble__container container">
                 <div className="essential-programs-gamble__top top">
                     <div className="top__row">

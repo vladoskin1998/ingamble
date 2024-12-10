@@ -11,7 +11,7 @@ export default function BlockType8({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType8)
         return <></>
     return (
-        <section className="main-gamble__low-wager-bonuses low-wager-bonuses-gamble ">
+        <section  aria-label="BlockTypeNumber.BlockType8" className="main-gamble__low-wager-bonuses low-wager-bonuses-gamble ">
             <div className="low-wager-bonuses-gamble__container container">
                 <div className="low-wager-bonuses-gamble__top top">
                     <div className="top__row">
@@ -55,6 +55,7 @@ export default function BlockType8({
                             likes: item.bonus_info.bonus_likes,
                             casinoName: item.casino_info.casino_name,
                             bonuseName: item.bonus_info.bonus_name,
+                            imageLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`,
                             casinoLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`,
                             bonuseLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`,
                             tags: (

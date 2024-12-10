@@ -17,7 +17,7 @@ export default function BlockType7Mobile({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7)
         return <></>
     return (
-        <section className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+        <section aria-label=" BlockTypeNumber.BlockType7" className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="crypto-casinos-gamble__container container">
                 <div className="crypto-casinos-gamble__top top">
                     <div className="top__row">
