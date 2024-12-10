@@ -1,4 +1,4 @@
-import { lazy } from "react"
+import { lazy, useEffect } from "react"
 import { Wraper } from "../Wraper"
 
 import { useAdaptiveBehavior } from "../../context/AppContext"
@@ -160,9 +160,9 @@ export default function Home ()  {
 
   
 
-    // useEffect(() => {
-    //     initializeAdaptiveBehavior()
-    // }, [isLoading])
+    useEffect(() => {
+        initializeAdaptiveBehavior()
+    }, [isLoading])
 
     if (isLoading ) return <LogoLoader />
     return (
