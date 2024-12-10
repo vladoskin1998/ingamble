@@ -19,7 +19,8 @@ export const BonusSubType = ({bonus_subtype}: {bonus_subtype:{ name: string }[]}
                 return "deposits__column_medium";
         }
     }
-  
+  if(!bonus_subtype?.length)
+        return <></>
     
   return (
     <section className="simple-bonus__deposits deposits">

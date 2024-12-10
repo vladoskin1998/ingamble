@@ -14,7 +14,7 @@ export const SeeAllButton = ({
     type_category:DataHomeItemsBlockTypeCategory,
     parameter: string,
 }) => {
-    console.log("SeeAllButton",type_category, parameter);
+ 
     
     return (
         <a

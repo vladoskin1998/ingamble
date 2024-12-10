@@ -129,7 +129,7 @@ export default function BlockType3Mobile({
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
                                                             >
-                                                                <span className="different-casino-standart__image ibg">
+                                                                <span className="different-casino-standart__image ibg--custom">
                                                                     <LazyCardImg
                                                                         img={
                                                                             item?.[0]
@@ -137,6 +137,8 @@ export default function BlockType3Mobile({
                                                                                 .casino_image ||
                                                                             ""
                                                                         }
+                                                                        height="100%"
+                                                                        width="100%"
                                                                     />
                                                                 </span>
                                                             </a>
@@ -254,7 +256,7 @@ export default function BlockType3Mobile({
                                                                     target="_blank"
                                                                     className="different-casino-standart__image-block"
                                                                 >
-                                                                    <span className="different-casino-standart__image ibg">
+                                                                    <span className="different-casino-standart__image ibg--custom">
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item?.[1]
@@ -262,6 +264,8 @@ export default function BlockType3Mobile({
                                                                                     .casino_image ||
                                                                                 ""
                                                                             }
+                                                                             height="100%"
+                                                                        width="100%"
                                                                         />
                                                                     </span>
                                                                 </a>

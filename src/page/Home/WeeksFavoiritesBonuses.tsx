@@ -1,9 +1,4 @@
-import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
-import casinoCards02 from "../../assets/img/casino-cards/02.jpg"
-import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
-import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
-import casinoCards05 from "../../assets/img/casino-cards/05.jpg"
-import MainSlider from "../../components/swiper/MainSlider"
+
 
 
 export default function WeeksFavoiritesBonuses() {
@@ -36,7 +31,7 @@ export default function WeeksFavoiritesBonuses() {
                         </div>
                     </div>
                 </div>
-                <MainSlider
+                {/* <MainSlider
                                 data={[
                                     {
                                         img: casinoCards04,
@@ -87,7 +82,7 @@ export default function WeeksFavoiritesBonuses() {
                                             "New Year Bet Race - $30,000 Rocket...",
                                     },
                                 ]}
-                            />
+                            /> */}
                 {/* <div className="weeks-favoirites-bonuses-gamble__slider slider">
                     <div className="slider__body">
                         <div className="weeks-favoirites-bonuses-gamble__swiper slider__swiper swiper">

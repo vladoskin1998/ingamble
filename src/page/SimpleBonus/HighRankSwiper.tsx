@@ -116,8 +116,9 @@ export const HighRankSwiper = ({
                             img: c?.casino_image || "",
                             raiting: c?.casino_rank,
                             likes: c?.likes,
-                            nameCasino: c?.casino_name,
-                            link: c?.casino_affiliate_link,
+                            casinoName: c?.casino_name,
+                            playLink: c?.casino_affiliate_link,
+                            
                             casinoLink: `/casino/${sanitizeLink(c?.casino_name)}?queryId=${c?.casino_id}`,
 
                             // comment: "New Year Bet Race - $30,000 Rocket...",
@@ -158,7 +159,6 @@ export const HighRankSwiper = ({
                                     rel="nofollow noopener"
                                     to="/all-bonus"
                                     aria-label="Put your description here."
-                                   
                                     className="top__btn"
                                 >
                                     <span>See All</span>
@@ -176,8 +176,10 @@ export const HighRankSwiper = ({
                             img: b?.bonus_image || "",
                             raiting: b?.casino_rank,
                             likes: b?.bonus_likes,
-                            nameCasino: b?.casino_name,
-                            comment: b?.bonus_name,
+                            casinoName: b?.casino_name,
+                            bonuseName: b?.bonus_name,
+                            imageLink: `/casino/${sanitizeLink(b?.casino_name)}/bonuses/${sanitizeLink(b?.bonus_name)}?queryId=${b?.bonus_id}`,
+                            playLink: b.casino_affiliate_link ,
                             casinoLink: `/casino/${sanitizeLink(b?.casino_name)}?queryId=${b?.casino_id}`,
                             bonuseLink: `/casino/${sanitizeLink(b?.casino_name)}/bonuses/${sanitizeLink(b?.bonus_name)}?queryId=${b?.bonus_id}`,
                             tags: (

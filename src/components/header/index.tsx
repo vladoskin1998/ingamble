@@ -90,12 +90,20 @@ export const Header = ({
         event.preventDefault()
         setIsMenuOpen(!isMenuOpen)
         setIsBodyLocked(!isBodyLocked)
-        if (!isBodyLocked) {
+        // if (!isBodyLocked) {
+        //     document.body.classList.add("lock")
+        // } else {
+        //     document.body.classList.remove("lock")
+        // }
+    }
+
+    useEffect(() => {
+        if (isBodyLocked) {
             document.body.classList.add("lock")
         } else {
             document.body.classList.remove("lock")
         }
-    }
+    },[isBodyLocked])
 
     useEffect(() => {
         const gambleBody = document.querySelector(".gamble__body")
@@ -122,6 +130,10 @@ export const Header = ({
             navigate("/filter-casinos")
         }
     }
+
+    
+
+    const [activeLink,setActiveLink] = useState<string>(window.location.pathname)
 
     return (
         <header className="header">
@@ -167,8 +179,8 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to=""
                                         aria-label="Put your description here."
-                                    
-                                        className="menu-header__link current"
+                                        onClick={() => setActiveLink('/')}
+                                        className={`menu-header__link ${ (activeLink === '' || activeLink === '/') && "current"}`}
                                     >
                                         <span>Gambling Hub</span>
                                     </Link>
@@ -178,8 +190,8 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-bonus"
                                         aria-label="Put your description here."
-                                    
-                                        className="menu-header__link"
+                                        onClick={() => setActiveLink('/all-bonus')}
+                                        className={`menu-header__link ${ (activeLink === '/all-bonus' ) && "current"}`}
                                     >
                                         <span>All Bonuses</span>
                                     </Link>
@@ -189,8 +201,8 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-casinos"
                                         aria-label="Put your description here."
-                                        
-                                        className="menu-header__link"
+                                        onClick={() => setActiveLink('/all-casinos')}
+                                        className={`menu-header__link ${ (activeLink === '/all-casinos' ) && "current"}`}
                                     >
                                         <span>Casinos</span>
                                     </Link>
@@ -200,8 +212,8 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-loyalties"
                                         aria-label="Put your description here."
-                                
-                                        className="menu-header__link"
+                                        onClick={() => setActiveLink('/all-loyalties')}
+                                        className={`menu-header__link ${ (activeLink === '/all-loyalties' ) && "current"}`}
                                     >
                                         <span>Loyalties</span>
                                     </Link>
@@ -456,8 +468,9 @@ export const Header = ({
                                         <Link
                                             to="/"
                                             aria-label="Put your description here."
-                                        
-                                            className="menu-header__link current"
+                                            onClick={() => setActiveLink('/')}
+                                            className={`menu-header__link ${ (activeLink === '' || activeLink === '/') && "current"}`}
+                                         
                                         >
                                             <span>Gambling Hub</span>
                                         </Link>
@@ -466,8 +479,10 @@ export const Header = ({
                                         <Link
                                             to="/all-bonus"
                                             aria-label="Put your description here."
-                                          
-                                            className="menu-header__link"
+                                            onClick={() => {
+                                                setActiveLink('/all-bonus')
+                                            }}
+                                            className={`menu-header__link ${ (activeLink === '/all-bonus' ) && "current"}`}
                                         >
                                             <span>All Bonuses</span>
                                         </Link>
@@ -476,8 +491,8 @@ export const Header = ({
                                         <Link
                                             to="/all-casinos"
                                             aria-label="Put your description here."
-                                          
-                                            className="menu-header__link"
+                                            onClick={() => setActiveLink('/all-casinos')}
+                                            className={`menu-header__link ${ (activeLink === '/all-casinos' ) && "current"}`}
                                         >
                                             <span>Casinos</span>
                                         </Link>
@@ -486,8 +501,8 @@ export const Header = ({
                                         <Link
                                             to="/all-loyalties"
                                             aria-label="Put your description here."
-                                     
-                                            className="menu-header__link"
+                                            onClick={() => setActiveLink('/all-loyalties')}
+                                            className={`menu-header__link ${ (activeLink === '/all-loyalties' ) && "current"}`}
                                         >
                                             <span>Loyalties</span>
                                         </Link>

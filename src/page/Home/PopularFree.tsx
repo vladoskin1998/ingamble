@@ -1,10 +1,4 @@
-import MainSlider from "../../components/swiper/MainSlider";
 
-import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
-import casinoCards02 from "../../assets/img/casino-cards/02.jpg"
-import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
-import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
-import casinoCards05 from "../../assets/img/casino-cards/05.jpg"
 
 
 export default function PopularFree () {
@@ -37,7 +31,7 @@ export default function PopularFree () {
                 </div>
             </div>
         </div>
-        <MainSlider
+        {/* <MainSlider
             data={[
                 {
                     img: casinoCards01,
@@ -88,7 +82,7 @@ export default function PopularFree () {
                         "New Year Bet Race - $30,000 Rocket...",
                 },
             ]}
-        />
+        /> */}
     </div>
 </section>
   )

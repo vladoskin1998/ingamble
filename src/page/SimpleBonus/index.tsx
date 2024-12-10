@@ -51,6 +51,7 @@ export default function SimpleBonus() {
         headers: any
     }>(["get-data-bonus", queryId,], () => getBonusDataFetch({queryId}), {
         keepPreviousData: true,
+        staleTime: Infinity,
         enabled: !!queryId,
     })
 

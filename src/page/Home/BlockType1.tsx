@@ -59,9 +59,10 @@ export default function BlockType1({
                             img: item?.bonus_info?.bonus_image,
                             raiting: item?.casino_info?.casino_rank,
                             likes: item?.bonus_info?.bonus_likes,
-                            nameCasino: item?.casino_info?.casino_name,
-                            comment: item?.bonus_info?.bonus_name,
-                            link: item?.casino_info?.casino_affiliate_link,
+                            casinoName: item?.casino_info?.casino_name,
+                            bonuseName: item?.bonus_info?.bonus_name,
+                            playLink: item?.casino_info?.casino_affiliate_link,
+                            imageLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`,
                             casinoLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`,
                             bonuseLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`
                         }))}

@@ -1,11 +1,4 @@
 
-import MainSlider from "../../components/swiper/MainSlider"
-import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
-
-import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
-import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
-import casinoCards05 from "../../assets/img/casino-cards/05.jpg"
-
 
 
 export default function GetStartedWithPowerfulWelcomeBonusPacks ()  {
@@ -42,7 +35,7 @@ export default function GetStartedWithPowerfulWelcomeBonusPacks ()  {
         <div className="welcome-bonus-packs-gamble__slider slider">
             <div className="slider__body">
                 <div className="welcome-bonus-packs-gamble__swiper slider__swiper swiper">
-                <MainSlider
+                {/* <MainSlider
                                 data={[
                                     {
                                         img: casinoCards03,
@@ -93,7 +86,7 @@ export default function GetStartedWithPowerfulWelcomeBonusPacks ()  {
                                             "New Year Bet Race - $30,000 Rocket...",
                                     },
                                 ]}
-                            />
+                            /> */}
                 </div>
             </div>
             <div className="slider__bottom bottom-slider">

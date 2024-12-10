@@ -1,11 +1,3 @@
-import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
-
-import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
-import casinoCards05 from "../../assets/img/casino-cards/05.jpg"
-import casinoCards06 from "../../assets/img/casino-cards/06.jpg"
-
-import casinoCards07 from "../../assets/img/casino-cards/07.jpg"
-import MainSlider from '../../components/swiper/MainSlider'
 
 export const GreatLiveCasinoBonuses = () => {
   return (
@@ -43,7 +35,7 @@ export const GreatLiveCasinoBonuses = () => {
         <div className="live-casino-bonuses-gamble__slider slider">
             <div className="slider__body">
                 <div className="live-casino-bonuses-gamble__swiper slider__swiper swiper">
-                    <MainSlider
+                    {/* <MainSlider
                         data={[
                             {
                                 img: casinoCards06,
@@ -94,7 +86,7 @@ export const GreatLiveCasinoBonuses = () => {
                                     "New Year Bet Race - $30,000 Rocket...",
                             },
                         ]}
-                    />
+                    /> */}
                 </div>
             </div>
             <div className="slider__bottom bottom-slider">

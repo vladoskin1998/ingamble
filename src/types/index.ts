@@ -183,6 +183,7 @@ interface EssentialCard {
     loyalty_count_levels: number;
     casino_affiliate_link: string;
     loyalty_level_description: string;
+    loyaltie_id?: number;
 }
 
 export enum DataHomeItemsBlockTypeCategory {

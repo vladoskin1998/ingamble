@@ -726,11 +726,11 @@ header {
     font-weight: 600;
     color: var(--Text-Txt_Main, #fff);
     border-radius: var(--SystemCorners-Small, 8px);
-    -webkit-transition: all 0.3s ease 0s;
+    /* -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
     -ms-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s; */
     white-space: nowrap;
     position: relative;
 }

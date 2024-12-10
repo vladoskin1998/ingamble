@@ -373,7 +373,7 @@ const LisDisplayedData = memo(
                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                         <a
                                                   rel="nofollow noopener"
-                                               href={item.casino_affiliate_link}
+                                               href={item?.casino_affiliate_link }
                                             target="_blank"
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-view"
@@ -382,7 +382,7 @@ const LisDisplayedData = memo(
                                         </a>
                                         <Link
                                                   rel="nofollow noopener"
-                                            to={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.loyalty_program.id}`}
+                                                  to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
                                        
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-more"

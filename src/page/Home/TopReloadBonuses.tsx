@@ -1,12 +1,5 @@
 
-import casinoCards01 from "../../assets/img/casino-cards/01.jpg"
 
-import casinoCards03 from "../../assets/img/casino-cards/03.jpg"
-import casinoCards04 from "../../assets/img/casino-cards/04.jpg"
-import casinoCards05 from "../../assets/img/casino-cards/05.jpg"
-
-import casinoCards08 from "../../assets/img/casino-cards/08.jpg"
-import MainSlider from "../../components/swiper/MainSlider"
 
 export default function TopReloadBonuses () {
   return (
@@ -39,7 +32,7 @@ export default function TopReloadBonuses () {
                 </div>
             </div>
         </div>
-        <MainSlider
+        {/* <MainSlider
             data={[
                 {
                     img: casinoCards03,
@@ -95,7 +88,7 @@ export default function TopReloadBonuses () {
                
                 },
             ]}
-        />
+        /> */}
     </div>
 </section>
   )

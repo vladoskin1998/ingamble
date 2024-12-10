@@ -37,20 +37,13 @@ export const HowToGetBonus = ({data}:{data:GetDataBonusResponse | undefined}) =>
                         </div>
                         <div className="main-get-bonus__btns">
                             <div className="main-get-bonus__btns-item">
-                                <Link
+                                <a
                                     rel="nofollow noopener"
-                                    to={`go/${
-                                        data?.casino_name
-                                            .toLocaleLowerCase()
-                                            .replace(
-                                                /\s/g,
-                                                "-"
-                                            ) || ""
-                                    }`}
+                                    href={data?.casino_affiliate_link || data?.link}
                                     aria-label="Put your description here."
                               
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
-                                    title="link"
+                          
                                     onClick={handleClick}
                                 >
                                     <span>
@@ -60,7 +53,7 @@ export const HowToGetBonus = ({data}:{data:GetDataBonusResponse | undefined}) =>
                                         />
                                     </span>
                                     Get Bonus
-                                </Link>
+                                </a>
                             </div>
                             <div className="main-get-bonus__btns-item">
                                 <Link

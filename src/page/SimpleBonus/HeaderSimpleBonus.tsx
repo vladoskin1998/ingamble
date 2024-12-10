@@ -7,9 +7,6 @@ import { LazyLoadImage } from "react-lazy-load-image-component"
 import giftIcon from "../../assets/img/icons/gift.svg"
 import { useState, useEffect } from "react"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { euroToDolar } from "../../helper"
-import { Link } from "react-router-dom"
-
 
 const color_label = [
     "tags-casino-card__item_green",
@@ -211,9 +208,9 @@ export const HeaderSimpleBonus = ({
                                         T&C Apply
                                     </span>
                                 </div>
-                                <Link
+                                <a
                                     rel="nofollow noopener"
-                                    to={`/all-bonus`}
+                                    href={data?.casino_affiliate_link || '/'}
                                     aria-label="Put your description here."
                                    
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
@@ -229,7 +226,7 @@ export const HeaderSimpleBonus = ({
                                     {geoLocation?.isAllowed
                                         ? "Get Bonus and Play "
                                         : "Browse Recommended Bonuses"}
-                                </Link>
+                                </a>
                             </div>
                             <div className="content-casino-info__features features-content-casino-info">
                                 <div className="features-content-casino-info__row">
@@ -316,15 +313,7 @@ export const HeaderSimpleBonus = ({
                                             </div>
                                             <div className="item-features-content-casino-info__body">
                                                 <div className="item-features-content-casino-info__number">
-                                                    {`${
-                                                        data?.bonus_min_dep?.[0]
-                                                            ?.min_value || 0
-                                                    }${euroToDolar(
-                                                        data?.bonus_min_dep?.[0]
-                                                            ?.symbol?.symbol || "$"
-                                                    )}
-
-                                                    `}
+                                                {data?.bonus_min_dep?.[0]?.min_value ? (data?.bonus_min_dep?.[0]?.min_value + '$') : "-" }
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
                                                     To Activate
@@ -341,13 +330,9 @@ export const HeaderSimpleBonus = ({
                                             </div>
                                             <div className="item-features-content-casino-info__body">
                                                 <div className="item-features-content-casino-info__number">
-                                                    {`${
-                                                        data?.max_bet?.[0]
-                                                            ?.value || 0
-                                                    }${euroToDolar(
-                                                        data?.max_bet?.[0]
-                                                            ?.symbol?.symbol || "$"
-                                                    )}`}
+
+                                                {data?.max_bet?.[0]?.value ? (data?.max_bet?.[0]?.value + '$') : "-" } 
+                                                    
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
                                                     Per Spin

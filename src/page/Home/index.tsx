@@ -86,7 +86,7 @@ const getHomeDataFetch = async () => {
 
 
 const renderBlock = (block: any) => {
-    console.log("block", block)
+   
 
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:

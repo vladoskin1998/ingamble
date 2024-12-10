@@ -83,16 +83,16 @@ export default function BlockType9({
                                 >
                                     <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                         <div className="item-essential-programs-gamble__top">
-                                            <a
-                                                href={item?.casino_affiliate_link}
+                                            <Link
+                                                to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`}
                                                 aria-label="Put your description here."
-                                                target="_blank"
+                                                
                                                 className="item-essential-programs-gamble__logo"
                                             >
                                                 <LazyCardImg
                                                     img={item.card_logo || ""}
                                                 />
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div className="item-essential-programs-gamble__body">
                                             <div className="item-essential-programs-gamble__provider">
@@ -218,17 +218,17 @@ export default function BlockType9({
                                             <div className="item-essential-programs-gamble__bottom-column">
                                                 <a
                                                     href={
-                                                        item?.casino_affiliate_link || "" 
+                                                        item?.casino_affiliate_link || '/'
                                                     }
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="item-essential-programs-gamble__btn item-essential-programs-gamble__btn_yellow"
                                                 >
-                                                    View Casino
+                                                    Visit  Casino
                                                 </a>
                                             </div>
                                             <div className="item-essential-programs-gamble__bottom-column">
-                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item.casino_id}`}
+                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item?.loyaltie_id}`}
                                                     aria-label="Put your description here."
                                            
                                                     className="item-essential-programs-gamble__btn"

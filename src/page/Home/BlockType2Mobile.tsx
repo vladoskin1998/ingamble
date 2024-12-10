@@ -97,14 +97,16 @@ export default function BlockType2Mobile({
                                         <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
-                                                    <a
+                                                    <div
                                                               rel="nofollow noopener"
-                                                        href=""
+                                            
                                                         aria-label="Put your description here."
-                                                        target="_blank"
+                                                      
                                                         className="casino-card__image-block"
                                                     >
-                                                        <div className="casino-card__image ibg">
+                                                        <Link className="casino-card__image ibg--custom"
+                                                         to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                        >
                                                             <LazyCardImg
                                                                 img={
                                                                     item
@@ -112,8 +114,10 @@ export default function BlockType2Mobile({
                                                                         ?.bonus_image ||
                                                                     ""
                                                                 }
+                                                                 height="100%"
+                                                                        width="100%"
                                                             />
-                                                        </div>
+                                                        </Link>
                                                         <a
                                                                   rel="nofollow noopener"
                                                             href={
@@ -127,21 +131,17 @@ export default function BlockType2Mobile({
                                                         >
                                                             Play
                                                         </a>
-                                                    </a>
+                                                    </div>
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">
-                                                            <a
+                                                            <Link
                                                                       rel="nofollow noopener"
-                                                                href={
-                                                                    item
-                                                                        ?.casino_info
-                                                                        ?.casino_affiliate_link
-                                                                }
+                                                                      to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                 aria-label="Put your description here."
-                                                                target="_blank"
+                                                               
                                                                 className="casino-small-card__image-block"
                                                             >
-                                                                <div className="casino-small-card__image ibg">
+                                                                <div className="casino-small-card__image ibg--custom">
                                                                     <LazyCardImg
                                                                         img={
                                                                             item
@@ -149,9 +149,11 @@ export default function BlockType2Mobile({
                                                                                 ?.casino_image ||
                                                                             ""
                                                                         }
+                                                                         height="100%"
+                                                                        width="100%"
                                                                     />
                                                                 </div>
-                                                            </a>
+                                                            </Link>
                                                             <div className="casino-small-card__body">
                                                                 <Link
                                                                           rel="nofollow noopener"

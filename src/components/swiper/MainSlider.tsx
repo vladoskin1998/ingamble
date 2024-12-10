@@ -8,7 +8,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { SwiperRef } from "swiper/react"
 import { LineLoader } from "../loader/LineLoader"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const MainSliderImg = ({ img }: { img: string }) => {
     const [loading, setLoading] = useState(true)
@@ -36,12 +36,13 @@ const MainSlider = ({
 }: {
     data?: {
         img: string | null
-        nameCasino: string
-        comment?: string
+        casinoName: string
+        bonuseName?: string
         raiting: string | number
         likes: string | number
         tags?: React.ReactNode
-        link?: string
+        imageLink?: string;
+        playLink?: string;
         casinoLink?: string,
         bonuseLink?: string,
     }[]
@@ -60,6 +61,13 @@ const MainSlider = ({
             }
         }
     }, [])
+
+    const navigate = useNavigate()
+
+    const navToImageLink = (e:React.MouseEvent,l:string) => {
+        e.preventDefault()
+        navigate(l)
+    }
     return (
         <div className="more-staket-simple-bonus__slider slider">
             <div className="slider__body">
@@ -90,11 +98,11 @@ const MainSlider = ({
                                 <SwiperSlide key={index}>
                                     <div className="slider__slide slide-slider swiper-slide">
                                         <div className="slide-slider__item casino-card">
-                                            <a
-                                                rel="nofollow noopener"
-                                                href=""
+                                            <Link
+                                                to={item?.imageLink || '/'}
+                                                onClick={(e) => navToImageLink(e,item?.imageLink || '')}
                                                 aria-label="Put your description here."
-                                             
+                                              
                                                 className="casino-card__image-block"
                                             >
                                                 <MainSliderImg
@@ -102,14 +110,15 @@ const MainSlider = ({
                                                 />
                                                 <a
                                                     rel="nofollow noopener"
-                                                    href={item.link}
+                                                    href={item.playLink}
                                                     target="_blank"
                                                     aria-label="Put your description here."
                                                     className="casino-card__bnt"
+                                                    onClick={(e) => e.stopPropagation()} 
                                                 >
                                                     Play
                                                 </a>
-                                            </a>
+                                            </Link>
                                             {item?.tags && (
                                                 <div className="casino-card__tags tags-casino-card">
                                                     {item.tags}
@@ -125,7 +134,7 @@ const MainSlider = ({
                                                          
                                                             className="info-casino-card__stake-link"
                                                         >
-                                                            {item.nameCasino}
+                                                            {item.casinoName}
                                                         </Link>
                                                         <div className="info-casino-card__stake-rating">
                                                             <span className="info-casino-card__stake-rating-icon casino-small-card__rating-icon">
@@ -161,7 +170,7 @@ const MainSlider = ({
                                                     
                                                     className="casino-card__name"
                                                 >
-                                                    {item?.comment}
+                                                    {item?.bonuseName}
                                                 </Link>
                                             </div>
                                         </div>

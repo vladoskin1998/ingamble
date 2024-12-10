@@ -111,7 +111,22 @@ export default function BlockType2({
                                                             }}
                                                         >
                                                             <div className="slide-baner-row-block__item item-baner-row-block">
-                                                                <div className="item-baner-row-block__image ibg">
+                                                                <Link className="item-baner-row-block__image ibg--custom"
+                                                                    to={`/casino/${sanitizeLink(
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_name
+                                                                    )}/bonuses/${sanitizeLink(
+                                                                        item
+                                                                            ?.bonus_info
+                                                                            ?.bonus_name
+                                                                    )}?queryId=${
+                                                                        item
+                                                                            ?.bonus_info
+                                                                            ?.bonus_id
+                                                                    }`}
+                                                                    onClick={e=> e.stopPropagation()}
+                                                                >
                                                                     <LazyCardImg
                                                                         img={
                                                                             item
@@ -119,8 +134,10 @@ export default function BlockType2({
                                                                                 .bonus_image ||
                                                                             ""
                                                                         }
+                                                                        height="100%"
+                                                                        width="100%"
                                                                     />
-                                                                </div>
+                                                                </Link>
                                                                 <a
                                                                     rel="nofollow noopener"
                                                                     href=""
@@ -142,7 +159,9 @@ export default function BlockType2({
                                                                                 target="_blank"
                                                                                 className="casino-small-card__image-block"
                                                                             >
-                                                                                <div className="casino-small-card__image ibg">
+                                                                                <Link 
+                                                                                    to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                                className="casino-small-card__image ibg--custom">
                                                                                     <LazyCardImg
                                                                                         img={
                                                                                             item
@@ -151,8 +170,10 @@ export default function BlockType2({
                                                                                             ""
                                                                                         }
                                                                                         size="medium"
+                                                                                         height="100%"
+                                                                        width="100%"
                                                                                     />
-                                                                                </div>
+                                                                                </Link>
                                                                             </a>
                                                                             <div className="casino-small-card__body">
                                                                                 <Link
@@ -298,18 +319,14 @@ export default function BlockType2({
                                                     className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide"
                                                 >
                                                     <div className="slide-slider__item different-casino-bg">
-                                                        <a
+                                                        <Link
                                                             rel="nofollow noopener"
-                                                            href={
-                                                                item.casino_info
-                                                                    .casino_affiliate_link ||
-                                                                ""
-                                                            }
+                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                             aria-label="Put your description here."
-                                                            target="_blank"
+                                                           
                                                             className="different-casino-bg__image-block"
                                                         >
-                                                            <span className="different-casino-bg__image ibg">
+                                                            <span className="different-casino-bg__image ibg--custom">
                                                                 <LazyCardImg
                                                                     img={
                                                                         item
@@ -317,9 +334,11 @@ export default function BlockType2({
                                                                             .casino_image ||
                                                                         ""
                                                                     }
+                                                                    height="100%"
+                                                                    width="100%"
                                                                 />
                                                             </span>
-                                                        </a>
+                                                        </Link>
                                                         <div className="different-casino-bg__content">
                                                             <Link
                                                                 rel="nofollow noopener"

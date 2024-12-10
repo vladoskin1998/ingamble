@@ -6,7 +6,6 @@ import slotsIcon from "../../assets/img/games/01.svg"
 import { GetDataBonusResponse } from "../../types"
 import moment from "moment"
 import { AccordionItem } from "../../components/acordion/Acordion"
-import { euroToDolar } from "../../helper"
 
 export const BonusInformation = ({
     data,
@@ -34,31 +33,28 @@ export const BonusInformation = ({
         BonusRestrictionGames: useRef<HTMLDivElement | null>(null),
         ProviderRestrictions: useRef<HTMLDivElement | null>(null),
         CountryRestrictions: useRef<HTMLDivElement | null>(null),
-      };
-    
+    }
 
-      const handleClickOutside = (event: MouseEvent): void => {
+    const handleClickOutside = (event: MouseEvent): void => {
         Object.keys(modalRefs).forEach((key) => {
             //@ts-ignore
-          const ref = modalRefs[key as keyof ModalState]?.current as any;
-          if (ref && !ref.contains(event.target as Node)) {
-            setOpenModal(prevState => ({
-              ...prevState,
-              [key]: false
-            }));
-          }
-        });
-      };
-    
-      useEffect(() => {
+            const ref = modalRefs[key as keyof ModalState]?.current as any
+            if (ref && !ref.contains(event.target as Node)) {
+                setOpenModal((prevState) => ({
+                    ...prevState,
+                    [key]: false,
+                }))
+            }
+        })
+    }
 
-        document.addEventListener('mousedown', handleClickOutside);
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside)
 
         return () => {
-          document.removeEventListener('mousedown', handleClickOutside);
-        };
-      }, []);
-
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    }, [])
 
     useEffect(() => {
         if (BonusInfoIsOpen.Restrictions) {
@@ -110,11 +106,9 @@ export const BonusInformation = ({
                                                 Total Bonus amount:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.bonus_amount?.[0]?.value}{" "}
-                                                {
-                                                   euroToDolar(  data?.bonus_amount?.[0]
-                                                        ?.symbol?.symbol || '$')
-                                                }
+                                                {data?.bonus_amount?.[0]?.value
+                                                    ? `${data?.bonus_amount?.[0]?.value}$`
+                                                    : "-"}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -122,14 +116,9 @@ export const BonusInformation = ({
                                                 Max bet:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {`${
-                                                    data?.max_bet?.[0].value ||
-                                                    0
-                                                } ${
-                                                    euroToDolar( data?.max_bet?.[0]?.symbol
-                                                        ?.symbol || "$")
-                                                   
-                                                }`}
+                                                {data?.max_bet?.[0]?.value
+                                                    ? `${data?.max_bet?.[0]?.value}$`
+                                                    : "-"}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -137,7 +126,10 @@ export const BonusInformation = ({
                                                 Min dep:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {` ${data?.bonus_min_dep?.[0]?.min_value || 0 } ${euroToDolar(data?.bonus_min_dep?.[0]?.symbol?.name || '')}` }
+                                                {data?.bonus_min_dep?.[0]
+                                                    ?.min_value
+                                                    ? `${data?.bonus_min_dep?.[0]?.min_value}$`
+                                                    : "-"}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -163,13 +155,10 @@ export const BonusInformation = ({
                                                 </span>
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {`${
-                                                    data?.bonus_max_win?.[0]
-                                                        ?.max_value || 0
-                                                } ${
-                                                    euroToDolar(data?.bonus_max_win?.[0]
-                                                        ?.symbol?.symbol || "") 
-                                                }`}
+                                                {data?.bonus_max_win?.[0]
+                                                    ?.max_value
+                                                    ? `${data?.bonus_max_win?.[0]?.max_value}$`
+                                                    : "-"}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -211,9 +200,10 @@ export const BonusInformation = ({
                                                 </span>
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.bonus_expiration.days ||
-                                                    0}{" "}
-                                                days
+                                                {!data?.bonus_expiration?.days  ? "-" : 
+                                                data?.bonus_expiration?.days === 1 ? '1 day' : `${data?.bonus_expiration?.days} days`}
+                                                    
+                                                
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -221,15 +211,17 @@ export const BonusInformation = ({
                                                 Bonus period:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {`${moment(
+                                                { (data?.promotion_period
+                                                        ?.start_date &&  data?.promotion_period
+                                                        ?.end_date) ? `${moment(
                                                     data?.promotion_period
-                                                        .start_date
+                                                        ?.start_date
                                                 ).format(
                                                     "DD.MM.YYYY"
                                                 )} - ${moment(
                                                     data?.promotion_period
-                                                        .end_date
-                                                ).format("DD.MM.YYYY")}`}
+                                                        ?.end_date
+                                                ).format("DD.MM.YYYY")}` : '-'}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -240,7 +232,7 @@ export const BonusInformation = ({
                                                 {data?.sticky ? "Yes" : "No"}
                                             </div>
                                         </div>
-                                        <div className="content-bonus-information__item item-content-bonus-information ''">
+                                        {/* <div className="content-bonus-information__item item-content-bonus-information ''">
                                             <div className="item-content-bonus-information__label">
                                                 Bonus Terms:
                                             </div>
@@ -255,7 +247,7 @@ export const BonusInformation = ({
                                                     Casino bonus terms
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             }
@@ -296,7 +288,10 @@ export const BonusInformation = ({
                                                             <use xlinkHref="#info"></use>
                                                         </svg>
                                                     </span>
-                                                    <span className="item-content-bonus-information__info-text" style={{zIndex:10}}>
+                                                    <span
+                                                        className="item-content-bonus-information__info-text"
+                                                        style={{ zIndex: 10 }}
+                                                    >
                                                         Text field,{" "}
                                                         <span>
                                                             with poyasnenie
@@ -327,47 +322,56 @@ export const BonusInformation = ({
                                                 }`}
                                             </div>
                                         </div>
-                                      {  data?.wagering?.wagering_difficulty === 'easy' && <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Bonus Max win:
-                                            </div>
-                                            <div className="item-content-bonus-information__value">
-                                                <div className="item-content-bonus-information__status status-item-content-bonus-information status-item-content-bonus-information_low">
-                                                    <span className="status-item-content-bonus-information__label">
-                                                        Easy
-                                                    </span>
-                                                    <span className="status-item-content-bonus-information__panel"></span>
-                                                </div>
-                                            </div>
-                                        </div> }
-                                        {  data?.wagering?.wagering_difficulty === 'medium' &&   <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Bonus Max win:
-                                            </div>
-                                            <div className="item-content-bonus-information__value">
-                                                <div className="item-content-bonus-information__status status-item-content-bonus-information status-item-content-bonus-information_medium">
-                                                    <span className="status-item-content-bonus-information__label">
-                                                        Medium
-                                                    </span>
-                                                    <span className="status-item-content-bonus-information__panel"></span>
-                                                </div>
-                                            </div>
-                                        </div>}
-                                        {  data?.wagering?.wagering_difficulty === 'hard' &&  <div className="item-content-bonus-information-wrap ''">
+                                        {data?.wagering?.wagering_difficulty ===
+                                            "easy" && (
                                             <div className="content-bonus-information__item item-content-bonus-information">
                                                 <div className="item-content-bonus-information__label">
                                                     Bonus Max win:
                                                 </div>
                                                 <div className="item-content-bonus-information__value">
-                                                    <div className="item-content-bonus-information__status status-item-content-bonus-information status-item-content-bonus-information_quick">
+                                                    <div className="item-content-bonus-information__status status-item-content-bonus-information status-item-content-bonus-information_low">
                                                         <span className="status-item-content-bonus-information__label">
-                                                            Hard
+                                                            Easy
                                                         </span>
                                                         <span className="status-item-content-bonus-information__panel"></span>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>}
+                                        )}
+                                        {data?.wagering?.wagering_difficulty ===
+                                            "medium" && (
+                                            <div className="content-bonus-information__item item-content-bonus-information">
+                                                <div className="item-content-bonus-information__label">
+                                                    Bonus Max win:
+                                                </div>
+                                                <div className="item-content-bonus-information__value">
+                                                    <div className="item-content-bonus-information__status status-item-content-bonus-information status-item-content-bonus-information_medium">
+                                                        <span className="status-item-content-bonus-information__label">
+                                                            Medium
+                                                        </span>
+                                                        <span className="status-item-content-bonus-information__panel"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {data?.wagering?.wagering_difficulty ===
+                                            "hard" && (
+                                            <div className="item-content-bonus-information-wrap ''">
+                                                <div className="content-bonus-information__item item-content-bonus-information">
+                                                    <div className="item-content-bonus-information__label">
+                                                        Bonus Max win:
+                                                    </div>
+                                                    <div className="item-content-bonus-information__value">
+                                                        <div className="item-content-bonus-information__status status-item-content-bonus-information status-item-content-bonus-information_quick">
+                                                            <span className="status-item-content-bonus-information__label">
+                                                                Hard
+                                                            </span>
+                                                            <span className="status-item-content-bonus-information__panel"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             }
@@ -593,7 +597,9 @@ export const BonusInformation = ({
                                                         openModal.BonusRestrictionGames &&
                                                         "active"
                                                     }`}
-                                                  ref={modalRefs.BonusRestrictionGames}
+                                                    ref={
+                                                        modalRefs.BonusRestrictionGames
+                                                    }
                                                 >
                                                     <div className="popup-item-content-bonus-information__body">
                                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
@@ -695,7 +701,9 @@ export const BonusInformation = ({
                                                         openModal.ProviderRestrictions &&
                                                         "active"
                                                     }`}
-                                                    ref={modalRefs.ProviderRestrictions}
+                                                    ref={
+                                                        modalRefs.ProviderRestrictions
+                                                    }
                                                 >
                                                     <div className="popup-item-content-bonus-information__body">
                                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
@@ -752,7 +760,6 @@ export const BonusInformation = ({
                                                                                         slotsIcon
                                                                                     }
                                                                                     alt="Slots"
-                                                                               
                                                                                 />
                                                                             </span>
                                                                             <span className="game-popup-item-content-bonus-information__name">
@@ -801,7 +808,9 @@ export const BonusInformation = ({
                                                         openModal?.CountryRestrictions &&
                                                         "active"
                                                     }`}
-                                                    ref={modalRefs?.CountryRestrictions} 
+                                                    ref={
+                                                        modalRefs?.CountryRestrictions
+                                                    }
                                                 >
                                                     <div className="popup-item-content-bonus-information__body">
                                                         <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
@@ -875,8 +884,8 @@ export const BonusInformation = ({
                                                     RTP restriction:
                                                 </div>
                                                 <div className="item-content-bonus-information__value">
-                                                    {data?.restriction_rtp_game}{"%"}
-                                                    
+                                                    {data?.restriction_rtp_game}
+                                                    {"%"}
                                                 </div>
                                             </div>
                                         </div>
