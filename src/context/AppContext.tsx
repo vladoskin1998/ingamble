@@ -1,7 +1,24 @@
 import React, { createContext, useContext, useEffect, ReactNode, useState } from 'react';
+import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
+import { AllCategoriesHomeDataResponse } from '../types';
+import $api from '../http';
+import { sanitizeLink } from '../helper';
 
 const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
+
+const shuffleArray = (array: any): { link: string; name: string }[] => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[array[i], array[j]] = [array[j], array[i]]
+    }
+    return array
+}
+
+const getDataHomePageCategories = async () => {
+    const response = await $api.get("get-data-home-page-categories/")
+    return response.data
+}
 
 interface ParentOriginal {
     parent: HTMLElement;
@@ -12,6 +29,7 @@ interface AdaptiveContextType {
     setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
     initializeAdaptiveBehavior: () => void;
     lastUpdate: string
+    category: { link: string; name: string; }[]
 }
 
 const getRandomDate = (startDate: Date, endDate: Date): Date => {
@@ -176,8 +194,35 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
     }, []);
 
 
+
+    const { data: dataCategories } =
+        useQuery<AllCategoriesHomeDataResponse>(
+            "get-data-home-page-categories/",
+            getDataHomePageCategories,
+            {
+                keepPreviousData: true,
+                staleTime: Infinity,
+            }
+        )
+
+    const category = shuffleArray([
+        ...(dataCategories?.bonus_categories?.map((item) => ({
+            name: item.name,
+            link: `${window.location.origin}/all-bonus/${sanitizeLink(
+                item?.name
+            )}`,
+        })) || []),
+        ...(dataCategories?.casino_categories?.map((item) => ({
+            name: item.name,
+            link: `${window.location.origin}/all-casinos/${sanitizeLink(
+                item?.name
+            )}`,
+        })) || []),
+    ])
+
+
     return (
-        <AdaptiveContext.Provider value={{ isSidebarActive, setSidebarActive, initializeAdaptiveBehavior,lastUpdate }}>
+        <AdaptiveContext.Provider value={{ category,isSidebarActive, setSidebarActive, initializeAdaptiveBehavior,lastUpdate }}>
             {children}
         </AdaptiveContext.Provider>
     );
