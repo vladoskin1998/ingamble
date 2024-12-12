@@ -165,7 +165,9 @@ export const BonusInformation = ({
                                             <div className="item-content-bonus-information__label">
                                                 Daily availability:
                                             </div>
-                                            <div className="item-content-bonus-information__value">
+                                            <div className="item-content-bonus-information__value"
+                                            style={{textAlign: 'right'}}
+                                            >
                                                 {data?.day_of_week
                                                     .reduce(
                                                         (prev, state) =>
@@ -175,7 +177,8 @@ export const BonusInformation = ({
                                                         ""
                                                     )
                                                     .slice(2)}
-                                            </div>
+                                                   
+                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
                                             <div className="item-content-bonus-information__label">
@@ -498,8 +501,11 @@ export const BonusInformation = ({
                                                 Free spin amount:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.free_spin_amount
-                                                    ?.value || 0}
+                                                
+
+                                            {data?.free_spin_amount?.value
+                                                    ? `${data?.free_spin_amount?.value}`
+                                                    : "-"}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -507,7 +513,10 @@ export const BonusInformation = ({
                                                 Spin value:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                $ {data?.one_spin?.value || 0}
+                                            {data?.one_spin?.value
+                                                    ? `$ ${data?.one_spin?.value}`
+                                                    : "-"}
+                                              
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -517,6 +526,10 @@ export const BonusInformation = ({
                                             <div className="item-content-bonus-information__value">
                                                 {data?.bonus_slot?.game?.[0]
                                                     ?.name || ""}
+
+                                                {data?.bonus_slot?.game?.[0]
+                                                    ? `${data?.bonus_slot?.game?.[0]}`
+                                                    : "-"}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information ''">
@@ -524,7 +537,11 @@ export const BonusInformation = ({
                                                 Wager for free spins:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.wager?.value || 0}x
+                                             
+
+                                                {data?.wager?.value
+                                                    ? `${data?.wager?.value}x`
+                                                    : "-"}
                                             </div>
                                         </div>
                                     </div>

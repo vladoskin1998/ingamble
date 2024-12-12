@@ -122,8 +122,10 @@ export default function BlockType3Mobile({
                                                                 href={
                                                                     item?.[0]
                                                                         ?.casino_info
-                                                                        ?.casino_affiliate_link ||
-                                                                    ""
+                                                                        ?.casino_affiliate_link || 
+                                                                        item?.[0]
+                                                                            ?.casino_info
+                                                                            ?.url_casino
                                                                 }
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
@@ -249,8 +251,10 @@ export default function BlockType3Mobile({
                                                                     href={
                                                                         item?.[1]
                                                                             ?.casino_info
-                                                                            ?.casino_affiliate_link ||
-                                                                        ""
+                                                                            ?.casino_affiliate_link || 
+                                                                            item?.[1]
+                                                                                ?.casino_info
+                                                                                ?.url_casino
                                                                     }
                                                                     aria-label="Put your description here."
                                                                     target="_blank"

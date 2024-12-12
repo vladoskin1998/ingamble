@@ -218,7 +218,7 @@ export default function BlockType9({
                                             <div className="item-essential-programs-gamble__bottom-column">
                                                 <a
                                                     href={
-                                                        item?.casino_affiliate_link || '/'
+                                                        item?.casino_affiliate_link || item?.url_casino
                                                     }
                                                     aria-label="Put your description here."
                                                     target="_blank"

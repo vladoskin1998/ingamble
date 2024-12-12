@@ -4,14 +4,14 @@ import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { Wraper } from "../Wraper"
 import like from "../../assets/img/icons/like.svg"
 import "./style.css"
-import { Link, useParams } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import {
-    AllCategoriesHomeDataResponse,
+  
     PAYOUTSPEED,
     SeeAllCasinosType,
     SeeAllCasinosCategoryResponse,
@@ -21,12 +21,9 @@ import { euroToDolar, NumberAssociaty, sanitizeLink } from "../../helper"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 
-const getDataHomePageCategories = async () => {
-    const response = await $api.get("get-data-home-page-categories/")
-    return response.data
-}
 
-const getAllCasinosFetchData = async (page: number, queryId: string) => {
+
+const getAllCasinosFetchData = async (page: number, queryId: string | null) => {
     const response = await $api.get(
         `get-see-all-casinos-category${
             queryId ? "/" + queryId : ""
@@ -67,29 +64,11 @@ export default function SeeAllCasinos() {
     const [allData, setAllData] = useState<SeeAllCasinosType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
-    const { casino_categories } = useParams<{ casino_categories: string }>()
-    const [queryId, setQueryId] = useState("")
+    const [searchParams] = useSearchParams()
+    const queryId = searchParams.get("queryId")
+
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
-    const { data: dataCategories } = useQuery<AllCategoriesHomeDataResponse>(
-        "get-data-home-page-categories/",
-        getDataHomePageCategories,
-        {
-            keepPreviousData: true,
-            staleTime: Infinity,
-        }
-    )
-
-    useEffect(() => {
-        const el = dataCategories?.casino_categories?.find(
-            (item) => sanitizeLink(item.name) === casino_categories
-        )
-        if (el) {
-            document.title = `All Casinos | ${el?.name}`
-            setQueryId(String(el.id))
-        }
-        document.title = `Casinos`
-    }, [casino_categories, dataCategories])
 
     const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(
         ["get-see-all-loyalties", currentPage, queryId],
@@ -348,7 +327,7 @@ export default function SeeAllCasinos() {
                                                                     aria-label="Put your description here."
                                                                     className="bottom-content-item-loyaltie-programs__btn-view"
                                                                 >
-                                                                    View Casino
+                                                                    Visit Casino
                                                                 </Link>
                                                                 <Link
                                                                     to={`/casino/${sanitizeLink(

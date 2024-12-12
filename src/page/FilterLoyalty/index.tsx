@@ -373,7 +373,7 @@ const LisDisplayedData = memo(
                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                         <a
                                                   rel="nofollow noopener"
-                                               href={item?.casino_affiliate_link }
+                                               href={item?.casino_affiliate_link  || item?.url_casino}
                                             target="_blank"
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-view"

@@ -111,7 +111,8 @@ export default function BlockType2({
                                                             }}
                                                         >
                                                             <div className="slide-baner-row-block__item item-baner-row-block">
-                                                                <Link className="item-baner-row-block__image ibg--custom"
+                                                                <Link
+                                                                    className="item-baner-row-block__image ibg--custom"
                                                                     to={`/casino/${sanitizeLink(
                                                                         item
                                                                             ?.casino_info
@@ -125,7 +126,11 @@ export default function BlockType2({
                                                                             ?.bonus_info
                                                                             ?.bonus_id
                                                                     }`}
-                                                                    onClick={e=> e.stopPropagation()}
+                                                                    onClick={(
+                                                                        e
+                                                                    ) =>
+                                                                        e.stopPropagation()
+                                                                    }
                                                                 >
                                                                     <LazyCardImg
                                                                         img={
@@ -140,7 +145,14 @@ export default function BlockType2({
                                                                 </Link>
                                                                 <a
                                                                     rel="nofollow noopener"
-                                                                    href=""
+                                                                    href={
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_affiliate_link ||
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.url_casino
+                                                                    }
                                                                     target="_blank"
                                                                     aria-label="Put your description here."
                                                                     className="item-baner-row-block__row"
@@ -151,17 +163,28 @@ export default function BlockType2({
                                                                                 rel="nofollow noopener"
                                                                                 href={
                                                                                     item
-                                                                                        .casino_info
-                                                                                        .casino_affiliate_link ||
-                                                                                    ""
+                                                                                        ?.casino_info
+                                                                                        ?.casino_affiliate_link ||
+                                                                                    item
+                                                                                        ?.casino_info
+                                                                                        ?.url_casino
                                                                                 }
                                                                                 aria-label="Put your description here."
                                                                                 target="_blank"
                                                                                 className="casino-small-card__image-block"
                                                                             >
-                                                                                <Link 
-                                                                                    to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
-                                                                                className="casino-small-card__image ibg--custom">
+                                                                                <Link
+                                                                                    to={`/casino/${sanitizeLink(
+                                                                                        item
+                                                                                            ?.casino_info
+                                                                                            ?.casino_name
+                                                                                    )}?queryId=${
+                                                                                        item
+                                                                                            ?.casino_info
+                                                                                            ?.casino_id
+                                                                                    }`}
+                                                                                    className="casino-small-card__image ibg--custom"
+                                                                                >
                                                                                     <LazyCardImg
                                                                                         img={
                                                                                             item
@@ -170,8 +193,8 @@ export default function BlockType2({
                                                                                             ""
                                                                                         }
                                                                                         size="medium"
-                                                                                         height="100%"
-                                                                        width="100%"
+                                                                                        height="100%"
+                                                                                        width="100%"
                                                                                     />
                                                                                 </Link>
                                                                             </a>
@@ -264,7 +287,10 @@ export default function BlockType2({
                                                                             href={
                                                                                 item
                                                                                     ?.casino_info
-                                                                                    ?.casino_affiliate_link
+                                                                                    ?.casino_affiliate_link ||
+                                                                                    item
+                                                                                        ?.casino_info
+                                                                                        ?.url_casino
                                                                             }
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
@@ -321,9 +347,16 @@ export default function BlockType2({
                                                     <div className="slide-slider__item different-casino-bg">
                                                         <Link
                                                             rel="nofollow noopener"
-                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                            to={`/casino/${sanitizeLink(
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_name
+                                                            )}?queryId=${
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_id
+                                                            }`}
                                                             aria-label="Put your description here."
-                                                           
                                                             className="different-casino-bg__image-block"
                                                         >
                                                             <span className="different-casino-bg__image ibg--custom">

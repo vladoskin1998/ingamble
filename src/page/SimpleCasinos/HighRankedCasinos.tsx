@@ -5,35 +5,34 @@ import { useEffect, useRef, useState } from "react"
 import { Pagination } from "swiper/modules"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
 import $api from "../../http"
-import { FilterCasinoPostResponse, SeeAllCasinosType } from "../../types"
+import { СasinosInRankRangeResponse } from "../../types"
 import { useQuery } from "react-query"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
-const countPageSize = 6
+
+
 
 const getFilteringCasinoList = async (
-    payload: { min: number; max: number },
-    page: number
+
+ 
 ) => {
-    const response = await $api.post(
-        `filter/casinos/?page=${page}&page_size=${countPageSize}`,
-        payload
+    const response = await $api.get(
+        `casinos-in-rank-range/`,
+  
     )
-
     const headers = response.headers
-
     return { dataCasinosRes: response.data, headers }
 }
 
 export const HighRankedCasinos = () => {
     const { data } = useQuery<{
-        dataCasinosRes: FilterCasinoPostResponse
+        dataCasinosRes: СasinosInRankRangeResponse[]
         headers: any
     }>(
-        ["filter/casinos"],
-        () => getFilteringCasinoList({ min: 8, max: 10 }, 1),
+        ["casinos-in-rank-range/"],
+        () => getFilteringCasinoList(),
         {
             keepPreviousData: true,
             staleTime: Infinity,
@@ -168,12 +167,11 @@ export const HighRankedCasinos = () => {
                                     ref={pcSliderRef}
                                     onSlideChange={handleSlideChange}
                                 >
-                                    {dataCasino?.results
-                                        .reduce(
+                                    {dataCasino?.reduce(
                                             (
                                                 acc: [
-                                                    SeeAllCasinosType,
-                                                    SeeAllCasinosType?
+                                                    СasinosInRankRangeResponse,
+                                                    СasinosInRankRangeResponse?
                                                 ][],
                                                 item,
                                                 index
@@ -192,7 +190,7 @@ export const HighRankedCasinos = () => {
                                         .map((item) => (
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link to={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
+                                                    <Link to={`/casino/${sanitizeLink(item?.[0]?.name)}?queryId=${item?.[0]?.id}`}
                                                         aria-label="Put your description here."
                                                        
                                                         className="item-slide-slider__image-block"
@@ -201,7 +199,7 @@ export const HighRankedCasinos = () => {
                                                             <LazyCardImg
                                                                 img={
                                                                     item?.[0]
-                                                                        .casino_image ||
+                                                                        .image ||
                                                                     ""
                                                                 }
                                                                 height="auto"
@@ -210,20 +208,18 @@ export const HighRankedCasinos = () => {
                                                         </span>
                                                     </Link>
                                                     <div className="item-slide-slider__content">
-                                                        <Link to={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
+                                                        <Link to={`/casino/${sanitizeLink(item?.[0]?.name)}?queryId=${item?.[0]?.id}`}
                                                             aria-label="Put your description here."
                                                           
                                                             className="item-slide-slider__name"
                                                         >
                                                             {
                                                                 item?.[0]
-                                                                    ?.casino_name
+                                                                    ?.name
                                                             }
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[0]?.bonuses?.map(
-                                                                (bon) =>
-                                                                    bon.labels.map(
+                                                            {item?.[0]?.labels.map(
                                                                         (
                                                                             l,
                                                                             ct
@@ -238,13 +234,13 @@ export const HighRankedCasinos = () => {
                                                                             >
                                                                                 <span className="tags-casino-card__item-label">
                                                                                     {
-                                                                                        l.name
+                                                                                        l
                                                                                     }
                                                                                 </span>
                                                                             </div>
                                                                         )
-                                                                    )
-                                                            )}
+                                                            )
+                                                            }
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
                                                             <div className="info-casino-card__stake-rating">
@@ -282,7 +278,7 @@ export const HighRankedCasinos = () => {
                                                     </div>
                                                 </div>
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link to={`/casino/${sanitizeLink(item?.[1]?.casino_name)}?queryId=${item?.[1]?.casino_id}`}
+                                                    <Link to={`/casino/${sanitizeLink(item?.[1]?.name)}?queryId=${item?.[1]?.id}`}
                                                         aria-label="Put your description here."
                                                      
                                                         className="item-slide-slider__image-block"
@@ -291,7 +287,7 @@ export const HighRankedCasinos = () => {
                                                             <LazyCardImg
                                                                 img={
                                                                     item?.[1]
-                                                                        ?.casino_image ||
+                                                                        ?.image ||
                                                                     ""
                                                                 }
                                                                 height="auto"
@@ -300,20 +296,18 @@ export const HighRankedCasinos = () => {
                                                         </span>
                                                     </Link>
                                                     <div className="item-slide-slider__content">
-                                                        <Link to={`/casino/${sanitizeLink(item?.[0]?.casino_name)}?queryId=${item?.[0]?.casino_id}`}
+                                                        <Link to={`/casino/${sanitizeLink(item?.[1]?.name)}?queryId=${item?.[1]?.id}`}
                                                             aria-label="Put your description here."
                                                    
                                                             className="item-slide-slider__name"
                                                         >
                                                             {
                                                                 item?.[1]
-                                                                    ?.casino_name
+                                                                    ?.name
                                                             }
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[1]?.bonuses?.map(
-                                                                (bon) =>
-                                                                    bon.labels.map(
+                                                        {item?.[1]?.labels.map(
                                                                         (
                                                                             l,
                                                                             ct
@@ -328,13 +322,13 @@ export const HighRankedCasinos = () => {
                                                                             >
                                                                                 <span className="tags-casino-card__item-label">
                                                                                     {
-                                                                                        l.name
+                                                                                        l
                                                                                     }
                                                                                 </span>
                                                                             </div>
                                                                         )
-                                                                    )
-                                                            )}
+                                                            )
+                                                            }
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
                                                             <div className="info-casino-card__stake-rating">
@@ -404,10 +398,10 @@ export const HighRankedCasinos = () => {
                                             },
                                         }}
                                     >
-                                        {dataCasino?.results.map((item) => (
+                                        {dataCasino?.map((item) => (
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`}
+                                                    <Link to={`/casino/${sanitizeLink(item?.name)}?queryId=${item?.id}`}
                                                         aria-label="Put your description here."
                                                
                                                         className="item-slide-slider__image-block"
@@ -415,7 +409,7 @@ export const HighRankedCasinos = () => {
                                                         <span className="item-slide-slider__image ibg--custom">
                                                             <LazyCardImg
                                                                 img={
-                                                                    item?.casino_image ||
+                                                                    item?.image ||
                                                                     ""
                                                                 }
                                                                 height="auto"
@@ -430,12 +424,10 @@ export const HighRankedCasinos = () => {
                                                             target="_blank"
                                                             className="item-slide-slider__name"
                                                         >
-                                                            {item.casino_name}
+                                                            {item.name}
                                                         </a>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.bonuses?.map(
-                                                                (bon) =>
-                                                                    bon.labels.map(
+                                                        {item?.labels.map(
                                                                         (
                                                                             l,
                                                                             ct
@@ -450,13 +442,13 @@ export const HighRankedCasinos = () => {
                                                                             >
                                                                                 <span className="tags-casino-card__item-label">
                                                                                     {
-                                                                                        l.name
+                                                                                        l
                                                                                     }
                                                                                 </span>
                                                                             </div>
                                                                         )
-                                                                    )
-                                                            )}
+                                                            )
+                                                            }
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
                                                             <div className="info-casino-card__stake-rating">

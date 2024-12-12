@@ -6,6 +6,8 @@ import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
+const nameArray = [ "Welcome Bonus", "Cashback bonus",]
+
 export const CasinoBonuses = ({
     data,
 }: {
@@ -154,51 +156,97 @@ export const CasinoBonuses = ({
                                     },
                                 }}
                             >
-                                {data?.bonuses.map((b) => (
-                                    <SwiperSlide className="slider__slide slide-slider swiper-slide">
-                                        <div className="slide-slider__item casino-card">
-                                            <div
-                                               
-                                                className="casino-card__image-block casino-card__image-block_yellow"
-                                            >
-                                                <Link className="casino-card__image ibg--custom" to={`/casino/${sanitizeLink( data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
-                                                    <LazyCardImg
-                                                        img={
-                                                            b?.bonus_image || ""
+                                {data?.bonuses
+                                    ?.sort((a, b) => {
+                                        const aIndex = nameArray.indexOf(
+                                            a.bonus_type?.name || ""
+                                        )
+                                        const bIndex = nameArray.indexOf(
+                                            b.bonus_type?.name || ""
+                                        )
+
+                                        if (aIndex !== -1 && bIndex !== -1) {
+                                            return aIndex - bIndex
+                                        }
+
+                                        if (aIndex !== -1) return -1
+                                        if (bIndex !== -1) return 1
+
+                                        return 0
+                                    })
+                                    .map((b) => (
+                                        <SwiperSlide className="slider__slide slide-slider swiper-slide" aria-label={b?.bonus_type?.name}>
+                                            <div className="slide-slider__item casino-card">
+                                                <div className="casino-card__image-block casino-card__image-block_yellow">
+                                                    <Link
+                                                        className="casino-card__image ibg--custom"
+                                                        to={
+                                                            b.special_side_bar
+                                                                ? data?.url
+                                                                : `/casino/${sanitizeLink(
+                                                                      data?.name
+                                                                  )}/bonuses/${sanitizeLink(
+                                                                      b?.name
+                                                                  )}?queryId=${
+                                                                      b?.id
+                                                                  }`
                                                         }
-                                                        height="100%"
-                                                        width="100%"
-                                                        imgLoading={"lazy"}
-                                                    />
-                                                </Link>
-                                                <a
-                                                    href={data.url}
-                                                    target="_blank"
-                                                    aria-label="Put your description here."
-                                                    className="casino-card__bnt"
+                                                    >
+                                                        <LazyCardImg
+                                                            img={
+                                                                b?.bonus_image ||
+                                                                ""
+                                                            }
+                                                            height="100%"
+                                                            width="100%"
+                                                            imgLoading={"lazy"}
+                                                        />
+                                                    </Link>
+                                                    <a
+                                                        href={
+                                                            data.affiliate
+                                                                ?.casino_affiliate_link ||
+                                                            data?.url
+                                                        }
+                                                        target="_blank"
+                                                        aria-label="Put your description here."
+                                                        className="casino-card__bnt"
+                                                    >
+                                                        Play
+                                                    </a>
+                                                </div>
+                                                <Link
+                                                    className="casino-card__content"
+                                                    to={
+                                                        b.special_side_bar
+                                                            ? data?.url
+                                                            : `/casino/${sanitizeLink(
+                                                                  data?.name
+                                                              )}/bonuses/${sanitizeLink(
+                                                                  b?.name
+                                                              )}?queryId=${
+                                                                  b?.id
+                                                              }`
+                                                    }
                                                 >
-                                                    Play
-                                                </a>
-                                            </div>
-                                            <Link className="casino-card__content" to={`/casino/${sanitizeLink( data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
-                                                <div
-                                                    className="casino-card__name"
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: b.name.replace(
-                                                            /([+-]?\s?\€?\$?\d+(\.\d+)?[%,$€&!*#@^+-]?)/g,
-                                                            "<span>$1</span>"
-                                                        ),
-                                                    }}
-                                                >
-                                                    {/*                                                 
+                                                    <div
+                                                        className="casino-card__name"
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: b.name.replace(
+                                                                /([+-]?\s?\€?\$?\d+(\.\d+)?[%,$€&!*#@^+-]?)/g,
+                                                                "<span>$1</span>"
+                                                            ),
+                                                        }}
+                                                    >
+                                                        {/*                                                 
                                                   
                                                 Great Bonus Up{" "}
                                                 <span>To 360%</span> For Evening */}
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    </SwiperSlide>
-                                ))}
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                        </SwiperSlide>
+                                    ))}
                             </Swiper>
                         </div>
                     </div>

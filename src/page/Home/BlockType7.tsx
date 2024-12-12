@@ -100,7 +100,9 @@ export default function BlockType7({
                                         >
                                             <div className="slide-slider__item different-casino-bg">
                                                 <a
-                                                    href={item?.casino_info?.casino_affiliate_link || ''}
+                                                    href={item?.casino_info?.casino_affiliate_link || item
+                                                        ?.casino_info
+                                                        ?.url_casino}
                                                     aria-label="Put your description here."
                                                     target="_blank"
                                                     className="different-casino-bg__image-block"

@@ -20,6 +20,7 @@ import { HarryStyles } from "./HarryStyles"
 import { useSearchParams } from "react-router-dom"
 import { HighRankSwiper } from "./HighRankSwiper"
 import { useFilterContext } from "../../context/FilterContext"
+import { SiblingBonus } from "./SiblingBonus"
 
 
 
@@ -150,7 +151,13 @@ export default function SimpleBonus() {
                             />
                             <LastUpdate data={data?.dataBonus} />
                             <HowToGetBonus data={data?.dataBonus} />
-                           
+                            <SiblingBonus 
+                               casinoName={data?.dataBonus.casino_name}
+                               sibling_bonuses={data?.dataBonus.sibling_bonuses}
+                               casino_rank={data?.dataBonus?.casino_rank}
+                               casino_affiliate_link={data?.dataBonus.casino_affiliate_link || data?.dataBonus?.url_casino}
+                               casino_id={data?.dataBonus?.casino_id}
+                            />
                         </>
                     )}
                     <HighRankSwiper casinoName={data?.dataBonus?.casino_name || ''}/>

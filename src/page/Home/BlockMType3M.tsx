@@ -34,7 +34,10 @@ export default function BlockMType3M({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3M)
         return <></>
     return (
-        <section aria-label="BlockTypeNumber.BlockType3M" className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+        <section
+            aria-label="BlockTypeNumber.BlockType3M"
+            className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble"
+        >
             <div className="vpn-friendly-casinos-2-gamble__container container">
                 <div className="vpn-friendly-casinos-2-gamble__top top">
                     <div className="top__row">
@@ -104,7 +107,14 @@ export default function BlockMType3M({
                                                         <div className="different-casino-standart__body">
                                                             <a
                                                                 rel="nofollow noopener"
-                                                                href={item?.casino_info?.casino_affiliate_link}
+                                                                href={
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_affiliate_link ||
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.url_casino
+                                                                }
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="different-casino-standart__image-block"
@@ -123,10 +133,21 @@ export default function BlockMType3M({
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
-                                                                              rel="nofollow noopener"
-                                                                        to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                                        rel="nofollow noopener"
+                                                                        to={`/casino/${sanitizeLink(
+                                                                            item
+                                                                                ?.casino_info
+                                                                                ?.casino_name
+                                                                        )}/bonuses/${sanitizeLink(
+                                                                            item
+                                                                                ?.bonus_info
+                                                                                ?.bonus_name
+                                                                        )}?queryId=${
+                                                                            item
+                                                                                ?.bonus_info
+                                                                                ?.bonus_id
+                                                                        }`}
                                                                         aria-label="Put your description here."
-                                                                       
                                                                         className="different-casino-standart__name"
                                                                     >
                                                                         {
@@ -163,13 +184,20 @@ export default function BlockMType3M({
                                                                             )}
                                                                         </div>
                                                                     )}
-                                                                    
+
                                                                     <div className="info-casino-card__stake">
                                                                         <Link
-                                                                                  rel="nofollow noopener"
-                                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                            rel="nofollow noopener"
+                                                                            to={`/casino/${sanitizeLink(
+                                                                                item
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
+                                                                            )}?queryId=${
+                                                                                item
+                                                                                    ?.casino_info
+                                                                                    ?.casino_id
+                                                                            }`}
                                                                             aria-label="Put your description here."
-                                                                           
                                                                             className="info-casino-card__stake-link"
                                                                         >
                                                                             {

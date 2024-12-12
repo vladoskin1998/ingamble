@@ -209,11 +209,11 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
             return shuffleArray([
                 ...(dataCategories?.bonus_categories?.map((item) => ({
                     name: item.name,
-                    link: `${window.location.origin}/all-bonus/${sanitizeLink(item?.name)}`,
+                    link: `${window.location.origin}/all-bonus/${sanitizeLink(item?.name)}?queryId=${item.id}`,
                 })) || []),
                 ...(dataCategories?.casino_categories?.map((item) => ({
                     name: item.name,
-                    link: `${window.location.origin}/all-casinos/${sanitizeLink(item?.name)}`,
+                    link: `${window.location.origin}/all-casinos/${sanitizeLink(item?.name)}?queryId${item.id}`,
                 })) || []),
             ]);
         }, [dataCategories])

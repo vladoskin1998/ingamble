@@ -93,13 +93,19 @@ export const LoyaltyAcordeon = ({
                                                         )}
                                                         {item?.level_up_bonus && (
                                                             <div className="item-inner-information-loyaltie__element element-item-inner-information-loyaltie">
-                                                                <div className="element-item-inner-information-loyaltie__label">
+                                                                {
+                                                                    !item.level_up_bonus.bonus &&
+                                                                    !item.level_up_bonus.wager && 
+                                                                    !item.level_up_bonus.freespins ? <></> :
+                                                                    <div className="element-item-inner-information-loyaltie__label">
                                                                     Level-Up Bonus:
                                                                 </div>
+                                                                }
+                                                                
                                                                 <div className="element-item-inner-information-loyaltie__value">
-                                                                    <div className="element-item-inner-information-loyaltie__bonus">
+                                                                    {item.level_up_bonus.bonus && <div className="element-item-inner-information-loyaltie__bonus">
                                                                         Bonus: {item.level_up_bonus.bonus}
-                                                                    </div>
+                                                                    </div>}
                                                                     {item.level_up_bonus.wager !== null && (
                                                                         <div className="element-item-inner-information-loyaltie__wager">
                                                                             Wager: {item.level_up_bonus.wager}
@@ -256,7 +262,7 @@ export const LoyaltyAcordeon = ({
                                                                     Point accumulation:
                                                                 </div>
                                                                 <div className="element-item-inner-information-loyaltie__value">
-                                                                    {item?.point_accumulation?.value} points
+                                                                    {item?.point_accumulation?.point} points
                                                                 </div>
                                                             </div>
                                                         )}
@@ -272,13 +278,18 @@ export const LoyaltyAcordeon = ({
                                                         )}
                                                         {item?.level_up_bonus && (
                                                             <div className="item-inner-information-loyaltie__element element-item-inner-information-loyaltie">
-                                                                <div className="element-item-inner-information-loyaltie__label">
+                                                                {
+                                                                    !item?.level_up_bonus?.bonus && 
+                                                                    !item.level_up_bonus.wager && 
+                                                                    !item.level_up_bonus.freespins ? <></>: <div className="element-item-inner-information-loyaltie__label">
                                                                     Level-Up Bonus:
                                                                 </div>
+                                                                }
+                                                               
                                                                 <div className="element-item-inner-information-loyaltie__value">
-                                                                    <div className="element-item-inner-information-loyaltie__bonus">
-                                                                        Bonus: {item.level_up_bonus.bonus}
-                                                                    </div>
+                                                                     {item.level_up_bonus.bonus !== null && <div className="element-item-inner-information-loyaltie__bonus">
+                                                                    { `Bonus: ${item.level_up_bonus.bonus}` }
+                                                                    </div>}
                                                                     {item.level_up_bonus.wager !== null && (
                                                                         <div className="element-item-inner-information-loyaltie__wager">
                                                                             Wager: {item.level_up_bonus.wager}

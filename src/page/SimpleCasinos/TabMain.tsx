@@ -47,7 +47,7 @@ export const TabMain = ({
    
     const countryImg = Country?.find(
         it => {
-            return it.code ===  data?.licenses?.[0].slug || it.name.toLocaleLowerCase() === data?.licenses?.[0].name.toLocaleLowerCase() }
+            return it.code ===  data?.licenses?.[0]?.country_code || it?.name?.toLocaleLowerCase() === data?.licenses?.[0].name.toLocaleLowerCase() }
     )?.flag_image;
     
     const modalRefs = {

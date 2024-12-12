@@ -6,13 +6,25 @@ interface MinimumDeposit {
     };
   }
 
+  export interface SiblingBonuses {
+    id: number;
+    name: string;
+    likes: number;
+    bonus_image: string;
+    labels: { name: string }[]; 
+}
+
 export interface GetDataBonusResponse {
+    sibling_bonuses:SiblingBonuses[]
     slug?: string;
     link_tc : string;
     casino_name: string;
     casino_logo: string;
     casino_rank: string;
     casino_affiliate_link: string;
+    url_casino: string;
+    bonus_id:number,
+    casino_id:number,
     name: string;
     likes: number;
     bonus_rank: string;
@@ -145,8 +157,9 @@ export interface HomeCasinoInfo {
     casino_name: string;
     casino_rank: string;
     casino_image: string | null;
-    casino_affiliate_link: string;
+    casino_affiliate_link?: string;
     additional_casino_params: string[];
+    url_casino: string;
 }
 
 export interface HomeBonusInfo {
@@ -182,6 +195,7 @@ interface EssentialCard {
     loyalty_likes: number;
     loyalty_count_levels: number;
     casino_affiliate_link: string;
+    url_casino?: string;
     loyalty_level_description: string;
     loyaltie_id?: number;
 }
@@ -242,6 +256,7 @@ export type SeeAllBonus = {
     casino_affiliate_link: string;
     casino_name: string;
     casino_id?: string;
+    url_casino: string
 };
 
 
@@ -257,7 +272,7 @@ export interface SeeAllEssentialLoyaltyProgram {
     count_levels?: number;
     loyalty_level_description?: string; 
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
-    loyalty_rank?: number | string | undefined; 
+    loyalty_rank?: number ; 
     stars: number;
 }
 
@@ -269,6 +284,7 @@ export interface SeeAllEssentialLoyaltyCasino {
     casino_affiliate_link: string;
     loyalty_program: SeeAllEssentialLoyaltyProgram;
     casino_likes:string | number | undefined 
+    url_casino?:string
 }
 
 export interface SeeAllEssentialCasinoResponse {
@@ -529,6 +545,7 @@ export type LoyaltiesFilterBodyType = {
     special_prizes:  boolean | undefined,
     gifts:  boolean | undefined,
     bonuses:  boolean | undefined,
+    
 };
 
 
@@ -544,7 +561,11 @@ export type FilterLoyaltiesPostResponse ={
 
 export interface RewievCasinoDataResponse {
     id: number;
-    affiliate: null | string;
+    affiliate: {
+        name: string,
+        link_affiliate_program: string,
+        casino_affiliate_link: string
+    } | null,
     link_tc: null | string;
     loyaltie_id: number | string;
     loyalty_program: {
@@ -612,6 +633,7 @@ export interface RewievCasinoDataResponse {
       image: null | string;
     }>;
     licenses: Array<{
+      country_code: string;
       id: number;
       slug: string;
       image: null | string;
@@ -683,11 +705,13 @@ export interface RewievCasinoDataResponse {
     id: number;
     casino_name:string;
     casino_image: string;
-    casino_id: string;
+    casino_id: number;
     link_tc: string | null;
     casino_affiliate_link: string;
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
     loyalty_parameter: {text_1:string, text_2:string}[]; 
+    sibling_bonuses:SiblingBonuses[],
+    casino_rank: string,
     level_loyalty: Array<{
         level: string;
         vip_manager_access: boolean;
@@ -742,6 +766,48 @@ withdrawal_limits:string | null;
     loyalty_understandable: string;
     description: string;
     vip_manager: string;
+    url_casino?: string;
     loyalty_rank: string;
     casino: number;
 }
+
+
+export interface СasinosInRankRangeResponse {
+    casino_affiliate_link: string; 
+    casino_rank: string; 
+    id: number; 
+    image: string; 
+    labels: string[]; 
+    likes: number; 
+    name: string; 
+  }
+
+  export interface BonusInRankRangeResponse {
+    bonus_id: number; 
+    bonus_name: string; 
+    bonus_image: string; 
+    casino_id: number; 
+    casino_name: string; 
+    casino_rank: string; 
+    bonus_rank: string; 
+    bonus_likes: number; 
+    labels: {name:string}[]; 
+    casino_affiliate_link: string; 
+    url_casino: string; 
+  }
+
+  export interface LoyaltyInRankRangeResponse {
+    loyalty_id: number; 
+    loyalty_rank: string;
+    loyalty_likes: number; 
+    loyalty_count_levels: number; 
+    keypoints: EssentialKeypoint[]; 
+    loyalty_level_description: string | null; 
+    card_logo: string | null; 
+    stars: number[]; 
+    casino_id: number; 
+    casino_name: string; 
+    casino_rank: string;
+    casino_affiliate_link: string; 
+    url_casino: string;
+  }

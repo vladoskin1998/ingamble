@@ -18,6 +18,7 @@ import { LogoLoader } from "../../components/loader/LogoLoader"
 import { useEffect, useState } from "react"
 import { HighRankSwiper } from "../SimpleBonus/HighRankSwiper"
 import { useFilterContext } from "../../context/FilterContext"
+import { SiblingBonus } from "../SimpleBonus/SiblingBonus"
 
 const getCurrentLoyaltiesFetchData = async (queryId: string) => {
     const response = await $api.get(`get-data-loyalty-program/${queryId}/`)
@@ -34,7 +35,7 @@ export default function SimpleLoyalties() {
 
     const [searchParams] = useSearchParams()
     const queryId = searchParams.get("queryId")
-    const {data: Country} = useFilterContext()
+    const { data: Country } = useFilterContext()
     const { data, isLoading } = useQuery<{
         dataCurrentLoyaltie: LoyaltieProgramDataResponse
         headers: any
@@ -47,30 +48,29 @@ export default function SimpleLoyalties() {
         }
     )
 
-    
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: "",
         countryName: "",
         isAllowed: true,
         isLoadedGeo: false,
-        countryImg: undefined
+        countryImg: undefined,
     })
 
     useEffect(() => {
         if (data?.headers && Country?.general?.countries?.length) {
-        
             const countryCode = data?.headers?.["cf-ipcountry-code"]
             const countryName = data?.headers?.["cf-ipcountry"]
-            
-            const countryImg = Country?.general?.countries?.find(
-                it => {
-                    
-                    return it.code ===  countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase() }
-            )?.flag_image;
-            
-  
+
+            const countryImg = Country?.general?.countries?.find((it) => {
+                return (
+                    it.code === countryCode ||
+                    it.name.toLocaleLowerCase() ===
+                        countryName.toLocaleLowerCase()
+                )
+            })?.flag_image
+
             const isAllowed = true
-            
+
             // !data.dataBonus?.restriction_country?.country.find(
             //     (item) =>
             //         item?.code?.toLocaleLowerCase() ===
@@ -82,11 +82,10 @@ export default function SimpleLoyalties() {
                 countryName,
                 isAllowed,
                 isLoadedGeo: true,
-                 countryImg
+                countryImg,
             })
         }
-
-    }, [ Country])
+    }, [Country])
 
     useEffect(() => {
         initializeAdaptiveBehavior()
@@ -94,7 +93,7 @@ export default function SimpleLoyalties() {
 
     // if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
 
-    if (isLoading ) return <LogoLoader />
+    if (isLoading) return <LogoLoader />
     return (
         <Wraper>
             <main className="gamble__loyaltie main-gamble loyaltie">
@@ -126,7 +125,6 @@ export default function SimpleLoyalties() {
                     />
                     <LoyaltieCasinoInfo
                         data={data?.dataCurrentLoyaltie}
-              
                         geoLocation={geoLocation}
                     />
                     {data?.dataCurrentLoyaltie?.loyalty_keypoint.length && (
@@ -141,14 +139,31 @@ export default function SimpleLoyalties() {
                     <LoyaltyText data={data?.dataCurrentLoyaltie} />
                     <HowToStartVipJorney
                         casino_affiliate_link={
-                            data?.dataCurrentLoyaltie?.casino_affiliate_link || data?.dataCurrentLoyaltie.link
+                            data?.dataCurrentLoyaltie?.casino_affiliate_link ||
+                            data?.dataCurrentLoyaltie.url_casino
                         }
                         casino_name={data?.dataCurrentLoyaltie?.casino_name}
                         likes={data?.dataCurrentLoyaltie?.likes}
                         queryId={data?.dataCurrentLoyaltie?.casino_id}
-                        link_tc={data?.dataCurrentLoyaltie?.link_tc || ''}
+                        link_tc={data?.dataCurrentLoyaltie?.link_tc || ""}
                     />
-                    <HighRankSwiper casinoName={data?.dataCurrentLoyaltie?.casino_name || ''}/>
+                    <SiblingBonus
+                        casinoName={data?.dataCurrentLoyaltie?.casino_name}
+                        sibling_bonuses={
+                            data?.dataCurrentLoyaltie.sibling_bonuses
+                        }
+                        casino_rank={data?.dataCurrentLoyaltie?.casino_rank}
+                        casino_affiliate_link={
+                            data?.dataCurrentLoyaltie.casino_affiliate_link ||
+                            data?.dataCurrentLoyaltie?.url_casino
+                        }
+                        casino_id={data?.dataCurrentLoyaltie?.casino_id}
+                    />
+                    <HighRankSwiper
+                        casinoName={
+                            data?.dataCurrentLoyaltie?.casino_name || ""
+                        }
+                    />
                     <HarryStyles />
                     <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />

@@ -124,8 +124,9 @@ export default function BlockMType2M({
                                                                 href={
                                                                     item?.[0]
                                                                         .casino_info
-                                                                        .casino_affiliate_link ||
-                                                                    ""
+                                                                        .casino_affiliate_link || item?.[0]
+                                                                        ?.casino_info
+                                                                        ?.url_casino
                                                                 }
                                                                 rel="nofollow noopener"
                                                                 aria-label="Put your description here."
@@ -197,7 +198,9 @@ export default function BlockMType2M({
                                                                     href={
                                                                         item?.[0]
                                                                             ?.casino_info
-                                                                            ?.casino_affiliate_link
+                                                                            ?.casino_affiliate_link || item?.[0]
+                                                                            ?.casino_info
+                                                                            ?.url_casino
                                                                     }
                                                                     rel="nofollow noopener"
                                                                     aria-label="Put your description here."
@@ -217,8 +220,10 @@ export default function BlockMType2M({
                                                                 href={
                                                                     item?.[1]
                                                                         ?.casino_info
-                                                                        ?.casino_affiliate_link ||
-                                                                    ""
+                                                                        ?.casino_affiliate_link || item?.[1]
+                                                                        ?.casino_info
+                                                                        ?.url_casino
+                                                                    
                                                                 }
                                                                 rel="nofollow noopener"
                                                                 aria-label="Put your description here."
@@ -290,7 +295,9 @@ export default function BlockMType2M({
                                                                     href={
                                                                         item?.[1]
                                                                             ?.casino_info
-                                                                            ?.casino_affiliate_link
+                                                                            ?.casino_affiliate_link || item?.[1]
+                                                                            ?.casino_info
+                                                                            ?.url_casino
                                                                     }
                                                                     aria-label="Put your description here."
                                                                     target="_blank"
@@ -310,8 +317,9 @@ export default function BlockMType2M({
                                                                 href={
                                                                     item?.[2]
                                                                         ?.casino_info
-                                                                        ?.casino_affiliate_link ||
-                                                                    ""
+                                                                        ?.casino_affiliate_link || item?.[2]
+                                                                        ?.casino_info
+                                                                        ?.url_casino
                                                                 }
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
@@ -382,7 +390,9 @@ export default function BlockMType2M({
                                                                     href={
                                                                         item?.[2]
                                                                             ?.casino_info
-                                                                            ?.casino_affiliate_link
+                                                                            ?.casino_affiliate_link || item?.[2]
+                                                                            ?.casino_info
+                                                                            ?.url_casino
                                                                     }
                                                                     aria-label="Put your description here."
                                                                     target="_blank"

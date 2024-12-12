@@ -78,7 +78,7 @@ export const LoyaltieCasinoInfo = (
                                     </span>
                                 </div>
                                 <a
-                                    href={data?.casino_affiliate_link || data?.link}
+                                    href={data?.casino_affiliate_link || data?.url_casino}
                                     aria-label="Put your description here."
                                     target="_blank"
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"

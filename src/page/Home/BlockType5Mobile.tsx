@@ -114,7 +114,9 @@ export default function BlockType5Mobile({
                                             <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
                                                 <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
                                                     <a
-                                                        href={item?.casino_info?.casino_affiliate_link || ''}
+                                                        href={item?.casino_info?.casino_affiliate_link || item
+                                                            ?.casino_info
+                                                            ?.url_casino}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="different-casino-medium__image-block"

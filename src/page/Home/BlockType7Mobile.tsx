@@ -76,7 +76,9 @@ export default function BlockType7Mobile({
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item different-casino-medium">
                                                     <a
-                                                        href={item?.casino_info?.casino_affiliate_link}
+                                                        href={item?.casino_info?.casino_affiliate_link || item
+                                                            ?.casino_info
+                                                            ?.url_casino}
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="different-casino-medium__image-block"

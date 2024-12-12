@@ -300,7 +300,7 @@ const ListDisplayData = memo(
                                     </Link>
                                     <a
                                         rel="nofollow noopener"
-                                        href={item?.casino_affiliate_link}
+                                        href={item?.casino_affiliate_link || item?.url_casino}
                                         target="_blank"
                                         aria-label="Put your description here."
                                         className="casino-card__bnt"

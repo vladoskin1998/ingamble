@@ -39,7 +39,7 @@ export const HowToGetBonus = ({data}:{data:GetDataBonusResponse | undefined}) =>
                             <div className="main-get-bonus__btns-item">
                                 <a
                                     rel="nofollow noopener"
-                                    href={data?.casino_affiliate_link || data?.link}
+                                    href={data?.casino_affiliate_link || data?.url_casino}
                                     aria-label="Put your description here."
                               
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"

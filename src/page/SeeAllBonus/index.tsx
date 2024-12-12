@@ -14,15 +14,15 @@ import { useAdaptiveBehavior } from "../../context/AppContext"
 import {
     SeeAllBonus as SeeAllBonusType,
     SeeAllBonusResponse,
-    AllCategoriesHomeDataResponse,
+   
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
-import { Link, useParams } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 
-const getAllBonusFetchData = async (page: number, queryId: string) => {
+const getAllBonusFetchData = async (page: number, queryId: string | null) => {
     const response = await $api.get(
         `get-see-all-bonus-category${
             queryId ? "/" + queryId : ""
@@ -31,10 +31,6 @@ const getAllBonusFetchData = async (page: number, queryId: string) => {
     return response.data
 }
 
-const getDataHomePageCategories = async () => {
-    const response = await $api.get("get-data-home-page-categories/")
-    return response.data
-}
 
 const countPageSize = 60
 
@@ -44,37 +40,22 @@ export default function SeeAllBonus() {
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllBonusType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
-    const [queryId, setQueryId] = useState("")
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
-    const { bonus_categories } = useParams<{ bonus_categories: string }>()
 
-    const { data: dataCategories } = useQuery<AllCategoriesHomeDataResponse>(
-        "get-data-home-page-categories/",
-        getDataHomePageCategories,
-        {
-            keepPreviousData: true,
-            staleTime: Infinity,
-        }
-    )
+    const [searchParams] = useSearchParams()
+    const queryId = searchParams.get("queryId")
 
-    useEffect(() => {
-        const el = dataCategories?.bonus_categories.find(
-            (item) => sanitizeLink(item.name) === bonus_categories
-        )
-        if (el) {
-            document.title = `All Bonuses | ${el?.name}`
-            setQueryId(String(el.id))
-        } else {
-            document.title = `All Bonuses`
-        }
-    }, [bonus_categories, dataCategories])
+ 
+   
+
+  
 
     const { data, isLoading } = useQuery<SeeAllBonusResponse>(
         ["get-see-all-bonus-category/", currentPage, queryId],
         () => getAllBonusFetchData(currentPage, queryId),
         {
             keepPreviousData: true,
-            // enabled: !!queryId,
+           
         }
     )
 

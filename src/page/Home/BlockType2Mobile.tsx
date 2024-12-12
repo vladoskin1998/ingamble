@@ -123,7 +123,10 @@ export default function BlockType2Mobile({
                                                             href={
                                                                 item
                                                                     ?.casino_info
-                                                                    ?.casino_affiliate_link
+                                                                    ?.casino_affiliate_link ||
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.url_casino
                                                             }
                                                             target="_blank"
                                                             aria-label="Put your description here."

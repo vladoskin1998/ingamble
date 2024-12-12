@@ -117,7 +117,10 @@ export default function BlockType4Mobile({
                                                             href={
                                                                 item
                                                                     ?.casino_info
-                                                                    ?.casino_affiliate_link
+                                                                    ?.casino_affiliate_link || 
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.url_casino
                                                             }
                                                             target="_blank"
                                                             aria-label="Put your description here."
@@ -132,7 +135,10 @@ export default function BlockType4Mobile({
                                                                href={
                                                                 item
                                                                     ?.casino_info
-                                                                    ?.casino_affiliate_link
+                                                                    ?.casino_affiliate_link || 
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.url_casino
                                                             }
                                                                 aria-label="Put your description here."
                                                                 target="_blank"

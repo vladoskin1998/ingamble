@@ -199,10 +199,9 @@ export default function SeeAllEssentialsLoyalty() {
                                                         <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
                                                             <div className="item-essential-programs-gamble__rating">
                                                                 <div className="item-essential-programs-gamble__rating-number">
-                                                                    {item
+                                                                    {parseInt(String(item
                                                                         ?.loyalty_program
-                                                                        ?.count_levels ||
-                                                                        10}
+                                                                        ?.loyalty_rank) , 10) }
                                                                     /10
                                                                 </div>
                                                                 <div className="item-essential-programs-gamble__rating-body">
@@ -225,9 +224,9 @@ export default function SeeAllEssentialsLoyalty() {
                                                                                 <div
                                                                                     className={`items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_${level} ${
                                                                                         level <=
-                                                                                            (item
+                                                                                            ( Number(item
                                                                                                 ?.loyalty_program
-                                                                                                ?.count_levels ||
+                                                                                                ?.loyalty_rank) ||
                                                                                                 10) &&
                                                                                         "full"
                                                                                     }`}
@@ -250,7 +249,7 @@ export default function SeeAllEssentialsLoyalty() {
                                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                                         <a
                                                             href={
-                                                                item.casino_affiliate_link
+                                                                item.casino_affiliate_link || item?.url_casino
                                                             }
                                                             target="_blank"
                                                             aria-label="Put your description here."

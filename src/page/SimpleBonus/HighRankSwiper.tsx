@@ -2,9 +2,9 @@ import MainSlider from "../../components/swiper/MainSlider"
 import $api from "../../http"
 import { useQuery } from "react-query"
 import {
-    FilterBonusPostResponse,
-    FilterCasinoPostResponse,
-    FilterLoyaltiesPostResponse,
+
+    BonusInRankRangeResponse,
+    LoyaltyInRankRangeResponse,
 } from "../../types"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -13,66 +13,33 @@ import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
 import { Link } from "react-router-dom"
 
-const getFilteringCasinoList = async (
-    payload: { min: number; max: number },
-    page: number
-) => {
-    const response = await $api.post(
-        `filter/casinos/?page=${page}&page_size=${6}`,
-        payload
-    )
 
+
+const getFilteringBonusList = async () => {
+    const response = await $api.get(`bonuses-in-rank-range/`)
     return response.data
 }
 
-const getFilteringBonusList = async (
-    payload: { min: number; max: number },
-    page: number
-) => {
-    const response = await $api.post(
-        `filter/bonus/?page=${page}&page_size=${6}`,
-        payload
-    )
+const getFilteringLoyaltiesList = async () => {
+    const response = await $api.get(`loyalty-programs-in-rank-range/`)
     return response.data
 }
+//@ts-ignore
+export const HighRankSwiper = ({ casinoName }: { casinoName?: string }) => {
+   
 
-const getFilteringLoyaltiesList = async (
-    payload: { min: number; max: number },
-    page: number
-) => {
-    const response = await $api.post(
-        `filter/loyalty/?page=${page}&page_size=${4}`,
-        payload
-    )
-    return response.data
-}
-
-export const HighRankSwiper = ({
-    casinoName
-}:{
-    casinoName: string
-}) => {
-    const { data: CasinoDataHigh } = useQuery<FilterCasinoPostResponse>(
-        ["filter/casinos"],
-        () => getFilteringCasinoList({ min: 8, max: 10 }, 1),
+    const { data: BonusDataHigh } = useQuery<BonusInRankRangeResponse[]>(
+        ["bonuses-in-rank-range/"],
+        () => getFilteringBonusList(),
         {
             keepPreviousData: true,
             staleTime: Infinity,
         }
     )
 
-    const { data: BonusDataHigh } = useQuery<FilterBonusPostResponse>(
-        ["filter/bonus"],
-        () => getFilteringBonusList({ min: 8, max: 10 }, 1),
-        {
-            keepPreviousData: true,
-            staleTime: Infinity,
-        }
-    )
-
-    const { data: LoyaltieDataHigh } = useQuery<FilterLoyaltiesPostResponse>(
-        ["filter/loyalty"],
-        () => getFilteringLoyaltiesList({ min: 8, max: 10 }, 1),
+    const { data: LoyaltieDataHigh } = useQuery<LoyaltyInRankRangeResponse[]>(
+        ["loyalty-programs-in-rank-range/"],
+        () => getFilteringLoyaltiesList(),
         {
             keepPreviousData: true,
             staleTime: Infinity,
@@ -81,68 +48,7 @@ export const HighRankSwiper = ({
 
     return (
         <>
-            <section className="simple-bonus__more-stake more-staket-simple-bonus">
-                <div className="more-staket-simple-bonus__container container">
-                    <div className="more-staket-simple-bonus__top top">
-                        <div className="top__row">
-                            <div className="top__column">
-                                <div className="top__title-block">
-                                    <h2 className="top__title">
-                                        More {casinoName} Bonuses
-
-                                    </h2>
-                                </div>
-                            </div>
-                            <div className="top__column">
-                                <Link
-                                    rel="nofollow noopener"
-                                    to="/all-casinos"
-                                    aria-label="Put your description here."
-                                   
-                                    className="top__btn"
-                                >
-                                    <span>See All</span>
-                                    <span className="top__btn-arrow">
-                                        <svg>
-                                            <use xlinkHref="#arrow"></use>
-                                        </svg>
-                                    </span>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                    <MainSlider
-                        data={CasinoDataHigh?.results?.map((c) => ({
-                            img: c?.casino_image || "",
-                            raiting: c?.casino_rank,
-                            likes: c?.likes,
-                            casinoName: c?.casino_name,
-                            playLink: c?.casino_affiliate_link,
-                            
-                            casinoLink: `/casino/${sanitizeLink(c?.casino_name)}?queryId=${c?.casino_id}`,
-
-                            // comment: "New Year Bet Race - $30,000 Rocket...",
-                            tags: (
-                                <>
-                                    {c?.bonuses?.map((bon) =>
-                                        bon?.labels.map((l, ct) => (
-                                            <div
-                                                className={`tags-casino-card__item ${
-                                                    COLORS_TAGS[ct % 4]
-                                                }`}
-                                            >
-                                                <span className="tags-casino-card__item-label">
-                                                    {l?.name}
-                                                </span>
-                                            </div>
-                                        ))
-                                    )}
-                                </>
-                            ),
-                        }))}
-                    />
-                </div>
-            </section>
+           
             <section className="simple-bonus__more-stake more-staket-simple-bonus">
                 <div className="more-staket-simple-bonus__container container">
                     <div className="more-staket-simple-bonus__top top">
@@ -172,16 +78,26 @@ export const HighRankSwiper = ({
                         </div>
                     </div>
                     <MainSlider
-                        data={BonusDataHigh?.results?.map((b) => ({
+                        data={BonusDataHigh?.map((b) => ({
                             img: b?.bonus_image || "",
                             raiting: b?.casino_rank,
                             likes: b?.bonus_likes,
                             casinoName: b?.casino_name,
                             bonuseName: b?.bonus_name,
-                            imageLink: `/casino/${sanitizeLink(b?.casino_name)}/bonuses/${sanitizeLink(b?.bonus_name)}?queryId=${b?.bonus_id}`,
-                            playLink: b.casino_affiliate_link ,
-                            casinoLink: `/casino/${sanitizeLink(b?.casino_name)}?queryId=${b?.casino_id}`,
-                            bonuseLink: `/casino/${sanitizeLink(b?.casino_name)}/bonuses/${sanitizeLink(b?.bonus_name)}?queryId=${b?.bonus_id}`,
+                            imageLink: `/casino/${sanitizeLink(
+                                b?.casino_name
+                            )}/bonuses/${sanitizeLink(b?.bonus_name)}?queryId=${
+                                b?.bonus_id
+                            }`,
+                            playLink: b.casino_affiliate_link || b.url_casino,
+                            casinoLink: `/casino/${sanitizeLink(
+                                b?.casino_name
+                            )}?queryId=${b?.casino_id}`,
+                            bonuseLink: `/casino/${sanitizeLink(
+                                b?.casino_name
+                            )}/bonuses/${sanitizeLink(b?.bonus_name)}?queryId=${
+                                b?.bonus_id
+                            }`,
                             tags: (
                                 <>
                                     {typeof b !== "string"
@@ -223,7 +139,6 @@ export const HighRankSwiper = ({
                                     rel="nofollow noopener"
                                     to="/all-loyalties"
                                     aria-label="Put your description here."
-                                 
                                     className="top__btn"
                                 >
                                     <span>See All</span>
@@ -255,9 +170,12 @@ export const HighRankSwiper = ({
                                 }}
                                 className="slider__wrapper swiper-wrapper"
                             >
-                                {LoyaltieDataHigh?.results?.map((l) => (
+                                {LoyaltieDataHigh?.map((l) => (
                                     <SwiperSlide>
-                                        <div className="slider__slide slide-slider " style={{height:"100%"}}>
+                                        <div
+                                            className="slider__slide slide-slider "
+                                            style={{ height: "100%" }}
+                                        >
                                             <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                                 <div
                                                     className="item-essential-programs-gamble__top"
@@ -266,14 +184,17 @@ export const HighRankSwiper = ({
                                                     }}
                                                 >
                                                     <a
-                                                        href={l?.casino_affiliate_link}
+                                                        href={
+                                                            l?.casino_affiliate_link ||
+                                                            l?.url_casino
+                                                        }
                                                         aria-label="Put your description here."
                                                         target="_blank"
                                                         className="item-essential-programs-gamble__logo ibg--custom"
                                                     >
                                                         <LazyCardImg
                                                             img={
-                                                                l?.casino_image ||
+                                                                l?.card_logo ||
                                                                 ""
                                                             }
                                                             height="100%"
@@ -283,9 +204,16 @@ export const HighRankSwiper = ({
                                                 </div>
                                                 <div className="item-essential-programs-gamble__body">
                                                     <div className="item-essential-programs-gamble__provider">
-                                                        <span className="item-essential-programs-gamble__provider-name">
+                                                        <Link
+                                                            className="item-essential-programs-gamble__provider-name"
+                                                            to={`/casino/${sanitizeLink(
+                                                                l?.casino_name
+                                                            )}?queryId=${
+                                                                l?.casino_id
+                                                            }`}
+                                                        >
                                                             {l.casino_name}
-                                                        </span>
+                                                        </Link>
                                                         <span className="item-essential-programs-gamble__provider-rating">
                                                             <span className="item-essential-programs-gamble__provider-rating-star">
                                                                 <img
@@ -305,7 +233,7 @@ export const HighRankSwiper = ({
                                                                 />
                                                             </span>
                                                             <span className="info-casino-card__likes-number">
-                                                                {l?.casino_likes ||
+                                                                {l?.loyalty_likes ||
                                                                     0}
                                                             </span>
                                                         </div>
@@ -319,42 +247,30 @@ export const HighRankSwiper = ({
                                                                 <div className="item-stats-essential-programs-gamble__value value-item-stats-essential-programs-gamble">
                                                                     <div className="value-item-stats-essential-programs-gamble__number">
                                                                         {
-                                                                            l
-                                                                                ?.loyalty_program
-                                                                                ?.loyalty_rank
+                                                                            l?.loyalty_rank
                                                                         }
                                                                     </div>
                                                                     <div className="value-item-stats-essential-programs-gamble__content">
                                                                         <div className="value-item-stats-essential-programs-gamble__stars value-item-stats-essential-programs-gamble__stars_5">
-                                                                            {Array(
-                                                                                l
-                                                                                    ?.loyalty_program
-                                                                                    ?.stars
-                                                                            )
-                                                                                .fill(
-                                                                                    0
-                                                                                )
-                                                                                .map(
-                                                                                    (
-                                                                                        str,
-                                                                                        stid
-                                                                                    ) => (
-                                                                                        <div
-                                                                                            key={
-                                                                                                str +
-                                                                                                stid
+                                                                            {l?.stars?.map(
+                                                                                (
+                                                                                    str
+                                                                                ) => (
+                                                                                    <div
+                                                                                        key={
+                                                                                            str
+                                                                                        }
+                                                                                        className="value-item-stats-essential-programs-gamble__star"
+                                                                                    >
+                                                                                        <img
+                                                                                            src={
+                                                                                                star
                                                                                             }
-                                                                                            className="value-item-stats-essential-programs-gamble__star"
-                                                                                        >
-                                                                                            <img
-                                                                                                src={
-                                                                                                    star
-                                                                                                }
-                                                                                                alt="star"
-                                                                                            />
-                                                                                        </div>
-                                                                                    )
-                                                                                )}
+                                                                                            alt="star"
+                                                                                        />
+                                                                                    </div>
+                                                                                )
+                                                                            )}
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -368,26 +284,31 @@ export const HighRankSwiper = ({
                                                                 <div className="item-stats-essential-programs-gamble__value value-item-stats-essential-programs-gamble">
                                                                     <div className="value-item-stats-essential-programs-gamble__number">
                                                                         {
-                                                                            l
-                                                                                ?.loyalty_program
-                                                                                ?.count_levels
+                                                                            l?.loyalty_count_levels
                                                                         }
                                                                     </div>
                                                                     <div className="value-item-stats-essential-programs-gamble__content">
-                                                                        {l?.loyalty_program?.loyalty_level_description}
+                                                                        {
+                                                                            l?.loyalty_level_description
+                                                                        }
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className="item-essential-programs-gamble__features features-essential-programs-gamble">
-                                                        {l?.loyalty_program?.loyalty_keypoint.map(
+                                                        {l?.keypoints.map(
                                                             (lk) => (
                                                                 <div className="features-essential-programs-gamble__item">
-                                                                    <Link className="features-essential-programs-gamble__icon" 
-                                                                    rel="nofollow noopener"
-                                                              
-                                                                    to={`/casino/${sanitizeLink(l?.casino_name)}?queryId=${l?.casino_id}`}>
+                                                                    <Link
+                                                                        className="features-essential-programs-gamble__icon"
+                                                                        rel="nofollow noopener"
+                                                                        to={`/casino/${sanitizeLink(
+                                                                            l?.casino_name
+                                                                        )}?queryId=${
+                                                                            l?.casino_id
+                                                                        }`}
+                                                                    >
                                                                         <LazyCardImg
                                                                             img={
                                                                                 lk?.image ||
@@ -419,7 +340,10 @@ export const HighRankSwiper = ({
                                                     <div className="item-essential-programs-gamble__bottom-column">
                                                         <a
                                                             rel="nofollow noopener"
-                                                            href={l.casino_affiliate_link}
+                                                            href={
+                                                                l.casino_affiliate_link ||
+                                                                l?.url_casino
+                                                            }
                                                             aria-label="Put your description here."
                                                             target="_blank"
                                                             className="item-essential-programs-gamble__btn item-essential-programs-gamble__btn_yellow"
@@ -428,9 +352,13 @@ export const HighRankSwiper = ({
                                                         </a>
                                                     </div>
                                                     <div className="item-essential-programs-gamble__bottom-column">
-                                                        <Link to={`/casino/${sanitizeLink(l?.casino_name)}/loyalty?queruId=${l?.loyalty_program?.id}`}
+                                                        <Link
+                                                            to={`/casino/${sanitizeLink(
+                                                                l?.casino_name
+                                                            )}/loyalty?queruId=${
+                                                                l?.loyalty_id
+                                                            }`}
                                                             aria-label="Put your description here."
-                                                        
                                                             className="item-essential-programs-gamble__btn"
                                                         >
                                                             Read More

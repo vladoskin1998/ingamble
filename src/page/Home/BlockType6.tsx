@@ -116,7 +116,9 @@ export default function BlockType6({
                                                         <a
                                                             href={
                                                                 item?.casino_info
-                                                                    ?.casino_affiliate_link
+                                                                    ?.casino_affiliate_link || item
+                                                                    ?.casino_info
+                                                                    ?.url_casino
                                                             }
                                                             target="_blank"
                                                             aria-label="Put your description here."
@@ -128,7 +130,9 @@ export default function BlockType6({
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">
                                                             <a
-                                                                href={item?.casino_info?.casino_affiliate_link || ''}
+                                                                href={item?.casino_info?.casino_affiliate_link || item
+                                                                    ?.casino_info
+                                                                    ?.url_casino}
                                                                 aria-label="Put your description here."
                                                                 target="_blank"
                                                                 className="casino-small-card__image-block"
