@@ -185,8 +185,7 @@ export const HighRankSwiper = ({ casinoName }: { casinoName?: string }) => {
                                                 >
                                                     <a
                                                         href={
-                                                            l?.casino_affiliate_link ||
-                                                            l?.url_casino
+                                                        `/casino/${sanitizeLink(l?.casino_name)}?queryId=${l?.casino_id}`
                                                         }
                                                         aria-label="Put your description here."
                                                         target="_blank"
@@ -197,8 +196,8 @@ export const HighRankSwiper = ({ casinoName }: { casinoName?: string }) => {
                                                                 l?.card_logo ||
                                                                 ""
                                                             }
-                                                            height="100%"
-                                                            width="100%"
+                                                            height="auto"
+                                                            width="auto"
                                                         />
                                                     </a>
                                                 </div>

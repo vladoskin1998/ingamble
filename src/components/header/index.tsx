@@ -132,20 +132,18 @@ export const Header = ({
     }
 
     useEffect(() => {
-        const onKeypress = (e:KeyboardEvent) => {
-            if((e.code === 'Enter' || e.key === 'Enter') && casinoFilters?.casino_name){
-                navTo()
+        const onKeydown = (e: KeyboardEvent) => {
+            if ((e.code === 'Enter' || e.key === 'Enter') && casinoFilters?.casino_name) {
+                navTo();
             }
-            
         };
-      
-        document.addEventListener('keypress', onKeypress);
-      
+    
+        document.addEventListener('keydown', onKeydown);
+    
         return () => {
-          document.removeEventListener('keypress', onKeypress);
+            document.removeEventListener('keydown', onKeydown);
         };
-      }, []);
-
+    }, [casinoFilters, navTo]);
     
 
     const [activeLink,setActiveLink] = useState<string>(window.location.pathname)
