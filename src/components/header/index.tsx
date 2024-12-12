@@ -41,7 +41,7 @@ export const Header = ({
     setSidebarActive: (s: boolean) => void
 }) => {
 
-    const inputRefMob = useRef(null);
+    const inputRefMob = useRef<HTMLInputElement>(null);
 
  
     const navigate = useNavigate()
@@ -70,11 +70,15 @@ export const Header = ({
     }
 
     const handleFocus = () => {
+        console.log("handleFocus");
         //@ts-ignore
-        if (inputRef?.current) {
+        if (inputRefMob?.current) {
             //@ts-ignore
-          inputRef?.current.focus();
+            inputRefMob?.current.focus();
         }
+
+     
+        
       };
 
     //@ts-ignore
@@ -402,8 +406,9 @@ export const Header = ({
                                 }`}
                                 onClick={(e) => {
                                     setSearchShow(true)
-                                    handleFocus()
                                     e.preventDefault()
+                                    handleFocus()
+                                  
                                 }}
                             >
                                 <div
@@ -429,7 +434,7 @@ export const Header = ({
                                         onChange={(e) =>
                                             setCasinoFilters(s => ({...s,casino_name: e.target.value || undefined}))
                                         }
-                                        onClick={handleFocus}
+                                       
                                         onBlur={() => setSearchFocus(false)}
                                         onFocus={() => setSearchFocus(true)}
                                     />
