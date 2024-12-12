@@ -109,8 +109,8 @@ export default function SimpleLoyalties() {
       
     }, [isLoading])
 
-    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
-
+    // if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
+    if (isLoading ) return <LogoLoader />
     return (
         <Wraper>
             <main className="gamble__loyaltie main-gamble loyaltie" >
