@@ -171,3 +171,7 @@
     fill: var(--Colors-Red, #FF3232) !important;
   }
   
+  .item-inner-information-loyaltie .top-item-inner-information-loyaltie__icons-item svg{
+    width: 16px;
+    height: 16px;
+  }

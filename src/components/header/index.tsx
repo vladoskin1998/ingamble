@@ -138,6 +138,7 @@ export const Header = ({
     }, [isSidebarActive])
 
     const navTo = () => {
+        
         if (
             window.location.href.includes("filter-casinos") 
         ) {
