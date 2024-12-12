@@ -188,7 +188,7 @@ export const HighRankSwiper = ({ casinoName }: { casinoName?: string }) => {
                                                         `/casino/${sanitizeLink(l?.casino_name)}?queryId=${l?.casino_id}`
                                                         }
                                                         aria-label="Put your description here."
-                                                        target="_blank"
+                                                       
                                                         className="item-essential-programs-gamble__logo ibg--custom"
                                                     >
                                                         <LazyCardImg
@@ -354,7 +354,7 @@ export const HighRankSwiper = ({ casinoName }: { casinoName?: string }) => {
                                                         <Link
                                                             to={`/casino/${sanitizeLink(
                                                                 l?.casino_name
-                                                            )}/loyalty?queruId=${
+                                                            )}/loyalty?queryId=${
                                                                 l?.loyalty_id
                                                             }`}
                                                             aria-label="Put your description here."

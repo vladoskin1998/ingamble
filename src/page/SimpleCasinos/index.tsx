@@ -43,7 +43,17 @@ export default function SimpleCasinos() {
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const [openModal, setOpenModal] = useState(false)
     const [searchParams] = useSearchParams()
-    const queryId = searchParams.get("queryId")
+    const qid = searchParams.get("queryId")
+
+    const [queryId, setQueryId] = useState<string>(qid || '')
+
+    useEffect(() => {
+        if(qid){
+            setQueryId(qid)
+            window.scrollTo(0, 0);
+        }
+        
+    }, [])
 
     const { data, isLoading } = useQuery<{
         dataCurrentCasinos: RewievCasinoDataResponse

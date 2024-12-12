@@ -37,7 +37,17 @@ export default function SimpleBonus() {
     const {data: Country} = useFilterContext()
 
     const [searchParams] = useSearchParams()
-    const queryId = searchParams.get("queryId")
+    const qid = searchParams.get("queryId")
+
+    const [queryId, setQueryId] = useState<string>(qid || '')
+
+    useEffect(() => {
+        if(qid){
+            setQueryId(qid)
+            window.scrollTo(0, 0);
+        }
+        
+    }, [])
 
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: "",

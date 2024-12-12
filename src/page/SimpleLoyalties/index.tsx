@@ -34,7 +34,17 @@ export default function SimpleLoyalties() {
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
     const [searchParams] = useSearchParams()
-    const queryId = searchParams.get("queryId")
+    const qid = searchParams.get("queryId")
+
+    const [queryId, setQueryId] = useState<string>(qid || '')
+
+    useEffect(() => {
+        if(qid){
+            setQueryId(qid)
+            window.scrollTo(0, 0);
+        }
+        
+    }, [])
     const { data: Country } = useFilterContext()
     const { data, isLoading } = useQuery<{
         dataCurrentLoyaltie: LoyaltieProgramDataResponse
