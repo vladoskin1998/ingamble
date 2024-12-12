@@ -524,11 +524,10 @@ export const BonusInformation = ({
                                                 Bonus slot:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.bonus_slot?.game?.[0]
-                                                    ?.name || ""}
+                                              
 
-                                                {data?.bonus_slot?.game?.[0]
-                                                    ? `${data?.bonus_slot?.game?.[0]}`
+                                                {data?.bonus_slot?.game?.[0].name
+                                                    ? `${data?.bonus_slot?.game?.[0].name}`
                                                     : "-"}
                                             </div>
                                         </div>

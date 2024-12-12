@@ -53,12 +53,14 @@ export const SiblingBonus = ({
                         casinoName: casinoName || '',
                         bonuseName: c?.name || '',
                         playLink: casino_affiliate_link,
-
+                        imageLink: `/casino/${sanitizeLink(
+                            c.name
+                        )}/bonuses/${sanitizeLink(c?.name)}?queryId=${c?.id}` || '',
                         casinoLink: `/casino/${sanitizeLink(
-                            c?.name
+                           casinoName
                         )}?queryId=${casino_id}` || '',
                         bonuseLink: `/casino/${sanitizeLink(
-                            casinoName
+                            c.name
                         )}/bonuses/${sanitizeLink(c?.name)}?queryId=${c?.id}` || '',
                         tags: (
                             <>
