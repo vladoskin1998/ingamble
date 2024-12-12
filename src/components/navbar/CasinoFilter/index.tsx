@@ -161,6 +161,7 @@ export const CasinoFilterContent = ({
                     }
                     content={
                         <ListCheckBox
+                            isImageShow={false}
                             initState={casinoFilters.licenses}
                             field="licenses"
                             placeholder="Search (License )"
@@ -217,6 +218,7 @@ export const CasinoFilterContent = ({
                     }
                     content={
                         <ListCheckBox
+                            isImageShow={false}
                             initState={casinoFilters.game_providers}
                             field="game_providers"
                             placeholder="Search (Game Providers)"
@@ -397,6 +399,7 @@ export const CasinoFilterContent = ({
                     }
                     content={
                         <ListCheckBox
+                            isImageShow={false}
                             initState={casinoFilters.payment_methods}
                             list={datasFilterCasino?.payment_methods}
                             field="payment_methods"

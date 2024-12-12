@@ -40,6 +40,10 @@ export const Header = ({
     isSidebarActive: boolean
     setSidebarActive: (s: boolean) => void
 }) => {
+
+    const inputRefMob = useRef(null);
+
+ 
     const navigate = useNavigate()
     const { casinoFilters, setCasinoFilters} =
         useFilterContext()
@@ -64,6 +68,14 @@ export const Header = ({
         setSelectedLanguage(language)
         setIsLanguageOpen(false)
     }
+
+    const handleFocus = () => {
+        //@ts-ignore
+        if (inputRef?.current) {
+            //@ts-ignore
+          inputRef?.current.focus();
+        }
+      };
 
     //@ts-ignore
     const [logoHide, setLogoHide] = useState(false)
@@ -406,6 +418,7 @@ export const Header = ({
                                         </svg>
                                     </span>
                                     <input
+                                        ref={inputRefMob}
                                         placeholder="Search"
                                         autoComplete="off"
                                         type="text"
@@ -415,6 +428,7 @@ export const Header = ({
                                         onChange={(e) =>
                                             setCasinoFilters(s => ({...s,casino_name: e.target.value || undefined}))
                                         }
+                                        onClick={handleFocus}
                                         onBlur={() => setSearchFocus(false)}
                                         onFocus={() => setSearchFocus(true)}
                                     />

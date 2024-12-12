@@ -427,6 +427,7 @@ export const BonusFilter = ({
                     }
                     content={
                         <ListCheckBox
+                        isImageShow={false}
                             initState={bonusFilters.selected_providers}
                             field="selected_providers"
                             placeholder="Search (Providers)"
