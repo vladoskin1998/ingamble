@@ -131,6 +131,21 @@ export const Header = ({
         }
     }
 
+    useEffect(() => {
+        const onKeypress = (e:KeyboardEvent) => {
+            if((e.code === 'Enter' || e.key === 'Enter') && casinoFilters?.casino_name){
+                navTo()
+            }
+            
+        };
+      
+        document.addEventListener('keypress', onKeypress);
+      
+        return () => {
+          document.removeEventListener('keypress', onKeypress);
+        };
+      }, []);
+
     
 
     const [activeLink,setActiveLink] = useState<string>(window.location.pathname)
@@ -254,6 +269,7 @@ export const Header = ({
                                 <button
                                     className="form-item__icon form-item__icon_delete"
                                     onClick={() =>    setCasinoFilters(s => ({...s, casino_name:  undefined}))}
+                                  
                                 >
                                     <svg>
                                         <g>
@@ -407,6 +423,7 @@ export const Header = ({
                                     <button
                                         className="form-item__icon form-item__icon_delete"
                                         onClick={() =>  setCasinoFilters(s => ({...s,casino_name: undefined}))}
+                                       
                                     >
                                         <svg>
                                             <use xlinkHref="#delete"></use>
