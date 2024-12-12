@@ -1,8 +1,8 @@
 import { AccordionItem } from "../../components/acordion/Acordion"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LoyaltieProgramDataResponse } from "../../types"
-import SVGIcon from "./SvgIcon"
 import './style.css'
+import { ReactSVG } from 'react-svg'
 
 const colors = ["amateur","hustler", "semi-pro","professional","expert","veteran","master","grand-master","ace"]
 
@@ -31,7 +31,7 @@ export const LoyaltyAcordeon = ({
                 </div>
                 <div className="information-loyaltie__row" >
                 <div  className="information-loyaltie__column ">
-                    {data?.level_loyalty?.slice(0, Math.ceil(data?.level_loyalty?.length/2)).map((item, index) => (
+                    {data?.level_loyalty?.slice(0, Math?.ceil(data?.level_loyalty?.length/2)).map((item, index) => (
                             <div className="information-loyaltie__item">
                             <div className={`inner-information-loyaltie__item item-inner-information-loyaltie item-inner-information-loyaltie_only 
                             item-inner-information-loyaltie_${colors[index % (colors.length - 1)]}`}>
@@ -45,15 +45,17 @@ export const LoyaltyAcordeon = ({
                                                     </svg>
                                                 </div>
                                                 <h3 className="top-item-inner-information-loyaltie__level">
-                                                    Level {item.level}
+                                                    Level {item?.level}
                                                 </h3>
                                             </div>
                                             <div className="top-item-inner-information-loyaltie__column">
                                                 <div className="top-item-inner-information-loyaltie__icons ">
                                                     {item?.images?.map((im, idx) => (
                                                         <div key={idx} className="top-item-inner-information-loyaltie__icons-item top-item-information-loyaltie__icon"
-                                                        dangerouslySetInnerHTML={{ __html: SVGIcon({url:im.image}) || '' }}>
-                                                            {/* <img src={im?.image} alt={im?.image} /> */}
+                                                   
+                                                        >
+                                                            <ReactSVG src={im?.image}/>
+                                                         
                                                             
                                                         </div>
                                                     ))}
@@ -94,9 +96,9 @@ export const LoyaltyAcordeon = ({
                                                         {item?.level_up_bonus && (
                                                             <div className="item-inner-information-loyaltie__element element-item-inner-information-loyaltie">
                                                                 {
-                                                                    !item.level_up_bonus.bonus &&
-                                                                    !item.level_up_bonus.wager && 
-                                                                    !item.level_up_bonus.freespins ? <></> :
+                                                                    !item?.level_up_bonus.bonus &&
+                                                                    !item?.level_up_bonus.wager && 
+                                                                    !item?.level_up_bonus.freespins ? <></> :
                                                                     <div className="element-item-inner-information-loyaltie__label">
                                                                     Level-Up Bonus:
                                                                 </div>
@@ -104,16 +106,16 @@ export const LoyaltyAcordeon = ({
                                                                 
                                                                 <div className="element-item-inner-information-loyaltie__value">
                                                                     {item.level_up_bonus.bonus && <div className="element-item-inner-information-loyaltie__bonus">
-                                                                        Bonus: {item.level_up_bonus.bonus}
+                                                                        Bonus: {item?.level_up_bonus.bonus}
                                                                     </div>}
                                                                     {item.level_up_bonus.wager !== null && (
                                                                         <div className="element-item-inner-information-loyaltie__wager">
-                                                                            Wager: {item.level_up_bonus.wager}
+                                                                            Wager: {item?.level_up_bonus.wager}
                                                                         </div>
                                                                     )}
                                                                     {item.level_up_bonus.freespins !== null && (
                                                                         <div className="element-item-inner-information-loyaltie__freespins">
-                                                                            Freespins: {item.level_up_bonus.freespins}
+                                                                            Freespins: {item?.level_up_bonus.freespins}
                                                                         </div>
                                                                     )}
                                                                 </div>
@@ -187,11 +189,11 @@ export const LoyaltyAcordeon = ({
                                                                     VIP Manager Access:
                                                                 </div>
                                                                 <div className="element-item-inner-information-loyaltie__value">
-                                                                    {typeof item.vip_manager_access === "boolean"
-                                                                        ? item.vip_manager_access
+                                                                    {typeof item?.vip_manager_access === "boolean"
+                                                                        ? item?.vip_manager_access
                                                                             ? "Available"
                                                                             : "Not Available"
-                                                                        : item.vip_manager_access}
+                                                                        : item?.vip_manager_access}
                                                                 </div>
                                                             </div>
                                                         )}
@@ -237,8 +239,9 @@ export const LoyaltyAcordeon = ({
                                                 <div className="top-item-inner-information-loyaltie__icons ">
                                                     {item?.images?.map((im, idx) => (
                                                         <div key={idx} className="top-item-inner-information-loyaltie__icons-item top-item-information-loyaltie__icon"
-                                                        dangerouslySetInnerHTML={{ __html: SVGIcon({url:im.image}) || '' }}>
-                                                            {/* <img src={im?.image} alt={im?.image} /> */}
+                                                        
+                                                        >
+                                                            <ReactSVG src={im?.image}/>
                                                             
                                                         </div>
                                                     ))}

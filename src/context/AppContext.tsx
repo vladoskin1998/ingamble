@@ -39,10 +39,10 @@ const getRandomDate = (startDate: Date, endDate: Date): Date => {
 
 
 const getLastUpdateDate = (): Date | null => {
-    const storedDate = localStorage.getItem('lastUpdate');
+    const storedDate = localStorage?.getItem('lastUpdate');
     const date = storedDate ? new Date(storedDate) : null;
 
-    if (date && isNaN(date.getTime())) {
+    if (date && isNaN(date?.getTime())) {
         console.error('Invalid date stored in localStorage:', storedDate);
         return null;
     }
@@ -52,8 +52,8 @@ const getLastUpdateDate = (): Date | null => {
 
 
 const setLastUpdateDate = (date: Date): void => {
-    if (isNaN(date.getTime())) {
-        console.error('Invalid date passed to setLastUpdateDate:', date);
+    if (isNaN(date?.getTime())) {
+        console?.error('Invalid date passed to setLastUpdateDate:', date);
         return;
     }
     localStorage.setItem('lastUpdate', date.toISOString());

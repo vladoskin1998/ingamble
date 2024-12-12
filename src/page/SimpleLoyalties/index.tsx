@@ -30,21 +30,25 @@ const getCurrentLoyaltiesFetchData = async (queryId: string) => {
 
 export default function SimpleLoyalties() {
     document.title = " Loyaltie"
+    const [queryId, setQueryId] = useState<string>('')
+    const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
+        countryCode: "",
+        countryName: "",
+        isAllowed: true,
+        isLoadedGeo: false,
+        countryImg: undefined,
+    })
 
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
     const [searchParams] = useSearchParams()
     const qid = searchParams.get("queryId")
 
-    const [queryId, setQueryId] = useState<string>(qid || '')
+    
 
-    useEffect(() => {
-        if(qid){
-            setQueryId(qid)
-            window.scrollTo(0, 0);
-        }
-        
-    }, [])
+    console.log("queryId", queryId, qid);
+
+   
     const { data: Country } = useFilterContext()
     const { data, isLoading } = useQuery<{
         dataCurrentLoyaltie: LoyaltieProgramDataResponse
@@ -53,18 +57,19 @@ export default function SimpleLoyalties() {
         ["get-data-casino", queryId],
         () => getCurrentLoyaltiesFetchData(queryId!),
         {
-            staleTime: Infinity,
+            keepPreviousData: true,
             enabled: !!queryId,
         }
     )
 
-    const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
-        countryCode: "",
-        countryName: "",
-        isAllowed: true,
-        isLoadedGeo: false,
-        countryImg: undefined,
-    })
+    useEffect(() => {
+        if(qid){
+            setQueryId(qid)
+            window.scrollTo(0, 0);
+        }
+        
+    }, [qid])
+    
 
     useEffect(() => {
         if (data?.headers && Country?.general?.countries?.length) {
@@ -98,15 +103,17 @@ export default function SimpleLoyalties() {
     }, [Country])
 
     useEffect(() => {
-        initializeAdaptiveBehavior()
+    
+            initializeAdaptiveBehavior()
+       
+      
     }, [isLoading])
 
-    // if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
+    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
 
-    if (isLoading) return <LogoLoader />
     return (
         <Wraper>
-            <main className="gamble__loyaltie main-gamble loyaltie">
+            <main className="gamble__loyaltie main-gamble loyaltie" >
                 <div className="main-gamble__body">
                     <Categories />
                     <BreadCrumb
@@ -144,8 +151,12 @@ export default function SimpleLoyalties() {
                             }
                         />
                     )}
-
-                    <LoyaltyAcordeon data={data?.dataCurrentLoyaltie} />
+                    
+                     
+                        <LoyaltyAcordeon data={data?.dataCurrentLoyaltie} /> 
+                     
+                    
+                  
                     <LoyaltyText data={data?.dataCurrentLoyaltie} />
                     <HowToStartVipJorney
                         casino_affiliate_link={

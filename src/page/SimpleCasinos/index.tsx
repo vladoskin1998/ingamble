@@ -45,16 +45,12 @@ export default function SimpleCasinos() {
     const [searchParams] = useSearchParams()
     const qid = searchParams.get("queryId")
 
+
+    
+
     const [queryId, setQueryId] = useState<string>(qid || '')
 
-    useEffect(() => {
-        if(qid){
-            setQueryId(qid)
-            window.scrollTo(0, 0);
-        }
-        
-    }, [])
-
+  
     const { data, isLoading } = useQuery<{
         dataCurrentCasinos: RewievCasinoDataResponse
         headers: any
@@ -66,6 +62,15 @@ export default function SimpleCasinos() {
             enabled: !!queryId,
         }
     )
+
+    useEffect(() => {
+        if(qid){
+            setQueryId(qid)
+            window.scrollTo(0, 0);
+        }
+        
+    }, [qid])
+
 
     const {data: Country} = useFilterContext()
 

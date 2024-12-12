@@ -17,24 +17,24 @@ export const AccordionItem: React.FC<AccordionItemProps> = memo( ({
 
 }) => {
     const [isOpen, setIsOpen] = useState(defaultOpen ||  isNested)
-    const { toggle } = useAccordion()
-    const headerRef = useRef<HTMLDivElement>(null)
-    const bodyRefAcc = useRef<HTMLDivElement | null>(null)
     const [maxHeight, setMaxHeight] = useState<string>( "0")
     const [isAnimating, setIsAnimating] = useState<boolean>(false)
-
-   
-
     const [isHidden, setIsHidden] = useState<"hidden" | "visible">(
         isOpen ? "visible" : "hidden"
     )
+    const { toggle } = useAccordion()
+    const headerRef = useRef<HTMLDivElement>(null)
+    const bodyRefAcc = useRef<HTMLDivElement | null>(null)
+
+
+
+   
 
     const calculateTotalHeight = (element: HTMLElement): number => {
         let totalHeight = element.scrollHeight
         const nestedAccordions = element.querySelectorAll(".accordion-item")
 
         nestedAccordions.forEach((nestedAccordion) => {
-          
             
             if (nestedAccordion instanceof HTMLElement) {
                 totalHeight += calculateTotalHeight(nestedAccordion)
@@ -46,15 +46,31 @@ export const AccordionItem: React.FC<AccordionItemProps> = memo( ({
 
 
     useEffect(() => {
-        if (bodyRefAcc.current) {
-            const contentHeight = calculateTotalHeight(bodyRefAcc.current)
+        if (bodyRefAcc?.current) {
+            const contentHeight = calculateTotalHeight(bodyRefAcc?.current)
             setMaxHeight(`${contentHeight}px`)
         }
     }, [])
 
 
 
+    useEffect(() => {
+        const headerElement = headerRef.current
 
+        if (headerElement) {
+            const targetElement = headerElement.querySelector(
+                ".accordion--title--element"
+            ) as HTMLElement | null
+
+            if (targetElement) {
+                if (isOpen) {
+                    targetElement.classList.add("active")
+                } else {
+                    targetElement.classList.remove("active")
+                }
+            }
+        }
+    }, [isOpen])
     
     const handleClick = () => {
         if (isAnimating) return
@@ -79,23 +95,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = memo( ({
         }, 300)
     }
 
-    useEffect(() => {
-        const headerElement = headerRef.current
-
-        if (headerElement) {
-            const targetElement = headerElement.querySelector(
-                ".accordion--title--element"
-            ) as HTMLElement | null
-
-            if (targetElement) {
-                if (isOpen) {
-                    targetElement.classList.add("active")
-                } else {
-                    targetElement.classList.remove("active")
-                }
-            }
-        }
-    }, [isOpen])
+ 
 
     return (
         <div className="cusom-react-accordion">
