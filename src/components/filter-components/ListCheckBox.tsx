@@ -125,7 +125,7 @@ const ListCheck = <M extends CasinoFilterBodyType | BonusFilterBodyType>({
                           alt={itemFilter?.name}
                           src={itemFilter?.image || itemFilter?.flag_image || ""}
                           width={20}
-                          height={20}
+                          height='auto'
                         />
                       </span>
                     )}
