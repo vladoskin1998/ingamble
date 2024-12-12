@@ -402,6 +402,7 @@ export const Header = ({
                                 }`}
                                 onClick={(e) => {
                                     setSearchShow(true)
+                                    handleFocus()
                                     e.preventDefault()
                                 }}
                             >
