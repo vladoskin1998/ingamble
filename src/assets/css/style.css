@@ -19804,3 +19804,15 @@ h3 {
 /* .custom-item-form-filters__body .accordion-item{
   max-height: 240px;
 } */
+
+@media (max-width: 480px) {
+  .home--main--pc {
+    display: none;
+  }
+}
+
+@media (min-width: 481px) {
+  .home--main--mob {
+    display: none;
+  }
+}

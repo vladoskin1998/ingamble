@@ -254,7 +254,8 @@ export const BonusInformation = ({
                                                     : "-"}
                                             </div>
                                         </div>
-                                        <div className="content-bonus-information__item item-content-bonus-information">
+                                        {
+                                            data?.bonus_type.toLocaleLowerCase() !== "Cashback bonus".toLocaleLowerCase() &&   <div className="content-bonus-information__item item-content-bonus-information">
                                             <div className="item-content-bonus-information__label">
                                                 Sticky:
                                             </div>
@@ -262,6 +263,8 @@ export const BonusInformation = ({
                                                 {data?.sticky ? "Yes" : "No"}
                                             </div>
                                         </div>
+                                        }
+                                      
                                         {/* <div className="content-bonus-information__item item-content-bonus-information ''">
                                             <div className="item-content-bonus-information__label">
                                                 Bonus Terms:

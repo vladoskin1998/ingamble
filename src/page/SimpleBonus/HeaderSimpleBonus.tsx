@@ -169,7 +169,7 @@ export const HeaderSimpleBonus = ({
                                         </h2>
                                      
                                     <div className="content-casino-info__subtitle">
-                                        {data?.bonus_type || "Reload Bonus"}
+                                        {data?.bonus_type}
                                     </div>
                                 </div>
                                 <div className="casino-card__tags tags-casino-card">

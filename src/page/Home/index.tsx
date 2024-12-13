@@ -170,9 +170,14 @@ export default function Home ()  {
             <main className="gamble__main main-gamble">
                 <div className="main-gamble__body">
                     <Categories  />
+                    <div className="home--main--pc">
                     {data?.dataHome?.map((block) => renderBlock(block))}
+                    </div>
+                    <div className="home--main--mob">
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
+                    </div>
+               
                     {/* <FastestPayoutCasinos /> */}
 
                     {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
