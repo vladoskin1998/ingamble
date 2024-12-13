@@ -1,5 +1,6 @@
 interface MinimumDeposit {
     value: number;
+    unlimited: boolean;
     symbol: {
         symbol: string;
         name: string;
