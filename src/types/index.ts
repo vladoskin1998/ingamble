@@ -118,6 +118,7 @@ export interface GetDataBonusResponse {
     };
     bonus_max_win: {
         max_value: number;
+        unlimited: boolean;
         symbol: {
             symbol: string;
             name: string;
