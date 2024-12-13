@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { sanitizeLink } from "../../helper";
 import { DataHomeItemsBlockTypeCategory } from "../../types"
 
@@ -10,17 +11,19 @@ const SeeAllRoutes = {
 export const SeeAllButton = ({
     type_category,
     parameter,
+    id,
 }:{
     type_category:DataHomeItemsBlockTypeCategory,
     parameter: string,
+    id:number,
 }) => {
  
     
     return (
-        <a
-            href={`/all-${SeeAllRoutes[type_category]}${parameter ? "/" + sanitizeLink(parameter)  : ''}`}
+        <Link
+            to={`/all-${SeeAllRoutes[type_category]}${parameter ? `/${sanitizeLink(parameter)}?queryId=${id}`  : ''}`}
             aria-label="Put your description here."
-            target="_blank"
+            
             className="top__btn"
         >
             <span>See All</span>
@@ -29,6 +32,6 @@ export const SeeAllButton = ({
                     <use xlinkHref="#arrow"></use>
                 </svg>
             </span>
-        </a>
+        </Link>
     )
 }

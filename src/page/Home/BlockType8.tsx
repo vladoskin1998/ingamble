@@ -40,7 +40,7 @@ export default function BlockType8({
                                 type_category={data.items_block.type_category}
                                 parameter={
                                     data?.items_block?.category?.name || ""
-                                }
+                                } id={  data?.items_block?.category?.id}
                             />
                         </div>
                     </div>

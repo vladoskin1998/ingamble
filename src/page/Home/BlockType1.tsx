@@ -48,6 +48,7 @@ export default function BlockType1({
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
+                                id={  data?.items_block?.category?.id}
                             />
                         </div>
                     </div>

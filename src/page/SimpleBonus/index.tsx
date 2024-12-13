@@ -39,9 +39,15 @@ export default function SimpleBonus() {
     const [searchParams] = useSearchParams()
     const qid = searchParams.get("queryId")
 
-    console.log("qid",qid);
-    
     const [queryId, setQueryId] = useState<string>(qid || '')
+    
+    useEffect(() => {
+        if(qid){
+            setQueryId(qid)
+            window.scrollTo(0, 0);
+        }
+        
+    }, [qid])
 
 
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
@@ -61,14 +67,6 @@ export default function SimpleBonus() {
         enabled: !!queryId,
     })
 
-    
-    useEffect(() => {
-        if(qid){
-            setQueryId(qid)
-            window.scrollTo(0, 0);
-        }
-        
-    }, [qid])
 
     useEffect(() => {
         if (data?.headers && Country?.general?.countries?.length) {

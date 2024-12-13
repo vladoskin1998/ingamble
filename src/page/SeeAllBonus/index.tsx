@@ -43,11 +43,17 @@ export default function SeeAllBonus() {
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
     const [searchParams] = useSearchParams()
-    const queryId = searchParams.get("queryId")
+    const qid = searchParams.get("queryId")
 
- 
-   
-
+    const [queryId, setQueryId] = useState<string>(qid || '')
+    
+    useEffect(() => {
+        if(qid){
+            setQueryId(qid)
+            window.scrollTo(0, 0);
+        }
+        
+    }, [qid])
   
 
     const { data, isLoading } = useQuery<SeeAllBonusResponse>(

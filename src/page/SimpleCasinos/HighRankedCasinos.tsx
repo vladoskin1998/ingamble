@@ -417,6 +417,7 @@ export const HighRankedCasinos = () => {
                                                             />
                                                         </span>
                                                     </Link>
+                                                    
                                                     <div className="item-slide-slider__content">
                                                         <a
                                                             href=""

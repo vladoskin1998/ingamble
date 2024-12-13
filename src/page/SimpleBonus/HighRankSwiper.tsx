@@ -170,202 +170,166 @@ export const HighRankSwiper = ({ casinoName }: { casinoName?: string }) => {
                                 }}
                                 className="slider__wrapper swiper-wrapper"
                             >
-                                {LoyaltieDataHigh?.map((l) => (
+                                {LoyaltieDataHigh?.map((item) => (
                                     <SwiperSlide>
-                                        <div
-                                            className="slider__slide slide-slider "
-                                            style={{ height: "100%" }}
-                                        >
-                                            <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
-                                                <div
-                                                    className="item-essential-programs-gamble__top"
-                                                    style={{
-                                                        maxHeight: "160px",
-                                                    }}
-                                                >
-                                                    <a
-                                                        href={
-                                                        `/casino/${sanitizeLink(l?.casino_name)}?queryId=${l?.casino_id}`
-                                                        }
-                                                        aria-label="Put your description here."
-                                                       
-                                                        className="item-essential-programs-gamble__logo ibg--custom"
-                                                    >
-                                                        <LazyCardImg
-                                                            img={
-                                                                l?.card_logo ||
-                                                                ""
-                                                            }
-                                                            height="auto"
-                                                            width="auto"
+                                          <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
+                                        <div className="item-essential-programs-gamble__top">
+                                            <Link
+                                                to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`}
+                                                aria-label="Put your description here."
+                                                
+                                                className="item-essential-programs-gamble__logo"
+                                            >
+                                                <LazyCardImg
+                                                    img={item.card_logo || ""}
+                                                />
+                                            </Link>
+                                        </div>
+                                        <div className="item-essential-programs-gamble__body">
+                                            <div className="item-essential-programs-gamble__provider">
+                                                <span className="item-essential-programs-gamble__provider-name">
+                                                    {item.casino_name}
+                                                </span>
+                                                <span className="item-essential-programs-gamble__provider-rating">
+                                                    <span className="item-essential-programs-gamble__provider-rating-star">
+                                                        <img
+                                                            src={star}
+                                                            alt="star"
                                                         />
-                                                    </a>
+                                                    </span>
+                                                    <span className="item-essential-programs-gamble__provider-rating-number">
+                                                        {item.casino_rank}
+                                                    </span>
+                                                </span>
+                                                <div className="info-casino-card__likes">
+                                                    <span className="info-casino-card__likes-icon">
+                                                        <img
+                                                            src={like}
+                                                            alt="like"
+                                                        />
+                                                    </span>
+                                                    <span className="info-casino-card__likes-number">
+                                                        {item.loyalty_likes}
+                                                    </span>
                                                 </div>
-                                                <div className="item-essential-programs-gamble__body">
-                                                    <div className="item-essential-programs-gamble__provider">
-                                                        <Link
-                                                            className="item-essential-programs-gamble__provider-name"
-                                                            to={`/casino/${sanitizeLink(
-                                                                l?.casino_name
-                                                            )}?queryId=${
-                                                                l?.casino_id
-                                                            }`}
-                                                        >
-                                                            {l.casino_name}
-                                                        </Link>
-                                                        <span className="item-essential-programs-gamble__provider-rating">
-                                                            <span className="item-essential-programs-gamble__provider-rating-star">
-                                                                <img
-                                                                    src={star}
-                                                                    alt="star"
-                                                                />
-                                                            </span>
-                                                            <span className="item-essential-programs-gamble__provider-rating-number">
-                                                                {l?.casino_rank}
-                                                            </span>
-                                                        </span>
-                                                        <div className="info-casino-card__likes">
-                                                            <span className="info-casino-card__likes-icon">
-                                                                <img
-                                                                    src={like}
-                                                                    alt="like"
-                                                                />
-                                                            </span>
-                                                            <span className="info-casino-card__likes-number">
-                                                                {l?.loyalty_likes ||
-                                                                    0}
-                                                            </span>
+                                            </div>
+                                            <div className="item-essential-programs-gamble__stats stats-item-essential-programs-gamble">
+                                                <div className="stats-item-essential-programs-gamble__column">
+                                                    <div className="stats-item-essential-programs-gamble__item item-stats-essential-programs-gamble">
+                                                        <div className="item-stats-essential-programs-gamble__label">
+                                                            Loyalty Rank
                                                         </div>
-                                                    </div>
-                                                    <div className="item-essential-programs-gamble__stats stats-item-essential-programs-gamble">
-                                                        <div className="stats-item-essential-programs-gamble__column">
-                                                            <div className="stats-item-essential-programs-gamble__item item-stats-essential-programs-gamble">
-                                                                <div className="item-stats-essential-programs-gamble__label">
-                                                                    Loyalty Rank
-                                                                </div>
-                                                                <div className="item-stats-essential-programs-gamble__value value-item-stats-essential-programs-gamble">
-                                                                    <div className="value-item-stats-essential-programs-gamble__number">
-                                                                        {
-                                                                            l?.loyalty_rank
-                                                                        }
-                                                                    </div>
-                                                                    <div className="value-item-stats-essential-programs-gamble__content">
-                                                                        <div className="value-item-stats-essential-programs-gamble__stars value-item-stats-essential-programs-gamble__stars_5">
-                                                                            {l?.stars?.map(
-                                                                                (
-                                                                                    str
-                                                                                ) => (
-                                                                                    <div
-                                                                                        key={
-                                                                                            str
-                                                                                        }
-                                                                                        className="value-item-stats-essential-programs-gamble__star"
-                                                                                    >
-                                                                                        <img
-                                                                                            src={
-                                                                                                star
-                                                                                            }
-                                                                                            alt="star"
-                                                                                        />
-                                                                                    </div>
-                                                                                )
-                                                                            )}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                        <div className="item-stats-essential-programs-gamble__value value-item-stats-essential-programs-gamble">
+                                                            <div className="value-item-stats-essential-programs-gamble__number">
+                                                                {
+                                                                    item.loyalty_rank
+                                                                }
                                                             </div>
-                                                        </div>
-                                                        <div className="stats-item-essential-programs-gamble__column">
-                                                            <div className="stats-item-essential-programs-gamble__item item-stats-essential-programs-gamble">
-                                                                <div className="item-stats-essential-programs-gamble__label">
-                                                                    Levels
-                                                                </div>
-                                                                <div className="item-stats-essential-programs-gamble__value value-item-stats-essential-programs-gamble">
-                                                                    <div className="value-item-stats-essential-programs-gamble__number">
-                                                                        {
-                                                                            l?.loyalty_count_levels
-                                                                        }
-                                                                    </div>
-                                                                    <div className="value-item-stats-essential-programs-gamble__content">
-                                                                        {
-                                                                            l?.loyalty_level_description
-                                                                        }
-                                                                    </div>
+                                                            <div className="value-item-stats-essential-programs-gamble__content">
+                                                                <div className="value-item-stats-essential-programs-gamble__stars value-item-stats-essential-programs-gamble__stars_5">
+                                                                    {item.stars.map(
+                                                                        (
+                                                                            it,
+                                                                            idstar
+                                                                        ) => (
+                                                                            <div
+                                                                                key={
+                                                                                    idstar +
+                                                                                    111
+                                                                                }
+                                                                                className="value-item-stats-essential-programs-gamble__star"
+                                                                            >
+                                                                                <img
+                                                                                    src={
+                                                                                        star
+                                                                                    }
+                                                                                    alt={
+                                                                                        "star" +
+                                                                                        it
+                                                                                    }
+                                                                                />
+                                                                            </div>
+                                                                        )
+                                                                    )}
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="item-essential-programs-gamble__features features-essential-programs-gamble">
-                                                        {l?.keypoints.map(
-                                                            (lk) => (
-                                                                <div className="features-essential-programs-gamble__item">
-                                                                    <Link
-                                                                        className="features-essential-programs-gamble__icon"
-                                                                        rel="nofollow noopener"
-                                                                        to={`/casino/${sanitizeLink(
-                                                                            l?.casino_name
-                                                                        )}?queryId=${
-                                                                            l?.casino_id
-                                                                        }`}
-                                                                    >
-                                                                        <LazyCardImg
-                                                                            img={
-                                                                                lk?.image ||
-                                                                                ""
-                                                                            }
-                                                                            height="100%"
-                                                                            width="100%"
-                                                                            size="medium"
-                                                                        />
-                                                                    </Link>
-                                                                    <div className="features-essential-programs-gamble__info">
-                                                                        <div className="features-essential-programs-gamble__name">
-                                                                            {
-                                                                                lk?.text_1
-                                                                            }
-                                                                        </div>
-                                                                        <div className="features-essential-programs-gamble__text">
-                                                                            {
-                                                                                lk?.text_2
-                                                                            }
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            )
-                                                        )}
-                                                    </div>
                                                 </div>
-                                                <div className="item-essential-programs-gamble__bottom">
-                                                    <div className="item-essential-programs-gamble__bottom-column">
-                                                        <a
-                                                            rel="nofollow noopener"
-                                                            href={
-                                                                l.casino_affiliate_link ||
-                                                                l?.url_casino
-                                                            }
-                                                            aria-label="Put your description here."
-                                                            target="_blank"
-                                                            className="item-essential-programs-gamble__btn item-essential-programs-gamble__btn_yellow"
-                                                        >
-                                                            Visit Casino
-                                                        </a>
-                                                    </div>
-                                                    <div className="item-essential-programs-gamble__bottom-column">
-                                                        <Link
-                                                            to={`/casino/${sanitizeLink(
-                                                                l?.casino_name
-                                                            )}/loyalty?queryId=${
-                                                                l?.loyalty_id
-                                                            }`}
-                                                            aria-label="Put your description here."
-                                                            className="item-essential-programs-gamble__btn"
-                                                        >
-                                                            Read More
-                                                        </Link>
+                                                <div className="stats-item-essential-programs-gamble__column">
+                                                    <div className="stats-item-essential-programs-gamble__item item-stats-essential-programs-gamble">
+                                                        <div className="item-stats-essential-programs-gamble__label">
+                                                            Levels
+                                                        </div>
+                                                        <div className="item-stats-essential-programs-gamble__value value-item-stats-essential-programs-gamble">
+                                                            <div className="value-item-stats-essential-programs-gamble__number">
+                                                                {
+                                                                    item.loyalty_count_levels
+                                                                }
+                                                            </div>
+                                                            <div className="value-item-stats-essential-programs-gamble__content">
+                                                                {
+                                                                    item.loyalty_level_description
+                                                                }
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div className="item-essential-programs-gamble__features features-essential-programs-gamble">
+                                                {item.keypoints.map(
+                                                    (itp, idk) => (
+                                                        <div
+                                                            className="features-essential-programs-gamble__item"
+                                                            key={idk + 222}
+                                                        >
+                                                            <div className="features-essential-programs-gamble__icon">
+                                                                <LazyCardImg
+                                                                    img={
+                                                                        itp.image ||
+                                                                        ""
+                                                                    }
+                                                                    size="medium"
+                                                                />
+                                                            </div>
+                                                            <div className="features-essential-programs-gamble__info">
+                                                                <div className="features-essential-programs-gamble__name">
+                                                                    {itp.text_1}
+                                                                </div>
+                                                                <div className="features-essential-programs-gamble__text">
+                                                                    {itp.text_2}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                )}
+                                            </div>
                                         </div>
+                                        <div className="item-essential-programs-gamble__bottom">
+                                            <div className="item-essential-programs-gamble__bottom-column">
+                                                <a
+                                                    href={
+                                                        item?.casino_affiliate_link || item?.url_casino
+                                                    }
+                                                    aria-label="Put your description here."
+                                                    target="_blank"
+                                                    className="item-essential-programs-gamble__btn item-essential-programs-gamble__btn_yellow"
+                                                >
+                                                    Visit  Casino
+                                                </a>
+                                            </div>
+                                            <div className="item-essential-programs-gamble__bottom-column">
+                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item?.loyalty_id}`}
+                                                    aria-label="Put your description here."
+                                           
+                                                    className="item-essential-programs-gamble__btn"
+                                                >
+                                                    Read More
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
                                     </SwiperSlide>
                                 ))}
                             </Swiper>

@@ -80,6 +80,7 @@ export default function BlockType5Mobile({
                                             data?.items_block?.category?.name ||
                                             ""
                                         }
+                                        id={  data?.items_block?.category?.id}
                                     />
                                 </div>
                             </div>

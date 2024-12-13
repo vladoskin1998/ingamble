@@ -168,7 +168,7 @@ export default function SeeAllEssentialsLoyalty() {
                                                         (it) => (
                                                             <div className="features-essential-programs-gamble__column">
                                                                 <div className="features-essential-programs-gamble__item">
-                                                                    <div className="features-essential-programs-gamble__icon">
+                                                                    <div className="features-essential-programs-gamble__icon ">
                                                                         <LazyCardImg
                                                                             img={
                                                                                 it?.image ||

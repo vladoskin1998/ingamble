@@ -92,6 +92,7 @@ export default function BlockType5({
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
+                                id={  data?.items_block?.category?.id}
                             />
                         </div>
                     </div>
