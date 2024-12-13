@@ -199,9 +199,9 @@ export default function SeeAllEssentialsLoyalty() {
                                                         <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
                                                             <div className="item-essential-programs-gamble__rating">
                                                                 <div className="item-essential-programs-gamble__rating-number">
-                                                                    {String(item
+                                                                    {parseInt(String(item
                                                                         ?.loyalty_program
-                                                                        ?.loyalty_rank).replace('.', ",") }
+                                                                        ?.loyalty_rank) , 10) }
                                                                     /10
                                                                 </div>
                                                                 <div className="item-essential-programs-gamble__rating-body">
@@ -249,7 +249,7 @@ export default function SeeAllEssentialsLoyalty() {
                                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                                         <a
                                                             href={
-                                                                item.casino_affiliate_link || item?.url_casino
+                                                                item?.casino_affiliate_link || item?.url_casino
                                                             }
                                                             target="_blank"
                                                             aria-label="Put your description here."
@@ -262,8 +262,8 @@ export default function SeeAllEssentialsLoyalty() {
                                                                 item.casino_name
                                                             )}/loyalty?queryId=${
                                                                 item
-                                                                    .loyalty_program
-                                                                    .id
+                                                                    ?.loyalty_program
+                                                                    ?.id
                                                             }`}
                                                          
                                                             aria-label="Put your description here."
