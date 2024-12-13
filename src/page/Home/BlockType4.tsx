@@ -102,7 +102,21 @@ export default function BlockType4({
                                                         aria-label="Put your description here."
                                                         className="slide-slider__item casino-big-card"
                                                     >
-                                                        <div className="casino-big-card__image ibg">
+                                                        <Link className="casino-big-card__image ibg"
+                                                        to={`/casino/${sanitizeLink(
+                                                            item
+                                                                ?.casino_info
+                                                                ?.casino_name
+                                                        )}/bonuses/${sanitizeLink(
+                                                            item
+                                                                ?.bonus_info
+                                                                ?.bonus_name
+                                                        )}?queryId=${
+                                                            item
+                                                                ?.bonus_info
+                                                                ?.bonus_id
+                                                        }`}
+                                                        >
                                                             <LazyCardImg
                                                                 img={
                                                                     item
@@ -111,20 +125,15 @@ export default function BlockType4({
                                                                     ""
                                                                 }
                                                             />
-                                                        </div>
+                                                        </Link>
                                                         <div className="casino-big-card__top">
                                                             <div className="casino-big-card__top-small-card casino-small-card">
-                                                                <a
-                                                                    href={
-                                                                        item
-                                                                            ?.casino_info
-                                                                            ?.casino_affiliate_link || 
-                                                                            item
-                                                                                ?.casino_info
-                                                                                ?.url_casino
+                                                                <Link
+                                                                    to={
+                                                                       `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`
                                                                     }
                                                                     aria-label="Put your description here."
-                                                                    target="_blank"
+                                                                   
                                                                     className="casino-small-card__image-block"
                                                                 >
                                                                     <div
@@ -144,7 +153,7 @@ export default function BlockType4({
                                                                             size="medium"
                                                                         />
                                                                     </div>
-                                                                </a>
+                                                                </Link>
                                                                 <div className="casino-small-card__body">
                                                                     <Link to={`/casino/${sanitizeLink(
                                                                             item

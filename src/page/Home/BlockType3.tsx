@@ -148,18 +148,8 @@ export default function BlockType3({
                                                     <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                         <div className="different-casino-standart">
                                                             <div className="different-casino-standart__body">
-                                                                <a
-                                                                          rel="nofollow noopener"
-                                                                    href={
-                                                                        item?.[0]
-                                                                            .casino_info
-                                                                            .casino_affiliate_link || 
-                                                                            item?.[0]
-                                                                                ?.casino_info
-                                                                                ?.url_casino
-                                                                    }
-                                                                    aria-label="Put your description here."
-                                                                    target="_blank"
+                                                                <div
+                                                                    
                                                                     className="different-casino-standart__image-block"
                                                                 >
                                                                     <Link  to={`/casino/${sanitizeLink(item?.[0]?.casino_info?.casino_name)}?queryId=${item?.[0]?.casino_info?.casino_id}`} className="different-casino-standart__image ibg--custom">
@@ -174,7 +164,7 @@ export default function BlockType3({
                                                                             height="100%"
                                                                         />
                                                                     </Link>
-                                                                </a>
+                                                                </div>
                                                                 <div className="different-casino-standart__content">
                                                                     <div className="different-casino-standart__content-row">
                                                                         <Link
@@ -280,18 +270,7 @@ export default function BlockType3({
                                                         <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                             <div className="different-casino-standart">
                                                                 <div className="different-casino-standart__body">
-                                                                    <a
-                                                                              rel="nofollow noopener"
-                                                                        href={
-                                                                            item?.[1]
-                                                                                .casino_info
-                                                                                .casino_affiliate_link || 
-                                                                                item?.[1]
-                                                                                    ?.casino_info
-                                                                                    ?.url_casino
-                                                                        }
-                                                                        aria-label="Put your description here."
-                                                                        target="_blank"
+                                                                    <div
                                                                         className="different-casino-standart__image-block"
                                                                     >
                                                                         <Link className="different-casino-standart__image ibg--custom"
@@ -308,7 +287,7 @@ export default function BlockType3({
                                                                                 width="100%"
                                                                             />
                                                                         </Link>
-                                                                    </a>
+                                                                    </div>
                                                                     <div className="different-casino-standart__content">
                                                                         <div className="different-casino-standart__content-row">
                                                                             <Link

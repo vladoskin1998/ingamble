@@ -228,7 +228,7 @@ export default function BlockType9({
                                                 </a>
                                             </div>
                                             <div className="item-essential-programs-gamble__bottom-column">
-                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item?.loyaltie_id}`}
+                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item?.loyalty_id}`}
                                                     aria-label="Put your description here."
                                            
                                                     className="item-essential-programs-gamble__btn"

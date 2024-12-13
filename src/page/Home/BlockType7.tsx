@@ -99,12 +99,7 @@ export default function BlockType7({
                                             className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide"
                                         >
                                             <div className="slide-slider__item different-casino-bg">
-                                                <a
-                                                    href={item?.casino_info?.casino_affiliate_link || item
-                                                        ?.casino_info
-                                                        ?.url_casino}
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
+                                                <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                     className="different-casino-bg__image-block"
                                                 >
                                                     <span className="different-casino-bg__image ibg">
@@ -116,7 +111,7 @@ export default function BlockType7({
                                                             }
                                                         />
                                                     </span>
-                                                </a>
+                                                </Link>
                                                 <div className="different-casino-bg__content">
                                                     <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                         aria-label="Put your description here."

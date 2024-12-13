@@ -98,13 +98,27 @@ export default function BlockType4Mobile({
                                         <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
-                                                    <a
-                                                        href=""
+                                                    <div
+                                              
                                                         aria-label="Put your description here."
-                                                        target="_blank"
+                                              
                                                         className="casino-card__image-block"
                                                     >
-                                                        <div className="casino-card__image ibg">
+                                                        <Link className="casino-card__image ibg"
+                                                        to={`/casino/${sanitizeLink(
+                                                            item
+                                                                ?.casino_info
+                                                                ?.casino_name
+                                                        )}/bonuses/${sanitizeLink(
+                                                            item
+                                                                ?.bonus_info
+                                                                ?.bonus_name
+                                                        )}?queryId=${
+                                                            item
+                                                                ?.bonus_info
+                                                                ?.bonus_id
+                                                        }`}
+                                                        >
                                                             <LazyCardImg
                                                                 img={
                                                                     item
@@ -113,7 +127,7 @@ export default function BlockType4Mobile({
                                                                     ""
                                                                 }
                                                             />
-                                                        </div>
+                                                        </Link>
                                                         <a
                                                             href={
                                                                 item
@@ -129,20 +143,13 @@ export default function BlockType4Mobile({
                                                         >
                                                             Play
                                                         </a>
-                                                    </a>
+                                                    </div>
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">
-                                                            <a
-                                                               href={
-                                                                item
-                                                                    ?.casino_info
-                                                                    ?.casino_affiliate_link || 
-                                                                    item
-                                                                        ?.casino_info
-                                                                        ?.url_casino
-                                                            }
+                                                            <Link
+                                                               to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                 aria-label="Put your description here."
-                                                                target="_blank"
+                                                               
                                                                 className="casino-small-card__image-block"
                                                             >
                                                                 <div className="casino-small-card__image ibg">
@@ -155,7 +162,7 @@ export default function BlockType4Mobile({
                                                                         }
                                                                     />
                                                                 </div>
-                                                            </a>
+                                                            </Link>
                                                             <div className="casino-small-card__body">
                                                                 <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                                     aria-label="Put your description here."

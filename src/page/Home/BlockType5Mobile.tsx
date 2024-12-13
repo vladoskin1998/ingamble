@@ -114,12 +114,16 @@ export default function BlockType5Mobile({
                                         .map((item) => (
                                             <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
                                                 <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                                    <a
-                                                        href={item?.casino_info?.casino_affiliate_link || item
-                                                            ?.casino_info
-                                                            ?.url_casino}
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
+                                                    <Link
+                                                        to={`/casino/${sanitizeLink(
+                                                            item
+                                                                ?.casino_info
+                                                                ?.casino_name
+                                                        )}?queryId=${
+                                                            item
+                                                                ?.casino_info
+                                                                ?.casino_id
+                                                        }`}
                                                         className="different-casino-medium__image-block"
                                                     >
                                                         <span className="different-casino-medium__image ibg">
@@ -133,7 +137,7 @@ export default function BlockType5Mobile({
                                                                 size="medium"
                                                             />
                                                         </span>
-                                                    </a>
+                                                    </Link>
                                                     <div className="different-casino-medium__content">
                                                         <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                             aria-label="Put your description here."

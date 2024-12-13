@@ -75,12 +75,8 @@ export default function BlockType7Mobile({
                                         <SwiperSlide>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item different-casino-medium">
-                                                    <a
-                                                        href={item?.casino_info?.casino_affiliate_link || item
-                                                            ?.casino_info
-                                                            ?.url_casino}
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
+                                                    <Link
+                                                        to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                         className="different-casino-medium__image-block"
                                                     >
                                                         <span className="different-casino-medium__image ibg">
@@ -93,7 +89,7 @@ export default function BlockType7Mobile({
                                                                 }
                                                             />
                                                         </span>
-                                                    </a>
+                                                    </Link>
                                                     <div className="different-casino-medium__content">
                                                         <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                             aria-label="Put your descripton here."

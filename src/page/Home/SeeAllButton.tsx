@@ -3,7 +3,7 @@ import { sanitizeLink } from "../../helper";
 import { DataHomeItemsBlockTypeCategory } from "../../types"
 
 
-const SeeAllRoutes = {
+export const SeeAllRoutes = {
    [ DataHomeItemsBlockTypeCategory.bonus_category]: "bonus",
    [ DataHomeItemsBlockTypeCategory.casino_category]: "casinos",
 }

@@ -106,7 +106,7 @@ export default function BlockType2Mobile({
                                                         className="casino-card__image-block"
                                                     >
                                                         <Link className="casino-card__image ibg--custom"
-                                                         to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                         to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                         >
                                                             <LazyCardImg
                                                                 img={

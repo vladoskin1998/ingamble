@@ -10,7 +10,7 @@ import bg07 from "../../assets/img/bg/07.jpg"
 import gift from "../../assets/img/icons/gift.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { SeeAllButton } from "./SeeAllButton"
+import { SeeAllButton, SeeAllRoutes } from "./SeeAllButton"
 import { sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
@@ -62,7 +62,10 @@ export default function BlockType5({
         return <></>
 
     return (
-        <section aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble  main-gamble__different-casino-bg main-gamble__baner-block">
+        <section
+            aria-label="BlockTypeNumber.BlockType5"
+            className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble  main-gamble__different-casino-bg main-gamble__baner-block"
+        >
             <div className="best-live-dealer-casinos-gamble__container container">
                 <div className="best-live-dealer-casinos-gamble__top top">
                     <div className="top__row">
@@ -88,11 +91,11 @@ export default function BlockType5({
                         </div>
                         <div className="top__column">
                             <SeeAllButton
-                                type_category={data.items_block.type_category}
+                                type_category={data?.items_block?.type_category}
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
-                                id={  data?.items_block?.category?.id}
+                                id={data?.items_block?.category?.id}
                             />
                         </div>
                     </div>
@@ -166,13 +169,24 @@ export default function BlockType5({
                                                     key={index}
                                                     className="slider__slide slide-slider swiper-slide"
                                                 >
-                                                    <a
-                                                        href=""
-                                                        target="_blank"
+                                                    <div
                                                         aria-label="Put your description here."
                                                         className="slide-slider__item casino-big-card"
                                                     >
-                                                        <div className="casino-big-card__image ibg">
+                                                        <Link
+                                                            className="casino-big-card__image ibg"
+                                                            to={`/casino/${sanitizeLink(
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_name
+                                                            )}/bonuses/${sanitizeLink(
+                                                                item?.bonus_info
+                                                                    ?.bonus_name
+                                                            )}?queryId=${
+                                                                item?.bonus_info
+                                                                    ?.bonus_id
+                                                            }`}
+                                                        >
                                                             <LazyCardImg
                                                                 img={
                                                                     item
@@ -181,20 +195,19 @@ export default function BlockType5({
                                                                     ""
                                                                 }
                                                             />
-                                                        </div>
+                                                        </Link>
                                                         <div className="casino-big-card__top">
                                                             <div className="casino-big-card__top-small-card casino-small-card">
-                                                                <a
-                                                                    href={
+                                                                <Link
+                                                                    to={`/casino/${sanitizeLink(
                                                                         item
-                                                                            .casino_info
-                                                                            .casino_affiliate_link || 
-                                                                            item
-                                                                                ?.casino_info
-                                                                                ?.url_casino
-                                                                    }
-                                                                    aria-label="Put your description here."
-                                                                    target="_blank"
+                                                                            ?.casino_info
+                                                                            ?.casino_name
+                                                                    )}?queryId=${
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_id
+                                                                    }`}
                                                                     className="casino-small-card__image-block"
                                                                 >
                                                                     <div className="casino-small-card__image ibg">
@@ -208,11 +221,19 @@ export default function BlockType5({
                                                                             size="medium"
                                                                         />
                                                                     </div>
-                                                                </a>
+                                                                </Link>
                                                                 <div className="casino-small-card__body">
-                                                                    <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                    <Link
+                                                                        to={`/casino/${sanitizeLink(
+                                                                            item
+                                                                                ?.casino_info
+                                                                                ?.casino_name
+                                                                        )}?queryId=${
+                                                                            item
+                                                                                ?.casino_info
+                                                                                ?.casino_id
+                                                                        }`}
                                                                         aria-label="Put your description here."
-                                                                      
                                                                         className="casino-small-card__name"
                                                                     >
                                                                         {
@@ -262,9 +283,21 @@ export default function BlockType5({
                                                             </div>
                                                         </div>
                                                         <div className="casino-big-card__bottom">
-                                                            <Link to={  `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                            <Link
+                                                                to={`/casino/${sanitizeLink(
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_name
+                                                                )}/bonuses/${sanitizeLink(
+                                                                    item
+                                                                        ?.bonus_info
+                                                                        ?.bonus_name
+                                                                )}?queryId=${
+                                                                    item
+                                                                        ?.bonus_info
+                                                                        ?.bonus_id
+                                                                }`}
                                                                 aria-label="Put your description here."
-                                                          
                                                                 className="casino-big-card__title"
                                                             >
                                                                 <span className="casino-big-card__title-label">
@@ -279,7 +312,8 @@ export default function BlockType5({
                                                                 href={
                                                                     item
                                                                         .casino_info
-                                                                        .casino_affiliate_link || item
+                                                                        .casino_affiliate_link ||
+                                                                    item
                                                                         ?.casino_info
                                                                         ?.url_casino
                                                                 }
@@ -290,7 +324,7 @@ export default function BlockType5({
                                                                 Play
                                                             </a>
                                                         </div>
-                                                    </a>
+                                                    </div>
                                                 </SwiperSlide>
                                             ))}
                                     </Swiper>
@@ -318,17 +352,25 @@ export default function BlockType5({
                                 Bonus from <br />
                                 <span>Live Dealers</span>
                             </div>
-                            <a
-                                href=""
-                                aria-label="Put your description here."
-                                target="_blank"
+                            <Link
+                                to={`/all-${
+                                    SeeAllRoutes[data.items_block.type_category]
+                                }${
+                                    data?.items_block?.category?.name
+                                        ? `/${sanitizeLink(
+                                              data?.items_block?.category?.name
+                                          )}?queryId=${
+                                              data?.items_block?.category?.id
+                                          }`
+                                        : ""
+                                }`}
                                 className="best-live-dealer-casinos-gamble__btn "
                             >
                                 <span>
                                     <img src={gift} alt="gift" />
                                 </span>
                                 Get Bonus
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

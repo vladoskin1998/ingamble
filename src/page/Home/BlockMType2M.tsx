@@ -120,17 +120,7 @@ export default function BlockMType2M({
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <a
-                                                                href={
-                                                                    item?.[0]
-                                                                        .casino_info
-                                                                        .casino_affiliate_link || item?.[0]
-                                                                        ?.casino_info
-                                                                        ?.url_casino
-                                                                }
-                                                                rel="nofollow noopener"
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
+                                                            <Link to={`/casino/${sanitizeLink(item?.[0]?.casino_info?.casino_name)}?queryId=${item?.[0]?.casino_info?.casino_id}`}
                                                                 className="different-casino-standart__image-block"
                                                             >
                                                                 <span className="different-casino-standart__image ibg">
@@ -143,7 +133,7 @@ export default function BlockMType2M({
                                                                         }
                                                                     />
                                                                 </span>
-                                                            </a>
+                                                            </Link>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
@@ -216,18 +206,7 @@ export default function BlockMType2M({
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <a
-                                                                href={
-                                                                    item?.[1]
-                                                                        ?.casino_info
-                                                                        ?.casino_affiliate_link || item?.[1]
-                                                                        ?.casino_info
-                                                                        ?.url_casino
-                                                                    
-                                                                }
-                                                                rel="nofollow noopener"
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
+                                                            <Link  to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}?queryId=${item?.[1]?.casino_info?.casino_id}`}
                                                                 className="different-casino-standart__image-block"
                                                             >
                                                                 <span className="different-casino-standart__image ibg">
@@ -240,7 +219,7 @@ export default function BlockMType2M({
                                                                         }
                                                                     />
                                                                 </span>
-                                                            </a>
+                                                            </Link>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
@@ -312,17 +291,7 @@ export default function BlockMType2M({
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <a
-                                                                rel="nofollow noopener"
-                                                                href={
-                                                                    item?.[2]
-                                                                        ?.casino_info
-                                                                        ?.casino_affiliate_link || item?.[2]
-                                                                        ?.casino_info
-                                                                        ?.url_casino
-                                                                }
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
+                                                            <Link  to={`/casino/${sanitizeLink(item?.[2]?.casino_info?.casino_name)}?queryId=${item?.[2]?.casino_info?.casino_id}`}
                                                                 className="different-casino-standart__image-block"
                                                             >
                                                                 <span className="different-casino-standart__image ibg">
@@ -335,7 +304,7 @@ export default function BlockMType2M({
                                                                         }
                                                                     />
                                                                 </span>
-                                                            </a>
+                                                            </Link>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link

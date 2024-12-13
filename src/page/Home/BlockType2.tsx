@@ -144,17 +144,25 @@ export default function BlockType2({
                                                                         width="100%"
                                                                     />
                                                                 </Link>
-                                                                <a
-                                                                    rel="nofollow noopener"
-                                                                    href={
-                                                                        item
-                                                                            ?.casino_info
-                                                                            ?.casino_affiliate_link ||
-                                                                        item
-                                                                            ?.casino_info
-                                                                            ?.url_casino
-                                                                    }
-                                                                    target="_blank"
+                                                                <Link
+                                                                   to={`/casino/${sanitizeLink(
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_name
+                                                                )}/bonuses/${sanitizeLink(
+                                                                    item
+                                                                        ?.bonus_info
+                                                                        ?.bonus_name
+                                                                )}?queryId=${
+                                                                    item
+                                                                        ?.bonus_info
+                                                                        ?.bonus_id
+                                                                }`}
+                                                                onClick={(
+                                                                    e
+                                                                ) =>
+                                                                    e.stopPropagation()
+                                                                }
                                                                     aria-label="Put your description here."
                                                                     className="item-baner-row-block__row"
                                                                 >
@@ -300,7 +308,7 @@ export default function BlockType2({
                                                                             Play
                                                                         </a>
                                                                     </div>
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                         </div>
                                                     </SwiperSlide>
