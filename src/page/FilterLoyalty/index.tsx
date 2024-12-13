@@ -148,9 +148,7 @@ export default function FilterLoyalty() {
         <Wraper>
             <main className="gamble__casinos-filtered main-gamble casinos-filtered loyaltie-filtered__main">
                 <div className="main-gamble__body">
-                    <Categories
-                       
-                    />
+                    <Categories />
                     <FilterHeaderList
                         initList={loyaltiesFilters}
                         clearAll={clearAll}
@@ -280,8 +278,10 @@ const LisDisplayedData = memo(
                         <div className="item-loyaltie-programs__row">
                             <div className="item-loyaltie-programs__main">
                                 <Link
-                                          rel="nofollow noopener"
-                                    to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
+                                    rel="nofollow noopener"
+                                    to={`/casino/${sanitizeLink(
+                                        item.casino_name
+                                    )}?queryId=${item.casino_id}`}
                                     className="item-loyaltie-programs__image loyalty-img-custom "
                                     key={uuidv4()}
                                 >
@@ -371,20 +371,23 @@ const LisDisplayedData = memo(
                                 </div>
                                 <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                     <div className="bottom-content-item-loyaltie-programs__btns">
-                                    <a
-                                                                target="_blank"
-                                                                href={
-                                                                    item?.casino_affiliate_link ||   item?.url_casino
-                                                                }
-                                                                    aria-label="Put your description here."
-                                                                    className="bottom-content-item-loyaltie-programs__btn-view"
-                                                                >
-                                                                    Visit Casino
-                                                                </a>
+                                        <a
+                                            target="_blank"
+                                            href={
+                                                item?.casino_affiliate_link ||
+                                                item?.url_casino
+                                            }
+                                            aria-label="Put your description here."
+                                            className="bottom-content-item-loyaltie-programs__btn-view"
+                                        >
+                                            Visit Casino
+                                        </a>
                                         <Link
-                                                  rel="nofollow noopener"
-                                                  to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
-                                       
+                                            to={`/casino/${sanitizeLink(
+                                                item.casino_name
+                                            )}/loyalty?queryId=${
+                                                item?.loyalty_program?.id
+                                            }`}
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-more"
                                         >
