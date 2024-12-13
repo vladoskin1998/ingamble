@@ -486,22 +486,25 @@ const ListDisplayData = memo(
                                         </div>
                                         <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                             <div className="bottom-content-item-loyaltie-programs__btns">
+                                            <a
+                                                                target="_blank"
+                                                                href={
+                                                                    item?.casino_affiliate_link ||   item?.url_casino
+                                                                }
+                                                                    aria-label="Put your description here."
+                                                                    className="bottom-content-item-loyaltie-programs__btn-view"
+                                                                >
+                                                                    Visit Casino
+                                                                </a>
                                                 <Link
-                                                          rel="nofollow noopener"
-                                                   to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
-                                                   
-                                                    aria-label="Put your description here."
-                                                    className="bottom-content-item-loyaltie-programs__btn-view"
-                                                >
-                                                    View Casino
-                                                </Link>
-                                                <Link
-                                                    rel="nofollow noopener"
-                                                    to={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item.loyalty_program.id}`}
-                                                  
-                                                    aria-label="Put your description here."
-                                                    className="bottom-content-item-loyaltie-programs__btn-more"
-                                                >
+                                                                    to={`/casino/${sanitizeLink(
+                                                                        item?.casino_name
+                                                                    )}?queryId=${
+                                                                        item?.casino_id
+                                                                    }`}
+                                                                    aria-label="Put your description here."
+                                                                    className="bottom-content-item-loyaltie-programs__btn-more"
+                                                                >
                                                     Read More
                                                 </Link>
                                             </div>

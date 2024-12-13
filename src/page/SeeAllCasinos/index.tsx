@@ -344,8 +344,8 @@ export default function SeeAllCasinos() {
                                                                 <Link
                                                                     to={`/casino/${sanitizeLink(
                                                                         item?.casino_name
-                                                                    )}/loyalty?queryId=${
-                                                                        item?.loyalty_program?.id
+                                                                    )}?queryId=${
+                                                                        item?.casino_id
                                                                     }`}
                                                                     aria-label="Put your description here."
                                                                     className="bottom-content-item-loyaltie-programs__btn-more"
