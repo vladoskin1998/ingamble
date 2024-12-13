@@ -324,6 +324,7 @@ export interface SeeAllCasinosType {
     vpn_usage: boolean;
     casino_image: string;
     casino_affiliate_link: string;
+    url_casino?: string;
     additional_casino_params: string[];
     min_dep: MinimumDeposit[];
     licenses: {

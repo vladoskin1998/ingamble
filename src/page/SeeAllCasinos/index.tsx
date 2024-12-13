@@ -60,6 +60,7 @@ export const WithdrawalSeeAllCasinos = (n: {
 const countPageSize = 10
 
 export default function SeeAllCasinos() {
+     document.title = "All Casino"
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllCasinosType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
@@ -330,22 +331,21 @@ export default function SeeAllCasinos() {
                                                         </div>
                                                         <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                                             <div className="bottom-content-item-loyaltie-programs__btns">
-                                                                <Link
-                                                                    to={`/casino/${sanitizeLink(
-                                                                        item.casino_name
-                                                                    )}?queryId=${
-                                                                        item.casino_id
-                                                                    }`}
+                                                                <a
+                                                                target="_blank"
+                                                                href={
+                                                                    item?.casino_affiliate_link ||   item?.url_casino
+                                                                }
                                                                     aria-label="Put your description here."
                                                                     className="bottom-content-item-loyaltie-programs__btn-view"
                                                                 >
                                                                     Visit Casino
-                                                                </Link>
+                                                                </a>
                                                                 <Link
                                                                     to={`/casino/${sanitizeLink(
-                                                                        item.casino_name
+                                                                        item?.casino_name
                                                                     )}/loyalty?queryId=${
-                                                                        item.casino_id
+                                                                        item?.loyalty_program?.id
                                                                     }`}
                                                                     aria-label="Put your description here."
                                                                     className="bottom-content-item-loyaltie-programs__btn-more"

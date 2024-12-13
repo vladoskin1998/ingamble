@@ -35,7 +35,7 @@ const getAllBonusFetchData = async (page: number, queryId: string | null) => {
 const countPageSize = 60
 
 export default function SeeAllBonus() {
-    // document.title = "All Bonus"
+    document.title = "All Bonus"
 
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllBonusType[]>([])

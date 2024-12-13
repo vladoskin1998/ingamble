@@ -199,9 +199,9 @@ export default function SeeAllEssentialsLoyalty() {
                                                         <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
                                                             <div className="item-essential-programs-gamble__rating">
                                                                 <div className="item-essential-programs-gamble__rating-number">
-                                                                    {parseInt(String(item
+                                                                    {String(item
                                                                         ?.loyalty_program
-                                                                        ?.loyalty_rank) , 10) }
+                                                                        ?.loyalty_rank).replace('.', ",") }
                                                                     /10
                                                                 </div>
                                                                 <div className="item-essential-programs-gamble__rating-body">
