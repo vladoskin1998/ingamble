@@ -108,7 +108,7 @@ export const BonusInformation = ({
                                             <div className="item-content-bonus-information__value">
                                                 {data?.bonus_amount?.[0]?.value
                                                     ? `${data?.bonus_amount?.[0]?.value}$`
-                                                    : "-"}
+                                                    : "Unlimited"}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
