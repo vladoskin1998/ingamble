@@ -752,7 +752,12 @@ withdrawal_limits:string | null;
             offline: string | null;
             personalized: string | null;
         }
-        loyalty_level_bonuses: string | null;
+        loyalty_level_bonuses: {
+            customized? :string
+            monthly? :string
+            real_money? :string
+            weekly? :string
+        } | null;
         images: Array<{
             image: string;
         }>;
