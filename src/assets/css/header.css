@@ -785,3 +785,12 @@ header {
 .theme-header__link_moon.active svg {
     fill: var(--Colors-Yellow, #FFCF23);
   }
+
+  @media (min-width: 775px) and (max-width: 1355.98px) {
+    .mobile-header__content .mobile-header__top{
+        display: none;
+    }
+    .header__mobile .mobile-header__bottom{
+        display: none;
+    }
+  }
