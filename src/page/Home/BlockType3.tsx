@@ -518,6 +518,7 @@ export default function BlockType3({
                                                                         }
                                                                         aria-label="Put your description here."
                                                                         target="_blank"
+                                                                        onClick={e=>{e.stopPropagation()}}
                                                                         className="item-baner-row-block__btn casino-card__bnt"
                                                                     >
                                                                         Play

@@ -301,6 +301,7 @@ export default function BlockType2({
                                                                                         ?.casino_info
                                                                                         ?.url_casino
                                                                             }
+                                                                            onClick={e=>{e.stopPropagation()}}
                                                                             aria-label="Put your description here."
                                                                             target="_blank"
                                                                             className="item-baner-row-block__btn casino-card__bnt"

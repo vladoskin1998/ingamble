@@ -441,7 +441,16 @@ export const Header = ({
                                     />
                                     <button
                                         className="form-item__icon form-item__icon_delete"
-                                        onClick={() =>  setCasinoFilters(s => ({...s,casino_name: undefined}))}
+                                        onClick={() => {
+                                            console.log("setSearchShow", searchShow);
+                                            setSearchShow(true)
+                                            setCasinoFilters(s => ({...s,casino_name: undefined}))
+                                            setSearchFocus(false)
+                                           
+                                            
+                                            }
+                                      
+                                        } 
                                        
                                     >
                                         <svg>
