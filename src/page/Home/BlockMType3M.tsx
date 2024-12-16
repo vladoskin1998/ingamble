@@ -126,6 +126,7 @@ export default function BlockMType3M({
                                                                                 ?.casino_image ||
                                                                             ""
                                                                         }
+                                                                        size="medium"
                                                                     />
                                                                 </span>
                                                             </Link>

@@ -131,6 +131,7 @@ export default function BlockMType2M({
                                                                                 .casino_image ||
                                                                             ""
                                                                         }
+                                                                        size="medium"
                                                                     />
                                                                 </span>
                                                             </Link>
@@ -217,6 +218,7 @@ export default function BlockMType2M({
                                                                                 ?.casino_image ||
                                                                             ""
                                                                         }
+                                                                         size="medium"
                                                                     />
                                                                 </span>
                                                             </Link>
@@ -301,7 +303,9 @@ export default function BlockMType2M({
                                                                                 ?.casino_info
                                                                                 ?.casino_image ||
                                                                             ""
+                                                                            
                                                                         }
+                                                                         size="medium"
                                                                     />
                                                                 </span>
                                                             </Link>
