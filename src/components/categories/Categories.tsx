@@ -36,7 +36,17 @@ export const Categories = () =>
                     </div>
                     <Swiper
                         slidesPerView="auto"
-                        spaceBetween={10}
+                        breakpoints={{
+                            320: {
+                                spaceBetween: 16,
+                            },
+                            1650.98: {
+                                spaceBetween: 20,
+                            },
+                            1920: {
+                                spaceBetween: 20,
+                            },
+                        }}
                         style={{ margin: 0 }}
                     >
                         {category?.map((item, index) => (

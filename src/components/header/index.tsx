@@ -40,13 +40,10 @@ export const Header = ({
     isSidebarActive: boolean
     setSidebarActive: (s: boolean) => void
 }) => {
+    const inputRefMob = useRef<HTMLInputElement>(null)
 
-    const inputRefMob = useRef<HTMLInputElement>(null);
-
- 
     const navigate = useNavigate()
-    const { casinoFilters, setCasinoFilters} =
-        useFilterContext()
+    const { casinoFilters, setCasinoFilters } = useFilterContext()
 
     const [moonBlink, setBoonBlink] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -70,16 +67,13 @@ export const Header = ({
     }
 
     const handleFocus = () => {
-        console.log("handleFocus");
+        console.log("handleFocus")
         //@ts-ignore
         if (inputRefMob?.current) {
             //@ts-ignore
-            inputRefMob?.current.focus();
+            inputRefMob?.current.focus()
         }
-
-     
-        
-      };
+    }
 
     //@ts-ignore
     const [logoHide, setLogoHide] = useState(false)
@@ -119,7 +113,7 @@ export const Header = ({
         } else {
             document.body.classList.remove("lock")
         }
-    },[isBodyLocked])
+    }, [isBodyLocked])
 
     useEffect(() => {
         const gambleBody = document.querySelector(".gamble__body")
@@ -138,10 +132,7 @@ export const Header = ({
     }, [isSidebarActive])
 
     const navTo = () => {
-        
-        if (
-            window.location.href.includes("filter-casinos") 
-        ) {
+        if (window.location.href.includes("filter-casinos")) {
             return
         } else {
             navigate("/filter-casinos")
@@ -150,20 +141,24 @@ export const Header = ({
 
     useEffect(() => {
         const onKeydown = (e: KeyboardEvent) => {
-            if ((e.code === 'Enter' || e.key === 'Enter') && casinoFilters?.casino_name) {
-                navTo();
+            if (
+                (e.code === "Enter" || e.key === "Enter") &&
+                casinoFilters?.casino_name
+            ) {
+                navTo()
             }
-        };
-    
-        document.addEventListener('keydown', onKeydown);
-    
-        return () => {
-            document.removeEventListener('keydown', onKeydown);
-        };
-    }, [casinoFilters, navTo]);
-    
+        }
 
-    const [activeLink,setActiveLink] = useState<string>(window.location.pathname)
+        document.addEventListener("keydown", onKeydown)
+
+        return () => {
+            document.removeEventListener("keydown", onKeydown)
+        }
+    }, [casinoFilters, navTo])
+
+    const [activeLink, setActiveLink] = useState<string>(
+        window.location.pathname
+    )
 
     return (
         <header className="header">
@@ -192,7 +187,6 @@ export const Header = ({
                             <Link
                                 rel="nofollow noopener"
                                 to="/"
-                               
                                 className="header__logo logo"
                             >
                                 <div className="logo__img">
@@ -207,10 +201,14 @@ export const Header = ({
                                 <li className="menu-header__item">
                                     <Link
                                         rel="nofollow noopener"
-                                        to=""
+                                        to="/"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/')}
-                                        className={`menu-header__link ${ (activeLink === '' || activeLink === '/') && "current"}`}
+                                        onClick={() => setActiveLink("/")}
+                                        className={`menu-header__link ${
+                                            (activeLink === "" ||
+                                                activeLink === "/") &&
+                                            "current"
+                                        }`}
                                     >
                                         <span>Gambling Hub</span>
                                     </Link>
@@ -220,8 +218,13 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-bonus"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/all-bonus')}
-                                        className={`menu-header__link ${ (activeLink === '/all-bonus' ) && "current"}`}
+                                        onClick={() =>
+                                            setActiveLink("/all-bonus")
+                                        }
+                                        className={`menu-header__link ${
+                                            activeLink === "/all-bonus" &&
+                                            "current"
+                                        }`}
                                     >
                                         <span>All Bonuses</span>
                                     </Link>
@@ -231,8 +234,13 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-casinos"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/all-casinos')}
-                                        className={`menu-header__link ${ (activeLink === '/all-casinos' ) && "current"}`}
+                                        onClick={() =>
+                                            setActiveLink("/all-casinos")
+                                        }
+                                        className={`menu-header__link ${
+                                            activeLink === "/all-casinos" &&
+                                            "current"
+                                        }`}
                                     >
                                         <span>Casinos</span>
                                     </Link>
@@ -242,8 +250,13 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-loyalties"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/all-loyalties')}
-                                        className={`menu-header__link ${ (activeLink === '/all-loyalties' ) && "current"}`}
+                                        onClick={() =>
+                                            setActiveLink("/all-loyalties")
+                                        }
+                                        className={`menu-header__link ${
+                                            activeLink === "/all-loyalties" &&
+                                            "current"
+                                        }`}
                                     >
                                         <span>Loyalties</span>
                                     </Link>
@@ -253,7 +266,6 @@ export const Header = ({
                     </div>
                     <div className="header__column header__column_last">
                         <div
-                            
                             className={`header__form form-header ${
                                 searchShow ? "show" : ""
                             }`}
@@ -276,15 +288,25 @@ export const Header = ({
                                     type="text"
                                     name="form[]"
                                     className="form-item__input form-item__input_search"
-                                    value={casinoFilters.casino_name || ''}
-                                    onChange={(e) =>    setCasinoFilters(s => ({...s,casino_name: e.target.value || undefined}))}
+                                    value={casinoFilters.casino_name || ""}
+                                    onChange={(e) =>
+                                        setCasinoFilters((s) => ({
+                                            ...s,
+                                            casino_name:
+                                                e.target.value || undefined,
+                                        }))
+                                    }
                                     onBlur={() => setSearchFocus(false)}
                                     onFocus={() => setSearchFocus(true)}
                                 />
                                 <button
                                     className="form-item__icon form-item__icon_delete"
-                                    onClick={() =>    setCasinoFilters(s => ({...s, casino_name:  undefined}))}
-                                  
+                                    onClick={() =>
+                                        setCasinoFilters((s) => ({
+                                            ...s,
+                                            casino_name: undefined,
+                                        }))
+                                    }
                                 >
                                     <svg>
                                         <g>
@@ -390,10 +412,7 @@ export const Header = ({
                                     <img src={logoIcon} alt="logo-icon" />
                                 </Link>
                             </div>
-                            <Link
-                                to="/"
-                                className="header__logo logo"
-                            >
+                            <Link to="/" className="header__logo logo">
                                 <div className="logo__img">
                                     <img alt={"logo"} src={logo} />
                                 </div>
@@ -409,7 +428,6 @@ export const Header = ({
                                     setSearchShow(true)
                                     e.preventDefault()
                                     handleFocus()
-                                  
                                 }}
                             >
                                 <div
@@ -431,27 +449,31 @@ export const Header = ({
                                         type="text"
                                         name="form[]"
                                         className="form-item__input form-item__input_search"
-                                        value={casinoFilters.casino_name || ''}
+                                        value={casinoFilters.casino_name || ""}
                                         onChange={(e) =>
-                                            setCasinoFilters(s => ({...s,casino_name: e.target.value || undefined}))
+                                            setCasinoFilters((s) => ({
+                                                ...s,
+                                                casino_name:
+                                                    e.target.value || undefined,
+                                            }))
                                         }
-                                       
                                         onBlur={() => setSearchFocus(false)}
                                         onFocus={() => setSearchFocus(true)}
                                     />
                                     <button
                                         className="form-item__icon form-item__icon_delete"
                                         onClick={() => {
-                                            console.log("setSearchShow", searchShow);
+                                            console.log(
+                                                "setSearchShow",
+                                                searchShow
+                                            )
                                             setSearchShow(true)
-                                            setCasinoFilters(s => ({...s,casino_name: undefined}))
+                                            setCasinoFilters((s) => ({
+                                                ...s,
+                                                casino_name: undefined,
+                                            }))
                                             setSearchFocus(false)
-                                           
-                                            
-                                            }
-                                      
-                                        } 
-                                       
+                                        }}
                                     >
                                         <svg>
                                             <use xlinkHref="#delete"></use>
@@ -513,9 +535,12 @@ export const Header = ({
                                         <Link
                                             to="/"
                                             aria-label="Put your description here."
-                                            onClick={() => setActiveLink('/')}
-                                            className={`menu-header__link ${ (activeLink === '' || activeLink === '/') && "current"}`}
-                                         
+                                            onClick={() => setActiveLink("/")}
+                                            className={`menu-header__link ${
+                                                (activeLink === "" ||
+                                                    activeLink === "/") &&
+                                                "current"
+                                            }`}
                                         >
                                             <span>Gambling Hub</span>
                                         </Link>
@@ -525,9 +550,12 @@ export const Header = ({
                                             to="/all-bonus"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                                setActiveLink('/all-bonus')
+                                                setActiveLink("/all-bonus")
                                             }}
-                                            className={`menu-header__link ${ (activeLink === '/all-bonus' ) && "current"}`}
+                                            className={`menu-header__link ${
+                                                activeLink === "/all-bonus" &&
+                                                "current"
+                                            }`}
                                         >
                                             <span>All Bonuses</span>
                                         </Link>
@@ -536,8 +564,13 @@ export const Header = ({
                                         <Link
                                             to="/all-casinos"
                                             aria-label="Put your description here."
-                                            onClick={() => setActiveLink('/all-casinos')}
-                                            className={`menu-header__link ${ (activeLink === '/all-casinos' ) && "current"}`}
+                                            onClick={() =>
+                                                setActiveLink("/all-casinos")
+                                            }
+                                            className={`menu-header__link ${
+                                                activeLink === "/all-casinos" &&
+                                                "current"
+                                            }`}
                                         >
                                             <span>Casinos</span>
                                         </Link>
@@ -546,8 +579,14 @@ export const Header = ({
                                         <Link
                                             to="/all-loyalties"
                                             aria-label="Put your description here."
-                                            onClick={() => setActiveLink('/all-loyalties')}
-                                            className={`menu-header__link ${ (activeLink === '/all-loyalties' ) && "current"}`}
+                                            onClick={() =>
+                                                setActiveLink("/all-loyalties")
+                                            }
+                                            className={`menu-header__link ${
+                                                activeLink ===
+                                                    "/all-loyalties" &&
+                                                "current"
+                                            }`}
                                         >
                                             <span>Loyalties</span>
                                         </Link>
