@@ -13,6 +13,8 @@ import { Link, useNavigate } from "react-router-dom"
 const MainSliderImg = ({ img }: { img: string }) => {
     const [loading, setLoading] = useState(true)
 
+    
+
     return (
         <div className="casino-card__image">
             {(loading || !img) && <LineLoader />}

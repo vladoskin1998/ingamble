@@ -5459,7 +5459,7 @@ h3 {
   padding: 0 10px 0 16px;
 }
 .sidebar-gamble.active .item-form-filters:not(:last-child) {
-  margin: 0 0 8px 0;
+  margin: 0 0 16px 0;
 }
 .sidebar-gamble.active .item-form-filters.active {
   border-bottom: 1px solid var(--BG-Bg_2, #232320);
