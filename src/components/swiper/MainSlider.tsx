@@ -15,7 +15,7 @@ const MainSliderImg = ({ img }: { img: string }) => {
 
     return (
         <div className="casino-card__image">
-            {loading && !img && <LineLoader />}
+            {(loading || !img) && <LineLoader />}
             <img
                 style={{
                     width: loading? "0" :"100%",
@@ -25,7 +25,12 @@ const MainSliderImg = ({ img }: { img: string }) => {
                 src={img}
                 alt=""
                 loading="lazy"
-                onLoad={() => setLoading(false)}
+                onLoad={() => 
+                    setLoading(false)
+                    // setTimeout(() => {
+                       
+                    // }, 2000)
+                }
             />
         </div>
     )
