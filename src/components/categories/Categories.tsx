@@ -18,7 +18,7 @@ export const Categories = () =>
                 >
                     <div
                         className="filter-tags-gamble__slide slide-filter-tags-gamble slide-filter-tags-gamble_first slide-filter-tags-gamble_mob "
-                        style={{ marginRight: "10px" }}
+                        style={{ marginRight: "4px" }}
                         onClick={() => {
                             setSidebarActive(!isSidebarActive)
                         }}
