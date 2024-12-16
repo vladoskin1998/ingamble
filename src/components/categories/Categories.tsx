@@ -38,15 +38,16 @@ export const Categories = () =>
                         slidesPerView="auto"
                         breakpoints={{
                             320: {
-                                spaceBetween: 16,
+                                spaceBetween: 4,
                             },
                             1650.98: {
-                                spaceBetween: 20,
+                                spaceBetween: 8,
                             },
                             1920: {
-                                spaceBetween: 20,
+                                spaceBetween: 8,
                             },
                         }}
+                        spaceBetween={8}
                         style={{ margin: 0 }}
                     >
                         {category?.map((item, index) => (

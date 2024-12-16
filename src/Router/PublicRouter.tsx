@@ -40,7 +40,7 @@ export const PublicRouter = () => {
             />
             {/* Страница категорий  (see all) по бонусам */}
             <Route
-                path="/all-bonus/:bonus_categories?"
+                path="/all-bonuses/:bonus_categories?"
                 element={<SeeAllBonus />}
             />
 

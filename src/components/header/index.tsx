@@ -216,13 +216,13 @@ export const Header = ({
                                 <li className="menu-header__item">
                                     <Link
                                         rel="nofollow noopener"
-                                        to="/all-bonus"
+                                        to="/all-bonuses"
                                         aria-label="Put your description here."
                                         onClick={() =>
-                                            setActiveLink("/all-bonus")
+                                            setActiveLink("/all-bonuses")
                                         }
                                         className={`menu-header__link ${
-                                            activeLink === "/all-bonus" &&
+                                            activeLink === "/all-bonuses" &&
                                             "current"
                                         }`}
                                     >
@@ -547,13 +547,13 @@ export const Header = ({
                                     </li>
                                     <li className="menu-header__item">
                                         <Link
-                                            to="/all-bonus"
+                                            to="/all-bonuses"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                                setActiveLink("/all-bonus")
+                                                setActiveLink("/all-bonuses")
                                             }}
                                             className={`menu-header__link ${
-                                                activeLink === "/all-bonus" &&
+                                                activeLink === "/all-bonuses" &&
                                                 "current"
                                             }`}
                                         >

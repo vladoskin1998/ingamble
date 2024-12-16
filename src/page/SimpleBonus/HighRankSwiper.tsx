@@ -63,7 +63,7 @@ export const HighRankSwiper = ({ casinoName }: { casinoName?: string }) => {
                             <div className="top__column">
                                 <Link
                                     rel="nofollow noopener"
-                                    to="/all-bonus"
+                                    to="/all-bonuses"
                                     aria-label="Put your description here."
                                     className="top__btn"
                                 >

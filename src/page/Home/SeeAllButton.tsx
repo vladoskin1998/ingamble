@@ -4,7 +4,7 @@ import { DataHomeItemsBlockTypeCategory } from "../../types"
 
 
 export const SeeAllRoutes = {
-   [ DataHomeItemsBlockTypeCategory.bonus_category]: "bonus",
+   [ DataHomeItemsBlockTypeCategory.bonus_category]: "bonuses",
    [ DataHomeItemsBlockTypeCategory.casino_category]: "casinos",
 }
 
