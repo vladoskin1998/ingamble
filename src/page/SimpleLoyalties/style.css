@@ -175,3 +175,12 @@
     width: 16px;
     height: 16px;
   }
+
+
+  @media (max-width: 650.98px) {
+    .top-item-inner-information-loyaltie__icons{
+      max-width: 130px;
+      overflow: hidden;
+    }
+  }
+
