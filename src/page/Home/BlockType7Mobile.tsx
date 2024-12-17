@@ -87,7 +87,7 @@ export default function BlockType7Mobile({
                                                                         .casino_image ||
                                                                     ""
                                                                 }
-                                                                   size="medium"
+                                                                   size="medium"   
                                                             />
                                                         </span>
                                                     </Link>

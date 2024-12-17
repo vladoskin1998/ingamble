@@ -135,6 +135,7 @@ export default function BlockType5Mobile({
                                                                     ""
                                                                 }
                                                                 size="medium"
+                                                                  
                                                             />
                                                         </span>
                                                     </Link>

@@ -134,6 +134,7 @@ export default function BlockMType3M({
                                                                         height="100%"
                                                                         width="100%"
                                                                         imgLoading={lazyLoadImg}
+                                                                        
                                                                     />
                                                                 </span>
                                                             </Link>

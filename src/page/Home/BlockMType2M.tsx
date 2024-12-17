@@ -13,6 +13,7 @@ import { LazyImgHomeType } from "."
 
 export default function BlockMType2M({
     data,
+    //@ts-ignore
     lazyLoadImg='lazy',
 }: {
     data: HomeDataBlock | undefined,
@@ -135,7 +136,8 @@ export default function BlockMType2M({
                                                                             ""
                                                                         }
                                                                         size="medium"
-                                                                        imgLoading={lazyLoadImg}
+                                                                        // imgLoading={lazyLoadImg}
+                                                                           imgLoading='eager'
                                                                     />
                                                                 </span>
                                                             </Link>

@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { LazyImgHomeType } from "../../page/Home"
 
 const MainSliderImg = ({ img }: { img: string }) => {
+    //@ts-ignore
     const [loading, setLoading] = useState(true)
 
     useEffect(()=> {
@@ -25,7 +26,7 @@ const MainSliderImg = ({ img }: { img: string }) => {
 
     return (
         <div className="casino-card__image">
-            {(loading || !img) && <LineLoader />}
+            {( !img) && <LineLoader />}
             <img
                 style={{
                     width: "100%",

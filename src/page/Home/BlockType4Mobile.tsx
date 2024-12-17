@@ -126,6 +126,7 @@ export default function BlockType4Mobile({
                                                                         ?.bonus_image ||
                                                                     ""
                                                                 }
+                                                                 
                                                             />
                                                         </Link>
                                                         <a
@@ -160,6 +161,7 @@ export default function BlockType4Mobile({
                                                                                 ?.casino_image ||
                                                                             ""
                                                                         }
+                                                                           
                                                                     />
                                                                 </div>
                                                             </Link>

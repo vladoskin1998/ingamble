@@ -1,3 +1,4 @@
+//@ts-ignore
 import { useEffect, useState } from "react"
 import { LineLoader } from "../loader/LineLoader"
 import { LazyImgHomeType } from "../../page/Home"
@@ -18,15 +19,15 @@ export const LazyCardImg = ({
     //@ts-ignore
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        if (img) {
-            setLoading(false)
-        }
-    }, [img])
+    // useEffect(() => {
+    //     if (img) {
+    //         setLoading(false)
+    //     }
+    // }, [img])
 
     return (
         <>
-            {loading || !img ? <LineLoader size={size} /> : <></>}
+            { !img ? <LineLoader size={size} /> : <></>}
             <img
                 src={img}
                 alt={img}

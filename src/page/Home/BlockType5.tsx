@@ -194,6 +194,7 @@ export default function BlockType5({
                                                                         .bonus_image ||
                                                                     ""
                                                                 }
+                                                                  
                                                             />
                                                         </Link>
                                                         <div className="casino-big-card__top">
@@ -219,6 +220,7 @@ export default function BlockType5({
                                                                                 ""
                                                                             }
                                                                             size="medium"
+                                                                             
                                                                         />
                                                                     </div>
                                                                 </Link>

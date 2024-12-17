@@ -441,6 +441,7 @@ export default function BlockType3({
                                                                     }
                                                                         height="100%"
                                                                         width="100%"
+                                                                          
                                                                 />
                                                             </div>
                                                             <div         

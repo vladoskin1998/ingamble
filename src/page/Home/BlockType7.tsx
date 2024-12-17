@@ -109,6 +109,7 @@ export default function BlockType7({
                                                                     .casino_image ||
                                                                 ""
                                                             }
+                                                              
                                                         />
                                                     </span>
                                                 </Link>

@@ -134,6 +134,7 @@ export default function BlockType3Mobile({
                                                                         height="100%"
                                                                         width="100%"
                                                                         size="medium"
+                                                                        
                                                                     />
                                                                 </span>
                                                             </Link>
@@ -254,6 +255,7 @@ export default function BlockType3Mobile({
                                                                             }
                                                                              height="100%"
                                                                         width="100%"
+                                                                         
                                                                         />
                                                                     </span>
                                                                 </Link>

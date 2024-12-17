@@ -112,6 +112,7 @@ export default function BlockType6({
                                                                         .bonus_image ||
                                                                     ""
                                                                 }
+                                                                   imgLoading='eager'
                                                             />
                                                         </Link>
                                                         <a
@@ -154,6 +155,7 @@ export default function BlockType6({
                                                                             ""
                                                                         }
                                                                         size="medium"
+                                                                         
                                                                     />
                                                                 </Link>
                                                             </a>
