@@ -11,7 +11,6 @@ export const LoyaltieCasinoInfo = (
     geoLocation,
 }: {
     data: LoyaltieProgramDataResponse | undefined
-
     geoLocation: GeoLocationAllowdType 
 }
 ) => {

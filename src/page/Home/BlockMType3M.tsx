@@ -127,6 +127,8 @@ export default function BlockMType3M({
                                                                             ""
                                                                         }
                                                                         size="medium"
+                                                                        height="100%"
+                                                                        width="100%"
                                                                     />
                                                                 </span>
                                                             </Link>

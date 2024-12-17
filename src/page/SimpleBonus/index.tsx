@@ -18,9 +18,11 @@ import { HowToGetBonus } from "./HowToGetBonus"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import { HarryStyles } from "./HarryStyles"
 import { useSearchParams } from "react-router-dom"
-import { HighRankSwiper } from "./HighRankSwiper"
+import { EssentialVIPLoyaltyPrograms } from "./EssentialVIPLoyaltyPrograms"
 import { useFilterContext } from "../../context/FilterContext"
 import { SiblingBonus } from "./SiblingBonus"
+import { COUNTRIES } from "../../helper/Country"
+import { OtherBestReloadBonus } from "./OtherBestReloadBonus"
 
 
 
@@ -69,19 +71,19 @@ export default function SimpleBonus() {
 
 
     useEffect(() => {
-        if (data?.headers && Country?.general?.countries?.length) {
+        if (data?.headers ) {
             const headers = data?.headers
             const countryCode = headers?.["cf-ipcountry-code"]
             const countryName = headers?.["cf-ipcountry"]
             
-            const countryImg = Country?.general?.countries?.find(
+            const countryImg = (Country?.general?.countries || COUNTRIES)?.find(
                 it => {
                     
                     return it.code ===  countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase() }
             )?.flag_image;
             
   
-            const isAllowed = !data.dataBonus?.restriction_country?.country.find(
+            const isAllowed = !data.dataBonus?.restriction_country?.country?.find(
                 (item) =>
                     item?.code?.toLocaleLowerCase() ===
                     countryCode?.toLocaleLowerCase()
@@ -104,7 +106,7 @@ export default function SimpleBonus() {
         //     .toLocaleLowerCase()}`f
 
         // window.history.pushState({}, "", newUrl)
-    }, [data, Country])
+    }, [data, Country, COUNTRIES])
 
     console.log(geoLocation);
     
@@ -172,7 +174,8 @@ export default function SimpleBonus() {
                             />
                         </>
                     )}
-                    <HighRankSwiper casinoName={data?.dataBonus?.casino_name || ''}/>
+                    <OtherBestReloadBonus/>
+                    <EssentialVIPLoyaltyPrograms />
                     {geoLocation.isAllowed && (
                         <>
                             <HarryStyles />

@@ -21,6 +21,7 @@ import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { useFilterContext } from "../../context/FilterContext"
 import { sanitizeLink } from "../../helper"
+import { COUNTRIES } from "../../helper/Country"
 // import { sanitizeLink } from "../../helper"
 
 const SafetyIndexRatingLevel = (n: number,) => {
@@ -83,12 +84,12 @@ export default function SimpleCasinos() {
     })
 
     useEffect(() => {
-        if (data?.headers && Country?.general?.countries?.length) {
+        if (data?.headers) {
         
             const countryCode = data?.headers?.["cf-ipcountry-code"]
             const countryName = data?.headers?.["cf-ipcountry"]
             
-            const countryImg = Country?.general?.countries?.find(
+            const countryImg = (Country?.general?.countries || COUNTRIES)?.find(
                 it => {
                     return it.code ===  countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase() }
             )?.flag_image;
@@ -203,9 +204,9 @@ export default function SimpleCasinos() {
                                                 </div>
                                                 <div className="content-casino-info__top">
                                                     <h2 className="content-casino-info__title">
-                                                        {data
+                                                        {(data
                                                             ?.dataCurrentCasinos
-                                                            ?.name || 0}
+                                                            ?.name + " Review") || 0}
                                                     </h2>
                                                 </div>
                                                 <div className="content-casino-info__country country-content-casino-info">

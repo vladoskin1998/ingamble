@@ -98,6 +98,7 @@ export enum RouteToNextFilter {
 type FilterContextType = {
     data: GetFilterDataTypeResponse | undefined
 
+
     searchGlobal:string,
     handlerSeachGlobal: (v:string) => void
 

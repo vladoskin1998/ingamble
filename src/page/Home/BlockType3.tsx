@@ -439,7 +439,8 @@ export default function BlockType3({
                                                                             ?.bonus_image ||
                                                                         ""
                                                                     }
-                                                                    height="auto"
+                                                                        height="100%"
+                                                                        width="100%"
                                                                 />
                                                             </div>
                                                             <div         

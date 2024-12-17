@@ -794,6 +794,7 @@ export interface СasinosInRankRangeResponse {
     bonus_id: number; 
     bonus_name: string; 
     bonus_image: string; 
+    bonus_type: {name:string} | null;
     casino_id: number; 
     casino_name: string; 
     casino_rank: string; 

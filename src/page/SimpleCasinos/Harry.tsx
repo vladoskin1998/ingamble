@@ -164,7 +164,7 @@ export const Harry = ({
                         </div>
                     </div>
                     <h2 className="iwild-review__title-mob">
-                        inGamble Summary
+                        Summary
                     </h2>
                     <div className="iwild-review__row iwild-review__row_2">
                         <div className="iwild-review__column iwild-review__column_small">

@@ -4,7 +4,7 @@ import { LoyaltieProgramDataResponse } from "../../types"
 import "./style.css"
 import { ReactSVG } from "react-svg"
 
-const colors = [
+const colors1 = [
     "amateur",
     "hustler",
     "semi-pro",
@@ -14,6 +14,19 @@ const colors = [
     "master",
     "grand-master",
     "ace",
+]
+
+const colors2 = [
+ 
+    "veteran",
+    "master",
+    "grand-master",
+    "ace",
+    "amateur",
+    "hustler",
+    "semi-pro",
+    "professional",
+    "expert",
 ]
 
 export const LoyaltyAcordeon = ({
@@ -51,7 +64,7 @@ export const LoyaltyAcordeon = ({
                                     <div
                                         className={`inner-information-loyaltie__item item-inner-information-loyaltie item-inner-information-loyaltie_only 
                             item-inner-information-loyaltie_${
-                                colors[index % (colors.length - 1)]
+                                colors1[index % (colors1.length - 1)]
                             }`}
                                     >
                                         <AccordionItem
@@ -335,7 +348,8 @@ export const LoyaltyAcordeon = ({
                                                                     ?.free_bet ||
                                                                 item
                                                                     ?.special_prize
-                                                                    ?.other ? (
+                                                                    ?.other 
+                                                                    ? (
                                                                     <div className="item-inner-information-loyaltie__element element-item-inner-information-loyaltie">
                                                                         <div className="element-item-inner-information-loyaltie__label">
                                                                             Special
@@ -489,7 +503,7 @@ export const LoyaltyAcordeon = ({
                                     <div
                                         className={`inner-information-loyaltie__item item-inner-information-loyaltie item-inner-information-loyaltie_only 
                             item-inner-information-loyaltie_${
-                                colors[index % (colors.length - 1)]
+                                colors2[index % (colors2.length - 1)]
                             }`}
                                     >
                                         <AccordionItem

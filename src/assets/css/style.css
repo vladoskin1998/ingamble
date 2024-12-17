@@ -5541,7 +5541,7 @@ h3 {
   height: auto;
   padding: 16px;
   border-top: 1px solid var(--BG-Bg_2, #232320);
-  transition-delay: 0.05s;
+  /* transition-delay: 0.05s; */
 }
 .sidebar-gamble.active .form-filters__items {
   overflow-y: auto;
@@ -5686,11 +5686,11 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  -webkit-transition: all 0.3s ease 0s;
+  /* -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -ms-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s; */
   padding: 24px 19px 24px 19px;
   background-color: var(--BG-Bg_1, #171719);
   top: 0;
@@ -6189,14 +6189,7 @@ h3 {
     display: none;
   }
 }
-.simple-bonus__casino-person_mobile {
-  display: none;
-}
-@media (max-width: 650.98px) {
-  .simple-bonus__casino-person_mobile {
-    display: block;
-  }
-}
+
 .simple-bonus__get-bonus:not(:last-child) {
   margin: 0 0 40px 0;
 }
@@ -9829,7 +9822,7 @@ h3 {
 }
 .other-сasinos-review .baner-row-block__body {
   height: 100%;
-  background: url("../img/menu-bg.jpg") center repeat;
+  background: url("../img/bg-yellow.jpg") center repeat;
   position: relative;
   display: flex;
   align-items: center;
@@ -11816,11 +11809,11 @@ h3 {
   flex: 0 1 50%;
   padding: 0 12px;
 }
-@media (max-width: 480.98px) {
+/* @media (max-width: 480.98px) {
   .item-inner-information-loyaltie__column:not(:last-child) {
     margin: 0 0 20px 0;
   }
-}
+} */
 .item-inner-information-loyaltie__element:not(:last-child) {
   margin: 0 0 22px 0;
 }
@@ -16171,7 +16164,7 @@ h3 {
   }
 }
 .main-gamble__casino-big-cards .slider .swiper-slide {
-  width: 573.33px;
+  width: calc(100vw/3 - 67px);
 }
 @media (max-width: 1650.98px) {
   .main-gamble__casino-big-cards .slider .swiper-slide {
@@ -16402,6 +16395,11 @@ h3 {
 .main-gamble__best-live-dealer-casinos:not(:last-child) {
   margin: -2px 0 60px 0;
 }
+@media (max-width: 480.98px) {
+  .main-gamble__best-live-dealer-casinos:not(:last-child) {
+    margin: -2px 0 40px 0;
+  }
+}
 .main-gamble__best-live-dealer-casinos .casino-small-card__rating-icon {
   margin: 1px 4px 0 0;
 }
@@ -16411,16 +16409,6 @@ h3 {
 @media (max-width: 480.98px) {
   .main-gamble__bottom-filter-tags:not(:last-child) {
     margin: 0 0 40px 0;
-  }
-}
-
-.check-bottom-filter-tags{
-  margin-top: 60px !important;
-}
-
-@media (max-width: 480.98px) {
-  .check-bottom-filter-tags {
-    margin-top:40px !important;
   }
 }
 
@@ -19809,10 +19797,17 @@ h3 {
   .home--main--pc {
     display: none;
   }
+  .main-gamble-loyaltie-pc{
+    display: none;
+  }
+
 }
 
 @media (min-width: 481px) {
   .home--main--mob {
+    display: none;
+  }
+  .main-gamble-loyaltie-mob{
     display: none;
   }
 }

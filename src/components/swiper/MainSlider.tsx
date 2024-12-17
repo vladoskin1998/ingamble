@@ -29,9 +29,6 @@ const MainSliderImg = ({ img }: { img: string }) => {
                 loading="lazy"
                 onLoad={() => 
                     setLoading(false)
-                    // setTimeout(() => {
-                       
-                    // }, 2000)
                 }
             />
         </div>
@@ -136,9 +133,9 @@ const MainSlider = ({
                                                     <div className="info-casino-card__stake">
                                                         <Link
                                                             rel="nofollow noopener"
-                                                            to={item?.casinoLink || ''}
+                                                            to={item?.casinoLink ?  item?.casinoLink  : '#'}
                                                             aria-label="Put your description here."
-                                                         
+                                                            
                                                             className="info-casino-card__stake-link"
                                                         >
                                                             {item.casinoName}
@@ -172,7 +169,7 @@ const MainSlider = ({
                                                 
                                                 <Link
                                                     rel="nofollow noopener"
-                                                    to={item?.bonuseLink || "/"}
+                                                    to={item?.bonuseLink ? item?.bonuseLink : "#"}
                                                     aria-label="Put your description here."
                                                     
                                                     className="casino-card__name"

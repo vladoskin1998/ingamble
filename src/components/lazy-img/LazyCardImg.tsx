@@ -6,7 +6,7 @@ export const LazyCardImg = ({
     size,
     width = "auto",
     height,
-    imgLoading= "lazy",
+    imgLoading = "lazy",
 }: {
     height?: string
     img: string
@@ -18,18 +18,14 @@ export const LazyCardImg = ({
 
     return (
         <>
-            
-            {(loading || !img) && <LineLoader size={size}/>}
+            {(loading || !img) && <LineLoader size={size} />}
             <img
                 src={img}
                 alt={img}
                 loading={imgLoading}
                 onLoad={() => {
-                    // setTimeout(() => {  setLoading(false)}, 10000)
                     setLoading(false)
-                }
-                  
-                }
+                }}
                 style={{
                     height,
                     width: loading ? "0px" : width,

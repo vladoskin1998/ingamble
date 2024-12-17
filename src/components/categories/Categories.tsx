@@ -11,7 +11,7 @@ export const Categories = () =>
 
 
         return (
-            <div className="simple-bonus__filter-tags filter-tags-gamble">
+            <div className=" filter-tags-gamble main-gamble__filter-tags">
                 <div
                     className="filter-tags-gamble__container container"
                     style={{ display: "flex" }}

@@ -5,7 +5,7 @@ import { LoyaltieCasinoInfo } from "./LoyaltieCasinoInfo"
 import { LoyaltyRewnew } from "./LoyaltyRewnew"
 import { LoyaltyText } from "./LoyaltyText"
 import { HowToStartVipJorney } from "./HowToStartVipJorney"
-import { HarryStyles } from "../SimpleBonus/HarryStyles"
+import { HarryStyles } from "./HarryStyles"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { LoyaltyAcordeon } from "./LoyaltyAcordeon"
@@ -16,9 +16,12 @@ import { useQuery } from "react-query"
 import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from "../../types"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { useEffect, useState } from "react"
-import { HighRankSwiper } from "../SimpleBonus/HighRankSwiper"
+
 import { useFilterContext } from "../../context/FilterContext"
 import { SiblingBonus } from "../SimpleBonus/SiblingBonus"
+import { COUNTRIES } from "../../helper/Country"
+import { OtherBestReloadBonus } from "../SimpleBonus/OtherBestReloadBonus"
+import { EssentialVIPLoyaltyPrograms } from "../SimpleBonus/EssentialVIPLoyaltyPrograms"
 
 const getCurrentLoyaltiesFetchData = async (queryId: string) => {
     const response = await $api.get(`get-data-loyalty-program/${queryId}/`)
@@ -30,7 +33,7 @@ const getCurrentLoyaltiesFetchData = async (queryId: string) => {
 
 export default function SimpleLoyalties() {
     document.title = " Loyaltie"
-    const [queryId, setQueryId] = useState<string>('')
+    const [queryId, setQueryId] = useState<string>("")
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: "",
         countryName: "",
@@ -44,11 +47,8 @@ export default function SimpleLoyalties() {
     const [searchParams] = useSearchParams()
     const qid = searchParams.get("queryId")
 
-    
+    console.log("queryId", queryId, qid)
 
-    console.log("queryId", queryId, qid);
-
-   
     const { data: Country } = useFilterContext()
     const { data, isLoading } = useQuery<{
         dataCurrentLoyaltie: LoyaltieProgramDataResponse
@@ -63,26 +63,26 @@ export default function SimpleLoyalties() {
     )
 
     useEffect(() => {
-        if(qid){
+        if (qid) {
             setQueryId(qid)
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0)
         }
-        
     }, [qid])
-    
 
     useEffect(() => {
-        if (data?.headers && Country?.general?.countries?.length) {
+        if (data?.headers) {
             const countryCode = data?.headers?.["cf-ipcountry-code"]
             const countryName = data?.headers?.["cf-ipcountry"]
 
-            const countryImg = Country?.general?.countries?.find((it) => {
-                return (
-                    it.code === countryCode ||
-                    it.name.toLocaleLowerCase() ===
-                        countryName.toLocaleLowerCase()
-                )
-            })?.flag_image
+            const countryImg = (Country?.general?.countries || COUNTRIES)?.find(
+                (it) => {
+                    return (
+                        it.code === countryCode ||
+                        it.name.toLocaleLowerCase() ===
+                            countryName.toLocaleLowerCase()
+                    )
+                }
+            )?.flag_image
 
             const isAllowed = true
 
@@ -100,20 +100,17 @@ export default function SimpleLoyalties() {
                 countryImg,
             })
         }
-    }, [Country])
+    }, [data, Country, COUNTRIES])
 
     useEffect(() => {
-    
-            initializeAdaptiveBehavior()
-       
-      
+        initializeAdaptiveBehavior()
     }, [isLoading])
 
     // if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
-    if (isLoading ) return <LogoLoader />
+    if (isLoading) return <LogoLoader />
     return (
         <Wraper>
-            <main className="gamble__loyaltie main-gamble loyaltie" >
+            <main className="gamble__loyaltie main-gamble loyaltie">
                 <div className="main-gamble__body">
                     <Categories />
                     <BreadCrumb
@@ -151,12 +148,9 @@ export default function SimpleLoyalties() {
                             }
                         />
                     )}
-                    
-                     
-                        <LoyaltyAcordeon data={data?.dataCurrentLoyaltie} /> 
-                     
-                    
-                  
+
+                    <LoyaltyAcordeon data={data?.dataCurrentLoyaltie} />
+
                     <LoyaltyText data={data?.dataCurrentLoyaltie} />
                     <HowToStartVipJorney
                         casino_affiliate_link={
@@ -168,6 +162,9 @@ export default function SimpleLoyalties() {
                         queryId={data?.dataCurrentLoyaltie?.casino_id}
                         link_tc={data?.dataCurrentLoyaltie?.link_tc || ""}
                     />
+                    <div className="main-gamble-loyaltie-mob">
+                        <EssentialVIPLoyaltyPrograms />
+                    </div>
                     <SiblingBonus
                         casinoName={data?.dataCurrentLoyaltie?.casino_name}
                         sibling_bonuses={
@@ -180,11 +177,12 @@ export default function SimpleLoyalties() {
                         }
                         casino_id={data?.dataCurrentLoyaltie?.casino_id}
                     />
-                    <HighRankSwiper
-                        casinoName={
-                            data?.dataCurrentLoyaltie?.casino_name || ""
-                        }
-                    />
+
+                    <OtherBestReloadBonus />
+                    <div className="main-gamble-loyaltie-pc">
+                        <EssentialVIPLoyaltyPrograms />
+                    </div>
+
                     <HarryStyles />
                     <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />

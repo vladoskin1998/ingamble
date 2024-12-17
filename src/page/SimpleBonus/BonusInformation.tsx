@@ -255,7 +255,7 @@ export const BonusInformation = ({
                                             </div>
                                         </div>
                                         {
-                                            data?.bonus_type.toLocaleLowerCase() !== "Cashback bonus".toLocaleLowerCase() &&   <div className="content-bonus-information__item item-content-bonus-information">
+                                            data?.bonus_type?.toLocaleLowerCase() !== "Cashback bonus".toLocaleLowerCase() &&   <div className="content-bonus-information__item item-content-bonus-information">
                                             <div className="item-content-bonus-information__label">
                                                 Sticky:
                                             </div>
