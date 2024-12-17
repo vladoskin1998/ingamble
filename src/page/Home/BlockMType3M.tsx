@@ -10,11 +10,15 @@ import { SeeAllButton } from "./SeeAllButton"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { COLORS_TAGS, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
+import { LazyImgHomeType } from "."
+
 
 export default function BlockMType3M({
     data,
+    lazyLoadImg='lazy',
 }: {
-    data: HomeDataBlock | undefined
+    data: HomeDataBlock | undefined,
+    lazyLoadImg?: LazyImgHomeType  
 }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
@@ -129,6 +133,7 @@ export default function BlockMType3M({
                                                                         size="medium"
                                                                         height="100%"
                                                                         width="100%"
+                                                                        imgLoading={lazyLoadImg}
                                                                     />
                                                                 </span>
                                                             </Link>

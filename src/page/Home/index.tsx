@@ -1,4 +1,4 @@
-import { lazy, useEffect } from "react"
+import { lazy, useEffect, useState } from "react"
 import { Wraper } from "../Wraper"
 
 import { useAdaptiveBehavior } from "../../context/AppContext"
@@ -65,6 +65,7 @@ const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 //     () => import("./GetStartedWithPowerfulWelcomeBonusPacks")
 // )
 
+export type LazyImgHomeType = "lazy" | "eager" | undefined
 
 const getHomeDataFetch = async () => {
     const response = await $api.get("get-data-home-page/")
@@ -85,8 +86,9 @@ const getHomeDataFetch = async () => {
 
 
 
-const renderBlock = (block: any) => {
+const renderBlock = (block: any, index: number) => {
    
+    const lazyLoadImg:LazyImgHomeType = index < 3 ?  'eager' : 'lazy' 
 
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
@@ -135,7 +137,7 @@ const renderBlock = (block: any) => {
             )
 
         case BlockTypeNumber.BlockType2M:
-            return <BlockMType2M data={block} />
+            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg}/>
         case BlockTypeNumber.BlockType3M:
             return <BlockMType3M data={block} />
         default:
@@ -158,11 +160,27 @@ export default function Home ()  {
         staleTime: Infinity,
     })
 
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 480);
+      };
+  
+      // Добавляем слушатель изменения размера окна
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
   
 
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [isLoading])
+
+    const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome;
 
     if (isLoading ) return <LogoLoader />
     return (
@@ -170,13 +188,14 @@ export default function Home ()  {
             <main className="gamble__main main-gamble">
                 <div className="main-gamble__body">
                     <Categories  />
-                    <div className="home--main--pc">
+                    {/* <div className="home--main--pc">
                     {data?.dataHome?.map((block) => renderBlock(block))}
                     </div>
                     <div className="home--main--mob">
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
-                    </div>
+                    </div> */}
+                    {blocksToRender?.map((block: any, index) => renderBlock(block, index))}
                
                     {/* <FastestPayoutCasinos /> */}
 

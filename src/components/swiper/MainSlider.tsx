@@ -9,6 +9,7 @@ import "swiper/css/pagination"
 import { SwiperRef } from "swiper/react"
 import { LineLoader } from "../loader/LineLoader"
 import { Link, useNavigate } from "react-router-dom"
+import { LazyImgHomeType } from "../../page/Home"
 
 const MainSliderImg = ({ img }: { img: string }) => {
     const [loading, setLoading] = useState(true)
@@ -17,7 +18,7 @@ const MainSliderImg = ({ img }: { img: string }) => {
 
     return (
         <div className="casino-card__image">
-            {(loading || !img) && <LineLoader />}
+            {(!img) && <LineLoader />}
             <img
                 style={{
                     width: loading? "0" :"100%",
@@ -49,6 +50,7 @@ const MainSlider = ({
         playLink?: string;
         casinoLink?: string,
         bonuseLink?: string,
+        imgLoading?: LazyImgHomeType
     }[]
 }) => {
     const sliderRef = useRef<SwiperRef | null>(null)
