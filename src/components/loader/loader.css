@@ -173,15 +173,24 @@
   -webkit-align-items: center;
 }
 .loader-body-logo{
-  display: flex;
-  flex-direction: column;
- align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+
 
 }
 .loader-body-logo-img{
+  display: flex;
+  justify-content: center;
+}
+.loader-body-logo-img img{
   width: 80px;
   height: 80px;
+  margin: 0 auto;
 }
+
 
 @keyframes fadeInOut {
   0%, 100% {

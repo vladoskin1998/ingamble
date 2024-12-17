@@ -4,7 +4,10 @@ export const LogoLoader = () => {
     return (
         <div className="loader-body-line">
             <div className="loader-body-logo">
-                <img className="loader-body-logo-img"src={logoIcon} alt="" />
+                <div className="loader-body-logo-img">
+                    <img src={logoIcon} alt="" />
+                </div>
+                
                 <div  className="loader-body-logo-load loader-body-infinite-fade-text">Loading...</div>
                 <div className="loader-body-progres">
                     <div className="loader-body-svg">

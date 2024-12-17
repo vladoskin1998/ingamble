@@ -28,9 +28,10 @@ const MainSliderImg = ({ img }: { img: string }) => {
             {(loading || !img) && <LineLoader />}
             <img
                 style={{
-                    width: loading? "0" :"100%",
+                    width: "100%",
                     height: "100%",
                     objectFit: "cover"
+                    
                 }}
                 src={img}
                 alt=""
