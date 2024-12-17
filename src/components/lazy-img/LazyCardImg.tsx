@@ -19,11 +19,11 @@ export const LazyCardImg = ({
     //@ts-ignore
     const [loading, setLoading] = useState(true)
 
-    // useEffect(() => {
-    //     if (img) {
-    //         setLoading(false)
-    //     }
-    // }, [img])
+    useEffect(() => {
+        if (img) {
+            setLoading(false)
+        }
+    }, [img])
 
     return (
         <>
