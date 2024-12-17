@@ -13328,13 +13328,13 @@ h3 {
 .casinos-filtered__main .features-essential-programs-gamble__item {
   padding: 17px 12px;
   border-radius: var(--SystemCorners-ExtraSmall, 6px);
-  background: var(--BG-Bg_2, #232320);
+  /* background: var(--BG-Bg_2, #232320); */
 }
 
 .loyaltie-filtered__main .features-essential-programs-gamble__item {
   padding: 17px 12px;
   border-radius: var(--SystemCorners-ExtraSmall, 6px);
-  background: var(--BG-Bg_2, #232320);
+  /* background: var(--BG-Bg_2, #232320); */
 }
 /* @media (max-width: 992.98px) {
   .casinos-filtered__main .features-essential-programs-gamble__item {
