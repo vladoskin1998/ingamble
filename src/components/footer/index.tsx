@@ -352,7 +352,7 @@ export default function Footer() {
                                 </a>
                             </li>
                         </ul>
-                        <ul className="menu-footer__list">
+                        {/* <ul className="menu-footer__list">
                             <li className="menu-footer__item menu-footer__item_title">
                                 <span className="menu-footer__title">
                                     COMPANY
@@ -436,7 +436,7 @@ export default function Footer() {
                                     Docs
                                 </a>
                             </li>
-                        </ul>
+                        </ul> */}
                         <ul className="menu-footer__list">
                             <li className="menu-footer__item menu-footer__item_title">
                                 <span className="menu-footer__title">

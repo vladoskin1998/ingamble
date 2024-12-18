@@ -17,7 +17,6 @@ const colors1 = [
 ]
 
 const colors2 = [
- 
     "veteran",
     "master",
     "grand-master",
@@ -68,6 +67,7 @@ export const LoyaltyAcordeon = ({
                             }`}
                                     >
                                         <AccordionItem
+                                              defaultOpen={!index}
                                             heading={
                                                 <div className="accordion--title--element item-inner-information-loyaltie__top top-item-inner-information-loyaltie">
                                                     <div className="top-item-inner-information-loyaltie__column">
@@ -150,6 +150,7 @@ export const LoyaltyAcordeon = ({
                                                                                         ?.cashback
                                                                                         ?.percentage
                                                                                 }
+
                                                                                 %
                                                                             </div>
                                                                         </div>
@@ -235,17 +236,40 @@ export const LoyaltyAcordeon = ({
                                                                         </div>
                                                                     </div>
                                                                 )}
-                                                                 {item?.withdrawals && (
-                                                            <div className="item-inner-information-loyaltie__element element-item-inner-information-loyaltie">
-                                                                <div className="element-item-inner-information-loyaltie__label">
-                                                                    Withdrawals:
-                                                                </div>
-                                                                <div className="element-item-inner-information-loyaltie__value">
-                                                                   {item?.withdrawals?.faster_withdrawal &&<div>Faster Withdrawal: {item?.withdrawals?.faster_withdrawal}</div> }
-                                                                   {item?.withdrawals?.withdrawal_limits &&<div>Limits: {item?.withdrawals?.withdrawal_limits}</div> }
-                                                                </div>
-                                                            </div>
-                                                        )}
+                                                                {item?.withdrawals && (
+                                                                    <div className="item-inner-information-loyaltie__element element-item-inner-information-loyaltie">
+                                                                        <div className="element-item-inner-information-loyaltie__label">
+                                                                            Withdrawals:
+                                                                        </div>
+                                                                        <div className="element-item-inner-information-loyaltie__value">
+                                                                            {item
+                                                                                ?.withdrawals
+                                                                                ?.faster_withdrawal && (
+                                                                                <div>
+                                                                                    Faster
+                                                                                    Withdrawal:{" "}
+                                                                                    {
+                                                                                        item
+                                                                                            ?.withdrawals
+                                                                                            ?.faster_withdrawal
+                                                                                    }
+                                                                                </div>
+                                                                            )}
+                                                                            {item
+                                                                                ?.withdrawals
+                                                                                ?.withdrawal_limits && (
+                                                                                <div>
+                                                                                    Limits:{" "}
+                                                                                    {
+                                                                                        item
+                                                                                            ?.withdrawals
+                                                                                            ?.withdrawal_limits
+                                                                                    }
+                                                                                </div>
+                                                                            )}
+                                                                        </div>
+                                                                    </div>
+                                                                )}
                                                                 {item?.gifts && (
                                                                     <div className="item-inner-information-loyaltie__element element-item-inner-information-loyaltie">
                                                                         {!item
@@ -348,8 +372,7 @@ export const LoyaltyAcordeon = ({
                                                                     ?.free_bet ||
                                                                 item
                                                                     ?.special_prize
-                                                                    ?.other 
-                                                                    ? (
+                                                                    ?.other ? (
                                                                     <div className="item-inner-information-loyaltie__element element-item-inner-information-loyaltie">
                                                                         <div className="element-item-inner-information-loyaltie__label">
                                                                             Special
@@ -589,6 +612,7 @@ export const LoyaltyAcordeon = ({
                                                                                         ?.cashback
                                                                                         ?.percentage
                                                                                 }
+
                                                                                 %
                                                                             </div>
                                                                         </div>

@@ -155,7 +155,7 @@ export const LoyaltieCasinoInfo = (
                                         <div className="features-content-casino-info__item item-features-content-casino-info">
                                             <div className="item-features-content-casino-info__top">
                                                 <div className="item-features-content-casino-info__label">
-                                                    Surprise Gifts
+                                                Highlight
                                                 </div>
                                             </div>
                                             <div className="item-features-content-casino-info__body">

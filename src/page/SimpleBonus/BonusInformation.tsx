@@ -192,15 +192,17 @@ export const BonusInformation = ({
                                                 className="item-content-bonus-information__value"
                                                 style={{ textAlign: "right" }}
                                             >
-                                                {data?.day_of_week
-                                                    .reduce(
-                                                        (prev, state) =>
-                                                            prev +
-                                                            ", " +
-                                                            state.day,
-                                                        ""
-                                                    )
-                                                    .slice(2)}
+                                                {data?.day_of_week.length
+                                                    ? data?.day_of_week
+                                                          .reduce(
+                                                              (prev, state) =>
+                                                                  prev +
+                                                                  ", " +
+                                                                  state.day,
+                                                              ""
+                                                          )
+                                                          .slice(2)
+                                                    : "-"}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -254,17 +256,20 @@ export const BonusInformation = ({
                                                     : "-"}
                                             </div>
                                         </div>
-                                        {
-                                            data?.bonus_type?.toLocaleLowerCase() !== "Cashback bonus".toLocaleLowerCase() &&   <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Sticky:
+                                        {data?.bonus_type?.toLocaleLowerCase() !==
+                                            "Cashback bonus".toLocaleLowerCase() && (
+                                            <div className="content-bonus-information__item item-content-bonus-information">
+                                                <div className="item-content-bonus-information__label">
+                                                    Sticky:
+                                                </div>
+                                                <div className="item-content-bonus-information__value">
+                                                    {data?.sticky
+                                                        ? "Yes"
+                                                        : "No"}
+                                                </div>
                                             </div>
-                                            <div className="item-content-bonus-information__value">
-                                                {data?.sticky ? "Yes" : "No"}
-                                            </div>
-                                        </div>
-                                        }
-                                      
+                                        )}
+
                                         {/* <div className="content-bonus-information__item item-content-bonus-information ''">
                                             <div className="item-content-bonus-information__label">
                                                 Bonus Terms:
@@ -446,12 +451,21 @@ export const BonusInformation = ({
                                                                 .length && "''"
                                                     }`}
                                                 >
-                                                    <div className="item-content-bonus-information__label">
-                                                        {item.description}
-                                                    </div>
-                                                    <div className="item-content-bonus-information__value">
-                                                        {item.value + "%"}
-                                                    </div>
+                                                    {item?.description ? (
+                                                        <>
+                                                            <div className="item-content-bonus-information__label">
+                                                                {
+                                                                    item.description
+                                                                }
+                                                            </div>
+                                                            <div className="item-content-bonus-information__value">
+                                                                {item.value +
+                                                                    "%"}
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        "-"
+                                                    )}
                                                 </div>
                                             ))}
                                     </div>
@@ -608,104 +622,115 @@ export const BonusInformation = ({
                                             <div className="item-content-bonus-information__label">
                                                 Bonus restriction games:
                                             </div>
+
                                             <div className="item-content-bonus-information__value">
-                                                {data?.restriction_game?.game
-                                                    ?.reduce(
-                                                        (prev, state) =>
-                                                            prev +
-                                                            ", " +
-                                                            state.name,
-                                                        ""
-                                                    )
-                                                    .slice(2, 20)}{" "}
-                                                ...
-                                                <button
-                                                    onClick={() =>
-                                                        setOpenModal((s) => ({
-                                                            ...s,
-                                                            BonusRestrictionGames:
-                                                                true,
-                                                        }))
-                                                    }
-                                                    aria-label="Put your description here."
-                                                    className="item-content-bonus-information__link info-popup-open"
-                                                >
-                                                    See all
-                                                </button>
-                                                <div
-                                                    className={`item-content-bonus-information__popup popup-item-content-bonus-information accordion--title--element ${
-                                                        openModal.BonusRestrictionGames &&
-                                                        "active"
-                                                    }`}
-                                                    ref={
-                                                        modalRefs.BonusRestrictionGames
-                                                    }
-                                                >
-                                                    <div className="popup-item-content-bonus-information__body">
-                                                        <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
-                                                            <div className="top-popup-item-content-bonus-information__title">
-                                                                All Bonus
-                                                                Restriction
-                                                                Games
-                                                                <div className="top-popup-item-content-bonus-information__number">
-                                                                    {`(${
-                                                                        data
-                                                                            ?.restriction_game
-                                                                            ?.game
-                                                                            ?.length ||
-                                                                        0
-                                                                    })`}
+                                                {data?.restriction_game
+                                                    ?.game ? (
+                                                    <>
+                                                        {data?.restriction_game?.game
+                                                            ?.reduce(
+                                                                (prev, state) =>
+                                                                    prev +
+                                                                    ", " +
+                                                                    state.name,
+                                                                ""
+                                                            )
+                                                            .slice(2, 20)}{" "}
+                                                        ...
+                                                        <button
+                                                            onClick={() =>
+                                                                setOpenModal(
+                                                                    (s) => ({
+                                                                        ...s,
+                                                                        BonusRestrictionGames:
+                                                                            true,
+                                                                    })
+                                                                )
+                                                            }
+                                                            aria-label="Put your description here."
+                                                            className="item-content-bonus-information__link info-popup-open"
+                                                        >
+                                                            See all
+                                                        </button>
+                                                        <div
+                                                            className={`item-content-bonus-information__popup popup-item-content-bonus-information accordion--title--element ${
+                                                                openModal.BonusRestrictionGames &&
+                                                                "active"
+                                                            }`}
+                                                            ref={
+                                                                modalRefs.BonusRestrictionGames
+                                                            }
+                                                        >
+                                                            <div className="popup-item-content-bonus-information__body">
+                                                                <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
+                                                                    <div className="top-popup-item-content-bonus-information__title">
+                                                                        All
+                                                                        Bonus
+                                                                        Restriction
+                                                                        Games
+                                                                        <div className="top-popup-item-content-bonus-information__number">
+                                                                            {`(${
+                                                                                data
+                                                                                    ?.restriction_game
+                                                                                    ?.game
+                                                                                    ?.length ||
+                                                                                0
+                                                                            })`}
+                                                                        </div>
+                                                                    </div>
+                                                                    <button
+                                                                        onClick={() =>
+                                                                            setOpenModal(
+                                                                                (
+                                                                                    s
+                                                                                ) => ({
+                                                                                    ...s,
+                                                                                    BonusRestrictionGames:
+                                                                                        false,
+                                                                                })
+                                                                            )
+                                                                        }
+                                                                        aria-label="Put your description here."
+                                                                        className="top-popup-item-content-bonus-information__btn-close info-popup-close"
+                                                                    >
+                                                                        <img
+                                                                            src={
+                                                                                closeIcon
+                                                                            }
+                                                                            alt="close"
+                                                                        />
+                                                                    </button>
+                                                                </div>
+                                                                <div className="popup-item-content-bonus-information__content">
+                                                                    <div className="popup-item-content-bonus-information__lits-block">
+                                                                        <ul className="popup-item-content-bonus-information__list">
+                                                                            {data?.restriction_game?.game?.map(
+                                                                                (
+                                                                                    item,
+                                                                                    index
+                                                                                ) => (
+                                                                                    <li
+                                                                                        key={
+                                                                                            index
+                                                                                        }
+                                                                                        className="popup-item-content-bonus-information__list-item"
+                                                                                    >
+                                                                                        <span className="popup-item-content-bonus-information__list-link">
+                                                                                            {item.name ||
+                                                                                                "slot"}
+                                                                                        </span>
+                                                                                    </li>
+                                                                                )
+                                                                            )}
+                                                                        </ul>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <button
-                                                                onClick={() =>
-                                                                    setOpenModal(
-                                                                        (
-                                                                            s
-                                                                        ) => ({
-                                                                            ...s,
-                                                                            BonusRestrictionGames:
-                                                                                false,
-                                                                        })
-                                                                    )
-                                                                }
-                                                                aria-label="Put your description here."
-                                                                className="top-popup-item-content-bonus-information__btn-close info-popup-close"
-                                                            >
-                                                                <img
-                                                                    src={
-                                                                        closeIcon
-                                                                    }
-                                                                    alt="close"
-                                                                />
-                                                            </button>
                                                         </div>
-                                                        <div className="popup-item-content-bonus-information__content">
-                                                            <div className="popup-item-content-bonus-information__lits-block">
-                                                                <ul className="popup-item-content-bonus-information__list">
-                                                                    {data?.restriction_game?.game?.map(
-                                                                        (
-                                                                            item,
-                                                                            index
-                                                                        ) => (
-                                                                            <li
-                                                                                key={
-                                                                                    index
-                                                                                }
-                                                                                className="popup-item-content-bonus-information__list-item"
-                                                                            >
-                                                                                <span className="popup-item-content-bonus-information__list-link">
-                                                                                    {item.name ||
-                                                                                        "slot"}
-                                                                                </span>
-                                                                            </li>
-                                                                        )
-                                                                    )}
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    </>
+                                                ) : (
+                                                    "-"
+                                                )}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -713,106 +738,117 @@ export const BonusInformation = ({
                                                 Provider restrictions:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.game_providers
-                                                    ?.reduce(
-                                                        (prev, state) =>
-                                                            prev +
-                                                            ", " +
-                                                            state.name,
-                                                        ""
-                                                    )
-                                                    .slice(2, 20)}{" "}
-                                                ...
-                                                <button
-                                                    onClick={() =>
-                                                        setOpenModal((s) => ({
-                                                            ...s,
-                                                            ProviderRestrictions:
-                                                                true,
-                                                        }))
-                                                    }
-                                                    aria-label="Put your description here."
-                                                    className="item-content-bonus-information__link info-popup-open"
-                                                >
-                                                    See all
-                                                </button>
-                                                <div
-                                                    className={`item-content-bonus-information__popup popup-item-content-bonus-information ${
-                                                        openModal.ProviderRestrictions &&
-                                                        "active"
-                                                    }`}
-                                                    ref={
-                                                        modalRefs.ProviderRestrictions
-                                                    }
-                                                >
-                                                    <div className="popup-item-content-bonus-information__body">
-                                                        <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
-                                                            <div className="top-popup-item-content-bonus-information__title">
-                                                                All Provider
-                                                                Restrictions
-                                                                <div className="top-popup-item-content-bonus-information__number">
-                                                                    {`(${
-                                                                        data
-                                                                            ?.game_providers
-                                                                            ?.length ||
-                                                                        0
-                                                                    })`}
+                                                {data?.game_providers ? (
+                                                    <>
+                                                        {data?.game_providers
+                                                            ?.reduce(
+                                                                (prev, state) =>
+                                                                    prev +
+                                                                    ", " +
+                                                                    state.name,
+                                                                ""
+                                                            )
+                                                            .slice(2, 20)}{" "}
+                                                        ...
+                                                        <button
+                                                            onClick={() =>
+                                                                setOpenModal(
+                                                                    (s) => ({
+                                                                        ...s,
+                                                                        ProviderRestrictions:
+                                                                            true,
+                                                                    })
+                                                                )
+                                                            }
+                                                            aria-label="Put your description here."
+                                                            className="item-content-bonus-information__link info-popup-open"
+                                                        >
+                                                            See all
+                                                        </button>
+                                                        <div
+                                                            className={`item-content-bonus-information__popup popup-item-content-bonus-information ${
+                                                                openModal.ProviderRestrictions &&
+                                                                "active"
+                                                            }`}
+                                                            ref={
+                                                                modalRefs.ProviderRestrictions
+                                                            }
+                                                        >
+                                                            <div className="popup-item-content-bonus-information__body">
+                                                                <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
+                                                                    <div className="top-popup-item-content-bonus-information__title">
+                                                                        All
+                                                                        Provider
+                                                                        Restrictions
+                                                                        <div className="top-popup-item-content-bonus-information__number">
+                                                                            {`(${
+                                                                                data
+                                                                                    ?.game_providers
+                                                                                    ?.length ||
+                                                                                0
+                                                                            })`}
+                                                                        </div>
+                                                                    </div>
+                                                                    <button
+                                                                        onClick={() =>
+                                                                            setOpenModal(
+                                                                                (
+                                                                                    s
+                                                                                ) => ({
+                                                                                    ...s,
+                                                                                    ProviderRestrictions:
+                                                                                        false,
+                                                                                })
+                                                                            )
+                                                                        }
+                                                                        aria-label="Put your description here."
+                                                                        className="top-popup-item-content-bonus-information__btn-close info-popup-close"
+                                                                    >
+                                                                        <img
+                                                                            src={
+                                                                                closeIcon
+                                                                            }
+                                                                            alt="close"
+                                                                        />
+                                                                    </button>
+                                                                </div>
+                                                                <div className="popup-item-content-bonus-information__content">
+                                                                    <div className="popup-item-content-bonus-information__row">
+                                                                        {data?.game_providers?.map(
+                                                                            (
+                                                                                item
+                                                                            ) => (
+                                                                                <a
+                                                                                    rel="nofollow noopener"
+                                                                                    href=""
+                                                                                    target="_blank"
+                                                                                    aria-label="Put your description here."
+                                                                                    className="popup-item-content-bonus-information__game game-popup-item-content-bonus-information popup-item-content-bonus-information__column"
+                                                                                >
+                                                                                    <span className="game-popup-item-content-bonus-information__icon">
+                                                                                        <LazyLoadImage
+                                                                                            src={
+                                                                                                item?.image ||
+                                                                                                slotsIcon
+                                                                                            }
+                                                                                            alt="Slots"
+                                                                                        />
+                                                                                    </span>
+                                                                                    <span className="game-popup-item-content-bonus-information__name">
+                                                                                        {item.name ||
+                                                                                            "slot"}
+                                                                                    </span>
+                                                                                </a>
+                                                                            )
+                                                                        )}
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <button
-                                                                onClick={() =>
-                                                                    setOpenModal(
-                                                                        (
-                                                                            s
-                                                                        ) => ({
-                                                                            ...s,
-                                                                            ProviderRestrictions:
-                                                                                false,
-                                                                        })
-                                                                    )
-                                                                }
-                                                                aria-label="Put your description here."
-                                                                className="top-popup-item-content-bonus-information__btn-close info-popup-close"
-                                                            >
-                                                                <img
-                                                                    src={
-                                                                        closeIcon
-                                                                    }
-                                                                    alt="close"
-                                                                />
-                                                            </button>
                                                         </div>
-                                                        <div className="popup-item-content-bonus-information__content">
-                                                            <div className="popup-item-content-bonus-information__row">
-                                                                {data?.game_providers?.map(
-                                                                    (item) => (
-                                                                        <a
-                                                                            rel="nofollow noopener"
-                                                                            href=""
-                                                                            target="_blank"
-                                                                            aria-label="Put your description here."
-                                                                            className="popup-item-content-bonus-information__game game-popup-item-content-bonus-information popup-item-content-bonus-information__column"
-                                                                        >
-                                                                            <span className="game-popup-item-content-bonus-information__icon">
-                                                                                <LazyLoadImage
-                                                                                    src={
-                                                                                        item?.image ||
-                                                                                        slotsIcon
-                                                                                    }
-                                                                                    alt="Slots"
-                                                                                />
-                                                                            </span>
-                                                                            <span className="game-popup-item-content-bonus-information__name">
-                                                                                {item.name ||
-                                                                                    "slot"}
-                                                                            </span>
-                                                                        </a>
-                                                                    )
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    </>
+                                                ) : (
+                                                    "-"
+                                                )}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -820,102 +856,112 @@ export const BonusInformation = ({
                                                 Country restrictions:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.restriction_country?.country
-                                                    ?.reduce(
-                                                        (prev, state) =>
-                                                            prev +
-                                                            ", " +
-                                                            state.name,
-                                                        ""
-                                                    )
-                                                    .slice(2, 20)}{" "}
-                                                ...
-                                                <button
-                                                    onClick={() =>
-                                                        setOpenModal((s) => ({
-                                                            ...s,
-                                                            CountryRestrictions:
-                                                                true,
-                                                        }))
-                                                    }
-                                                    aria-label="Put your description here."
-                                                    className="item-content-bonus-information__link info-popup-open"
-                                                >
-                                                    See all
-                                                </button>
-                                                <div
-                                                    className={`item-content-bonus-information__popup popup-item-content-bonus-information ${
-                                                        openModal?.CountryRestrictions &&
-                                                        "active"
-                                                    }`}
-                                                    ref={
-                                                        modalRefs?.CountryRestrictions
-                                                    }
-                                                >
-                                                    <div className="popup-item-content-bonus-information__body">
-                                                        <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
-                                                            <div className="top-popup-item-content-bonus-information__title">
-                                                                All Country
-                                                                Restrictions
-                                                                <div className="top-popup-item-content-bonus-information__number">
-                                                                    {`(${
-                                                                        data
-                                                                            ?.restriction_country
-                                                                            ?.country
-                                                                            ?.length ||
-                                                                        0
-                                                                    })`}
+                                                {data?.restriction_country
+                                                    ?.country ? (
+                                                    <>
+                                                        {data?.restriction_country?.country
+                                                            ?.reduce(
+                                                                (prev, state) =>
+                                                                    prev +
+                                                                    ", " +
+                                                                    state.name,
+                                                                ""
+                                                            )
+                                                            .slice(2, 20)}{" "}
+                                                        ...
+                                                        <button
+                                                            onClick={() =>
+                                                                setOpenModal(
+                                                                    (s) => ({
+                                                                        ...s,
+                                                                        CountryRestrictions:
+                                                                            true,
+                                                                    })
+                                                                )
+                                                            }
+                                                            aria-label="Put your description here."
+                                                            className="item-content-bonus-information__link info-popup-open"
+                                                        >
+                                                            See all
+                                                        </button>
+                                                        <div
+                                                            className={`item-content-bonus-information__popup popup-item-content-bonus-information ${
+                                                                openModal?.CountryRestrictions &&
+                                                                "active"
+                                                            }`}
+                                                            ref={
+                                                                modalRefs?.CountryRestrictions
+                                                            }
+                                                        >
+                                                            <div className="popup-item-content-bonus-information__body">
+                                                                <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
+                                                                    <div className="top-popup-item-content-bonus-information__title">
+                                                                        All
+                                                                        Country
+                                                                        Restrictions
+                                                                        <div className="top-popup-item-content-bonus-information__number">
+                                                                            {`(${
+                                                                                data
+                                                                                    ?.restriction_country
+                                                                                    ?.country
+                                                                                    ?.length ||
+                                                                                0
+                                                                            })`}
+                                                                        </div>
+                                                                    </div>
+                                                                    <button
+                                                                        onClick={() =>
+                                                                            setOpenModal(
+                                                                                (
+                                                                                    s
+                                                                                ) => ({
+                                                                                    ...s,
+                                                                                    CountryRestrictions:
+                                                                                        false,
+                                                                                })
+                                                                            )
+                                                                        }
+                                                                        aria-label="Put your description here."
+                                                                        className="top-popup-item-content-bonus-information__btn-close info-popup-close"
+                                                                    >
+                                                                        <img
+                                                                            src={
+                                                                                closeIcon
+                                                                            }
+                                                                            alt="close"
+                                                                        />
+                                                                    </button>
+                                                                </div>
+                                                                <div className="popup-item-content-bonus-information__content">
+                                                                    <div className="popup-item-content-bonus-information__lits-block">
+                                                                        <ul className="popup-item-content-bonus-information__list">
+                                                                            {data?.restriction_country?.country?.map(
+                                                                                (
+                                                                                    item,
+                                                                                    index
+                                                                                ) => (
+                                                                                    <li
+                                                                                        key={
+                                                                                            index
+                                                                                        }
+                                                                                        className="popup-item-content-bonus-information__list-item"
+                                                                                    >
+                                                                                        <span className="popup-item-content-bonus-information__list-link">
+                                                                                            {item.name ||
+                                                                                                "Country"}
+                                                                                        </span>
+                                                                                    </li>
+                                                                                )
+                                                                            )}
+                                                                        </ul>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <button
-                                                                onClick={() =>
-                                                                    setOpenModal(
-                                                                        (
-                                                                            s
-                                                                        ) => ({
-                                                                            ...s,
-                                                                            CountryRestrictions:
-                                                                                false,
-                                                                        })
-                                                                    )
-                                                                }
-                                                                aria-label="Put your description here."
-                                                                className="top-popup-item-content-bonus-information__btn-close info-popup-close"
-                                                            >
-                                                                <img
-                                                                    src={
-                                                                        closeIcon
-                                                                    }
-                                                                    alt="close"
-                                                                />
-                                                            </button>
                                                         </div>
-                                                        <div className="popup-item-content-bonus-information__content">
-                                                            <div className="popup-item-content-bonus-information__lits-block">
-                                                                <ul className="popup-item-content-bonus-information__list">
-                                                                    {data?.restriction_country?.country?.map(
-                                                                        (
-                                                                            item,
-                                                                            index
-                                                                        ) => (
-                                                                            <li
-                                                                                key={
-                                                                                    index
-                                                                                }
-                                                                                className="popup-item-content-bonus-information__list-item"
-                                                                            >
-                                                                                <span className="popup-item-content-bonus-information__list-link">
-                                                                                    {item.name ||
-                                                                                        "Country"}
-                                                                                </span>
-                                                                            </li>
-                                                                        )
-                                                                    )}
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    </>
+                                                ) : (
+                                                    "-"
+                                                )}
                                             </div>
                                         </div>
                                         <div className="item-content-bonus-information-wrap ">
@@ -924,8 +970,9 @@ export const BonusInformation = ({
                                                     RTP restriction:
                                                 </div>
                                                 <div className="item-content-bonus-information__value">
-                                                    {data?.restriction_rtp_game}
-                                                    {"%"}
+                                                    {data?.restriction_rtp_game
+                                                        ? `${data?.restriction_rtp_game}%`
+                                                        : "-"}
                                                 </div>
                                             </div>
                                         </div>

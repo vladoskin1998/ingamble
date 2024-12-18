@@ -983,7 +983,9 @@ export const TabMain = ({
                         </div>
                         <div className="info-review__bonus bonus-info-review">
                             <div className="bonus-info-review__image-block">
-                                <div className="bonus-info-review__image ibg--custom">
+                                <a className="bonus-info-review__image ibg--custom"  href={data?.url} aria-label="Put your description here."
+                                    target="_blank">
+                                   
                                     <LazyCardImg
                                         img={
                                             data?.bonuses.find(
@@ -993,7 +995,7 @@ export const TabMain = ({
                                         }
                                         width="100%"
                                     />
-                                </div>
+                                </a>
                                 {/* <a
                                 href="https://www.youtube.com/watch?v=IBcwhaYP6Uk"
                                 data-fancybox="gallery-20"

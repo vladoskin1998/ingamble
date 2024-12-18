@@ -205,9 +205,11 @@ export const Header = ({
                                         aria-label="Put your description here."
                                         onClick={() => setActiveLink("/")}
                                         className={`menu-header__link ${
-                                            (activeLink === "" ||
-                                                activeLink === "/") &&
-                                            "current"
+                                            activeLink === "/all-bonuses" ||
+                                            activeLink === "/all-casinos" ||
+                                            activeLink === "/all-loyalties"
+                                                ? ""
+                                                : "current"
                                         }`}
                                     >
                                         <span>Gambling Hub</span>
@@ -345,7 +347,8 @@ export const Header = ({
                         </div>
                         <div className="header__language language-header">
                             <div className="dropdown language-header__dropdown dropdown-language-header">
-                                <button
+                                <div
+                                
                                     className="dropdown__btn dropdown-language-header__btn dropdown-language-header__btn-icon"
                                     // onClick={() => setIsLanguageOpen(true)}
                                 >
@@ -355,7 +358,7 @@ export const Header = ({
                                         width={20}
                                         height={20}
                                     />
-                                </button>
+                                </div>
 
                                 <div
                                     className={`dropdown__body dropdown-language-header__body `}
@@ -537,9 +540,11 @@ export const Header = ({
                                             aria-label="Put your description here."
                                             onClick={() => setActiveLink("/")}
                                             className={`menu-header__link ${
-                                                (activeLink === "" ||
-                                                    activeLink === "/") &&
-                                                "current"
+                                                activeLink === "/all-bonuses" ||
+                                                activeLink === "/all-casinos" ||
+                                                activeLink === "/all-loyalties"
+                                                    ? ""
+                                                    : "current"
                                             }`}
                                         >
                                             <span>Gambling Hub</span>

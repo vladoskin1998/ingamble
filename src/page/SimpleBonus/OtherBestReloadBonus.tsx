@@ -42,7 +42,7 @@ export const OtherBestReloadBonus = ({ casinoName }: { casinoName?: string }) =>
                             <div className="top__column">
                                 <div className="top__title-block">
                                     <h2 className="top__title">
-                                        Other Best Reload Bonuses
+                                        Other Best Bonuses
                                     </h2>
                                 </div>
                             </div>

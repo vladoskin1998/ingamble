@@ -477,7 +477,7 @@ export default function SimpleCasinos() {
                             data={data?.dataCurrentCasinos}
                         />
                         {/* <SpecialPromo /> */}
-                        <section className="review__iwild-casino-safety iwild-casino-safety">
+                        {/* <section className="review__iwild-casino-safety iwild-casino-safety">
                             <div className="iwild-casino-safety__container container">
                                 <div className="iwild-casino-safety__body">
                                     <div className="iwild-casino-safety__row">
@@ -626,7 +626,7 @@ export default function SimpleCasinos() {
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </section> */}
 
                         <HighRankedCasinos />
                         <CheckMoreWhatSuitsYouBest />
