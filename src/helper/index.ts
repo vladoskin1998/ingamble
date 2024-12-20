@@ -91,15 +91,16 @@ export const sanitizeLink = (s:string | undefined) => {
 
 }
 
-export const cloacingLink = (s:string | undefined) => {
-    if(!s){
-        return ''
+export const cloacingLink = (s: string | undefined): string => {
+    if (!s) {
+      return '';
     }
-
+  
     const parsedUrl = new URL(s);
-    const [domen] = parsedUrl.hostname.split('.')
-    return `https://cryptogamblers.pro${domen && ('/'+ sanitizeLink(domen) )}/go` 
-   
-}
+  
+    const parts = parsedUrl.hostname.split('.');
+    const domen = parts[0] === 'www' ? parts[1] : parts[0];
 
+    return `https://cryptogamblers.pro${domen && '/' + sanitizeLink(domen)}/go`;
+  };
 
