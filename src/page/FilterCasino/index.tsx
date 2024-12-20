@@ -18,6 +18,7 @@ import { memo, useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from "../SeeAllCasinos"
 import {
+    cloacingLink,
     euroToDolar,
     filterEmptyValues,
     NumberAssociaty,
@@ -212,9 +213,7 @@ export default function FilterCasino() {
         <Wraper>
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
-                    <Categories
-                       
-                    />
+                    <Categories />
                     <FilterHeaderList
                         initList={casinoFilters}
                         clearAll={clearAll}
@@ -254,7 +253,7 @@ export default function FilterCasino() {
                             />
                         </div>
                     </section>
-                    <CheckMoreWhatSuitsYouBest/>
+                    <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />
                     <section className="main-gamble__bottom-info bottom-info-gamble">
                         <div className="bottom-info-gamble__container container">
@@ -351,11 +350,13 @@ const ListDisplayData = memo(
                         <div className="item-loyaltie-programs__row">
                             <div className="item-loyaltie-programs__main">
                                 <Link
-                                          rel="nofollow noopener"
+                                    rel="nofollow noopener"
                                     aria-label="Put your description here."
                                     className="item-loyaltie-programs__image item-loyaltie-programs__image-custom "
                                     key={uuidv4()}
-                                    to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
+                                    to={`/casino/${sanitizeLink(
+                                        item.casino_name
+                                    )}?queryId=${item.casino_id}`}
                                 >
                                     <LazyCardImg
                                         img={item?.casino_image || ""}
@@ -486,25 +487,36 @@ const ListDisplayData = memo(
                                         </div>
                                         <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                             <div className="bottom-content-item-loyaltie-programs__btns">
-                                            <a
-                                                                target="_blank"
-                                                                href={
-                                                                    item?.casino_affiliate_link ||   item?.url_casino
-                                                                }
-                                                                    aria-label="Put your description here."
-                                                                    className="bottom-content-item-loyaltie-programs__btn-view"
-                                                                >
-                                                                    Visit Casino
-                                                                </a>
+                                                <a
+                                                    href={cloacingLink(
+                                                        item?.casino_affiliate_link ||
+                                                            item?.url_casino
+                                                    )}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation()
+                                                        e.preventDefault()
+                                                        window.open(
+                                                            item?.casino_affiliate_link ||
+                                                                item?.url_casino,
+                                                            "_blank",
+                                                            "noopener,noreferrer"
+                                                        )
+                                                     
+                                                    }}
+                                                    aria-label="Put your description here."
+                                                    className="bottom-content-item-loyaltie-programs__btn-view"
+                                                >
+                                                    Visit Casino
+                                                </a>
                                                 <Link
-                                                                    to={`/casino/${sanitizeLink(
-                                                                        item?.casino_name
-                                                                    )}?queryId=${
-                                                                        item?.casino_id
-                                                                    }`}
-                                                                    aria-label="Put your description here."
-                                                                    className="bottom-content-item-loyaltie-programs__btn-more"
-                                                                >
+                                                    to={`/casino/${sanitizeLink(
+                                                        item?.casino_name
+                                                    )}?queryId=${
+                                                        item?.casino_id
+                                                    }`}
+                                                    aria-label="Put your description here."
+                                                    className="bottom-content-item-loyaltie-programs__btn-more"
+                                                >
                                                     Read More
                                                 </Link>
                                             </div>

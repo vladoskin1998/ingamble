@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType2Mobile({
@@ -33,7 +33,10 @@ export default function BlockType2Mobile({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType2)
         return <></>
     return (
-        <section aria-label="BlockTypeNumber.BlockType2" className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+        <section
+            aria-label="BlockTypeNumber.BlockType2"
+            className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble"
+        >
             <div className="new-bonuses-gamble__container container">
                 <div className="new-bonuses-gamble__top top">
                     <div className="top__row">
@@ -63,7 +66,7 @@ export default function BlockType2Mobile({
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
-                                id={  data?.items_block?.category?.id}
+                                id={data?.items_block?.category?.id}
                             />
                         </div>
                     </div>
@@ -99,14 +102,23 @@ export default function BlockType2Mobile({
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
                                                     <div
-                                                              rel="nofollow noopener"
-                                            
+                                                        rel="nofollow noopener"
                                                         aria-label="Put your description here."
-                                                      
                                                         className="casino-card__image-block"
                                                     >
-                                                        <Link className="casino-card__image ibg--custom"
-                                                         to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                        <Link
+                                                            className="casino-card__image ibg--custom"
+                                                            to={`/casino/${sanitizeLink(
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_name
+                                                            )}/bonuses/${sanitizeLink(
+                                                                item?.bonus_info
+                                                                    ?.bonus_name
+                                                            )}?queryId=${
+                                                                item?.bonus_info
+                                                                    ?.bonus_id
+                                                            }`}
                                                         >
                                                             <LazyCardImg
                                                                 img={
@@ -115,21 +127,33 @@ export default function BlockType2Mobile({
                                                                         ?.bonus_image ||
                                                                     ""
                                                                 }
-                                                                 height="100%"
-                                                                        width="100%"
+                                                                height="100%"
+                                                                width="100%"
                                                             />
                                                         </Link>
                                                         <a
-                                                                  rel="nofollow noopener"
-                                                            href={
+                                                            href={cloacingLink(
                                                                 item
                                                                     ?.casino_info
                                                                     ?.casino_affiliate_link ||
                                                                     item
                                                                         ?.casino_info
                                                                         ?.url_casino
-                                                            }
-                                                            target="_blank"
+                                                            )}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation()
+                                                                e.preventDefault()
+                                                                window.open(
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_affiliate_link ||
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.url_casino,
+                                                                    "_blank",
+                                                                    "noopener,noreferrer"
+                                                                )
+                                                            }}
                                                             aria-label="Put your description here."
                                                             className="casino-card__bnt"
                                                         >
@@ -139,10 +163,17 @@ export default function BlockType2Mobile({
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">
                                                             <Link
-                                                                      rel="nofollow noopener"
-                                                                      to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                rel="nofollow noopener"
+                                                                to={`/casino/${sanitizeLink(
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_name
+                                                                )}?queryId=${
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_id
+                                                                }`}
                                                                 aria-label="Put your description here."
-                                                               
                                                                 className="casino-small-card__image-block"
                                                             >
                                                                 <div className="casino-small-card__image ibg--custom">
@@ -153,14 +184,14 @@ export default function BlockType2Mobile({
                                                                                 ?.casino_image ||
                                                                             ""
                                                                         }
-                                                                         height="100%"
+                                                                        height="100%"
                                                                         width="100%"
                                                                     />
                                                                 </div>
                                                             </Link>
                                                             <div className="casino-small-card__body">
                                                                 <Link
-                                                                          rel="nofollow noopener"
+                                                                    rel="nofollow noopener"
                                                                     to={`/casino/${sanitizeLink(
                                                                         item
                                                                             ?.casino_info
@@ -171,7 +202,6 @@ export default function BlockType2Mobile({
                                                                             ?.casino_id
                                                                     }`}
                                                                     aria-label="Put your description here."
-                                                                    
                                                                     className="casino-small-card__name"
                                                                 >
                                                                     {

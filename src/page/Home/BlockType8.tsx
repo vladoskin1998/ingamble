@@ -49,8 +49,8 @@ export default function BlockType8({
                     data={data.items_block.data_cards
                         .sort((a, b) => a.order - b.order)
                         .map((item) => ({
-                            playLink: item.casino_info.casino_affiliate_link || item
-                            ?.casino_info
+                            playLink: item?.casino_info?.casino_affiliate_link ||
+                            item?.casino_info
                             ?.url_casino,
                             img: item.bonus_info.bonus_image,
                             raiting: item.casino_info.casino_rank,

@@ -1,7 +1,7 @@
 import $api from "../../http"
 import { useQuery } from "react-query"
 import { LoyaltyInRankRangeResponse } from "../../types"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import star from "../../assets/img/icons/star.svg"
@@ -13,7 +13,11 @@ const getFilteringLoyaltiesList = async () => {
     return response.data
 }
 //@ts-ignore
-export const EssentialVIPLoyaltyPrograms = ({ casinoName }: { casinoName?: string }) => {
+export const EssentialVIPLoyaltyPrograms = ({
+    casinoName,
+}: {
+    casinoName?: string
+}) => {
     const { data: LoyaltieDataHigh } = useQuery<LoyaltyInRankRangeResponse[]>(
         ["loyalty-programs-in-rank-range/"],
         () => getFilteringLoyaltiesList(),
@@ -219,12 +223,20 @@ export const EssentialVIPLoyaltyPrograms = ({ casinoName }: { casinoName?: strin
                                             <div className="item-essential-programs-gamble__bottom">
                                                 <div className="item-essential-programs-gamble__bottom-column">
                                                     <a
-                                                        href={
+                                                        href={cloacingLink(
                                                             item?.casino_affiliate_link ||
-                                                            item?.url_casino
-                                                        }
-                                                        aria-label="Put your description here."
-                                                        target="_blank"
+                                                                item?.url_casino
+                                                        )}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            e.preventDefault()
+                                                            window.open(
+                                                                item?.casino_affiliate_link ||
+                                                                    item?.url_casino,
+                                                                "_blank",
+                                                                "noopener,noreferrer"
+                                                            )
+                                                        }}
                                                         className="item-essential-programs-gamble__btn item-essential-programs-gamble__btn_yellow"
                                                     >
                                                         Visit Casino

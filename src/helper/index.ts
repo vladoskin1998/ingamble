@@ -90,3 +90,16 @@ export const sanitizeLink = (s:string | undefined) => {
     return s.toLocaleLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "")
 
 }
+
+export const cloacingLink = (s:string | undefined) => {
+    if(!s){
+        return ''
+    }
+
+    const parsedUrl = new URL(s);
+    const [domen] = parsedUrl.hostname.split('.')
+    return `https://cryptogamblers.pro${domen && ('/'+ sanitizeLink(domen) )}/go` 
+   
+}
+
+

@@ -16,6 +16,7 @@ interface MinimumDeposit {
 }
 
 export interface GetDataBonusResponse {
+ 
     sibling_bonuses:SiblingBonuses[]
     slug?: string;
     link_tc : string;

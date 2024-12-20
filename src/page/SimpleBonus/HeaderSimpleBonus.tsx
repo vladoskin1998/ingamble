@@ -8,7 +8,7 @@ import giftIcon from "../../assets/img/icons/gift.svg"
 import { useState, useEffect } from "react"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { Link } from "react-router-dom"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 
 const color_label = [
     "tags-casino-card__item_green",
@@ -211,10 +211,21 @@ export const HeaderSimpleBonus = ({
                                     </span>
                                 </div>
                                 <a
-                                    rel="nofollow noopener"
-                                    href={data?.casino_affiliate_link || data?.url_casino}
+                                    href={cloacingLink(
+                                        data?.casino_affiliate_link || data?.url_casino
+                                    )}
+                                    onClick={(
+                                        e
+                                    ) => {
+                                        e.stopPropagation()
+                                        e.preventDefault()
+                                        window.open(
+                                            data?.casino_affiliate_link || data?.url_casino,
+                                            "_blank",
+                                            "noopener,noreferrer"
+                                        )
+                                    }}
                                     aria-label="Put your description here."
-                                   
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
                            
                                     

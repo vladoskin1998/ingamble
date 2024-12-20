@@ -3,20 +3,15 @@ import like from "../../assets/img/icons/like.svg"
 
 import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
+import { cloacingLink } from "../../helper"
 
-
-export const LoyaltieCasinoInfo = (
-    {
+export const LoyaltieCasinoInfo = ({
     data,
     geoLocation,
 }: {
     data: LoyaltieProgramDataResponse | undefined
-    geoLocation: GeoLocationAllowdType 
-}
-) => {
-
-
-
+    geoLocation: GeoLocationAllowdType
+}) => {
     return (
         <section className="loyaltie__casino-info casino-info">
             <div className="casino-info__container container">
@@ -61,12 +56,18 @@ export const LoyaltieCasinoInfo = (
                                 </div>
                                 <div className="content-casino-info__country country-content-casino-info">
                                     <div className="country-content-casino-info__info">
-                                        {geoLocation?.countryImg && <div className="country-content-casino-info__icon">
-                                            <img
-                                                src={geoLocation?.countryImg}
-                                                alt= {geoLocation?.countryName}
-                                            />
-                                        </div>}
+                                        {geoLocation?.countryImg && (
+                                            <div className="country-content-casino-info__icon">
+                                                <img
+                                                    src={
+                                                        geoLocation?.countryImg
+                                                    }
+                                                    alt={
+                                                        geoLocation?.countryName
+                                                    }
+                                                />
+                                            </div>
+                                        )}
                                         <div className="country-content-casino-info__text">
                                             Accepts players from{" "}
                                             {geoLocation?.countryName}
@@ -77,9 +78,21 @@ export const LoyaltieCasinoInfo = (
                                     </span>
                                 </div>
                                 <a
-                                    href={data?.casino_affiliate_link || data?.url_casino}
+                                    href={cloacingLink(
+                                        data?.casino_affiliate_link ||
+                                            data?.url_casino
+                                    )}
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        e.preventDefault()
+                                        window.open(
+                                            data?.casino_affiliate_link ||
+                                                data?.url_casino,
+                                            "_blank",
+                                            "noopener,noreferrer"
+                                        )
+                                    }}
                                     aria-label="Put your description here."
-                                    target="_blank"
                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                 >
                                     Play and Enjoy
@@ -115,7 +128,6 @@ export const LoyaltieCasinoInfo = (
                                                 </div>
                                             </div>
                                         </div>
-                                       
                                     </div>
                                     <div className="features-content-casino-info__column">
                                         <div className="features-content-casino-info__item item-features-content-casino-info">
@@ -143,10 +155,18 @@ export const LoyaltieCasinoInfo = (
                                             </div>
                                             <div className="item-features-content-casino-info__body">
                                                 <div className="item-features-content-casino-info__number">
-                                                    {data?.loyalty_parameter?.[0]?.text_1}
+                                                    {
+                                                        data
+                                                            ?.loyalty_parameter?.[0]
+                                                            ?.text_1
+                                                    }
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
-                                                {data?.loyalty_parameter?.[0]?.text_2}
+                                                    {
+                                                        data
+                                                            ?.loyalty_parameter?.[0]
+                                                            ?.text_2
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -155,15 +175,23 @@ export const LoyaltieCasinoInfo = (
                                         <div className="features-content-casino-info__item item-features-content-casino-info">
                                             <div className="item-features-content-casino-info__top">
                                                 <div className="item-features-content-casino-info__label">
-                                                Highlight
+                                                    Highlight
                                                 </div>
                                             </div>
                                             <div className="item-features-content-casino-info__body">
                                                 <div className="item-features-content-casino-info__number">
-                                                {data?.loyalty_parameter?.[1]?.text_1}
+                                                    {
+                                                        data
+                                                            ?.loyalty_parameter?.[1]
+                                                            ?.text_1
+                                                    }
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
-                                                {data?.loyalty_parameter?.[1]?.text_2}
+                                                    {
+                                                        data
+                                                            ?.loyalty_parameter?.[1]
+                                                            ?.text_2
+                                                    }
                                                 </div>
                                             </div>
                                         </div>

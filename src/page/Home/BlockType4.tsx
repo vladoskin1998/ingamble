@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType4({
@@ -33,7 +33,10 @@ export default function BlockType4({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType4)
         return <></>
     return (
-        <section aria-label="BlockTypeNumber.BlockType4" className="main-gamble__highest-max-bet-bonuses-2 highest-max-bet-bonuses-2-gamble main-gamble__casino-big-cards">
+        <section
+            aria-label="BlockTypeNumber.BlockType4"
+            className="main-gamble__highest-max-bet-bonuses-2 highest-max-bet-bonuses-2-gamble main-gamble__casino-big-cards"
+        >
             <div className="highest-max-bet-bonuses-2-gamble__container container">
                 <div className="highest-max-bet-bonuses-2-gamble__top top">
                     <div className="top__row">
@@ -63,7 +66,7 @@ export default function BlockType4({
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
-                                id={  data?.items_block?.category?.id}
+                                id={data?.items_block?.category?.id}
                             />
                         </div>
                     </div>
@@ -102,20 +105,19 @@ export default function BlockType4({
                                                         aria-label="Put your description here."
                                                         className="slide-slider__item casino-big-card"
                                                     >
-                                                        <Link className="casino-big-card__image ibg"
-                                                        to={`/casino/${sanitizeLink(
-                                                            item
-                                                                ?.casino_info
-                                                                ?.casino_name
-                                                        )}/bonuses/${sanitizeLink(
-                                                            item
-                                                                ?.bonus_info
-                                                                ?.bonus_name
-                                                        )}?queryId=${
-                                                            item
-                                                                ?.bonus_info
-                                                                ?.bonus_id
-                                                        }`}
+                                                        <Link
+                                                            className="casino-big-card__image ibg"
+                                                            to={`/casino/${sanitizeLink(
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_name
+                                                            )}/bonuses/${sanitizeLink(
+                                                                item?.bonus_info
+                                                                    ?.bonus_name
+                                                            )}?queryId=${
+                                                                item?.bonus_info
+                                                                    ?.bonus_id
+                                                            }`}
                                                         >
                                                             <LazyCardImg
                                                                 img={
@@ -124,17 +126,21 @@ export default function BlockType4({
                                                                         .bonus_image ||
                                                                     ""
                                                                 }
-                                                                 
                                                             />
                                                         </Link>
                                                         <div className="casino-big-card__top">
                                                             <div className="casino-big-card__top-small-card casino-small-card">
                                                                 <Link
-                                                                    to={
-                                                                       `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`
-                                                                    }
+                                                                    to={`/casino/${sanitizeLink(
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_name
+                                                                    )}?queryId=${
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_id
+                                                                    }`}
                                                                     aria-label="Put your description here."
-                                                                   
                                                                     className="casino-small-card__image-block"
                                                                 >
                                                                     <div
@@ -152,12 +158,12 @@ export default function BlockType4({
                                                                                 ""
                                                                             }
                                                                             size="medium"
-                                                                           
                                                                         />
                                                                     </div>
                                                                 </Link>
                                                                 <div className="casino-small-card__body">
-                                                                    <Link to={`/casino/${sanitizeLink(
+                                                                    <Link
+                                                                        to={`/casino/${sanitizeLink(
                                                                             item
                                                                                 ?.casino_info
                                                                                 ?.casino_name
@@ -167,7 +173,6 @@ export default function BlockType4({
                                                                                 ?.casino_id
                                                                         }`}
                                                                         aria-label="Put your description here."
-                                                                   
                                                                         className="casino-small-card__name"
                                                                     >
                                                                         {
@@ -210,7 +215,8 @@ export default function BlockType4({
                                                             </div>
                                                         </div>
                                                         <div className="casino-big-card__bottom">
-                                                            <Link to={`/casino/${sanitizeLink(
+                                                            <Link
+                                                                to={`/casino/${sanitizeLink(
                                                                     item
                                                                         ?.casino_info
                                                                         ?.casino_name
@@ -224,7 +230,6 @@ export default function BlockType4({
                                                                         ?.bonus_id
                                                                 }`}
                                                                 aria-label="Put your description here."
-                                                              
                                                                 className="casino-big-card__title"
                                                                 style={{
                                                                     maxWidth:
@@ -240,16 +245,30 @@ export default function BlockType4({
                                                                 </span>
                                                             </Link>
                                                             <a
-                                                                href={
+                                                                href={cloacingLink(
                                                                     item
-                                                                        .casino_info
-                                                                        .casino_affiliate_link || 
+                                                                        ?.casino_info
+                                                                        ?.casino_affiliate_link ||
                                                                         item
                                                                             ?.casino_info
                                                                             ?.url_casino
-                                                                }
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
+                                                                )}
+                                                                onClick={(
+                                                                    e
+                                                                ) => {
+                                                                    e.stopPropagation()
+                                                                    e.preventDefault()
+                                                                    window.open(
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_affiliate_link ||
+                                                                            item
+                                                                                ?.casino_info
+                                                                                ?.url_casino,
+                                                                        "_blank",
+                                                                        "noopener,noreferrer"
+                                                                    )
+                                                                }}
                                                                 className="casino-big-card__btn"
                                                             >
                                                                 Play

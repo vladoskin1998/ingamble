@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react"
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
-import { COLORS_TAGS, sanitizeLink } from "../../helper"
+import { cloacingLink, COLORS_TAGS, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType3({
@@ -56,7 +56,10 @@ export default function BlockType3({
         return <></>
 
     return (
-        <section aria-label="BlockTypeNumber.BlockType3" className="main-gamble__top-gainers-casinos top-gainers-casinos-gamble main-gamble__baner-block">
+        <section
+            aria-label="BlockTypeNumber.BlockType3"
+            className="main-gamble__top-gainers-casinos top-gainers-casinos-gamble main-gamble__baner-block"
+        >
             <div className="top-gainers-casinos-gamble__container container">
                 <div className="top-gainers-casinos-gamble__top top">
                     <div className="top__row">
@@ -86,7 +89,7 @@ export default function BlockType3({
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
-                                id={  data?.items_block?.category?.id}
+                                id={data?.items_block?.category?.id}
                             />
                         </div>
                     </div>
@@ -148,11 +151,19 @@ export default function BlockType3({
                                                     <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                         <div className="different-casino-standart">
                                                             <div className="different-casino-standart__body">
-                                                                <div
-                                                                    
-                                                                    className="different-casino-standart__image-block"
-                                                                >
-                                                                    <Link  to={`/casino/${sanitizeLink(item?.[0]?.casino_info?.casino_name)}?queryId=${item?.[0]?.casino_info?.casino_id}`} className="different-casino-standart__image ibg--custom">
+                                                                <div className="different-casino-standart__image-block">
+                                                                    <Link
+                                                                        to={`/casino/${sanitizeLink(
+                                                                            item?.[0]
+                                                                                ?.casino_info
+                                                                                ?.casino_name
+                                                                        )}?queryId=${
+                                                                            item?.[0]
+                                                                                ?.casino_info
+                                                                                ?.casino_id
+                                                                        }`}
+                                                                        className="different-casino-standart__image ibg--custom"
+                                                                    >
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item?.[0]
@@ -168,7 +179,7 @@ export default function BlockType3({
                                                                 <div className="different-casino-standart__content">
                                                                     <div className="different-casino-standart__content-row">
                                                                         <Link
-                                                                                  rel="nofollow noopener"
+                                                                            rel="nofollow noopener"
                                                                             to={`/casino/${sanitizeLink(
                                                                                 item?.[0]
                                                                                     ?.casino_info
@@ -183,7 +194,6 @@ export default function BlockType3({
                                                                                     .bonus_id
                                                                             }`}
                                                                             aria-label="Put your description here."
-                                                                           
                                                                             className="different-casino-standart__name"
                                                                         >
                                                                             {
@@ -222,8 +232,7 @@ export default function BlockType3({
                                                                         )}
                                                                         <div className="info-casino-card__stake">
                                                                             <Link
-
-                                                                                      rel="nofollow noopener"
+                                                                                rel="nofollow noopener"
                                                                                 to={`/casino/${sanitizeLink(
                                                                                     item?.[0]
                                                                                         ?.casino_info
@@ -234,7 +243,6 @@ export default function BlockType3({
                                                                                         ?.casino_id
                                                                                 }`}
                                                                                 aria-label="Put your description here."
-                                                                                
                                                                                 className="info-casino-card__stake-link"
                                                                             >
                                                                                 {
@@ -270,11 +278,18 @@ export default function BlockType3({
                                                         <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                             <div className="different-casino-standart">
                                                                 <div className="different-casino-standart__body">
-                                                                    <div
-                                                                        className="different-casino-standart__image-block"
-                                                                    >
-                                                                        <Link className="different-casino-standart__image ibg--custom"
-                                                                         to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}?queryId=${item?.[1]?.casino_info?.casino_id}`}
+                                                                    <div className="different-casino-standart__image-block">
+                                                                        <Link
+                                                                            className="different-casino-standart__image ibg--custom"
+                                                                            to={`/casino/${sanitizeLink(
+                                                                                item?.[1]
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
+                                                                            )}?queryId=${
+                                                                                item?.[1]
+                                                                                    ?.casino_info
+                                                                                    ?.casino_id
+                                                                            }`}
                                                                         >
                                                                             <LazyCardImg
                                                                                 img={
@@ -291,7 +306,7 @@ export default function BlockType3({
                                                                     <div className="different-casino-standart__content">
                                                                         <div className="different-casino-standart__content-row">
                                                                             <Link
-                                                                                      rel="nofollow noopener"
+                                                                                rel="nofollow noopener"
                                                                                 to={`/casino/${sanitizeLink(
                                                                                     item?.[1]
                                                                                         ?.casino_info
@@ -306,7 +321,6 @@ export default function BlockType3({
                                                                                         .bonus_id
                                                                                 }`}
                                                                                 aria-label="Put your description here."
-                                                                              
                                                                                 className="different-casino-standart__name"
                                                                             >
                                                                                 {
@@ -347,7 +361,8 @@ export default function BlockType3({
                                                                                 </div>
                                                                             )}
                                                                             <div className="info-casino-card__stake">
-                                                                                <Link          rel="nofollow noopener"
+                                                                                <Link
+                                                                                    rel="nofollow noopener"
                                                                                     to={`/casino/${sanitizeLink(
                                                                                         item?.[1]
                                                                                             ?.casino_info
@@ -358,7 +373,6 @@ export default function BlockType3({
                                                                                             ?.casino_id
                                                                                     }`}
                                                                                     aria-label="Put your description here."
-                                                                                  
                                                                                     className="info-casino-card__stake-link"
                                                                                 >
                                                                                     {
@@ -427,107 +441,156 @@ export default function BlockType3({
                                                 .filter((item) => item.big_card)
                                                 .map((item) => (
                                                     <SwiperSlide className="baner-row-block__slide slide-baner-row-block ">
-                                                        <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}>
-                                                        <div className="slide-baner-row-block__item item-baner-row-block">
-                                                            <div className="item-baner-row-block__image ibg--custom"
-                                                            
-                                                            >
-                                                                <LazyCardImg
-                                                                    img={
-                                                                        item
-                                                                            ?.bonus_info
-                                                                            ?.bonus_image ||
-                                                                        ""
-                                                                    }
+                                                        <Link
+                                                            to={`/casino/${sanitizeLink(
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_name
+                                                            )}/bonuses/${sanitizeLink(
+                                                                item?.bonus_info
+                                                                    ?.bonus_name
+                                                            )}?queryId=${
+                                                                item?.bonus_info
+                                                                    ?.bonus_id
+                                                            }`}
+                                                        >
+                                                            <div className="slide-baner-row-block__item item-baner-row-block">
+                                                                <div className="item-baner-row-block__image ibg--custom">
+                                                                    <LazyCardImg
+                                                                        img={
+                                                                            item
+                                                                                ?.bonus_info
+                                                                                ?.bonus_image ||
+                                                                            ""
+                                                                        }
                                                                         height="100%"
                                                                         width="100%"
-                                                                          
-                                                                />
-                                                            </div>
-                                                            <div         
-                                                                className="item-baner-row-block__row"
-                                                            >
-                                                                <div className="item-baner-row-block__column">
-                                                                    <div className="item-baner-row-block__small-card casino-small-card">
-                                                                        <div      
-                                                                            className="casino-small-card__image-block"
-                                                                           
-                                                                        >
-                                                                            <Link className="casino-small-card__image ibg--custom"  
-                                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}>
-                                                                                <LazyCardImg
-                                                                                    img={
+                                                                    />
+                                                                </div>
+                                                                <div className="item-baner-row-block__row">
+                                                                    <div className="item-baner-row-block__column">
+                                                                        <div className="item-baner-row-block__small-card casino-small-card">
+                                                                            <div className="casino-small-card__image-block">
+                                                                                <Link
+                                                                                    className="casino-small-card__image ibg--custom"
+                                                                                    to={`/casino/${sanitizeLink(
                                                                                         item
                                                                                             ?.casino_info
-                                                                                            ?.casino_image ||
-                                                                                        ""
-                                                                                    }
-                                                                                    size="medium"
-                                                                                    height="100%"
-                                                                                    width="100%"
-                                                                                />
-                                                                            </Link>
-                                                                        </div>
-                                                                        <div className="casino-small-card__body">
-                                                                            <Link
-                                                                                className="casino-small-card__name"
-                                                                                to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
-                                                                            >
-                                                                                {
-                                                                                    item
-                                                                                        ?.casino_info
-                                                                                        ?.casino_name
-                                                                                }
-                                                                            </Link>
-                                                                            <div className="casino-small-card__rating">
-                                                                                <span className="casino-small-card__rating-icon">
-                                                                                    <img
-                                                                                        src={
-                                                                                            star
+                                                                                            ?.casino_name
+                                                                                    )}?queryId=${
+                                                                                        item
+                                                                                            ?.casino_info
+                                                                                            ?.casino_id
+                                                                                    }`}
+                                                                                >
+                                                                                    <LazyCardImg
+                                                                                        img={
+                                                                                            item
+                                                                                                ?.casino_info
+                                                                                                ?.casino_image ||
+                                                                                            ""
                                                                                         }
-                                                                                        alt="star"
+                                                                                        size="medium"
+                                                                                        height="100%"
+                                                                                        width="100%"
                                                                                     />
-                                                                                </span>
-                                                                                <span className="casino-small-card__rating-number">
+                                                                                </Link>
+                                                                            </div>
+                                                                            <div className="casino-small-card__body">
+                                                                                <Link
+                                                                                    className="casino-small-card__name"
+                                                                                    to={`/casino/${sanitizeLink(
+                                                                                        item
+                                                                                            ?.casino_info
+                                                                                            ?.casino_name
+                                                                                    )}?queryId=${
+                                                                                        item
+                                                                                            ?.casino_info
+                                                                                            ?.casino_id
+                                                                                    }`}
+                                                                                >
                                                                                     {
                                                                                         item
                                                                                             ?.casino_info
-                                                                                            ?.casino_rank
+                                                                                            ?.casino_name
                                                                                     }
-                                                                                </span>
+                                                                                </Link>
+                                                                                <div className="casino-small-card__rating">
+                                                                                    <span className="casino-small-card__rating-icon">
+                                                                                        <img
+                                                                                            src={
+                                                                                                star
+                                                                                            }
+                                                                                            alt="star"
+                                                                                        />
+                                                                                    </span>
+                                                                                    <span className="casino-small-card__rating-number">
+                                                                                        {
+                                                                                            item
+                                                                                                ?.casino_info
+                                                                                                ?.casino_rank
+                                                                                        }
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
-                                                                        className="item-baner-row-block__title"
-                                                                    >
-                                                                        {
-                                                                            item
-                                                                                ?.bonus_info
-                                                                                ?.bonus_name
-                                                                        }
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="item-baner-row-block__column">
-                                                                    <a           rel="nofollow noopener"
-                                                                        href={
-                                                                            item
-                                                                                ?.casino_info
-                                                                                ?.casino_affiliate_link || 
+                                                                        <Link
+                                                                            to={`/casino/${sanitizeLink(
                                                                                 item
                                                                                     ?.casino_info
-                                                                                    ?.url_casino
-                                                                        }
-                                                                        aria-label="Put your description here."
-                                                                        target="_blank"
-                                                                        onClick={e=>{e.stopPropagation()}}
-                                                                        className="item-baner-row-block__btn casino-card__bnt"
-                                                                    >
-                                                                        Play
-                                                                    </a>
+                                                                                    ?.casino_name
+                                                                            )}/bonuses/${sanitizeLink(
+                                                                                item
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_name
+                                                                            )}?queryId=${
+                                                                                item
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_id
+                                                                            }`}
+                                                                            className="item-baner-row-block__title"
+                                                                        >
+                                                                            {
+                                                                                item
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_name
+                                                                            }
+                                                                        </Link>
+                                                                    </div>
+                                                                    <div className="item-baner-row-block__column">
+                                                                        <a
+                                                                            rel="nofollow noopener"
+                                                                            href={cloacingLink(
+                                                                                item
+                                                                                    ?.casino_info
+                                                                                    ?.casino_affiliate_link ||
+                                                                                    item
+                                                                                        ?.casino_info
+                                                                                        ?.url_casino
+                                                                            )}
+                                                                            onClick={(
+                                                                                e
+                                                                            ) => {
+                                                                                e.stopPropagation()
+                                                                                e.preventDefault()
+                                                                                window.open(
+                                                                                    item
+                                                                                        ?.casino_info
+                                                                                        ?.casino_affiliate_link ||
+                                                                                        item
+                                                                                            ?.casino_info
+                                                                                            ?.url_casino,
+                                                                                    "_blank",
+                                                                                    "noopener,noreferrer"
+                                                                                )
+                                                                            }}
+                                                                            className="item-baner-row-block__btn casino-card__bnt"
+                                                                        >
+                                                                            Play
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                         </Link>
                                                     </SwiperSlide>
                                                 ))}

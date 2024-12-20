@@ -11,7 +11,7 @@ import gift from "../../assets/img/icons/gift.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton, SeeAllRoutes } from "./SeeAllButton"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType5({
@@ -194,7 +194,6 @@ export default function BlockType5({
                                                                         .bonus_image ||
                                                                     ""
                                                                 }
-                                                                  
                                                             />
                                                         </Link>
                                                         <div className="casino-big-card__top">
@@ -220,7 +219,6 @@ export default function BlockType5({
                                                                                 ""
                                                                             }
                                                                             size="medium"
-                                                                             
                                                                         />
                                                                     </div>
                                                                 </Link>
@@ -311,16 +309,30 @@ export default function BlockType5({
                                                                 </span>
                                                             </Link>
                                                             <a
-                                                                href={
-                                                                    item
-                                                                        .casino_info
-                                                                        .casino_affiliate_link ||
+                                                                href={cloacingLink(
                                                                     item
                                                                         ?.casino_info
-                                                                        ?.url_casino
-                                                                }
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
+                                                                        ?.casino_affiliate_link ||
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.url_casino
+                                                                )}
+                                                                onClick={(
+                                                                    e
+                                                                ) => {
+                                                                    e.stopPropagation()
+                                                                    e.preventDefault()
+                                                                    window.open(
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_affiliate_link ||
+                                                                            item
+                                                                                ?.casino_info
+                                                                                ?.url_casino,
+                                                                        "_blank",
+                                                                        "noopener,noreferrer"
+                                                                    )
+                                                                }}
                                                                 className="casino-big-card__btn "
                                                             >
                                                                 Play
@@ -356,7 +368,9 @@ export default function BlockType5({
                             </div>
                             <Link
                                 to={`/all-${
-                                    SeeAllRoutes[data.items_block.type_category]
+                                    SeeAllRoutes[
+                                        data.items_block.type_category
+                                    ] || SeeAllRoutes.bonus_category
                                 }${
                                     data?.items_block?.category?.name
                                         ? `/${sanitizeLink(

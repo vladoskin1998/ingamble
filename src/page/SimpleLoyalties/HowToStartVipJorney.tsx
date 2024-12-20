@@ -2,7 +2,7 @@
 import bg08 from "../../assets/img/bg/08.jpg"
 
 import { useState } from "react"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
 export const HowToStartVipJorney = (data: {
@@ -39,10 +39,22 @@ export const HowToStartVipJorney = (data: {
                                 <div className="main-get-bonus__btns">
                                     <div className="main-get-bonus__btns-item">
                                         <a
-                                            rel="nofollow noopener"
-                                            href={data.casino_affiliate_link }
-                                            aria-label="Put your description here."
-                                            target="_blank"
+                                             href={cloacingLink(
+                                            
+                                                    data
+                                                        ?.casino_affiliate_link
+                                            )}
+                                            onClick={(e) => {
+                                                e.stopPropagation()
+                                                e.preventDefault()
+                                                window.open(
+                                               
+                                                        data
+                                                            ?.casino_affiliate_link,
+                                                    "_blank",
+                                                    "noopener,noreferrer"
+                                                )
+                                            }}
                                             className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                             title="link"
                                        

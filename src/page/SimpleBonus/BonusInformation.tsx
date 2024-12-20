@@ -7,6 +7,7 @@ import { GetDataBonusResponse } from "../../types"
 import moment from "moment"
 import { AccordionItem } from "../../components/acordion/Acordion"
 
+
 export const BonusInformation = ({
     data,
 }: {
@@ -819,9 +820,7 @@ export const BonusInformation = ({
                                                                                 item
                                                                             ) => (
                                                                                 <a
-                                                                                    rel="nofollow noopener"
-                                                                                    href=""
-                                                                                    target="_blank"
+                                                                                   
                                                                                     aria-label="Put your description here."
                                                                                     className="popup-item-content-bonus-information__game game-popup-item-content-bonus-information popup-item-content-bonus-information__column"
                                                                                 >

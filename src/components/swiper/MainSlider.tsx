@@ -10,6 +10,7 @@ import { SwiperRef } from "swiper/react"
 import { LineLoader } from "../loader/LineLoader"
 import { Link, useNavigate } from "react-router-dom"
 import { LazyImgHomeType } from "../../page/Home"
+import { cloacingLink } from "../../helper"
 
 const MainSliderImg = ({ img }: { img: string }) => {
     //@ts-ignore
@@ -123,11 +124,16 @@ const MainSlider = ({
                                                 />
                                                 <a
                                                     rel="nofollow noopener"
-                                                    href={item.playLink}
+                                                    href={cloacingLink(item.playLink) }
                                                     target="_blank"
                                                     aria-label="Put your description here."
                                                     className="casino-card__bnt"
-                                                    onClick={(e) => e.stopPropagation()} 
+                                                    onClick={(e) => {
+                                                        e.stopPropagation()
+                                                        e.preventDefault()
+                                                        window.open(item.playLink, '_blank', 'noopener,noreferrer');
+                                                       
+                                                    }} 
                                                 >
                                                     Play
                                                 </a>

@@ -116,7 +116,7 @@ export const Harry = ({
                                         </div>
                                     </div>
                                 </div>
-                                <div className="item-iwild-review__socials">
+                                {/* <div className="item-iwild-review__socials">
                                     <div className="socials-top-footer__items">
                                         <div className="socials-top-footer__item">
                                             <a
@@ -155,7 +155,7 @@ export const Harry = ({
                                             </a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
 

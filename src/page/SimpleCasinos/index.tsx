@@ -20,13 +20,13 @@ import { GeoLocationAllowdType, RewievCasinoDataResponse } from "../../types"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { useFilterContext } from "../../context/FilterContext"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { COUNTRIES } from "../../helper/Country"
 // import { sanitizeLink } from "../../helper"
 
-const SafetyIndexRatingLevel = (n: number,) => {
-    if ((n < 3 ) ) return "low"
-    else if (n >=3 && n < 7) return "medium"
+const SafetyIndexRatingLevel = (n: number) => {
+    if (n < 3) return "low"
+    else if (n >= 3 && n < 7) return "medium"
     else return "high"
 }
 
@@ -46,12 +46,8 @@ export default function SimpleCasinos() {
     const [searchParams] = useSearchParams()
     const qid = searchParams.get("queryId")
 
+    const [queryId, setQueryId] = useState<string>(qid || "")
 
-    
-
-    const [queryId, setQueryId] = useState<string>(qid || '')
-
-  
     const { data, isLoading } = useQuery<{
         dataCurrentCasinos: RewievCasinoDataResponse
         headers: any
@@ -65,38 +61,39 @@ export default function SimpleCasinos() {
     )
 
     useEffect(() => {
-        if(qid){
+        if (qid) {
             setQueryId(qid)
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0)
         }
-        
     }, [qid])
 
-
-    const {data: Country} = useFilterContext()
+    const { data: Country } = useFilterContext()
 
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: "",
         countryName: "",
         isAllowed: false,
         isLoadedGeo: false,
-        countryImg: undefined
+        countryImg: undefined,
     })
 
     useEffect(() => {
         if (data?.headers) {
-        
             const countryCode = data?.headers?.["cf-ipcountry-code"]
             const countryName = data?.headers?.["cf-ipcountry"]
-            
+
             const countryImg = (Country?.general?.countries || COUNTRIES)?.find(
-                it => {
-                    return it.code ===  countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase() }
-            )?.flag_image;
-            
-  
+                (it) => {
+                    return (
+                        it.code === countryCode ||
+                        it.name.toLocaleLowerCase() ===
+                            countryName.toLocaleLowerCase()
+                    )
+                }
+            )?.flag_image
+
             const isAllowed = true
-            
+
             // !data.dataBonus?.restriction_country?.country.find(
             //     (item) =>
             //         item?.code?.toLocaleLowerCase() ===
@@ -108,11 +105,10 @@ export default function SimpleCasinos() {
                 countryName,
                 isAllowed,
                 isLoadedGeo: true,
-                 countryImg
+                countryImg,
             })
         }
-
-    }, [ data ,Country])
+    }, [data, Country])
 
     const handlerOpen = (s: boolean) => {
         setOpenModal(s)
@@ -135,7 +131,7 @@ export default function SimpleCasinos() {
     }, [isLoading])
 
     // if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
-    if (isLoading ) return <LogoLoader />
+    if (isLoading) return <LogoLoader />
     return (
         <>
             <PopupReadMore
@@ -204,19 +200,26 @@ export default function SimpleCasinos() {
                                                 </div>
                                                 <div className="content-casino-info__top">
                                                     <h2 className="content-casino-info__title">
-                                                        {(data
+                                                        {data
                                                             ?.dataCurrentCasinos
-                                                            ?.name + " Review") || 0}
+                                                            ?.name +
+                                                            " Review" || 0}
                                                     </h2>
                                                 </div>
                                                 <div className="content-casino-info__country country-content-casino-info">
                                                     <div className="country-content-casino-info__info">
-                                                        { geoLocation?.countryImg && <div className="country-content-casino-info__icon">
-                                                            <img
-                                                                src={geoLocation?.countryImg}
-                                                                alt={geoLocation?.countryName}
-                                                            />
-                                                        </div> }
+                                                        {geoLocation?.countryImg && (
+                                                            <div className="country-content-casino-info__icon">
+                                                                <img
+                                                                    src={
+                                                                        geoLocation?.countryImg
+                                                                    }
+                                                                    alt={
+                                                                        geoLocation?.countryName
+                                                                    }
+                                                                />
+                                                            </div>
+                                                        )}
                                                         <div className="country-content-casino-info__text">
                                                             Accepts players from{" "}
                                                             {
@@ -234,12 +237,29 @@ export default function SimpleCasinos() {
                                                     </a>
                                                 </div>
                                                 <a
-                                                    href={
+                                                    href={cloacingLink(
                                                         data?.dataCurrentCasinos
-                                                            ?.url
-                                                    }
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
+                                                            ?.url ||
+                                                            data
+                                                                ?.dataCurrentCasinos
+                                                                ?.affiliate
+                                                                ?.casino_affiliate_link
+                                                    )}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation()
+                                                        e.preventDefault()
+                                                        window.open(
+                                                            data
+                                                                ?.dataCurrentCasinos
+                                                                ?.url ||
+                                                                data
+                                                                    ?.dataCurrentCasinos
+                                                                    ?.affiliate
+                                                                    ?.casino_affiliate_link,
+                                                            "_blank",
+                                                            "noopener,noreferrer"
+                                                        )
+                                                    }}
                                                     className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                                 >
                                                     Visit Casino
@@ -248,13 +268,15 @@ export default function SimpleCasinos() {
                                             <div className="content-casino-info__features features-content-casino-info">
                                                 <div className="features-content-casino-info__row">
                                                     <div className="features-content-casino-info__column">
-                                                        <div className={`features-content-casino-info__item item-features-content-casino-info item-features-content-casino-info_${SafetyIndexRatingLevel(
-                                                                        Number(
-                                                                            data
-                                                                                ?.dataCurrentCasinos
-                                                                                ?.casino_rank
-                                                                        ) || 10
-                                                                    )}`}>
+                                                        <div
+                                                            className={`features-content-casino-info__item item-features-content-casino-info item-features-content-casino-info_${SafetyIndexRatingLevel(
+                                                                Number(
+                                                                    data
+                                                                        ?.dataCurrentCasinos
+                                                                        ?.casino_rank
+                                                                ) || 10
+                                                            )}`}
+                                                        >
                                                             <div className="item-features-content-casino-info__top">
                                                                 <div className="item-features-content-casino-info__label">
                                                                     Safety Index
@@ -262,7 +284,6 @@ export default function SimpleCasinos() {
                                                             </div>
                                                             <div className="item-features-content-casino-info__body">
                                                                 <div
-                                                                
                                                                     className={`item-features-content-casino-info__number 
                                                                    `}
                                                                 >
@@ -273,7 +294,10 @@ export default function SimpleCasinos() {
                                                                     }{" "}
                                                                     <span
                                                                         className={`item-features-content-casino-info__number-level`}
-                                                                        style={{textTransform: 'capitalize'}}
+                                                                        style={{
+                                                                            textTransform:
+                                                                                "capitalize",
+                                                                        }}
                                                                     >
                                                                         {SafetyIndexRatingLevel(
                                                                             Number(
@@ -289,7 +313,7 @@ export default function SimpleCasinos() {
                                                                     {Array(
                                                                         data
                                                                             ?.dataCurrentCasinos
-                                                                            ?.stars  ||
+                                                                            ?.stars ||
                                                                             4
                                                                     )
                                                                         .fill(0)
@@ -352,11 +376,9 @@ export default function SimpleCasinos() {
                                                                     {data
                                                                         ?.dataCurrentCasinos
                                                                         ?.min_dep[0]
-                                                                        .min_value ? `${data
-                                                                            ?.dataCurrentCasinos
-                                                                            ?.min_dep[0]
-                                                                            .min_value}$` : 'Unlimited'}
-                                                                    
+                                                                        .min_value
+                                                                        ? `${data?.dataCurrentCasinos?.min_dep[0].min_value}$`
+                                                                        : "Unlimited"}
                                                                 </div>
                                                                 <div className="item-features-content-casino-info__value">
                                                                     To Activate
@@ -380,11 +402,9 @@ export default function SimpleCasinos() {
                                                                             ?.payout_speed
                                                                     }
                                                                 </div>
-                                                                <div
-                                                                    className="item-features-content-casino-info__value"
-                                                                   
-                                                                >
-                                                                    Quick and Reliable
+                                                                <div className="item-features-content-casino-info__value">
+                                                                    Quick and
+                                                                    Reliable
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -412,11 +432,17 @@ export default function SimpleCasinos() {
                                                 </div>
                                             </div>
                                             <div className="top__column">
-                                                <Link to={`/casino/${sanitizeLink(data?.dataCurrentCasinos?.name)}/loyalty?queryId=${data?.dataCurrentCasinos?.loyaltie_id}`}
+                                                <Link
+                                                    to={`/casino/${sanitizeLink(
+                                                        data?.dataCurrentCasinos
+                                                            ?.name
+                                                    )}/loyalty?queryId=${
+                                                        data?.dataCurrentCasinos
+                                                            ?.loyaltie_id
+                                                    }`}
                                                     aria-label="Put your description here."
-                                                  
                                                     className="top__btn "
-                                                    style={{display: 'flex'}}
+                                                    style={{ display: "flex" }}
                                                 >
                                                     <span>View More</span>
                                                     <span className="top__btn-arrow">
@@ -468,7 +494,7 @@ export default function SimpleCasinos() {
                             <div className="iwild-review-mob__container container"></div>
                         </section>
                         <TabMain
-                            Country = {Country?.general?.countries}
+                            Country={Country?.general?.countries}
                             handlerOpen={handlerOpen}
                             data={data?.dataCurrentCasinos}
                         />

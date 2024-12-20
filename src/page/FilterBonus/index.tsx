@@ -19,7 +19,7 @@ import like from "../../assets/img/icons/like.svg"
 import { memo, useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import star from "../../assets/img/icons/star.svg"
-import { COLORS_TAGS, filterEmptyValues, sanitizeLink } from "../../helper"
+import { cloacingLink, COLORS_TAGS, filterEmptyValues, sanitizeLink } from "../../helper"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
@@ -298,10 +298,22 @@ const ListDisplayData = memo(
                                             width="100%"
                                         />
                                     </Link>
+
+                                     
+                                                                                     
                                     <a
                                         rel="nofollow noopener"
-                                        href={item?.casino_affiliate_link || item?.url_casino}
-                                        target="_blank"
+                                    
+
+                                        href={cloacingLink(item?.casino_affiliate_link || item?.url_casino) }
+                                                                                       
+                                        onClick={(e) => {
+                                            e.stopPropagation()
+                                            e.preventDefault()
+                                            window.open(item?.casino_affiliate_link || item?.url_casino, '_blank', 'noopener,noreferrer');
+                                        
+                                        }} 
+                                       
                                         aria-label="Put your description here."
                                         className="casino-card__bnt"
                                     >

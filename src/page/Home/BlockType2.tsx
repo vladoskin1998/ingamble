@@ -7,7 +7,7 @@ import shield from "../../assets/img/icons/shield.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType2({
@@ -66,7 +66,7 @@ export default function BlockType2({
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
-                                id={  data?.items_block?.category?.id}
+                                id={data?.items_block?.category?.id}
                             />
                         </div>
                     </div>
@@ -145,41 +145,30 @@ export default function BlockType2({
                                                                     />
                                                                 </Link>
                                                                 <Link
-                                                                   to={`/casino/${sanitizeLink(
-                                                                    item
-                                                                        ?.casino_info
-                                                                        ?.casino_name
-                                                                )}/bonuses/${sanitizeLink(
-                                                                    item
-                                                                        ?.bonus_info
-                                                                        ?.bonus_name
-                                                                )}?queryId=${
-                                                                    item
-                                                                        ?.bonus_info
-                                                                        ?.bonus_id
-                                                                }`}
-                                                                onClick={(
-                                                                    e
-                                                                ) =>
-                                                                    e.stopPropagation()
-                                                                }
+                                                                    to={`/casino/${sanitizeLink(
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_name
+                                                                    )}/bonuses/${sanitizeLink(
+                                                                        item
+                                                                            ?.bonus_info
+                                                                            ?.bonus_name
+                                                                    )}?queryId=${
+                                                                        item
+                                                                            ?.bonus_info
+                                                                            ?.bonus_id
+                                                                    }`}
+                                                                    onClick={(
+                                                                        e
+                                                                    ) =>
+                                                                        e.stopPropagation()
+                                                                    }
                                                                     aria-label="Put your description here."
                                                                     className="item-baner-row-block__row"
                                                                 >
                                                                     <div className="item-baner-row-block__column">
                                                                         <div className="item-baner-row-block__small-card casino-small-card">
-                                                                            <a
-                                                                                rel="nofollow noopener"
-                                                                                href={
-                                                                                    item
-                                                                                        ?.casino_info
-                                                                                        ?.casino_affiliate_link ||
-                                                                                    item
-                                                                                        ?.casino_info
-                                                                                        ?.url_casino
-                                                                                }
-                                                                                aria-label="Put your description here."
-                                                                                target="_blank"
+                                                                            <div
                                                                                 className="casino-small-card__image-block"
                                                                             >
                                                                                 <Link
@@ -204,10 +193,10 @@ export default function BlockType2({
                                                                                         size="medium"
                                                                                         height="100%"
                                                                                         width="100%"
-                                                                                        imgLoading='eager'
+                                                                                        imgLoading="eager"
                                                                                     />
                                                                                 </Link>
-                                                                            </a>
+                                                                            </div>
                                                                             <div className="casino-small-card__body">
                                                                                 <Link
                                                                                     rel="nofollow noopener"
@@ -293,18 +282,32 @@ export default function BlockType2({
 
                                                                     <div className="item-baner-row-block__column">
                                                                         <a
-                                                                            rel="nofollow noopener"
-                                                                            href={
+                                                                            href={cloacingLink(
                                                                                 item
                                                                                     ?.casino_info
                                                                                     ?.casino_affiliate_link ||
                                                                                     item
                                                                                         ?.casino_info
                                                                                         ?.url_casino
-                                                                            }
-                                                                            onClick={e=>{e.stopPropagation()}}
+                                                                            )}
+                                                                            onClick={(
+                                                                                e
+                                                                            ) => {
+                                                                                e.stopPropagation()
+                                                                                e.preventDefault()
+                                                                                window.open(
+                                                                                    item
+                                                                                        ?.casino_info
+                                                                                        ?.casino_affiliate_link ||
+                                                                                        item
+                                                                                            ?.casino_info
+                                                                                            ?.url_casino,
+                                                                                    "_blank",
+                                                                                    "noopener,noreferrer"
+                                                                                )
+                                                                           
+                                                                            }}
                                                                             aria-label="Put your description here."
-                                                                            target="_blank"
                                                                             className="item-baner-row-block__btn casino-card__bnt"
                                                                         >
                                                                             Play

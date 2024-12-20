@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType9({
@@ -15,7 +15,10 @@ export default function BlockType9({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9)
         return <></>
     return (
-        <section aria-label="BlockTypeNumber.BlockType9" className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
+        <section
+            aria-label="BlockTypeNumber.BlockType9"
+            className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images"
+        >
             <div className="essential-programs-gamble__container container">
                 <div className="essential-programs-gamble__top top">
                     <div className="top__row">
@@ -44,7 +47,6 @@ export default function BlockType9({
                                 rel="nofollow noopener"
                                 to="/all-loyalties"
                                 aria-label="Put your description here."
-                               
                                 className="top__btn"
                             >
                                 <span>See All</span>
@@ -84,9 +86,10 @@ export default function BlockType9({
                                     <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                         <div className="item-essential-programs-gamble__top">
                                             <Link
-                                                to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`}
+                                                to={`/casino/${sanitizeLink(
+                                                    item?.casino_name
+                                                )}?queryId=${item?.casino_id}`}
                                                 aria-label="Put your description here."
-                                                
                                                 className="item-essential-programs-gamble__logo"
                                             >
                                                 <LazyCardImg
@@ -199,7 +202,7 @@ export default function BlockType9({
                                                                         ""
                                                                     }
                                                                     size="medium"
-                                                                    imgLoading='eager'
+                                                                    imgLoading="eager"
                                                                 />
                                                             </div>
                                                             <div className="features-essential-programs-gamble__info">
@@ -218,20 +221,33 @@ export default function BlockType9({
                                         <div className="item-essential-programs-gamble__bottom">
                                             <div className="item-essential-programs-gamble__bottom-column">
                                                 <a
-                                                    href={
-                                                        item?.casino_affiliate_link || item?.url_casino
-                                                    }
-                                                    aria-label="Put your description here."
-                                                    target="_blank"
+                                                    href={cloacingLink(
+                                                        item?.casino_affiliate_link ||
+                                                            item?.url_casino
+                                                    )}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation()
+                                                        e.preventDefault()
+                                                        window.open(
+                                                            item?.casino_affiliate_link ||
+                                                                item?.url_casino,
+                                                            "_blank",
+                                                            "noopener,noreferrer"
+                                                        )
+                                                    }}
                                                     className="item-essential-programs-gamble__btn item-essential-programs-gamble__btn_yellow"
                                                 >
-                                                    Visit  Casino
+                                                    Visit Casino
                                                 </a>
                                             </div>
                                             <div className="item-essential-programs-gamble__bottom-column">
-                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item?.loyalty_id}`}
+                                                <Link
+                                                    to={`/casino/${sanitizeLink(
+                                                        item?.casino_name
+                                                    )}/loyalty?queryId=${
+                                                        item?.loyalty_id
+                                                    }`}
                                                     aria-label="Put your description here."
-                                           
                                                     className="item-essential-programs-gamble__btn"
                                                 >
                                                     Read More

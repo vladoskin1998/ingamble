@@ -1,6 +1,7 @@
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
+import { Link } from "react-router-dom"
 
 
 
@@ -27,14 +28,14 @@ export const CheckMoreWhatSuitsYouBest = () => {
                 <div className="bottom-filter-tags__row">
                     {category.map((item, index) => (
                         <div className="bottom-filter-tags__column" key={index}>
-                            <a
-                                rel="nofollow noopener"
-                                href={item?.link || "/"}
+                            <Link
+                              
+                                to={item?.link || "/"}
                                 aria-label="Put your description here."
                                 className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
                             >
                                 {item.name}
-                            </a>
+                            </Link>
                         </div>
                     ))}
                 </div>

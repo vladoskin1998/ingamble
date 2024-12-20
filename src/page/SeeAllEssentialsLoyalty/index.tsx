@@ -16,7 +16,7 @@ import "./style.css"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { useEffect, useState } from "react"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
 const countPageSize = 10
@@ -199,9 +199,14 @@ export default function SeeAllEssentialsLoyalty() {
                                                         <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
                                                             <div className="item-essential-programs-gamble__rating">
                                                                 <div className="item-essential-programs-gamble__rating-number">
-                                                                    {parseInt(String(item
-                                                                        ?.loyalty_program
-                                                                        ?.loyalty_rank) , 10) }
+                                                                    {parseInt(
+                                                                        String(
+                                                                            item
+                                                                                ?.loyalty_program
+                                                                                ?.loyalty_rank
+                                                                        ),
+                                                                        10
+                                                                    )}
                                                                     /10
                                                                 </div>
                                                                 <div className="item-essential-programs-gamble__rating-body">
@@ -224,9 +229,11 @@ export default function SeeAllEssentialsLoyalty() {
                                                                                 <div
                                                                                     className={`items-rating-essential-programs-gamble__item items-rating-essential-programs-gamble__item_${level} ${
                                                                                         level <=
-                                                                                            ( Number(item
-                                                                                                ?.loyalty_program
-                                                                                                ?.loyalty_rank) ||
+                                                                                            (Number(
+                                                                                                item
+                                                                                                    ?.loyalty_program
+                                                                                                    ?.loyalty_rank
+                                                                                            ) ||
                                                                                                 10) &&
                                                                                         "full"
                                                                                     }`}
@@ -248,11 +255,20 @@ export default function SeeAllEssentialsLoyalty() {
                                                 <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                                         <a
-                                                            href={
-                                                                item?.casino_affiliate_link || item?.url_casino
-                                                            }
-                                                            target="_blank"
-                                                            aria-label="Put your description here."
+                                                            href={cloacingLink(
+                                                                item?.casino_affiliate_link ||
+                                                                    item?.url_casino
+                                                            )}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation()
+                                                                e.preventDefault()
+                                                                window.open(
+                                                                    item?.casino_affiliate_link ||
+                                                                        item?.url_casino,
+                                                                    "_blank",
+                                                                    "noopener,noreferrer"
+                                                                )
+                                                            }}
                                                             className="bottom-content-item-loyaltie-programs__btn-view"
                                                         >
                                                             Visit Casino
@@ -265,7 +281,6 @@ export default function SeeAllEssentialsLoyalty() {
                                                                     ?.loyalty_program
                                                                     ?.id
                                                             }`}
-                                                         
                                                             aria-label="Put your description here."
                                                             className="bottom-content-item-loyaltie-programs__btn-more"
                                                         >

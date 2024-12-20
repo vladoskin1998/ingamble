@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
-import { sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType6({
@@ -32,7 +32,10 @@ export default function BlockType6({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType6)
         return <></>
     return (
-        <section aria-label="BlockTypeNumber.BlockType6" className="main-gamble__new-bonuses new-bonuses-gamble">
+        <section
+            aria-label="BlockTypeNumber.BlockType6"
+            className="main-gamble__new-bonuses new-bonuses-gamble"
+        >
             <div className="new-bonuses-gamble__container container">
                 <div className="new-bonuses-gamble__top top">
                     <div className="top__row">
@@ -62,7 +65,7 @@ export default function BlockType6({
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
-                                id={  data?.items_block?.category?.id}
+                                id={data?.items_block?.category?.id}
                             />
                         </div>
                     </div>
@@ -97,13 +100,23 @@ export default function BlockType6({
                                         <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
-                                                    <div
-                                                   
-                                                        className="casino-card__image-block"
-                                                    >
-                                                        <Link className="casino-card__image ibg"
-                                                        onClick={e => e.stopPropagation()}
-                                                        to={ `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                    <div className="casino-card__image-block">
+                                                        <Link
+                                                            className="casino-card__image ibg"
+                                                            onClick={(e) =>
+                                                                e.stopPropagation()
+                                                            }
+                                                            to={`/casino/${sanitizeLink(
+                                                                item
+                                                                    ?.casino_info
+                                                                    ?.casino_name
+                                                            )}/bonuses/${sanitizeLink(
+                                                                item?.bonus_info
+                                                                    ?.bonus_name
+                                                            )}?queryId=${
+                                                                item?.bonus_info
+                                                                    ?.bonus_id
+                                                            }`}
                                                         >
                                                             <LazyCardImg
                                                                 img={
@@ -112,17 +125,32 @@ export default function BlockType6({
                                                                         .bonus_image ||
                                                                     ""
                                                                 }
-                                                                   imgLoading='eager'
+                                                                imgLoading="eager"
                                                             />
                                                         </Link>
                                                         <a
-                                                            href={
-                                                                item?.casino_info
-                                                                    ?.casino_affiliate_link || item
+                                                            href={cloacingLink(
+                                                                item
                                                                     ?.casino_info
-                                                                    ?.url_casino
-                                                            }
-                                                            target="_blank"
+                                                                    ?.casino_affiliate_link ||
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.url_casino
+                                                            )}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation()
+                                                                e.preventDefault()
+                                                                window.open(
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_affiliate_link ||
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.url_casino,
+                                                                    "_blank",
+                                                                    "noopener,noreferrer"
+                                                                )
+                                                            }}
                                                             aria-label="Put your description here."
                                                             className="casino-card__bnt"
                                                         >
@@ -132,11 +160,30 @@ export default function BlockType6({
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">
                                                             <a
-                                                                href={item?.casino_info?.casino_affiliate_link || item
-                                                                    ?.casino_info
-                                                                    ?.url_casino}
-                                                                aria-label="Put your description here."
-                                                                target="_blank"
+                                                                href={cloacingLink(
+                                                                    item
+                                                                        ?.casino_info
+                                                                        ?.casino_affiliate_link ||
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.url_casino
+                                                                )}
+                                                                onClick={(
+                                                                    e
+                                                                ) => {
+                                                                    e.stopPropagation()
+                                                                    e.preventDefault()
+                                                                    window.open(
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_affiliate_link ||
+                                                                            item
+                                                                                ?.casino_info
+                                                                                ?.url_casino,
+                                                                        "_blank",
+                                                                        "noopener,noreferrer"
+                                                                    )
+                                                                }}
                                                                 className="casino-small-card__image-block"
                                                             >
                                                                 <Link
@@ -145,7 +192,15 @@ export default function BlockType6({
                                                                         backgroundSize:
                                                                             "125% auto",
                                                                     }}
-                                                                    to={ `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                    to={`/casino/${sanitizeLink(
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_name
+                                                                    )}?queryId=${
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_id
+                                                                    }`}
                                                                 >
                                                                     <LazyCardImg
                                                                         img={
@@ -155,14 +210,21 @@ export default function BlockType6({
                                                                             ""
                                                                         }
                                                                         size="medium"
-                                                                         
                                                                     />
                                                                 </Link>
                                                             </a>
                                                             <div className="casino-small-card__body">
-                                                                <Link to={ `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                <Link
+                                                                    to={`/casino/${sanitizeLink(
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_name
+                                                                    )}?queryId=${
+                                                                        item
+                                                                            ?.casino_info
+                                                                            ?.casino_id
+                                                                    }`}
                                                                     aria-label="Put your description here."
-                                                             
                                                                     className="casino-small-card__name"
                                                                 >
                                                                     {

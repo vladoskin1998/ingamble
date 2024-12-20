@@ -13,7 +13,7 @@ import {
     SeeAllEssentialLoyaltyCasino,
 } from "../../types"
 import { useQuery } from "react-query"
-import { filterEmptyValues, sanitizeLink } from "../../helper"
+import { cloacingLink, filterEmptyValues, sanitizeLink } from "../../helper"
 import $api from "../../http"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import { debounce } from "lodash"
@@ -373,10 +373,21 @@ const LisDisplayedData = memo(
                                     <div className="bottom-content-item-loyaltie-programs__btns">
                                         <a
                                             target="_blank"
-                                            href={
+                                            href={cloacingLink(
                                                 item?.casino_affiliate_link ||
-                                                item?.url_casino
-                                            }
+                                                    item?.url_casino
+                                            )}
+                                            onClick={(e) => {
+                                                e.stopPropagation()
+                                                e.preventDefault()
+                                                window.open(
+                                                    item?.casino_affiliate_link ||
+                                                        item?.url_casino,
+                                                    "_blank",
+                                                    "noopener,noreferrer"
+                                                )
+                                               
+                                            }}
                                             aria-label="Put your description here."
                                             className="bottom-content-item-loyaltie-programs__btn-view"
                                         >

@@ -14,10 +14,9 @@ import { useAdaptiveBehavior } from "../../context/AppContext"
 import {
     SeeAllBonus as SeeAllBonusType,
     SeeAllBonusResponse,
-   
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { COLORS_TAGS, sanitizeLink } from "../../helper"
+import { cloacingLink, COLORS_TAGS, sanitizeLink } from "../../helper"
 import { Link, useSearchParams } from "react-router-dom"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
@@ -30,7 +29,6 @@ const getAllBonusFetchData = async (page: number, queryId: string | null) => {
     )
     return response.data
 }
-
 
 const countPageSize = 60
 
@@ -45,23 +43,20 @@ export default function SeeAllBonus() {
     const [searchParams] = useSearchParams()
     const qid = searchParams.get("queryId")
 
-    const [queryId, setQueryId] = useState<string>(qid || '')
-    
+    const [queryId, setQueryId] = useState<string>(qid || "")
+
     useEffect(() => {
-        if(qid){
+        if (qid) {
             setQueryId(qid)
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0)
         }
-        
     }, [qid])
-  
 
     const { data, isLoading } = useQuery<SeeAllBonusResponse>(
         ["get-see-all-bonus-category/", currentPage, queryId],
         () => getAllBonusFetchData(currentPage, queryId),
         {
             keepPreviousData: true,
-           
         }
     )
 
@@ -147,14 +142,14 @@ export default function SeeAllBonus() {
                                                     }}
                                                     className="casino-card__image-block"
                                                 >
-                                                    <Link to={`/casino/${sanitizeLink(
+                                                    <Link
+                                                        to={`/casino/${sanitizeLink(
                                                             item.casino_name
                                                         )}/bonuses/${sanitizeLink(
                                                             item.bonus_name
                                                         )}?queryId=${
                                                             item.bonus_id
                                                         }`}
-                                                       
                                                         className="casino-card__image see-all-custom__image-custom"
                                                     >
                                                         <LazyCardImg
@@ -165,11 +160,20 @@ export default function SeeAllBonus() {
                                                         />
                                                     </Link>
                                                     <a
-                                                        href={
+                                                        href={cloacingLink(
                                                             item?.casino_affiliate_link ||
-                                                            ""
-                                                        }
-                                                        target="_blank"
+                                                                item?.url_casino
+                                                        )}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            e.preventDefault()
+                                                            window.open(
+                                                                item?.casino_affiliate_link ||
+                                                                    item?.url_casino,
+                                                                "_blank",
+                                                                "noopener,noreferrer"
+                                                            )
+                                                        }}
                                                         aria-label="Put your description here."
                                                         className="casino-card__bnt"
                                                     >
@@ -200,13 +204,13 @@ export default function SeeAllBonus() {
                                                 </div>
                                                 <div className="casino-card__info info-casino-card">
                                                     <div className="info-casino-card__stake">
-                                                        <Link to={`/casino/${sanitizeLink(
+                                                        <Link
+                                                            to={`/casino/${sanitizeLink(
                                                                 item?.casino_name
                                                             )}?queryId=${
                                                                 item?.casino_id
                                                             }`}
                                                             aria-label="Put your description here."
-                                                        
                                                             className="info-casino-card__stake-link"
                                                         >
                                                             {item?.casino_name}
@@ -237,14 +241,14 @@ export default function SeeAllBonus() {
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <Link to={`/casino/${sanitizeLink(
+                                                <Link
+                                                    to={`/casino/${sanitizeLink(
                                                         item.casino_name
                                                     )}/bonuses/${sanitizeLink(
                                                         item.bonus_name
                                                     )}?queryId=${
                                                         item.bonus_id
                                                     }`}
-                                              
                                                     className="casino-card__name"
                                                 >
                                                     {item.bonus_name}

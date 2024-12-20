@@ -11,17 +11,19 @@ import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import {
-  
     PAYOUTSPEED,
     SeeAllCasinosType,
     SeeAllCasinosCategoryResponse,
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { euroToDolar, NumberAssociaty, sanitizeLink } from "../../helper"
+import {
+    cloacingLink,
+    euroToDolar,
+    NumberAssociaty,
+    sanitizeLink,
+} from "../../helper"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
-
-
 
 const getAllCasinosFetchData = async (page: number, queryId: string | null) => {
     const response = await $api.get(
@@ -60,28 +62,24 @@ export const WithdrawalSeeAllCasinos = (n: {
 const countPageSize = 10
 
 export default function SeeAllCasinos() {
-     document.title = "All Casino"
+    document.title = "All Casino"
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllCasinosType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
-    
     const [searchParams] = useSearchParams()
     const qid = searchParams.get("queryId")
 
-    const [queryId, setQueryId] = useState<string>(qid || '')
-    
+    const [queryId, setQueryId] = useState<string>(qid || "")
+
     useEffect(() => {
-        if(qid){
+        if (qid) {
             setQueryId(qid)
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0)
         }
-        
     }, [qid])
 
-
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
-
 
     const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(
         ["get-see-all-loyalties", currentPage, queryId],
@@ -332,11 +330,22 @@ export default function SeeAllCasinos() {
                                                         <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                                             <div className="bottom-content-item-loyaltie-programs__btns">
                                                                 <a
-                                                                target="_blank"
-                                                                href={
-                                                                    item?.casino_affiliate_link ||   item?.url_casino
-                                                                }
-                                                                    aria-label="Put your description here."
+                                                                    href={cloacingLink(
+                                                                        item?.casino_affiliate_link ||
+                                                                            item?.url_casino
+                                                                    )}
+                                                                    onClick={(
+                                                                        e
+                                                                    ) => {
+                                                                        e.stopPropagation()
+                                                                        e.preventDefault()
+                                                                        window.open(
+                                                                            item?.casino_affiliate_link ||
+                                                                                item?.url_casino,
+                                                                            "_blank",
+                                                                            "noopener,noreferrer"
+                                                                        )
+                                                                    }}
                                                                     className="bottom-content-item-loyaltie-programs__btn-view"
                                                                 >
                                                                     Visit Casino
