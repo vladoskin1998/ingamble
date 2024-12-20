@@ -6638,7 +6638,9 @@ h3 {
   }
 }
 .main-get-bonus__btn_review {
-  width: 240px;
+  padding: 0 20px;
+    min-width: 240px;
+    width: fit-content;
   height: 42px;
   background: rgba(35, 35, 32, 0.5019607843);
   font-size: 16px;

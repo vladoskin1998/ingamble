@@ -29,6 +29,7 @@ import { v4 as uuidv4 } from "uuid"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { Link } from "react-router-dom"
+import { NoResult } from "../../components/no-result"
 
 const countPageSize = 20
 
@@ -172,6 +173,10 @@ export default function FilterBonus() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
+                            {
+                                displayedData?.length ? 
+                                <>
+                           
                             <ListDisplayData displayedData={displayedData} />
                             <PaginationPage
                                 countElem={data?.count}
@@ -186,7 +191,9 @@ export default function FilterBonus() {
                                         })
                                     }
                                 }}
-                            />
+                                
+                            />     </>:<NoResult/>
+                        }
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />
@@ -305,7 +312,7 @@ const ListDisplayData = memo(
                                         rel="nofollow noopener"
                                     
 
-                                        href={cloacingLink(item?.casino_affiliate_link || item?.url_casino) }
+                                        href={cloacingLink(item?.url_casino || item?.casino_affiliate_link  ) }
                                                                                        
                                         onClick={(e) => {
                                             e.stopPropagation()

@@ -169,7 +169,7 @@ export default function SimpleBonus() {
                                casinoName={data?.dataBonus.casino_name}
                                sibling_bonuses={data?.dataBonus.sibling_bonuses}
                                casino_rank={data?.dataBonus?.casino_rank}
-                               casino_affiliate_link={data?.dataBonus.casino_affiliate_link || data?.dataBonus?.url_casino}
+                               casino_affiliate_link={data?.dataBonus?.url_casino || data?.dataBonus.casino_affiliate_link }
                                casino_id={data?.dataBonus?.casino_id}
                             />
                         </>

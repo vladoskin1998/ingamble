@@ -62,7 +62,7 @@ export default function BlockType1({
                             likes: item?.bonus_info?.bonus_likes,
                             casinoName: item?.casino_info?.casino_name,
                             bonuseName: item?.bonus_info?.bonus_name,
-                            playLink: item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino,
+                            playLink: item?.casino_info?.url_casino || item?.casino_info?.casino_affiliate_link ,
                             imageLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`,
                             casinoLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`,
                             bonuseLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`

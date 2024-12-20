@@ -222,8 +222,8 @@ export default function BlockType9({
                                             <div className="item-essential-programs-gamble__bottom-column">
                                                 <a
                                                     href={cloacingLink(
-                                                        item?.casino_affiliate_link ||
-                                                            item?.url_casino
+                                                        item?.url_casino || item?.casino_affiliate_link 
+                                                       
                                                     )}
                                                     onClick={(e) => {
                                                         e.stopPropagation()

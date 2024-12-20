@@ -249,13 +249,13 @@ export default function SimpleCasinos() {
                                                         e.stopPropagation()
                                                         e.preventDefault()
                                                         window.open(
-                                                            data
-                                                                ?.dataCurrentCasinos
-                                                                ?.url ||
+                                                          
                                                                 data
                                                                     ?.dataCurrentCasinos
                                                                     ?.affiliate
-                                                                    ?.casino_affiliate_link,
+                                                                    ?.casino_affiliate_link ||  data
+                                                                    ?.dataCurrentCasinos
+                                                                    ?.url ,
                                                             "_blank",
                                                             "noopener,noreferrer"
                                                         )

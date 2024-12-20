@@ -207,9 +207,9 @@ export const CasinoBonuses = ({
                                                     </Link>
                                                     <a
                                                         href={cloacingLink(
-                                                            data?.affiliate
-                                                                ?.casino_affiliate_link ||
-                                                                data?.url
+                                                            data?.url || data?.affiliate
+                                                                ?.casino_affiliate_link 
+                                                               
                                                         )}
                                                         onClick={(e) => {
                                                             e.stopPropagation()

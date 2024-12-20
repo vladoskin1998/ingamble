@@ -79,8 +79,8 @@ export const LoyaltieCasinoInfo = ({
                                 </div>
                                 <a
                                     href={cloacingLink(
-                                        data?.casino_affiliate_link ||
-                                            data?.url_casino
+                                        data?.url_casino || data?.casino_affiliate_link 
+                                            
                                     )}
                                     onClick={(e) => {
                                         e.stopPropagation()

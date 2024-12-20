@@ -331,8 +331,8 @@ export default function SeeAllCasinos() {
                                                             <div className="bottom-content-item-loyaltie-programs__btns">
                                                                 <a
                                                                     href={cloacingLink(
-                                                                        item?.casino_affiliate_link ||
-                                                                            item?.url_casino
+                                                                        item?.url_casino ||    item?.casino_affiliate_link 
+                                                                            
                                                                     )}
                                                                     onClick={(
                                                                         e

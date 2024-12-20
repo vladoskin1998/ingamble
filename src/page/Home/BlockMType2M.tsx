@@ -203,11 +203,11 @@ export default function BlockMType2M({
                                                                 <a
                                                                     href={cloacingLink(
                                                                         item?.[0]
+                                                                        ?.casino_info
+                                                                        ?.url_casino ||   item?.[0]
                                                                             ?.casino_info
-                                                                            ?.casino_affiliate_link ||
-                                                                            item?.[0]
-                                                                                ?.casino_info
-                                                                                ?.url_casino
+                                                                            ?.casino_affiliate_link
+                                                                           
                                                                     )}
                                                                     onClick={(
                                                                         e
@@ -314,11 +314,11 @@ export default function BlockMType2M({
                                                                 <a
                                                                     href={cloacingLink(
                                                                         item?.[1]
+                                                                        ?.casino_info
+                                                                        ?.url_casino||  item?.[1]
                                                                             ?.casino_info
-                                                                            ?.casino_affiliate_link ||
-                                                                            item?.[1]
-                                                                                ?.casino_info
-                                                                                ?.url_casino
+                                                                            ?.casino_affiliate_link 
+                                                                            
                                                                     )}
                                                                     onClick={(
                                                                         e
@@ -426,11 +426,11 @@ export default function BlockMType2M({
                                                                 <a
                                                                      href={cloacingLink(
                                                                         item?.[2]
-                                                                            ?.casino_info
-                                                                            ?.casino_affiliate_link ||
-                                                                            item?.[2]
                                                                                 ?.casino_info
-                                                                                ?.url_casino
+                                                                                ?.url_casino || item?.[2]
+                                                                            ?.casino_info
+                                                                            ?.casino_affiliate_link 
+                                                                           
                                                                     )}
                                                                     onClick={(
                                                                         e

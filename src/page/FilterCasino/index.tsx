@@ -34,6 +34,7 @@ import { v4 as uuidv4 } from "uuid"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { Link } from "react-router-dom"
+import { NoResult } from "../../components/no-result"
 
 const countPageSize = 15
 
@@ -229,28 +230,36 @@ export default function FilterCasino() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            <ListDisplayData
-                                displayedData={displayedData}
-                                filtersDataLicenses={
-                                    filtersData?.casino?.licenses
-                                }
-                                casinoFiltersLicenses={casinoFilters?.licenses}
-                            />
-
-                            <PaginationPage
-                                countElem={data?.count}
-                                currentPage={currentPage}
-                                countPageElem={countPageSize}
-                                setCurrentPage={(s) => {
-                                    setCurrentPage(s)
-                                    if (!isMobile) {
-                                        window.scrollTo({
-                                            behavior: "smooth",
-                                            top: 0,
-                                        })
-                                    }
-                                }}
-                            />
+                            {displayedData?.length ? (
+                                <>
+                               
+                                    <ListDisplayData
+                                        displayedData={displayedData}
+                                        filtersDataLicenses={
+                                            filtersData?.casino?.licenses
+                                        }
+                                        casinoFiltersLicenses={
+                                            casinoFilters?.licenses
+                                        }
+                                    />
+                                    <PaginationPage
+                                        countElem={data?.count}
+                                        currentPage={currentPage}
+                                        countPageElem={countPageSize}
+                                        setCurrentPage={(s) => {
+                                            setCurrentPage(s)
+                                            if (!isMobile) {
+                                                window.scrollTo({
+                                                    behavior: "smooth",
+                                                    top: 0,
+                                                })
+                                            }
+                                        }}
+                                    />
+                                </>
+                            ) : (
+                                <NoResult />
+                            )}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />
@@ -489,8 +498,8 @@ const ListDisplayData = memo(
                                             <div className="bottom-content-item-loyaltie-programs__btns">
                                                 <a
                                                     href={cloacingLink(
-                                                        item?.casino_affiliate_link ||
-                                                            item?.url_casino
+                                                        item?.url_casino ||
+                                                            item?.casino_affiliate_link
                                                     )}
                                                     onClick={(e) => {
                                                         e.stopPropagation()
@@ -501,7 +510,6 @@ const ListDisplayData = memo(
                                                             "_blank",
                                                             "noopener,noreferrer"
                                                         )
-                                                     
                                                     }}
                                                     aria-label="Put your description here."
                                                     className="bottom-content-item-loyaltie-programs__btn-view"

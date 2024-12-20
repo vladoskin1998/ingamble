@@ -76,7 +76,7 @@ export const OtherBestReloadBonus = ({ casinoName }: { casinoName?: string }) =>
                             )}/bonuses/${sanitizeLink(b?.bonus_name)}?queryId=${
                                 b?.bonus_id
                             }`,
-                            playLink: b?.casino_affiliate_link || b?.url_casino,
+                            playLink: b?.url_casino || b?.casino_affiliate_link ,
                             casinoLink: `/casino/${sanitizeLink(
                                 b?.casino_name
                             )}?queryId=${b?.casino_id}`,

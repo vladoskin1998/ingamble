@@ -154,8 +154,8 @@ export default function SimpleLoyalties() {
                     <LoyaltyText data={data?.dataCurrentLoyaltie} />
                     <HowToStartVipJorney
                         casino_affiliate_link={
-                            data?.dataCurrentLoyaltie?.casino_affiliate_link ||
-                            data?.dataCurrentLoyaltie.url_casino
+                            data?.dataCurrentLoyaltie.url_casino || data?.dataCurrentLoyaltie?.casino_affiliate_link 
+                            
                         }
                         casino_name={data?.dataCurrentLoyaltie?.casino_name}
                         likes={data?.dataCurrentLoyaltie?.likes}
@@ -172,8 +172,8 @@ export default function SimpleLoyalties() {
                         }
                         casino_rank={data?.dataCurrentLoyaltie?.casino_rank}
                         casino_affiliate_link={
-                            data?.dataCurrentLoyaltie.casino_affiliate_link ||
-                            data?.dataCurrentLoyaltie?.url_casino
+                            data?.dataCurrentLoyaltie?.url_casino ||  data?.dataCurrentLoyaltie.casino_affiliate_link
+                            
                         }
                         casino_id={data?.dataCurrentLoyaltie?.casino_id}
                     />

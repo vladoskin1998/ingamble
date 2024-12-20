@@ -311,11 +311,11 @@ export default function BlockType5({
                                                             <a
                                                                 href={cloacingLink(
                                                                     item
+                                                                    ?.casino_info
+                                                                    ?.url_casino|| item
                                                                         ?.casino_info
-                                                                        ?.casino_affiliate_link ||
-                                                                        item
-                                                                            ?.casino_info
-                                                                            ?.url_casino
+                                                                        ?.casino_affiliate_link 
+                                                                      
                                                                 )}
                                                                 onClick={(
                                                                     e

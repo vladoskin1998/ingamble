@@ -327,21 +327,25 @@ export const BonusInformation = ({
                                                 </span> */}
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {`${
+                                                {data
+                                                        ?.wagering_bonus_plus_deposit
+                                                        ?.bonus_plus_deposit ||
+                                                    data
+                                                        ?.wagering_bonus_plus_deposit
+                                                        ?.bonus_only  ? `${
                                                     data
                                                         ?.wagering_bonus_plus_deposit
                                                         ?.bonus_plus_deposit ||
                                                     data
                                                         ?.wagering_bonus_plus_deposit
-                                                        ?.bonus_only ||
-                                                    0
+                                                        ?.bonus_only 
                                                 }x ${
                                                     data
                                                         ?.wagering_bonus_plus_deposit
                                                         ?.bonus_plus_deposit
                                                         ? "Bonus + Deposit"
                                                         : "Bonus Only"
-                                                }`}
+                                                }` : '-'}
                                             </div>
                                         </div>
                                         {data?.wagering?.wagering_difficulty ===
