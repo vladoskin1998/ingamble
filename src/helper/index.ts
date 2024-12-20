@@ -62,7 +62,16 @@ export const filterEmptyValues = <T>(body: T): Partial<T> => {
     ) as Partial<T>;
 };
 
-
+export function shuffleArray<T>(array: T[] | undefined): T[] {
+    if(!array){
+        return []
+    }
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 
 export const sanitizeMaxInput = (value: string, max: number): number => {

@@ -22,7 +22,7 @@ import { EssentialVIPLoyaltyPrograms } from "./EssentialVIPLoyaltyPrograms"
 import { useFilterContext } from "../../context/FilterContext"
 import { SiblingBonus } from "./SiblingBonus"
 import { COUNTRIES } from "../../helper/Country"
-import { OtherBestReloadBonus } from "./OtherBestReloadBonus"
+import { OtherBestReloadBonus } from "./OtherBestBonus"
 
 
 

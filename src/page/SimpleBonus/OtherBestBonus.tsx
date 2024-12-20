@@ -6,9 +6,10 @@ import {
     BonusInRankRangeResponse,
 
 } from "../../types"
-import { COLORS_TAGS, sanitizeLink } from "../../helper"
+import { COLORS_TAGS, sanitizeLink, shuffleArray } from "../../helper"
 
 import { Link } from "react-router-dom"
+
 
 
 
@@ -64,7 +65,7 @@ export const OtherBestReloadBonus = ({ casinoName }: { casinoName?: string }) =>
                         </div>
                     </div>
                     <MainSlider
-                        data={BonusDataHigh?.map((b) => ({
+                        data={shuffleArray(BonusDataHigh)?.slice(0, 10).map((b:BonusInRankRangeResponse) => ({
                             img: b?.bonus_image || "",
                             raiting: b?.casino_rank,
                             likes: b?.bonus_likes,

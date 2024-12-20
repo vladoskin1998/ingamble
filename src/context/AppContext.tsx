@@ -3,17 +3,11 @@ import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
 import { AllCategoriesHomeDataResponse } from '../types';
 import $api from '../http';
-import { sanitizeLink } from '../helper';
+import { sanitizeLink, shuffleArray } from '../helper';
 
 const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
 
-const shuffleArray = (array: any): { link: string; name: string }[] => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        ;[array[i], array[j]] = [array[j], array[i]]
-    }
-    return array
-}
+
 
 const getDataHomePageCategories = async () => {
     const response = await $api.get("get-data-home-page-categories/")

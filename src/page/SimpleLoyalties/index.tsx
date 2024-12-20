@@ -20,7 +20,7 @@ import { useEffect, useState } from "react"
 import { useFilterContext } from "../../context/FilterContext"
 import { SiblingBonus } from "../SimpleBonus/SiblingBonus"
 import { COUNTRIES } from "../../helper/Country"
-import { OtherBestReloadBonus } from "../SimpleBonus/OtherBestReloadBonus"
+import { OtherBestReloadBonus } from "../SimpleBonus/OtherBestBonus"
 import { EssentialVIPLoyaltyPrograms } from "../SimpleBonus/EssentialVIPLoyaltyPrograms"
 
 const getCurrentLoyaltiesFetchData = async (queryId: string) => {
