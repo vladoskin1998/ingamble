@@ -77,7 +77,7 @@ export const PaginationPage = ({
                             ? "pagination__btn pagination__btn_next"
                             : ""
                     }
-                    activeClassName="current"
+                    activeClassName="paginate--current"
                     forcePage={currentPage - 1}
                 />
             }

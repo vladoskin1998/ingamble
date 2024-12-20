@@ -212,7 +212,7 @@ export const HighRankedCasinos = () => {
                                                             {item?.[0]?.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[0]?.labels.map(
+                                                            {item?.[0]?.additional_casino_params?.map(
                                                                 (l, ct) => (
                                                                     <div
                                                                         className={`tags-casino-card__item ${
@@ -299,7 +299,7 @@ export const HighRankedCasinos = () => {
                                                             {item?.[1]?.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[1]?.labels.map(
+                                                            {item?.[1]?.additional_casino_params?.map(
                                                                 (l, ct) => (
                                                                     <div
                                                                         className={`tags-casino-card__item ${
@@ -420,7 +420,7 @@ export const HighRankedCasinos = () => {
                                                             {item.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.labels.map(
+                                                            {item?.additional_casino_params?.map(
                                                                 (l, ct) => (
                                                                     <div
                                                                         className={`tags-casino-card__item ${

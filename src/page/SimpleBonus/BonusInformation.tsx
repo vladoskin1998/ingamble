@@ -107,7 +107,7 @@ export const BonusInformation = ({
                                                 Total Bonus amount:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.bonus_amount?.[0]?.value
+                                                {data?.bonus_amount?.[0]?.value || data?.bonus_amount?.[0]?.unlimited 
                                                     ? `${
                                                           data
                                                               ?.bonus_amount?.[0]
@@ -115,8 +115,8 @@ export const BonusInformation = ({
                                                               ? "Unlimited"
                                                               : data
                                                                     ?.bonus_amount?.[0]
-                                                                    ?.value
-                                                      }$`
+                                                                    ?.value + '$'
+                                                      }`
                                                     : "-"}
                                             </div>
                                         </div>
@@ -125,15 +125,15 @@ export const BonusInformation = ({
                                                 Max bet:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.max_bet?.[0]?.value
+                                                {data?.max_bet?.[0]?.value || data?.max_bet?.[0]?.unlimited
                                                     ? `${
                                                           data?.max_bet?.[0]
                                                               ?.unlimited
                                                               ? "Unlimited"
                                                               : data
                                                                     ?.max_bet?.[0]
-                                                                    ?.value
-                                                      }$`
+                                                                    ?.value + '$'
+                                                      }`
                                                     : "-"}
                                             </div>
                                         </div>
@@ -171,8 +171,7 @@ export const BonusInformation = ({
                                                 </span>
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.bonus_max_win?.[0]
-                                                    ?.max_value
+                                                {data?.bonus_max_win?.[0]?.max_value || data?.bonus_max_win?.[0]?.unlimited
                                                     ? `${
                                                           data
                                                               ?.bonus_max_win?.[0]
@@ -180,8 +179,8 @@ export const BonusInformation = ({
                                                               ? "Unlimited"
                                                               : data
                                                                     ?.bonus_max_win?.[0]
-                                                                    ?.max_value
-                                                      }$`
+                                                                    ?.max_value + '$'
+                                                      }`
                                                     : "-"}
                                             </div>
                                         </div>
@@ -856,7 +855,7 @@ export const BonusInformation = ({
                                             </div>
                                             <div className="item-content-bonus-information__value">
                                                 {data?.restriction_country
-                                                    ?.country ? (
+                                                    ?.country.length ? (
                                                     <>
                                                         {data?.restriction_country?.country
                                                             ?.reduce(

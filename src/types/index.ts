@@ -789,6 +789,7 @@ export interface СasinosInRankRangeResponse {
     labels: string[]; 
     likes: number; 
     name: string; 
+    additional_casino_params: string[];
   }
 
   export interface BonusInRankRangeResponse {

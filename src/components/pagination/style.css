@@ -136,3 +136,9 @@
     width: 100% !important;
     height: 100% !important;
   }
+
+  .paginate--current{
+    background: var(--Colors-Accent, #FFCF23);
+    color: var(--Text-Txt_Dark, #020202);
+   
+  }

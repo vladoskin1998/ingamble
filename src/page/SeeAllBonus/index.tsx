@@ -46,10 +46,10 @@ export default function SeeAllBonus() {
     const [queryId, setQueryId] = useState<string>(qid || "")
 
     useEffect(() => {
-        if (qid) {
-            setQueryId(qid)
+     
+            setQueryId(qid || '')
             window.scrollTo(0, 0)
-        }
+        
     }, [qid])
 
     const { data, isLoading } = useQuery<SeeAllBonusResponse>(

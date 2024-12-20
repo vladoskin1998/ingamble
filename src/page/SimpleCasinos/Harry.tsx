@@ -91,7 +91,7 @@ export const Harry = ({
                         </div>
 
                         <div className="iwild-review__column iwild-review__column_medium">
-                            <div className="iwild-review__item item-iwild-review item-iwild-review_author">
+                            <div className="iwild-review__item item-iwild-review item-iwild-review_author" style={{justifyContent:'center'}}>
                                 <div className="item-iwild-review__content content-item-iwild-review">
                                     <div className="content-item-iwild-review__image">
                                         <img

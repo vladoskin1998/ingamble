@@ -73,10 +73,10 @@ export default function SeeAllCasinos() {
     const [queryId, setQueryId] = useState<string>(qid || "")
 
     useEffect(() => {
-        if (qid) {
-            setQueryId(qid)
+      
+            setQueryId(qid || '')
             window.scrollTo(0, 0)
-        }
+        
     }, [qid])
 
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
@@ -150,7 +150,7 @@ export default function SeeAllCasinos() {
                                     <div className="top__column">
                                         <div className="top__title-block">
                                             <h2 className="top__title">
-                                                {data?.category_name}
+                                                {data?.category_name || 'Casino List'}
                                             </h2>
                                         </div>
                                     </div>
