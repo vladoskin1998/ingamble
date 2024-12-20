@@ -1,6 +1,10 @@
 
 //@ts-ignore
 export const BreadCrumb = (path: any) => {
+
+    return <></>
+
+    //@ts-ignore
     const parsePath = (url: string): { name: string; link: string }[] => {
         const urlSegments = url.split("?")[0] // Убираем query-параметры
             .split("/") // Разделяем части пути
@@ -18,9 +22,9 @@ export const BreadCrumb = (path: any) => {
             return { name: readableName, link };
         });
     };
-
+//@ts-ignore
     const crumbs = parsePath(window.location.pathname);
-
+//@ts-ignore
     return (
         <div className="simple-bonus__breadcrumbs breadcrumbs">
             <div className="breadcrumbs__container container">

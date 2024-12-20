@@ -158,15 +158,7 @@ export const BonusInformation = ({
                                                         </svg>
                                                     </span>
                                                     <span className="item-content-bonus-information__info-text">
-                                                        Text field,{" "}
-                                                        <span>
-                                                            with poyasnenie
-                                                        </span>
-                                                        <br />
-                                                        what is it, kogda
-                                                        navodish
-                                                        <br />
-                                                        mishkoy.
+                                                        <span>The maximum amount</span>  a player can win<br/> when  using this bonus.
                                                     </span>
                                                 </span>
                                             </div>
@@ -215,15 +207,7 @@ export const BonusInformation = ({
                                                         </svg>
                                                     </span>
                                                     <span className="item-content-bonus-information__info-text">
-                                                        Text field,{" "}
-                                                        <span>
-                                                            with poyasnenie
-                                                        </span>
-                                                        <br />
-                                                        what is it, kogda
-                                                        navodish
-                                                        <br />
-                                                        mishkoy.
+                                                    <span>The time  limit to use the bonus</span> <br/> before it expires and becomes invalid
                                                     </span>
                                                 </span>
                                             </div>
@@ -320,7 +304,7 @@ export const BonusInformation = ({
                                         <div className="content-bonus-information__item item-content-bonus-information">
                                             <div className="item-content-bonus-information__label">
                                                 Wagering:
-                                                <span className="item-content-bonus-information__info">
+                                                {/* <span className="item-content-bonus-information__info">
                                                     <span className="item-content-bonus-information__info-icon info-icon">
                                                         <svg>
                                                             <use xlinkHref="#info"></use>
@@ -340,7 +324,7 @@ export const BonusInformation = ({
                                                         <br />
                                                         mishkoy.
                                                     </span>
-                                                </span>
+                                                </span> */}
                                             </div>
                                             <div className="item-content-bonus-information__value">
                                                 {`${
@@ -542,7 +526,20 @@ export const BonusInformation = ({
                                     <div className="content-bonus-information__items">
                                         <div className="content-bonus-information__item item-content-bonus-information">
                                             <div className="item-content-bonus-information__label">
-                                                Free spin amount:
+                                                Free spin amount:  
+                                                  <span className="item-content-bonus-information__info">
+                                                    <span className="item-content-bonus-information__info-icon info-icon">
+                                                        <svg>
+                                                            <use xlinkHref="#info"></use>
+                                                        </svg>
+                                                    </span>
+                                                    <span
+                                                        className="item-content-bonus-information__info-text"
+                                                        style={{ zIndex: 10 }}
+                                                    >
+                                                       <span>The number of free spins</span> <br/> granted in addition to the bonus.
+                                                    </span>
+                                                </span>
                                             </div>
                                             <div className="item-content-bonus-information__value">
                                                 {data?.free_spin_amount?.value
@@ -966,6 +963,28 @@ export const BonusInformation = ({
                                             <div className="content-bonus-information__item item-content-bonus-information">
                                                 <div className="item-content-bonus-information__label">
                                                     RTP restriction:
+                                                       <span className="item-content-bonus-information__info">
+                                                    <span className="item-content-bonus-information__info-icon info-icon">
+                                                        <svg>
+                                                            <use xlinkHref="#info"></use>
+                                                        </svg>
+                                                    </span>
+                                                    <span
+                                                        className="item-content-bonus-information__info-text"
+                                                        style={{ zIndex: 10 }}
+                                                    >
+                                                        Meaning <span> the player  is restricted </span>   from playing  games <br /> with an RTP higher   than  the specified limit.
+                                                        {/* Text field,{" "}
+                                                        <span>
+                                                            with poyasnenie
+                                                        </span>
+                                                        <br />
+                                                        what is it, kogda
+                                                        navodish
+                                                        <br />
+                                                        mishkoy. */}
+                                                    </span>
+                                                </span> 
                                                 </div>
                                                 <div className="item-content-bonus-information__value">
                                                     {data?.restriction_rtp_game

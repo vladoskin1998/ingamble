@@ -124,7 +124,7 @@ export default function SeeAllBonus() {
                                     <div className="top__column">
                                         <div className="top__title-block">
                                             <h2 className="top__title">
-                                                {data?.category_name}
+                                                {data?.category_name || 'All Bonuses'}
                                             </h2>
                                         </div>
                                     </div>
