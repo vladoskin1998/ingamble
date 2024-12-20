@@ -92,7 +92,11 @@ export default function SimpleCasinos() {
                 }
             )?.flag_image
 
-            const isAllowed = true
+            const isAllowed = !data.dataCurrentCasinos?.blocked_countries?.find(
+                (item) =>
+                    item?.code?.toLocaleLowerCase() ===
+                    countryCode?.toLocaleLowerCase()
+            )
 
             // !data.dataBonus?.restriction_country?.country.find(
             //     (item) =>
@@ -130,8 +134,8 @@ export default function SimpleCasinos() {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    // if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
-    if (isLoading) return <LogoLoader />
+     if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
+    // if (isLoading) return <LogoLoader />
     return (
         <>
             <PopupReadMore
@@ -160,7 +164,9 @@ export default function SimpleCasinos() {
                                 },
                             ]}
                         />
-                        <section className="review__casino-info casino-info">
+                        <section className={`review__casino-info casino-info   ${
+                !geoLocation?.isAllowed && "casino-info_not-available"
+            } `}>
                             <div className="casino-info__container container">
                                 <div className="casino-info__body">
                                     <div className="casino-info__row">
@@ -220,11 +226,16 @@ export default function SimpleCasinos() {
                                                                 />
                                                             </div>
                                                         )}
-                                                        <div className="country-content-casino-info__text">
-                                                            Accepts players from{" "}
-                                                            {
+                                                        <div
+                                                            className={`country-content-casino-info__text `}
+                                                        >
+                                                            {`${
+                                                                geoLocation?.isAllowed
+                                                                    ? "Accepts players from"
+                                                                    : "Doesn’t accept players from"
+                                                            } ${
                                                                 geoLocation?.countryName
-                                                            }
+                                                            }`}
                                                         </div>
                                                     </div>
                                                     <a
@@ -249,13 +260,13 @@ export default function SimpleCasinos() {
                                                         e.stopPropagation()
                                                         e.preventDefault()
                                                         window.open(
-                                                          
+                                                            data
+                                                                ?.dataCurrentCasinos
+                                                                ?.affiliate
+                                                                ?.casino_affiliate_link ||
                                                                 data
                                                                     ?.dataCurrentCasinos
-                                                                    ?.affiliate
-                                                                    ?.casino_affiliate_link ||  data
-                                                                    ?.dataCurrentCasinos
-                                                                    ?.url ,
+                                                                    ?.url,
                                                             "_blank",
                                                             "noopener,noreferrer"
                                                         )

@@ -644,15 +644,7 @@ export interface RewievCasinoDataResponse {
       name: string;
       validator_url: null | string;
     }>;
-    blocked_countries: Array<{
-      id: number;
-      slug: string;
-      name: string;
-      name2: null | string;
-      name3: null | string;
-      flag_image: null | string;
-      code: null | string;
-    }>;
+   
     language_live_chat: Array<{
       id: number;
       slug: string;
@@ -702,6 +694,16 @@ export interface RewievCasinoDataResponse {
     special_notes: string;
     live_chat_competence: string;
     additional_casino_params: number[];
+    blocked_countries: {
+        id: number,
+        slug: string ,
+        name: string ,
+        name2: null,
+        name3: null,
+        flag_image: string ,
+        code: string ,
+    }[]
+        
   }
   
 
@@ -778,6 +780,15 @@ withdrawal_limits:string | null;
     url_casino?: string;
     loyalty_rank: string;
     casino: number;
+    blocked_countries: {
+        id: number,
+        slug: string ,
+        name: string ,
+        name2: null,
+        name3: null,
+        flag_image: string ,
+        code: string ,
+    }[]
 }
 
 

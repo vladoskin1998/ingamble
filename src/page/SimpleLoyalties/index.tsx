@@ -84,13 +84,12 @@ export default function SimpleLoyalties() {
                 }
             )?.flag_image
 
-            const isAllowed = true
+            const isAllowed = !data.dataCurrentLoyaltie?.blocked_countries?.find(
+                (item) =>
+                    item?.code?.toLocaleLowerCase() ===
+                    countryCode?.toLocaleLowerCase()
+            )
 
-            // !data.dataBonus?.restriction_country?.country.find(
-            //     (item) =>
-            //         item?.code?.toLocaleLowerCase() ===
-            //         countryCode?.toLocaleLowerCase()
-            // )
 
             setGeoLocation({
                 countryCode,
@@ -106,8 +105,8 @@ export default function SimpleLoyalties() {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    // if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
-    if (isLoading) return <LogoLoader />
+     if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
+    // if (isLoading) return <LogoLoader />
     return (
         <Wraper>
             <main className="gamble__loyaltie main-gamble loyaltie">

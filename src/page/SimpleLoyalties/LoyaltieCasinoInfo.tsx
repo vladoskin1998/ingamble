@@ -13,7 +13,9 @@ export const LoyaltieCasinoInfo = ({
     geoLocation: GeoLocationAllowdType
 }) => {
     return (
-        <section className="loyaltie__casino-info casino-info">
+        <section className={`loyaltie__casino-info casino-info ${
+                !geoLocation?.isAllowed && "casino-info_not-available"
+            } `}>
             <div className="casino-info__container container">
                 <div className="casino-info__body">
                     <div className="casino-info__row">
