@@ -447,7 +447,7 @@ export const BonusInformation = ({
                                                                 }
                                                             </div>
                                                             <div className="item-content-bonus-information__value">
-                                                                {(item?.value !== null && item?.value) ? item?.value + "%" : '-' }
+                                                                {(typeof item?.value === 'number' || typeof item?.value === 'string') ? item?.value + "%" : '-' }
                                                             </div>
                                                         </>
                                                     ) : (
