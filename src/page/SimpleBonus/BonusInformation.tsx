@@ -626,7 +626,7 @@ export const BonusInformation = ({
 
                                             <div className="item-content-bonus-information__value">
                                                 {data?.restriction_game
-                                                    ?.game ? (
+                                                    ?.game.length ? (
                                                     <>
                                                         {data?.restriction_game?.game
                                                             ?.reduce(
@@ -739,7 +739,7 @@ export const BonusInformation = ({
                                                 Provider restrictions:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.game_providers ? (
+                                                {data?.game_providers.length ? (
                                                     <>
                                                         {data?.game_providers
                                                             ?.reduce(

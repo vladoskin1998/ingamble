@@ -83,7 +83,7 @@ export default function SimpleBonus() {
             )?.flag_image;
             
   
-            const isAllowed = !data.dataBonus?.restriction_country?.country?.find(
+            const isAllowed = !data.dataBonus?.blocked_countries?.find(
                 (item) =>
                     item?.code?.toLocaleLowerCase() ===
                     countryCode?.toLocaleLowerCase()
@@ -115,8 +115,8 @@ export default function SimpleBonus() {
         initializeAdaptiveBehavior()
     }, [geoLocation])
 
-    // if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
-    if (isLoading ) return <LogoLoader />
+     if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
+    // if (isLoading ) return <LogoLoader />
     return (
         <Wraper>
             <main className="gamble__simple-bonus main-gamble simple-bonus">

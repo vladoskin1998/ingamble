@@ -15,8 +15,18 @@ interface MinimumDeposit {
     labels: { name: string }[]; 
 }
 
+type BlockCountryType =  {
+    id: number,
+    slug: string ,
+    name: string ,
+    name2: null,
+    name3: null,
+    flag_image: string ,
+    code: string ,
+}
+
 export interface GetDataBonusResponse {
- 
+    blocked_countries: BlockCountryType[]
     sibling_bonuses:SiblingBonuses[]
     slug?: string;
     link_tc : string;
@@ -694,18 +704,11 @@ export interface RewievCasinoDataResponse {
     special_notes: string;
     live_chat_competence: string;
     additional_casino_params: number[];
-    blocked_countries: {
-        id: number,
-        slug: string ,
-        name: string ,
-        name2: null,
-        name3: null,
-        flag_image: string ,
-        code: string ,
-    }[]
+    blocked_countries: BlockCountryType[]
         
   }
   
+
 
   export interface LoyaltieProgramDataResponse {
     id: number;
@@ -780,15 +783,7 @@ withdrawal_limits:string | null;
     url_casino?: string;
     loyalty_rank: string;
     casino: number;
-    blocked_countries: {
-        id: number,
-        slug: string ,
-        name: string ,
-        name2: null,
-        name3: null,
-        flag_image: string ,
-        code: string ,
-    }[]
+    blocked_countries: BlockCountryType[]
 }
 
 

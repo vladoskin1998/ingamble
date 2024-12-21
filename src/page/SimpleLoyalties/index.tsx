@@ -105,7 +105,7 @@ export default function SimpleLoyalties() {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-     if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
+    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
     // if (isLoading) return <LogoLoader />
     return (
         <Wraper>
