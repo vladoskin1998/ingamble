@@ -26,11 +26,12 @@ import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMore
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { Link } from "react-router-dom"
 import { NoResult } from "../../components/no-result"
+import searchImg from "../../assets/img/icons/search-filter.svg"
 const countPageSize = 15
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),
-    1000
+    700
 )
 
 const debouncedFetchPagination = debounce(
@@ -157,15 +158,12 @@ export default function FilterLoyalty() {
                     />
                     <section className="loyaltie-programs__main main-loyaltie-programs">
                         <div className="main-loyaltie-programs__container container">
-                            <div className="main-loyaltie-programs__top top">
-                                <div className="top__row">
-                                    <div className="top__column">
-                                        <div className="top__title-block">
-                                            <h2 className="top__title">
-                                                Essential VIP Loyalty Programs
-                                            </h2>
-                                        </div>
-                                    </div>
+                        <div className="results-filter-scenarios__top top">
+                                <div className="top__title-block">
+                                    <span className="top__title-icon">
+                                        <img src={searchImg} alt="search" />
+                                    </span>
+                                    <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
                             {displayedData?.length ? (

@@ -67,7 +67,7 @@ const LicenseElem: React.FC<LicenseElemProps> = ({
                     (license) => license?.id === casinoFiltersLicenses?.[0]
                 ) || itemLicenses?.[0]
             setSelectedLicense(newSelectedLicense)
-        }, 1000)
+        }, 700)
 
         return () => clearTimeout(timeoutId)
     }, [filtersDataLicenses, casinoFiltersLicenses, itemLicenses])

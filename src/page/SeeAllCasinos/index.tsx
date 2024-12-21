@@ -150,7 +150,9 @@ export default function SeeAllCasinos() {
                                     <div className="top__column">
                                         <div className="top__title-block">
                                             <h2 className="top__title">
-                                                {data?.category_name || 'Casino List'}
+                                            
+                                                {queryId ? data?.category_name || "Casino" :
+                                                    "Casino List"}
                                             </h2>
                                         </div>
                                     </div>

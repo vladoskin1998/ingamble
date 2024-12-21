@@ -35,7 +35,7 @@ const countPageSize = 20
 
 const debouncedFetchFilter = debounce(
     (filters, fetchFunction) => fetchFunction(filters),
-    1000
+    700
 )
 
 const debouncedFetchPagination = debounce(

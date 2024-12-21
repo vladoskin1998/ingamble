@@ -20,6 +20,7 @@ import { cloacingLink, COLORS_TAGS, sanitizeLink } from "../../helper"
 import { Link, useSearchParams } from "react-router-dom"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
+import { NoResult } from "../../components/no-result"
 
 const getAllBonusFetchData = async (page: number, queryId: string | null) => {
     const response = await $api.get(
@@ -46,10 +47,8 @@ export default function SeeAllBonus() {
     const [queryId, setQueryId] = useState<string>(qid || "")
 
     useEffect(() => {
-     
-            setQueryId(qid || '')
-            window.scrollTo(0, 0)
-        
+        setQueryId(qid || "")
+        window.scrollTo(0, 0)
     }, [qid])
 
     const { data, isLoading } = useQuery<SeeAllBonusResponse>(
@@ -124,154 +123,172 @@ export default function SeeAllBonus() {
                                     <div className="top__column">
                                         <div className="top__title-block">
                                             <h2 className="top__title">
-                                                {data?.category_name || 'All Bonuses'}
+                                                {queryId ? data?.category_name || "Bonuses" :
+                                                    "All Bonuses"}
                                             </h2>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="main-see-all__row custom-main-see-all__row">
-                                {displayedData?.map((item) => (
-                                    <div className="main-see-all__column">
-                                        <div className="slide-slider__item casino-card">
-                                            <div className="casino-card__top">
-                                                <div
-                                                    style={{
-                                                        padding:
-                                                            "0 8px 50.432% 8px",
-                                                    }}
-                                                    className="casino-card__image-block"
-                                                >
-                                                    <Link
-                                                        to={`/casino/${sanitizeLink(
-                                                            item.casino_name
-                                                        )}/bonuses/${sanitizeLink(
-                                                            item.bonus_name
-                                                        )}?queryId=${
-                                                            item.bonus_id
-                                                        }`}
-                                                        className="casino-card__image see-all-custom__image-custom"
-                                                    >
-                                                        <LazyCardImg
-                                                            img={
-                                                                item.bonus_image
-                                                            }
-                                                            width="100%"
-                                                        />
-                                                    </Link>
-                                                    <a
-                                                        href={cloacingLink(
-                                                            item?.url_casino ||  item?.casino_affiliate_link 
-                                                               
-                                                        )}
-                                                        onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            e.preventDefault()
-                                                            window.open(
-                                                                item?.casino_affiliate_link ||
-                                                                    item?.url_casino,
-                                                                "_blank",
-                                                                "noopener,noreferrer"
-                                                            )
-                                                        }}
-                                                        aria-label="Put your description here."
-                                                        className="casino-card__bnt"
-                                                    >
-                                                        Play
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div className="casino-card__content">
-                                                <div className="casino-card__tags tags-casino-card">
-                                                    {item.labels.map(
-                                                        (it, id) => (
-                                                            <div
-                                                                className={`tags-casino-card__item ${
-                                                                    COLORS_TAGS[
-                                                                        id % 4
-                                                                    ]
-                                                                }`}
-                                                            >
-                                                                <span className="tags-casino-card__item-label">
-                                                                    {typeof it ===
-                                                                    "string"
-                                                                        ? it
-                                                                        : it.name}
-                                                                </span>
-                                                            </div>
-                                                        )
-                                                    )}
-                                                </div>
-                                                <div className="casino-card__info info-casino-card">
-                                                    <div className="info-casino-card__stake">
-                                                        <Link
-                                                            to={`/casino/${sanitizeLink(
-                                                                item?.casino_name
-                                                            )}?queryId=${
-                                                                item?.casino_id
-                                                            }`}
-                                                            aria-label="Put your description here."
-                                                            className="info-casino-card__stake-link"
+                            {displayedData?.length ? (
+                                <>
+                                    <div className="main-see-all__row custom-main-see-all__row">
+                                        {displayedData?.map((item) => (
+                                            <div className="main-see-all__column">
+                                                <div className="slide-slider__item casino-card">
+                                                    <div className="casino-card__top">
+                                                        <div
+                                                            style={{
+                                                                padding:
+                                                                    "0 8px 50.432% 8px",
+                                                            }}
+                                                            className="casino-card__image-block"
                                                         >
-                                                            {item?.casino_name}
-                                                        </Link>
-                                                        <div className="info-casino-card__stake-rating">
-                                                            <span className="info-casino-card__stake-rating-icon">
-                                                                <img
-                                                                    src={star}
-                                                                    alt="star"
+                                                            <Link
+                                                                to={`/casino/${sanitizeLink(
+                                                                    item.casino_name
+                                                                )}/bonuses/${sanitizeLink(
+                                                                    item.bonus_name
+                                                                )}?queryId=${
+                                                                    item.bonus_id
+                                                                }`}
+                                                                className="casino-card__image see-all-custom__image-custom"
+                                                            >
+                                                                <LazyCardImg
+                                                                    img={
+                                                                        item.bonus_image
+                                                                    }
+                                                                    width="100%"
                                                                 />
-                                                            </span>
-                                                            <span className="info-casino-card__stake__rating-number">
-                                                                {
-                                                                    item.casino_rank
-                                                                }
-                                                            </span>
+                                                            </Link>
+                                                            <a
+                                                                href={cloacingLink(
+                                                                    item?.url_casino ||
+                                                                        item?.casino_affiliate_link
+                                                                )}
+                                                                onClick={(
+                                                                    e
+                                                                ) => {
+                                                                    e.stopPropagation()
+                                                                    e.preventDefault()
+                                                                    window.open(
+                                                                        item?.casino_affiliate_link ||
+                                                                            item?.url_casino,
+                                                                        "_blank",
+                                                                        "noopener,noreferrer"
+                                                                    )
+                                                                }}
+                                                                aria-label="Put your description here."
+                                                                className="casino-card__bnt"
+                                                            >
+                                                                Play
+                                                            </a>
                                                         </div>
                                                     </div>
-                                                    <div className="info-casino-card__likes">
-                                                        <span className="info-casino-card__likes-icon">
-                                                            <img
-                                                                src={like}
-                                                                alt="like"
-                                                            />
-                                                        </span>
-                                                        <span className="info-casino-card__likes-number">
-                                                            {item.bonus_likes}
-                                                        </span>
+                                                    <div className="casino-card__content">
+                                                        <div className="casino-card__tags tags-casino-card">
+                                                            {item.labels.map(
+                                                                (it, id) => (
+                                                                    <div
+                                                                        className={`tags-casino-card__item ${
+                                                                            COLORS_TAGS[
+                                                                                id %
+                                                                                    4
+                                                                            ]
+                                                                        }`}
+                                                                    >
+                                                                        <span className="tags-casino-card__item-label">
+                                                                            {typeof it ===
+                                                                            "string"
+                                                                                ? it
+                                                                                : it.name}
+                                                                        </span>
+                                                                    </div>
+                                                                )
+                                                            )}
+                                                        </div>
+                                                        <div className="casino-card__info info-casino-card">
+                                                            <div className="info-casino-card__stake">
+                                                                <Link
+                                                                    to={`/casino/${sanitizeLink(
+                                                                        item?.casino_name
+                                                                    )}?queryId=${
+                                                                        item?.casino_id
+                                                                    }`}
+                                                                    aria-label="Put your description here."
+                                                                    className="info-casino-card__stake-link"
+                                                                >
+                                                                    {
+                                                                        item?.casino_name
+                                                                    }
+                                                                </Link>
+                                                                <div className="info-casino-card__stake-rating">
+                                                                    <span className="info-casino-card__stake-rating-icon">
+                                                                        <img
+                                                                            src={
+                                                                                star
+                                                                            }
+                                                                            alt="star"
+                                                                        />
+                                                                    </span>
+                                                                    <span className="info-casino-card__stake__rating-number">
+                                                                        {
+                                                                            item.casino_rank
+                                                                        }
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div className="info-casino-card__likes">
+                                                                <span className="info-casino-card__likes-icon">
+                                                                    <img
+                                                                        src={
+                                                                            like
+                                                                        }
+                                                                        alt="like"
+                                                                    />
+                                                                </span>
+                                                                <span className="info-casino-card__likes-number">
+                                                                    {
+                                                                        item.bonus_likes
+                                                                    }
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <Link
+                                                            to={`/casino/${sanitizeLink(
+                                                                item.casino_name
+                                                            )}/bonuses/${sanitizeLink(
+                                                                item.bonus_name
+                                                            )}?queryId=${
+                                                                item.bonus_id
+                                                            }`}
+                                                            className="casino-card__name"
+                                                        >
+                                                            {item.bonus_name}
+                                                        </Link>
                                                     </div>
                                                 </div>
-                                                <Link
-                                                    to={`/casino/${sanitizeLink(
-                                                        item.casino_name
-                                                    )}/bonuses/${sanitizeLink(
-                                                        item.bonus_name
-                                                    )}?queryId=${
-                                                        item.bonus_id
-                                                    }`}
-                                                    className="casino-card__name"
-                                                >
-                                                    {item.bonus_name}
-                                                </Link>
                                             </div>
-                                        </div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
-                            <PaginationPage
-                                countElem={data?.bonuses?.count}
-                                currentPage={currentPage}
-                                countPageElem={countPageSize}
-                                setCurrentPage={(s) => {
-                                    setCurrentPage(s)
-                                    if (!isMobile) {
-                                        window.scrollTo({
-                                            behavior: "smooth",
-                                            top: 0,
-                                        })
-                                    }
-                                }}
-                            />
+                                    <PaginationPage
+                                        countElem={data?.bonuses?.count}
+                                        currentPage={currentPage}
+                                        countPageElem={countPageSize}
+                                        setCurrentPage={(s) => {
+                                            setCurrentPage(s)
+                                            if (!isMobile) {
+                                                window.scrollTo({
+                                                    behavior: "smooth",
+                                                    top: 0,
+                                                })
+                                            }
+                                        }}
+                                    />
+                                </>
+                            ) : (
+                                <NoResult />
+                            )}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />
