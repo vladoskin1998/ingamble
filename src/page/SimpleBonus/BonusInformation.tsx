@@ -429,21 +429,21 @@ export const BonusInformation = ({
                                     <div className="content-bonus-information__items">
                                         {data?.wagering_contribution
                                             ?.sort((a, b) => b.value - a.value)
-                                            .map((item, index) => (
+                                            ?.map((item, index) => (
                                                 <div
                                                     key={index}
                                                     className={`content-bonus-information__item item-content-bonus-information ${
                                                         index + 1 ===
                                                             data
-                                                                .wagering_contribution
-                                                                .length && "''"
+                                                                ?.wagering_contribution
+                                                                ?.length && "''"
                                                     }`}
                                                 >
                                                     {item?.description ? (
                                                         <>
                                                             <div className="item-content-bonus-information__label">
                                                                 {
-                                                                    item.description
+                                                                    item?.description
                                                                 }
                                                             </div>
                                                             <div className="item-content-bonus-information__value">
