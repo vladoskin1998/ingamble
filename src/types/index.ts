@@ -87,12 +87,7 @@ export interface GetDataBonusResponse {
         description: string;
     };
     max_bet: MinimumDeposit[];
-    restriction_country: {
-        country: {
-            name: string;
-            code: string;
-        }[];
-    };
+
     restriction_game: {
         game: {
             name: string;

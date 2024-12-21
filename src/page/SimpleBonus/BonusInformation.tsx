@@ -447,8 +447,7 @@ export const BonusInformation = ({
                                                                 }
                                                             </div>
                                                             <div className="item-content-bonus-information__value">
-                                                                {item.value +
-                                                                    "%"}
+                                                                {(item?.value !== null && item?.value) ? item?.value + "%" : '-' }
                                                             </div>
                                                         </>
                                                     ) : (
@@ -855,10 +854,10 @@ export const BonusInformation = ({
                                                 Country restrictions:
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.restriction_country
-                                                    ?.country.length ? (
+                                                {data?.blocked_countries
+                                                    ?.length ? (
                                                     <>
-                                                        {data?.restriction_country?.country
+                                                        {data?.blocked_countries
                                                             ?.reduce(
                                                                 (prev, state) =>
                                                                     prev +
@@ -900,9 +899,7 @@ export const BonusInformation = ({
                                                                         Restrictions
                                                                         <div className="top-popup-item-content-bonus-information__number">
                                                                             {`(${
-                                                                                data
-                                                                                    ?.restriction_country
-                                                                                    ?.country
+                                                                                data?.blocked_countries
                                                                                     ?.length ||
                                                                                 0
                                                                             })`}
@@ -934,7 +931,7 @@ export const BonusInformation = ({
                                                                 <div className="popup-item-content-bonus-information__content">
                                                                     <div className="popup-item-content-bonus-information__lits-block">
                                                                         <ul className="popup-item-content-bonus-information__list">
-                                                                            {data?.restriction_country?.country?.map(
+                                                                            {data?.blocked_countries?.map(
                                                                                 (
                                                                                     item,
                                                                                     index
