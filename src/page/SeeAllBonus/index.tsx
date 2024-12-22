@@ -116,7 +116,7 @@ export default function SeeAllBonus() {
                             // },
                         ]}
                     />
-                    <section className="see-all__main main-see-all">
+                    <section className="see-all__main main-see-all" key={queryId}>
                         <div className="main-see-all__container container">
                             <div className="main-see-all__top top">
                                 <div className="top__row">
