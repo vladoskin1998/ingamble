@@ -499,7 +499,7 @@ export default function Footer() {
                             <div className="logo__img">
                                 <img src={logo} alt="logo" />
                             </div>
-                            <div className="logo__text">IN CRYPTO WE TRUST</div>
+                            <div className="logo__text">IN CRYPTO GAMBLE WE TRUST</div>
                         </a>
                         <div className="top-footer__socials socials-top-footer">
                             <div

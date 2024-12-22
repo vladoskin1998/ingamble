@@ -57,7 +57,8 @@ export default function SimpleBonus() {
         countryName: "",
         isAllowed: true,
         isLoadedGeo: false,
-        countryImg: undefined
+        countryImg: undefined,
+        idCountry:  null
     })
 
     const { data, isLoading } = useQuery<{
@@ -83,18 +84,19 @@ export default function SimpleBonus() {
             )?.flag_image;
             
   
-            const isAllowed = !data.dataBonus?.blocked_countries?.find(
+            const idCountry = data.dataBonus?.blocked_countries?.find(
                 (item) =>
                     item?.code?.toLocaleLowerCase() ===
                     countryCode?.toLocaleLowerCase()
-            )
+            )?.id
 
             setGeoLocation({
                 countryCode,
                 countryName,
-                isAllowed,
+                isAllowed:!idCountry,
                 isLoadedGeo: true,
-                 countryImg
+                countryImg,
+                idCountry,
             })
         }
         initializeAdaptiveBehavior()

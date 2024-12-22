@@ -1,4 +1,3 @@
-
 import starIcon from "../../assets/img/icons/star.svg"
 import likeIcon from "../../assets/img/icons/like.svg"
 
@@ -9,6 +8,7 @@ import { useState, useEffect } from "react"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { Link } from "react-router-dom"
 import { cloacingLink, sanitizeLink } from "../../helper"
+import { useFilterContext } from "../../context/FilterContext"
 
 const color_label = [
     "tags-casino-card__item_green",
@@ -24,11 +24,11 @@ export const HeaderSimpleBonus = ({
     data?: GetDataBonusResponse | undefined
     geoLocation: GeoLocationAllowdType
 }) => {
-  
-
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(
         window.innerWidth <= 1023.98
     )
+
+      const {  setCasinoFilters } = useFilterContext()
 
     const handleResize = (): void => {
         setIsSmallScreen(window.innerWidth <= 1023.98)
@@ -53,9 +53,7 @@ export const HeaderSimpleBonus = ({
                     <div className="casino-info__row">
                         <div className="casino-info__main main-casino-info">
                             <div className="main-casino-info__image-block">
-                                <div className="main-casino-info__image ibg--custom"  
-                             
-                                >
+                                <div className="main-casino-info__image ibg--custom">
                                     <LazyCardImg
                                         img={data?.bonus_image || ""}
                                         imgLoading={"eager"}
@@ -70,9 +68,11 @@ export const HeaderSimpleBonus = ({
                             </div>
                             {!isSmallScreen ? (
                                 <div className="main-casino-info__name name-main-casino-info">
-                                    <Link className="name-main-casino-info__logo" 
-                                   
-                                     to={`/casino/${sanitizeLink(data?.casino_name)}?queryId=${data?.casino_id}`}
+                                    <Link
+                                        className="name-main-casino-info__logo"
+                                        to={`/casino/${sanitizeLink(
+                                            data?.casino_name
+                                        )}?queryId=${data?.casino_id}`}
                                     >
                                         <LazyCardImg
                                             img={data?.casino_logo || ""}
@@ -80,11 +80,13 @@ export const HeaderSimpleBonus = ({
                                     </Link>
                                     <div className="name-main-casino-info__content">
                                         <Link
-                                            to={`/casino/${sanitizeLink(data?.casino_name)}?queryId=${data?.casino_id}`}
+                                            to={`/casino/${sanitizeLink(
+                                                data?.casino_name
+                                            )}?queryId=${data?.casino_id}`}
                                             rel="noopener noreferrer"
                                             className="name-main-casino-info__title"
                                         >
-                                            {data?.casino_name }
+                                            {data?.casino_name}
                                         </Link>
                                         <div
                                             className="info-casino-card__stake-rating name-main-casino-info__stake-rating"
@@ -129,16 +131,18 @@ export const HeaderSimpleBonus = ({
                                             {data?.bonus_rank || "4.8"}
                                         </span>
                                     </div>
-                                    <Link className="name-main-casino-info__logo"     to={`/casino/${sanitizeLink(data?.casino_name)}?queryId=${data?.casino_id}`}>
+                                    <Link
+                                        className="name-main-casino-info__logo"
+                                        to={`/casino/${sanitizeLink(
+                                            data?.casino_name
+                                        )}?queryId=${data?.casino_id}`}
+                                    >
                                         <img
-                                            src={data?.casino_logo }
+                                            src={data?.casino_logo}
                                             alt="stake"
                                         />
                                     </Link>
-                                    <div
-                                        className="info-casino-card__likes name-main-casino-info__likes"
-                                        
-                                    >
+                                    <div className="info-casino-card__likes name-main-casino-info__likes">
                                         <span className="info-casino-card__likes-icon">
                                             <img src={likeIcon} alt="like" />
                                         </span>
@@ -148,12 +152,13 @@ export const HeaderSimpleBonus = ({
                                     </div>
                                     <div className="name-main-casino-info__content">
                                         <Link
-                                          to={`/casino/${sanitizeLink(data?.casino_name)}?queryId=${data?.casino_id}`}
+                                            to={`/casino/${sanitizeLink(
+                                                data?.casino_name
+                                            )}?queryId=${data?.casino_id}`}
                                             rel="noopener noreferrer"
                                             className="name-main-casino-info__title"
                                         >
-                                            {data?.casino_name 
-                                                }
+                                            {data?.casino_name}
                                         </Link>
                                     </div>
                                 </div>
@@ -162,12 +167,10 @@ export const HeaderSimpleBonus = ({
                         <div className="casino-info__content content-casino-info">
                             <div className="content-casino-info__main">
                                 <div className="content-casino-info__top">
-                                 
-                                        <h2 className="content-casino-info__title" >
-                                        {data?.name
-                                           }
-                                        </h2>
-                                     
+                                    <h2 className="content-casino-info__title">
+                                        {data?.name}
+                                    </h2>
+
                                     <div className="content-casino-info__subtitle">
                                         {data?.bonus_type}
                                     </div>
@@ -186,16 +189,18 @@ export const HeaderSimpleBonus = ({
                                 </div>
                                 <div className="content-casino-info__country country-content-casino-info">
                                     <div className="country-content-casino-info__info">
-                                        {
-                                            geoLocation?.countryImg && 
+                                        {geoLocation?.countryImg && (
                                             <div className="country-content-casino-info__icon">
-                                   
-                                            <img
-                                                src={geoLocation?.countryImg}
-                                                alt={geoLocation?.countryImg}
-                                            />
-                                        </div>
-                                        }
+                                                <img
+                                                    src={
+                                                        geoLocation?.countryImg
+                                                    }
+                                                    alt={
+                                                        geoLocation?.countryImg
+                                                    }
+                                                />
+                                            </div>
+                                        )}
                                         <div
                                             className={`country-content-casino-info__text `}
                                         >
@@ -210,36 +215,51 @@ export const HeaderSimpleBonus = ({
                                         T&C Apply
                                     </span>
                                 </div>
-                                <a
-                                    href={cloacingLink(
-                                        data?.url_casino ||   data?.casino_affiliate_link 
-                                    )}
-                                    onClick={(
-                                        e
-                                    ) => {
-                                        e.stopPropagation()
-                                        e.preventDefault()
-                                        window.open(
-                                            data?.casino_affiliate_link || data?.url_casino,
-                                            "_blank",
-                                            "noopener,noreferrer"
-                                        )
-                                    }}
-                                    aria-label="Put your description here."
-                                    className="main-get-bonus__btn main-get-bonus__btn_bonus"
-                           
-                                    
-                                >
-                                    <span>
-                                        <LazyLoadImage
-                                            src={giftIcon}
-                                            alt="gift"
-                                        />
-                                    </span>
-                                    {geoLocation?.isAllowed
-                                        ? "Get Bonus and Play "
-                                        : "Browse Recommended Bonuses"}
-                                </a>
+                                {geoLocation?.isAllowed  ? (
+                                    <a
+                                        href={cloacingLink(
+                                            data?.url_casino ||
+                                                data?.casino_affiliate_link
+                                        )}
+                                        onClick={(e) => {
+                                            e.stopPropagation()
+                                            e.preventDefault()
+                                            window.open(
+                                                data?.casino_affiliate_link ||
+                                                    data?.url_casino,
+                                                "_blank",
+                                                "noopener,noreferrer"
+                                            )
+                                        }}
+                                        aria-label="Put your description here."
+                                        className="main-get-bonus__btn main-get-bonus__btn_bonus"
+                                    >
+                                        <span>
+                                            <LazyLoadImage
+                                                src={giftIcon}
+                                                alt="gift"
+                                            />
+                                        </span>
+                                        Get Bonus and Play
+                                    </a>
+                                ) : (
+                                    <Link
+                                        to={'/filter-casinos'}
+                                        onClick={() => {
+                                            setCasinoFilters(s => ({...s, selected_countries:[geoLocation?.idCountry as number]}))
+                                        }}
+                                        aria-label="Put your description here."
+                                        className="main-get-bonus__btn main-get-bonus__btn_bonus"
+                                    >
+                                        <span>
+                                            <LazyLoadImage
+                                                src={giftIcon}
+                                                alt="gift"
+                                            />
+                                        </span>
+                                        Browse Recommended Bonuses
+                                    </Link>
+                                )}
                             </div>
                             <div className="content-casino-info__features features-content-casino-info">
                                 <div className="features-content-casino-info__row">
@@ -326,7 +346,12 @@ export const HeaderSimpleBonus = ({
                                             </div>
                                             <div className="item-features-content-casino-info__body">
                                                 <div className="item-features-content-casino-info__number">
-                                                {data?.bonus_min_dep?.[0]?.min_value ? (data?.bonus_min_dep?.[0]?.min_value + '$') : "-" }
+                                                    {data?.bonus_min_dep?.[0]
+                                                        ?.min_value
+                                                        ? data
+                                                              ?.bonus_min_dep?.[0]
+                                                              ?.min_value + "$"
+                                                        : "-"}
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
                                                     To Activate
@@ -343,9 +368,10 @@ export const HeaderSimpleBonus = ({
                                             </div>
                                             <div className="item-features-content-casino-info__body">
                                                 <div className="item-features-content-casino-info__number">
-
-                                                {data?.max_bet?.[0]?.value ? (data?.max_bet?.[0]?.value + '$') : "-" } 
-                                                    
+                                                    {data?.max_bet?.[0]?.value
+                                                        ? data?.max_bet?.[0]
+                                                              ?.value + "$"
+                                                        : "-"}
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
                                                     Per Spin
