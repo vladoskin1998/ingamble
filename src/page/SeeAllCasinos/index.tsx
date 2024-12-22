@@ -106,7 +106,7 @@ export default function SeeAllCasinos() {
         if (!allData?.length && data?.casino?.results) {
             setAllData(data?.casino?.results)
         }
-    }, [data])
+    }, [data,queryId])
 
     useEffect(() => {
         initializeAdaptiveBehavior()

@@ -77,7 +77,7 @@ export default function SeeAllBonus() {
         if (!allData?.length && data?.bonuses?.results) {
             setAllData(data?.bonuses?.results)
         }
-    }, [data])
+    }, [data,queryId])
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
