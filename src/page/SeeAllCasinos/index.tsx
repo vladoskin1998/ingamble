@@ -89,6 +89,10 @@ export default function SeeAllCasinos() {
         }
     )
     useEffect(() => {
+        if(isMobile && !data?.casino?.results){
+            setAllData([])
+            return
+        }
         if ( isMobile) {
             setAllData((s) => {
                 const combinedData = [...s, ...(data?.casino?.results || [])]

@@ -60,6 +60,10 @@ export default function SeeAllBonus() {
     )
 
     useEffect(() => {
+        if(isMobile && !data?.bonuses?.results){
+            setAllData([])
+            return
+        }
         if ( isMobile) {
             setAllData((s) => {
                 const combinedData = [...s, ...(data?.bonuses?.results || [])]
@@ -116,7 +120,7 @@ export default function SeeAllBonus() {
                             // },
                         ]}
                     />
-                    <section className="see-all__main main-see-all" key={queryId}>
+                    <section className="see-all__main main-see-all" >
                         <div className="main-see-all__container container">
                             <div className="main-see-all__top top">
                                 <div className="top__row">
