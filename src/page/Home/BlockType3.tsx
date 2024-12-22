@@ -65,27 +65,27 @@ export default function BlockType3({
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                {data.items_block.title_image && (
+                                {data?.items_block?.title_image && (
                                     <span className="top__title-icon">
                                         <img
-                                            src={data.items_block.title_image}
+                                            src={data?.items_block?.title_image}
                                             alt="security"
                                         />
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    {data.items_block.block_title}
+                                    {data?.items_block?.block_title}
                                 </h2>
                             </div>
-                            {data.items_block.subtitle && (
+                            {data?.items_block?.subtitle && (
                                 <div className="top__subtitle">
-                                    {data.items_block.subtitle}
+                                    {data?.items_block?.subtitle}
                                 </div>
                             )}
                         </div>
                         <div className="top__column">
                             <SeeAllButton
-                                type_category={data.items_block.type_category}
+                                type_category={data?.items_block?.type_category}
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
@@ -116,8 +116,8 @@ export default function BlockType3({
                                         },
                                     }}
                                 >
-                                    {data.items_block.data_cards
-                                        .filter((item) => !item.big_card)
+                                    {data?.items_block?.data_cards
+                                        .filter((item) => !item?.big_card)
                                         .reduce(
                                             (
                                                 acc: [
@@ -130,7 +130,7 @@ export default function BlockType3({
                                                 if (index % 2 === 0) {
                                                     acc.push([item])
                                                 } else {
-                                                    acc[acc.length - 1].push(
+                                                    acc[acc?.length - 1].push(
                                                         item
                                                     )
                                                 }
@@ -167,8 +167,8 @@ export default function BlockType3({
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item?.[0]
-                                                                                    .casino_info
-                                                                                    .casino_image ||
+                                                                                    ?.casino_info
+                                                                                    ?.casino_image ||
                                                                                 ""
                                                                             }
                                                                             width="100%"
@@ -190,8 +190,8 @@ export default function BlockType3({
                                                                                     ?.bonus_name
                                                                             )}?queryId=${
                                                                                 item?.[0]
-                                                                                    .bonus_info
-                                                                                    .bonus_id
+                                                                                    ?.bonus_info
+                                                                                    ?.bonus_id
                                                                             }`}
                                                                             aria-label="Put your description here."
                                                                             className="different-casino-standart__name"
@@ -203,11 +203,11 @@ export default function BlockType3({
                                                                             }
                                                                         </Link>
                                                                         {item?.[0]
-                                                                            .bonus_info
+                                                                            ?.bonus_info
                                                                             ?.labels
                                                                             ?.length && (
                                                                             <div className="different-casino-standart__tags tags-casino-card">
-                                                                                {item?.[0]?.bonus_info?.labels.map(
+                                                                                {item?.[0]?.bonus_info?.labels?.map(
                                                                                     (
                                                                                         item,
                                                                                         index
@@ -247,8 +247,8 @@ export default function BlockType3({
                                                                             >
                                                                                 {
                                                                                     item?.[0]
-                                                                                        .casino_info
-                                                                                        .casino_name
+                                                                                        ?.casino_info
+                                                                                        ?.casino_name
                                                                                 }
                                                                             </Link>
                                                                             <div className="info-casino-card__stake-rating">
@@ -263,8 +263,8 @@ export default function BlockType3({
                                                                                 <span className="info-casino-card__stake__rating-number">
                                                                                     {
                                                                                         item?.[0]
-                                                                                            .casino_info
-                                                                                            .casino_rank
+                                                                                            ?.casino_info
+                                                                                            ?.casino_rank
                                                                                     }
                                                                                 </span>
                                                                             </div>
@@ -294,8 +294,8 @@ export default function BlockType3({
                                                                             <LazyCardImg
                                                                                 img={
                                                                                     item?.[1]
-                                                                                        .casino_info
-                                                                                        .casino_image ||
+                                                                                        ?.casino_info
+                                                                                        ?.casino_image ||
                                                                                     ""
                                                                                 }
                                                                                 height="100%"
@@ -317,8 +317,8 @@ export default function BlockType3({
                                                                                         ?.bonus_name
                                                                                 )}?queryId=${
                                                                                     item?.[1]
-                                                                                        .bonus_info
-                                                                                        .bonus_id
+                                                                                        ?.bonus_info
+                                                                                        ?.bonus_id
                                                                                 }`}
                                                                                 aria-label="Put your description here."
                                                                                 className="different-casino-standart__name"
@@ -334,7 +334,7 @@ export default function BlockType3({
                                                                                 ?.labels
                                                                                 ?.length && (
                                                                                 <div className="different-casino-standart__tags tags-casino-card">
-                                                                                    {item?.[1]?.bonus_info?.labels.map(
+                                                                                    {item?.[1]?.bonus_info?.labels?.map(
                                                                                         (
                                                                                             item,
                                                                                             index
@@ -377,8 +377,8 @@ export default function BlockType3({
                                                                                 >
                                                                                     {
                                                                                         item?.[1]
-                                                                                            .casino_info
-                                                                                            .casino_name
+                                                                                            ?.casino_info
+                                                                                            ?.casino_name
                                                                                     }
                                                                                 </Link>
                                                                                 <div className="info-casino-card__stake-rating">
@@ -393,8 +393,8 @@ export default function BlockType3({
                                                                                     <span className="info-casino-card__stake__rating-number">
                                                                                         {
                                                                                             item?.[1]
-                                                                                                .casino_info
-                                                                                                .casino_rank
+                                                                                                ?.casino_info
+                                                                                                ?.casino_rank
                                                                                         }
                                                                                     </span>
                                                                                 </div>

@@ -101,7 +101,7 @@ export default function BlockType2({
                                                     (item) => item?.big_card
                                                 )
                                                 .sort(
-                                                    (a, b) => a.order - b.order
+                                                    (a, b) => a?.order - b?.order
                                                 )
                                                 .map((item, index) => (
                                                     <SwiperSlide key={index}>
@@ -136,8 +136,8 @@ export default function BlockType2({
                                                                     <LazyCardImg
                                                                         img={
                                                                             item
-                                                                                .bonus_info
-                                                                                .bonus_image ||
+                                                                                ?.bonus_info
+                                                                                ?.bonus_image ||
                                                                             ""
                                                                         }
                                                                         height="100%"
@@ -214,8 +214,8 @@ export default function BlockType2({
                                                                                 >
                                                                                     {
                                                                                         item
-                                                                                            .casino_info
-                                                                                            .casino_name
+                                                                                            ?.casino_info
+                                                                                            ?.casino_name
                                                                                     }
                                                                                 </Link>
                                                                                 <div className="casino-small-card__info">
@@ -245,8 +245,8 @@ export default function BlockType2({
                                                                             <div className="item-baner-row-block__index-number">
                                                                                 {
                                                                                     item
-                                                                                        .casino_info
-                                                                                        .casino_rank
+                                                                                        ?.casino_info
+                                                                                        ?.casino_rank
                                                                                 }
                                                                             </div>
                                                                             <div className="item-baner-row-block__index-text">
