@@ -79,7 +79,7 @@ export default function SeeAllCasinos() {
         
     }, [qid])
 
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior,category } = useAdaptiveBehavior()
 
     const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(
         ["get-see-all-loyalties", currentPage, queryId],
@@ -150,7 +150,7 @@ export default function SeeAllCasinos() {
                                         <div className="top__title-block">
                                             <h2 className="top__title">
                                             
-                                                {queryId ? data?.category_name || "Casino" :
+                                            {queryId ? data?.category_name || category.find(item => item?.casino_id === Number(queryId))?.name :
                                                     "Casino List"}
                                             </h2>
                                         </div>

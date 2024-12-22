@@ -23,7 +23,7 @@ interface AdaptiveContextType {
     setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
     initializeAdaptiveBehavior: () => void;
     lastUpdate: string
-    category: { link: string; name: string; }[]
+    category: { link: string; name: string; bonus_id?:number ; casino_id?:number}[]
 }
 
 const getRandomDate = (startDate: Date, endDate: Date): Date => {
@@ -204,10 +204,12 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
                 ...(dataCategories?.bonus_categories?.map((item) => ({
                     name: item.name,
                     link: `${window.location.origin}/all-bonuses/${sanitizeLink(item?.name)}?queryId=${item.id}`,
+                    bonus_id: item.id
                 })) || []),
                 ...(dataCategories?.casino_categories?.map((item) => ({
                     name: item.name,
                     link: `${window.location.origin}/all-casinos/${sanitizeLink(item?.name)}?queryId${item.id}`,
+                    casino_id: item.id
                 })) || []),
             ]);
         }, [dataCategories])

@@ -39,7 +39,7 @@ export default function SeeAllBonus() {
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllBonusType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior, category } = useAdaptiveBehavior()
 
     const [searchParams] = useSearchParams()
     const qid = searchParams.get("queryId")
@@ -122,7 +122,7 @@ export default function SeeAllBonus() {
                                     <div className="top__column">
                                         <div className="top__title-block">
                                             <h2 className="top__title">
-                                                {queryId ? data?.category_name || "Bonuses" :
+                                                {queryId ? data?.category_name || category.find(item => item?.bonus_id === Number(queryId))?.name :
                                                     "All Bonuses"}
                                             </h2>
                                         </div>
