@@ -93,24 +93,19 @@ export default function SeeAllCasinos() {
             setAllData([])
             return
         }
+        if(isMobile && currentPage === 1 && data?.casino?.results){
+            setAllData(data?.casino?.results)
+            return
+        }
         if ( isMobile) {
             setAllData((s) => {
                 const combinedData = [...s, ...(data?.casino?.results || [])]
-
-                const uniqueData = combinedData?.reduce((acc, item) => {
-                    if (!acc.some((el) => el?.casino_id === item?.casino_id)) {
-                        acc.push(item)
-                    }
-                    return acc
-                }, [] as SeeAllCasinosType[])
-
-                return uniqueData
+                return combinedData
             })
+            return
         }
-        if (!allData?.length ) {
-            setAllData(data?.casino?.results || [])
-        }
-    }, [data, queryId])
+   
+    }, [data,queryId])
 
     useEffect(() => {
         initializeAdaptiveBehavior()

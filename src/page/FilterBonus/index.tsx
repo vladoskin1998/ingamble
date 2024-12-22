@@ -105,22 +105,20 @@ export default function FilterBonus() {
     }, [bonusFilters, refetch])
 
     useEffect(() => {
-        if (data?.results && isMobile) {
-            setAllData((s) => {
-                const combinedData = [...s, ...data?.results]
-
-                const uniqueData = combinedData?.reduce((acc, item) => {
-                    if (!acc.some((el) => el.bonus_id === item.bonus_id)) {
-                        acc.push(item)
-                    }
-                    return acc
-                }, [] as SeeAllBonus[])
-
-                return uniqueData
-            })
+        if(isMobile && !data?.results){
+            setAllData([])
+            return
         }
-        if (!allData.length && data?.results) {
+        if(isMobile && currentPage === 1 && data?.results){
             setAllData(data?.results)
+            return
+        }
+        if ( isMobile) {
+            setAllData((s) => {
+                const combinedData = [...s, ...(data?.results || [])]
+                return combinedData
+            })
+            return
         }
     }, [data])
 
@@ -144,7 +142,8 @@ export default function FilterBonus() {
             [v as keyof CasinoFilterBodyType]: findedValueField,
         }))
     }
-    console.log("currentPage", currentPage)
+    
+    console.log("displayedData", displayedData)
 
     useEffect(() => {
         initializeAdaptiveBehavior()
@@ -192,7 +191,7 @@ export default function FilterBonus() {
                                     }
                                 }}
                                 
-                            />     </>:<NoResult/>
+                            />     </>:<>{ isDebouncedLoading && <NoResult/>}</>
                         }
                         </div>
                     </section>
@@ -304,16 +303,10 @@ const ListDisplayData = memo(
                                             height="100%"
                                             width="100%"
                                         />
-                                    </Link>
-
-                                     
-                                                                                     
+                                    </Link>                                                 
                                     <a
                                         rel="nofollow noopener"
-                                    
-
-                                        href={cloacingLink(item?.url_casino || item?.casino_affiliate_link  ) }
-                                                                                       
+                                        href={cloacingLink(item?.url_casino || item?.casino_affiliate_link  ) }                                             
                                         onClick={(e) => {
                                             e.stopPropagation()
                                             e.preventDefault()

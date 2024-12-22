@@ -64,23 +64,18 @@ export default function SeeAllBonus() {
             setAllData([])
             return
         }
+        if(isMobile && currentPage === 1 && data?.bonuses?.results){
+            setAllData(data?.bonuses?.results)
+            return
+        }
         if ( isMobile) {
             setAllData((s) => {
                 const combinedData = [...s, ...(data?.bonuses?.results || [])]
-
-                const uniqueData = combinedData?.reduce((acc, item) => {
-                    if (!acc.some((el) => el.bonus_id === item.bonus_id)) {
-                        acc.push(item)
-                    }
-                    return acc
-                }, [] as SeeAllBonusType[])
-
-                return uniqueData
+                return combinedData
             })
+            return
         }
-        if (!allData?.length ) {
-            setAllData(data?.bonuses?.results || [])
-        }
+   
     }, [data,queryId])
 
     useEffect(() => {

@@ -103,19 +103,20 @@ export default function FilterLoyalty() {
     }, [loyaltiesFilters, refetch])
 
     useEffect(() => {
-        if (data?.results) {
+        if(isMobile && !data?.results){
+            setAllData([])
+            return
+        }
+        if(isMobile && currentPage === 1 && data?.results){
+            setAllData(data?.results)
+            return
+        }
+        if ( isMobile) {
             setAllData((s) => {
-                const combinedData = [...s, ...data?.results]
-
-                const uniqueData = combinedData.reduce((acc, item) => {
-                    if (!acc.some((el) => el.casino_id === item.casino_id)) {
-                        acc.push(item)
-                    }
-                    return acc
-                }, [] as SeeAllEssentialLoyaltyCasino[])
-
-                return uniqueData
+                const combinedData = [...s, ...(data?.results || [])]
+                return combinedData
             })
+            return
         }
     }, [data])
 

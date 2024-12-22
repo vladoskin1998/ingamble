@@ -55,25 +55,23 @@ export default function SeeAllEssentialsLoyalty() {
     }, [data])
 
     useEffect(() => {
-        if (data?.results && isMobile) {
-            setAllData((s) => {
-                const combinedData = [...s, ...data?.results]
-
-                const uniqueData = combinedData?.reduce((acc, item) => {
-                    if (!acc.some((el) => el?.casino_id === item?.casino_id)) {
-                        acc.push(item)
-                    }
-                    return acc
-                }, [] as SeeAllEssentialLoyaltyCasino[])
-
-                return uniqueData
-            })
+        if(isMobile && !data?.results){
+            setAllData([])
+            return
         }
-        if (!allData?.length && data?.results) {
+        if(isMobile && currentPage === 1 && data?.results){
             setAllData(data?.results)
+            return
+        }
+        if ( isMobile) {
+            setAllData((s) => {
+                const combinedData = [...s, ...(data?.results || [])]
+                return combinedData
+            })
+            return
         }
     }, [data])
-
+    
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
         window.addEventListener("resize", handleResize)
