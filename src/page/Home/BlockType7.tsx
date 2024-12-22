@@ -92,8 +92,8 @@ export default function BlockType7({
                                 }}
                             >
                                 {data.items_block.data_cards
-                                    .sort((a, b) => a.order - b.order)
-                                    .map((item, index) => (
+                                    ?.sort((a, b) => a.order - b.order)
+                                    ?.map((item, index) => (
                                         <SwiperSlide
                                             key={index}
                                             className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide"
@@ -125,7 +125,7 @@ export default function BlockType7({
                                                         }
                                                     </Link>
                                                     <div className="different-casino-bg__info">
-                                                        {item.casino_info.additional_casino_params.map(
+                                                        {item?.casino_info?.additional_casino_params?.map(
                                                             (it, id) => (
                                                                 <span
                                                                     key={id}

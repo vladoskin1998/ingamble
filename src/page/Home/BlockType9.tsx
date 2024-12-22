@@ -78,7 +78,7 @@ export default function BlockType9({
                             }}
                             className="slider__wrapper swiper-wrapper"
                         >
-                            {data.items_block.data_cards.map((item, index) => (
+                            {data.items_block.data_cards?.map((item, index) => (
                                 <SwiperSlide
                                     key={index}
                                     className="slider__slide slide-slider "
@@ -139,7 +139,7 @@ export default function BlockType9({
                                                             </div>
                                                             <div className="value-item-stats-essential-programs-gamble__content">
                                                                 <div className="value-item-stats-essential-programs-gamble__stars value-item-stats-essential-programs-gamble__stars_5">
-                                                                    {item.stars.map(
+                                                                    {item?.stars?.map(
                                                                         (
                                                                             it,
                                                                             idstar
@@ -189,7 +189,7 @@ export default function BlockType9({
                                                 </div>
                                             </div>
                                             <div className="item-essential-programs-gamble__features features-essential-programs-gamble">
-                                                {item.keypoints.map(
+                                                {item?.keypoints?.map(
                                                     (itp, idk) => (
                                                         <div
                                                             className="features-essential-programs-gamble__item"

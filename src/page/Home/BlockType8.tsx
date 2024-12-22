@@ -50,9 +50,9 @@ export default function BlockType8({
                     </div>
                 </div>
                 <MainSlider
-                    data={data.items_block.data_cards
-                        .sort((a, b) => a.order - b.order)
-                        .map((item) => ({
+                    data={data?.items_block?.data_cards
+                        ?.sort((a, b) => a.order - b.order)
+                        ?.map((item) => ({
                             playLink:
                                 item?.casino_info?.url_casino ||
                                 item?.casino_info?.casino_affiliate_link,

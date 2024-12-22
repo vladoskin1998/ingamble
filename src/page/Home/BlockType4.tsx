@@ -122,8 +122,8 @@ export default function BlockType4({
                                                             <LazyCardImg
                                                                 img={
                                                                     item
-                                                                        .bonus_info
-                                                                        .bonus_image ||
+                                                                        ?.bonus_info
+                                                                        ?.bonus_image ||
                                                                     ""
                                                                 }
                                                             />
@@ -153,8 +153,8 @@ export default function BlockType4({
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item
-                                                                                    .casino_info
-                                                                                    .casino_image ||
+                                                                                    ?.casino_info
+                                                                                    ?.casino_image ||
                                                                                 ""
                                                                             }
                                                                             size="medium"
@@ -177,12 +177,12 @@ export default function BlockType4({
                                                                     >
                                                                         {
                                                                             item
-                                                                                .casino_info
-                                                                                .casino_name
+                                                                                ?.casino_info
+                                                                                ?.casino_name
                                                                         }
                                                                     </Link>
                                                                     <div className="casino-small-card__info">
-                                                                        {item.casino_info.additional_casino_params.map(
+                                                                        {item?.casino_info?.additional_casino_params?.map(
                                                                             (
                                                                                 item
                                                                             ) => (
@@ -206,8 +206,8 @@ export default function BlockType4({
                                                                         <span className="casino-small-card__rating-number">
                                                                             {
                                                                                 item
-                                                                                    .casino_info
-                                                                                    .casino_rank
+                                                                                    ?.casino_info
+                                                                                    ?.casino_rank
                                                                             }
                                                                         </span>
                                                                     </div>
@@ -239,8 +239,8 @@ export default function BlockType4({
                                                                 <span className="casino-big-card__title-label">
                                                                     {
                                                                         item
-                                                                            .bonus_info
-                                                                            .bonus_name
+                                                                            ?.bonus_info
+                                                                            ?.bonus_name
                                                                     }
                                                                 </span>
                                                             </Link>

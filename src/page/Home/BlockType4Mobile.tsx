@@ -42,27 +42,27 @@ export default function BlockType4Mobile({
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                {data.items_block.title_image && (
+                                {data?.items_block?.title_image && (
                                     <span className="top__title-icon">
                                         <img
-                                            src={data.items_block.title_image}
+                                            src={data?.items_block?.title_image}
                                             alt="security"
                                         />
                                     </span>
                                 )}
                                 <h2 className="top__title">
-                                    {data.items_block.block_title}
+                                    {data?.items_block?.block_title}
                                 </h2>
                             </div>
-                            {data.items_block.subtitle && (
+                            {data?.items_block?.subtitle && (
                                 <div className="top__subtitle">
-                                    {data.items_block.subtitle}
+                                    {data?.items_block?.subtitle}
                                 </div>
                             )}
                         </div>
                         <div className="top__column">
                             <SeeAllButton
-                                type_category={data.items_block.type_category}
+                                type_category={data?.items_block?.type_category}
                                 parameter={
                                     data?.items_block?.category?.name || ""
                                 }
@@ -95,9 +95,9 @@ export default function BlockType4Mobile({
                                     },
                                 }}
                             >
-                                {data.items_block.data_cards
-                                    .sort((a, b) => a.order - b.order)
-                                    .map((item, index) => (
+                                {data?.items_block?.data_cards
+                                    ?.sort((a, b) => a?.order - b?.order)
+                                    ?.map((item, index) => (
                                         <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
@@ -198,12 +198,12 @@ export default function BlockType4Mobile({
                                                                 >
                                                                     {
                                                                         item
-                                                                            .casino_info
-                                                                            .casino_name
+                                                                            ?.casino_info
+                                                                            ?.casino_name
                                                                     }
                                                                 </Link>
                                                                 <div className="casino-small-card__info">
-                                                                    {item.casino_info.additional_casino_params.map(
+                                                                    {item?.casino_info?.additional_casino_params?.map(
                                                                         (
                                                                             item
                                                                         ) => (
@@ -227,8 +227,8 @@ export default function BlockType4Mobile({
                                                                     <span className="casino-small-card__rating-number">
                                                                         {
                                                                             item
-                                                                                .casino_info
-                                                                                .casino_rank
+                                                                                ?.casino_info
+                                                                                ?.casino_rank
                                                                         }
                                                                     </span>
                                                                 </div>

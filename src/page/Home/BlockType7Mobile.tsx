@@ -70,8 +70,8 @@ export default function BlockType7Mobile({
                                 }}
                             >
                                 {data.items_block.data_cards
-                                    .sort((a, b) => a.order - b.order)
-                                    .map((item) => (
+                                    ?.sort((a, b) => a.order - b.order)
+                                    ?.map((item) => (
                                         <SwiperSlide>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item different-casino-medium">

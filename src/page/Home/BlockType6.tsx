@@ -95,8 +95,8 @@ export default function BlockType6({
                                 }}
                             >
                                 {data.items_block.data_cards
-                                    .sort((a, b) => a.order - b.order)
-                                    .map((item, index) => (
+                                    ?.sort((a, b) => a.order - b.order)
+                                    ?.map((item, index) => (
                                         <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
@@ -234,7 +234,7 @@ export default function BlockType6({
                                                                     }
                                                                 </Link>
                                                                 <div className="casino-small-card__info">
-                                                                    {item?.casino_info?.additional_casino_params.map(
+                                                                    {item?.casino_info?.additional_casino_params?.map(
                                                                         (
                                                                             it,
                                                                             id

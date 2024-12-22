@@ -94,8 +94,8 @@ export default function BlockType3Mobile({
                                 }}
                             >
                                 {data.items_block.data_cards
-                                    .filter((item) => !item.big_card)
-                                    .reduce(
+                                    ?.filter((item) => !item.big_card)
+                                    ?.reduce(
                                         (
                                             acc: [
                                                 HomeDataCard,
@@ -113,7 +113,7 @@ export default function BlockType3Mobile({
                                         },
                                         []
                                     )
-                                    .map((item) => {
+                                    ?.map((item) => {
                                         return (
                                             <SwiperSlide className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
@@ -127,8 +127,8 @@ export default function BlockType3Mobile({
                                                                     <LazyCardImg
                                                                         img={
                                                                             item?.[0]
-                                                                                .casino_info
-                                                                                .casino_image ||
+                                                                                ?.casino_info
+                                                                                ?.casino_image ||
                                                                             ""
                                                                         }
                                                                         height="100%"
@@ -170,7 +170,7 @@ export default function BlockType3Mobile({
                                                                         ?.labels
                                                                         ?.length && (
                                                                         <div className="different-casino-standart__tags tags-casino-card">
-                                                                            {item?.[0]?.bonus_info?.labels.map(
+                                                                            {item?.[0]?.bonus_info?.labels?.map(
                                                                                 (
                                                                                     item,
                                                                                     index
@@ -210,8 +210,8 @@ export default function BlockType3Mobile({
                                                                         >
                                                                             {
                                                                                 item?.[0]
-                                                                                    .casino_info
-                                                                                    .casino_name
+                                                                                    ?.casino_info
+                                                                                    ?.casino_name
                                                                             }
                                                                         </Link>
                                                                         <div className="info-casino-card__stake-rating">
@@ -226,8 +226,8 @@ export default function BlockType3Mobile({
                                                                             <span className="info-casino-card__stake__rating-number">
                                                                                 {
                                                                                     item?.[0]
-                                                                                        .casino_info
-                                                                                        .casino_rank
+                                                                                        ?.casino_info
+                                                                                        ?.casino_rank
                                                                                 }
                                                                             </span>
                                                                         </div>
@@ -249,8 +249,8 @@ export default function BlockType3Mobile({
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item?.[1]
-                                                                                    .casino_info
-                                                                                    .casino_image ||
+                                                                                    ?.casino_info
+                                                                                    ?.casino_image ||
                                                                                 ""
                                                                             }
                                                                              height="100%"
@@ -291,7 +291,7 @@ export default function BlockType3Mobile({
                                                                             ?.labels
                                                                             ?.length && (
                                                                             <div className="different-casino-standart__tags tags-casino-card">
-                                                                                {item?.[1]?.bonus_info?.labels.map(
+                                                                                {item?.[1]?.bonus_info?.labels?.map(
                                                                                     (
                                                                                         item,
                                                                                         index
@@ -331,8 +331,8 @@ export default function BlockType3Mobile({
                                                                             >
                                                                                 {
                                                                                     item?.[1]
-                                                                                        .casino_info
-                                                                                        .casino_name
+                                                                                        ?.casino_info
+                                                                                        ?.casino_name
                                                                                 }
                                                                             </Link>
                                                                             <div className="info-casino-card__stake-rating">
@@ -347,8 +347,8 @@ export default function BlockType3Mobile({
                                                                                 <span className="info-casino-card__stake__rating-number">
                                                                                     {
                                                                                         item?.[1]
-                                                                                            .casino_info
-                                                                                            .casino_rank
+                                                                                            ?.casino_info
+                                                                                            ?.casino_rank
                                                                                     }
                                                                                 </span>
                                                                             </div>

@@ -163,8 +163,8 @@ export default function BlockType5({
                                         }}
                                     >
                                         {data.items_block.data_cards
-                                            .sort((a, b) => a.order - b.order)
-                                            .map((item, index) => (
+                                            ?.sort((a, b) => a.order - b.order)
+                                            ?.map((item, index) => (
                                                 <SwiperSlide
                                                     key={index}
                                                     className="slider__slide slide-slider swiper-slide"
