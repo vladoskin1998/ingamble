@@ -89,9 +89,9 @@ export default function SeeAllCasinos() {
         }
     )
     useEffect(() => {
-        if (data?.casino?.results && isMobile) {
+        if ( isMobile) {
             setAllData((s) => {
-                const combinedData = [...s, ...data?.casino?.results]
+                const combinedData = [...s, ...(data?.casino?.results || [])]
 
                 const uniqueData = combinedData?.reduce((acc, item) => {
                     if (!acc.some((el) => el?.casino_id === item?.casino_id)) {
@@ -103,10 +103,10 @@ export default function SeeAllCasinos() {
                 return uniqueData
             })
         }
-        if (!allData?.length && data?.casino?.results) {
-            setAllData(data?.casino?.results)
+        if (!allData?.length ) {
+            setAllData(data?.casino?.results || [])
         }
-    }, [data,queryId])
+    }, [data, queryId])
 
     useEffect(() => {
         initializeAdaptiveBehavior()
