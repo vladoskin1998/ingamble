@@ -16,6 +16,8 @@ export default function BlockType7Mobile({
 }) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7)
         return <></>
+
+     
     return (
         <section aria-label=" BlockTypeNumber.BlockType7" className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="crypto-casinos-gamble__container container">
@@ -69,8 +71,7 @@ export default function BlockType7Mobile({
                                     },
                                 }}
                             >
-                                {data.items_block.data_cards?.slice(0,10)
-                                    ?.sort((a, b) => a.order - b.order)
+                                {data?.items_block?.data_cards?.slice(0,10)?.sort((a, b) => a.order - b.order)
                                     ?.map((item) => (
                                         <SwiperSlide>
                                             <div className="slider__slide slide-slider swiper-slide">

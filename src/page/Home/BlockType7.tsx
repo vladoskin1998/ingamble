@@ -8,7 +8,7 @@ import shieldIcon from "../../assets/img/icons/shield.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
-import { sanitizeLink } from "../../helper"
+import { sanitizeLink, shuffleArray } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType7({
@@ -33,6 +33,9 @@ export default function BlockType7({
 
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7)
         return <></>
+
+     const dataCard = shuffleArray(data?.items_block?.data_cards) 
+
     return (
         <section aria-label="BlockTypeNumber.BlockType7" className="main-gamble__low-risk-bonuses low-risk-bonuses-gamble main-gamble__different-casino-bg">
             <div className="low-risk-bonuses-gamble__container container">
@@ -91,7 +94,7 @@ export default function BlockType7({
                                     },
                                 }}
                             >
-                                {data.items_block.data_cards?.slice(0,10)
+                                {dataCard?.slice(0,10)
                                     ?.sort((a, b) => a.order - b.order)
                                     ?.map((item, index) => (
                                         <SwiperSlide
