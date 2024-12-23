@@ -145,10 +145,7 @@ export default function BlockType4({
                                                                 >
                                                                     <div
                                                                         className="casino-small-card__image ibg"
-                                                                        style={{
-                                                                            backgroundSize:
-                                                                                "125% auto",
-                                                                        }}
+                                                                  
                                                                     >
                                                                         <LazyCardImg
                                                                             img={
