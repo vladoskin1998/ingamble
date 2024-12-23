@@ -16,7 +16,7 @@ import {
     SeeAllBonusResponse,
 } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { cloacingLink, COLORS_TAGS, sanitizeLink } from "../../helper"
+import { cloacingLink, COLORS_TAGS, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { Link, useSearchParams } from "react-router-dom"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
@@ -248,7 +248,7 @@ export default function SeeAllBonus() {
                                                                 </span>
                                                                 <span className="info-casino-card__likes-number">
                                                                     {
-                                                                        item.bonus_likes
+                                                                      sanitizeNumberLike(  item?.bonus_likes)
                                                                     }
                                                                 </span>
                                                             </div>

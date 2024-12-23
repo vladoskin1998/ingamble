@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { cloacingLink, sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType9({
@@ -121,7 +121,7 @@ export default function BlockType9({
                                                         />
                                                     </span>
                                                     <span className="info-casino-card__likes-number">
-                                                        {item.loyalty_likes}
+                                                        {sanitizeNumberLike(item?.loyalty_likes)}
                                                     </span>
                                                 </div>
                                             </div>

@@ -2,7 +2,7 @@
 import bg08 from "../../assets/img/bg/08.jpg"
 
 import { useState } from "react"
-import { cloacingLink, sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { Link } from "react-router-dom"
 
 export const HowToStartVipJorney = (data: {
@@ -116,8 +116,8 @@ export const HowToStartVipJorney = (data: {
                                                 </svg>
                                             </span>
                                             <span className="like-get-bonus__btn-number">
-                                                {(data?.likes ?? 0) +
-                                                    (like === "like" ? 1 : 0)}
+                                                {sanitizeNumberLike((data?.likes ?? 0) +
+                                                    (like === "like" ? 1 : 0))}
                                             </span>
                                         </button>
                                     </div>

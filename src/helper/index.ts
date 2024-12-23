@@ -113,3 +113,14 @@ export const cloacingLink = (s: string | undefined): string => {
     return `https://cryptogamblers.pro${domen && '/' + sanitizeLink(domen)}/go`;
   };
 
+
+
+  export const sanitizeNumberLike = (n: number | string | undefined): string | number => {
+    if (!n) {
+      return '';
+    }
+    if (Number(n) < 1000) {
+      return n;
+    }
+    return (Number(n) / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+  };

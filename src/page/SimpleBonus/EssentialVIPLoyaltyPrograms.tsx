@@ -1,7 +1,7 @@
 import $api from "../../http"
 import { useQuery } from "react-query"
 import { LoyaltyInRankRangeResponse } from "../../types"
-import { cloacingLink, sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import star from "../../assets/img/icons/star.svg"
@@ -120,7 +120,7 @@ export const EssentialVIPLoyaltyPrograms = ({
                                                             />
                                                         </span>
                                                         <span className="info-casino-card__likes-number">
-                                                            {item.loyalty_likes}
+                                                            {sanitizeNumberLike(item?.loyalty_likes)}
                                                         </span>
                                                     </div>
                                                 </div>

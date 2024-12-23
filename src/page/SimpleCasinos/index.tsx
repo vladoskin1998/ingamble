@@ -20,7 +20,7 @@ import { GeoLocationAllowdType, RewievCasinoDataResponse } from "../../types"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { useFilterContext } from "../../context/FilterContext"
-import { cloacingLink, sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { COUNTRIES } from "../../helper/Country"
 // import { sanitizeLink } from "../../helper"
 
@@ -199,9 +199,9 @@ export default function SimpleCasinos() {
                                                         />
                                                     </span>
                                                     <span className="info-casino-card__likes-number">
-                                                        {data
+                                                        {sanitizeNumberLike(data
                                                             ?.dataCurrentCasinos
-                                                            ?.likes || 0}
+                                                            ?.likes )}
                                                     </span>
                                                 </div>
                                                 <div className="content-casino-info__top">

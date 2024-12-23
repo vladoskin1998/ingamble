@@ -4,7 +4,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component"
 import { GetDataBonusResponse } from "../../types"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { cloacingLink, sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
 
 export const HowToGetBonus = ({
     data,
@@ -114,8 +114,8 @@ export const HowToGetBonus = ({
                                                 </svg>
                                             </span>
                                             <span className="like-get-bonus__btn-number">
-                                                {(data?.likes ?? 0) +
-                                                    (like === "like" ? 1 : 0)}
+                                                {sanitizeNumberLike((data?.likes ?? 0) +
+                                                    (like === "like" ? 1 : 0))}
                                             </span>
                                         </button>
                                     </div>

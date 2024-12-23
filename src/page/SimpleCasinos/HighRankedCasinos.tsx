@@ -8,7 +8,7 @@ import $api from "../../http"
 import { СasinosInRankRangeResponse } from "../../types"
 import { useQuery } from "react-query"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { COLORS_TAGS, sanitizeLink } from "../../helper"
+import { COLORS_TAGS, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { Link } from "react-router-dom"
 
 const getFilteringCasinoList = async () => {
@@ -236,7 +236,7 @@ export const HighRankedCasinos = () => {
                                                                         src={
                                                                             starIcon
                                                                         }
-                                                                        alt="like"
+                                                                        alt="star"
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__stake__rating-number">
@@ -256,9 +256,10 @@ export const HighRankedCasinos = () => {
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__likes-number">
-                                                                    {item?.[0]
-                                                                        ?.likes ||
-                                                                        0}
+                                                                    {sanitizeNumberLike(
+                                                                        item?.[0]
+                                                                            ?.likes
+                                                                    )}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -343,9 +344,8 @@ export const HighRankedCasinos = () => {
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__likes-number">
-                                                                    {item?.[1]
-                                                                        ?.likes ||
-                                                                        0}
+                                                                    {sanitizeNumberLike(item?.[1]
+                                                                        ?.likes )}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -463,7 +463,7 @@ export const HighRankedCasinos = () => {
                                                                     />
                                                                 </span>
                                                                 <span className="info-casino-card__likes-number">
-                                                                    {item.likes}
+                                                                    {sanitizeNumberLike(item.likes)}
                                                                 </span>
                                                             </div>
                                                         </div>

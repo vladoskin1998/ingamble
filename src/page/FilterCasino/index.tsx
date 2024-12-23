@@ -19,10 +19,11 @@ import { useAdaptiveBehavior } from "../../context/AppContext"
 import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from "../SeeAllCasinos"
 import {
     cloacingLink,
-    euroToDolar,
+   
     filterEmptyValues,
     NumberAssociaty,
     sanitizeLink,
+    sanitizeNumberLike,
     sliceString,
 } from "../../helper"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
@@ -389,7 +390,7 @@ const ListDisplayData = memo(
                                                     />
                                                 </span>
                                                 <span className="info-casino-card__likes-number">
-                                                    {item?.likes}
+                                                    {sanitizeNumberLike( item?.likes)}
                                                 </span>
                                             </div>
                                         </div>
@@ -422,7 +423,7 @@ const ListDisplayData = memo(
                                                                       item
                                                                           .min_dep?.[0]
                                                                           ?.value
-                                                                  } ${euroToDolar()}`
+                                                                  } ${'$ USDT'}`
                                                                 : "Unlimited"}
                                                         </div>
                                                     </div>

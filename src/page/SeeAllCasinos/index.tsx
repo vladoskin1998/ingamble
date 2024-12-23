@@ -18,9 +18,10 @@ import {
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import {
     cloacingLink,
-    euroToDolar,
+ 
     NumberAssociaty,
     sanitizeLink,
+    sanitizeNumberLike,
 } from "../../helper"
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
 import SubscribeForm from "../SimpleBonus/SubscribeForm"
@@ -201,7 +202,7 @@ export default function SeeAllCasinos() {
                                                                 </span>
                                                                 <span className="info-casino-card__likes-number">
                                                                     {
-                                                                        item?.likes
+                                                                    sanitizeNumberLike(    item?.likes)
                                                                     }
                                                                 </span>
                                                             </div>
@@ -237,7 +238,7 @@ export default function SeeAllCasinos() {
                                                                                 item
                                                                                     .min_dep?.[0]
                                                                                     ?.value
-                                                                            } ${euroToDolar()}`}
+                                                                            } ${'$ USDT'}`}
                                                                         </div>
                                                                     </div>
                                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">

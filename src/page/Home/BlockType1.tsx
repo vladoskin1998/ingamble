@@ -1,5 +1,5 @@
 import MainSlider from "../../components/swiper/MainSlider"
-import { sanitizeLink } from "../../helper"
+import { sanitizeLink, shuffleArray } from "../../helper"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 
@@ -11,12 +11,9 @@ export default function BlockType1({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType1)
         return <></>
 
-    console.log(
-        "data id",
-        data.items_block.type_category,
-        data?.items_block?.category?.id
-    )
-
+    // const dataCard = !data.blocks_sequence_number ? shuffleArray(data?.items_block.data_cards) : data?.items_block.data_cards
+    // .sort((a, b) => a.order - b.order)
+    const dataCard = shuffleArray(data?.items_block.data_cards)
     return (
         <section aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
             <div className="todays-hot-gamble__container container">
@@ -25,7 +22,7 @@ export default function BlockType1({
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon">
+                                    <span className="top__title-icon ibg--custom"  style={{width:'27px',height:'35px', paddingBottom:'6px'}}>
                                         <img
                                             src={data.items_block.title_image}
                                             alt="security"
@@ -54,9 +51,8 @@ export default function BlockType1({
                     </div>
                 </div>
                 <MainSlider
-                    data={data?.items_block.data_cards
-                        .sort((a, b) => a.order - b.order)
-                        .map((item) => ({
+                    data={
+                        dataCard.map((item) => ({
                             img: item?.bonus_info?.bonus_image,
                             raiting: item?.casino_info?.casino_rank,
                             likes: item?.bonus_info?.bonus_likes,

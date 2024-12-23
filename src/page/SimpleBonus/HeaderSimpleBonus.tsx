@@ -7,7 +7,7 @@ import giftIcon from "../../assets/img/icons/gift.svg"
 import { useState, useEffect } from "react"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { Link } from "react-router-dom"
-import { cloacingLink, sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { useFilterContext } from "../../context/FilterContext"
 
 const color_label = [
@@ -113,7 +113,7 @@ export const HeaderSimpleBonus = ({
                                                 />
                                             </span>
                                             <span className="info-casino-card__likes-number">
-                                                {data?.likes || "34K"}
+                                                {sanitizeNumberLike(data?.likes )}
                                             </span>
                                         </div>
                                     </div>
@@ -147,7 +147,7 @@ export const HeaderSimpleBonus = ({
                                             <img src={likeIcon} alt="like" />
                                         </span>
                                         <span className="info-casino-card__likes-number">
-                                            {data?.likes || "34K"}
+                                            {sanitizeNumberLike(data?.likes )}
                                         </span>
                                     </div>
                                     <div className="name-main-casino-info__content">

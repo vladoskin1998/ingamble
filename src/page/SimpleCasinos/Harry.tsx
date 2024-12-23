@@ -2,6 +2,7 @@ import { RewievCasinoDataResponse } from "../../types"
 import { CasinoReview } from "./CasinoReview"
 import HarryImg from "../../assets/img/casino-person/02.jpg"
 import { useState } from "react"
+import { sanitizeNumberLike } from "../../helper"
 const DoYouLike = ({ likes: DataLike }: { likes: number }) => {
     const [like, setLike] = useState<"" | "like" | "dislike">("")
 
@@ -39,7 +40,7 @@ const DoYouLike = ({ likes: DataLike }: { likes: number }) => {
                             </svg>
                         </span>
                         <span className="item-iwild-review__btn-number">
-                            {DataLike + (like === "like" ? 1 : 0)}
+                            {sanitizeNumberLike(DataLike + (like === "like" ? 1 : 0))}
                         </span>
                     </button>
                 </div>

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 
 export const CheckMoreWhatSuitsYouBest = () => {
     const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
-
+    const CristmasCategory = category.find(item => item.bonus_id === 11)
 
     return (
         <section className="main-gamble__bottom-filter-tags bottom-filter-tags check-bottom-filter-tags">
@@ -26,7 +26,17 @@ export const CheckMoreWhatSuitsYouBest = () => {
                     </div>
                 </div>
                 <div className="bottom-filter-tags__row">
-                    {category.map((item, index) => (
+                <div className="bottom-filter-tags__column">
+                            <Link
+                              
+                                to={CristmasCategory?.link || "/"}
+                                aria-label="Put your description here."
+                                className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
+                            >
+                                {CristmasCategory?.name}
+                            </Link>
+                        </div>
+                    {category?.filter(item => item?.bonus_id !== 11 )?.map((item, index) => (
                         <div className="bottom-filter-tags__column" key={index}>
                             <Link
                               
@@ -34,7 +44,7 @@ export const CheckMoreWhatSuitsYouBest = () => {
                                 aria-label="Put your description here."
                                 className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
                             >
-                                {item.name}
+                                {item?.name}
                             </Link>
                         </div>
                     ))}

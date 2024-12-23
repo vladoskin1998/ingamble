@@ -182,7 +182,7 @@ export default function Home ()  {
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome;
 
-    if (isLoading ) return <LogoLoader />
+     if (isLoading ) return <LogoLoader />
     return (
         <Wraper>
             <main className="gamble__main main-gamble">

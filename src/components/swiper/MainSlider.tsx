@@ -10,7 +10,7 @@ import { SwiperRef } from "swiper/react"
 import { LineLoader } from "../loader/LineLoader"
 import { Link, useNavigate } from "react-router-dom"
 import { LazyImgHomeType } from "../../page/Home"
-import { cloacingLink } from "../../helper"
+import { cloacingLink, sanitizeNumberLike } from "../../helper"
 
 const MainSliderImg = ({ img }: { img: string }) => {
     //@ts-ignore
@@ -177,7 +177,7 @@ const MainSlider = ({
                                                             />
                                                         </span>
                                                         <span className="info-casino-card__likes-number">
-                                                            {item.likes || 0}
+                                                            {sanitizeNumberLike(item?.likes || 0) }
                                                         </span>
                                                     </div>
                                                 </div>

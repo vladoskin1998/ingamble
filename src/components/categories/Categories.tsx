@@ -9,6 +9,8 @@ export const Categories = () =>
     {
         const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
 
+        const CristmasCategory = category.find(item => item.bonus_id === 11)
+       
 
         return (
             <div className=" filter-tags-gamble main-gamble__filter-tags">
@@ -50,7 +52,19 @@ export const Categories = () =>
                         spaceBetween={8}
                         style={{ margin: 0 }}
                     >
-                        {category?.map((item, index) => (
+                        { CristmasCategory && 
+                        <SwiperSlide  style={{ width: "auto" }}>
+                             <Link
+                                 rel="nofollow noopener"
+                                 to={CristmasCategory?.link || "/"}
+                                 aria-label="Put your description here."
+                                 className="slide-filter-tags-gamble__btn"
+                             >
+                                 {CristmasCategory?.name}
+                             </Link>
+                         </SwiperSlide>
+                        }
+                        {category?.filter(item => item.bonus_id !== 11).map((item, index) => (
                             <SwiperSlide key={index} style={{ width: "auto" }}>
                                 <Link
                                     rel="nofollow noopener"

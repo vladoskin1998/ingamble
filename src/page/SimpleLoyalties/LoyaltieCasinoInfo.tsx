@@ -3,7 +3,7 @@ import like from "../../assets/img/icons/like.svg"
 
 import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { cloacingLink } from "../../helper"
+import { cloacingLink, sanitizeNumberLike } from "../../helper"
 
 export const LoyaltieCasinoInfo = ({
     data,
@@ -47,7 +47,7 @@ export const LoyaltieCasinoInfo = ({
                                             <img src={like} alt="like" />
                                         </span>
                                         <span className="info-casino-card__likes-number">
-                                            {data?.likes}
+                                            {sanitizeNumberLike(data?.likes)}
                                         </span>
                                     </div>
                                 </div>

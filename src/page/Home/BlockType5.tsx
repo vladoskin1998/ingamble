@@ -10,7 +10,7 @@ import bg07 from "../../assets/img/bg/07.jpg"
 import gift from "../../assets/img/icons/gift.svg"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { SeeAllButton, SeeAllRoutes } from "./SeeAllButton"
+import { SeeAllButton } from "./SeeAllButton"
 import { cloacingLink, sanitizeLink } from "../../helper"
 import { Link } from "react-router-dom"
 
@@ -110,7 +110,7 @@ export default function BlockType5({
                                 <span>
                                     <img src={roulette} alt="roulette" />
                                 </span>
-                                Pay’n Play Casinos
+                                Blackjack, Roulette, Table Games
                             </div>
                             <div className="slider-best-live-dealer-casinos-gamble__navigation navigation-btns">
                                 <button
@@ -367,19 +367,20 @@ export default function BlockType5({
                                 <span>Live Dealers</span>
                             </div>
                             <Link
-                                to={`/all-${
-                                    SeeAllRoutes[
-                                        data?.items_block?.type_category
-                                    ] || SeeAllRoutes?.bonus_category
-                                }${
-                                    data?.items_block?.category?.name
-                                        ? `/${sanitizeLink(
-                                              data?.items_block?.category?.name
-                                          )}?queryId=${
-                                              data?.items_block?.category?.id
-                                          }`
-                                        : ""
-                                }`}
+                            to={"/all-bonuses/best-live-bonuses?queryId=10"}
+                                // to={`/all-${
+                                //     SeeAllRoutes[
+                                //         data?.items_block?.type_category
+                                //     ] || SeeAllRoutes?.bonus_category
+                                // }${
+                                //     data?.items_block?.category?.name
+                                //         ? `/${sanitizeLink(
+                                //               data?.items_block?.category?.name
+                                //           )}?queryId=${
+                                //               data?.items_block?.category?.id
+                                //           }`
+                                //         : ""
+                                // }`}
                                 className="best-live-dealer-casinos-gamble__btn "
                             >
                                 <span>

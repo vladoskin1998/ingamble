@@ -19,7 +19,7 @@ import like from "../../assets/img/icons/like.svg"
 import { memo, useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import star from "../../assets/img/icons/star.svg"
-import { cloacingLink, COLORS_TAGS, filterEmptyValues, sanitizeLink } from "../../helper"
+import { cloacingLink, COLORS_TAGS, filterEmptyValues, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
@@ -365,7 +365,7 @@ const ListDisplayData = memo(
                                             <img src={like} alt="like" />
                                         </span>
                                         <span className="info-casino-card__likes-number">
-                                            {item?.bonus_likes}
+                                            {sanitizeNumberLike(item?.bonus_likes) }
                                         </span>
                                     </div>
                                 </div>
