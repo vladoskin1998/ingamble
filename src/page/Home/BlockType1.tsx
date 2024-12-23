@@ -22,7 +22,7 @@ export default function BlockType1({
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon ibg--custom"  style={{width:'27px',height:'35px', paddingBottom:'6px'}}>
+                                    <span className="top__title-icon ibg--custom"  style={{width:'auto',height:'35px', paddingBottom:'10px'}}>
                                         <img
                                             src={data.items_block.title_image}
                                             alt="security"
