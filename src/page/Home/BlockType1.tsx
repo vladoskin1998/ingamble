@@ -20,9 +20,9 @@ export default function BlockType1({
                 <div className="todays-hot-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
-                            <div className="top__title-block" style={{alignItems:'end'}}>
+                            <div className="top__title-block" >
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon ibg--custom"  style={{width:'auto',height:'31px', paddingBottom:'5.5px'}}>
+                                    <span className="top__title-icon ibg--custom cristmas-style"  >
                                         <img
                                             src={data.items_block.title_image}
                                             alt="security"
