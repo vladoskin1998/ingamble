@@ -27,6 +27,7 @@ type BlockCountryType =  {
 
 export interface GetDataBonusResponse {
     blocked_countries: BlockCountryType[]
+    bonus_blocked_countries: BlockCountryType[]
     sibling_bonuses:SiblingBonuses[]
     slug?: string;
     link_tc : string;
@@ -87,12 +88,12 @@ export interface GetDataBonusResponse {
         description: string;
     };
     max_bet: MinimumDeposit[];
-    restriction_country: {
-        country: {
-            name: string;
-            code: string;
-        }[];
-    };
+    // restriction_country: {
+    //     country: {
+    //         name: string;
+    //         code: string;
+    //     }[];
+    // };
     restriction_game: {
         game: {
             name: string;
