@@ -12,6 +12,9 @@ export const LoyaltieCasinoInfo = ({
     data: LoyaltieProgramDataResponse | undefined
     geoLocation: GeoLocationAllowdType
 }) => {
+
+    console.log("GeoLocationAllowdType",geoLocation);
+    
     return (
         <section className={`loyaltie__casino-info casino-info ${
                 !geoLocation?.isAllowed && "casino-info_not-available"
@@ -71,8 +74,11 @@ export const LoyaltieCasinoInfo = ({
                                             </div>
                                         )}
                                         <div className="country-content-casino-info__text">
-                                            Accepts players from{" "}
-                                            {geoLocation?.countryName}
+                                        {`${
+                                                geoLocation?.isAllowed
+                                                    ? "Accepts players from"
+                                                    : "Doesn’t accept players from"
+                                            } ${geoLocation?.countryName}`}
                                         </div>
                                     </div>
                                     <span className="main-get-bonus__btn main-get-bonus__btn_apply">
