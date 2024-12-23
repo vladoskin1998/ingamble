@@ -13,7 +13,7 @@ export default function BlockType1({
 
     // const dataCard = !data.blocks_sequence_number ? shuffleArray(data?.items_block.data_cards) : data?.items_block.data_cards
     // .sort((a, b) => a.order - b.order)
-    const dataCard = shuffleArray(data?.items_block.data_cards)
+    const dataCard = shuffleArray(data?.items_block.data_cards).slice(0,8)
     return (
         <section aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
             <div className="todays-hot-gamble__container container">
