@@ -22,7 +22,7 @@ import { Link } from "react-router-dom"
 const countPageSize = 10
 
 export default function SeeAllEssentialsLoyalty() {
-    document.title = "All Essentials Loyalty"
+    // document.title = "All Essentials Loyalty"
 
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllEssentialLoyaltyCasino[]>([])

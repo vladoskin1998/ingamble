@@ -34,7 +34,7 @@ const getBonusDataFetch = async ({queryId}:{queryId:string | null}) => {
 }
 
 export default function SimpleBonus() {
-    document.title = "Simple Bonus"
+    // document.title = "Simple Bonus"
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const {data: Country} = useFilterContext()
 

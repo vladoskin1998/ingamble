@@ -34,7 +34,7 @@ const getAllBonusFetchData = async (page: number, queryId: string | null) => {
 const countPageSize = 60
 
 export default function SeeAllBonus() {
-    document.title = "All Bonus"
+    // // document.title = "All Bonus"
 
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllBonusType[]>([])
@@ -122,7 +122,7 @@ export default function SeeAllBonus() {
                                     <div className="top__column">
                                         <div className="top__title-block">
                                             <h2 className="top__title">
-                                                {queryId ? data?.category_name || category.find(item => item?.bonus_id === Number(queryId))?.name :
+                                                {queryId ? data?.category_name || category?.find(item => item?.bonus_id === Number(queryId))?.name :
                                                     "All Bonuses"}
                                             </h2>
                                         </div>

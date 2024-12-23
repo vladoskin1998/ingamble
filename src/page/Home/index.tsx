@@ -146,7 +146,7 @@ const renderBlock = (block: any, index: number) => {
 }
 
 export default function Home ()  {
-    document.title = "Home"
+    // // document.title = "Home"
     //@ts-ignore
     const { isSidebarActive, setSidebarActive, initializeAdaptiveBehavior } =
         useAdaptiveBehavior()

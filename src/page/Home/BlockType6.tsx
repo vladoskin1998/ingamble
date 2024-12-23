@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { SeeAllButton } from "./SeeAllButton"
-import { cloacingLink, sanitizeLink } from "../../helper"
+import { cloacingLink, sanitizeLink, shuffleArray } from "../../helper"
 import { Link } from "react-router-dom"
 
 export default function BlockType6({
@@ -31,6 +31,11 @@ export default function BlockType6({
     }, [])
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType6)
         return <></>
+
+   
+    
+        const dataCard = shuffleArray(data?.items_block?.data_cards) 
+      
     return (
         <section
             aria-label="BlockTypeNumber.BlockType6"
@@ -94,8 +99,7 @@ export default function BlockType6({
                                     },
                                 }}
                             >
-                                {data.items_block.data_cards
-                                    ?.sort((a, b) => a.order - b.order)
+                                {dataCard?.slice(0,8)
                                     ?.map((item, index) => (
                                         <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider swiper-slide">

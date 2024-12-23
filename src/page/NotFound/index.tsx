@@ -3,7 +3,7 @@ import notFound from "../../assets/img/not-found/not-found.png"
 import "./style.css"
 
 export default function NotFound() {
-    document.title = "Not Found"
+    // // document.title = "Not Found"
 
     return (
         <div className="not--found">

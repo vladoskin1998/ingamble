@@ -118,7 +118,7 @@ const getFilteringCasinoList = async (
 }
 
 export default function FilterCasino() {
-    document.title = "Filter Casino"
+    // // document.title = "Filter Casino"
 
     const { initializeAdaptiveBehavior, isSidebarActive } =
         useAdaptiveBehavior()

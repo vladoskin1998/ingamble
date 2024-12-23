@@ -63,7 +63,7 @@ export const WithdrawalSeeAllCasinos = (n: {
 const countPageSize = 10
 
 export default function SeeAllCasinos() {
-    document.title = "All Casino"
+    // document.title = "All Casino"
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllCasinosType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
@@ -151,7 +151,7 @@ export default function SeeAllCasinos() {
                                         <div className="top__title-block">
                                             <h2 className="top__title">
                                             
-                                            {queryId ? data?.category_name || category.find(item => item?.casino_id === Number(queryId))?.name :
+                                            {queryId ? data?.category_name || category?.find(item => item?.casino_id === Number(queryId))?.name :
                                                     "Casino List"}
                                             </h2>
                                         </div>

@@ -91,7 +91,7 @@ export default function BlockType7({
                                     },
                                 }}
                             >
-                                {data.items_block.data_cards
+                                {data.items_block.data_cards?.slice(0,10)
                                     ?.sort((a, b) => a.order - b.order)
                                     ?.map((item, index) => (
                                         <SwiperSlide

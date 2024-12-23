@@ -61,8 +61,8 @@ const getFilteringBonusList = async (
 }
 
 export default function FilterBonus() {
-    document.title = "Filter Bonus"
-
+    // // document.title = "Filter Bonus"
+   
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
     const { bonusFilters, setBonusFilters } = useFilterContext()

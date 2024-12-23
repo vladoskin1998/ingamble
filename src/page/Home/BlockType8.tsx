@@ -1,5 +1,5 @@
 import MainSlider from "../../components/swiper/MainSlider"
-import { COLORS_TAGS, sanitizeLink } from "../../helper"
+import { COLORS_TAGS, sanitizeLink, shuffleArray } from "../../helper"
 import { BlockTypeNumber, HomeDataBlock } from "../../types"
 import { SeeAllButton } from "./SeeAllButton"
 
@@ -10,6 +10,10 @@ export default function BlockType8({
 }) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType8)
         return <></>
+
+
+    const dataCard = shuffleArray(data?.items_block?.data_cards) 
+  
     return (
         <section
             aria-label="BlockTypeNumber.BlockType8"
@@ -50,8 +54,7 @@ export default function BlockType8({
                     </div>
                 </div>
                 <MainSlider
-                    data={data?.items_block?.data_cards
-                        ?.sort((a, b) => a.order - b.order)
+                    data={dataCard?.slice(0,8)
                         ?.map((item) => ({
                             playLink:
                                 item?.casino_info?.url_casino ||

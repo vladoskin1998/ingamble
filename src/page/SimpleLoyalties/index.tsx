@@ -32,7 +32,7 @@ const getCurrentLoyaltiesFetchData = async (queryId: string) => {
 }
 
 export default function SimpleLoyalties() {
-    document.title = " Loyaltie"
+    // document.title = " Loyaltie"
     const [queryId, setQueryId] = useState<string>("")
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: "",

@@ -144,6 +144,7 @@ const initializeAdaptiveBehavior = () => {
 
 
 export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+     document.title =" CryptoGamblers"
     const location = useLocation();
     const [isSidebarActive, setSidebarActive] = useState(false)
     
@@ -208,7 +209,7 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
                 })) || []),
                 ...(dataCategories?.casino_categories?.map((item) => ({
                     name: item.name,
-                    link: `${window.location.origin}/all-casinos/${sanitizeLink(item?.name)}?queryId${item.id}`,
+                    link: `${window.location.origin}/all-casinos/${sanitizeLink(item?.name)}?queryId=${item.id}`,
                     casino_id: item.id
                 })) || []),
             ]);

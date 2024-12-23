@@ -57,7 +57,7 @@ const getFilteringLoyaltiesList = async (
 }
 
 export default function FilterLoyalty() {
-    document.title = "Filter Loyalties"
+    // // document.title = "Filter Loyalties"
 
     const { initializeAdaptiveBehavior, isSidebarActive } =
         useAdaptiveBehavior()
