@@ -2,12 +2,24 @@ import { LazyLoadImage } from "react-lazy-load-image-component"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
 import { Link } from "react-router-dom"
+import { sliceString } from "../../helper"
+import { useEffect, useState } from "react"
 
 
 
 export const CheckMoreWhatSuitsYouBest = () => {
     const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
     const CristmasCategory = category.find(item => item.bonus_id === 11)
+
+     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
+    
+        useEffect(() => {
+            const handleResize = () => setIsMobile(window.innerWidth <= 480)
+            window.addEventListener("resize", handleResize)
+    
+            handleResize()
+            return () => window.removeEventListener("resize", handleResize)
+        }, [])
 
     return (
         <section className="main-gamble__bottom-filter-tags bottom-filter-tags check-bottom-filter-tags">
@@ -26,25 +38,27 @@ export const CheckMoreWhatSuitsYouBest = () => {
                     </div>
                 </div>
                 <div className="bottom-filter-tags__row">
-                <div className="bottom-filter-tags__column">
+                <div className="bottom-filter-tags__column bottom-filter-tags__link">
                             <Link
                               
                                 to={CristmasCategory?.link || "/"}
                                 aria-label="Put your description here."
                                 className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
                             >
-                                {CristmasCategory?.name}
+                      
+                                {isMobile ? sliceString(CristmasCategory?.name, 25): CristmasCategory?.name}
                             </Link>
                         </div>
                     {category?.filter(item => item?.bonus_id !== 11 )?.map((item, index) => (
-                        <div className="bottom-filter-tags__column" key={index}>
+                        <div className="bottom-filter-tags__column bottom-filter-tags__link" key={index}>
                             <Link
                               
                                 to={item?.link || "/"}
                                 aria-label="Put your description here."
                                 className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
                             >
-                                {item?.name}
+                                {isMobile ? sliceString(item?.name, 25): item?.name}
+                              
                             </Link>
                         </div>
                     ))}

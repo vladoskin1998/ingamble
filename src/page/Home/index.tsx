@@ -24,7 +24,7 @@ import BlockType6 from "./BlockType6"
 // const BlockType7 = lazy(() => import("./BlockType7"))
 import BlockType7Mobile from "./BlockType7Mobile"
 
- import BlockType9 from "./BlockType9"
+import BlockType9 from "./BlockType9"
 import BlockType8 from "./BlockType8"
 
 // const BlockType9 = lazy(() => import("./BlockType9"))
@@ -73,6 +73,10 @@ const renderBlock = (block: any, index: number, isMobile: boolean) => {
     const lazyLoadImg: LazyImgHomeType = index < 3 ? "eager" : "lazy"
 
     switch (block.items_block.type_block) {
+        case BlockTypeNumber.BlockType2M:
+            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
+        case BlockTypeNumber.BlockType3M:
+            return <BlockMType3M data={block} />
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} />
         case BlockTypeNumber.BlockType9:
@@ -125,15 +129,14 @@ const renderBlock = (block: any, index: number, isMobile: boolean) => {
         case BlockTypeNumber.BlockType5:
             return (
                 <>
-                    <BlockType5Mobile data={block} />
-                    <BlockType5 data={block} />
+                    {isMobile ? (
+                        <BlockType5Mobile data={block} />
+                    ) : (
+                        <BlockType5 data={block} />
+                    )}
                 </>
             )
 
-        case BlockTypeNumber.BlockType2M:
-            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
-        case BlockTypeNumber.BlockType3M:
-            return <BlockMType3M data={block} />
         default:
             return null
     }

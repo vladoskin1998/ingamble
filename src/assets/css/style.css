@@ -2938,6 +2938,13 @@ h3 {
   margin: 0 0 4px 0;
   padding: 0 2px;
 }
+
+@media (max-width: 480.98px) {
+  .bottom-filter-tags__link {
+    white-space: nowrap;  
+    width: 50%;
+  }
+}
 @media (max-width: 650.98px) {
   .bottom-filter-tags__column_non-mob {
     display: none;
