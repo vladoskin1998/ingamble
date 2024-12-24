@@ -16,6 +16,7 @@ export default function MoreBonusesForYourChoise ()  {
                 <img
                     src={bg07}
                     alt="bg"
+                    loading="lazy"
                 />
             </div>
             <div className="best-live-dealer-casinos-gamble__body">
@@ -28,6 +29,7 @@ export default function MoreBonusesForYourChoise ()  {
                     <img
                         src={girl}
                         alt="girl"
+                        loading="lazy"
                     />
                 </div>
                 <div className="best-live-dealer-casinos-gamble__content">

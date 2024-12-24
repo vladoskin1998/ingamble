@@ -29,7 +29,8 @@ import BlockType8 from "./BlockType8"
 
 // const BlockType9 = lazy(() => import("./BlockType9"))
 
-import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
+//import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
+ const MoreBonusesForYourChoise = lazy(() => import("./MoreBonusesForYourChoise"))
 import $api from "../../http"
 import { useQuery } from "react-query"
 //@ts-ignore
