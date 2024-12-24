@@ -106,7 +106,7 @@ export default function BlockType6({
                                                 <div className="slide-slider__item casino-card">
                                                     <div className="casino-card__image-block">
                                                         <Link
-                                                            className="casino-card__image ibg"
+                                                            className="casino-card__image ibg--custom"
                                                             onClick={(e) =>
                                                                 e.stopPropagation()
                                                             }

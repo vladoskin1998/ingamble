@@ -1879,8 +1879,8 @@ h3 {
   width: 100%;
   height: 100%;
 }
-.casino-big-card__image.ibg {
-  background-position: right center;
+.casino-big-card__image.ibg--custom img {
+  object-position: right;
 }
 .casino-big-card__top {
   position: absolute;

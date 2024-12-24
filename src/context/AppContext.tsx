@@ -129,14 +129,14 @@ const initializeAdaptiveBehavior = () => {
     });
 
  
-    const ibg = document.querySelectorAll('.ibg') as NodeListOf<HTMLElement>;
-    ibg.forEach((item) => {
-        const ibgImg = item.querySelector('img');
-        const ibgImgSrc = ibgImg?.getAttribute('src');
-        if (ibgImgSrc) {
-            item.style.backgroundImage = `url(${ibgImgSrc})`;
-        }
-    });
+    // const ibg = document.querySelectorAll('.ibg') as NodeListOf<HTMLElement>;
+    // ibg.forEach((item) => {
+    //     const ibgImg = item.querySelector('img');
+    //     const ibgImgSrc = ibgImg?.getAttribute('src');
+    //     if (ibgImgSrc) {
+    //         item.style.backgroundImage = `url(${ibgImgSrc})`;
+    //     }
+    // });
 
      
     dinamicAdapt(da_elements, attr_elements, match_media, parents_original);

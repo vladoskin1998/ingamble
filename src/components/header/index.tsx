@@ -530,7 +530,7 @@ export const Header = ({
                     <div className="mobile-header__body">
                         <div
                             className="header__column"
-                            // data-da="mobile-header__body, 0, 1355.98"
+                            
                         >
                             <nav className="header__menu menu-header">
                                 <ul className="menu-header__list">

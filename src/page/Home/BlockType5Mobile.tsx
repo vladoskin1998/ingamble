@@ -26,7 +26,7 @@ export default function BlockType5Mobile({
         <div aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-casinos-2024 best-casinos-2024-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="best-casinos-2024-gamble__container container">
                 <div className="best-casinos-2024-gamble__body">
-                    <div className="best-casinos-2024-gamble__bg ibg">
+                    <div className="best-casinos-2024-gamble__bg ibg--custom">
                         <img src={bg01} alt="bg" />
                     </div>
                     <div className="best-casinos-2024-gamble__waves">
@@ -126,7 +126,7 @@ export default function BlockType5Mobile({
                                                         }`}
                                                         className="different-casino-medium__image-block"
                                                     >
-                                                        <span className="different-casino-medium__image ibg">
+                                                        <span className="different-casino-medium__image ibg--custom">
                                                             <LazyCardImg
                                                                 img={
                                                                     item

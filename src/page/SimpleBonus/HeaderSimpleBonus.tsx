@@ -90,7 +90,7 @@ export const HeaderSimpleBonus = ({
                                         </Link>
                                         <div
                                             className="info-casino-card__stake-rating name-main-casino-info__stake-rating"
-                                            // data-da="name-main-casino-info, 0, 1023.98"
+                                        
                                         >
                                             <span className="info-casino-card__stake-rating-icon">
                                                 <img
@@ -104,7 +104,7 @@ export const HeaderSimpleBonus = ({
                                         </div>
                                         <div
                                             className="info-casino-card__likes name-main-casino-info__likes"
-                                            // data-da="name-main-casino-info, 2, 1023.98"
+                                           
                                         >
                                             <span className="info-casino-card__likes-icon">
                                                 <img
@@ -122,7 +122,7 @@ export const HeaderSimpleBonus = ({
                                 <div className="main-casino-info__name name-main-casino-info">
                                     <div
                                         className="info-casino-card__stake-rating name-main-casino-info__stake-rating"
-                                        //         data-da="name-main-casino-info, 0, 1023.98"
+                                        
                                     >
                                         <span className="info-casino-card__stake-rating-icon">
                                             <img src={starIcon} alt="star" />

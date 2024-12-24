@@ -140,7 +140,7 @@ export default function BlockMType2M({
                                                                 }`}
                                                                 className="different-casino-standart__image-block"
                                                             >
-                                                                <span className="different-casino-standart__image ibg">
+                                                                <span className="different-casino-standart__image ibg--custom">
                                                                     <LazyCardImg
                                                                         img={
                                                                             item?.[0]
@@ -253,7 +253,7 @@ export default function BlockMType2M({
                                                                 }`}
                                                                 className="different-casino-standart__image-block"
                                                             >
-                                                                <span className="different-casino-standart__image ibg">
+                                                                <span className="different-casino-standart__image ibg--custom">
                                                                     <LazyCardImg
                                                                         img={
                                                                             item?.[1]
@@ -365,7 +365,7 @@ export default function BlockMType2M({
                                                                 }`}
                                                                 className="different-casino-standart__image-block"
                                                             >
-                                                                <span className="different-casino-standart__image ibg">
+                                                                <span className="different-casino-standart__image ibg--custom">
                                                                     <LazyCardImg
                                                                         img={
                                                                             item?.[2]

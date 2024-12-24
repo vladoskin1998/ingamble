@@ -105,7 +105,7 @@ export default function BlockType7({
                                                 <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                     className="different-casino-bg__image-block"
                                                 >
-                                                    <span className="different-casino-bg__image ibg">
+                                                    <span className="different-casino-bg__image ibg--custom">
                                                         <LazyCardImg
                                                             img={
                                                                 item.casino_info

@@ -80,7 +80,7 @@ export default function BlockType7Mobile({
                                                         to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                         className="different-casino-medium__image-block"
                                                     >
-                                                        <span className="different-casino-medium__image ibg">
+                                                        <span className="different-casino-medium__image ibg--custom">
                                                             <LazyCardImg
                                                                 img={
                                                                     item

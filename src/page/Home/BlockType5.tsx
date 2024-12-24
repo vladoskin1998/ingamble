@@ -101,7 +101,7 @@ export default function BlockType5({
                     </div>
                 </div>
                 <div className="best-live-dealer-casinos-gamble__row">
-                    <div className="best-live-dealer-casinos-gamble__bg ibg">
+                    <div className="best-live-dealer-casinos-gamble__bg ibg--custom">
                         <img src={bg07} alt="bg" />
                     </div>
                     <div className="best-live-dealer-casinos-gamble__slider slider-best-live-dealer-casinos-gamble">
@@ -174,7 +174,7 @@ export default function BlockType5({
                                                         className="slide-slider__item casino-big-card"
                                                     >
                                                         <Link
-                                                            className="casino-big-card__image ibg"
+                                                            className="casino-big-card__image ibg--custom"
                                                             to={`/casino/${sanitizeLink(
                                                                 item
                                                                     ?.casino_info
@@ -194,6 +194,7 @@ export default function BlockType5({
                                                                         ?.bonus_image ||
                                                                     ""
                                                                 }
+                                                                width="100%"
                                                             />
                                                         </Link>
                                                         <div className="casino-big-card__top">

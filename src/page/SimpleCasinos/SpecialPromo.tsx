@@ -61,7 +61,7 @@ export const SpecialPromo = () => {
                                 <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
-                                            <div className="casino-card__image ibg">
+                                            <div className="casino-card__image ibg--custom">
                                                 <img
                                                     src="/src/assets/img/casino-cards/15.jpg"
                                                     alt="Special 10,000,000$ Tournament"
@@ -100,7 +100,7 @@ export const SpecialPromo = () => {
                                 <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
-                                            <div className="casino-card__image ibg">
+                                            <div className="casino-card__image ibg--custom">
                                                 <img
                                                     src="/src/assets/img/casino-cards/16.jpg"
                                                     alt="5,000,000$ Bonus Racing"
@@ -137,7 +137,7 @@ export const SpecialPromo = () => {
                                 <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
-                                            <div className="casino-card__image ibg">
+                                            <div className="casino-card__image ibg--custom">
                                                 <img
                                                     src="/src/assets/img/casino-cards/15.jpg"
                                                     alt="Special 10,000,000$ Tournament"
@@ -176,7 +176,7 @@ export const SpecialPromo = () => {
                                 <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
-                                            <div className="casino-card__image ibg">
+                                            <div className="casino-card__image ibg--custom">
                                                 <img
                                                     src="/src/assets/img/casino-cards/16.jpg"
                                                     alt="5,000,000$ Bonus Racing"
@@ -213,7 +213,7 @@ export const SpecialPromo = () => {
                                 <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
-                                            <div className="casino-card__image ibg">
+                                            <div className="casino-card__image ibg--custom">
                                                 <img
                                                     src="/src/assets/img/casino-cards/15.jpg"
                                                     alt="Special 10,000,000$ Tournament"
@@ -252,7 +252,7 @@ export const SpecialPromo = () => {
                                 <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
-                                            <div className="casino-card__image ibg">
+                                            <div className="casino-card__image ibg--custom">
                                                 <img
                                                     src="/src/assets/img/casino-cards/16.jpg"
                                                     alt="5,000,000$ Bonus Racing"

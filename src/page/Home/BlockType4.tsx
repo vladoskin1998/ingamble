@@ -106,7 +106,7 @@ export default function BlockType4({
                                                         className="slide-slider__item casino-big-card"
                                                     >
                                                         <Link
-                                                            className="casino-big-card__image ibg"
+                                                            className="casino-big-card__image ibg--custom"
                                                             to={`/casino/${sanitizeLink(
                                                                 item
                                                                     ?.casino_info
@@ -118,6 +118,7 @@ export default function BlockType4({
                                                                 item?.bonus_info
                                                                     ?.bonus_id
                                                             }`}
+                                                           
                                                         >
                                                             <LazyCardImg
                                                                 img={
@@ -126,6 +127,7 @@ export default function BlockType4({
                                                                         ?.bonus_image ||
                                                                     ""
                                                                 }
+                                                                    width="100%"
                                                             />
                                                         </Link>
                                                         <div className="casino-big-card__top">

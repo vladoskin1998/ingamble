@@ -106,7 +106,7 @@ export default function BlockType4Mobile({
                                                         className="casino-card__image-block"
                                                     >
                                                         <Link
-                                                            className="casino-card__image ibg"
+                                                            className="casino-card__image ibg--custom"
                                                             to={`/casino/${sanitizeLink(
                                                                 item
                                                                     ?.casino_info
@@ -126,6 +126,7 @@ export default function BlockType4Mobile({
                                                                         ?.bonus_image ||
                                                                     ""
                                                                 }
+                                                                width="100%"
                                                             />
                                                         </Link>
                                                         <a

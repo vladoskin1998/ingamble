@@ -17,7 +17,7 @@ export const HowToGetBonus = ({
         <section className="simple-bonus__get-bonus get-bonus">
             <div className="get-bonus__container container">
                 <div className="get-bonus__body">
-                    <div className="get-bonus__bg ibg">
+                    <div className="get-bonus__bg ibg--custom">
                         <img src={bg08} alt="bg" loading="lazy" />
                     </div>
                     <div className="get-bonus__row">
