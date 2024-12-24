@@ -202,7 +202,7 @@ export default function BlockType9({
                                                                         ""
                                                                     }
                                                                     size="medium"
-                                                                    imgLoading="eager"
+                                                                    imgLoading="lazy"
                                                                 />
                                                             </div>
                                                             <div className="features-essential-programs-gamble__info">
