@@ -191,7 +191,7 @@ export default function BlockType6({
                                                                 className="casino-small-card__image-block"
                                                             >
                                                                 <Link
-                                                                    className="casino-small-card__image ibg"
+                                                                    className="casino-small-card__image ibg--custom"
                                                                     style={{
                                                                         backgroundSize:
                                                                             "125% auto",
