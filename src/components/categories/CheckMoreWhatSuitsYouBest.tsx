@@ -46,7 +46,7 @@ export const CheckMoreWhatSuitsYouBest = () => {
                                 className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
                             >
                       
-                                {isMobile ? sliceString(CristmasCategory?.name, 25): CristmasCategory?.name}
+                                {isMobile ? sliceString(CristmasCategory?.name, 23): CristmasCategory?.name}
                             </Link>
                         </div>
                     {category?.filter(item => item?.bonus_id !== 11 )?.map((item, index) => (
@@ -57,7 +57,7 @@ export const CheckMoreWhatSuitsYouBest = () => {
                                 aria-label="Put your description here."
                                 className="bottom-filter-tags__btn slide-filter-tags-gamble__btn"
                             >
-                                {isMobile ? sliceString(item?.name, 25): item?.name}
+                                {isMobile ? sliceString(item?.name, 23): item?.name}
                               
                             </Link>
                         </div>
