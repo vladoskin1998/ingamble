@@ -167,7 +167,6 @@ export default function Home ()  {
         setIsMobile(window.innerWidth <= 480);
       };
   
-      // Добавляем слушатель изменения размера окна
       window.addEventListener('resize', handleResize);
   
       return () => {

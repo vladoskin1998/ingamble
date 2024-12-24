@@ -1,6 +1,6 @@
 import { RewievCasinoDataResponse } from "../../types"
 import { CasinoReview } from "./CasinoReview"
-import HarryImg from "../../assets/img/casino-person/02.jpg"
+import HarryImg from "../../assets/img/casino-person/3.webp"
 import { useState } from "react"
 import { sanitizeNumberLike } from "../../helper"
 const DoYouLike = ({ likes: DataLike }: { likes: number }) => {
@@ -105,14 +105,15 @@ export const Harry = ({
                                             Author
                                         </div>
                                         <div className="content-item-iwild-review__name">
-                                            HARRY STYLES
+                                            MAREK PROCHAZKA
                                         </div>
                                         <div className="content-item-iwild-review__text">
                                             <p>
-                                                Marketing @Coinmooner. Current
+                                                Content Maker, Crypto & Gambling Enthusiast
+                                                {/* Marketing @Coinmooner. Current
                                                 learning project: USA.
                                                 <br />I also summarise books on
-                                                my <span>personal blog</span>.
+                                                my <span>personal blog</span>. */}
                                             </p>
                                         </div>
                                     </div>
