@@ -11,6 +11,9 @@ export default function BlockType1({
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType1)
         return <></>
 
+
+
+    
     // const dataCard = !data.blocks_sequence_number ? shuffleArray(data?.items_block.data_cards) : data?.items_block.data_cards
     // .sort((a, b) => a.order - b.order)
     const dataCard = shuffleArray(data?.items_block.data_cards).slice(0,8)

@@ -19,6 +19,9 @@ export default function BlockMType2M({
     data: HomeDataBlock | undefined
     lazyLoadImg?: LazyImgHomeType
 }) {
+
+    
+    
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {

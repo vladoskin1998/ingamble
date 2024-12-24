@@ -7,63 +7,49 @@ import { Categories } from "../../components/categories/Categories"
 
 import BlockType1 from "./BlockType1"
 
-// const BlockType2 = lazy(() => import("./BlockType2"))
+ const BlockType2 = lazy(() => import("./BlockType2"))
 import BlockType2Mobile from "./BlockType2Mobile"
 
-// const BlockType3 = lazy(() => import("./BlockType3"))
+ const BlockType3 = lazy(() => import("./BlockType3"))
 import BlockType3Mobile from "./BlockType3Mobile"
 
-// const BlockType4 = lazy(() => import("./BlockType4"))
+ const BlockType4 = lazy(() => import("./BlockType4"))
 import BlockType4Mobile from "./BlockType4Mobile"
 
-// const BlockType5 = lazy(() => import("./BlockType5"))
+ const BlockType5 = lazy(() => import("./BlockType5"))
 import BlockType5Mobile from "./BlockType5Mobile"
 
 import BlockType6 from "./BlockType6"
 
-// const BlockType7 = lazy(() => import("./BlockType7"))
+ const BlockType7 = lazy(() => import("./BlockType7"))
 import BlockType7Mobile from "./BlockType7Mobile"
 
-import BlockType9 from "./BlockType9"
+// import BlockType9 from "./BlockType9"
 import BlockType8 from "./BlockType8"
+
+ const BlockType9 = lazy(() => import("./BlockType9"))
 
 import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
 import $api from "../../http"
 import { useQuery } from "react-query"
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import {
-
     BlockTypeNumber,
     HomeDataBlock,
     HomeDataBlockMobile,
 } from "../../types"
 
 import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
-import BlockType2 from "./BlockType2"
-import BlockType3 from "./BlockType3"
-import BlockType4 from "./BlockType4"
-import BlockType7 from "./BlockType7"
-import BlockType5 from "./BlockType5"
+//import BlockType2 from "./BlockType2"
+//import BlockType3 from "./BlockType3"
+//import BlockType4 from "./BlockType4"
+//import BlockType7 from "./BlockType7"
+//import BlockType5 from "./BlockType5"
 import BlockMType2M from "./BlockMType2M"
 import BlockMType3M from "./BlockMType3M"
 
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
-// const BlockType7Mobile = lazy(() => import("./BlockType7Mobile"))
-// const TopReloadBonuses = lazy(() => import("./TopReloadBonuses"))
-// const NonStickyBonus = lazy(() => import("./NonStickyBonus"))
-// const NewlyOpenedCasinos = lazy(() => import("./NewlyOpenedCasinos"))
-// const ExploreTheBestCryptoCasinos = lazy(
-//     () => import("./ExploreTheBestCryptoCasinos")
-// )
-// const WeeksFavoiritesBonuses = lazy(() => import("./WeeksFavoiritesBonuses"))
-// const TheBestCasinosYear = lazy(() => import("./TheBestCasinosYear"))
-// const FastestWithdrawalCasinos = lazy(
-//     () => import("./FastestWithdrawalCasinos")
-// )
-// const HighrollerCasinoBonuses = lazy(() => import("./HighrollerCasinoBonuses"))
-// const GetStartedWithPowerfulWelcomeBonusPacks = lazy(
-//     () => import("./GetStartedWithPowerfulWelcomeBonusPacks")
-// )
+
 
 export type LazyImgHomeType = "lazy" | "eager" | undefined
 
@@ -156,24 +142,22 @@ export default function Home ()  {
         dataHomeMobile: { data_blocks_m: HomeDataBlockMobile[] }[]
         headers: any
     }>("get-data-home-page/ ", getHomeDataFetch, {
-        keepPreviousData: true,
+      
         staleTime: Infinity,
+        cacheTime: 1000 * 60 * 5, 
+
     })
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
     useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth <= 480);
-      };
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
+        const handleResize = () => setIsMobile(window.innerWidth <= 480);
+        window.addEventListener('resize', handleResize);
+    
+        handleResize(); 
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
-  
+    
 
     useEffect(() => {
         initializeAdaptiveBehavior()
@@ -181,7 +165,8 @@ export default function Home ()  {
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome;
 
-     if (isLoading ) return <LogoLoader />
+    if (isLoading ) return <LogoLoader />
+
     return (
         <Wraper>
             <main className="gamble__main main-gamble">
