@@ -32,6 +32,7 @@ import BlockType8 from "./BlockType8"
 import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
 import $api from "../../http"
 import { useQuery } from "react-query"
+//@ts-ignore
 import { LogoLoader } from "../../components/loader/LogoLoader"
 import {
     BlockTypeNumber,
@@ -173,7 +174,7 @@ export default function Home() {
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
 
-    if (isLoading) return <LogoLoader />
+    // if (isLoading) return <LogoLoader />
 
     return (
         <Wraper>
