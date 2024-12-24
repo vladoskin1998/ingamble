@@ -129,7 +129,7 @@ export default function BlockType6({
                                                                         .bonus_image ||
                                                                     ""
                                                                 }
-                                                                imgLoading="eager"
+                                                              
                                                             />
                                                         </Link>
                                                         <a

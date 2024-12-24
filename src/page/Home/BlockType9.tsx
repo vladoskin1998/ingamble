@@ -205,7 +205,7 @@ import { Link } from "react-router-dom"
                                                                         ""
                                                                     }
                                                                     size="medium"
-                                                                    imgLoading="eager"
+                                                                    // imgLoading="eager"
                                                                 />
                                                             </div>
                                                             <div className="features-essential-programs-gamble__info">

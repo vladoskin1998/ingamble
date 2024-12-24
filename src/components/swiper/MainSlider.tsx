@@ -37,7 +37,7 @@ const MainSliderImg = ({ img }: { img: string }) => {
                 }}
                 src={img}
                 alt=""
-                loading="eager"
+                // loading="eager"
                
             />
         </div>

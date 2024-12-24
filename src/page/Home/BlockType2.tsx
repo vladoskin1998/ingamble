@@ -193,7 +193,7 @@ export default function BlockType2({
                                                                                         size="medium"
                                                                                         height="100%"
                                                                                         width="100%"
-                                                                                        imgLoading="eager"
+                                                                                  
                                                                                     />
                                                                                 </Link>
                                                                             </div>
