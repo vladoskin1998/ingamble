@@ -145,21 +145,22 @@ const initializeAdaptiveBehavior = () => {
 
 export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
      document.title =" CryptoGamblers"
+     //@ts-ignore
     const location = useLocation();
     const [isSidebarActive, setSidebarActive] = useState(false)
     
-    useEffect(() => {
-        const handleResize = () => {
-            initializeAdaptiveBehavior();
-        };
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         initializeAdaptiveBehavior();
+    //     };
      
-        initializeAdaptiveBehavior();
-        window.addEventListener('resize', handleResize);
+    //     initializeAdaptiveBehavior();
+    //     window.addEventListener('resize', handleResize);
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [location]);
+    //     return () => {
+    //         window.removeEventListener('resize', handleResize);
+    //     };
+    // }, [location]);
 
     const [lastUpdate, setLastUpdate] = useState<string>('');
 
