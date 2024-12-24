@@ -22,6 +22,8 @@ import { SiblingBonus } from "../SimpleBonus/SiblingBonus"
 import { COUNTRIES } from "../../helper/Country"
 import { OtherBestReloadBonus } from "../SimpleBonus/OtherBestBonus"
 import { EssentialVIPLoyaltyPrograms } from "../SimpleBonus/EssentialVIPLoyaltyPrograms"
+import JEFFMURPHY from "../../assets/img/casino-person/4.webp"
+
 
 const getCurrentLoyaltiesFetchData = async (queryId: string) => {
     const response = await $api.get(`get-data-loyalty-program/${queryId}/`)
@@ -182,7 +184,7 @@ export default function SimpleLoyalties() {
                         <EssentialVIPLoyaltyPrograms />
                     </div>
 
-                    <HarryStyles />
+                    <HarryStyles img={JEFFMURPHY} title={"JEFF MURPHY"} subtitle={"Content Maker, Crypto & Gambling Enthusiast"}/>
                     <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />
                     <section className="main-gamble__bottom-info bottom-info-gamble">

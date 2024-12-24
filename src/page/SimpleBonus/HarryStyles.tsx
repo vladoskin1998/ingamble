@@ -3,7 +3,9 @@ import harryStyles1 from "../../assets/img/casino-person/01.png"
 import harryStyles2 from "../../assets/img/casino-person/02.jpg"
 import "../../assets/css/casino-person.css"
 
-export const HarryStyles = () => {
+export const HarryStyles = ({img, title,subtitle}:{
+    img?:string, title?:string,subtitle?:string
+}) => {
     const [currentImage, setCurrentImage] = useState(harryStyles1)
 
     const updateImage = () => {
@@ -29,16 +31,16 @@ export const HarryStyles = () => {
                             <div className="casino-person__info info-casino-person">
                                 <div className="info-casino-person__img">
                                     <img
-                                        src={currentImage}
+                                        src={img || currentImage}
                                         alt="HARRY STYLES"
                                     />
                                 </div>
                                 <div className="info-casino-person__content">
                                     <h3 className="info-casino-person__name h3">
-                                        HARRY STYLES
+                                      {title || "HARRY STYLES"}  
                                     </h3>
                                     <div className="info-casino-person__position">
-                                        Content Maker, Chief Marketing at Lerio
+                                       { subtitle || "Content Maker, Chief Marketing at Lerio"}
                                     </div>
                                 </div>
                             </div>
@@ -96,21 +98,23 @@ export const HarryStyles = () => {
                     <div className="iwild-review__item item-iwild-review item-iwild-review_author">
                         <div className="item-iwild-review__content content-item-iwild-review">
                             <div className="content-item-iwild-review__image">
-                                <img src={harryStyles2} alt="HARRY STYLES" />
+                                <img src={ img || harryStyles2} alt="HARRY STYLES" />
                             </div>
                             <div className="content-item-iwild-review__body">
                                 <div className="content-item-iwild-review__label">
                                     Author
                                 </div>
                                 <div className="content-item-iwild-review__name">
-                                    HARRY STYLES
+                                   {title || "HARRY STYLES"} 
                                 </div>
                                 <div className="content-item-iwild-review__text">
                                     <p>
-                                        Marketing @Coinmooner. Current learning
-                                        project: USA.
-                                        <br />I also summarise books on my{" "}
-                                        <span>personal blog</span>.
+                                        {
+                                            subtitle || " Marketing @Coinmooner. Current learning project: USA."
+                                        }
+                                       
+                                        {/* <br />I also summarise books on my{" "}
+                                        <span>personal blog</span>. */}
                                     </p>
                                 </div>
                             </div>
