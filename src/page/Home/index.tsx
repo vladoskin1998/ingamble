@@ -76,11 +76,11 @@ const renderBlock = (block: any, index: number, isMobile: boolean) => {
         case BlockTypeNumber.BlockType2M:
             return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
         case BlockTypeNumber.BlockType3M:
-            return <BlockMType3M data={block} />
+            return <BlockMType3M data={block}/>
         case BlockTypeNumber.BlockType1:
-            return <BlockType1 data={block} />
+            return <BlockType1 data={block}/>
         case BlockTypeNumber.BlockType9:
-            return <BlockType9 data={block} />
+            return <BlockType9 data={block}/>
         case BlockTypeNumber.BlockType6:
             return <BlockType6 data={block} />
         case BlockTypeNumber.BlockType8:
@@ -110,7 +110,7 @@ const renderBlock = (block: any, index: number, isMobile: boolean) => {
             return (
                 <>
                     {isMobile ? (
-                        <BlockType4Mobile data={block} />
+                        <BlockType4Mobile data={block}/>
                     ) : (
                         <BlockType4 data={block} />
                     )}
@@ -188,7 +188,9 @@ export default function Home() {
 
                     </div> */}
                     {blocksToRender?.map((block: any, index) =>
+                     
                         renderBlock(block, index, isMobile)
+                         
                     )}
 
                     {/* <FastestPayoutCasinos /> */}

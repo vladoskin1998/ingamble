@@ -318,21 +318,33 @@ export const HeaderSimpleBonus = ({
                                             </div>
                                             <div className="item-features-content-casino-info__body">
                                                 <div className="item-features-content-casino-info__number">
-                                                    {data
+                                                    {
+                                                    data
+                                                    ?.wagering_bonus_plus_deposit
+                                                    ?.bonus_plus_deposit ||
+                                                    data
+                                                        ?.wagering_bonus_plus_deposit
+                                                        ?.bonus_only ?
+                                                    (data
                                                         ?.wagering_bonus_plus_deposit
                                                         ?.bonus_plus_deposit ||
                                                         data
                                                             ?.wagering_bonus_plus_deposit
-                                                            ?.bonus_only ||
-                                                        0}
-                                                    x
+                                                            ?.bonus_only ) + "x" :
+                                                        "-"}
+                                                   
                                                 </div>
                                                 <div className="item-features-content-casino-info__value">
-                                                    {data
+                                                    {  data
+                                                    ?.wagering_bonus_plus_deposit
+                                                    ?.bonus_plus_deposit ||
+                                                    data
+                                                        ?.wagering_bonus_plus_deposit
+                                                        ?.bonus_only  ? data
                                                         ?.wagering_bonus_plus_deposit
                                                         ?.bonus_plus_deposit
                                                         ? "Bonus + Deposit"
-                                                        : "Bonus Only"}
+                                                        : "Bonus Only" : ''}
                                                 </div>
                                             </div>
                                         </div>
