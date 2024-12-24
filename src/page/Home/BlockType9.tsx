@@ -193,7 +193,7 @@ export default function BlockType9({
                                                     (itp, idk) => (
                                                         <div
                                                             className="features-essential-programs-gamble__item"
-                                                            key={idk + 222}
+                                                            key={idk}
                                                         >
                                                             <div className="features-essential-programs-gamble__icon">
                                                                 <LazyCardImg
@@ -202,7 +202,7 @@ export default function BlockType9({
                                                                         ""
                                                                     }
                                                                     size="medium"
-                                                                    imgLoading="lazy"
+                                                                    imgLoading="eager"
                                                                 />
                                                             </div>
                                                             <div className="features-essential-programs-gamble__info">
