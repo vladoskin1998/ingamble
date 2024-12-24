@@ -211,7 +211,7 @@ export default function BlockType5({
                                                                     }`}
                                                                     className="casino-small-card__image-block"
                                                                 >
-                                                                    <div className="casino-small-card__image ibg">
+                                                                    <div className="casino-small-card__image ibg--custom">
                                                                         <LazyCardImg
                                                                             img={
                                                                                 item
