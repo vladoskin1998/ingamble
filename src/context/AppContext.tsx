@@ -95,8 +95,10 @@ const dinamicAdapt = (
     });
 };
 
+const initializeAdaptiveBehavior = () => {}
 
-const initializeAdaptiveBehavior = () => {
+//@ts-ignore
+const initializeAdaptiveBehavior1 = () => {
     const da_elements = document.querySelectorAll('[data-da]') as NodeListOf<HTMLElement>;
     const parents_original: ParentOriginal[] = [];
     const attr_elements: string[] = [];
