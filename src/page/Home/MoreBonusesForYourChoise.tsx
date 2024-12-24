@@ -12,7 +12,7 @@ export default function MoreBonusesForYourChoise ()  {
     <section className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble best-live-dealer-casinos-gamble_mobile main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
     <div className="best-live-dealer-casinos-gamble__container container">
         <div className="best-live-dealer-casinos-gamble__row">
-            <div className="best-live-dealer-casinos-gamble__bg ibg">
+            <div className="best-live-dealer-casinos-gamble__bg ibg--custom">
                 <img
                     src={bg07}
                     alt="bg"
