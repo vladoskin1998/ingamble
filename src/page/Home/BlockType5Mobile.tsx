@@ -3,7 +3,7 @@ import star from "../../assets/img/icons/star.svg"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
-import bg01 from "../../assets/img/bg/01.jpg"
+import bg01 from "../../assets/img/bg/01.webp"
 import girl from "../../assets/img/girls/01.webp"
 
 import { BlockTypeNumber, HomeDataBlock } from "../../types"

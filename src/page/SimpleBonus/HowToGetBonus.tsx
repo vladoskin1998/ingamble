@@ -1,5 +1,5 @@
 import giftIcon from "../../assets/img/icons/gift.svg"
-import bg08 from "../../assets/img/bg/08.jpg"
+import bg08 from "../../assets/img/bg/08.webp"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import { GetDataBonusResponse } from "../../types"
 import { useState } from "react"

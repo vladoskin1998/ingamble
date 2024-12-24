@@ -1,4 +1,4 @@
-import bg07 from "../../assets/img/bg/07.jpg"
+import bg07 from "../../assets/img/bg/07.webp"
 
 import girl from "../../assets/img/girls/03.png"
 import { useAdaptiveBehavior } from "../../context/AppContext"

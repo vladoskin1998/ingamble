@@ -1,5 +1,5 @@
 
-import bg08 from "../../assets/img/bg/08.jpg"
+import bg08 from "../../assets/img/bg/08.webp"
 
 import { useState } from "react"
 import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
