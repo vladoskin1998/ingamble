@@ -284,7 +284,7 @@
   -webkit-mask: linear-gradient(90deg, #000 80%, #0000 80%) 0/7.8%;
   background:
     linear-gradient(to bottom, #FFCF23 50%, #F96B2F 50%) 0/0% no-repeat #111;
-  animation: p4 1.5s infinite steps(13);
+  animation: p4 2.5s infinite steps(13);
 }
 
 @keyframes p4 {
