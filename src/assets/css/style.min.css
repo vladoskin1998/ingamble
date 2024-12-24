@@ -5983,7 +5983,7 @@ h3 {
     border-radius: 0;
     padding: 20px;
     transform: translate(0, 0);
-    background: url("../img/menu-bg.jpg") center repeat;
+    background: url("../img/menu-bg.webp") center repeat;
   }
 }
 .dropdown-language-header__btn-back {
@@ -12334,7 +12334,7 @@ h3 {
     padding: 20px 14px 8px 14px;
     border-radius: var(--SystemCorners-Medium, 12px);
     overflow: hidden;
-    background: url("../img/menu-bg.jpg") center repeat;
+    background: url("../img/menu-bg.webp") center repeat;
   }
 }
 @media (max-width: 1023.98px) and (max-width: 992.98px) {
@@ -12450,7 +12450,7 @@ h3 {
 }
 @media (max-width: 992.98px) {
   .loyaltie__casino-person .casino-person__body {
-    background: url("../img/menu-bg.jpg") center repeat;
+    background: url("../img/menu-bg.webp") center repeat;
     background-size: auto;
   }
 }
@@ -19607,7 +19607,7 @@ h3 {
   border-radius: var(--SystemCorners-Medium, 12px);
   overflow: hidden;
   padding: 24px 24px 0 24px;
-  background: url("../img/menu-bg.jpg") center repeat;
+  background: url("../img/menu-bg.webp") center repeat;
   position: relative;
 }
 .top-bonuses-gamble__block::before {

@@ -1,3 +1,4 @@
+import {memo} from 'react'
 import star from "../../assets/img/icons/star.svg"
 import like from "../../assets/img/icons/like.svg"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -7,11 +8,14 @@ import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
 import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { Link } from "react-router-dom"
 
-export default function BlockType9({
+ const BlockType9 = memo(function BlockType9({
     data,
 }: {
     data: HomeDataBlock | undefined
 }) {
+
+    console.log("BlockType9");
+    
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9)
         return <></>
     return (
@@ -141,13 +145,12 @@ export default function BlockType9({
                                                                 <div className="value-item-stats-essential-programs-gamble__stars value-item-stats-essential-programs-gamble__stars_5">
                                                                     {item?.stars?.map(
                                                                         (
-                                                                            it,
+                                                                            _,
                                                                             idstar
                                                                         ) => (
                                                                             <div
                                                                                 key={
-                                                                                    idstar +
-                                                                                    111
+                                                                                    idstar
                                                                                 }
                                                                                 className="value-item-stats-essential-programs-gamble__star"
                                                                             >
@@ -156,8 +159,7 @@ export default function BlockType9({
                                                                                         star
                                                                                     }
                                                                                     alt={
-                                                                                        "star" +
-                                                                                        it
+                                                                                        "star"
                                                                                     }
                                                                                 />
                                                                             </div>
@@ -263,4 +265,7 @@ export default function BlockType9({
             </div>
         </section>
     )
-}
+})
+
+
+export default BlockType9;
