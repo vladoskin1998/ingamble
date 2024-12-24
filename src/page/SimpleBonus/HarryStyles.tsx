@@ -1,26 +1,8 @@
-import { useState, useEffect } from "react"
-import harryStyles1 from "../../assets/img/casino-person/01.png"
-import harryStyles2 from "../../assets/img/casino-person/02.jpg"
 import "../../assets/css/casino-person.css"
 
 export const HarryStyles = ({img, title,subtitle}:{
-    img?:string, title?:string,subtitle?:string
+    img:string, title:string,subtitle:string
 }) => {
-    const [currentImage, setCurrentImage] = useState(harryStyles1)
-
-    const updateImage = () => {
-        if (window.innerWidth > 550) {
-            setCurrentImage(harryStyles1)
-        } else {
-            setCurrentImage(harryStyles2)
-        }
-    }
-
-    useEffect(() => {
-        updateImage()
-        window.addEventListener("resize", updateImage)
-        return () => window.removeEventListener("resize", updateImage)
-    }, [])
 
     return (
         <>
@@ -31,16 +13,16 @@ export const HarryStyles = ({img, title,subtitle}:{
                             <div className="casino-person__info info-casino-person">
                                 <div className="info-casino-person__img">
                                     <img
-                                        src={img || currentImage}
+                                        src={img }
                                         alt="HARRY STYLES"
                                     />
                                 </div>
                                 <div className="info-casino-person__content">
                                     <h3 className="info-casino-person__name h3">
-                                      {title || "HARRY STYLES"}  
+                                      {title }  
                                     </h3>
                                     <div className="info-casino-person__position">
-                                       { subtitle || "Content Maker, Chief Marketing at Lerio"}
+                                       { subtitle }
                                     </div>
                                 </div>
                             </div>
@@ -98,19 +80,19 @@ export const HarryStyles = ({img, title,subtitle}:{
                     <div className="iwild-review__item item-iwild-review item-iwild-review_author">
                         <div className="item-iwild-review__content content-item-iwild-review">
                             <div className="content-item-iwild-review__image">
-                                <img src={ img || harryStyles2} alt="HARRY STYLES" />
+                                <img src={ img } alt="HARRY STYLES" />
                             </div>
                             <div className="content-item-iwild-review__body">
                                 <div className="content-item-iwild-review__label">
                                     Author
                                 </div>
                                 <div className="content-item-iwild-review__name">
-                                   {title || "HARRY STYLES"} 
+                                   {title } 
                                 </div>
                                 <div className="content-item-iwild-review__text">
                                     <p>
                                         {
-                                            subtitle || " Marketing @Coinmooner. Current learning project: USA."
+                                            subtitle 
                                         }
                                        
                                         {/* <br />I also summarise books on my{" "}

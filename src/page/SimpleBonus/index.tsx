@@ -23,7 +23,7 @@ import { useFilterContext } from "../../context/FilterContext"
 import { SiblingBonus } from "./SiblingBonus"
 import { COUNTRIES } from "../../helper/Country"
 import { OtherBestReloadBonus } from "./OtherBestBonus"
-
+import ASHLINGOBRIEN from "../../assets/img/casino-person/5.webp"
 
 
 const getBonusDataFetch = async ({queryId}:{queryId:string | null}) => {
@@ -180,7 +180,7 @@ export default function SimpleBonus() {
                     <EssentialVIPLoyaltyPrograms />
                     {geoLocation.isAllowed && (
                         <>
-                            <HarryStyles />
+                            <HarryStyles img={ASHLINGOBRIEN} title="ASHLING O'BRIEN" subtitle="Content Maker, Casino Promotions Analyst"/>
                             <CheckMoreWhatSuitsYouBest />
                         </>
                     )}
