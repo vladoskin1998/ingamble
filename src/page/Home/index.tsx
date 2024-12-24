@@ -7,27 +7,27 @@ import { Categories } from "../../components/categories/Categories"
 
 import BlockType1 from "./BlockType1"
 
- const BlockType2 = lazy(() => import("./BlockType2"))
+const BlockType2 = lazy(() => import("./BlockType2"))
 import BlockType2Mobile from "./BlockType2Mobile"
 
- const BlockType3 = lazy(() => import("./BlockType3"))
+const BlockType3 = lazy(() => import("./BlockType3"))
 import BlockType3Mobile from "./BlockType3Mobile"
 
- const BlockType4 = lazy(() => import("./BlockType4"))
+const BlockType4 = lazy(() => import("./BlockType4"))
 import BlockType4Mobile from "./BlockType4Mobile"
 
- const BlockType5 = lazy(() => import("./BlockType5"))
+const BlockType5 = lazy(() => import("./BlockType5"))
 import BlockType5Mobile from "./BlockType5Mobile"
 
 import BlockType6 from "./BlockType6"
 
- const BlockType7 = lazy(() => import("./BlockType7"))
+const BlockType7 = lazy(() => import("./BlockType7"))
 import BlockType7Mobile from "./BlockType7Mobile"
 
 // import BlockType9 from "./BlockType9"
 import BlockType8 from "./BlockType8"
 
- const BlockType9 = lazy(() => import("./BlockType9"))
+const BlockType9 = lazy(() => import("./BlockType9"))
 
 import MoreBonusesForYourChoise from "./MoreBonusesForYourChoise"
 import $api from "../../http"
@@ -50,7 +50,6 @@ import BlockMType3M from "./BlockMType3M"
 
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 
-
 export type LazyImgHomeType = "lazy" | "eager" | undefined
 
 const getHomeDataFetch = async () => {
@@ -70,11 +69,8 @@ const getHomeDataFetch = async () => {
     }
 }
 
-
-
-const renderBlock = (block: any, index: number) => {
-   
-    const lazyLoadImg:LazyImgHomeType = index < 3 ?  'eager' : 'lazy' 
+const renderBlock = (block: any, index: number, isMobile: boolean) => {
+    const lazyLoadImg: LazyImgHomeType = index < 3 ? "eager" : "lazy"
 
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
@@ -88,42 +84,54 @@ const renderBlock = (block: any, index: number) => {
         case BlockTypeNumber.BlockType2:
             return (
                 <>
-                    <BlockType2 data={block} />
-                    <BlockType2Mobile data={block} />
+                    {isMobile ? (
+                        <BlockType2Mobile data={block} />
+                    ) : (
+                        <BlockType2 data={block} />
+                    )}
                 </>
             )
 
         case BlockTypeNumber.BlockType3:
             return (
                 <>
-                    <BlockType3 data={block} />
-                    <BlockType3Mobile data={block} />
+                    {isMobile ? (
+                        <BlockType3Mobile data={block} />
+                    ) : (
+                        <BlockType3 data={block} />
+                    )}
                 </>
             )
         case BlockTypeNumber.BlockType4:
             return (
                 <>
-                    <BlockType4 data={block} />
-                    <BlockType4Mobile data={block} />
+                    {isMobile ? (
+                        <BlockType4Mobile data={block} />
+                    ) : (
+                        <BlockType4 data={block} />
+                    )}
                 </>
             )
         case BlockTypeNumber.BlockType7:
             return (
                 <>
-                    <BlockType7 data={block} />
-                    <BlockType7Mobile data={block} />
+                    {isMobile ? (
+                        <BlockType7Mobile data={block} />
+                    ) : (
+                        <BlockType7 data={block} />
+                    )}
                 </>
             )
         case BlockTypeNumber.BlockType5:
             return (
                 <>
-                    <BlockType5 data={block} />
                     <BlockType5Mobile data={block} />
+                    <BlockType5 data={block} />
                 </>
             )
 
         case BlockTypeNumber.BlockType2M:
-            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg}/>
+            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
         case BlockTypeNumber.BlockType3M:
             return <BlockMType3M data={block} />
         default:
@@ -131,7 +139,7 @@ const renderBlock = (block: any, index: number) => {
     }
 }
 
-export default function Home ()  {
+export default function Home() {
     // // document.title = "Home"
     //@ts-ignore
     const { isSidebarActive, setSidebarActive, initializeAdaptiveBehavior } =
@@ -142,36 +150,33 @@ export default function Home ()  {
         dataHomeMobile: { data_blocks_m: HomeDataBlockMobile[] }[]
         headers: any
     }>("get-data-home-page/ ", getHomeDataFetch, {
-      
         staleTime: Infinity,
-        cacheTime: 1000 * 60 * 5, 
-
+        cacheTime: 1000 * 60 * 5,
     })
 
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= 480);
-        window.addEventListener('resize', handleResize);
-    
-        handleResize(); 
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-    
+        const handleResize = () => setIsMobile(window.innerWidth <= 480)
+        window.addEventListener("resize", handleResize)
+
+        handleResize()
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
 
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome;
+    const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
 
-    if (isLoading ) return <LogoLoader />
+    if (isLoading) return <LogoLoader />
 
     return (
         <Wraper>
             <main className="gamble__main main-gamble">
                 <div className="main-gamble__body">
-                    <Categories  />
+                    <Categories />
                     {/* <div className="home--main--pc">
                     {data?.dataHome?.map((block) => renderBlock(block))}
                     </div>
@@ -179,8 +184,10 @@ export default function Home ()  {
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
                     </div> */}
-                    {blocksToRender?.map((block: any, index) => renderBlock(block, index))}
-               
+                    {blocksToRender?.map((block: any, index) =>
+                        renderBlock(block, index, isMobile)
+                    )}
+
                     {/* <FastestPayoutCasinos /> */}
 
                     {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
