@@ -359,7 +359,7 @@ export default function BlockType5({
                             <span></span>
                         </div>
                         <div className="best-live-dealer-casinos-gamble__girl">
-                            <img src={girl} alt="girl" />
+                            <img src={girl} alt="girl" loading="lazy"/>
                         </div>
                         <div className="best-live-dealer-casinos-gamble__content">
                             <div className="best-live-dealer-casinos-gamble__title">

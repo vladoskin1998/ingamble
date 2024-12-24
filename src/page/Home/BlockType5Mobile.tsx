@@ -39,7 +39,7 @@ export default function BlockType5Mobile({
                             isScrolled && "scrolled"
                         }`}
                     >
-                        <img src={girl} alt="girl" />
+                        <img src={girl} alt="girl" loading="lazy"/>
                     </div>
                     <div
                         className={`best-casinos-2024-gamble__slider slider-best-casinos-2024-gamble ${
@@ -108,7 +108,7 @@ export default function BlockType5Mobile({
                                 >
                                     {[
                                         ...data?.items_block.data_cards,
-                                        ...data?.items_block.data_cards,
+                                        
                                     ]
                                         ?.sort((a, b) => a?.order - b?.order)
                                         ?.map((item) => (
