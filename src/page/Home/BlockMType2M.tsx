@@ -150,7 +150,7 @@ export default function BlockMType2M({
                                                                         }
                                                                         size="medium"
                                                                         // imgLoading={lazyLoadImg}
-                                                                        imgLoading="eager"
+                                                                        imgLoading="lazy"
                                                                     />
                                                                 </span>
                                                             </Link>

@@ -75,14 +75,14 @@ const renderBlock = (block: any, index: number, isMobile: boolean) => {
     const lazyLoadImg: LazyImgHomeType = index < 3 ? "eager" : "lazy"
 
     switch (block.items_block.type_block) {
-        case BlockTypeNumber.BlockType2M:
-            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
-        case BlockTypeNumber.BlockType3M:
-            return <BlockMType3M data={block}/>
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block}/>
         case BlockTypeNumber.BlockType9:
             return <BlockType9 data={block}/>
+        case BlockTypeNumber.BlockType2M:
+            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
+        case BlockTypeNumber.BlockType3M:
+            return <BlockMType3M data={block}/>
         case BlockTypeNumber.BlockType6:
             return <BlockType6 data={block} />
         case BlockTypeNumber.BlockType8:
