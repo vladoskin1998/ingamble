@@ -33,7 +33,7 @@ export const CheckMoreWhatSuitsYouBest = () => {
                             />
                         </span>
                         <h2 className="top__title">
-                            Check more what suits You Best
+                        Get More of What Suits You Best
                         </h2>
                     </div>
                 </div>

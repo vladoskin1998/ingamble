@@ -974,7 +974,7 @@ export const BonusInformation = ({
                                                         className="item-content-bonus-information__info-text"
                                                         style={{ zIndex: 10 }}
                                                     >
-                                                        Meaning <span> the player  is restricted </span>   from playing  games <br /> with an RTP higher   than  the specified limit.
+                                                        Meaning <span> the player  is restricted </span><br />   from playing  games <br /> with an RTP higher   than  the specified limit.
                                                         {/* Text field,{" "}
                                                         <span>
                                                             with poyasnenie
