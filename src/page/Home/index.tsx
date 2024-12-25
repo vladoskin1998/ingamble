@@ -49,7 +49,7 @@ import BlockType7 from "./BlockType7"
 import BlockType5 from "./BlockType5"
 import BlockMType2M from "./BlockMType2M"
 import BlockMType3M from "./BlockMType3M"
-
+const  BottomInfo = lazy(() => import( "../../components/footer/BottomInfo"))
 const SubscribeForm = lazy(() => import("../SimpleBonus/SubscribeForm"))
 
 export type LazyImgHomeType = "lazy" | "eager" | undefined
@@ -233,77 +233,7 @@ export default function Home() {
                     <MoreBonusesForYourChoise />
                     <CheckMoreWhatSuitsYouBest />
                     <SubscribeForm />
-                    <section className="main-gamble__bottom-info bottom-info-gamble">
-                        <div className="bottom-info-gamble__container container">
-                            <div className="bottom-info-gamble__row">
-                                <div className="bottom-info-gamble__column">
-                                    <div className="bottom-info-gamble__item">
-                                        <h2 className="bottom-info-gamble__title">
-                                            inGamble - The most popular New
-                                            Casino and Bonus listing and review
-                                            website
-                                        </h2>
-                                        <div className="bottom-info-gamble__text">
-                                            <p>
-                                                inGamble is a well-known and
-                                                respected brand within the
-                                                iGaming industry. We are the
-                                                most popular gambling listing
-                                                and review website. New players
-                                                owners always look for
-                                                opportunities to list their
-                                                projects on our website. That
-                                                ensures that the information on
-                                                our platform is always
-                                                accessible and up to date.
-                                            </p>
-                                            <p>
-                                                Most of the cryptocurrencies are
-                                                listed on CoinMooner even before
-                                                they are listed on CoinMarketCap
-                                                & CoinGecko.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="bottom-info-gamble__column">
-                                    <div className="bottom-info-gamble__item">
-                                        <h2 className="bottom-info-gamble__title">
-                                            Find DeFi tokens that will generate
-                                            huge profits
-                                        </h2>
-                                        <div className="bottom-info-gamble__text">
-                                            <p>
-                                                CoinMooner became a platform
-                                                that makes cryptocurrencies more
-                                                accessible to the public and
-                                                provides entertaining features,
-                                                developments, crypto-related
-                                                news, tutorials, and other
-                                                valuable materials. One of the
-                                                main goals is to stay relevant
-                                                and keep up with the rapid
-                                                growth of crypto.
-                                            </p>
-                                            <p>
-                                                To follow our ideology, we
-                                                developed state-of-the-art
-                                                mechanisms and features that
-                                                allow our visitors to analyze
-                                                the tokens. Our visitors can use
-                                                various rankings, filtering
-                                                options, token contract audits,
-                                                charts, trading history, and
-                                                many other valuable options. All
-                                                of this combined brings
-                                                consistent results!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                 `  <BottomInfo />
                 </div>
             </main>
         </Wraper>
