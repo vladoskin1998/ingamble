@@ -10,8 +10,14 @@ export const LogoLoader = () => {
     useEffect((
        
     ) => {
-         setTimeout(() => {setLoader( Math.random() * 10)}, 0)
+          const timer = setTimeout(() => {
+              setLoader(Math.ceil(Math.random() * 10) + 1)
+          }, 100)
+          return () => clearTimeout(timer)
     }, [])
+
+    console.log('setTimeout', loader)
+    
 
     return (
         <div className="loader-body-line" key={loader}>

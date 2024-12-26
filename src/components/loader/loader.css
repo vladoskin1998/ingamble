@@ -178,7 +178,7 @@
 } */
 .loader-body-logo {
   position: absolute;
- 
+  will-change: transform, top;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
