@@ -128,6 +128,7 @@ export default function Home() {
 
     return (
         <>
+            {!blocksToRender?.length && <LogoLoader />}
             <Wraper>
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
@@ -173,7 +174,6 @@ export default function Home() {
                     </div>
                 </main>
             </Wraper>
-            {!blocksToRender?.length && <LogoLoader />}
         </>
     )
 }
