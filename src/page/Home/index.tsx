@@ -124,10 +124,10 @@ export default function Home() {
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
 
-    if (!blocksToRender?.length) return (
-        <div key={isMobile ? window.innerWidth : 1}>
+    if (blocksToRender?.length) return (
+       
             <LogoLoader />
-        </div>
+     
     )
 
     return (
