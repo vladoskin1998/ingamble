@@ -4,28 +4,9 @@ import logoIcon from "../../assets/img/logo-icon.svg"
 
 export const LogoLoader = () => {
 
-       useEffect(() => {
-           const loaderLogo = document.querySelector<HTMLElement>('.loader-body-logo')
-
-           const updatePosition = () => {
-               if (loaderLogo) {
-                   const width = window.innerWidth / 2
-                   const height = window.innerHeight / 2
-
-                   loaderLogo.style.position = 'absolute'
-                   loaderLogo.style.left = `${width}px`
-                   loaderLogo.style.top = `${height}px`
-                   loaderLogo.style.transform = 'translate(-50%, -50%)'
-               }
-           }
-
-           updatePosition() // Устанавливаем позицию при загрузке
-           window.addEventListener('resize', updatePosition) // Обновляем при изменении размера окна
-
-           return () => {
-               window.removeEventListener('resize', updatePosition) // Чистим обработчик при размонтировании
-           }
-       }, [])
+    useEffect(() => {
+        
+    }, [])
 
     return (
         <div className="loader-body-line">
