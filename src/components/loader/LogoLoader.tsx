@@ -4,9 +4,12 @@ import logoIcon from "../../assets/img/logo-icon.svg"
 
 export const LogoLoader = () => {
 
-    useEffect(() => {
+ useEffect(() => {
+     window.scrollTo({
         
-    }, [])
+         top: document.body.scrollHeight, // Прокрутка до конца страницы
+     })
+ }, [])
 
     return (
         <div className="loader-body-line">
