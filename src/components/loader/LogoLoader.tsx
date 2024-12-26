@@ -8,14 +8,19 @@ export const LogoLoader = () => {
 
 
    useEffect(() => {
-       const loader = document?.querySelector('.loader-body-line') as HTMLDivElement
-       if (loader) {
-    
-           loader?.offsetHeight // Принудительный рефлоу
+       const forceReflow = () => {
+           const loader = document.querySelector('.loader-body-line') as HTMLDivElement
+           if (loader) {
+               loader.style.transform = 'translateZ(0)' // Принудительный рендер
+           }
+       }
 
+       document.addEventListener('touchstart', forceReflow, { once: true })
+
+       return () => {
+           document.removeEventListener('touchstart', forceReflow)
        }
    }, [])
-
 
     return (
         <div className="loader-body-line" >
