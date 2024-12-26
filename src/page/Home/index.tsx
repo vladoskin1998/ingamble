@@ -124,11 +124,10 @@ export default function Home() {
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
 
-    // if (!blocksToRender?.length) return <LogoLoader />
+    if (!blocksToRender?.length) return <LogoLoader />
 
     return (
-        <>
-            {!blocksToRender?.length && <LogoLoader />}
+       
             <Wraper>
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
@@ -174,6 +173,6 @@ export default function Home() {
                     </div>
                 </main>
             </Wraper>
-        </>
+ 
     )
 }
