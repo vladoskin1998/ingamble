@@ -164,12 +164,20 @@
   /* width: 100%; */
   height: 100vh;
   z-index: 999998;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   background: #111111;
 
 }
+.preloader-1__body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 650.98px) {
   .loader-body-logo {
     height: 180px;
