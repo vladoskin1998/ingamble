@@ -186,6 +186,13 @@
   z-index: 999999;
 }
 
+@media (max-width: 650.98px) {
+  .loader-body-logo {
+  transform: translate(0%, 0%);
+    top: calc(50% - 80px) ;
+      left:calc(50% - 80px);
+  }
+}
 
 .loader-body-logo-img{
   display: flex;
