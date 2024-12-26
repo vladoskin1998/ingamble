@@ -174,7 +174,7 @@ export default function SimpleLoyalties() {
                         }
                         casino_rank={data?.dataCurrentLoyaltie?.casino_rank}
                         casino_affiliate_link={
-                            data?.dataCurrentLoyaltie?.url_casino ||  data?.dataCurrentLoyaltie.casino_affiliate_link
+                             data?.dataCurrentLoyaltie.casino_affiliate_link || data?.dataCurrentLoyaltie?.url_casino
                             
                         }
                         casino_id={data?.dataCurrentLoyaltie?.casino_id}

@@ -82,7 +82,7 @@ export const OtherBestReloadBonus = ({
                                     b?.bonus_name
                                 )}?queryId=${b?.bonus_id}`,
                                 playLink:
-                                    b?.url_casino || b?.casino_affiliate_link,
+                                b?.casino_affiliate_link || b?.url_casino ,
                                 casinoLink: `/casino/${sanitizeLink(
                                     b?.casino_name
                                 )}?queryId=${b?.casino_id}`,

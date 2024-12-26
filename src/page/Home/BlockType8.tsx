@@ -57,8 +57,7 @@ export default function BlockType8({
                     data={dataCard?.slice(0,8)
                         ?.map((item) => ({
                             playLink:
-                                item?.casino_info?.url_casino ||
-                                item?.casino_info?.casino_affiliate_link,
+                            item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino ,
                             img: item.bonus_info.bonus_image,
                             raiting: item.casino_info.casino_rank,
                             likes: item.bonus_info.bonus_likes,
