@@ -1,13 +1,20 @@
 
+import { useEffect, useState } from "react"
 import logoIcon from "../../assets/img/logo-icon.svg"
 
 
 export const LogoLoader = () => {
 
- 
+    const [loader, setLoader]= useState(0)
+
+    useEffect((
+       
+    ) => {
+         setTimeout(() => {setLoader( Math.random() * 10)}, 0)
+    }, [])
 
     return (
-        <div className="loader-body-line">
+        <div className="loader-body-line" key={loader}>
             <div style={{ height: '100%' }}>
                 <div className="preloader-1__body">
                     <div className="loader-body-logo">
