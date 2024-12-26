@@ -6,7 +6,7 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 
 export const LoyaltieCasinoInfo = ({ data, geoLocation }: { data: LoyaltieProgramDataResponse | undefined; geoLocation: GeoLocationAllowdType }) => {
-    console.log('GeoLocationAllowdType', geoLocation)
+
 
     return (
         <section className={`loyaltie__casino-info casino-info ${!geoLocation?.isAllowed && 'casino-info_not-available'} `}>

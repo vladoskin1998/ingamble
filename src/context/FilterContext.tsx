@@ -144,7 +144,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
     const [bonusFilters, setBonusFilters] =
         useState<BonusFilterBodyType>(initialBonusFilters)
 
-        console.log("casinoFilters", casinoFilters);
+
         
     const [loyaltiesFilters, setLoyaltiesFilters] =
         useState<LoyaltiesFilterBodyType>(initialLoyaltiesFilters)
@@ -157,7 +157,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         navigation("/")
     }
 
-    console.log("casinoFilters",casinoFilters);
+    
     
     const { data } = useQuery<GetFilterDataTypeResponse>(
         "get-datas-filter",

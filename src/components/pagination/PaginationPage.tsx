@@ -1,17 +1,7 @@
-import ReactPaginate from "react-paginate"
-import "./style.css"
+import ReactPaginate from 'react-paginate'
+import './style.css'
 
-export const PaginationPage = ({
-    currentPage = 1,
-    setCurrentPage = () => {},
-    countElem = 30,
-    countPageElem = 5,
-}: {
-    currentPage?: number
-    countElem?: number
-    setCurrentPage?: (n: number) => void
-    countPageElem?: number
-}) => {
+export const PaginationPage = ({ currentPage = 1, setCurrentPage = () => {}, countElem = 30, countPageElem = 5 }: { currentPage?: number; countElem?: number; setCurrentPage?: (n: number) => void; countPageElem?: number }) => {
     const totalPages = Math.ceil(countElem / countPageElem)
 
     const handlePageChange = (selectedItem: { selected: number }) => {
@@ -19,7 +9,7 @@ export const PaginationPage = ({
         setCurrentPage(newPage)
     }
 
-    console.log(totalPages, ">", currentPage)
+
 
     return (
         <>
@@ -27,8 +17,7 @@ export const PaginationPage = ({
                 <button
                     onClick={(e) => {
                         e.preventDefault()
-                        if (currentPage < totalPages)
-                            setCurrentPage(currentPage + 1)
+                        if (currentPage < totalPages) setCurrentPage(currentPage + 1)
                     }}
                     className="main-loyaltie-programs__btn-more"
                 >
@@ -37,8 +26,9 @@ export const PaginationPage = ({
             ) : (
                 <></>
             )}
-            {
-                totalPages <= 1 ? <></> :
+            {totalPages <= 1 ? (
+                <></>
+            ) : (
                 <ReactPaginate
                     previousLabel={
                         currentPage > 1 ? (
@@ -67,20 +57,12 @@ export const PaginationPage = ({
                     containerClassName="main-loyaltie-programs__pagination pagination"
                     pageClassName="pages-pagination__page-numbers"
                     pageLinkClassName="pagination__link"
-                    previousClassName={
-                        currentPage > 1
-                            ? "pagination__btn pagination__btn_prev"
-                            : ""
-                    }
-                    nextClassName={
-                        currentPage < totalPages
-                            ? "pagination__btn pagination__btn_next"
-                            : ""
-                    }
+                    previousClassName={currentPage > 1 ? 'pagination__btn pagination__btn_prev' : ''}
+                    nextClassName={currentPage < totalPages ? 'pagination__btn pagination__btn_next' : ''}
                     activeClassName="paginate--current"
                     forcePage={currentPage - 1}
                 />
-            }
+            )}
         </>
     )
 }

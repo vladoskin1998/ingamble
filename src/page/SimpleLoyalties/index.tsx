@@ -49,8 +49,6 @@ export default function SimpleLoyalties() {
     const [searchParams] = useSearchParams()
     const qid = searchParams.get('queryId')
 
-    console.log('queryId', queryId, qid)
-
     const { data: Country } = useFilterContext()
     const { data, isLoading } = useQuery<{
         dataCurrentLoyaltie: LoyaltieProgramDataResponse
@@ -130,11 +128,12 @@ export default function SimpleLoyalties() {
 
                     <LoyaltyText data={data?.dataCurrentLoyaltie} />
                     <HowToStartVipJorney
-                        casino_affiliate_link={data?.dataCurrentLoyaltie.url_casino || data?.dataCurrentLoyaltie?.casino_affiliate_link}
+                        casino_affiliate_link={data?.dataCurrentLoyaltie?.casino_affiliate_link || data?.dataCurrentLoyaltie.url_casino}
                         casino_name={data?.dataCurrentLoyaltie?.casino_name}
                         likes={data?.dataCurrentLoyaltie?.likes}
                         queryId={data?.dataCurrentLoyaltie?.casino_id}
                         link_tc={data?.dataCurrentLoyaltie?.link_tc || ''}
+                        id={data?.dataCurrentLoyaltie.id}
                     />
                     <div className="main-gamble-loyaltie-mob">
                         <EssentialVIPLoyaltyPrograms />
@@ -143,7 +142,7 @@ export default function SimpleLoyalties() {
                         casinoName={data?.dataCurrentLoyaltie?.casino_name}
                         sibling_bonuses={data?.dataCurrentLoyaltie.sibling_bonuses}
                         casino_rank={data?.dataCurrentLoyaltie?.casino_rank}
-                        casino_affiliate_link={data?.dataCurrentLoyaltie.casino_affiliate_link || data?.dataCurrentLoyaltie?.url_casino}
+                        casino_affiliate_link={data?.dataCurrentLoyaltie?.casino_affiliate_link || data?.dataCurrentLoyaltie.url_casino}
                         casino_id={data?.dataCurrentLoyaltie?.casino_id}
                     />
 

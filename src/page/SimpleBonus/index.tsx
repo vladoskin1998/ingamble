@@ -98,7 +98,7 @@ export default function SimpleBonus() {
         // window.history.pushState({}, "", newUrl)
     }, [data, Country, COUNTRIES])
 
-    console.log(geoLocation)
+
 
     useEffect(() => {
         initializeAdaptiveBehavior()

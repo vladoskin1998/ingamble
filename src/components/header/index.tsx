@@ -1,18 +1,18 @@
-import logo from "../../assets/img/logo.svg"
-import latviaFlag from "../../assets/img/icons/latvia-flag.svg"
-import english from "../../assets/img/flags/english.svg"
-import ukraine from "../../assets/img/flags/ukraine.svg"
-import russian from "../../assets/img/flags/russian.svg"
-import bulgarian from "../../assets/img/flags/bulgarian.svg"
-import spanish from "../../assets/img/flags/spanish.svg"
-import german from "../../assets/img/flags/german.svg"
-import french from "../../assets/img/flags/french.svg"
-import italian from "../../assets/img/flags/italian.svg"
-import slovak from "../../assets/img/flags/slovak.svg"
-import { useEffect, useRef, useState } from "react"
-import logoIcon from "../../assets/img/logo-icon.svg"
-import { useFilterContext } from "../../context/FilterContext"
-import { Link, useNavigate } from "react-router-dom"
+import logo from '../../assets/img/logo.svg'
+import latviaFlag from '../../assets/img/icons/latvia-flag.svg'
+import english from '../../assets/img/flags/english.svg'
+import ukraine from '../../assets/img/flags/ukraine.svg'
+import russian from '../../assets/img/flags/russian.svg'
+import bulgarian from '../../assets/img/flags/bulgarian.svg'
+import spanish from '../../assets/img/flags/spanish.svg'
+import german from '../../assets/img/flags/german.svg'
+import french from '../../assets/img/flags/french.svg'
+import italian from '../../assets/img/flags/italian.svg'
+import slovak from '../../assets/img/flags/slovak.svg'
+import { useEffect, useRef, useState } from 'react'
+import logoIcon from '../../assets/img/logo-icon.svg'
+import { useFilterContext } from '../../context/FilterContext'
+import { Link, useNavigate } from 'react-router-dom'
 type Language = {
     code: string
     name: string
@@ -20,16 +20,16 @@ type Language = {
 }
 
 export const LANGUAGES_WEBSITE: Language[] = [
-    { code: "en", name: "English", flag: english },
-    { code: "lv", name: "Latvian", flag: latviaFlag },
-    { code: "uk", name: "Ukrainian", flag: ukraine },
-    { code: "bg", name: "Bulgarian", flag: bulgarian },
-    { code: "es", name: "Spanish", flag: spanish },
-    { code: "de", name: "German", flag: german },
-    { code: "fr", name: "French", flag: french },
-    { code: "it", name: "Italian", flag: italian },
-    { code: "sk", name: "Slovak", flag: slovak },
-    { code: "ru", name: "Russian", flag: russian },
+    { code: 'en', name: 'English', flag: english },
+    { code: 'lv', name: 'Latvian', flag: latviaFlag },
+    { code: 'uk', name: 'Ukrainian', flag: ukraine },
+    { code: 'bg', name: 'Bulgarian', flag: bulgarian },
+    { code: 'es', name: 'Spanish', flag: spanish },
+    { code: 'de', name: 'German', flag: german },
+    { code: 'fr', name: 'French', flag: french },
+    { code: 'it', name: 'Italian', flag: italian },
+    { code: 'sk', name: 'Slovak', flag: slovak },
+    { code: 'ru', name: 'Russian', flag: russian },
 ]
 
 export const Header = ({
@@ -52,22 +52,20 @@ export const Header = ({
     const [isLanguageOpen, setIsLanguageOpen] = useState<boolean>(false)
 
     const [searchFocus, setSearchFocus] = useState(false)
-    const [selectedLanguage, setSelectedLanguage] = useState<Language>(
-        LANGUAGES_WEBSITE[0]
-    )
+    const [selectedLanguage, setSelectedLanguage] = useState<Language>(LANGUAGES_WEBSITE[0])
     const modalLanguageRef = useRef<HTMLDivElement | null>(null)
 
     const [searchShow, setSearchShow] = useState(false)
 
     const handleLanguageSelect = (language: Language) => {
-        console.log("handleLanguageSelect")
+        ;('handleLanguageSelect')
 
         setSelectedLanguage(language)
         setIsLanguageOpen(false)
     }
 
     const handleFocus = () => {
-        console.log("handleFocus")
+        ;('handleFocus')
         //@ts-ignore
         if (inputRefMob?.current) {
             //@ts-ignore
@@ -80,19 +78,15 @@ export const Header = ({
 
     const handleClickOutside = (event: MouseEvent): void => {
         const isScreenWide = window.innerWidth > 650
-        if (
-            modalLanguageRef.current &&
-            !modalLanguageRef.current.contains(event.target as Node) &&
-            isScreenWide
-        ) {
+        if (modalLanguageRef.current && !modalLanguageRef.current.contains(event.target as Node) && isScreenWide) {
             setIsLanguageOpen(false)
         }
     }
 
     useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside)
+        document.addEventListener('mousedown', handleClickOutside)
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside)
+            document.removeEventListener('mousedown', handleClickOutside)
         }
     }, [])
 
@@ -109,17 +103,17 @@ export const Header = ({
 
     useEffect(() => {
         if (isBodyLocked) {
-            document.body.classList.add("lock")
+            document.body.classList.add('lock')
         } else {
-            document.body.classList.remove("lock")
+            document.body.classList.remove('lock')
         }
     }, [isBodyLocked])
 
     useEffect(() => {
-        const gambleBody = document.querySelector(".gamble__body")
+        const gambleBody = document.querySelector('.gamble__body')
 
         if (gambleBody && window.innerWidth <= 650.98) {
-            gambleBody.classList.toggle("hide", isSidebarActive)
+            gambleBody.classList.toggle('hide', isSidebarActive)
         } else {
         }
         if (isSidebarActive) {
@@ -132,65 +126,44 @@ export const Header = ({
     }, [isSidebarActive])
 
     const navTo = () => {
-        if (window.location.href.includes("filter-casinos")) {
+        if (window.location.href.includes('filter-casinos')) {
             return
         } else {
-            navigate("/filter-casinos")
+            navigate('/filter-casinos')
         }
     }
 
     useEffect(() => {
         const onKeydown = (e: KeyboardEvent) => {
-            if (
-                (e.code === "Enter" || e.key === "Enter") &&
-                casinoFilters?.casino_name
-            ) {
+            if ((e.code === 'Enter' || e.key === 'Enter') && casinoFilters?.casino_name) {
                 navTo()
             }
         }
 
-        document.addEventListener("keydown", onKeydown)
+        document.addEventListener('keydown', onKeydown)
 
         return () => {
-            document.removeEventListener("keydown", onKeydown)
+            document.removeEventListener('keydown', onKeydown)
         }
     }, [casinoFilters, navTo])
 
-    const [activeLink, setActiveLink] = useState<string>(
-        window.location.pathname
-    )
+    const [activeLink, setActiveLink] = useState<string>(window.location.pathname)
 
     return (
         <header className="header">
             <div className="header__container container">
                 <div className="header__row header--row-pc">
                     {
-                        <div
-                            className={`header__column header__column-logo ${
-                                isSidebarActive && "header__column-active"
-                            }`}
-                        >
-                            <a
-                                rel="nofollow noopener"
-                                href=""
-                                aria-label="Put your description here."
-                                className={`header__burger ${
-                                    isMenuOpen ? "active" : ""
-                                }`}
-                                onClick={handleBurgerClick}
-                            >
+                        <div className={`header__column header__column-logo ${isSidebarActive && 'header__column-active'}`}>
+                            <a rel="nofollow noopener" href="" aria-label="Put your description here." className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={handleBurgerClick}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </a>
 
-                            <Link
-                                rel="nofollow noopener"
-                                to="/"
-                                className="header__logo logo"
-                            >
+                            <Link rel="nofollow noopener" to="/" className="header__logo logo">
                                 <div className="logo__img">
-                                    <img alt={"logo"} src={logo} />
+                                    <img alt={'logo'} src={logo} />
                                 </div>
                             </Link>
                         </div>
@@ -203,14 +176,8 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink("/")}
-                                        className={`menu-header__link ${
-                                            activeLink === "/all-bonuses" ||
-                                            activeLink === "/all-casinos" ||
-                                            activeLink === "/all-loyalties"
-                                                ? ""
-                                                : "current"
-                                        }`}
+                                        onClick={() => setActiveLink('/')}
+                                        className={`menu-header__link ${activeLink === '/all-bonuses' || activeLink === '/all-casinos' || activeLink === '/all-loyalties' ? '' : 'current'}`}
                                     >
                                         <span>Gambling Hub</span>
                                     </Link>
@@ -220,13 +187,8 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-bonuses"
                                         aria-label="Put your description here."
-                                        onClick={() =>
-                                            setActiveLink("/all-bonuses")
-                                        }
-                                        className={`menu-header__link ${
-                                            activeLink === "/all-bonuses" &&
-                                            "current"
-                                        }`}
+                                        onClick={() => setActiveLink('/all-bonuses')}
+                                        className={`menu-header__link ${activeLink === '/all-bonuses' && 'current'}`}
                                     >
                                         <span>All Bonuses</span>
                                     </Link>
@@ -236,13 +198,8 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-casinos"
                                         aria-label="Put your description here."
-                                        onClick={() =>
-                                            setActiveLink("/all-casinos")
-                                        }
-                                        className={`menu-header__link ${
-                                            activeLink === "/all-casinos" &&
-                                            "current"
-                                        }`}
+                                        onClick={() => setActiveLink('/all-casinos')}
+                                        className={`menu-header__link ${activeLink === '/all-casinos' && 'current'}`}
                                     >
                                         <span>Casinos</span>
                                     </Link>
@@ -252,13 +209,8 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-loyalties"
                                         aria-label="Put your description here."
-                                        onClick={() =>
-                                            setActiveLink("/all-loyalties")
-                                        }
-                                        className={`menu-header__link ${
-                                            activeLink === "/all-loyalties" &&
-                                            "current"
-                                        }`}
+                                        onClick={() => setActiveLink('/all-loyalties')}
+                                        className={`menu-header__link ${activeLink === '/all-loyalties' && 'current'}`}
                                     >
                                         <span>Loyalties</span>
                                     </Link>
@@ -267,16 +219,8 @@ export const Header = ({
                         </nav>
                     </div>
                     <div className="header__column header__column_last">
-                        <div
-                            className={`header__form form-header ${
-                                searchShow ? "show" : ""
-                            }`}
-                        >
-                            <div
-                                className={`form-header__item form-item ${
-                                    casinoFilters.casino_name && "filled"
-                                } ${searchFocus && "focus"}`}
-                            >
+                        <div className={`header__form form-header ${searchShow ? 'show' : ''}`}>
+                            <div className={`form-header__item form-item ${casinoFilters.casino_name && 'filled'} ${searchFocus && 'focus'}`}>
                                 <span className="form-item__icon form-item__icon_search">
                                     <svg>
                                         <g>
@@ -290,12 +234,11 @@ export const Header = ({
                                     type="text"
                                     name="form[]"
                                     className="form-item__input form-item__input_search"
-                                    value={casinoFilters.casino_name || ""}
+                                    value={casinoFilters.casino_name || ''}
                                     onChange={(e) =>
                                         setCasinoFilters((s) => ({
                                             ...s,
-                                            casino_name:
-                                                e.target.value || undefined,
+                                            casino_name: e.target.value || undefined,
                                         }))
                                     }
                                     onBlur={() => setSearchFocus(false)}
@@ -316,30 +259,17 @@ export const Header = ({
                                         </g>
                                     </svg>
                                 </button>
-                                <button
-                                    className="form-item__btn"
-                                    onClick={() => navTo()}
-                                >
+                                <button className="form-item__btn" onClick={() => navTo()}>
                                     <svg>
                                         <g>
-                                            <path
-                                                d="M9 5.0459L5 1.0459L1 5.0459"
-                                                fill="transparent"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                            />
+                                            <path d="M9 5.0459L5 1.0459L1 5.0459" fill="transparent" strokeLinecap="round" strokeLinejoin="round" />
                                         </g>
                                     </svg>
                                 </button>
                             </div>
                         </div>
                         <div className="header__theme theme-header">
-                            <button
-                                className={`theme-header__link theme-header__link_moon ${
-                                    !moonBlink || "active"
-                                }`}
-                                onClick={() => setBoonBlink((s) => !s)}
-                            >
+                            <button className={`theme-header__link theme-header__link_moon ${!moonBlink || 'active'}`} onClick={() => setBoonBlink((s) => !s)}>
                                 <svg>
                                     <use xlinkHref="#moon"></use>
                                 </svg>
@@ -348,24 +278,16 @@ export const Header = ({
                         <div className="header__language language-header">
                             <div className="dropdown language-header__dropdown dropdown-language-header">
                                 <div
-                                
                                     className="dropdown__btn dropdown-language-header__btn dropdown-language-header__btn-icon"
                                     // onClick={() => setIsLanguageOpen(true)}
                                 >
-                                    <img
-                                        alt={selectedLanguage.name}
-                                        src={selectedLanguage.flag}
-                                        width={20}
-                                        height={20}
-                                    />
+                                    <img alt={selectedLanguage.name} src={selectedLanguage.flag} width={20} height={20} />
                                 </div>
 
                                 <div
                                     className={`dropdown__body dropdown-language-header__body `}
                                     style={{
-                                        display: isLanguageOpen
-                                            ? "block"
-                                            : "none",
+                                        display: isLanguageOpen ? 'block' : 'none',
                                     }}
                                     ref={modalLanguageRef}
                                 >
@@ -373,29 +295,13 @@ export const Header = ({
                                         {LANGUAGES_WEBSITE.map((language) => (
                                             <li
                                                 key={language.code}
-                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${
-                                                    language.code ===
-                                                    selectedLanguage.code
-                                                        ? "active"
-                                                        : ""
-                                                }`}
-                                                onClick={() =>
-                                                    handleLanguageSelect(
-                                                        language
-                                                    )
-                                                }
+                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${language.code === selectedLanguage.code ? 'active' : ''}`}
+                                                onClick={() => handleLanguageSelect(language)}
                                             >
                                                 <span className="list-item-dropdown-language-header__icon">
-                                                    <img
-                                                        alt={language.name}
-                                                        src={language.flag}
-                                                        width={20}
-                                                        height={20}
-                                                    />
+                                                    <img alt={language.name} src={language.flag} width={20} height={20} />
                                                 </span>
-                                                <span className="list-item-dropdown-language-header__text">
-                                                    {language.name}
-                                                </span>
+                                                <span className="list-item-dropdown-language-header__text">{language.name}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -408,39 +314,28 @@ export const Header = ({
                     <div className="header__row">
                         <div className="header__column header__column_first">
                             <div className="sidebar-gamble__top top-sidebar-gamble">
-                                <Link
-                                    to="/"
-                                    className="top-sidebar-gamble__logo"
-                                >
+                                <Link to="/" className="top-sidebar-gamble__logo">
                                     <img src={logoIcon} alt="logo-icon" />
                                 </Link>
                             </div>
                             <Link to="/" className="header__logo logo">
                                 <div className="logo__img">
-                                    <img alt={"logo"} src={logo} />
+                                    <img alt={'logo'} src={logo} />
                                 </div>
                             </Link>
                         </div>
 
                         <div className="header__column header__column_last">
                             <div
-                                className={`header__form form-header ${
-                                    searchShow ? "show" : ""
-                                }`}
+                                className={`header__form form-header ${searchShow ? 'show' : ''}`}
                                 onClick={(e) => {
                                     setSearchShow(true)
                                     e.preventDefault()
                                     handleFocus()
                                 }}
                             >
-                                <div
-                                    className={`form-header__item form-item ${
-                                        casinoFilters.casino_name && "filled"
-                                    } ${searchFocus && "focus"}`}
-                                >
-                                    <span
-                                        className={`form-item__icon form-item__icon_search `}
-                                    >
+                                <div className={`form-header__item form-item ${casinoFilters.casino_name && 'filled'} ${searchFocus && 'focus'}`}>
+                                    <span className={`form-item__icon form-item__icon_search `}>
                                         <svg>
                                             <use xlinkHref="#search"></use>
                                         </svg>
@@ -452,12 +347,11 @@ export const Header = ({
                                         type="text"
                                         name="form[]"
                                         className="form-item__input form-item__input_search"
-                                        value={casinoFilters.casino_name || ""}
+                                        value={casinoFilters.casino_name || ''}
                                         onChange={(e) =>
                                             setCasinoFilters((s) => ({
                                                 ...s,
-                                                casino_name:
-                                                    e.target.value || undefined,
+                                                casino_name: e.target.value || undefined,
                                             }))
                                         }
                                         onBlur={() => setSearchFocus(false)}
@@ -466,10 +360,7 @@ export const Header = ({
                                     <button
                                         className="form-item__icon form-item__icon_delete"
                                         onClick={() => {
-                                            console.log(
-                                                "setSearchShow",
-                                                searchShow
-                                            )
+                                            
                                             setSearchShow(true)
                                             setCasinoFilters((s) => ({
                                                 ...s,
@@ -482,36 +373,20 @@ export const Header = ({
                                             <use xlinkHref="#delete"></use>
                                         </svg>
                                     </button>
-                                    <button
-                                        className="form-item__btn"
-                                        onClick={() => navTo()}
-                                    >
+                                    <button className="form-item__btn" onClick={() => navTo()}>
                                         <svg>
                                             <use xlinkHref="#arrow"></use>
                                         </svg>
                                     </button>
                                 </div>
-                                <a
-                                    href=""
-                                    aria-label="Put your description here."
-                                    className={`form-header__icon ${
-                                        searchShow ? "hide" : ""
-                                    }`}
-                                >
+                                <a href="" aria-label="Put your description here." className={`form-header__icon ${searchShow ? 'hide' : ''}`}>
                                     <svg>
                                         <use xlinkHref="#search"></use>
                                     </svg>
                                 </a>
                             </div>
 
-                            <a
-                                href=""
-                                aria-label="Put your description here."
-                                className={`header__burger ${
-                                    isMenuOpen ? "active" : ""
-                                }`}
-                                onClick={handleBurgerClick}
-                            >
+                            <a href="" aria-label="Put your description here." className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={handleBurgerClick}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -521,31 +396,18 @@ export const Header = ({
                 </div>
             </div>
 
-            <div
-                className={`header__mobile mobile-header ${
-                    isMenuOpen ? "active" : ""
-                }`}
-            >
+            <div className={`header__mobile mobile-header ${isMenuOpen ? 'active' : ''}`}>
                 <div className="mobile-header__content">
                     <div className="mobile-header__body">
-                        <div
-                            className="header__column"
-                            
-                        >
+                        <div className="header__column">
                             <nav className="header__menu menu-header">
                                 <ul className="menu-header__list">
                                     <li className="menu-header__item">
                                         <Link
                                             to="/"
                                             aria-label="Put your description here."
-                                            onClick={() => setActiveLink("/")}
-                                            className={`menu-header__link ${
-                                                activeLink === "/all-bonuses" ||
-                                                activeLink === "/all-casinos" ||
-                                                activeLink === "/all-loyalties"
-                                                    ? ""
-                                                    : "current"
-                                            }`}
+                                            onClick={() => setActiveLink('/')}
+                                            className={`menu-header__link ${activeLink === '/all-bonuses' || activeLink === '/all-casinos' || activeLink === '/all-loyalties' ? '' : 'current'}`}
                                         >
                                             <span>Gambling Hub</span>
                                         </Link>
@@ -555,44 +417,20 @@ export const Header = ({
                                             to="/all-bonuses"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                                setActiveLink("/all-bonuses")
+                                                setActiveLink('/all-bonuses')
                                             }}
-                                            className={`menu-header__link ${
-                                                activeLink === "/all-bonuses" &&
-                                                "current"
-                                            }`}
+                                            className={`menu-header__link ${activeLink === '/all-bonuses' && 'current'}`}
                                         >
                                             <span>All Bonuses</span>
                                         </Link>
                                     </li>
                                     <li className="menu-header__item">
-                                        <Link
-                                            to="/all-casinos"
-                                            aria-label="Put your description here."
-                                            onClick={() =>
-                                                setActiveLink("/all-casinos")
-                                            }
-                                            className={`menu-header__link ${
-                                                activeLink === "/all-casinos" &&
-                                                "current"
-                                            }`}
-                                        >
+                                        <Link to="/all-casinos" aria-label="Put your description here." onClick={() => setActiveLink('/all-casinos')} className={`menu-header__link ${activeLink === '/all-casinos' && 'current'}`}>
                                             <span>Casinos</span>
                                         </Link>
                                     </li>
                                     <li className="menu-header__item">
-                                        <Link
-                                            to="/all-loyalties"
-                                            aria-label="Put your description here."
-                                            onClick={() =>
-                                                setActiveLink("/all-loyalties")
-                                            }
-                                            className={`menu-header__link ${
-                                                activeLink ===
-                                                    "/all-loyalties" &&
-                                                "current"
-                                            }`}
-                                        >
+                                        <Link to="/all-loyalties" aria-label="Put your description here." onClick={() => setActiveLink('/all-loyalties')} className={`menu-header__link ${activeLink === '/all-loyalties' && 'current'}`}>
                                             <span>Loyalties</span>
                                         </Link>
                                     </li>
@@ -602,12 +440,7 @@ export const Header = ({
                     </div>
                     <div className="mobile-header__top">
                         <div className="header__theme theme-header">
-                            <button
-                                className={`theme-header__link theme-header__link_moon ${
-                                    !moonBlink || "active"
-                                }`}
-                                onClick={() => setBoonBlink((s) => !s)}
-                            >
+                            <button className={`theme-header__link theme-header__link_moon ${!moonBlink || 'active'}`} onClick={() => setBoonBlink((s) => !s)}>
                                 <svg>
                                     <use xlinkHref="#moon"></use>
                                 </svg>
@@ -623,16 +456,9 @@ export const Header = ({
                                 // onClick={() => setIsLanguageOpen(true)}
                             >
                                 <span className="dropdown-language-header__btn-icon">
-                                    <img
-                                        alt={selectedLanguage.name}
-                                        src={selectedLanguage.flag}
-                                        width={20}
-                                        height={20}
-                                    />
+                                    <img alt={selectedLanguage.name} src={selectedLanguage.flag} width={20} height={20} />
                                 </span>
-                                <span className="dropdown-language-header__btn-text">
-                                    {selectedLanguage.name}
-                                </span>
+                                <span className="dropdown-language-header__btn-text">{selectedLanguage.name}</span>
                                 <span className="dropdown-language-header__btn-arrow">
                                     {/* <svg>
                                         <use xlinkHref="#arrow"></use>
@@ -640,10 +466,7 @@ export const Header = ({
                                 </span>
                             </button>
                             {isLanguageOpen && (
-                                <div
-                                    className="dropdown__body dropdown-language-header__body"
-                                    style={{ display: "block" }}
-                                >
+                                <div className="dropdown__body dropdown-language-header__body" style={{ display: 'block' }}>
                                     <button
                                         aria-label="Put your description here."
                                         className="dropdown-language-header__btn-back"
@@ -662,27 +485,13 @@ export const Header = ({
                                     <ul className="dropdown__list dropdown-language-header__list">
                                         {LANGUAGES_WEBSITE.map((item) => (
                                             <li
-                                                onClick={() =>
-                                                    handleLanguageSelect(item)
-                                                }
-                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${
-                                                    item.code ===
-                                                        selectedLanguage.code &&
-                                                    "active"
-                                                }`}
+                                                onClick={() => handleLanguageSelect(item)}
+                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${item.code === selectedLanguage.code && 'active'}`}
                                             >
                                                 <span className="list-item-dropdown-language-header__icon">
-                                                    <img
-                                                        src={item.flag}
-                                                        loading="lazy"
-                                                        width="20"
-                                                        height="20"
-                                                        alt={item.name}
-                                                    />
+                                                    <img src={item.flag} loading="lazy" width="20" height="20" alt={item.name} />
                                                 </span>
-                                                <span className="list-item-dropdown-language-header__text">
-                                                    {item.name}
-                                                </span>
+                                                <span className="list-item-dropdown-language-header__text">{item.name}</span>
                                             </li>
                                         ))}
                                     </ul>

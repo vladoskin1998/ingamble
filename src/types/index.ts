@@ -26,6 +26,7 @@ type BlockCountryType = {
 }
 
 export interface GetDataBonusResponse {
+    id: number,
     blocked_countries: BlockCountryType[]
     bonus_blocked_countries: BlockCountryType[]
     sibling_bonuses: SiblingBonuses[]
@@ -36,7 +37,6 @@ export interface GetDataBonusResponse {
     casino_rank: string;
     casino_affiliate_link: string;
     url_casino: string;
-    bonus_id: number,
     casino_id: number,
     name: string;
     likes: number;
@@ -827,3 +827,6 @@ export interface LoyaltyInRankRangeResponse {
     casino_affiliate_link: string;
     url_casino: string;
 }
+
+
+export type LikeFieldType = 'bonus_like' | 'casino_like' | 'loyalty_like'

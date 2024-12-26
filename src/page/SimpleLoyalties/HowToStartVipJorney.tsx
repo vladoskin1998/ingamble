@@ -1,11 +1,29 @@
 import bg08 from '../../assets/img/bg/08.webp'
 
-import { useState } from 'react'
-import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { useEffect, useState } from 'react'
+import { cloacingFetch, cloacingLink, getLikeByIdAndType, sanitizeLink, sanitizeNumberLike, saveLikesToStorage } from '../../helper'
 import { Link } from 'react-router-dom'
 
-export const HowToStartVipJorney = (data: { casino_affiliate_link?: string; casino_name?: string; likes?: number; queryId: string | number | undefined; link_tc: string | undefined }) => {
-    const [like, setLike] = useState<'' | 'like' | 'dislike'>('')
+export const HowToStartVipJorney = (data: { casino_affiliate_link?: string; casino_name?: string; likes?: number; queryId: string | number | undefined; link_tc: string | undefined , id:number | undefined }) => {
+        const [like, setLike] = useState<'' | 'like' | 'dislike'>('')
+    
+        useEffect(() => {
+            if (!data?.id) {
+                return
+            }
+            const lk = getLikeByIdAndType('casino_like', data?.id) || ''
+            setLike(lk)
+        }, [data?.id])
+    
+        const handlerLike = (l: '' | 'like' | 'dislike', id?: number) => {
+            if (!id) {
+                return
+            }
+    
+            setLike((s) => (s === l ? '' : l))
+            saveLikesToStorage('casino_like', id, l)
+        }
+    
 
     return (
         <section className="simple-bonus__get-bonus get-bonus">
@@ -74,7 +92,7 @@ export const HowToStartVipJorney = (data: { casino_affiliate_link?: string; casi
                                 <div className="like-get-bonus__title">Do You Like This VIP Program?</div>
                                 <div className="like-get-bonus__btns">
                                     <div className="like-get-bonus__btns-item">
-                                        <button onClick={() => setLike('like')} className={`like-get-bonus__btn like-get-bonus__btn_like ${like === 'like' && 'active'}`}>
+                                        <button onClick={() => handlerLike('like', data?.id)} className={`like-get-bonus__btn like-get-bonus__btn_like ${like === 'like' && 'active'}`}>
                                             <span className="like-get-bonus__btn-icon">
                                                 <svg>
                                                     <use xlinkHref="#like"></use>
@@ -84,7 +102,7 @@ export const HowToStartVipJorney = (data: { casino_affiliate_link?: string; casi
                                         </button>
                                     </div>
                                     <div className="like-get-bonus__btns-item">
-                                        <button onClick={() => setLike('dislike')} className={`like-get-bonus__btn like-get-bonus__btn_dislike ${like === 'dislike' && 'active'}`}>
+                                        <button onClick={() => handlerLike('dislike', data?.id)} className={`like-get-bonus__btn like-get-bonus__btn_dislike ${like === 'dislike' && 'active'}`}>
                                             <span className="like-get-bonus__btn-icon">
                                                 <svg>
                                                     <use xlinkHref="#like"></use>

@@ -123,7 +123,7 @@ export const cloacingLink = (s: string | undefined): string => {
             link
         })
     } catch (error) {
-        console.log(error);
+        (error);
         
     }
 
@@ -140,3 +140,50 @@ export const cloacingLink = (s: string | undefined): string => {
     }
     return (Number(n) / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
   };
+
+export const saveLikesToStorage = (
+    type: 'bonus_like' | 'casino_like' | 'loyalty_like',
+    id: number,
+    likeType: 'like' | 'dislike' | ''
+): void => {
+    try {
+        const storedData = JSON.parse(localStorage.getItem('likesData') || '{}');
+
+        // Проверка структуры данных
+        if (typeof storedData !== 'object' || storedData === null) {
+            console.warn('Invalid data in localStorage, resetting to empty object.');
+            localStorage.setItem('likesData', JSON.stringify({}));
+            return;
+        }
+
+        // Убедимся, что секция для типа существует
+        if (!storedData[type]) {
+            storedData[type] = {};
+        }
+
+        // Проверка текущего состояния
+        if (storedData[type][id] === likeType) {
+            // Если событие совпадает, удаляем элемент
+            delete storedData[type][id];
+        } else if (likeType === '') {
+            // Если новое событие пустое, удаляем элемент
+            delete storedData[type][id];
+        } else {
+            // Иначе обновляем данные
+            storedData[type][id] = likeType;
+        }
+
+        // Сохраняем обновленные данные
+        localStorage.setItem('likesData', JSON.stringify(storedData));
+    } catch (error) {
+        console.error('Error saving likes to storage:', error);
+    }
+};
+
+
+export const getLikeByIdAndType = (type: 'bonus_like' | 'casino_like' | 'loyalty_like', id: number): 'like' | 'dislike' | null => {
+    const likesData = JSON.parse(localStorage.getItem('likesData') || '{}');
+
+    // Проверяем наличие типа и ID в данных
+    return likesData[type]?.[id] || null;
+};

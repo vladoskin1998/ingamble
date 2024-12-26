@@ -9,8 +9,7 @@ export const CasinoReview = ({
     //@ts-ignore
     data: undefined | RewievCasinoDataResponse
 }) => {
-    console.log('CasinoReview', data)
-
+    
     return (
         <>
             <div className="iwild-review__item item-iwild-review item-iwild-review_main">

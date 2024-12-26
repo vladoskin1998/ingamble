@@ -1,31 +1,34 @@
 import { RewievCasinoDataResponse } from '../../types'
 import { CasinoReview } from './CasinoReview'
 import HarryImg from '../../assets/img/casino-person/3.webp'
-import { useState } from 'react'
-import { sanitizeNumberLike } from '../../helper'
-const DoYouLike = ({ likes: DataLike }: { likes: number }) => {
+import { useEffect, useState } from 'react'
+import { getLikeByIdAndType, sanitizeNumberLike, saveLikesToStorage } from '../../helper'
+const DoYouLike = ({ likes: DataLike, id }: { likes: number; id: number | undefined }) => {
     const [like, setLike] = useState<'' | 'like' | 'dislike'>('')
 
-    // className={`like-get-bonus__btn like-get-bonus__btn_like ${
-    //     like === "like" &&
-    //     "active"
-    // }`}
+    useEffect(() => {
+        if (!id) {
+            return
+        }
+        const lk = getLikeByIdAndType('casino_like', id) || ''
+        setLike(lk)
+    }, [id])
 
-    // onClick={() =>
-    //     setLike("dislike")
-    // }
-    // className={`like-get-bonus__btn like-get-bonus__btn_dislike ${
-    //     like ===
-    //         "dislike" &&
-    //     "active"
-    // }`}
+    const handlerLike = (l: '' | 'like' | 'dislike', id?: number) => {
+        if (!id) {
+            return
+        }
+
+        setLike((s) => (s === l ? '' : l))
+        saveLikesToStorage('casino_like', id, l)
+    }
 
     return (
         <div className="iwild-review__item item-iwild-review item-iwild-review_like-bonus">
             <h2 className="item-iwild-review__title">Do You Like This Casino?</h2>
             <div className="item-iwild-review__btns">
                 <div className="item-iwild-review__btns-item">
-                    <button aria-label="Put your description here." className={`item-iwild-review__btn item-iwild-review__btn_like  ${like === 'like' && 'active'}`} onClick={() => setLike('like')}>
+                    <button aria-label="Put your description here." className={`item-iwild-review__btn item-iwild-review__btn_like  ${like === 'like' && 'active'}`} onClick={() => handlerLike('like', id)}>
                         <span className="item-iwild-review__btn-icon">
                             <svg>
                                 <use xlinkHref="#like"></use>
@@ -35,7 +38,7 @@ const DoYouLike = ({ likes: DataLike }: { likes: number }) => {
                     </button>
                 </div>
                 <div className="item-iwild-review__btns-item">
-                    <button aria-label="Put your description here." className={`item-iwild-review__btn item-iwild-review__btn_dislike ${like === 'dislike' && 'active'}`} onClick={() => setLike('dislike')}>
+                    <button aria-label="Put your description here." className={`item-iwild-review__btn item-iwild-review__btn_dislike ${like === 'dislike' && 'active'}`} onClick={() => handlerLike('dislike', id)}>
                         <span className="item-iwild-review__btn-icon">
                             <svg>
                                 <use xlinkHref="#like"></use>
@@ -127,7 +130,7 @@ export const Harry = ({ handlerOpen, data }: { handlerOpen: (s: boolean) => void
                         </div>
 
                         <div className="iwild-review__column iwild-review__column_small iwild-review__do-you-like-mob">
-                            <DoYouLike likes={data?.likes || 0} />
+                            <DoYouLike likes={data?.likes || 0} id={data?.id} />
                         </div>
                     </div>
                     <h2 className="iwild-review__title-mob">Summary</h2>
@@ -159,7 +162,7 @@ export const Harry = ({ handlerOpen, data }: { handlerOpen: (s: boolean) => void
                             </div>
                         </div>
                         <div className="iwild-review__column iwild-review__column_small iwild-review__do-you-like-pc">
-                            <DoYouLike likes={data?.likes || 0} />
+                            <DoYouLike likes={data?.likes || 0} id={data?.id} />
                         </div>
                     </div>
                 </div>

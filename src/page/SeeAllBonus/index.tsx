@@ -75,7 +75,7 @@ export default function SeeAllBonus() {
 
     const displayedData = isMobile ? allData : data?.bonuses?.results
 
-    console.log('displayedData', displayedData)
+
 
     useEffect(() => {
         initializeAdaptiveBehavior()

@@ -9,7 +9,7 @@ import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '.
 import { Link } from 'react-router-dom'
 
 const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | undefined }) {
-    console.log('BlockType9')
+    ;('BlockType9')
 
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9) return <></>
     return (

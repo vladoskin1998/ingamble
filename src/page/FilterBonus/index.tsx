@@ -114,7 +114,7 @@ export default function FilterBonus() {
         }))
     }
 
-    console.log('displayedData', displayedData)
+
 
     useEffect(() => {
         initializeAdaptiveBehavior()

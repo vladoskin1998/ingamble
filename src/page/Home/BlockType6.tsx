@@ -107,6 +107,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                             onClick={(e) => {
                                                                 e.stopPropagation()
                                                                 e.preventDefault()
+                                                                cloacingFetch(item?.casino_info?.casino_affiliate_link)
                                                                 window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
                                                             }}
                                                             className="casino-small-card__image-block"

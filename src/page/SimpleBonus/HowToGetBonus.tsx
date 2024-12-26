@@ -2,12 +2,29 @@ import giftIcon from '../../assets/img/icons/gift.svg'
 import bg08 from '../../assets/img/bg/08.webp'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { GetDataBonusResponse } from '../../types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { cloacingFetch, cloacingLink, getLikeByIdAndType, sanitizeLink, sanitizeNumberLike, saveLikesToStorage } from '../../helper'
 
 export const HowToGetBonus = ({ data }: { data: GetDataBonusResponse | undefined }) => {
     const [like, setLike] = useState<'' | 'like' | 'dislike'>('')
+
+    useEffect(() => {
+        if (!data?.id) {
+            return
+        }
+        const lk = getLikeByIdAndType('bonus_like', data?.id) || ''
+        setLike(lk)
+    }, [data?.id])
+
+    const handlerLike = (l: '' | 'like' | 'dislike', id?: number) => {
+        if (!id) {
+            return
+        }
+
+        setLike((s) => (s === l ? '' : l))
+        saveLikesToStorage('bonus_like', id, l)
+    }
 
     return (
         <section className="simple-bonus__get-bonus get-bonus">
@@ -33,6 +50,7 @@ export const HowToGetBonus = ({ data }: { data: GetDataBonusResponse | undefined
                                             onClick={(e) => {
                                                 e.stopPropagation()
                                                 e.preventDefault()
+                                                     cloacingFetch(data?.casino_affiliate_link)
                                                 window.open(data?.casino_affiliate_link || data?.url_casino, '_blank', 'noopener,noreferrer')
                                             }}
                                             className="main-get-bonus__btn main-get-bonus__btn_bonus"
@@ -77,7 +95,7 @@ export const HowToGetBonus = ({ data }: { data: GetDataBonusResponse | undefined
                                 <div className="like-get-bonus__title">Do You Like This Bonus?</div>
                                 <div className="like-get-bonus__btns">
                                     <div className="like-get-bonus__btns-item">
-                                        <button onClick={() => setLike('like')} className={`like-get-bonus__btn like-get-bonus__btn_like ${like === 'like' && 'active'}`}>
+                                        <button onClick={() => handlerLike('like', data?.id)} className={`like-get-bonus__btn like-get-bonus__btn_like ${like === 'like' && 'active'}`}>
                                             <span className="like-get-bonus__btn-icon">
                                                 <svg>
                                                     <use xlinkHref="#like"></use>
@@ -87,7 +105,7 @@ export const HowToGetBonus = ({ data }: { data: GetDataBonusResponse | undefined
                                         </button>
                                     </div>
                                     <div className="like-get-bonus__btns-item">
-                                        <button onClick={() => setLike('dislike')} className={`like-get-bonus__btn like-get-bonus__btn_dislike ${like === 'dislike' && 'active'}`}>
+                                        <button onClick={() => handlerLike('dislike', data?.id)} className={`like-get-bonus__btn like-get-bonus__btn_dislike ${like === 'dislike' && 'active'}`}>
                                             <span className="like-get-bonus__btn-icon">
                                                 <svg>
                                                     <use xlinkHref="#like"></use>
