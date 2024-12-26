@@ -1,5 +1,5 @@
 import logoIcon from "../../assets/img/logo-icon.svg"
-import "./loader.css"
+
 
 export const LogoLoader = () => {
     return (

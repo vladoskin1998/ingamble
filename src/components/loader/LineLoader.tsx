@@ -1,5 +1,3 @@
-import "./loader.css"
-
 export const LineLoader = ({size}:{size?: 'large' | 'medium' | 'small'}) => {
     return (
         
