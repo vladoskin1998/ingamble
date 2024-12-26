@@ -178,19 +178,19 @@
   }
 }
 .loader-body-logo {
-  position: absolute;
- 
+  position: fixed;
+
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
   z-index: 999999;
 }
 
 @media (max-width: 650.98px) {
   .loader-body-logo {
-  transform: translate(0%, 0%);
-    top: calc(50% - 80px) ;
-      left:calc(50% - 80px);
+  /* transform: translate(0%, 0%); */
+    top: calc(50% - 90px) ;
+      left:calc(50% - 90px);
   }
 }
 
