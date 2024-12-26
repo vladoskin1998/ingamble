@@ -124,7 +124,7 @@ export default function Home() {
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
 
-    if (!blocksToRender?.length) return <LogoLoader />
+    if (blocksToRender?.length) return <LogoLoader />
 
     return (
        
