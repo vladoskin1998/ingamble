@@ -1,9 +1,6 @@
-import "../../assets/css/casino-person.css"
+import '../../assets/css/casino-person.css'
 
-export const HarryStyles = ({img, title,subtitle}:{
-    img:string, title:string,subtitle:string
-}) => {
-
+export const HarryStyles = ({ img, title, subtitle }: { img: string; title: string; subtitle: string }) => {
     return (
         <>
             <section className="simple-bonus__casino-person simple-bonus__casino-person_desktop casino-person">
@@ -12,18 +9,11 @@ export const HarryStyles = ({img, title,subtitle}:{
                         <div className="casino-person__row">
                             <div className="casino-person__info info-casino-person">
                                 <div className="info-casino-person__img">
-                                    <img
-                                        src={img }
-                                        alt="HARRY STYLES"
-                                    />
+                                    <img src={img} alt="HARRY STYLES" />
                                 </div>
                                 <div className="info-casino-person__content">
-                                    <h3 className="info-casino-person__name h3">
-                                      {title }  
-                                    </h3>
-                                    <div className="info-casino-person__position">
-                                       { subtitle }
-                                    </div>
+                                    <h3 className="info-casino-person__name h3">{title}</h3>
+                                    <div className="info-casino-person__position">{subtitle}</div>
                                 </div>
                             </div>
                             {/* <div className="casino-person__socials">
@@ -80,21 +70,15 @@ export const HarryStyles = ({img, title,subtitle}:{
                     <div className="iwild-review__item item-iwild-review item-iwild-review_author">
                         <div className="item-iwild-review__content content-item-iwild-review">
                             <div className="content-item-iwild-review__image">
-                                <img src={ img } alt="HARRY STYLES" />
+                                <img src={img} alt="HARRY STYLES" />
                             </div>
                             <div className="content-item-iwild-review__body">
-                                <div className="content-item-iwild-review__label">
-                                    Author
-                                </div>
-                                <div className="content-item-iwild-review__name">
-                                   {title } 
-                                </div>
+                                <div className="content-item-iwild-review__label">Author</div>
+                                <div className="content-item-iwild-review__name">{title}</div>
                                 <div className="content-item-iwild-review__text">
                                     <p>
-                                        {
-                                            subtitle 
-                                        }
-                                       
+                                        {subtitle}
+
                                         {/* <br />I also summarise books on my{" "}
                                         <span>personal blog</span>. */}
                                     </p>

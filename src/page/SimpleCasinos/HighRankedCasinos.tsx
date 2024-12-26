@@ -1,15 +1,15 @@
-import starIcon from "../../assets/img/icons/star.svg"
-import likeIcon from "../../assets/img/icons/like.svg"
-import playingCards from "../../assets/img/playing-cards.png"
-import { useEffect, useRef, useState } from "react"
-import { Pagination } from "swiper/modules"
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
-import $api from "../../http"
-import { СasinosInRankRangeResponse } from "../../types"
-import { useQuery } from "react-query"
-import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { COLORS_TAGS, sanitizeLink, sanitizeNumberLike } from "../../helper"
-import { Link } from "react-router-dom"
+import starIcon from '../../assets/img/icons/star.svg'
+import likeIcon from '../../assets/img/icons/like.svg'
+import playingCards from '../../assets/img/playing-cards.png'
+import { useEffect, useRef, useState } from 'react'
+import { Pagination } from 'swiper/modules'
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
+import $api from '../../http'
+import { СasinosInRankRangeResponse } from '../../types'
+import { useQuery } from 'react-query'
+import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
+import { COLORS_TAGS, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { Link } from 'react-router-dom'
 
 const getFilteringCasinoList = async () => {
     const response = await $api.get(`casinos-in-rank-range/`)
@@ -21,7 +21,7 @@ export const HighRankedCasinos = () => {
     const { data } = useQuery<{
         dataCasinosRes: СasinosInRankRangeResponse[]
         headers: any
-    }>(["casinos-in-rank-range/"], () => getFilteringCasinoList(), {
+    }>(['casinos-in-rank-range/'], () => getFilteringCasinoList(), {
         keepPreviousData: true,
         staleTime: Infinity,
     })
@@ -75,31 +75,17 @@ export const HighRankedCasinos = () => {
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                <h2 className="top__title">
-                                    Other High Ranked Casinos
-                                </h2>
+                                <h2 className="top__title">Other High Ranked Casinos</h2>
                             </div>
                         </div>
                         <div className="top__column">
                             <div className="navigation-btns">
-                                <button
-                                    onClick={prevSlide}
-                                    className={`navigation-btn navigation-btn_prev other-сasinos-review-navigation-btn other-сasinos-review-navigation-btn_prev ${
-                                        isBeginning
-                                            ? "swiper-button-disabled"
-                                            : ""
-                                    }`}
-                                >
+                                <button onClick={prevSlide} className={`navigation-btn navigation-btn_prev other-сasinos-review-navigation-btn other-сasinos-review-navigation-btn_prev ${isBeginning ? 'swiper-button-disabled' : ''}`}>
                                     <svg>
                                         <use xlinkHref="#arrow"></use>
                                     </svg>
                                 </button>
-                                <button
-                                    onClick={nextSlide}
-                                    className={`navigation-btn navigation-btn_next other-сasinos-review-navigation-btn other-сasinos-review-navigation-btn_next ${
-                                        isEnd ? "swiper-button-disabled" : ""
-                                    }`}
-                                >
+                                <button onClick={nextSlide} className={`navigation-btn navigation-btn_next other-сasinos-review-navigation-btn other-сasinos-review-navigation-btn_next ${isEnd ? 'swiper-button-disabled' : ''}`}>
                                     <svg>
                                         <use xlinkHref="#arrow"></use>
                                     </svg>
@@ -121,14 +107,10 @@ export const HighRankedCasinos = () => {
                             </div>
                             <div className="baner-row-block__content">
                                 <div className="baner-row-block__text">
-                                    {"Other "} <span>High Ranked</span>
-                                    {" Casinos"}
+                                    {'Other '} <span>High Ranked</span>
+                                    {' Casinos'}
                                 </div>
-                                <Link
-                                    to="/all-casinos"
-                                    aria-label="Put your description here."
-                                    className="baner-row-block__btn best-casinos-2024-2-gamble__btn"
-                                >
+                                <Link to="/all-casinos" aria-label="Put your description here." className="baner-row-block__btn best-casinos-2024-2-gamble__btn">
                                     See All
                                 </Link>
                             </div>
@@ -155,198 +137,78 @@ export const HighRankedCasinos = () => {
                                     onSlideChange={handleSlideChange}
                                 >
                                     {dataCasino
-                                        ?.reduce(
-                                            (
-                                                acc: [
-                                                    СasinosInRankRangeResponse,
-                                                    СasinosInRankRangeResponse?
-                                                ][],
-                                                item,
-                                                index
-                                            ) => {
-                                                if (index % 2 === 0) {
-                                                    acc.push([item])
-                                                } else {
-                                                    acc[acc.length - 1].push(
-                                                        item
-                                                    )
-                                                }
-                                                return acc
-                                            },
-                                            []
-                                        )
+                                        ?.reduce((acc: [СasinosInRankRangeResponse, СasinosInRankRangeResponse?][], item, index) => {
+                                            if (index % 2 === 0) {
+                                                acc.push([item])
+                                            } else {
+                                                acc[acc.length - 1].push(item)
+                                            }
+                                            return acc
+                                        }, [])
                                         .map((item) => (
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link
-                                                        to={`/casino/${sanitizeLink(
-                                                            item?.[0]?.name
-                                                        )}?queryId=${
-                                                            item?.[0]?.id
-                                                        }`}
-                                                        aria-label="Put your description here."
-                                                        className="item-slide-slider__image-block"
-                                                    >
+                                                    <Link to={`/casino/${sanitizeLink(item?.[0]?.name)}?queryId=${item?.[0]?.id}`} aria-label="Put your description here." className="item-slide-slider__image-block">
                                                         <span className="item-slide-slider__image ibg--custom">
-                                                            <LazyCardImg
-                                                                img={
-                                                                    item?.[0]
-                                                                        .image ||
-                                                                    ""
-                                                                }
-                                                                height="auto"
-                                                                width="100%"
-                                                            />
+                                                            <LazyCardImg img={item?.[0].image || ''} height="auto" width="100%" />
                                                         </span>
                                                     </Link>
                                                     <div className="item-slide-slider__content">
-                                                        <Link
-                                                            to={`/casino/${sanitizeLink(
-                                                                item?.[0]?.name
-                                                            )}?queryId=${
-                                                                item?.[0]?.id
-                                                            }`}
-                                                            aria-label="Put your description here."
-                                                            className="item-slide-slider__name"
-                                                        >
+                                                        <Link to={`/casino/${sanitizeLink(item?.[0]?.name)}?queryId=${item?.[0]?.id}`} aria-label="Put your description here." className="item-slide-slider__name">
                                                             {item?.[0]?.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[0]?.additional_casino_params?.map(
-                                                                (l, ct) => (
-                                                                    <div
-                                                                        className={`tags-casino-card__item ${
-                                                                            COLORS_TAGS[
-                                                                                ct %
-                                                                                    4
-                                                                            ]
-                                                                        }`}
-                                                                    >
-                                                                        <span className="tags-casino-card__item-label">
-                                                                            {l}
-                                                                        </span>
-                                                                    </div>
-                                                                )
-                                                            )}
+                                                            {item?.[0]?.additional_casino_params?.map((l, ct) => (
+                                                                <div className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
+                                                                    <span className="tags-casino-card__item-label">{l}</span>
+                                                                </div>
+                                                            ))}
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
                                                             <div className="info-casino-card__stake-rating">
                                                                 <span className="info-casino-card__stake-rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            starIcon
-                                                                        }
-                                                                        alt="star"
-                                                                    />
+                                                                    <img src={starIcon} alt="star" />
                                                                 </span>
-                                                                <span className="info-casino-card__stake__rating-number">
-                                                                    {
-                                                                        item?.[0]
-                                                                            ?.casino_rank
-                                                                    }
-                                                                </span>
+                                                                <span className="info-casino-card__stake__rating-number">{item?.[0]?.casino_rank}</span>
                                                             </div>
                                                             <div className="info-casino-card__likes">
                                                                 <span className="info-casino-card__likes-icon">
-                                                                    <img
-                                                                        src={
-                                                                            likeIcon
-                                                                        }
-                                                                        alt="like"
-                                                                    />
+                                                                    <img src={likeIcon} alt="like" />
                                                                 </span>
-                                                                <span className="info-casino-card__likes-number">
-                                                                    {sanitizeNumberLike(
-                                                                        item?.[0]
-                                                                            ?.likes
-                                                                    )}
-                                                                </span>
+                                                                <span className="info-casino-card__likes-number">{sanitizeNumberLike(item?.[0]?.likes)}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link
-                                                        to={`/casino/${sanitizeLink(
-                                                            item?.[1]?.name
-                                                        )}?queryId=${
-                                                            item?.[1]?.id
-                                                        }`}
-                                                        aria-label="Put your description here."
-                                                        className="item-slide-slider__image-block"
-                                                    >
+                                                    <Link to={`/casino/${sanitizeLink(item?.[1]?.name)}?queryId=${item?.[1]?.id}`} aria-label="Put your description here." className="item-slide-slider__image-block">
                                                         <span className="item-slide-slider__image ibg--custom">
-                                                            <LazyCardImg
-                                                                img={
-                                                                    item?.[1]
-                                                                        ?.image ||
-                                                                    ""
-                                                                }
-                                                                height="auto"
-                                                                width="100%"
-                                                            />
+                                                            <LazyCardImg img={item?.[1]?.image || ''} height="auto" width="100%" />
                                                         </span>
                                                     </Link>
                                                     <div className="item-slide-slider__content">
-                                                        <Link
-                                                            to={`/casino/${sanitizeLink(
-                                                                item?.[1]?.name
-                                                            )}?queryId=${
-                                                                item?.[1]?.id
-                                                            }`}
-                                                            aria-label="Put your description here."
-                                                            className="item-slide-slider__name"
-                                                        >
+                                                        <Link to={`/casino/${sanitizeLink(item?.[1]?.name)}?queryId=${item?.[1]?.id}`} aria-label="Put your description here." className="item-slide-slider__name">
                                                             {item?.[1]?.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[1]?.additional_casino_params?.map(
-                                                                (l, ct) => (
-                                                                    <div
-                                                                        className={`tags-casino-card__item ${
-                                                                            COLORS_TAGS[
-                                                                                ct %
-                                                                                    4
-                                                                            ]
-                                                                        }`}
-                                                                    >
-                                                                        <span className="tags-casino-card__item-label">
-                                                                            {l}
-                                                                        </span>
-                                                                    </div>
-                                                                )
-                                                            )}
+                                                            {item?.[1]?.additional_casino_params?.map((l, ct) => (
+                                                                <div className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
+                                                                    <span className="tags-casino-card__item-label">{l}</span>
+                                                                </div>
+                                                            ))}
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
                                                             <div className="info-casino-card__stake-rating">
                                                                 <span className="info-casino-card__stake-rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            starIcon
-                                                                        }
-                                                                        alt="like"
-                                                                    />
+                                                                    <img src={starIcon} alt="like" />
                                                                 </span>
-                                                                <span className="info-casino-card__stake__rating-number">
-                                                                    {
-                                                                        item?.[1]
-                                                                            ?.casino_rank
-                                                                    }
-                                                                </span>
+                                                                <span className="info-casino-card__stake__rating-number">{item?.[1]?.casino_rank}</span>
                                                             </div>
                                                             <div className="info-casino-card__likes">
                                                                 <span className="info-casino-card__likes-icon">
-                                                                    <img
-                                                                        src={
-                                                                            likeIcon
-                                                                        }
-                                                                        alt="like"
-                                                                    />
+                                                                    <img src={likeIcon} alt="like" />
                                                                 </span>
-                                                                <span className="info-casino-card__likes-number">
-                                                                    {sanitizeNumberLike(item?.[1]
-                                                                        ?.likes )}
-                                                                </span>
+                                                                <span className="info-casino-card__likes-number">{sanitizeNumberLike(item?.[1]?.likes)}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -387,84 +249,35 @@ export const HighRankedCasinos = () => {
                                         {dataCasino?.map((item) => (
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link
-                                                        to={`/casino/${sanitizeLink(
-                                                            item?.name
-                                                        )}?queryId=${item?.id}`}
-                                                        aria-label="Put your description here."
-                                                        className="item-slide-slider__image-block"
-                                                    >
+                                                    <Link to={`/casino/${sanitizeLink(item?.name)}?queryId=${item?.id}`} aria-label="Put your description here." className="item-slide-slider__image-block">
                                                         <span className="item-slide-slider__image ibg--custom">
-                                                            <LazyCardImg
-                                                                img={
-                                                                    item?.image ||
-                                                                    ""
-                                                                }
-                                                                height="auto"
-                                                                width="100%"
-                                                            />
+                                                            <LazyCardImg img={item?.image || ''} height="auto" width="100%" />
                                                         </span>
                                                     </Link>
 
                                                     <div className="item-slide-slider__content">
-                                                        <Link
-                                                            to={`/casino/${sanitizeLink(
-                                                                item?.name
-                                                            )}?queryId=${
-                                                                item?.id
-                                                            }`}
-                                                            aria-label="Put your description here."
-                                                            target="_blank"
-                                                            className="item-slide-slider__name"
-                                                        >
+                                                        <Link to={`/casino/${sanitizeLink(item?.name)}?queryId=${item?.id}`} aria-label="Put your description here." target="_blank" className="item-slide-slider__name">
                                                             {item.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.additional_casino_params?.map(
-                                                                (l, ct) => (
-                                                                    <div
-                                                                        className={`tags-casino-card__item ${
-                                                                            COLORS_TAGS[
-                                                                                ct %
-                                                                                    4
-                                                                            ]
-                                                                        }`}
-                                                                    >
-                                                                        <span className="tags-casino-card__item-label">
-                                                                            {l}
-                                                                        </span>
-                                                                    </div>
-                                                                )
-                                                            )}
+                                                            {item?.additional_casino_params?.map((l, ct) => (
+                                                                <div className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
+                                                                    <span className="tags-casino-card__item-label">{l}</span>
+                                                                </div>
+                                                            ))}
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
                                                             <div className="info-casino-card__stake-rating">
                                                                 <span className="info-casino-card__stake-rating-icon">
-                                                                    <img
-                                                                        src={
-                                                                            starIcon
-                                                                        }
-                                                                        alt="star"
-                                                                    />
+                                                                    <img src={starIcon} alt="star" />
                                                                 </span>
-                                                                <span className="info-casino-card__stake__rating-number">
-                                                                    {
-                                                                        item.casino_rank
-                                                                    }
-                                                                </span>
+                                                                <span className="info-casino-card__stake__rating-number">{item.casino_rank}</span>
                                                             </div>
                                                             <div className="info-casino-card__likes">
                                                                 <span className="info-casino-card__likes-icon">
-                                                                    <img
-                                                                        src={
-                                                                            likeIcon
-                                                                        }
-                                                                        alt="like"
-                                                                    />
+                                                                    <img src={likeIcon} alt="like" />
                                                                 </span>
-                                                                <span className="info-casino-card__likes-number">
-                                                                    {sanitizeNumberLike(item.likes)}
-                                                                </span>
+                                                                <span className="info-casino-card__likes-number">{sanitizeNumberLike(item.likes)}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -475,10 +288,7 @@ export const HighRankedCasinos = () => {
                                 </div>
                             </div>
                             <div className="slider__bottom bottom-slider">
-                                <div
-                                    ref={paginationRef}
-                                    className="bottom-slider__pagination slider-mob-other-сasinos-review__pagination swiper-pagination"
-                                ></div>
+                                <div ref={paginationRef} className="bottom-slider__pagination slider-mob-other-сasinos-review__pagination swiper-pagination"></div>
                             </div>
                         </div>
                     </div>

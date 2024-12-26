@@ -1,18 +1,13 @@
-import { useEffect, useRef, useState } from "react"
-import { LazyLoadImage } from "react-lazy-load-image-component"
-import arrowYellowIcon from "../../assets/img/icons/arrow-yellow.svg"
-import closeIcon from "../../assets/img/icons/close.svg"
-import slotsIcon from "../../assets/img/games/01.svg"
-import { GetDataBonusResponse } from "../../types"
-import moment from "moment"
-import { AccordionItem } from "../../components/acordion/Acordion"
+import { useEffect, useRef, useState } from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import arrowYellowIcon from '../../assets/img/icons/arrow-yellow.svg'
+import closeIcon from '../../assets/img/icons/close.svg'
+import slotsIcon from '../../assets/img/games/01.svg'
+import { GetDataBonusResponse } from '../../types'
+import moment from 'moment'
+import { AccordionItem } from '../../components/acordion/Acordion'
 
-
-export const BonusInformation = ({
-    data,
-}: {
-    data: GetDataBonusResponse | undefined
-}) => {
+export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefined }) => {
     const [BonusInfoIsOpen, setIsBonusInfoOpen] = useState({
         Restrictions: true,
         WageringInfo: true,
@@ -50,10 +45,10 @@ export const BonusInformation = ({
     }
 
     useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside)
+        document.addEventListener('mousedown', handleClickOutside)
 
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside)
+            document.removeEventListener('mousedown', handleClickOutside)
         }
     }, [])
 
@@ -82,71 +77,31 @@ export const BonusInformation = ({
                         <AccordionItem
                             defaultOpen
                             heading={
-                                <div
-                                    className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}
-                                >
-                                    <div className="top-item-bonus-information__title">
-                                        Bonus General Info
-                                    </div>
+                                <div className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}>
+                                    <div className="top-item-bonus-information__title">Bonus General Info</div>
                                     <div className="top-item-bonus-information__icon">
-                                        <img
-                                            src={arrowYellowIcon}
-                                            alt="arrowYellowIcon"
-                                        />
+                                        <img src={arrowYellowIcon} alt="arrowYellowIcon" />
                                     </div>
                                 </div>
                             }
                             content={
-                                <div
-                                    style={{ paddingBottom: "20px" }}
-                                    className={`content-bonus-information  `}
-                                >
+                                <div style={{ paddingBottom: '20px' }} className={`content-bonus-information  `}>
                                     <div className="content-bonus-information__items">
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Total Bonus amount:
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Total Bonus amount:</div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.bonus_amount?.[0]?.value || data?.bonus_amount?.[0]?.unlimited 
-                                                    ? `${
-                                                          data
-                                                              ?.bonus_amount?.[0]
-                                                              ?.unlimited
-                                                              ? "Unlimited"
-                                                              : data
-                                                                    ?.bonus_amount?.[0]
-                                                                    ?.value + '$'
-                                                      }`
-                                                    : "-"}
+                                                {data?.bonus_amount?.[0]?.value || data?.bonus_amount?.[0]?.unlimited ? `${data?.bonus_amount?.[0]?.unlimited ? 'Unlimited' : data?.bonus_amount?.[0]?.value + '$'}` : '-'}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Max bet:
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Max bet:</div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.max_bet?.[0]?.value || data?.max_bet?.[0]?.unlimited
-                                                    ? `${
-                                                          data?.max_bet?.[0]
-                                                              ?.unlimited
-                                                              ? "Unlimited"
-                                                              : data
-                                                                    ?.max_bet?.[0]
-                                                                    ?.value + '$'
-                                                      }`
-                                                    : "-"}
+                                                {data?.max_bet?.[0]?.value || data?.max_bet?.[0]?.unlimited ? `${data?.max_bet?.[0]?.unlimited ? 'Unlimited' : data?.max_bet?.[0]?.value + '$'}` : '-'}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Min dep:
-                                            </div>
-                                            <div className="item-content-bonus-information__value">
-                                                {data?.bonus_min_dep?.[0]
-                                                    ?.min_value
-                                                    ? `${data?.bonus_min_dep?.[0]?.min_value}$`
-                                                    : "-"}
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Min dep:</div>
+                                            <div className="item-content-bonus-information__value">{data?.bonus_min_dep?.[0]?.min_value ? `${data?.bonus_min_dep?.[0]?.min_value}$` : '-'}</div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
                                             <div className="item-content-bonus-information__label">
@@ -158,43 +113,19 @@ export const BonusInformation = ({
                                                         </svg>
                                                     </span>
                                                     <span className="item-content-bonus-information__info-text">
-                                                        <span>The maximum amount</span>  a player can win<br/> when  using this bonus.
+                                                        <span>The maximum amount</span> a player can win
+                                                        <br /> when using this bonus.
                                                     </span>
                                                 </span>
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.bonus_max_win?.[0]?.max_value || data?.bonus_max_win?.[0]?.unlimited
-                                                    ? `${
-                                                          data
-                                                              ?.bonus_max_win?.[0]
-                                                              ?.unlimited
-                                                              ? "Unlimited"
-                                                              : data
-                                                                    ?.bonus_max_win?.[0]
-                                                                    ?.max_value + '$'
-                                                      }`
-                                                    : "-"}
+                                                {data?.bonus_max_win?.[0]?.max_value || data?.bonus_max_win?.[0]?.unlimited ? `${data?.bonus_max_win?.[0]?.unlimited ? 'Unlimited' : data?.bonus_max_win?.[0]?.max_value + '$'}` : '-'}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Daily availability:
-                                            </div>
-                                            <div
-                                                className="item-content-bonus-information__value"
-                                                style={{ textAlign: "right" }}
-                                            >
-                                                {data?.day_of_week.length
-                                                    ? data?.day_of_week
-                                                          .reduce(
-                                                              (prev, state) =>
-                                                                  prev +
-                                                                  ", " +
-                                                                  state.day,
-                                                              ""
-                                                          )
-                                                          .slice(2)
-                                                    : "-"}
+                                            <div className="item-content-bonus-information__label">Daily availability:</div>
+                                            <div className="item-content-bonus-information__value" style={{ textAlign: 'right' }}>
+                                                {data?.day_of_week.length ? data?.day_of_week.reduce((prev, state) => prev + ', ' + state.day, '').slice(2) : '-'}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
@@ -207,50 +138,24 @@ export const BonusInformation = ({
                                                         </svg>
                                                     </span>
                                                     <span className="item-content-bonus-information__info-text">
-                                                    <span>The time  limit to use the bonus</span> <br/> before it expires and becomes invalid
+                                                        <span>The time limit to use the bonus</span> <br /> before it expires and becomes invalid
                                                     </span>
                                                 </span>
                                             </div>
-                                            <div className="item-content-bonus-information__value">
-                                                {!data?.bonus_expiration?.days
-                                                    ? "-"
-                                                    : data?.bonus_expiration
-                                                          ?.days === 1
-                                                    ? "1 day"
-                                                    : `${data?.bonus_expiration?.days} days`}
-                                            </div>
+                                            <div className="item-content-bonus-information__value">{!data?.bonus_expiration?.days ? '-' : data?.bonus_expiration?.days === 1 ? '1 day' : `${data?.bonus_expiration?.days} days`}</div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Bonus period:
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Bonus period:</div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.promotion_period
-                                                    ?.start_date &&
-                                                data?.promotion_period?.end_date
-                                                    ? `${moment(
-                                                          data?.promotion_period
-                                                              ?.start_date
-                                                      ).format(
-                                                          "DD.MM.YYYY"
-                                                      )} - ${moment(
-                                                          data?.promotion_period
-                                                              ?.end_date
-                                                      ).format("DD.MM.YYYY")}`
-                                                    : "-"}
+                                                {data?.promotion_period?.start_date && data?.promotion_period?.end_date
+                                                    ? `${moment(data?.promotion_period?.start_date).format('DD.MM.YYYY')} - ${moment(data?.promotion_period?.end_date).format('DD.MM.YYYY')}`
+                                                    : '-'}
                                             </div>
                                         </div>
-                                        {data?.bonus_type?.toLocaleLowerCase() !==
-                                            "Cashback bonus".toLocaleLowerCase() && (
+                                        {data?.bonus_type?.toLocaleLowerCase() !== 'Cashback bonus'.toLocaleLowerCase() && (
                                             <div className="content-bonus-information__item item-content-bonus-information">
-                                                <div className="item-content-bonus-information__label">
-                                                    Sticky:
-                                                </div>
-                                                <div className="item-content-bonus-information__value">
-                                                    {data?.sticky
-                                                        ? "Yes"
-                                                        : "No"}
-                                                </div>
+                                                <div className="item-content-bonus-information__label">Sticky:</div>
+                                                <div className="item-content-bonus-information__value">{data?.sticky ? 'Yes' : 'No'}</div>
                                             </div>
                                         )}
 
@@ -279,27 +184,15 @@ export const BonusInformation = ({
                         <AccordionItem
                             defaultOpen
                             heading={
-                                <div
-                                    className={`item-bonus-information__top top-item-bonus-information accordion--title--element `}
-                                >
-                                    <div className="top-item-bonus-information__title">
-                                        Wagering Info
-                                    </div>
+                                <div className={`item-bonus-information__top top-item-bonus-information accordion--title--element `}>
+                                    <div className="top-item-bonus-information__title">Wagering Info</div>
                                     <div className="top-item-bonus-information__icon">
-                                        <img
-                                            src={arrowYellowIcon}
-                                            alt="arrowYellowIcon"
-                                        />
+                                        <img src={arrowYellowIcon} alt="arrowYellowIcon" />
                                     </div>
                                 </div>
                             }
                             content={
-                                <div
-                                    style={{ paddingBottom: "20px" }}
-                                    className={`content-bonus-information   ${
-                                        overflow.WageringInfo && "visiable"
-                                    }`}
-                                >
+                                <div style={{ paddingBottom: '20px' }} className={`content-bonus-information   ${overflow.WageringInfo && 'visiable'}`}>
                                     <div className="content-bonus-information__items">
                                         <div className="content-bonus-information__item item-content-bonus-information">
                                             <div className="item-content-bonus-information__label">
@@ -327,71 +220,42 @@ export const BonusInformation = ({
                                                 </span> */}
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data
-                                                        ?.wagering_bonus_plus_deposit
-                                                        ?.bonus_plus_deposit ||
-                                                    data
-                                                        ?.wagering_bonus_plus_deposit
-                                                        ?.bonus_only  ? `${
-                                                    data
-                                                        ?.wagering_bonus_plus_deposit
-                                                        ?.bonus_plus_deposit ||
-                                                    data
-                                                        ?.wagering_bonus_plus_deposit
-                                                        ?.bonus_only 
-                                                }x ${
-                                                    data
-                                                        ?.wagering_bonus_plus_deposit
-                                                        ?.bonus_plus_deposit
-                                                        ? "Bonus + Deposit"
-                                                        : "Bonus Only"
-                                                }` : '-'}
+                                                {data?.wagering_bonus_plus_deposit?.bonus_plus_deposit || data?.wagering_bonus_plus_deposit?.bonus_only
+                                                    ? `${data?.wagering_bonus_plus_deposit?.bonus_plus_deposit || data?.wagering_bonus_plus_deposit?.bonus_only}x ${
+                                                          data?.wagering_bonus_plus_deposit?.bonus_plus_deposit ? 'Bonus + Deposit' : 'Bonus Only'
+                                                      }`
+                                                    : '-'}
                                             </div>
                                         </div>
-                                        {data?.wagering?.wagering_difficulty ===
-                                            "easy" && (
+                                        {data?.wagering?.wagering_difficulty === 'easy' && (
                                             <div className="content-bonus-information__item item-content-bonus-information">
-                                                <div className="item-content-bonus-information__label">
-                                                    Bonus Max win:
-                                                </div>
+                                                <div className="item-content-bonus-information__label">Bonus Max win:</div>
                                                 <div className="item-content-bonus-information__value">
                                                     <div className="item-content-bonus-information__status status-item-content-bonus-information status-item-content-bonus-information_low">
-                                                        <span className="status-item-content-bonus-information__label">
-                                                            Easy
-                                                        </span>
+                                                        <span className="status-item-content-bonus-information__label">Easy</span>
                                                         <span className="status-item-content-bonus-information__panel"></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         )}
-                                        {data?.wagering?.wagering_difficulty ===
-                                            "medium" && (
+                                        {data?.wagering?.wagering_difficulty === 'medium' && (
                                             <div className="content-bonus-information__item item-content-bonus-information">
-                                                <div className="item-content-bonus-information__label">
-                                                    Bonus Max win:
-                                                </div>
+                                                <div className="item-content-bonus-information__label">Bonus Max win:</div>
                                                 <div className="item-content-bonus-information__value">
                                                     <div className="item-content-bonus-information__status status-item-content-bonus-information status-item-content-bonus-information_medium">
-                                                        <span className="status-item-content-bonus-information__label">
-                                                            Medium
-                                                        </span>
+                                                        <span className="status-item-content-bonus-information__label">Medium</span>
                                                         <span className="status-item-content-bonus-information__panel"></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         )}
-                                        {data?.wagering?.wagering_difficulty ===
-                                            "hard" && (
+                                        {data?.wagering?.wagering_difficulty === 'hard' && (
                                             <div className="item-content-bonus-information-wrap ''">
                                                 <div className="content-bonus-information__item item-content-bonus-information">
-                                                    <div className="item-content-bonus-information__label">
-                                                        Bonus Max win:
-                                                    </div>
+                                                    <div className="item-content-bonus-information__label">Bonus Max win:</div>
                                                     <div className="item-content-bonus-information__value">
                                                         <div className="item-content-bonus-information__status status-item-content-bonus-information status-item-content-bonus-information_quick">
-                                                            <span className="status-item-content-bonus-information__label">
-                                                                Hard
-                                                            </span>
+                                                            <span className="status-item-content-bonus-information__label">Hard</span>
                                                             <span className="status-item-content-bonus-information__panel"></span>
                                                         </div>
                                                     </div>
@@ -407,51 +271,27 @@ export const BonusInformation = ({
                         <AccordionItem
                             defaultOpen
                             heading={
-                                <div
-                                    className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}
-                                >
-                                    <div className="top-item-bonus-information__title">
-                                        Wagering Contribution
-                                    </div>
+                                <div className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}>
+                                    <div className="top-item-bonus-information__title">Wagering Contribution</div>
                                     <div className="top-item-bonus-information__icon">
-                                        <img
-                                            src={arrowYellowIcon}
-                                            alt="arrowYellowIcon"
-                                        />
+                                        <img src={arrowYellowIcon} alt="arrowYellowIcon" />
                                     </div>
                                 </div>
                             }
                             content={
-                                <div
-                                    style={{ paddingBottom: "20px" }}
-                                    className={`content-bonus-information .accordion--title--element`}
-                                >
+                                <div style={{ paddingBottom: '20px' }} className={`content-bonus-information .accordion--title--element`}>
                                     <div className="content-bonus-information__items">
                                         {data?.wagering_contribution
                                             ?.sort((a, b) => b.value - a.value)
                                             ?.map((item, index) => (
-                                                <div
-                                                    key={index}
-                                                    className={`content-bonus-information__item item-content-bonus-information ${
-                                                        index + 1 ===
-                                                            data
-                                                                ?.wagering_contribution
-                                                                ?.length && "''"
-                                                    }`}
-                                                >
+                                                <div key={index} className={`content-bonus-information__item item-content-bonus-information ${index + 1 === data?.wagering_contribution?.length && "''"}`}>
                                                     {item?.description ? (
                                                         <>
-                                                            <div className="item-content-bonus-information__label">
-                                                                {
-                                                                    item?.description
-                                                                }
-                                                            </div>
-                                                            <div className="item-content-bonus-information__value">
-                                                                {(typeof item?.value === 'number' || typeof item?.value === 'string') ? item?.value + "%" : '-' }
-                                                            </div>
+                                                            <div className="item-content-bonus-information__label">{item?.description}</div>
+                                                            <div className="item-content-bonus-information__value">{typeof item?.value === 'number' || typeof item?.value === 'string' ? item?.value + '%' : '-'}</div>
                                                         </>
                                                     ) : (
-                                                        "-"
+                                                        '-'
                                                     )}
                                                 </div>
                                             ))}
@@ -465,34 +305,19 @@ export const BonusInformation = ({
                             <AccordionItem
                                 defaultOpen
                                 heading={
-                                    <div
-                                        className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}
-                                    >
-                                        <div className="top-item-bonus-information__title">
-                                            Special Notes
-                                        </div>
+                                    <div className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}>
+                                        <div className="top-item-bonus-information__title">Special Notes</div>
                                         <div className="top-item-bonus-information__icon">
-                                            <img
-                                                src={arrowYellowIcon}
-                                                alt="arrowYellowIcon"
-                                            />
+                                            <img src={arrowYellowIcon} alt="arrowYellowIcon" />
                                         </div>
                                     </div>
                                 }
                                 content={
-                                    <div
-                                        style={{ paddingBottom: "20px" }}
-                                        className={`content-bonus-information `}
-                                    >
+                                    <div style={{ paddingBottom: '20px' }} className={`content-bonus-information `}>
                                         <div className="content-bonus-information__items">
                                             <div className="content-bonus-information__item item-content-bonus-information ''">
                                                 <div className="item-content-bonus-information__text">
-                                                    <p>
-                                                        {
-                                                            data?.special_note
-                                                                ?.description
-                                                        }
-                                                    </p>
+                                                    <p>{data?.special_note?.description}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -507,79 +332,43 @@ export const BonusInformation = ({
                         <AccordionItem
                             defaultOpen
                             heading={
-                                <div
-                                    className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}
-                                >
-                                    <div className="top-item-bonus-information__title">
-                                        Free Spins
-                                    </div>
+                                <div className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}>
+                                    <div className="top-item-bonus-information__title">Free Spins</div>
                                     <div className="top-item-bonus-information__icon">
-                                        <img
-                                            src={arrowYellowIcon}
-                                            alt="arrowYellowIcon"
-                                        />
+                                        <img src={arrowYellowIcon} alt="arrowYellowIcon" />
                                     </div>
                                 </div>
                             }
                             content={
-                                <div
-                                    style={{ paddingBottom: "20px" }}
-                                    className={`content-bonus-information`}
-                                >
+                                <div style={{ paddingBottom: '20px' }} className={`content-bonus-information`}>
                                     <div className="content-bonus-information__items">
                                         <div className="content-bonus-information__item item-content-bonus-information">
                                             <div className="item-content-bonus-information__label">
-                                                Free spin amount:  
-                                                  <span className="item-content-bonus-information__info">
+                                                Free spin amount:
+                                                <span className="item-content-bonus-information__info">
                                                     <span className="item-content-bonus-information__info-icon info-icon">
                                                         <svg>
                                                             <use xlinkHref="#info"></use>
                                                         </svg>
                                                     </span>
-                                                    <span
-                                                        className="item-content-bonus-information__info-text"
-                                                        style={{ zIndex: 10 }}
-                                                    >
-                                                       <span>The number of free spins</span> <br/> granted in addition to the bonus.
+                                                    <span className="item-content-bonus-information__info-text" style={{ zIndex: 10 }}>
+                                                        <span>The number of free spins</span> <br /> granted in addition to the bonus.
                                                     </span>
                                                 </span>
                                             </div>
-                                            <div className="item-content-bonus-information__value">
-                                                {data?.free_spin_amount?.value
-                                                    ? `${data?.free_spin_amount?.value}`
-                                                    : "-"}
-                                            </div>
+                                            <div className="item-content-bonus-information__value">{data?.free_spin_amount?.value ? `${data?.free_spin_amount?.value}` : '-'}</div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Spin value:
-                                            </div>
-                                            <div className="item-content-bonus-information__value">
-                                                {data?.one_spin?.value
-                                                    ? `$ ${data?.one_spin?.value}`
-                                                    : "-"}
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Spin value:</div>
+                                            <div className="item-content-bonus-information__value">{data?.one_spin?.value ? `$ ${data?.one_spin?.value}` : '-'}</div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Bonus slot:
-                                            </div>
-                                            <div className="item-content-bonus-information__value">
-                                                {data?.bonus_slot?.game?.[0]
-                                                    ?.name
-                                                    ? `${data?.bonus_slot?.game?.[0]?.name}`
-                                                    : "-"}
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Bonus slot:</div>
+                                            <div className="item-content-bonus-information__value">{data?.bonus_slot?.game?.[0]?.name ? `${data?.bonus_slot?.game?.[0]?.name}` : '-'}</div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information ''">
-                                            <div className="item-content-bonus-information__label">
-                                                Wager for free spins:
-                                            </div>
-                                            <div className="item-content-bonus-information__value">
-                                                {data?.wager?.value
-                                                    ? `${data?.wager?.value}x`
-                                                    : "-"}
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Wager for free spins:</div>
+                                            <div className="item-content-bonus-information__value">{data?.wager?.value ? `${data?.wager?.value}x` : '-'}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -599,53 +388,28 @@ export const BonusInformation = ({
                                         }))
                                     }
                                 >
-                                    <div className="top-item-bonus-information__title">
-                                        Restrictions
-                                    </div>
+                                    <div className="top-item-bonus-information__title">Restrictions</div>
                                     <div className="top-item-bonus-information__icon">
-                                        <img
-                                            src={arrowYellowIcon}
-                                            alt="arrowYellowIcon"
-                                        />
+                                        <img src={arrowYellowIcon} alt="arrowYellowIcon" />
                                     </div>
                                 </div>
                             }
                             content={
-                                <div
-                                    style={{ paddingBottom: "20px" }}
-                                    className={` content-bonus-information   ${
-                                        overflow.Restrictions && "visiable"
-                                    }`}
-                                >
+                                <div style={{ paddingBottom: '20px' }} className={` content-bonus-information   ${overflow.Restrictions && 'visiable'}`}>
                                     <div className="content-bonus-information__items">
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Bonus restriction games:
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Bonus restriction games:</div>
 
                                             <div className="item-content-bonus-information__value">
-                                                {data?.restriction_game
-                                                    ?.game.length ? (
+                                                {data?.restriction_game?.game.length ? (
                                                     <>
-                                                        {data?.restriction_game?.game
-                                                            ?.reduce(
-                                                                (prev, state) =>
-                                                                    prev +
-                                                                    ", " +
-                                                                    state.name,
-                                                                ""
-                                                            )
-                                                            .slice(2, 20)}{" "}
-                                                        ...
+                                                        {data?.restriction_game?.game?.reduce((prev, state) => prev + ', ' + state.name, '').slice(2, 20)} ...
                                                         <button
                                                             onClick={() =>
-                                                                setOpenModal(
-                                                                    (s) => ({
-                                                                        ...s,
-                                                                        BonusRestrictionGames:
-                                                                            true,
-                                                                    })
-                                                                )
+                                                                setOpenModal((s) => ({
+                                                                    ...s,
+                                                                    BonusRestrictionGames: true,
+                                                                }))
                                                             }
                                                             aria-label="Put your description here."
                                                             className="item-content-bonus-information__link info-popup-open"
@@ -653,75 +417,36 @@ export const BonusInformation = ({
                                                             See all
                                                         </button>
                                                         <div
-                                                            className={`item-content-bonus-information__popup popup-item-content-bonus-information accordion--title--element ${
-                                                                openModal.BonusRestrictionGames &&
-                                                                "active"
-                                                            }`}
-                                                            ref={
-                                                                modalRefs.BonusRestrictionGames
-                                                            }
+                                                            className={`item-content-bonus-information__popup popup-item-content-bonus-information accordion--title--element ${openModal.BonusRestrictionGames && 'active'}`}
+                                                            ref={modalRefs.BonusRestrictionGames}
                                                         >
                                                             <div className="popup-item-content-bonus-information__body">
                                                                 <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
                                                                     <div className="top-popup-item-content-bonus-information__title">
-                                                                        All
-                                                                        Bonus
-                                                                        Restriction
-                                                                        Games
-                                                                        <div className="top-popup-item-content-bonus-information__number">
-                                                                            {`(${
-                                                                                data
-                                                                                    ?.restriction_game
-                                                                                    ?.game
-                                                                                    ?.length ||
-                                                                                0
-                                                                            })`}
-                                                                        </div>
+                                                                        All Bonus Restriction Games
+                                                                        <div className="top-popup-item-content-bonus-information__number">{`(${data?.restriction_game?.game?.length || 0})`}</div>
                                                                     </div>
                                                                     <button
                                                                         onClick={() =>
-                                                                            setOpenModal(
-                                                                                (
-                                                                                    s
-                                                                                ) => ({
-                                                                                    ...s,
-                                                                                    BonusRestrictionGames:
-                                                                                        false,
-                                                                                })
-                                                                            )
+                                                                            setOpenModal((s) => ({
+                                                                                ...s,
+                                                                                BonusRestrictionGames: false,
+                                                                            }))
                                                                         }
                                                                         aria-label="Put your description here."
                                                                         className="top-popup-item-content-bonus-information__btn-close info-popup-close"
                                                                     >
-                                                                        <img
-                                                                            src={
-                                                                                closeIcon
-                                                                            }
-                                                                            alt="close"
-                                                                        />
+                                                                        <img src={closeIcon} alt="close" />
                                                                     </button>
                                                                 </div>
                                                                 <div className="popup-item-content-bonus-information__content">
                                                                     <div className="popup-item-content-bonus-information__lits-block">
                                                                         <ul className="popup-item-content-bonus-information__list">
-                                                                            {data?.restriction_game?.game?.map(
-                                                                                (
-                                                                                    item,
-                                                                                    index
-                                                                                ) => (
-                                                                                    <li
-                                                                                        key={
-                                                                                            index
-                                                                                        }
-                                                                                        className="popup-item-content-bonus-information__list-item"
-                                                                                    >
-                                                                                        <span className="popup-item-content-bonus-information__list-link">
-                                                                                            {item.name ||
-                                                                                                "slot"}
-                                                                                        </span>
-                                                                                    </li>
-                                                                                )
-                                                                            )}
+                                                                            {data?.restriction_game?.game?.map((item, index) => (
+                                                                                <li key={index} className="popup-item-content-bonus-information__list-item">
+                                                                                    <span className="popup-item-content-bonus-information__list-link">{item.name || 'slot'}</span>
+                                                                                </li>
+                                                                            ))}
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -729,226 +454,117 @@ export const BonusInformation = ({
                                                         </div>
                                                     </>
                                                 ) : (
-                                                    "-"
+                                                    '-'
                                                 )}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Provider restrictions:
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Provider restrictions:</div>
                                             <div className="item-content-bonus-information__value">
                                                 {data?.game_providers.length ? (
                                                     <>
-                                                        {data?.game_providers
-                                                            ?.reduce(
-                                                                (prev, state) =>
-                                                                    prev +
-                                                                    ", " +
-                                                                    state.name,
-                                                                ""
-                                                            )
-                                                            .slice(2, 20)}{" "}
-                                                        ...
+                                                        {data?.game_providers?.reduce((prev, state) => prev + ', ' + state.name, '').slice(2, 20)} ...
                                                         <button
                                                             onClick={() =>
-                                                                setOpenModal(
-                                                                    (s) => ({
-                                                                        ...s,
-                                                                        ProviderRestrictions:
-                                                                            true,
-                                                                    })
-                                                                )
+                                                                setOpenModal((s) => ({
+                                                                    ...s,
+                                                                    ProviderRestrictions: true,
+                                                                }))
                                                             }
                                                             aria-label="Put your description here."
                                                             className="item-content-bonus-information__link info-popup-open"
                                                         >
                                                             See all
                                                         </button>
-                                                        <div
-                                                            className={`item-content-bonus-information__popup popup-item-content-bonus-information ${
-                                                                openModal.ProviderRestrictions &&
-                                                                "active"
-                                                            }`}
-                                                            ref={
-                                                                modalRefs.ProviderRestrictions
-                                                            }
-                                                        >
+                                                        <div className={`item-content-bonus-information__popup popup-item-content-bonus-information ${openModal.ProviderRestrictions && 'active'}`} ref={modalRefs.ProviderRestrictions}>
                                                             <div className="popup-item-content-bonus-information__body">
                                                                 <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
                                                                     <div className="top-popup-item-content-bonus-information__title">
-                                                                        All
-                                                                        Provider
-                                                                        Restrictions
-                                                                        <div className="top-popup-item-content-bonus-information__number">
-                                                                            {`(${
-                                                                                data
-                                                                                    ?.game_providers
-                                                                                    ?.length ||
-                                                                                0
-                                                                            })`}
-                                                                        </div>
+                                                                        All Provider Restrictions
+                                                                        <div className="top-popup-item-content-bonus-information__number">{`(${data?.game_providers?.length || 0})`}</div>
                                                                     </div>
                                                                     <button
                                                                         onClick={() =>
-                                                                            setOpenModal(
-                                                                                (
-                                                                                    s
-                                                                                ) => ({
-                                                                                    ...s,
-                                                                                    ProviderRestrictions:
-                                                                                        false,
-                                                                                })
-                                                                            )
+                                                                            setOpenModal((s) => ({
+                                                                                ...s,
+                                                                                ProviderRestrictions: false,
+                                                                            }))
                                                                         }
                                                                         aria-label="Put your description here."
                                                                         className="top-popup-item-content-bonus-information__btn-close info-popup-close"
                                                                     >
-                                                                        <img
-                                                                            src={
-                                                                                closeIcon
-                                                                            }
-                                                                            alt="close"
-                                                                        />
+                                                                        <img src={closeIcon} alt="close" />
                                                                     </button>
                                                                 </div>
                                                                 <div className="popup-item-content-bonus-information__content">
                                                                     <div className="popup-item-content-bonus-information__row">
-                                                                        {data?.game_providers?.map(
-                                                                            (
-                                                                                item
-                                                                            ) => (
-                                                                                <a
-                                                                                   
-                                                                                    aria-label="Put your description here."
-                                                                                    className="popup-item-content-bonus-information__game game-popup-item-content-bonus-information popup-item-content-bonus-information__column"
-                                                                                >
-                                                                                    <span className="game-popup-item-content-bonus-information__icon">
-                                                                                        <LazyLoadImage
-                                                                                            src={
-                                                                                                item?.image ||
-                                                                                                slotsIcon
-                                                                                            }
-                                                                                            alt="Slots"
-                                                                                        />
-                                                                                    </span>
-                                                                                    <span className="game-popup-item-content-bonus-information__name">
-                                                                                        {item.name ||
-                                                                                            "slot"}
-                                                                                    </span>
-                                                                                </a>
-                                                                            )
-                                                                        )}
+                                                                        {data?.game_providers?.map((item) => (
+                                                                            <a
+                                                                                aria-label="Put your description here."
+                                                                                className="popup-item-content-bonus-information__game game-popup-item-content-bonus-information popup-item-content-bonus-information__column"
+                                                                            >
+                                                                                <span className="game-popup-item-content-bonus-information__icon">
+                                                                                    <LazyLoadImage src={item?.image || slotsIcon} alt="Slots" />
+                                                                                </span>
+                                                                                <span className="game-popup-item-content-bonus-information__name">{item.name || 'slot'}</span>
+                                                                            </a>
+                                                                        ))}
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </>
                                                 ) : (
-                                                    "-"
+                                                    '-'
                                                 )}
                                             </div>
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information">
-                                            <div className="item-content-bonus-information__label">
-                                                Country restrictions:
-                                            </div>
+                                            <div className="item-content-bonus-information__label">Country restrictions:</div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.bonus_blocked_countries
-                                                    ?.length ? (
+                                                {data?.bonus_blocked_countries?.length ? (
                                                     <>
-                                                        {data?.bonus_blocked_countries
-                                                            ?.reduce(
-                                                                (prev, state) =>
-                                                                    prev +
-                                                                    ", " +
-                                                                    state.name,
-                                                                ""
-                                                            )
-                                                            .slice(2, 20)}{" "}
-                                                        ...
+                                                        {data?.bonus_blocked_countries?.reduce((prev, state) => prev + ', ' + state.name, '').slice(2, 20)} ...
                                                         <button
                                                             onClick={() =>
-                                                                setOpenModal(
-                                                                    (s) => ({
-                                                                        ...s,
-                                                                        CountryRestrictions:
-                                                                            true,
-                                                                    })
-                                                                )
+                                                                setOpenModal((s) => ({
+                                                                    ...s,
+                                                                    CountryRestrictions: true,
+                                                                }))
                                                             }
                                                             aria-label="Put your description here."
                                                             className="item-content-bonus-information__link info-popup-open"
                                                         >
                                                             See all
                                                         </button>
-                                                        <div
-                                                            className={`item-content-bonus-information__popup popup-item-content-bonus-information ${
-                                                                openModal?.CountryRestrictions &&
-                                                                "active"
-                                                            }`}
-                                                            ref={
-                                                                modalRefs?.CountryRestrictions
-                                                            }
-                                                        >
+                                                        <div className={`item-content-bonus-information__popup popup-item-content-bonus-information ${openModal?.CountryRestrictions && 'active'}`} ref={modalRefs?.CountryRestrictions}>
                                                             <div className="popup-item-content-bonus-information__body">
                                                                 <div className="popup-item-content-bonus-information__top top-popup-item-content-bonus-information">
                                                                     <div className="top-popup-item-content-bonus-information__title">
-                                                                        All
-                                                                        Country
-                                                                        Restrictions
-                                                                        <div className="top-popup-item-content-bonus-information__number">
-                                                                            {`(${
-                                                                                data?.bonus_blocked_countries
-                                                                                    ?.length ||
-                                                                                0
-                                                                            })`}
-                                                                        </div>
+                                                                        All Country Restrictions
+                                                                        <div className="top-popup-item-content-bonus-information__number">{`(${data?.bonus_blocked_countries?.length || 0})`}</div>
                                                                     </div>
                                                                     <button
                                                                         onClick={() =>
-                                                                            setOpenModal(
-                                                                                (
-                                                                                    s
-                                                                                ) => ({
-                                                                                    ...s,
-                                                                                    CountryRestrictions:
-                                                                                        false,
-                                                                                })
-                                                                            )
+                                                                            setOpenModal((s) => ({
+                                                                                ...s,
+                                                                                CountryRestrictions: false,
+                                                                            }))
                                                                         }
                                                                         aria-label="Put your description here."
                                                                         className="top-popup-item-content-bonus-information__btn-close info-popup-close"
                                                                     >
-                                                                        <img
-                                                                            src={
-                                                                                closeIcon
-                                                                            }
-                                                                            alt="close"
-                                                                        />
+                                                                        <img src={closeIcon} alt="close" />
                                                                     </button>
                                                                 </div>
                                                                 <div className="popup-item-content-bonus-information__content">
                                                                     <div className="popup-item-content-bonus-information__lits-block">
                                                                         <ul className="popup-item-content-bonus-information__list">
-                                                                            {data?.blocked_countries?.map(
-                                                                                (
-                                                                                    item,
-                                                                                    index
-                                                                                ) => (
-                                                                                    <li
-                                                                                        key={
-                                                                                            index
-                                                                                        }
-                                                                                        className="popup-item-content-bonus-information__list-item"
-                                                                                    >
-                                                                                        <span className="popup-item-content-bonus-information__list-link">
-                                                                                            {item.name ||
-                                                                                                "Country"}
-                                                                                        </span>
-                                                                                    </li>
-                                                                                )
-                                                                            )}
+                                                                            {data?.blocked_countries?.map((item, index) => (
+                                                                                <li key={index} className="popup-item-content-bonus-information__list-item">
+                                                                                    <span className="popup-item-content-bonus-information__list-link">{item.name || 'Country'}</span>
+                                                                                </li>
+                                                                            ))}
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -956,7 +572,7 @@ export const BonusInformation = ({
                                                         </div>
                                                     </>
                                                 ) : (
-                                                    "-"
+                                                    '-'
                                                 )}
                                             </div>
                                         </div>
@@ -964,18 +580,16 @@ export const BonusInformation = ({
                                             <div className="content-bonus-information__item item-content-bonus-information">
                                                 <div className="item-content-bonus-information__label">
                                                     RTP restriction:
-                                                       <span className="item-content-bonus-information__info">
-                                                    <span className="item-content-bonus-information__info-icon info-icon">
-                                                        <svg>
-                                                            <use xlinkHref="#info"></use>
-                                                        </svg>
-                                                    </span>
-                                                    <span
-                                                        className="item-content-bonus-information__info-text"
-                                                        style={{ zIndex: 10 }}
-                                                    >
-                                                        Meaning <span> the player  is restricted </span><br />   from playing  games <br /> with an RTP higher   than  the specified limit.
-                                                        {/* Text field,{" "}
+                                                    <span className="item-content-bonus-information__info">
+                                                        <span className="item-content-bonus-information__info-icon info-icon">
+                                                            <svg>
+                                                                <use xlinkHref="#info"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span className="item-content-bonus-information__info-text" style={{ zIndex: 10 }}>
+                                                            Meaning <span> the player is restricted </span>
+                                                            <br /> from playing games <br /> with an RTP higher than the specified limit.
+                                                            {/* Text field,{" "}
                                                         <span>
                                                             with poyasnenie
                                                         </span>
@@ -984,14 +598,10 @@ export const BonusInformation = ({
                                                         navodish
                                                         <br />
                                                         mishkoy. */}
+                                                        </span>
                                                     </span>
-                                                </span> 
                                                 </div>
-                                                <div className="item-content-bonus-information__value">
-                                                    {data?.restriction_rtp_game
-                                                        ? `${data?.restriction_rtp_game}%`
-                                                        : "-"}
-                                                </div>
+                                                <div className="item-content-bonus-information__value">{data?.restriction_rtp_game ? `${data?.restriction_rtp_game}%` : '-'}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -1003,30 +613,18 @@ export const BonusInformation = ({
                         <AccordionItem
                             defaultOpen
                             heading={
-                                <div
-                                    className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}
-                                >
-                                    <div className="top-item-bonus-information__title">
-                                        Description
-                                    </div>
+                                <div className={`item-bonus-information__top top-item-bonus-information accordion--title--element`}>
+                                    <div className="top-item-bonus-information__title">Description</div>
                                     <div className="top-item-bonus-information__icon">
-                                        <img
-                                            src={arrowYellowIcon}
-                                            alt="arrowYellowIcon"
-                                        />
+                                        <img src={arrowYellowIcon} alt="arrowYellowIcon" />
                                     </div>
                                 </div>
                             }
                             content={
-                                <div
-                                    className={`content-bonus-information  `}
-                                    style={{ paddingBottom: "20px" }}
-                                >
+                                <div className={`content-bonus-information  `} style={{ paddingBottom: '20px' }}>
                                     <div className="content-bonus-information__items">
                                         <div className="content-bonus-information__item item-content-bonus-information ">
-                                            <div className="item-content-bonus-information__text">
-                                                {data?.description}
-                                            </div>
+                                            <div className="item-content-bonus-information__text">{data?.description}</div>
                                         </div>
                                     </div>
                                 </div>

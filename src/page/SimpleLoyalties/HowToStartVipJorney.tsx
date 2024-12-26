@@ -1,19 +1,11 @@
+import bg08 from '../../assets/img/bg/08.webp'
 
-import bg08 from "../../assets/img/bg/08.webp"
+import { useState } from 'react'
+import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { Link } from 'react-router-dom'
 
-import { useState } from "react"
-import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
-import { Link } from "react-router-dom"
-
-export const HowToStartVipJorney = (data: {
-    casino_affiliate_link?: string
-    casino_name?: string
-    likes?: number
-    queryId:string | number | undefined
-    link_tc: string | undefined
-}) => {
-    const [like, setLike] = useState<"" | "like" | "dislike">("")
-    
+export const HowToStartVipJorney = (data: { casino_affiliate_link?: string; casino_name?: string; likes?: number; queryId: string | number | undefined; link_tc: string | undefined }) => {
+    const [like, setLike] = useState<'' | 'like' | 'dislike'>('')
 
     return (
         <section className="simple-bonus__get-bonus get-bonus">
@@ -30,36 +22,21 @@ export const HowToStartVipJorney = (data: {
                                 </svg>
                             </div>
                             <div className="main-get-bonus__content">
-                                <h2 className="main-get-bonus__title">
-                                How to start VIP journey?
-                                </h2>
-                                <div className="main-get-bonus__text">
-                                Loyalty program is activated after first deposit
-                                </div>
+                                <h2 className="main-get-bonus__title">How to start VIP journey?</h2>
+                                <div className="main-get-bonus__text">Loyalty program is activated after first deposit</div>
                                 <div className="main-get-bonus__btns">
                                     <div className="main-get-bonus__btns-item">
                                         <a
-                                             href={cloacingLink(
-                                            
-                                                    data
-                                                        ?.casino_affiliate_link
-                                            )}
+                                            href={cloacingLink(data?.casino_name)}
                                             onClick={(e) => {
                                                 e.stopPropagation()
                                                 e.preventDefault()
-                                                window.open(
-                                               
-                                                        data
-                                                            ?.casino_affiliate_link,
-                                                    "_blank",
-                                                    "noopener,noreferrer"
-                                                )
+                                                cloacingFetch(data?.casino_affiliate_link)
+                                                window.open(data?.casino_affiliate_link, '_blank', 'noopener,noreferrer')
                                             }}
                                             className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                             title="link"
-                                       
                                         >
-                                         
                                             Start Playing
                                         </a>
                                     </div>
@@ -68,7 +45,6 @@ export const HowToStartVipJorney = (data: {
                                             rel="nofollow noopener"
                                             to={`/casino/${sanitizeLink(data.casino_name)}?queryId=${data.queryId}`}
                                             aria-label="Put your description here."
-                                        
                                             className="main-get-bonus__btn main-get-bonus__btn_review"
                                         >
                                             <span>
@@ -76,11 +52,7 @@ export const HowToStartVipJorney = (data: {
                                                     <use xlinkHref="#review"></use>
                                                 </svg>
                                             </span>
-                                            {  (data?.casino_name || "casino Name").replace(
-                                                /casino/i,
-                                                ""
-                                            )}{" "}
-                                            Casino Review
+                                            {(data?.casino_name || 'casino Name').replace(/casino/i, '')} Casino Review
                                         </Link>
                                     </div>
                                     <div className="main-get-bonus__btns-item">
@@ -99,35 +71,20 @@ export const HowToStartVipJorney = (data: {
                         </div>
                         <div className="get-bonus__like like-get-bonus">
                             <div className="like-get-bonus__body">
-                                <div className="like-get-bonus__title">
-                                Do You Like This VIP Program?
-                                </div>
+                                <div className="like-get-bonus__title">Do You Like This VIP Program?</div>
                                 <div className="like-get-bonus__btns">
                                     <div className="like-get-bonus__btns-item">
-                                        <button
-                                            onClick={() => setLike("like")}
-                                            className={`like-get-bonus__btn like-get-bonus__btn_like ${
-                                                like === "like" && "active"
-                                            }`}
-                                        >
+                                        <button onClick={() => setLike('like')} className={`like-get-bonus__btn like-get-bonus__btn_like ${like === 'like' && 'active'}`}>
                                             <span className="like-get-bonus__btn-icon">
                                                 <svg>
                                                     <use xlinkHref="#like"></use>
                                                 </svg>
                                             </span>
-                                            <span className="like-get-bonus__btn-number">
-                                                {sanitizeNumberLike((data?.likes ?? 0) +
-                                                    (like === "like" ? 1 : 0))}
-                                            </span>
+                                            <span className="like-get-bonus__btn-number">{sanitizeNumberLike((data?.likes ?? 0) + (like === 'like' ? 1 : 0))}</span>
                                         </button>
                                     </div>
                                     <div className="like-get-bonus__btns-item">
-                                        <button
-                                            onClick={() => setLike("dislike")}
-                                            className={`like-get-bonus__btn like-get-bonus__btn_dislike ${
-                                                like === "dislike" && "active"
-                                            }`}
-                                        >
+                                        <button onClick={() => setLike('dislike')} className={`like-get-bonus__btn like-get-bonus__btn_dislike ${like === 'dislike' && 'active'}`}>
                                             <span className="like-get-bonus__btn-icon">
                                                 <svg>
                                                     <use xlinkHref="#like"></use>

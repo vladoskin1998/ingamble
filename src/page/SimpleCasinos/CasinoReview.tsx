@@ -1,5 +1,4 @@
-import { RewievCasinoDataResponse } from "../../types"
-
+import { RewievCasinoDataResponse } from '../../types'
 
 export const CasinoReview = ({
     handlerOpen,
@@ -10,28 +9,19 @@ export const CasinoReview = ({
     //@ts-ignore
     data: undefined | RewievCasinoDataResponse
 }) => {
+    console.log('CasinoReview', data)
 
-    console.log("CasinoReview", data);
-    
-  
     return (
         <>
             <div className="iwild-review__item item-iwild-review item-iwild-review_main">
-            <h2 className="item-iwild-review__title">{data?.name} review</h2>
-            <div className="item-iwild-review__text">
-                <p>
-                    {data?.review}
-                </p>
+                <h2 className="item-iwild-review__title">{data?.name} review</h2>
+                <div className="item-iwild-review__text">
+                    <p>{data?.review}</p>
+                </div>
+                <button onClick={() => handlerOpen(true)} className="item-iwild-review__btn item-content-bonus-information__link popup-review-btn">
+                    Read More
+                </button>
             </div>
-            <button
-                onClick={() => handlerOpen(true)}
-                className="item-iwild-review__btn item-content-bonus-information__link popup-review-btn"
-            >
-                Read More
-            </button>
-        </div>
-     
         </>
-    
     )
 }

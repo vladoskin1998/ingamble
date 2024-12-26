@@ -1,27 +1,22 @@
-import { useRef, useState } from "react"
-import star from "../../assets/img/icons/star.svg"
-import "swiper/css"
-import "swiper/css/pagination"
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
-import bg01 from "../../assets/img/bg/01.webp"
-import girl from "../../assets/img/girls/01.webp"
+import { useRef, useState } from 'react'
+import star from '../../assets/img/icons/star.svg'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
+import bg01 from '../../assets/img/bg/01.webp'
+import girl from '../../assets/img/girls/01.webp'
 
-import { BlockTypeNumber, HomeDataBlock } from "../../types"
-import { SeeAllButton } from "./SeeAllButton"
-import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { sanitizeLink } from "../../helper"
-import { Link } from "react-router-dom"
+import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import { SeeAllButton } from './SeeAllButton'
+import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
+import { sanitizeLink } from '../../helper'
+import { Link } from 'react-router-dom'
 //@ts-ignore
-export default function BlockType5Mobile({
-    data,
-}: {
-    data: HomeDataBlock | undefined
-}) {
+export default function BlockType5Mobile({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
 
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5)
-        return <></>
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5) return <></>
     return (
         <div aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-casinos-2024 best-casinos-2024-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="best-casinos-2024-gamble__container container">
@@ -34,54 +29,25 @@ export default function BlockType5Mobile({
                         <span></span>
                         <span></span>
                     </div>
-                    <div
-                        className={`best-casinos-2024-gamble__girl ${
-                            isScrolled && "scrolled"
-                        }`}
-                    >
-                        <img src={girl} alt="girl" loading="lazy"/>
+                    <div className={`best-casinos-2024-gamble__girl ${isScrolled && 'scrolled'}`}>
+                        <img src={girl} alt="girl" loading="lazy" />
                     </div>
-                    <div
-                        className={`best-casinos-2024-gamble__slider slider-best-casinos-2024-gamble ${
-                            isScrolled && "scrolled"
-                        }`}
-                    >
+                    <div className={`best-casinos-2024-gamble__slider slider-best-casinos-2024-gamble ${isScrolled && 'scrolled'}`}>
                         <div className="slider-best-casinos-2024-gamble__top top">
                             <div className="top__row">
                                 <div className="top__column">
                                     <div className="top__title-block">
                                         {data.items_block.title_image && (
                                             <span className="top__title-icon">
-                                                <img
-                                                    src={
-                                                        data.items_block
-                                                            .title_image
-                                                    }
-                                                    alt="security"
-                                                />
+                                                <img src={data.items_block.title_image} alt="security" />
                                             </span>
                                         )}
-                                        <h2 className="top__title">
-                                            {data.items_block.block_title}
-                                        </h2>
+                                        <h2 className="top__title">{data.items_block.block_title}</h2>
                                     </div>
-                                    {data.items_block.subtitle && (
-                                        <div className="top__subtitle">
-                                            {data.items_block.subtitle}
-                                        </div>
-                                    )}
+                                    {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                                 </div>
                                 <div className="top__column">
-                                    <SeeAllButton
-                                        type_category={
-                                            data.items_block.type_category
-                                        }
-                                        parameter={
-                                            data?.items_block?.category?.name ||
-                                            ""
-                                        }
-                                        id={  data?.items_block?.category?.id}
-                                    />
+                                    <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
                                 </div>
                             </div>
                         </div>
@@ -106,65 +72,29 @@ export default function BlockType5Mobile({
                                         },
                                     }}
                                 >
-                                    {[
-                                        ...data?.items_block.data_cards,
-                                        
-                                    ]
+                                    {[...data?.items_block.data_cards]
                                         ?.sort((a, b) => a?.order - b?.order)
                                         ?.map((item) => (
                                             <SwiperSlide className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
                                                 <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
-                                                    <Link
-                                                        to={`/casino/${sanitizeLink(
-                                                            item
-                                                                ?.casino_info
-                                                                ?.casino_name
-                                                        )}?queryId=${
-                                                            item
-                                                                ?.casino_info
-                                                                ?.casino_id
-                                                        }`}
-                                                        className="different-casino-medium__image-block"
-                                                    >
+                                                    <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-medium__image-block">
                                                         <span className="different-casino-medium__image ibg--custom">
-                                                            <LazyCardImg
-                                                                img={
-                                                                    item
-                                                                        ?.casino_info
-                                                                        ?.casino_image ||
-                                                                    ""
-                                                                }
-                                                                size="medium"
-                                                                  
-                                                            />
+                                                            <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" />
                                                         </span>
                                                     </Link>
                                                     <div className="different-casino-medium__content">
-                                                        <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                        <Link
+                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                             aria-label="Put your description here."
-                                                  
                                                             className="different-casino-medium__name"
                                                         >
-                                                            {
-                                                                item
-                                                                    ?.casino_info
-                                                                    ?.casino_name
-                                                            }
+                                                            {item?.casino_info?.casino_name}
                                                         </Link>
                                                         <div className="different-casino-medium__rating">
                                                             <span className="different-casino-medium__rating-icon">
-                                                                <img
-                                                                    src={star}
-                                                                    alt="star"
-                                                                />
+                                                                <img src={star} alt="star" />
                                                             </span>
-                                                            <span className="different-casino-medium__rationg-number">
-                                                                {
-                                                                    item
-                                                                        ?.casino_info
-                                                                        ?.casino_rank
-                                                                }
-                                                            </span>
+                                                            <span className="different-casino-medium__rationg-number">{item?.casino_info?.casino_rank}</span>
                                                         </div>
                                                     </div>
                                                 </div>

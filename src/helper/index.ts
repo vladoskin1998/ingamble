@@ -103,18 +103,21 @@ export const sanitizeLink = (s:string | undefined) => {
 
 export const cloacingLink = (s: string | undefined): string => {
     if (!s) {
-      return '';
+        return 'https://cryptogamblers.pro';
     }
   
-    const parsedUrl = new URL(s);
+    // const parsedUrl = new URL(s);
   
-    const parts = parsedUrl.hostname.split('.');
-    const domen = parts[0] === 'www' ? parts[1] : parts[0];
-
+    // const parts = parsedUrl.hostname.split('.');
+    // const domen = parts[0] === 'www' ? parts[1] : parts[0];
+    const domen = s.toLocaleLowerCase().replace(/\s/gm, '-')
     return `https://cryptogamblers.pro${domen && '/' + sanitizeLink(domen)}/go`;
   };
 
-  export const  cloacingFetch = async (link:string) => {
+  export const  cloacingFetch = async (link:string | undefined | null) => {
+    if(!link || link === 'undefined undefined' || link === 'undefined'){
+        return 
+    }
     try {
         $api.post('/track_link_click/',{
             link

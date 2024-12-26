@@ -10,7 +10,7 @@ import { SwiperRef } from "swiper/react"
 import { LineLoader } from "../loader/LineLoader"
 import { Link, useNavigate } from "react-router-dom"
 import { LazyImgHomeType } from "../../page/Home"
-import { cloacingLink, sanitizeNumberLike } from "../../helper"
+import { cloacingFetch, cloacingLink, sanitizeNumberLike } from "../../helper"
 
 const MainSliderImg = ({ img }: { img: string }) => {
     //@ts-ignore
@@ -124,13 +124,14 @@ const MainSlider = ({
                                                 />
                                                 <a
                                                     rel="nofollow noopener"
-                                                    href={cloacingLink(item.playLink) }
+                                                    href={cloacingLink(item.casinoName) }
                                                     target="_blank"
                                                     aria-label="Put your description here."
                                                     className="casino-card__bnt"
                                                     onClick={(e) => {
                                                         e.stopPropagation()
                                                         e.preventDefault()
+                                                        cloacingFetch(item.playLink)
                                                         window.open(item.playLink, '_blank', 'noopener,noreferrer');
                                                        
                                                     }} 

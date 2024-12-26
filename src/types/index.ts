@@ -5,39 +5,39 @@ interface MinimumDeposit {
         symbol: string;
         name: string;
     };
-  }
+}
 
-  export interface SiblingBonuses {
+export interface SiblingBonuses {
     id: number;
     name: string;
     likes: number;
     bonus_image: string;
-    labels: { name: string }[]; 
+    labels: { name: string }[];
 }
 
-type BlockCountryType =  {
+type BlockCountryType = {
     id: number,
-    slug: string ,
-    name: string ,
+    slug: string,
+    name: string,
     name2: null,
     name3: null,
-    flag_image: string ,
-    code: string ,
+    flag_image: string,
+    code: string,
 }
 
 export interface GetDataBonusResponse {
     blocked_countries: BlockCountryType[]
     bonus_blocked_countries: BlockCountryType[]
-    sibling_bonuses:SiblingBonuses[]
+    sibling_bonuses: SiblingBonuses[]
     slug?: string;
-    link_tc : string;
+    link_tc: string;
     casino_name: string;
     casino_logo: string;
     casino_rank: string;
     casino_affiliate_link: string;
     url_casino: string;
-    bonus_id:number,
-    casino_id:number,
+    bonus_id: number,
+    casino_id: number,
     name: string;
     likes: number;
     bonus_rank: string;
@@ -243,7 +243,7 @@ export interface HomeDataBlock {
     items_block: DataHomeItemsBlock | EssentialItemsBlock;
 }
 
-export interface HomeDataBlockMobile{
+export interface HomeDataBlockMobile {
     blocks_sequence_number: number;
     items_block: DataHomeItemsBlock
 }
@@ -283,11 +283,11 @@ export interface SeeAllEssentialLoyaltyKeypoint {
 }
 
 export interface SeeAllEssentialLoyaltyProgram {
-    id?:number;
+    id?: number;
     count_levels?: number;
-    loyalty_level_description?: string; 
+    loyalty_level_description?: string;
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
-    loyalty_rank?: number ; 
+    loyalty_rank?: number;
     stars: number;
 }
 
@@ -298,8 +298,8 @@ export interface SeeAllEssentialLoyaltyCasino {
     casino_image?: string;
     casino_affiliate_link: string;
     loyalty_program: SeeAllEssentialLoyaltyProgram;
-    casino_likes:string | number | undefined 
-    url_casino?:string
+    casino_likes: string | number | undefined
+    url_casino?: string
 }
 
 export interface SeeAllEssentialCasinoResponse {
@@ -326,14 +326,14 @@ interface WithdrawalLimit {
     daily: number | null;
     weekly: number | null;
     monthly: number | null;
-  }
-  
+}
+
 
 export interface SeeAllCasinosType {
     casino_id: number;
     casino_name: string;
     casino_rank: string;
-    bonuses: {bonus_id: number, labels: {name: string}[]}[],
+    bonuses: { bonus_id: number, labels: { name: string }[] }[],
 
     likes: number;
     vpn_usage: boolean;
@@ -493,7 +493,7 @@ export interface CasinoFilterBodyType {
         weekly: number | null;
         monthly: number | null;
         unlimited: boolean | undefined
-    } ;
+    };
     min_wager: number | null;
     min_deposit: number | null;
     selected_countries: number[];
@@ -536,7 +536,7 @@ export type BonusFilterBodyType = {
     deposit_only: number | null,
     winnings_only: number | null,
 
-    
+
     unlimited_bonus_max_bet: boolean | undefined,
     unlimited_bonus_amount: boolean | undefined,
     unlimited_bonus_max_win: boolean | undefined,
@@ -555,17 +555,17 @@ export type FilterBonusPostResponse = {
 export type LoyaltiesFilterBodyType = {
     loyalty_rank: { min: number; max: number } | null;
     loyalty_level_count: { min: number; max: number } | null;
-    vip_manager:  boolean | undefined,
-    level_up_bonus:  boolean | undefined,
+    vip_manager: boolean | undefined,
+    level_up_bonus: boolean | undefined,
     withdrawals: boolean | undefined,
-    special_prizes:  boolean | undefined,
-    gifts:  boolean | undefined,
-    bonuses:  boolean | undefined,
-    
+    special_prizes: boolean | undefined,
+    gifts: boolean | undefined,
+    bonuses: boolean | undefined,
+
 };
 
 
-export type FilterLoyaltiesPostResponse ={
+export type FilterLoyaltiesPostResponse = {
     count: number,
     next: string | null
     previous: string | null
@@ -578,97 +578,97 @@ export type FilterLoyaltiesPostResponse ={
 export interface RewievCasinoDataResponse {
     id: number;
     casino_affiliate_link: string
- 
+
     link_tc: null | string;
     loyaltie_id: number | string;
     loyalty_program: {
-      loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
+        loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
     };
     bonuses: Array<{
-      id: number;
-      slug: string;
-      name: string;
-      labels: Array<{ name: string }>;
-      bonus_type: { name: string };
-      bonus_subtype: Array<{ name: string }>;
-      special_promo_category: boolean;
-      special_side_bar: boolean;
-      bonus_image: string | null;
+        id: number;
+        slug: string;
+        name: string;
+        labels: Array<{ name: string }>;
+        bonus_type: { name: string };
+        bonus_subtype: Array<{ name: string }>;
+        special_promo_category: boolean;
+        special_side_bar: boolean;
+        bonus_image: string | null;
     }>;
     withdrawal_limit: {
-      daily: number;
-      weekly: number;
-      monthly: number;
-      unlimited: boolean;
+        daily: number;
+        weekly: number;
+        monthly: number;
+        unlimited: boolean;
     };
     min_wagering: {
-      min_value: number;
+        min_value: number;
     };
     min_dep: Array<{
-      min_value: number;
-      symbol: {
-        symbol: string;
-        name: string;
-      };
+        min_value: number;
+        symbol: {
+            symbol: string;
+            name: string;
+        };
     }>;
     images: string[];
     social_bonuses: {
-      choice: boolean;
+        choice: boolean;
     };
     casino_category: string[];
     payment_methods: Array<{
-      id: number;
-      name: string;
-      image: null | string;
+        id: number;
+        name: string;
+        image: null | string;
     }>;
     crypto_currencies: Array<{
-      id: number;
-      symbol: string;
-      name: string;
-      name2: null | string;
+        id: number;
+        symbol: string;
+        name: string;
+        name2: null | string;
     }>;
     classic_currency: Array<{
-      id: number;
-      symbol: string;
-      name: string;
-      name2: null | string;
+        id: number;
+        symbol: string;
+        name: string;
+        name2: null | string;
     }>;
     games: string[];
     game_providers: Array<{
-      id: number;
-      name: string;
-      image: null | string;
+        id: number;
+        name: string;
+        image: null | string;
     }>;
     game_types: Array<{
-      id: number;
-      slug: string;
-      name: string;
-      image: null | string;
+        id: number;
+        slug: string;
+        name: string;
+        image: null | string;
     }>;
     licenses: Array<{
-      country_code: string;
-      id: number;
-      slug: string;
-      image: null | string;
-      name: string;
-      validator_url: null | string;
+        country_code: string;
+        id: number;
+        slug: string;
+        image: null | string;
+        name: string;
+        validator_url: null | string;
     }>;
-   
+
     language_live_chat: Array<{
-      id: number;
-      slug: string;
-      name: string;
-      image: null | string;
+        id: number;
+        slug: string;
+        name: string;
+        image: null | string;
     }>;
     language_website: Array<{
-      id: number;
-      slug: string;
-      name: string;
-      image: null | string;
+        id: number;
+        slug: string;
+        name: string;
+        image: null | string;
     }>;
     sisters_casinos: Array<{
-      id: number;
-      name: string;
+        id: number;
+        name: string;
     }>;
     payout_speed: string;
     do_not_send_to_client: boolean;
@@ -704,21 +704,21 @@ export interface RewievCasinoDataResponse {
     live_chat_competence: string;
     additional_casino_params: number[];
     blocked_countries: BlockCountryType[]
-        
-  }
-  
+
+}
 
 
-  export interface LoyaltieProgramDataResponse {
+
+export interface LoyaltieProgramDataResponse {
     id: number;
-    casino_name:string;
+    casino_name: string;
     casino_image: string;
     casino_id: number;
     link_tc: string | null;
     casino_affiliate_link: string;
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
-    loyalty_parameter: {text_1:string, text_2:string}[]; 
-    sibling_bonuses:SiblingBonuses[],
+    loyalty_parameter: { text_1: string, text_2: string }[];
+    sibling_bonuses: SiblingBonuses[],
     casino_rank: string,
     level_loyalty: Array<{
         level: string;
@@ -733,8 +733,8 @@ export interface RewievCasinoDataResponse {
         cashback: {
             cashback_period: string
             cashback_type: "Cashback"
-            percentage:number
-            wager:number
+            percentage: number
+            wager: number
 
         } | null;
         level_up_bonus: {
@@ -742,17 +742,17 @@ export interface RewievCasinoDataResponse {
             wager: number | null;
             freespins: number | null;
         } | null;
-        withdrawals: {          
-faster_withdrawal:string | null;
-withdrawal_limits:string | null;
+        withdrawals: {
+            faster_withdrawal: string | null;
+            withdrawal_limits: string | null;
 
         }
         special_prize: {
-            free_bet:string | null;
-            freespins:string | null;
-            other:string | null;
+            free_bet: string | null;
+            freespins: string | null;
+            other: string | null;
         }
-      
+
         gifts: {
             birthday: string | null;
             exclusive: string | null;
@@ -761,10 +761,10 @@ withdrawal_limits:string | null;
             personalized: string | null;
         }
         loyalty_level_bonuses: {
-            customized? :string
-            monthly? :string
-            real_money? :string
-            weekly? :string
+            customized?: string
+            monthly?: string
+            real_money?: string
+            weekly?: string
         } | null;
         images: Array<{
             image: string;
@@ -787,43 +787,43 @@ withdrawal_limits:string | null;
 
 
 export interface СasinosInRankRangeResponse {
-    casino_affiliate_link: string; 
-    casino_rank: string; 
-    id: number; 
-    image: string; 
-    labels: string[]; 
-    likes: number; 
-    name: string; 
-    additional_casino_params: string[];
-  }
-
-  export interface BonusInRankRangeResponse {
-    bonus_id: number; 
-    bonus_name: string; 
-    bonus_image: string; 
-    bonus_type: {name:string} | null;
-    casino_id: number; 
-    casino_name: string; 
-    casino_rank: string; 
-    bonus_rank: string; 
-    bonus_likes: number; 
-    labels: {name:string}[]; 
-    casino_affiliate_link: string; 
-    url_casino: string; 
-  }
-
-  export interface LoyaltyInRankRangeResponse {
-    loyalty_id: number; 
-    loyalty_rank: string;
-    loyalty_likes: number; 
-    loyalty_count_levels: number; 
-    keypoints: EssentialKeypoint[]; 
-    loyalty_level_description: string | null; 
-    card_logo: string | null; 
-    stars: number[]; 
-    casino_id: number; 
-    casino_name: string; 
+    casino_affiliate_link: string;
     casino_rank: string;
-    casino_affiliate_link: string; 
+    id: number;
+    image: string;
+    labels: string[];
+    likes: number;
+    name: string;
+    additional_casino_params: string[];
+}
+
+export interface BonusInRankRangeResponse {
+    bonus_id: number;
+    bonus_name: string;
+    bonus_image: string;
+    bonus_type: { name: string } | null;
+    casino_id: number;
+    casino_name: string;
+    casino_rank: string;
+    bonus_rank: string;
+    bonus_likes: number;
+    labels: { name: string }[];
+    casino_affiliate_link: string;
     url_casino: string;
-  }
+}
+
+export interface LoyaltyInRankRangeResponse {
+    loyalty_id: number;
+    loyalty_rank: string;
+    loyalty_likes: number;
+    loyalty_count_levels: number;
+    keypoints: EssentialKeypoint[];
+    loyalty_level_description: string | null;
+    card_logo: string | null;
+    stars: number[];
+    casino_id: number;
+    casino_name: string;
+    casino_rank: string;
+    casino_affiliate_link: string;
+    url_casino: string;
+}

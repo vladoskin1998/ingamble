@@ -1,22 +1,18 @@
-import { useEffect, useRef, useState } from "react"
-import { Pagination } from "swiper/modules"
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
-import { RewievCasinoDataResponse } from "../../types"
-import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { cloacingLink, sanitizeLink } from "../../helper"
-import { Link } from "react-router-dom"
+import { useEffect, useRef, useState } from 'react'
+import { Pagination } from 'swiper/modules'
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
+import { RewievCasinoDataResponse } from '../../types'
+import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
+import { cloacingFetch, cloacingLink, sanitizeLink } from '../../helper'
+import { Link } from 'react-router-dom'
 
-const nameArray = ["Welcome Bonus", "Cashback bonus"]
+const nameArray = ['Welcome Bonus', 'Cashback bonus']
 
-export const CasinoBonuses = ({
-    data,
-}: {
-    data: undefined | RewievCasinoDataResponse
-}) => {
+export const CasinoBonuses = ({ data }: { data: undefined | RewievCasinoDataResponse }) => {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 
-    const [active, setActive] = useState<string>("review-iwild-casino-bonuses")
+    const [active, setActive] = useState<string>('review-iwild-casino-bonuses')
 
     useEffect(() => {
         if (sliderRef.current && paginationRef.current) {
@@ -35,7 +31,7 @@ export const CasinoBonuses = ({
         setActive(id)
         const element = document.querySelector(`#${id}`)
         if (element) {
-            element.scrollIntoView({ behavior: "smooth" })
+            element.scrollIntoView({ behavior: 'smooth' })
         }
     }
 
@@ -56,34 +52,12 @@ export const CasinoBonuses = ({
                                 }}
                             >
                                 <SwiperSlide className="tabs__slide slide-tabs swiper-slide">
-                                    <button
-                                        className={`slide-tabs__btn link-scroll ${
-                                            active ===
-                                                "review-iwild-casino-bonuses" &&
-                                            "active"
-                                        }`}
-                                        onClick={() =>
-                                            scrollToElement(
-                                                "review-iwild-casino-bonuses"
-                                            )
-                                        }
-                                    >
+                                    <button className={`slide-tabs__btn link-scroll ${active === 'review-iwild-casino-bonuses' && 'active'}`} onClick={() => scrollToElement('review-iwild-casino-bonuses')}>
                                         Bonuses
                                     </button>
                                 </SwiperSlide>
                                 <SwiperSlide className="tabs__slide slide-tabs swiper-slide">
-                                    <button
-                                        className={`slide-tabs__btn link-scroll ${
-                                            active ===
-                                                "review-general-information" &&
-                                            "active"
-                                        }`}
-                                        onClick={() =>
-                                            scrollToElement(
-                                                "review-general-information"
-                                            )
-                                        }
-                                    >
+                                    <button className={`slide-tabs__btn link-scroll ${active === 'review-general-information' && 'active'}`} onClick={() => scrollToElement('review-general-information')}>
                                         Keypoints
                                     </button>
                                 </SwiperSlide>
@@ -97,18 +71,7 @@ export const CasinoBonuses = ({
                                     </button>
                                 </SwiperSlide> */}
                                 <SwiperSlide className="tabs__slide slide-tabs swiper-slide">
-                                    <button
-                                        className={`slide-tabs__btn link-scroll  ${
-                                            active ===
-                                                "review-iwild-casino-review" &&
-                                            "active"
-                                        }`}
-                                        onClick={() =>
-                                            scrollToElement(
-                                                "review-iwild-casino-review"
-                                            )
-                                        }
-                                    >
+                                    <button className={`slide-tabs__btn link-scroll  ${active === 'review-iwild-casino-review' && 'active'}`} onClick={() => scrollToElement('review-iwild-casino-review')}>
                                         Casino Review
                                     </button>
                                 </SwiperSlide>
@@ -117,17 +80,12 @@ export const CasinoBonuses = ({
                     </div>
                 </div>
             </div>
-            <div
-                className="iwild-casino-bonuses__container container"
-                id="review-iwild-casino-bonuses"
-            >
+            <div className="iwild-casino-bonuses__container container" id="review-iwild-casino-bonuses">
                 <div className="iwild-casino-bonuses__top top">
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                <h2 className="top__title">
-                                    {data?.name} Bonuses
-                                </h2>
+                                <h2 className="top__title">{data?.name} Bonuses</h2>
                             </div>
                         </div>
                     </div>
@@ -158,12 +116,8 @@ export const CasinoBonuses = ({
                             >
                                 {data?.bonuses
                                     ?.sort((a, b) => {
-                                        const aIndex = nameArray.indexOf(
-                                            a.bonus_type?.name || ""
-                                        )
-                                        const bIndex = nameArray.indexOf(
-                                            b.bonus_type?.name || ""
-                                        )
+                                        const aIndex = nameArray.indexOf(a.bonus_type?.name || '')
+                                        const bIndex = nameArray.indexOf(b.bonus_type?.name || '')
 
                                         if (aIndex !== -1 && bIndex !== -1) {
                                             return aIndex - bIndex
@@ -175,52 +129,20 @@ export const CasinoBonuses = ({
                                         return 0
                                     })
                                     .map((b) => (
-                                        <SwiperSlide
-                                            className="slider__slide slide-slider swiper-slide"
-                                            aria-label={b?.bonus_type?.name}
-                                        >
+                                        <SwiperSlide className="slider__slide slide-slider swiper-slide" aria-label={b?.bonus_type?.name}>
                                             <div className="slide-slider__item casino-card">
                                                 <div className="casino-card__image-block casino-card__image-block_yellow">
-                                                    <Link
-                                                        className="casino-card__image ibg--custom"
-                                                        to={
-                                                            b.special_side_bar
-                                                                ? data?.url
-                                                                : `/casino/${sanitizeLink(
-                                                                      data?.name
-                                                                  )}/bonuses/${sanitizeLink(
-                                                                      b?.name
-                                                                  )}?queryId=${
-                                                                      b?.id
-                                                                  }`
-                                                        }
-                                                    >
-                                                        <LazyCardImg
-                                                            img={
-                                                                b?.bonus_image ||
-                                                                ""
-                                                            }
-                                                            height="100%"
-                                                            width="100%"
-                                                            imgLoading={"lazy"}
-                                                        />
+                                                    <Link className="casino-card__image ibg--custom" to={b.special_side_bar ? data?.url : `/casino/${sanitizeLink(data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
+                                                        <LazyCardImg img={b?.bonus_image || ''} height="100%" width="100%" imgLoading={'lazy'} />
                                                     </Link>
                                                     <a
-                                                        href={cloacingLink(
-                                                            data?.url || data
-                                                                ?.casino_affiliate_link 
-                                                               
-                                                        )}
+                                                        
+                                                        href={cloacingLink(data?.name)}
                                                         onClick={(e) => {
                                                             e.stopPropagation()
                                                             e.preventDefault()
-                                                            window.open(
-                                                                data
-                                                                    ?.casino_affiliate_link ||
-                                                                    data?.url,
-                                                                "_blank",
-                                                                "noopener,noreferrer"
-                                                            )
+                                                            cloacingFetch(data?.casino_affiliate_link)
+                                                            window.open(data?.casino_affiliate_link || data?.url, '_blank', 'noopener,noreferrer')
                                                         }}
                                                         aria-label="Put your description here."
                                                         className="casino-card__bnt"
@@ -228,27 +150,11 @@ export const CasinoBonuses = ({
                                                         Play
                                                     </a>
                                                 </div>
-                                                <Link
-                                                    className="casino-card__content"
-                                                    to={
-                                                        b.special_side_bar
-                                                            ? data?.url
-                                                            : `/casino/${sanitizeLink(
-                                                                  data?.name
-                                                              )}/bonuses/${sanitizeLink(
-                                                                  b?.name
-                                                              )}?queryId=${
-                                                                  b?.id
-                                                              }`
-                                                    }
-                                                >
+                                                <Link className="casino-card__content" to={b.special_side_bar ? data?.url : `/casino/${sanitizeLink(data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
                                                     <div
                                                         className="casino-card__name"
                                                         dangerouslySetInnerHTML={{
-                                                            __html: b.name.replace(
-                                                                /([+-]?\s?\€?\$?\d+(\.\d+)?[%,$€&!*#@^+-]?)/g,
-                                                                "<span>$1</span>"
-                                                            ),
+                                                            __html: b.name.replace(/([+-]?\s?\€?\$?\d+(\.\d+)?[%,$€&!*#@^+-]?)/g, '<span>$1</span>'),
                                                         }}
                                                     >
                                                         {/*                                                 
@@ -264,10 +170,7 @@ export const CasinoBonuses = ({
                         </div>
                     </div>
                     <div className="slider__bottom bottom-slider">
-                        <div
-                            ref={paginationRef}
-                            className="bottom-slider__pagination iwild-casino-bonuses__pagination swiper-pagination"
-                        ></div>
+                        <div ref={paginationRef} className="bottom-slider__pagination iwild-casino-bonuses__pagination swiper-pagination"></div>
                     </div>
                 </div>
             </div>

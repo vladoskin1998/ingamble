@@ -1,42 +1,27 @@
-import { useQuery } from "react-query"
-import { Categories } from "../../components/categories/Categories"
-import { FilterHeaderList } from "../../components/filter-components/FilterHeaderList"
-import {
-    initialCasinoFilters,
-    useFilterContext,
-} from "../../context/FilterContext"
-import $api from "../../http"
-import {
-    CasinoFilterBodyType,
-    FilterCasinoPostResponse,
-    SeeAllCasinosType,
-} from "../../types"
-import { Wraper } from "../Wraper"
-import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import like from "../../assets/img/icons/like.svg"
-import { lazy, memo, useEffect, useState } from "react"
-import { useAdaptiveBehavior } from "../../context/AppContext"
-import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from "../SeeAllCasinos"
-import {
-    cloacingLink,
-   
-    filterEmptyValues,
-    NumberAssociaty,
-    sanitizeLink,
-    sanitizeNumberLike,
-    sliceString,
-} from "../../helper"
-import { PaginationPage } from "../../components/pagination/PaginationPage"
-import { debounce } from "lodash"
-import { LogoLoader } from "../../components/loader/LogoLoader"
-import searchImg from "../../assets/img/icons/search-filter.svg"
-import "../SeeAllCasinos/style.css"
-import { v4 as uuidv4 } from "uuid"
-import { CheckMoreWhatSuitsYouBest } from "../../components/categories/CheckMoreWhatSuitsYouBest"
-import SubscribeForm from "../SimpleBonus/SubscribeForm"
-import { Link } from "react-router-dom"
-import { NoResult } from "../../components/no-result"
-const  BottomInfo = lazy(() => import( "../../components/footer/BottomInfo"))
+import { useQuery } from 'react-query'
+import { Categories } from '../../components/categories/Categories'
+import { FilterHeaderList } from '../../components/filter-components/FilterHeaderList'
+import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
+import $api from '../../http'
+import { CasinoFilterBodyType, FilterCasinoPostResponse, SeeAllCasinosType } from '../../types'
+import { Wraper } from '../Wraper'
+import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
+import like from '../../assets/img/icons/like.svg'
+import { lazy, memo, useEffect, useState } from 'react'
+import { useAdaptiveBehavior } from '../../context/AppContext'
+import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from '../SeeAllCasinos'
+import { cloacingFetch, cloacingLink, filterEmptyValues, NumberAssociaty, sanitizeLink, sanitizeNumberLike, sliceString } from '../../helper'
+import { PaginationPage } from '../../components/pagination/PaginationPage'
+import { debounce } from 'lodash'
+import { LogoLoader } from '../../components/loader/LogoLoader'
+import searchImg from '../../assets/img/icons/search-filter.svg'
+import '../SeeAllCasinos/style.css'
+import { v4 as uuidv4 } from 'uuid'
+import { CheckMoreWhatSuitsYouBest } from '../../components/categories/CheckMoreWhatSuitsYouBest'
+import SubscribeForm from '../SimpleBonus/SubscribeForm'
+import { Link } from 'react-router-dom'
+import { NoResult } from '../../components/no-result'
+const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
 const countPageSize = 15
 
@@ -53,21 +38,12 @@ interface LicenseElemProps {
     itemLicenses?: License[]
 }
 
-const LicenseElem: React.FC<LicenseElemProps> = ({
-    filtersDataLicenses,
-    casinoFiltersLicenses,
-    itemLicenses,
-}) => {
-    const [selectedLicense, setSelectedLicense] = useState<License | undefined>(
-        undefined
-    )
+const LicenseElem: React.FC<LicenseElemProps> = ({ filtersDataLicenses, casinoFiltersLicenses, itemLicenses }) => {
+    const [selectedLicense, setSelectedLicense] = useState<License | undefined>(undefined)
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-            const newSelectedLicense =
-                filtersDataLicenses?.find(
-                    (license) => license?.id === casinoFiltersLicenses?.[0]
-                ) || itemLicenses?.[0]
+            const newSelectedLicense = filtersDataLicenses?.find((license) => license?.id === casinoFiltersLicenses?.[0]) || itemLicenses?.[0]
             setSelectedLicense(newSelectedLicense)
         }, 700)
 
@@ -80,10 +56,7 @@ const LicenseElem: React.FC<LicenseElemProps> = ({
                 {sliceString(selectedLicense?.name, 15)}
                 {selectedLicense?.image && (
                     <span className="item-info-content-item-loyaltie-programs__value-flag">
-                        <img
-                            src={selectedLicense.image}
-                            alt={selectedLicense.name || ""}
-                        />
+                        <img src={selectedLicense.image} alt={selectedLicense.name || ''} />
                     </span>
                 )}
             </>
@@ -91,65 +64,40 @@ const LicenseElem: React.FC<LicenseElemProps> = ({
     )
 }
 
-const debouncedFetchFilter = debounce(
-    (filters, fetchFunction) => fetchFunction(filters),
-    1000
-)
+const debouncedFetchFilter = debounce((filters, fetchFunction) => fetchFunction(filters), 1000)
 
-const debouncedFetchPagination = debounce(
-    (filters, fetchFunction, setLoading, isMobile) => {
-        if (!isMobile) {
-            setLoading(true)
-        }
-
-        fetchFunction(filters).finally(() => setLoading(false))
+const debouncedFetchPagination = debounce((filters, fetchFunction, setLoading, isMobile) => {
+    if (!isMobile) {
+        setLoading(true)
     }
-)
 
-const getFilteringCasinoList = async (
-    payload: CasinoFilterBodyType,
-    page: number
-) => {
+    fetchFunction(filters).finally(() => setLoading(false))
+})
+
+const getFilteringCasinoList = async (payload: CasinoFilterBodyType, page: number) => {
     const body = filterEmptyValues(payload)
-    const response = await $api.post(
-        `filter/casinos/?page=${page}&page_size=${countPageSize}`,
-        body
-    )
+    const response = await $api.post(`filter/casinos/?page=${page}&page_size=${countPageSize}`, body)
     return response.data
 }
 
 export default function FilterCasino() {
     // // document.title = "Filter Casino"
 
-    const { initializeAdaptiveBehavior, isSidebarActive } =
-        useAdaptiveBehavior()
-    const {
-        data: filtersData,
-        casinoFilters,
-        setCasinoFilters,
-    } = useFilterContext()
+    const { initializeAdaptiveBehavior, isSidebarActive } = useAdaptiveBehavior()
+    const { data: filtersData, casinoFilters, setCasinoFilters } = useFilterContext()
 
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllCasinosType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
     const [isDebouncedLoading, setIsDebouncedLoading] = useState(true)
-    const { data, isLoading, refetch } = useQuery<FilterCasinoPostResponse>(
-        ["filter/casinos", casinoFilters, currentPage],
-        () => getFilteringCasinoList(casinoFilters, currentPage),
-        {
-            keepPreviousData: true,
-            enabled: false,
-        }
-    )
+    const { data, isLoading, refetch } = useQuery<FilterCasinoPostResponse>(['filter/casinos', casinoFilters, currentPage], () => getFilteringCasinoList(casinoFilters, currentPage), {
+        keepPreviousData: true,
+        enabled: false,
+    })
 
     useEffect(() => {
-        debouncedFetchPagination(
-            casinoFilters,
-            refetch,
-            setIsDebouncedLoading,
-            isMobile
-        )
+        debouncedFetchPagination(casinoFilters, refetch, setIsDebouncedLoading, isMobile)
     }, [currentPage, refetch, setCurrentPage])
 
     useEffect(() => {
@@ -157,7 +105,7 @@ export default function FilterCasino() {
         debouncedFetchFilter(casinoFilters, refetch)
         if (!isMobile) {
             window.scrollTo({
-                behavior: "smooth",
+                behavior: 'smooth',
                 top: 0,
             })
         } else {
@@ -180,8 +128,8 @@ export default function FilterCasino() {
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
-        window.addEventListener("resize", handleResize)
-        return () => window.removeEventListener("resize", handleResize)
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
     }, [])
 
     const displayedData = isMobile ? allData : data?.results
@@ -191,19 +139,18 @@ export default function FilterCasino() {
     }
 
     const handlerClearOne = (v: string) => {
-        if (v.includes("withdrawal_limits")) {
-            const field = v.replace("withdrawal_limits.", "")
+        if (v.includes('withdrawal_limits')) {
+            const field = v.replace('withdrawal_limits.', '')
             setCasinoFilters((s) => ({
                 ...s,
                 withdrawal_limits: {
                     ...s.withdrawal_limits,
-                    [field]: field === "unlimited" ? undefined : null,
+                    [field]: field === 'unlimited' ? undefined : null,
                 },
             }))
         }
 
-        const findedValueField =
-            initialCasinoFilters[v as keyof CasinoFilterBodyType]
+        const findedValueField = initialCasinoFilters[v as keyof CasinoFilterBodyType]
         setCasinoFilters((s) => ({
             ...s,
             [v as keyof CasinoFilterBodyType]: findedValueField,
@@ -217,11 +164,7 @@ export default function FilterCasino() {
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
                     <Categories />
-                    <FilterHeaderList
-                        initList={casinoFilters}
-                        clearAll={clearAll}
-                        clearOne={(v) => handlerClearOne(v)}
-                    />
+                    <FilterHeaderList initList={casinoFilters} clearAll={clearAll} clearOne={(v) => handlerClearOne(v)} />
                     <section className="casinos-filtered__main main-loyaltie-programs">
                         <div className="main-loyaltie-programs__container container">
                             <div className="results-filter-scenarios__top top">
@@ -234,16 +177,7 @@ export default function FilterCasino() {
                             </div>
                             {displayedData?.length ? (
                                 <>
-                               
-                                    <ListDisplayData
-                                        displayedData={displayedData}
-                                        filtersDataLicenses={
-                                            filtersData?.casino?.licenses
-                                        }
-                                        casinoFiltersLicenses={
-                                            casinoFilters?.licenses
-                                        }
-                                    />
+                                    <ListDisplayData displayedData={displayedData} filtersDataLicenses={filtersData?.casino?.licenses} casinoFiltersLicenses={casinoFilters?.licenses} />
                                     <PaginationPage
                                         countElem={data?.count}
                                         currentPage={currentPage}
@@ -252,7 +186,7 @@ export default function FilterCasino() {
                                             setCurrentPage(s)
                                             if (!isMobile) {
                                                 window.scrollTo({
-                                                    behavior: "smooth",
+                                                    behavior: 'smooth',
                                                     top: 0,
                                                 })
                                             }
@@ -295,132 +229,59 @@ const ListDisplayData = memo(
                                     aria-label="Put your description here."
                                     className="item-loyaltie-programs__image item-loyaltie-programs__image-custom "
                                     key={uuidv4()}
-                                    to={`/casino/${sanitizeLink(
-                                        item.casino_name
-                                    )}?queryId=${item.casino_id}`}
+                                    to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
                                 >
-                                    <LazyCardImg
-                                        img={item?.casino_image || ""}
-                                        height="100%"
-                                        width="100%"
-                                    />
+                                    <LazyCardImg img={item?.casino_image || ''} height="100%" width="100%" />
                                 </Link>
                             </div>
                             <div className="item-loyaltie-programs__content content-item-loyaltie-programs">
                                 <div className="content-item-loyaltie-programs__row">
                                     <div className="content-item-loyaltie-programs__column content-item-loyaltie-programs__column_main">
                                         <div className="content-item-loyaltie-programs__top top-content-item-loyaltie-programs">
-                                            <h2 className="top-content-item-loyaltie-programs__name">
-                                                {item?.casino_name}
-                                            </h2>
+                                            <h2 className="top-content-item-loyaltie-programs__name">{item?.casino_name}</h2>
                                             <div className="info-casino-card__likes">
                                                 <span className="info-casino-card__likes-icon">
-                                                    <img
-                                                        src={like}
-                                                        alt="like"
-                                                    />
+                                                    <img src={like} alt="like" />
                                                 </span>
-                                                <span className="info-casino-card__likes-number">
-                                                    {sanitizeNumberLike( item?.likes)}
-                                                </span>
+                                                <span className="info-casino-card__likes-number">{sanitizeNumberLike(item?.likes)}</span>
                                             </div>
                                         </div>
                                         <div className="content-item-loyaltie-programs__info info-content-item-loyaltie-programs">
                                             <div className="info-content-item-loyaltie-programs__row">
                                                 <div className="info-content-item-loyaltie-programs__column">
                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs item-info-content-item-loyaltie-programs_index-high">
-                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                            Safety Index
-                                                        </div>
+                                                        <div className="item-info-content-item-loyaltie-programs__label">Safety Index</div>
                                                         <div className="item-info-content-item-loyaltie-programs__value">
                                                             {item?.casino_rank}
-                                                            <span className="item-info-content-item-loyaltie-programs__value-index">
-                                                                {rankCasinosSeeAll(
-                                                                    Number(
-                                                                        item?.casino_rank
-                                                                    )
-                                                                )}
-                                                            </span>
+                                                            <span className="item-info-content-item-loyaltie-programs__value-index">{rankCasinosSeeAll(Number(item?.casino_rank))}</span>
                                                         </div>
                                                     </div>
                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                            Min Dep
-                                                        </div>
-                                                        <div className="item-info-content-item-loyaltie-programs__value">
-                                                            {item.min_dep?.[0]
-                                                                ?.value
-                                                                ? `${
-                                                                      item
-                                                                          .min_dep?.[0]
-                                                                          ?.value
-                                                                  } ${'$ USDT'}`
-                                                                : "Unlimited"}
-                                                        </div>
+                                                        <div className="item-info-content-item-loyaltie-programs__label">Min Dep</div>
+                                                        <div className="item-info-content-item-loyaltie-programs__value">{item.min_dep?.[0]?.value ? `${item.min_dep?.[0]?.value} ${'$ USDT'}` : 'Unlimited'}</div>
                                                     </div>
                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                            License
-                                                        </div>
-                                                        <LicenseElem
-                                                            filtersDataLicenses={
-                                                                filtersDataLicenses
-                                                            }
-                                                            casinoFiltersLicenses={
-                                                                casinoFiltersLicenses
-                                                            }
-                                                            itemLicenses={
-                                                                item.licenses
-                                                            }
-                                                        />
+                                                        <div className="item-info-content-item-loyaltie-programs__label">License</div>
+                                                        <LicenseElem filtersDataLicenses={filtersDataLicenses} casinoFiltersLicenses={casinoFiltersLicenses} itemLicenses={item.licenses} />
                                                     </div>
                                                 </div>
                                                 <div className="info-content-item-loyaltie-programs__column">
                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                            Withdrawal Limit:
-                                                        </div>
+                                                        <div className="item-info-content-item-loyaltie-programs__label">Withdrawal Limit:</div>
                                                         <div className="item-info-content-item-loyaltie-programs__value">
-                                                            {`${NumberAssociaty(
-                                                                item
-                                                                    ?.withdrawal_limit
-                                                                    ?.monthly ||
-                                                                    item
-                                                                        ?.withdrawal_limit
-                                                                        ?.weekly ||
-                                                                    item
-                                                                        ?.withdrawal_limit
-                                                                        ?.daily ||
-                                                                    "Unlimited"
-                                                            )} ${WithdrawalSeeAllCasinos(
-                                                                item?.withdrawal_limit
+                                                            {`${NumberAssociaty(item?.withdrawal_limit?.monthly || item?.withdrawal_limit?.weekly || item?.withdrawal_limit?.daily || 'Unlimited')} ${WithdrawalSeeAllCasinos(
+                                                                item?.withdrawal_limit,
                                                             )}`}
                                                         </div>
                                                     </div>
                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                            Payout Speed
-                                                        </div>
-                                                        <div
-                                                            className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${item.payout_speed.toLocaleLowerCase()}`}
-                                                        >
-                                                            {item?.payout_speed}
-                                                        </div>
+                                                        <div className="item-info-content-item-loyaltie-programs__label">Payout Speed</div>
+                                                        <div className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${item.payout_speed.toLocaleLowerCase()}`}>{item?.payout_speed}</div>
                                                     </div>
                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
-                                                        <div className="item-info-content-item-loyaltie-programs__label">
-                                                            VPN Allowed
-                                                        </div>
-                                                        <div
-                                                            className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${
-                                                                item?.vpn_usage
-                                                                    ? "yes"
-                                                                    : "no"
-                                                            }`}
-                                                        >
-                                                            {item?.vpn_usage
-                                                                ? "Yes"
-                                                                : "No"}
+                                                        <div className="item-info-content-item-loyaltie-programs__label">VPN Allowed</div>
+                                                        <div className={`item-info-content-item-loyaltie-programs__value item-info-content-item-loyaltie-programs__value_${item?.vpn_usage ? 'yes' : 'no'}`}>
+                                                            {item?.vpn_usage ? 'Yes' : 'No'}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -429,34 +290,19 @@ const ListDisplayData = memo(
                                         <div className="content-item-loyaltie-programs__bottom bottom-content-item-loyaltie-programs">
                                             <div className="bottom-content-item-loyaltie-programs__btns">
                                                 <a
-                                                    href={cloacingLink(
-                                                        item?.url_casino ||
-                                                            item?.casino_affiliate_link
-                                                    )}
+                                                    href={cloacingLink(item?.casino_name)}
                                                     onClick={(e) => {
                                                         e.stopPropagation()
                                                         e.preventDefault()
-                                                        window.open(
-                                                            item?.casino_affiliate_link ||
-                                                                item?.url_casino,
-                                                            "_blank",
-                                                            "noopener,noreferrer"
-                                                        )
+                                                        cloacingFetch(item?.casino_affiliate_link)
+                                                        window.open(item?.casino_affiliate_link || item?.url_casino, '_blank', 'noopener,noreferrer')
                                                     }}
                                                     aria-label="Put your description here."
                                                     className="bottom-content-item-loyaltie-programs__btn-view"
                                                 >
                                                     Visit Casino
                                                 </a>
-                                                <Link
-                                                    to={`/casino/${sanitizeLink(
-                                                        item?.casino_name
-                                                    )}?queryId=${
-                                                        item?.casino_id
-                                                    }`}
-                                                    aria-label="Put your description here."
-                                                    className="bottom-content-item-loyaltie-programs__btn-more"
-                                                >
+                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`} aria-label="Put your description here." className="bottom-content-item-loyaltie-programs__btn-more">
                                                     Read More
                                                 </Link>
                                             </div>
@@ -464,32 +310,19 @@ const ListDisplayData = memo(
                                     </div>
                                     <div className="content-item-loyaltie-programs__column content-item-loyaltie-programs__column_features">
                                         <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
-                                            {item?.loyalty_program?.loyalty_keypoint
-                                                ?.slice(0, 3)
-                                                .map((it) => (
-                                                    <div className="features-essential-programs-gamble__column">
-                                                        <div className="features-essential-programs-gamble__item">
-                                                            <div className="features-essential-programs-gamble__icon">
-                                                                <LazyCardImg
-                                                                    img={
-                                                                        it?.image ||
-                                                                        ""
-                                                                    }
-                                                                    size="medium"
-                                                                    width="100%"
-                                                                />
-                                                            </div>
-                                                            <div className="features-essential-programs-gamble__info">
-                                                                <div className="features-essential-programs-gamble__name">
-                                                                    {it?.text_1}
-                                                                </div>
-                                                                <div className="features-essential-programs-gamble__text">
-                                                                    {it?.text_2}
-                                                                </div>
-                                                            </div>
+                                            {item?.loyalty_program?.loyalty_keypoint?.slice(0, 3).map((it) => (
+                                                <div className="features-essential-programs-gamble__column">
+                                                    <div className="features-essential-programs-gamble__item">
+                                                        <div className="features-essential-programs-gamble__icon">
+                                                            <LazyCardImg img={it?.image || ''} size="medium" width="100%" />
+                                                        </div>
+                                                        <div className="features-essential-programs-gamble__info">
+                                                            <div className="features-essential-programs-gamble__name">{it?.text_1}</div>
+                                                            <div className="features-essential-programs-gamble__text">{it?.text_2}</div>
                                                         </div>
                                                     </div>
-                                                ))}
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
@@ -499,5 +332,5 @@ const ListDisplayData = memo(
                 ))}
             </div>
         )
-    }
+    },
 )

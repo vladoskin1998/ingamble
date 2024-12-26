@@ -1,8 +1,6 @@
-import { AdaptiveProvider } from "./context/AppContext"
-import { FilterProvider } from "./context/FilterContext"
-import { PublicRouter } from "./Router/PublicRouter"
-
-
+import { AdaptiveProvider } from './context/AppContext'
+import { FilterProvider } from './context/FilterContext'
+import { PublicRouter } from './Router/PublicRouter'
 
 function App() {
     return (

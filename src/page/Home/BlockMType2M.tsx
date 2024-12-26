@@ -1,27 +1,24 @@
-import { Pagination } from "swiper/modules"
-import "swiper/css"
-import "swiper/css/pagination"
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
-import { useRef, useEffect } from "react"
+import { Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
+import { useRef, useEffect } from 'react'
 
-import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from "../../types"
-import { SeeAllButton } from "./SeeAllButton"
-import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { cloacingLink, sanitizeLink } from "../../helper"
-import { Link } from "react-router-dom"
-import { LazyImgHomeType } from "."
+import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from '../../types'
+import { SeeAllButton } from './SeeAllButton'
+import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
+import { cloacingFetch, cloacingLink, sanitizeLink } from '../../helper'
+import { Link } from 'react-router-dom'
+import { LazyImgHomeType } from '.'
 
 export default function BlockMType2M({
     data,
     //@ts-ignore
-    lazyLoadImg = "lazy",
+    lazyLoadImg = 'lazy',
 }: {
     data: HomeDataBlock | undefined
     lazyLoadImg?: LazyImgHomeType
 }) {
-
-    
-    
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -37,13 +34,9 @@ export default function BlockMType2M({
         }
     }, [])
 
-    if (!data || data?.items_block?.type_block !== BlockTypeNumber.BlockType2M)
-        return <></>
+    if (!data || data?.items_block?.type_block !== BlockTypeNumber.BlockType2M) return <></>
     return (
-        <section
-            aria-label="BlockTypeNumber.BlockType2M"
-            className="main-gamble__payn-play-casinos payn-play-casinos-gamble"
-        >
+        <section aria-label="BlockTypeNumber.BlockType2M" className="main-gamble__payn-play-casinos payn-play-casinos-gamble">
             <div className="payn-play-casinos-gamble__container container">
                 <div className="vpn-friendly-casinos-2-gamble__top top">
                     <div className="top__row">
@@ -51,30 +44,15 @@ export default function BlockMType2M({
                             <div className="top__title-block">
                                 {data?.items_block?.title_image && (
                                     <span className="top__title-icon">
-                                        <img
-                                            src={data?.items_block?.title_image}
-                                            alt="security"
-                                        />
+                                        <img src={data?.items_block?.title_image} alt="security" />
                                     </span>
                                 )}
-                                <h2 className="top__title">
-                                    {data?.items_block?.block_title}
-                                </h2>
+                                <h2 className="top__title">{data?.items_block?.block_title}</h2>
                             </div>
-                            {data.items_block.subtitle && (
-                                <div className="top__subtitle">
-                                    {data?.items_block?.subtitle}
-                                </div>
-                            )}
+                            {data.items_block.subtitle && <div className="top__subtitle">{data?.items_block?.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton
-                                type_category={data?.items_block?.type_category}
-                                parameter={
-                                    data?.items_block?.category?.name || ""
-                                }
-                                id={data?.items_block?.category?.id}
-                            />
+                            <SeeAllButton type_category={data?.items_block?.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
                         </div>
                     </div>
                 </div>
@@ -103,51 +81,24 @@ export default function BlockMType2M({
                                 }}
                             >
                                 {data.items_block.data_cards
-                                    .reduce(
-                                        (
-                                            acc: [
-                                                HomeDataCard,
-                                                HomeDataCard?,
-                                                HomeDataCard?
-                                            ][],
-                                            item,
-                                            index
-                                        ) => {
-                                            if (index % 3 === 0) {
-                                                acc.push([item])
-                                            } else {
-                                                acc[acc.length - 1].push(item)
-                                            }
-                                            return acc
-                                        },
-                                        []
-                                    )
+                                    .reduce((acc: [HomeDataCard, HomeDataCard?, HomeDataCard?][], item, index) => {
+                                        if (index % 3 === 0) {
+                                            acc.push([item])
+                                        } else {
+                                            acc[acc.length - 1].push(item)
+                                        }
+                                        return acc
+                                    }, [])
                                     .map((item) => (
                                         <SwiperSlide>
                                             <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <Link
-                                                                to={`/casino/${sanitizeLink(
-                                                                    item?.[0]
-                                                                        ?.casino_info
-                                                                        ?.casino_name
-                                                                )}?queryId=${
-                                                                    item?.[0]
-                                                                        ?.casino_info
-                                                                        ?.casino_id
-                                                                }`}
-                                                                className="different-casino-standart__image-block"
-                                                            >
+                                                            <Link to={`/casino/${sanitizeLink(item?.[0]?.casino_info?.casino_name)}?queryId=${item?.[0]?.casino_info?.casino_id}`} className="different-casino-standart__image-block">
                                                                 <span className="different-casino-standart__image ibg--custom">
                                                                     <LazyCardImg
-                                                                        img={
-                                                                            item?.[0]
-                                                                                .casino_info
-                                                                                .casino_image ||
-                                                                            ""
-                                                                        }
+                                                                        img={item?.[0].casino_info.casino_image || ''}
                                                                         size="medium"
                                                                         // imgLoading={lazyLoadImg}
                                                                         imgLoading="lazy"
@@ -158,76 +109,32 @@ export default function BlockMType2M({
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
                                                                         rel="nofollow noopener"
-                                                                        to={`/casino/${sanitizeLink(
-                                                                            item?.[0]
-                                                                                ?.casino_info
-                                                                                ?.casino_name
-                                                                        )}?queryId=${
-                                                                            item?.[0]
-                                                                                ?.casino_info
-                                                                                ?.casino_id
-                                                                        }`}
+                                                                        to={`/casino/${sanitizeLink(item?.[0]?.casino_info?.casino_name)}?queryId=${item?.[0]?.casino_info?.casino_id}`}
                                                                         aria-label="Put your description here."
                                                                         className="different-casino-standart__name"
                                                                     >
-                                                                        {
-                                                                            item?.[0]
-                                                                                ?.casino_info
-                                                                                ?.casino_name
-                                                                        }
+                                                                        {item?.[0]?.casino_info?.casino_name}
                                                                     </Link>
                                                                     <div className="different-casino-standart__info">
                                                                         <Link
-                                                                            to={`/casino/${sanitizeLink(
-                                                                                item?.[0]
-                                                                                    ?.casino_info
-                                                                                    ?.casino_name
-                                                                            )}/bonuses/${sanitizeLink(
-                                                                                item?.[0]
-                                                                                    ?.bonus_info
-                                                                                    ?.bonus_name
-                                                                            )}?queryId=${
-                                                                                item?.[0]
-                                                                                    ?.bonus_info
-                                                                                    ?.bonus_id
+                                                                            to={`/casino/${sanitizeLink(item?.[0]?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.[0]?.bonus_info?.bonus_name)}?queryId=${
+                                                                                item?.[0]?.bonus_info?.bonus_id
                                                                             }`}
                                                                             rel="nofollow noopener"
                                                                             aria-label="Put your description here."
                                                                             className="different-casino-standart__info-link"
                                                                         >
-                                                                            {
-                                                                                item?.[0]
-                                                                                    ?.bonus_info
-                                                                                    ?.bonus_name
-                                                                            }
+                                                                            {item?.[0]?.bonus_info?.bonus_name}
                                                                         </Link>
                                                                     </div>
                                                                 </div>
                                                                 <a
-                                                                    href={cloacingLink(
-                                                                        item?.[0]
-                                                                        ?.casino_info
-                                                                        ?.url_casino ||   item?.[0]
-                                                                            ?.casino_info
-                                                                            ?.casino_affiliate_link
-                                                                           
-                                                                    )}
-                                                                    onClick={(
-                                                                        e
-                                                                    ) => {
+                                                                    href={cloacingLink(item?.[0]?.casino_info?.casino_name)}
+                                                                    onClick={(e) => {
                                                                         e.stopPropagation()
                                                                         e.preventDefault()
-                                                                        window.open(
-                                                                            item?.[0]
-                                                                                ?.casino_info
-                                                                                ?.casino_affiliate_link ||
-                                                                                item?.[0]
-                                                                                    ?.casino_info
-                                                                                    ?.url_casino,
-                                                                            "_blank",
-                                                                            "noopener,noreferrer"
-                                                                        )
-                                                                 
+                                                                        cloacingFetch(item?.[0]?.casino_info?.casino_affiliate_link)
+                                                                        window.open(item?.[0]?.casino_info?.casino_affiliate_link || item?.[0]?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
                                                                     }}
                                                                     aria-label="Put your description here."
                                                                     className="different-casino-standart__btn-visit"
@@ -241,107 +148,43 @@ export default function BlockMType2M({
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <Link
-                                                                to={`/casino/${sanitizeLink(
-                                                                    item?.[1]
-                                                                        ?.casino_info
-                                                                        ?.casino_name
-                                                                )}?queryId=${
-                                                                    item?.[1]
-                                                                        ?.casino_info
-                                                                        ?.casino_id
-                                                                }`}
-                                                                className="different-casino-standart__image-block"
-                                                            >
+                                                            <Link to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}?queryId=${item?.[1]?.casino_info?.casino_id}`} className="different-casino-standart__image-block">
                                                                 <span className="different-casino-standart__image ibg--custom">
-                                                                    <LazyCardImg
-                                                                        img={
-                                                                            item?.[1]
-                                                                                ?.casino_info
-                                                                                ?.casino_image ||
-                                                                            ""
-                                                                        }
-                                                                        size="medium"
-                                                                    />
+                                                                    <LazyCardImg img={item?.[1]?.casino_info?.casino_image || ''} size="medium" />
                                                                 </span>
                                                             </Link>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
-                                                                        to={`/casino/${sanitizeLink(
-                                                                            item?.[1]
-                                                                                ?.casino_info
-                                                                                ?.casino_name
-                                                                        )}?queryId=${
-                                                                            item?.[1]
-                                                                                ?.casino_info
-                                                                                ?.casino_id
-                                                                        }`}
+                                                                        to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}?queryId=${item?.[1]?.casino_info?.casino_id}`}
                                                                         rel="nofollow noopener"
                                                                         aria-label="Put your description here."
                                                                         className="different-casino-standart__name"
                                                                     >
-                                                                        {
-                                                                            item?.[1]
-                                                                                ?.casino_info
-                                                                                ?.casino_name
-                                                                        }
+                                                                        {item?.[1]?.casino_info?.casino_name}
                                                                     </Link>
                                                                     <div className="different-casino-standart__info">
                                                                         <Link
                                                                             rel="nofollow noopener"
-                                                                            to={`/casino/${sanitizeLink(
-                                                                                item?.[1]
-                                                                                    ?.casino_info
-                                                                                    ?.casino_name
-                                                                            )}/bonuses/${sanitizeLink(
-                                                                                item?.[1]
-                                                                                    ?.bonus_info
-                                                                                    ?.bonus_name
-                                                                            )}?queryId=${
-                                                                                item?.[1]
-                                                                                    ?.bonus_info
-                                                                                    ?.bonus_id
+                                                                            to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.[1]?.bonus_info?.bonus_name)}?queryId=${
+                                                                                item?.[1]?.bonus_info?.bonus_id
                                                                             }`}
                                                                             aria-label="Put your description here."
                                                                             className="different-casino-standart__info-link"
                                                                         >
-                                                                            {
-                                                                                item?.[1]
-                                                                                    ?.bonus_info
-                                                                                    ?.bonus_name
-                                                                            }
+                                                                            {item?.[1]?.bonus_info?.bonus_name}
                                                                         </Link>
                                                                     </div>
                                                                 </div>
                                                                 <a
-                                                                    href={cloacingLink(
-                                                                        item?.[1]
-                                                                        ?.casino_info
-                                                                        ?.url_casino||  item?.[1]
-                                                                            ?.casino_info
-                                                                            ?.casino_affiliate_link 
-                                                                            
-                                                                    )}
-                                                                    onClick={(
-                                                                        e
-                                                                    ) => {
+                                                                    href={cloacingLink(item?.[1]?.casino_info?.casino_name)}
+                                                                    onClick={(e) => {
                                                                         e.stopPropagation()
                                                                         e.preventDefault()
-                                                                        window.open(
-                                                                            item?.[1]
-                                                                                ?.casino_info
-                                                                                ?.casino_affiliate_link ||
-                                                                                item?.[1]
-                                                                                    ?.casino_info
-                                                                                    ?.url_casino,
-                                                                            "_blank",
-                                                                            "noopener,noreferrer"
-                                                                        )
-                                                                 
+                                                                        cloacingFetch(item?.[1]?.casino_info?.casino_affiliate_link)
+                                                                        window.open(item?.[1]?.casino_info?.casino_affiliate_link || item?.[1]?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
                                                                     }}
                                                                     aria-label="Put your description here."
-                                                               
                                                                     className="different-casino-standart__btn-visit"
                                                                 >
                                                                     Visit
@@ -353,104 +196,41 @@ export default function BlockMType2M({
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <Link
-                                                                to={`/casino/${sanitizeLink(
-                                                                    item?.[2]
-                                                                        ?.casino_info
-                                                                        ?.casino_name
-                                                                )}?queryId=${
-                                                                    item?.[2]
-                                                                        ?.casino_info
-                                                                        ?.casino_id
-                                                                }`}
-                                                                className="different-casino-standart__image-block"
-                                                            >
+                                                            <Link to={`/casino/${sanitizeLink(item?.[2]?.casino_info?.casino_name)}?queryId=${item?.[2]?.casino_info?.casino_id}`} className="different-casino-standart__image-block">
                                                                 <span className="different-casino-standart__image ibg--custom">
-                                                                    <LazyCardImg
-                                                                        img={
-                                                                            item?.[2]
-                                                                                ?.casino_info
-                                                                                ?.casino_image ||
-                                                                            ""
-                                                                        }
-                                                                        size="medium"
-                                                                    />
+                                                                    <LazyCardImg img={item?.[2]?.casino_info?.casino_image || ''} size="medium" />
                                                                 </span>
                                                             </Link>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
                                                                         rel="nofollow noopener"
-                                                                        to={`/casino/${sanitizeLink(
-                                                                            item?.[2]
-                                                                                ?.casino_info
-                                                                                ?.casino_name
-                                                                        )}?queryId=${
-                                                                            item?.[2]
-                                                                                ?.casino_info
-                                                                                ?.casino_id
-                                                                        }`}
+                                                                        to={`/casino/${sanitizeLink(item?.[2]?.casino_info?.casino_name)}?queryId=${item?.[2]?.casino_info?.casino_id}`}
                                                                         aria-label="Put your description here."
                                                                         className="different-casino-standart__name"
                                                                     >
-                                                                        {
-                                                                            item?.[2]
-                                                                                ?.casino_info
-                                                                                ?.casino_name
-                                                                        }
+                                                                        {item?.[2]?.casino_info?.casino_name}
                                                                     </Link>
                                                                     <div className="different-casino-standart__info">
                                                                         <Link
                                                                             rel="nofollow noopener"
-                                                                            to={`/casino/${sanitizeLink(
-                                                                                item?.[1]
-                                                                                    ?.casino_info
-                                                                                    ?.casino_name
-                                                                            )}/bonuses/${sanitizeLink(
-                                                                                item?.[2]
-                                                                                    ?.bonus_info
-                                                                                    ?.bonus_name
-                                                                            )}?queryId=${
-                                                                                item?.[2]
-                                                                                    ?.bonus_info
-                                                                                    ?.bonus_id
+                                                                            to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.[2]?.bonus_info?.bonus_name)}?queryId=${
+                                                                                item?.[2]?.bonus_info?.bonus_id
                                                                             }`}
                                                                             aria-label="Put your description here."
                                                                             className="different-casino-standart__info-link"
                                                                         >
-                                                                            {
-                                                                                item?.[2]
-                                                                                    ?.bonus_info
-                                                                                    ?.bonus_name
-                                                                            }
+                                                                            {item?.[2]?.bonus_info?.bonus_name}
                                                                         </Link>
                                                                     </div>
                                                                 </div>
                                                                 <a
-                                                                     href={cloacingLink(
-                                                                        item?.[2]
-                                                                                ?.casino_info
-                                                                                ?.url_casino || item?.[2]
-                                                                            ?.casino_info
-                                                                            ?.casino_affiliate_link 
-                                                                           
-                                                                    )}
-                                                                    onClick={(
-                                                                        e
-                                                                    ) => {
+                                                                    href={cloacingLink(item?.[2]?.casino_info?.casino_name)}
+                                                                    onClick={(e) => {
                                                                         e.stopPropagation()
                                                                         e.preventDefault()
-                                                                        window.open(
-                                                                            item?.[2]
-                                                                                ?.casino_info
-                                                                                ?.casino_affiliate_link ||
-                                                                                item?.[2]
-                                                                                    ?.casino_info
-                                                                                    ?.url_casino,
-                                                                            "_blank",
-                                                                            "noopener,noreferrer"
-                                                                        )
-                                                                   
+                                                                        cloacingFetch(item?.[2]?.casino_info?.casino_affiliate_link)
+                                                                        window.open(item?.[2]?.casino_info?.casino_affiliate_link || item?.[2]?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
                                                                     }}
                                                                     aria-label="Put your description here."
                                                                     className="different-casino-standart__btn-visit"
@@ -468,10 +248,7 @@ export default function BlockMType2M({
                         </div>
                     </div>
                     <div className="slider__bottom bottom-slider">
-                        <div
-                            ref={paginationRef}
-                            className="bottom-slider__pagination payn-play-casinos-gamble__pagination swiper-pagination"
-                        ></div>
+                        <div ref={paginationRef} className="bottom-slider__pagination payn-play-casinos-gamble__pagination swiper-pagination"></div>
                     </div>
                 </div>
             </div>

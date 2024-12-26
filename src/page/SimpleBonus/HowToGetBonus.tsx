@@ -1,17 +1,13 @@
-import giftIcon from "../../assets/img/icons/gift.svg"
-import bg08 from "../../assets/img/bg/08.webp"
-import { LazyLoadImage } from "react-lazy-load-image-component"
-import { GetDataBonusResponse } from "../../types"
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { cloacingLink, sanitizeLink, sanitizeNumberLike } from "../../helper"
+import giftIcon from '../../assets/img/icons/gift.svg'
+import bg08 from '../../assets/img/bg/08.webp'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { GetDataBonusResponse } from '../../types'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
 
-export const HowToGetBonus = ({
-    data,
-}: {
-    data: GetDataBonusResponse | undefined
-}) => {
-    const [like, setLike] = useState<"" | "like" | "dislike">("")
+export const HowToGetBonus = ({ data }: { data: GetDataBonusResponse | undefined }) => {
+    const [like, setLike] = useState<'' | 'like' | 'dislike'>('')
 
     return (
         <section className="simple-bonus__get-bonus get-bonus">
@@ -28,36 +24,21 @@ export const HowToGetBonus = ({
                                 </svg>
                             </div>
                             <div className="main-get-bonus__content">
-                                <h2 className="main-get-bonus__title">
-                                    How to get Bonus?
-                                </h2>
-                                <div className="main-get-bonus__text">
-                                    Bonus is activated after first deposit
-                                </div>
+                                <h2 className="main-get-bonus__title">How to get Bonus?</h2>
+                                <div className="main-get-bonus__text">Bonus is activated after first deposit</div>
                                 <div className="main-get-bonus__btns">
                                     <div className="main-get-bonus__btns-item">
                                         <a
-                                            href={cloacingLink(
-                                                data?.url_casino ||    data?.casino_affiliate_link 
-                                                
-                                            )}
+                                            href={cloacingLink(data?.casino_name)}
                                             onClick={(e) => {
                                                 e.stopPropagation()
                                                 e.preventDefault()
-                                                window.open(
-                                                    data?.casino_affiliate_link ||
-                                                        data?.url_casino,
-                                                    "_blank",
-                                                    "noopener,noreferrer"
-                                                )
+                                                window.open(data?.casino_affiliate_link || data?.url_casino, '_blank', 'noopener,noreferrer')
                                             }}
                                             className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                         >
                                             <span>
-                                                <LazyLoadImage
-                                                    src={giftIcon}
-                                                    alt="gift"
-                                                />
+                                                <LazyLoadImage src={giftIcon} alt="gift" />
                                             </span>
                                             Get Bonus
                                         </a>
@@ -74,11 +55,7 @@ export const HowToGetBonus = ({
                                                     <use xlinkHref="#review"></use>
                                                 </svg>
                                             </span>
-                                            {data?.casino_name.replace(
-                                                /casino/i,
-                                                ""
-                                            )}{" "}
-                                            Casino Review
+                                            {data?.casino_name.replace(/casino/i, '')} Casino Review
                                         </Link>
                                     </div>
                                     <div className="main-get-bonus__btns-item">
@@ -97,35 +74,20 @@ export const HowToGetBonus = ({
                         </div>
                         <div className="get-bonus__like like-get-bonus">
                             <div className="like-get-bonus__body">
-                                <div className="like-get-bonus__title">
-                                    Do You Like This Bonus?
-                                </div>
+                                <div className="like-get-bonus__title">Do You Like This Bonus?</div>
                                 <div className="like-get-bonus__btns">
                                     <div className="like-get-bonus__btns-item">
-                                        <button
-                                            onClick={() => setLike("like")}
-                                            className={`like-get-bonus__btn like-get-bonus__btn_like ${
-                                                like === "like" && "active"
-                                            }`}
-                                        >
+                                        <button onClick={() => setLike('like')} className={`like-get-bonus__btn like-get-bonus__btn_like ${like === 'like' && 'active'}`}>
                                             <span className="like-get-bonus__btn-icon">
                                                 <svg>
                                                     <use xlinkHref="#like"></use>
                                                 </svg>
                                             </span>
-                                            <span className="like-get-bonus__btn-number">
-                                                {sanitizeNumberLike((data?.likes ?? 0) +
-                                                    (like === "like" ? 1 : 0))}
-                                            </span>
+                                            <span className="like-get-bonus__btn-number">{sanitizeNumberLike((data?.likes ?? 0) + (like === 'like' ? 1 : 0))}</span>
                                         </button>
                                     </div>
                                     <div className="like-get-bonus__btns-item">
-                                        <button
-                                            onClick={() => setLike("dislike")}
-                                            className={`like-get-bonus__btn like-get-bonus__btn_dislike ${
-                                                like === "dislike" && "active"
-                                            }`}
-                                        >
+                                        <button onClick={() => setLike('dislike')} className={`like-get-bonus__btn like-get-bonus__btn_dislike ${like === 'dislike' && 'active'}`}>
                                             <span className="like-get-bonus__btn-icon">
                                                 <svg>
                                                     <use xlinkHref="#like"></use>

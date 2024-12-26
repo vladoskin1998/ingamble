@@ -1,31 +1,22 @@
-import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { SeeAllEssentialLoyaltyKeypoint } from "../../types"
+import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
+import { SeeAllEssentialLoyaltyKeypoint } from '../../types'
 
-const color_gifts = [
-    "item-deposits_grass",
-    "item-deposits_ocean",
-    "item-deposits_purple",
-    "item-deposits_green",
-]
+const color_gifts = ['item-deposits_grass', 'item-deposits_ocean', 'item-deposits_purple', 'item-deposits_green']
 const blockWidth = (l: number | undefined) => {
     if (!l) {
-        return "deposits__column_medium"
+        return 'deposits__column_medium'
     }
     switch (l) {
         case 2:
-            return "deposits__column_big"
+            return 'deposits__column_big'
         case 4:
-            return "deposits__column_small"
+            return 'deposits__column_small'
         default:
-            return "deposits__column_medium"
+            return 'deposits__column_medium'
     }
 }
 
-export const LoyaltyRewnew = ({
-    loyalty_subtype,
-}: {
-    loyalty_subtype: SeeAllEssentialLoyaltyKeypoint[] | undefined
-}) => {
+export const LoyaltyRewnew = ({ loyalty_subtype }: { loyalty_subtype: SeeAllEssentialLoyaltyKeypoint[] | undefined }) => {
     return (
         <section className="simple-bonus__deposits deposits loyaltie__loyalty loyalty-review">
             <div className="deposits__container container loyalty-review__container ">
@@ -33,9 +24,7 @@ export const LoyaltyRewnew = ({
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                <h2 className="top__title">
-                                    Loyalty Highlights
-                                </h2>
+                                <h2 className="top__title">Loyalty Highlights</h2>
                             </div>
                         </div>
                     </div>
@@ -45,30 +34,14 @@ export const LoyaltyRewnew = ({
                         <div className="deposits__row">
                             {loyalty_subtype?.map((item, index) => {
                                 return (
-                                    <div
-                                        className={`deposits__column ${blockWidth(
-                                            loyalty_subtype?.length
-                                        )}`}
-                                    >
-                                        <div
-                                            className={`deposits__item item-deposits ${
-                                                color_gifts[index % 4]
-                                            }`}
-                                        >
+                                    <div className={`deposits__column ${blockWidth(loyalty_subtype?.length)}`}>
+                                        <div className={`deposits__item item-deposits ${color_gifts[index % 4]}`}>
                                             <div className="item-loyalty-review__image">
-                                                <LazyCardImg
-                                                    img={item?.image || ""}
-                                                    height="100%"
-                                                    width="100%"
-                                                />
+                                                <LazyCardImg img={item?.image || ''} height="100%" width="100%" />
                                             </div>
                                             <div className="item-loyalty-review__content">
-                                                <div className="item-loyalty-review__label">
-                                                    {item?.text_1}
-                                                </div>
-                                                <div className="item-loyalty-review__value">
-                                                    {item?.text_2}
-                                                </div>
+                                                <div className="item-loyalty-review__label">{item?.text_1}</div>
+                                                <div className="item-loyalty-review__value">{item?.text_2}</div>
                                             </div>
                                         </div>
                                     </div>

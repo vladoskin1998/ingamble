@@ -1,21 +1,17 @@
-import { useRef, useEffect } from "react"
-import { SwiperRef } from "swiper/react"
-import { Pagination } from "swiper/modules"
-import "swiper/css"
-import "swiper/css/pagination"
-import { Swiper, SwiperSlide } from "swiper/react"
-import shieldIcon from "../../assets/img/icons/shield.svg"
-import { BlockTypeNumber, HomeDataBlock } from "../../types"
-import { LazyCardImg } from "../../components/lazy-img/LazyCardImg"
-import { SeeAllButton } from "./SeeAllButton"
-import { sanitizeLink, shuffleArray } from "../../helper"
-import { Link } from "react-router-dom"
+import { useRef, useEffect } from 'react'
+import { SwiperRef } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import shieldIcon from '../../assets/img/icons/shield.svg'
+import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
+import { SeeAllButton } from './SeeAllButton'
+import { sanitizeLink, shuffleArray } from '../../helper'
+import { Link } from 'react-router-dom'
 
-export default function BlockType7({
-    data,
-}: {
-    data: HomeDataBlock | undefined
-}) {
+export default function BlockType7({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -31,10 +27,9 @@ export default function BlockType7({
         }
     }, [])
 
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7)
-        return <></>
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7) return <></>
 
-     const dataCard = shuffleArray(data?.items_block?.data_cards) 
+    const dataCard = shuffleArray(data?.items_block?.data_cards)
 
     return (
         <section aria-label="BlockTypeNumber.BlockType7" className="main-gamble__low-risk-bonuses low-risk-bonuses-gamble main-gamble__different-casino-bg">
@@ -45,29 +40,15 @@ export default function BlockType7({
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
                                     <span className="top__title-icon">
-                                        <img
-                                            src={data.items_block.title_image}
-                                            alt="security"
-                                        />
+                                        <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
-                                <h2 className="top__title">
-                                    {data.items_block.block_title}
-                                </h2>
+                                <h2 className="top__title">{data.items_block.block_title}</h2>
                             </div>
-                            {data.items_block.subtitle && (
-                                <div className="top__subtitle">
-                                    {data.items_block.subtitle}
-                                </div>
-                            )}
+                            {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton
-                                type_category={data.items_block.type_category}
-                                parameter={
-                                    data?.items_block?.category?.name || ""
-                                } id={  data?.items_block?.category?.id}
-                            />
+                            <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
                         </div>
                     </div>
                 </div>
@@ -94,67 +75,34 @@ export default function BlockType7({
                                     },
                                 }}
                             >
-                                {dataCard?.slice(0,10)
+                                {dataCard
+                                    ?.slice(0, 10)
                                     ?.sort((a, b) => a.order - b.order)
                                     ?.map((item, index) => (
-                                        <SwiperSlide
-                                            key={index}
-                                            className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide"
-                                        >
+                                        <SwiperSlide key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
                                             <div className="slide-slider__item different-casino-bg">
-                                                <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
-                                                    className="different-casino-bg__image-block"
-                                                >
+                                                <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-bg__image-block">
                                                     <span className="different-casino-bg__image ibg--custom">
-                                                        <LazyCardImg
-                                                            img={
-                                                                item.casino_info
-                                                                    .casino_image ||
-                                                                ""
-                                                            }
-                                                              
-                                                        />
+                                                        <LazyCardImg img={item.casino_info.casino_image || ''} />
                                                     </span>
                                                 </Link>
                                                 <div className="different-casino-bg__content">
-                                                    <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
-                                                        aria-label="Put your description here."
-                                                     
-                                                        className="different-casino-bg__name"
-                                                    >
-                                                        {
-                                                            item.casino_info
-                                                                .casino_name
-                                                        }
+                                                    <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} aria-label="Put your description here." className="different-casino-bg__name">
+                                                        {item.casino_info.casino_name}
                                                     </Link>
                                                     <div className="different-casino-bg__info">
-                                                        {item?.casino_info?.additional_casino_params?.map(
-                                                            (it, id) => (
-                                                                <span
-                                                                    key={id}
-                                                                    className="different-casino-bg__info-link"
-                                                                >
-                                                                    {it}
-                                                                </span>
-                                                            )
-                                                        )}
+                                                        {item?.casino_info?.additional_casino_params?.map((it, id) => (
+                                                            <span key={id} className="different-casino-bg__info-link">
+                                                                {it}
+                                                            </span>
+                                                        ))}
                                                     </div>
                                                     <div className="different-casino-bg__rating">
                                                         <span className="different-casino-bg__rating-icon">
-                                                            <img
-                                                                src={shieldIcon}
-                                                                alt="shield"
-                                                            />
+                                                            <img src={shieldIcon} alt="shield" />
                                                         </span>
-                                                        <span className="different-casino-bg__rating-number">
-                                                            {
-                                                                item.casino_info
-                                                                    .casino_rank
-                                                            }
-                                                        </span>
-                                                        <span className="different-casino-bg__rating-text">
-                                                            Safety Index
-                                                        </span>
+                                                        <span className="different-casino-bg__rating-number">{item.casino_info.casino_rank}</span>
+                                                        <span className="different-casino-bg__rating-text">Safety Index</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,10 +112,7 @@ export default function BlockType7({
                         </div>
                     </div>
                     <div className="slider__bottom bottom-slider">
-                        <div
-                            ref={paginationRef}
-                            className="bottom-slider__pagination low-risk-bonuses-gamble__pagination swiper-pagination"
-                        ></div>
+                        <div ref={paginationRef} className="bottom-slider__pagination low-risk-bonuses-gamble__pagination swiper-pagination"></div>
                     </div>
                 </div>
             </div>

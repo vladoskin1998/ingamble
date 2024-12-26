@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react"
-import { Pagination } from "swiper/modules"
-import { Swiper, SwiperRef, SwiperSlide } from "swiper/react"
+import { useEffect, useRef } from 'react'
+import { Pagination } from 'swiper/modules'
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 
 export const SpecialPromo = () => {
     const sliderRef = useRef<SwiperRef | null>(null)
@@ -18,18 +18,13 @@ export const SpecialPromo = () => {
         }
     }, [])
     return (
-        <section
-            className="review__iwild-casino-promo iwild-casino-promo iwild-casino-promo_mob"
-            id="review-iwild-casino-special-promo"
-        >
+        <section className="review__iwild-casino-promo iwild-casino-promo iwild-casino-promo_mob" id="review-iwild-casino-special-promo">
             <div className="iwild-casino-promo__container container">
                 <div className="iwild-casino-promo__top top">
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                <h2 className="top__title">
-                                    iWildCasino Special Promo
-                                </h2>
+                                <h2 className="top__title">iWildCasino Special Promo</h2>
                             </div>
                         </div>
                     </div>
@@ -62,37 +57,16 @@ export const SpecialPromo = () => {
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
                                             <div className="casino-card__image ibg--custom">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/15.jpg"
-                                                    alt="Special 10,000,000$ Tournament"
-                                                />
+                                                <img src="/src/assets/img/casino-cards/15.jpg" alt="Special 10,000,000$ Tournament" />
                                             </div>
-                                            <a
-                                                href="https://www.youtube.com/watch?v=IBcwhaYP6Uk"
-                                                data-fancybox="gallery-1"
-                                                data-caption="Caption"
-                                                className="casino-card__btn-play"
-                                            ></a>
+                                            <a href="https://www.youtube.com/watch?v=IBcwhaYP6Uk" data-fancybox="gallery-1" data-caption="Caption" className="casino-card__btn-play"></a>
                                         </div>
                                         <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
+                                            <a href="" aria-label="Put your description here." target="_blank" className="casino-card__name">
                                                 Special 10,000,000$ Tournament
                                             </a>
                                             <div className="casino-card__text">
-                                                <p>
-                                                    This week iWild Casino
-                                                    offers special tournament
-                                                    for their vip players. You
-                                                    can win 10,000,000. Offer is
-                                                    available for 7 days. You
-                                                    need just deposit 10 EUR and
-                                                    play.
-                                                </p>
+                                                <p>This week iWild Casino offers special tournament for their vip players. You can win 10,000,000. Offer is available for 7 days. You need just deposit 10 EUR and play.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -101,35 +75,16 @@ export const SpecialPromo = () => {
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
                                             <div className="casino-card__image ibg--custom">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/16.jpg"
-                                                    alt="5,000,000$ Bonus Racing"
-                                                />
+                                                <img src="/src/assets/img/casino-cards/16.jpg" alt="5,000,000$ Bonus Racing" />
                                             </div>
-                                            <a
-                                                href="https://www.youtube.com/watch?v=AKeUssuu3Is"
-                                                data-fancybox="gallery-2"
-                                                data-caption="Caption"
-                                                className="casino-card__btn-play"
-                                            ></a>
+                                            <a href="https://www.youtube.com/watch?v=AKeUssuu3Is" data-fancybox="gallery-2" data-caption="Caption" className="casino-card__btn-play"></a>
                                         </div>
                                         <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
+                                            <a href="" aria-label="Put your description here." target="_blank" className="casino-card__name">
                                                 5,000,000$ Bonus Racing
                                             </a>
                                             <div className="casino-card__text">
-                                                <p>
-                                                    This week iWild Casino
-                                                    offers special tournament
-                                                    for their vip players. You
-                                                    can win 10,000,000. Offer is
-                                                    available for 7 days.
-                                                </p>
+                                                <p>This week iWild Casino offers special tournament for their vip players. You can win 10,000,000. Offer is available for 7 days.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -138,37 +93,16 @@ export const SpecialPromo = () => {
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
                                             <div className="casino-card__image ibg--custom">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/15.jpg"
-                                                    alt="Special 10,000,000$ Tournament"
-                                                />
+                                                <img src="/src/assets/img/casino-cards/15.jpg" alt="Special 10,000,000$ Tournament" />
                                             </div>
-                                            <a
-                                                href="https://www.youtube.com/watch?v=IBcwhaYP6Uk"
-                                                data-fancybox="gallery-3"
-                                                data-caption="Caption"
-                                                className="casino-card__btn-play"
-                                            ></a>
+                                            <a href="https://www.youtube.com/watch?v=IBcwhaYP6Uk" data-fancybox="gallery-3" data-caption="Caption" className="casino-card__btn-play"></a>
                                         </div>
                                         <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
+                                            <a href="" aria-label="Put your description here." target="_blank" className="casino-card__name">
                                                 Special 10,000,000$ Tournament
                                             </a>
                                             <div className="casino-card__text">
-                                                <p>
-                                                    This week iWild Casino
-                                                    offers special tournament
-                                                    for their vip players. You
-                                                    can win 10,000,000. Offer is
-                                                    available for 7 days. You
-                                                    need just deposit 10 EUR and
-                                                    play.
-                                                </p>
+                                                <p>This week iWild Casino offers special tournament for their vip players. You can win 10,000,000. Offer is available for 7 days. You need just deposit 10 EUR and play.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -177,35 +111,16 @@ export const SpecialPromo = () => {
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
                                             <div className="casino-card__image ibg--custom">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/16.jpg"
-                                                    alt="5,000,000$ Bonus Racing"
-                                                />
+                                                <img src="/src/assets/img/casino-cards/16.jpg" alt="5,000,000$ Bonus Racing" />
                                             </div>
-                                            <a
-                                                href="https://www.youtube.com/watch?v=AKeUssuu3Is"
-                                                data-fancybox="gallery-4"
-                                                data-caption="Caption"
-                                                className="casino-card__btn-play"
-                                            ></a>
+                                            <a href="https://www.youtube.com/watch?v=AKeUssuu3Is" data-fancybox="gallery-4" data-caption="Caption" className="casino-card__btn-play"></a>
                                         </div>
                                         <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
+                                            <a href="" aria-label="Put your description here." target="_blank" className="casino-card__name">
                                                 5,000,000$ Bonus Racing
                                             </a>
                                             <div className="casino-card__text">
-                                                <p>
-                                                    This week iWild Casino
-                                                    offers special tournament
-                                                    for their vip players. You
-                                                    can win 10,000,000. Offer is
-                                                    available for 7 days.
-                                                </p>
+                                                <p>This week iWild Casino offers special tournament for their vip players. You can win 10,000,000. Offer is available for 7 days.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -214,37 +129,16 @@ export const SpecialPromo = () => {
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
                                             <div className="casino-card__image ibg--custom">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/15.jpg"
-                                                    alt="Special 10,000,000$ Tournament"
-                                                />
+                                                <img src="/src/assets/img/casino-cards/15.jpg" alt="Special 10,000,000$ Tournament" />
                                             </div>
-                                            <a
-                                                href="https://www.youtube.com/watch?v=IBcwhaYP6Uk"
-                                                data-fancybox="gallery-5"
-                                                data-caption="Caption"
-                                                className="casino-card__btn-play"
-                                            ></a>
+                                            <a href="https://www.youtube.com/watch?v=IBcwhaYP6Uk" data-fancybox="gallery-5" data-caption="Caption" className="casino-card__btn-play"></a>
                                         </div>
                                         <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
+                                            <a href="" aria-label="Put your description here." target="_blank" className="casino-card__name">
                                                 Special 10,000,000$ Tournament
                                             </a>
                                             <div className="casino-card__text">
-                                                <p>
-                                                    This week iWild Casino
-                                                    offers special tournament
-                                                    for their vip players. You
-                                                    can win 10,000,000. Offer is
-                                                    available for 7 days. You
-                                                    need just deposit 10 EUR and
-                                                    play.
-                                                </p>
+                                                <p>This week iWild Casino offers special tournament for their vip players. You can win 10,000,000. Offer is available for 7 days. You need just deposit 10 EUR and play.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -253,35 +147,16 @@ export const SpecialPromo = () => {
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
                                             <div className="casino-card__image ibg--custom">
-                                                <img
-                                                    src="/src/assets/img/casino-cards/16.jpg"
-                                                    alt="5,000,000$ Bonus Racing"
-                                                />
+                                                <img src="/src/assets/img/casino-cards/16.jpg" alt="5,000,000$ Bonus Racing" />
                                             </div>
-                                            <a
-                                                href="https://www.youtube.com/watch?v=AKeUssuu3Is"
-                                                data-fancybox="gallery-6"
-                                                data-caption="Caption"
-                                                className="casino-card__btn-play"
-                                            ></a>
+                                            <a href="https://www.youtube.com/watch?v=AKeUssuu3Is" data-fancybox="gallery-6" data-caption="Caption" className="casino-card__btn-play"></a>
                                         </div>
                                         <div className="casino-card__content">
-                                            <a
-                                                href=""
-                                                aria-label="Put your description here."
-                                                target="_blank"
-                                                className="casino-card__name"
-                                            >
+                                            <a href="" aria-label="Put your description here." target="_blank" className="casino-card__name">
                                                 5,000,000$ Bonus Racing
                                             </a>
                                             <div className="casino-card__text">
-                                                <p>
-                                                    This week iWild Casino
-                                                    offers special tournament
-                                                    for their vip players. You
-                                                    can win 10,000,000. Offer is
-                                                    available for 7 days.
-                                                </p>
+                                                <p>This week iWild Casino offers special tournament for their vip players. You can win 10,000,000. Offer is available for 7 days.</p>
                                             </div>
                                         </div>
                                     </div>
