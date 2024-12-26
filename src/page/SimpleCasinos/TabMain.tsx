@@ -1038,7 +1038,7 @@ export const TabMain = ({
                                     className="bonus-info-review__image ibg--custom"
                                     href={cloacingLink(
                                         data?.url ||
-                                            data?.affiliate
+                                            data
                                                 ?.casino_affiliate_link
                                     )}
                                     onClick={(e) => {
@@ -1046,7 +1046,7 @@ export const TabMain = ({
                                         e.preventDefault()
                                         window.open(
                                             data?.url ||
-                                                data?.affiliate
+                                                data
                                                     ?.casino_affiliate_link,
                                             "_blank",
                                             "noopener,noreferrer"
@@ -1080,7 +1080,7 @@ export const TabMain = ({
                                 <a
                                     href={cloacingLink(
                                         data?.url ||
-                                            data?.affiliate
+                                            data
                                                 ?.casino_affiliate_link
                                     )}
                                     onClick={(e) => {
@@ -1088,7 +1088,7 @@ export const TabMain = ({
                                         e.preventDefault()
                                         window.open(
                                             data?.url ||
-                                                data?.affiliate
+                                                data
                                                     ?.casino_affiliate_link,
                                             "_blank",
                                             "noopener,noreferrer"

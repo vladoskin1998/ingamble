@@ -577,11 +577,8 @@ export type FilterLoyaltiesPostResponse ={
 
 export interface RewievCasinoDataResponse {
     id: number;
-    affiliate: {
-        name: string,
-        link_affiliate_program: string,
-        casino_affiliate_link: string
-    } | null,
+    casino_affiliate_link: string
+ 
     link_tc: null | string;
     loyaltie_id: number | string;
     loyalty_program: {

@@ -19,7 +19,7 @@ import like from "../../assets/img/icons/like.svg"
 import { lazy, memo, useEffect, useState } from "react"
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import star from "../../assets/img/icons/star.svg"
-import { cloacingLink, COLORS_TAGS, filterEmptyValues, sanitizeLink, sanitizeNumberLike } from "../../helper"
+import { cloacingFetch, cloacingLink, COLORS_TAGS, filterEmptyValues, sanitizeLink, sanitizeNumberLike } from "../../helper"
 import { PaginationPage } from "../../components/pagination/PaginationPage"
 import { debounce } from "lodash"
 import { LogoLoader } from "../../components/loader/LogoLoader"
@@ -241,6 +241,7 @@ const ListDisplayData = memo(
                                         onClick={(e) => {
                                             e.stopPropagation()
                                             e.preventDefault()
+                                            cloacingFetch(item?.url_casino + " " + item?.casino_affiliate_link)
                                             window.open(item?.casino_affiliate_link || item?.url_casino, '_blank', 'noopener,noreferrer');
                                         
                                         }} 

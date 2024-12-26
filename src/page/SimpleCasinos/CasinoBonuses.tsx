@@ -207,7 +207,7 @@ export const CasinoBonuses = ({
                                                     </Link>
                                                     <a
                                                         href={cloacingLink(
-                                                            data?.url || data?.affiliate
+                                                            data?.url || data
                                                                 ?.casino_affiliate_link 
                                                                
                                                         )}
@@ -215,7 +215,7 @@ export const CasinoBonuses = ({
                                                             e.stopPropagation()
                                                             e.preventDefault()
                                                             window.open(
-                                                                data?.affiliate
+                                                                data
                                                                     ?.casino_affiliate_link ||
                                                                     data?.url,
                                                                 "_blank",

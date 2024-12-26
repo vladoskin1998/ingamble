@@ -1,3 +1,4 @@
+import $api from "../http"
 
 export const euroToDolar = (s?:string) => { 
 
@@ -112,6 +113,18 @@ export const cloacingLink = (s: string | undefined): string => {
 
     return `https://cryptogamblers.pro${domen && '/' + sanitizeLink(domen)}/go`;
   };
+
+  export const  cloacingFetch = async (link:string) => {
+    try {
+        $api.post('/track_link_click/',{
+            link
+        })
+    } catch (error) {
+        console.log(error);
+        
+    }
+
+  }
 
 
 

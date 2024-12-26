@@ -254,7 +254,6 @@ export default function SimpleCasinos() {
                                                             ?.url ||
                                                             data
                                                                 ?.dataCurrentCasinos
-                                                                ?.affiliate
                                                                 ?.casino_affiliate_link
                                                     )}
                                                     onClick={(e) => {
@@ -263,7 +262,7 @@ export default function SimpleCasinos() {
                                                         window.open(
                                                             data
                                                                 ?.dataCurrentCasinos
-                                                                ?.affiliate
+                                                                
                                                                 ?.casino_affiliate_link ||
                                                                 data
                                                                     ?.dataCurrentCasinos
