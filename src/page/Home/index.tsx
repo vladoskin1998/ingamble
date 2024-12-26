@@ -124,53 +124,56 @@ export default function Home() {
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
 
-    if (!blocksToRender?.length) return <LogoLoader />
+    // if (!blocksToRender?.length) return <LogoLoader />
 
     return (
-        <Wraper>
-            <main className="gamble__main main-gamble">
-                <div className="main-gamble__body">
-                    <Categories />
-                    {/* <div className="home--main--pc">
+        <>
+            {!blocksToRender?.length && <LogoLoader />}
+            <Wraper>
+                <main className="gamble__main main-gamble">
+                    <div className="main-gamble__body">
+                        <Categories />
+                        {/* <div className="home--main--pc">
                     {data?.dataHome?.map((block) => renderBlock(block))}
                     </div>
                     <div className="home--main--mob">
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
                     </div> */}
-                    {blocksToRender?.map((block: any, index) => renderBlock(block, index, isMobile))}
-                    {/* <FastestPayoutCasinos /> */}
-                    {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
+                        {blocksToRender?.map((block: any, index) => renderBlock(block, index, isMobile))}
+                        {/* <FastestPayoutCasinos /> */}
+                        {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
                         <WhatWeArePlayingNow />
                     </div> */}
-                    {/* <FastestWithdrawalCasinos />
+                        {/* <FastestWithdrawalCasinos />
                     <WeeksFavoiritesBonuses /> */}
-                    {/* <TheBestCasinosYear /> */}
-                    {/* <PopularFree /> */}
-                    {/* <HighrollerCasinoBonuses />
+                        {/* <TheBestCasinosYear /> */}
+                        {/* <PopularFree /> */}
+                        {/* <HighrollerCasinoBonuses />
                     <NewlyOpenedCasinos />
                     <div className="main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
                         <WhatWeArePlayingNow />
                     </div> */}
-                    {/* <ExploreTheBestCryptoCasinos />
+                        {/* <ExploreTheBestCryptoCasinos />
                     <GetStartedWithPowerfulWelcomeBonusPacks /> */}
-                    {/* <VPNFriendlyCasinos /> */}
-                    {/* <NonStickyBonus />
+                        {/* <VPNFriendlyCasinos /> */}
+                        {/* <NonStickyBonus />
                     <TopReloadBonuses /> */}
-                    {/* <BlockType7Mobile
+                        {/* <BlockType7Mobile
                         data={data?.dataHome?.data_blocks?.find(
                             (item) =>
                                 item.items_block.type_block ===
                                 BlockTypeNumber.BlockType7
                         )}
                     /> */}
-                    {/* <GreatLiveCasinoBonuses /> */}
-                    <MoreBonusesForYourChoise />
-                    <CheckMoreWhatSuitsYouBest />
-                    <SubscribeForm />
-                    <BottomInfo />
-                </div>
-            </main>
-        </Wraper>
+                        {/* <GreatLiveCasinoBonuses /> */}
+                        <MoreBonusesForYourChoise />
+                        <CheckMoreWhatSuitsYouBest />
+                        <SubscribeForm />
+                        <BottomInfo />
+                    </div>
+                </main>
+            </Wraper>
+        </>
     )
 }
