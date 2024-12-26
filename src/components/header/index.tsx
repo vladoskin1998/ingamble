@@ -1,14 +1,14 @@
 import logo from '../../assets/img/logo.svg'
-import latviaFlag from '../../assets/img/icons/latvia-flag.svg'
+// import latviaFlag from '../../assets/img/icons/latvia-flag.svg'
 import english from '../../assets/img/flags/english.svg'
-import ukraine from '../../assets/img/flags/ukraine.svg'
-import russian from '../../assets/img/flags/russian.svg'
-import bulgarian from '../../assets/img/flags/bulgarian.svg'
-import spanish from '../../assets/img/flags/spanish.svg'
-import german from '../../assets/img/flags/german.svg'
-import french from '../../assets/img/flags/french.svg'
-import italian from '../../assets/img/flags/italian.svg'
-import slovak from '../../assets/img/flags/slovak.svg'
+// import ukraine from '../../assets/img/flags/ukraine.svg'
+// import russian from '../../assets/img/flags/russian.svg'
+// import bulgarian from '../../assets/img/flags/bulgarian.svg'
+// import spanish from '../../assets/img/flags/spanish.svg'
+// import german from '../../assets/img/flags/german.svg'
+// import french from '../../assets/img/flags/french.svg'
+// import italian from '../../assets/img/flags/italian.svg'
+// import slovak from '../../assets/img/flags/slovak.svg'
 import { useEffect, useRef, useState } from 'react'
 import logoIcon from '../../assets/img/logo-icon.svg'
 import { useFilterContext } from '../../context/FilterContext'
@@ -21,15 +21,15 @@ type Language = {
 
 export const LANGUAGES_WEBSITE: Language[] = [
     { code: 'en', name: 'English', flag: english },
-    { code: 'lv', name: 'Latvian', flag: latviaFlag },
-    { code: 'uk', name: 'Ukrainian', flag: ukraine },
-    { code: 'bg', name: 'Bulgarian', flag: bulgarian },
-    { code: 'es', name: 'Spanish', flag: spanish },
-    { code: 'de', name: 'German', flag: german },
-    { code: 'fr', name: 'French', flag: french },
-    { code: 'it', name: 'Italian', flag: italian },
-    { code: 'sk', name: 'Slovak', flag: slovak },
-    { code: 'ru', name: 'Russian', flag: russian },
+    // { code: 'lv', name: 'Latvian', flag: latviaFlag },
+    // { code: 'uk', name: 'Ukrainian', flag: ukraine },
+    // { code: 'bg', name: 'Bulgarian', flag: bulgarian },
+    // { code: 'es', name: 'Spanish', flag: spanish },
+    // { code: 'de', name: 'German', flag: german },
+    // { code: 'fr', name: 'French', flag: french },
+    // { code: 'it', name: 'Italian', flag: italian },
+    // { code: 'sk', name: 'Slovak', flag: slovak },
+    // { code: 'ru', name: 'Russian', flag: russian },
 ]
 
 export const Header = ({
