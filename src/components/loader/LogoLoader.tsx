@@ -1,26 +1,24 @@
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import logoIcon from "../../assets/img/logo-icon.svg"
 
 
 export const LogoLoader = () => {
 
-    const [loader, setLoader]= useState(0)
 
-    useEffect((
-       
-    ) => {
-          const timer = setTimeout(() => {
-              setLoader(Math.ceil(Math.random() * 10) + 1)
-          }, 100)
-          return () => clearTimeout(timer)
-    }, [])
 
-    console.log('setTimeout', loader)
+   useEffect(() => {
+       const loader = document?.querySelector('.loader-body-line') as HTMLDivElement
+       if (loader) {
     
+           loader?.offsetHeight // Принудительный рефлоу
+
+       }
+   }, [])
+
 
     return (
-        <div className="loader-body-line" key={loader}>
+        <div className="loader-body-line" >
             <div style={{ height: '100%' }}>
                 <div className="preloader-1__body">
                     <div className="loader-body-logo">
