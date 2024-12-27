@@ -37,7 +37,7 @@ import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { BlockTypeNumber, HomeDataBlock, HomeDataBlockMobile } from '../../types'
 
-import { CheckMoreWhatSuitsYouBest } from '../../components/categories/CheckMoreWhatSuitsYouBest'
+
 import BlockType2 from './BlockType2'
 import BlockType3 from './BlockType3'
 import BlockType4 from './BlockType4'
@@ -47,6 +47,7 @@ import BlockMType2M from './BlockMType2M'
 import BlockMType3M from './BlockMType3M'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const SubscribeForm = lazy(() => import('../SimpleBonus/SubscribeForm'))
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 

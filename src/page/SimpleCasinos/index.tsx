@@ -1,7 +1,7 @@
 import { Wraper } from '../Wraper'
 import starIcon from '../../assets/img/icons/star.svg'
 import likeIcon from '../../assets/img/icons/like.svg'
-import { CheckMoreWhatSuitsYouBest } from '../../components/categories/CheckMoreWhatSuitsYouBest'
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 import SubscribeForm from '../SimpleBonus/SubscribeForm'
 import { Categories } from '../../components/categories/Categories'
 import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'

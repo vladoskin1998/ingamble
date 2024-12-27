@@ -3,8 +3,7 @@ import { lazy, ReactNode } from 'react'
 import { Header } from '../../components/header'
 
 import { useAdaptiveBehavior } from '../../context/AppContext'
-import { Icons } from './Icons'
-
+const Icons = lazy(() => import('./Icons'))
 const Navbar = lazy(() => import('../../components/navbar'))
 const Footer = lazy(() => import('../../components/footer'))
 

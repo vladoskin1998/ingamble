@@ -16,7 +16,7 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, COLORS_TAGS, sanitizeLink, sanitizeNumberLike } from '../../helper'
 import { Link, useSearchParams } from 'react-router-dom'
 import SubscribeForm from '../SimpleBonus/SubscribeForm'
-import { CheckMoreWhatSuitsYouBest } from '../../components/categories/CheckMoreWhatSuitsYouBest'
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 import { NoResult } from '../../components/no-result'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 

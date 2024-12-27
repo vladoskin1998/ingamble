@@ -17,7 +17,7 @@ import { LogoLoader } from '../../components/loader/LogoLoader'
 import searchImg from '../../assets/img/icons/search-filter.svg'
 import '../SeeAllBonus/style.css'
 import { v4 as uuidv4 } from 'uuid'
-import { CheckMoreWhatSuitsYouBest } from '../../components/categories/CheckMoreWhatSuitsYouBest'
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 import SubscribeForm from '../SimpleBonus/SubscribeForm'
 import { Link } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'

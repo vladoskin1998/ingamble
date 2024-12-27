@@ -6,7 +6,7 @@ import { LoyaltyRewnew } from './LoyaltyRewnew'
 import { LoyaltyText } from './LoyaltyText'
 import { HowToStartVipJorney } from './HowToStartVipJorney'
 import { HarryStyles } from '../SimpleBonus/HarryStyles'
-import { CheckMoreWhatSuitsYouBest } from '../../components/categories/CheckMoreWhatSuitsYouBest'
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 import SubscribeForm from '../SimpleBonus/SubscribeForm'
 import { LoyaltyAcordeon } from './LoyaltyAcordeon'
 import $api from '../../http'

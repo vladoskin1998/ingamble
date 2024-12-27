@@ -13,7 +13,7 @@ import { LogoLoader } from '../../components/loader/LogoLoader'
 import { PAYOUTSPEED, SeeAllCasinosType, SeeAllCasinosCategoryResponse } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, NumberAssociaty, sanitizeLink, sanitizeNumberLike } from '../../helper'
-import { CheckMoreWhatSuitsYouBest } from '../../components/categories/CheckMoreWhatSuitsYouBest'
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 import SubscribeForm from '../SimpleBonus/SubscribeForm'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 

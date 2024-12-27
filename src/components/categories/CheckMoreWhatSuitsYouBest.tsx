@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 
 
 
-export const CheckMoreWhatSuitsYouBest = () => {
+export default function CheckMoreWhatSuitsYouBest  ()  {
     const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
     const CristmasCategory = category.find(item => item.bonus_id === 11)
 

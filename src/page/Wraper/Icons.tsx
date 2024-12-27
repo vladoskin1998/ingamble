@@ -1,4 +1,4 @@
-export const Icons = () => {
+export default function Icons  ()  {
   return (
     <svg display="none">
     <symbol id="arrow" viewBox="0 0 10 6">

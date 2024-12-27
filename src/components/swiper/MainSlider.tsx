@@ -81,7 +81,10 @@ const MainSlider = ({
                                     <div className="slider__slide slide-slider swiper-slide">
                                         <div className="slide-slider__item casino-card">
                                             <Link to={item?.imageLink || '/'} onClick={(e) => navToImageLink(e, item?.imageLink || '')} aria-label="Put your description here." className="casino-card__image-block">
-                                                <LazyCardImg img={item.img || ''} width="100%" height="100%" imgLoading={!index ? 'eager' : 'lazy'} />
+                                                <div className="casino-card__image">
+                                                    <LazyCardImg img={item.img || ''} width="100%" height="100%" imgLoading={!index ? 'eager' : 'lazy'} />
+                                                </div>
+
                                                 <a
                                                     rel="nofollow noopener"
                                                     href={cloacingLink(item.casinoName)}
