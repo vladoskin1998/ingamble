@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState } from 'react'
+import { lazy, useEffect, useState, Suspense } from 'react'
 import { Wraper } from '../Wraper'
 
 import { useAdaptiveBehavior } from '../../context/AppContext'
@@ -63,32 +63,32 @@ const getHomeDataFetch = async () => {
 }
 
 const renderBlock = (block: any, index: number, isMobile: boolean) => {
-    // const lazyLoadImg: LazyImgHomeType = index < 3 ? 'eager' : 'lazy'
+    const lazyLoadImg: LazyImgHomeType = index < 3 ? 'eager' : 'lazy'
 
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} />
         case BlockTypeNumber.BlockType9:
             return <BlockType9 data={block} />
-        // case BlockTypeNumber.BlockType2M:
-        //     return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
-        // case BlockTypeNumber.BlockType3M:
-        //     return <BlockMType3M data={block} />
-        // case BlockTypeNumber.BlockType6:
-        //     return <BlockType6 data={block} />
-        // case BlockTypeNumber.BlockType8:
-        //     return <BlockType8 data={block} />
-        // case BlockTypeNumber.BlockType2:
-        //     return <>{isMobile ? <BlockType2Mobile data={block} /> : <BlockType2 data={block} />}</>
+        case BlockTypeNumber.BlockType2M:
+            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
+        case BlockTypeNumber.BlockType3M:
+            return <BlockMType3M data={block} />
+        case BlockTypeNumber.BlockType6:
+            return <BlockType6 data={block} />
+        case BlockTypeNumber.BlockType8:
+            return <BlockType8 data={block} />
+        case BlockTypeNumber.BlockType2:
+            return <>{isMobile ? <BlockType2Mobile data={block} /> : <BlockType2 data={block} />}</>
 
-        // case BlockTypeNumber.BlockType3:
-        //     return <>{isMobile ? <BlockType3Mobile data={block} /> : <BlockType3 data={block} />}</>
-        // case BlockTypeNumber.BlockType4:
-        //     return <>{isMobile ? <BlockType4Mobile data={block} /> : <BlockType4 data={block} />}</>
-        // case BlockTypeNumber.BlockType7:
-        //     return <>{isMobile ? <BlockType7Mobile data={block} /> : <BlockType7 data={block} />}</>
-        // case BlockTypeNumber.BlockType5:
-        //     return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
+        case BlockTypeNumber.BlockType3:
+            return <>{isMobile ? <BlockType3Mobile data={block} /> : <BlockType3 data={block} />}</>
+        case BlockTypeNumber.BlockType4:
+            return <>{isMobile ? <BlockType4Mobile data={block} /> : <BlockType4 data={block} />}</>
+        case BlockTypeNumber.BlockType7:
+            return <>{isMobile ? <BlockType7Mobile data={block} /> : <BlockType7 data={block} />}</>
+        case BlockTypeNumber.BlockType5:
+            return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
 
         default:
             return null
@@ -125,57 +125,62 @@ export default function Home() {
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
 
+     const firstThreeBlocks = blocksToRender?.slice(0, 3) || []
+     const remainingBlocks = blocksToRender?.slice(3) || []
+
     if (!blocksToRender?.length) return (
             <LogoLoader />
     )
+    
 
     return (
-       
-            <Wraper>
-                <main className="gamble__main main-gamble">
-                    <div className="main-gamble__body">
-                        <Categories />
-                        {/* <div className="home--main--pc">
+        <Wraper>
+            <main className="gamble__main main-gamble">
+                <div className="main-gamble__body">
+                    <Categories />
+                    {/* <div className="home--main--pc">
                     {data?.dataHome?.map((block) => renderBlock(block))}
                     </div>
                     <div className="home--main--mob">
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
                     </div> */}
-                        {blocksToRender?.map((block: any, index) => renderBlock(block, index, isMobile))}
-                        {/* <FastestPayoutCasinos /> */}
-                        {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
+                    {firstThreeBlocks?.map((block, index) => renderBlock(block, index, isMobile))}
+
+                    {/* Лениво загружаем оставшиеся блоки */}
+                    <Suspense >{remainingBlocks?.map((block, index) => renderBlock(block, index + 3, isMobile))}</Suspense>
+                    {/* <FastestPayoutCasinos /> */}
+                    {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
                         <WhatWeArePlayingNow />
                     </div> */}
-                        {/* <FastestWithdrawalCasinos />
+                    {/* <FastestWithdrawalCasinos />
                     <WeeksFavoiritesBonuses /> */}
-                        {/* <TheBestCasinosYear /> */}
-                        {/* <PopularFree /> */}
-                        {/* <HighrollerCasinoBonuses />
+                    {/* <TheBestCasinosYear /> */}
+                    {/* <PopularFree /> */}
+                    {/* <HighrollerCasinoBonuses />
                     <NewlyOpenedCasinos />
                     <div className="main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
                         <WhatWeArePlayingNow />
                     </div> */}
-                        {/* <ExploreTheBestCryptoCasinos />
+                    {/* <ExploreTheBestCryptoCasinos />
                     <GetStartedWithPowerfulWelcomeBonusPacks /> */}
-                        {/* <VPNFriendlyCasinos /> */}
-                        {/* <NonStickyBonus />
+                    {/* <VPNFriendlyCasinos /> */}
+                    {/* <NonStickyBonus />
                     <TopReloadBonuses /> */}
-                        {/* <BlockType7Mobile
+                    {/* <BlockType7Mobile
                         data={data?.dataHome?.data_blocks?.find(
                             (item) =>
                                 item.items_block.type_block ===
                                 BlockTypeNumber.BlockType7
                         )}
                     /> */}
-                        {/* <GreatLiveCasinoBonuses /> */}
-                        <MoreBonusesForYourChoise />
-                        <CheckMoreWhatSuitsYouBest />
-                        <SubscribeForm />
-                        <BottomInfo />
-                    </div>
-                </main>
-            </Wraper>
- 
+                    {/* <GreatLiveCasinoBonuses /> */}
+                    <MoreBonusesForYourChoise />
+                    <CheckMoreWhatSuitsYouBest />
+                    <SubscribeForm />
+                    <BottomInfo />
+                </div>
+            </main>
+        </Wraper>
     )
 }
