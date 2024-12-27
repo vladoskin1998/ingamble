@@ -77,7 +77,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                 ?.filter((item) => item?.big_card)
                                                 .sort((a, b) => a?.order - b?.order)
                                                 .map((item, index) => (
-                                                    <SwiperSlide key={index}>
+                                                    <SwiperSlide key={index} lazy>
                                                         <div
                                                             className="baner-row-block__slide slide-baner-row-block swiper-slide"
                                                             style={{
@@ -190,7 +190,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                             .filter((item) => !item.big_card)
                                             .sort((a, b) => a.order - b.order)
                                             .map((item, index) => (
-                                                <SwiperSlide key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
+                                                <SwiperSlide lazy key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
                                                     <div className="slide-slider__item different-casino-bg">
                                                         <Link
                                                             rel="nofollow noopener"

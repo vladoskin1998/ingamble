@@ -75,7 +75,7 @@ export default function BlockType2Mobile({ data }: { data: HomeDataBlock | undef
                                 {data?.items_block?.data_cards
                                     .sort((a, b) => a?.order - b?.order)
                                     .map((item, index) => (
-                                        <SwiperSlide key={index}>
+                                        <SwiperSlide key={index} lazy>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
                                                     <div rel="nofollow noopener" aria-label="Put your description here." className="casino-card__image-block">
@@ -108,7 +108,7 @@ export default function BlockType2Mobile({ data }: { data: HomeDataBlock | undef
                                                                 className="casino-small-card__image-block"
                                                             >
                                                                 <div className="casino-small-card__image ibg--custom">
-                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} height="100%" width="100%" imgLoading={!index ? 'eager' : 'lazy'}/>
+                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} height="100%" width="100%" imgLoading={!index ? 'eager' : 'lazy'} />
                                                                 </div>
                                                             </Link>
                                                             <div className="casino-small-card__body">

@@ -79,7 +79,7 @@ export default function BlockType7({ data }: { data: HomeDataBlock | undefined }
                                     ?.slice(0, 10)
                                     ?.sort((a, b) => a.order - b.order)
                                     ?.map((item, index) => (
-                                        <SwiperSlide key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
+                                        <SwiperSlide lazy key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
                                             <div className="slide-slider__item different-casino-bg">
                                                 <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-bg__image-block">
                                                     <span className="different-casino-bg__image ibg--custom">

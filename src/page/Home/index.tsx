@@ -32,7 +32,7 @@ import { Wraper } from '../Wraper'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 
 
-const BlockType1 = lazy(() => import('./BlockType1'))
+import BlockType1 from './BlockType1'
 const BlockType2Mobile = lazy(() => import('./BlockType2Mobile'))
 const BlockType3Mobile = lazy(() => import('./BlockType3Mobile'))
 const BlockType4Mobile = lazy(() => import('./BlockType4Mobile'))
@@ -58,6 +58,7 @@ import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { BlockTypeNumber, HomeDataBlock, HomeDataBlockMobile } from '../../types'
 import { Categories } from '../../components/categories/Categories'
+
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 
 const getHomeDataFetch = async () => {

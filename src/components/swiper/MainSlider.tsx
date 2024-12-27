@@ -77,7 +77,7 @@ const MainSlider = ({
                             }}
                         >
                             {data?.map((item, index) => (
-                                <SwiperSlide key={index}>
+                                <SwiperSlide key={index} >
                                     <div className="slider__slide slide-slider swiper-slide">
                                         <div className="slide-slider__item casino-card">
                                             <Link to={item?.imageLink || '/'} onClick={(e) => navToImageLink(e, item?.imageLink || '')} aria-label="Put your description here." className="casino-card__image-block">

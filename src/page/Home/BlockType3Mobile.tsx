@@ -85,7 +85,7 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
                                     }, [])
                                     ?.map((item) => {
                                         return (
-                                            <SwiperSlide className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                            <SwiperSlide lazy className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">

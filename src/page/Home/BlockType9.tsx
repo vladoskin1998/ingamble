@@ -60,7 +60,7 @@ const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | un
                             className="slider__wrapper swiper-wrapper"
                         >
                             {data.items_block.data_cards?.map((item, index) => (
-                                <SwiperSlide key={index} className="slider__slide slide-slider ">
+                                <SwiperSlide key={index} className="slider__slide slide-slider " lazy>
                                     <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                         <div className="item-essential-programs-gamble__top">
                                             <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`} aria-label="Put your description here." className="item-essential-programs-gamble__logo">
