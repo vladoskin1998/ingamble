@@ -54,13 +54,13 @@ export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undef
                                 {data?.items_block?.data_cards
                                     ?.slice(0, 10)
                                     ?.sort((a, b) => a.order - b.order)
-                                    ?.map((item) => (
+                                    ?.map((item, index) => (
                                         <SwiperSlide>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item different-casino-medium">
                                                     <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-medium__image-block">
                                                         <span className="different-casino-medium__image ibg--custom">
-                                                            <LazyCardImg img={item.casino_info.casino_image || ''} size="medium" />
+                                                            <LazyCardImg img={item.casino_info.casino_image || ''} size="medium" imgLoading={!index ? 'eager' : 'lazy'} />
                                                         </span>
                                                     </Link>
                                                     <div className="different-casino-medium__content">

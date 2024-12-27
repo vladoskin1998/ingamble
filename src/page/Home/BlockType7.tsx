@@ -83,7 +83,7 @@ export default function BlockType7({ data }: { data: HomeDataBlock | undefined }
                                             <div className="slide-slider__item different-casino-bg">
                                                 <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-bg__image-block">
                                                     <span className="different-casino-bg__image ibg--custom">
-                                                        <LazyCardImg img={item.casino_info.casino_image || ''} />
+                                                        <LazyCardImg img={item.casino_info.casino_image || ''} imgLoading={!index ? 'eager' : 'lazy'} />
                                                     </span>
                                                 </Link>
                                                 <div className="different-casino-bg__content">

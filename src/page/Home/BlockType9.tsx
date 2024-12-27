@@ -64,7 +64,7 @@ const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | un
                                     <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                         <div className="item-essential-programs-gamble__top">
                                             <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`} aria-label="Put your description here." className="item-essential-programs-gamble__logo">
-                                                <LazyCardImg img={item.card_logo || ''} />
+                                                <LazyCardImg img={item.card_logo || ''} imgLoading={!index ? 'eager' : 'lazy'} />
                                             </Link>
                                         </div>
                                         <div className="item-essential-programs-gamble__body">

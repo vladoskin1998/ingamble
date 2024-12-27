@@ -108,7 +108,7 @@ export default function BlockType2Mobile({ data }: { data: HomeDataBlock | undef
                                                                 className="casino-small-card__image-block"
                                                             >
                                                                 <div className="casino-small-card__image ibg--custom">
-                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} height="100%" width="100%" />
+                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} height="100%" width="100%" imgLoading={!index ? 'eager' : 'lazy'}/>
                                                                 </div>
                                                             </Link>
                                                             <div className="casino-small-card__body">

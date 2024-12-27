@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import starIcon from "../../assets/img/icons/star.svg"
 import likeIcon from "../../assets/img/icons/like.svg"
 
@@ -7,42 +7,11 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import { SwiperRef } from "swiper/react"
-import { LineLoader } from "../loader/LineLoader"
 import { Link, useNavigate } from "react-router-dom"
 import { LazyImgHomeType } from "../../page/Home"
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from "../../helper"
+import { LazyCardImg } from "../lazy-img/LazyCardImg"
 
-const MainSliderImg = ({ img }: { img: string }) => {
-    //@ts-ignore
-    const [loading, setLoading] = useState(true)
-
-    useEffect(()=> {
-        if(img){
-            setLoading(false)
-        }
-         
-      
-     
-    },[img])
-
-    return (
-        <div className="casino-card__image">
-            {( !img) && <LineLoader />}
-            <img
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover"
-                    
-                }}
-                src={img}
-                alt=""
-                // loading="eager"
-               
-            />
-        </div>
-    )
-}
 
 const MainSlider = ({
     data,
@@ -89,7 +58,6 @@ const MainSlider = ({
                     <div className="slider__wrapper">
                         <Swiper
                             slidesPerView="auto"
-                            
                             ref={sliderRef}
                             pagination={{
                                 el: paginationRef.current,
@@ -112,19 +80,11 @@ const MainSlider = ({
                                 <SwiperSlide key={index}>
                                     <div className="slider__slide slide-slider swiper-slide">
                                         <div className="slide-slider__item casino-card">
-                                            <Link
-                                                to={item?.imageLink || '/'}
-                                                onClick={(e) => navToImageLink(e,item?.imageLink || '')}
-                                                aria-label="Put your description here."
-                                              
-                                                className="casino-card__image-block"
-                                            >
-                                                <MainSliderImg
-                                                    img={item.img || ""}
-                                                />
+                                            <Link to={item?.imageLink || '/'} onClick={(e) => navToImageLink(e, item?.imageLink || '')} aria-label="Put your description here." className="casino-card__image-block">
+                                                <LazyCardImg img={item.img || ''} width="100%" height="100%" imgLoading={!index ? 'eager' : 'lazy'} />
                                                 <a
                                                     rel="nofollow noopener"
-                                                    href={cloacingLink(item.casinoName) }
+                                                    href={cloacingLink(item.casinoName)}
                                                     target="_blank"
                                                     aria-label="Put your description here."
                                                     className="casino-card__bnt"
@@ -132,64 +92,35 @@ const MainSlider = ({
                                                         e.stopPropagation()
                                                         e.preventDefault()
                                                         cloacingFetch(item.playLink)
-                                                        window.open(item.playLink, '_blank', 'noopener,noreferrer');
-                                                       
-                                                    }} 
+                                                        window.open(item.playLink, '_blank', 'noopener,noreferrer')
+                                                    }}
                                                 >
                                                     Play
                                                 </a>
                                             </Link>
-                                            {item?.tags && (
-                                                <div className="casino-card__tags tags-casino-card">
-                                                    {item.tags}
-                                                </div>
-                                            )}
+                                            {item?.tags && <div className="casino-card__tags tags-casino-card">{item.tags}</div>}
                                             <div className="casino-card__content">
                                                 <div className="casino-card__info info-casino-card">
                                                     <div className="info-casino-card__stake">
-                                                        <Link
-                                                            rel="nofollow noopener"
-                                                            to={item?.casinoLink ?  item?.casinoLink  : '#'}
-                                                            aria-label="Put your description here."
-                                                            
-                                                            className="info-casino-card__stake-link"
-                                                        >
+                                                        <Link rel="nofollow noopener" to={item?.casinoLink ? item?.casinoLink : '#'} aria-label="Put your description here." className="info-casino-card__stake-link">
                                                             {item.casinoName}
                                                         </Link>
                                                         <div className="info-casino-card__stake-rating">
                                                             <span className="info-casino-card__stake-rating-icon casino-small-card__rating-icon">
-                                                                <img
-                                                                    src={
-                                                                        starIcon
-                                                                    }
-                                                                    alt="star"
-                                                                />
+                                                                <img src={starIcon} alt="star" />
                                                             </span>
-                                                            <span>
-                                                                {item.raiting}
-                                                            </span>
+                                                            <span>{item.raiting}</span>
                                                         </div>
                                                     </div>
                                                     <div className="info-casino-card__likes">
                                                         <span className="info-casino-card__likes-icon">
-                                                            <img
-                                                                src={likeIcon}
-                                                                alt="like"
-                                                            />
+                                                            <img src={likeIcon} alt="like" />
                                                         </span>
-                                                        <span className="info-casino-card__likes-number">
-                                                            {sanitizeNumberLike(item?.likes || 0) }
-                                                        </span>
+                                                        <span className="info-casino-card__likes-number">{sanitizeNumberLike(item?.likes || 0)}</span>
                                                     </div>
                                                 </div>
-                                                
-                                                <Link
-                                                    rel="nofollow noopener"
-                                                    to={item?.bonuseLink ? item?.bonuseLink : "#"}
-                                                    aria-label="Put your description here."
-                                                    
-                                                    className="casino-card__name"
-                                                >
+
+                                                <Link rel="nofollow noopener" to={item?.bonuseLink ? item?.bonuseLink : '#'} aria-label="Put your description here." className="casino-card__name">
                                                     {item?.bonuseName}
                                                 </Link>
                                             </div>
@@ -202,10 +133,7 @@ const MainSlider = ({
                 </div>
             </div>
             <div className="slider__bottom bottom-slider">
-                <div
-                    ref={paginationRef}
-                    className="bottom-slider__pagination more-staket-simple-bonus__pagination swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
-                ></div>
+                <div ref={paginationRef} className="bottom-slider__pagination more-staket-simple-bonus__pagination swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
             </div>
         </div>
     )

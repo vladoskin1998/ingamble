@@ -83,7 +83,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                                             className="casino-big-card__image ibg--custom"
                                                             to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                         >
-                                                            <LazyCardImg img={item?.bonus_info?.bonus_image || ''} width="100%" />
+                                                            <LazyCardImg img={item?.bonus_info?.bonus_image || ''} width="100%" imgLoading={!index ? 'eager' : 'lazy'} />
                                                         </Link>
                                                         <div className="casino-big-card__top">
                                                             <div className="casino-big-card__top-small-card casino-small-card">
@@ -93,7 +93,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                                                     className="casino-small-card__image-block"
                                                                 >
                                                                     <div className="casino-small-card__image ibg--custom">
-                                                                        <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" />
+                                                                        <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" imgLoading={!index ? 'eager' : 'lazy'} />
                                                                     </div>
                                                                 </Link>
                                                                 <div className="casino-small-card__body">

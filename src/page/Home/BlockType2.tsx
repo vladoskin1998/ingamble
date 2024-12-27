@@ -90,7 +90,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                     to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                                     onClick={(e) => e.stopPropagation()}
                                                                 >
-                                                                    <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
+                                                                    <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" imgLoading={!index ? 'eager' : 'lazy'} />
                                                                 </Link>
                                                                 <Link
                                                                     to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
@@ -102,7 +102,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                         <div className="item-baner-row-block__small-card casino-small-card">
                                                                             <div className="casino-small-card__image-block">
                                                                                 <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="casino-small-card__image ibg--custom">
-                                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%" />
+                                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%" imgLoading={!index ? 'eager' : 'lazy'} />
                                                                                 </Link>
                                                                             </div>
                                                                             <div className="casino-small-card__body">
@@ -199,7 +199,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                             className="different-casino-bg__image-block"
                                                         >
                                                             <span className="different-casino-bg__image ibg--custom">
-                                                                <LazyCardImg img={item.casino_info.casino_image || ''} height="100%" width="100%" />
+                                                                <LazyCardImg img={item.casino_info.casino_image || ''} height="100%" width="100%" imgLoading={!index ? 'eager' : 'lazy'} />
                                                             </span>
                                                         </Link>
                                                         <div className="different-casino-bg__content">
