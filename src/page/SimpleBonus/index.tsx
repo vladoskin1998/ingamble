@@ -9,7 +9,7 @@ import { Categories } from '../../components/categories/Categories'
 import { LastUpdate } from './LastUpdate'
 import { Wraper } from '../Wraper'
 import { useAdaptiveBehavior } from '../../context/AppContext'
-import SubscribeForm from './SubscribeForm'
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { HeaderSimpleBonus } from './HeaderSimpleBonus'
 import { HowToGetBonus } from './HowToGetBonus'

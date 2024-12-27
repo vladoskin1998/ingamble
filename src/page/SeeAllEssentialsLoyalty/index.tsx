@@ -3,7 +3,7 @@ import { Wraper } from '../Wraper'
 import { Categories } from '../../components/categories/Categories'
 import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
-import SubscribeForm from '../SimpleBonus/SubscribeForm'
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 import $api from '../../http'
 import { useQuery } from 'react-query'

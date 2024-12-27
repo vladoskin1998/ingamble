@@ -7,7 +7,7 @@ import { LoyaltyText } from './LoyaltyText'
 import { HowToStartVipJorney } from './HowToStartVipJorney'
 import { HarryStyles } from '../SimpleBonus/HarryStyles'
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-import SubscribeForm from '../SimpleBonus/SubscribeForm'
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 import { LoyaltyAcordeon } from './LoyaltyAcordeon'
 import $api from '../../http'
 import { useAdaptiveBehavior } from '../../context/AppContext'

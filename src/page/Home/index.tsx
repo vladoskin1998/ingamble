@@ -49,7 +49,7 @@ const BlockType5 = lazy(() => import('./BlockType5'))
 const BlockMType2M = lazy(() => import('./BlockMType2M'))
 const BlockMType3M = lazy(() => import('./BlockMType3M'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
-const SubscribeForm = lazy(() => import('../SimpleBonus/SubscribeForm'))
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
 

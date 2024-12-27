@@ -1,4 +1,6 @@
 
+import './style.css'
+
 //@ts-ignore
 export const BreadCrumb = (path: any) => {
 

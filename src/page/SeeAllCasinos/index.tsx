@@ -14,7 +14,7 @@ import { PAYOUTSPEED, SeeAllCasinosType, SeeAllCasinosCategoryResponse } from '.
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, NumberAssociaty, sanitizeLink, sanitizeNumberLike } from '../../helper'
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-import SubscribeForm from '../SimpleBonus/SubscribeForm'
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
 const getAllCasinosFetchData = async (page: number, queryId: string | null) => {

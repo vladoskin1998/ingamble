@@ -15,7 +15,7 @@ import { SeeAllBonus as SeeAllBonusType, SeeAllBonusResponse } from '../../types
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, COLORS_TAGS, sanitizeLink, sanitizeNumberLike } from '../../helper'
 import { Link, useSearchParams } from 'react-router-dom'
-import SubscribeForm from '../SimpleBonus/SubscribeForm'
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 import { NoResult } from '../../components/no-result'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))

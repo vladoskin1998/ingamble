@@ -16,7 +16,7 @@ import star from '../../assets/img/icons/star.svg'
 import '../SeeAllEssentialsLoyalty/style.css'
 import { v4 as uuidv4 } from 'uuid'
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-import SubscribeForm from '../SimpleBonus/SubscribeForm'
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 import { Link } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
 import searchImg from '../../assets/img/icons/search-filter.svg'
