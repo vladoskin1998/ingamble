@@ -3,8 +3,7 @@ import { Wraper } from '../Wraper'
 import { Categories } from '../../components/categories/Categories'
 import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
-const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
-const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
+
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { SeeAllEssentialCasinoResponse, SeeAllEssentialLoyaltyCasino } from '../../types'
@@ -15,6 +14,8 @@ import { useAdaptiveBehavior } from '../../context/AppContext'
 import { lazy, useEffect, useState } from 'react'
 import { cloacingFetch, cloacingLink, sanitizeLink } from '../../helper'
 import { Link } from 'react-router-dom'
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
 const countPageSize = 10

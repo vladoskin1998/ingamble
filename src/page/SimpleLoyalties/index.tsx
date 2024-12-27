@@ -6,8 +6,7 @@ import { LoyaltyRewnew } from './LoyaltyRewnew'
 import { LoyaltyText } from './LoyaltyText'
 import { HowToStartVipJorney } from './HowToStartVipJorney'
 import { HarryStyles } from '../SimpleBonus/HarryStyles'
-const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
+
 import { LoyaltyAcordeon } from './LoyaltyAcordeon'
 import $api from '../../http'
 import { useAdaptiveBehavior } from '../../context/AppContext'
@@ -23,6 +22,8 @@ import { COUNTRIES } from '../../helper/Country'
 import { OtherBestReloadBonus } from '../SimpleBonus/OtherBestBonus'
 import { EssentialVIPLoyaltyPrograms } from '../SimpleBonus/EssentialVIPLoyaltyPrograms'
 import JEFFMURPHY from '../../assets/img/casino-person/4.webp'
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
 const getCurrentLoyaltiesFetchData = async (queryId: string) => {
