@@ -19,15 +19,15 @@ const subtitleLabelWager: Record<keyof WageringBonusPlusDepositType, string> = {
     winnings_only: 'Winnings Only',
 }
 
-export const WagerPrettier = (wager: WageringBonusPlusDepositType | undefined): null | { label: string; value: number } => {
-    let res: null | { label: string; value: number } = null
+export const WagerPrettier = (wager: WageringBonusPlusDepositType | undefined): null | { label: string; value: string  } => {
+    let res: null | { label: string; value: string } = null
     if (!wager) {
         return res
     }
 
     for (const key in wager) {
         if (typeof wager[key as keyof WageringBonusPlusDepositType] === 'number') {
-            res = { label: subtitleLabelWager[key as keyof WageringBonusPlusDepositType], value: wager[key as keyof WageringBonusPlusDepositType] as number }
+            res = { label: subtitleLabelWager[key as keyof WageringBonusPlusDepositType], value: wager[key as keyof WageringBonusPlusDepositType] + "X" }
             break
         }
     }
