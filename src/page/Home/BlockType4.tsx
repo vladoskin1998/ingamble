@@ -76,7 +76,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                     {data.items_block.data_cards
                                         .sort((a, b) => a.order - b.order)
                                         .map((item, index) => (
-                                            <SwiperSlide lazy key={index}>
+                                            <SwiperSlide  key={index}>
                                                 <div className="slider__slide slide-slider swiper-slide">
                                                     <div aria-label="Put your description here." className="slide-slider__item casino-big-card">
                                                         <Link

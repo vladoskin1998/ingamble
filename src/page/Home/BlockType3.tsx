@@ -103,7 +103,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                         .map((item) => (
                                             //////main slide
                                             <SwiperSlide
-                                                lazy
+                                                
                                                 className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide"
                                                 style={{
                                                     minHeight: '260px',

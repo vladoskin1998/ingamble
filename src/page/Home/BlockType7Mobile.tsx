@@ -55,7 +55,7 @@ export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undef
                                     ?.slice(0, 10)
                                     ?.sort((a, b) => a.order - b.order)
                                     ?.map((item, index) => (
-                                        <SwiperSlide lazy>
+                                        <SwiperSlide >
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item different-casino-medium">
                                                     <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-medium__image-block">

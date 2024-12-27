@@ -75,7 +75,7 @@ export default function BlockType2Mobile({ data }: { data: HomeDataBlock | undef
                                 {data?.items_block?.data_cards
                                     .sort((a, b) => a?.order - b?.order)
                                     .map((item, index) => (
-                                        <SwiperSlide key={index} lazy>
+                                        <SwiperSlide key={index} >
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
                                                     <div rel="nofollow noopener" aria-label="Put your description here." className="casino-card__image-block">

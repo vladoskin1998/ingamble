@@ -75,7 +75,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                 }}
                             >
                                 {dataCard?.slice(0, 8)?.map((item, index) => (
-                                    <SwiperSlide key={index} lazy>
+                                    <SwiperSlide key={index} >
                                         <div className="slider__slide slide-slider swiper-slide">
                                             <div className="slide-slider__item casino-card">
                                                 <div className="casino-card__image-block">
