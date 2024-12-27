@@ -63,32 +63,32 @@ const getHomeDataFetch = async () => {
 }
 
 const renderBlock = (block: any, index: number, isMobile: boolean) => {
-    const lazyLoadImg: LazyImgHomeType = index < 3 ? 'eager' : 'lazy'
+    // const lazyLoadImg: LazyImgHomeType = index < 3 ? 'eager' : 'lazy'
 
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} />
         case BlockTypeNumber.BlockType9:
             return <BlockType9 data={block} />
-        case BlockTypeNumber.BlockType2M:
-            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
-        case BlockTypeNumber.BlockType3M:
-            return <BlockMType3M data={block} />
-        case BlockTypeNumber.BlockType6:
-            return <BlockType6 data={block} />
-        case BlockTypeNumber.BlockType8:
-            return <BlockType8 data={block} />
-        case BlockTypeNumber.BlockType2:
-            return <>{isMobile ? <BlockType2Mobile data={block} /> : <BlockType2 data={block} />}</>
+        // case BlockTypeNumber.BlockType2M:
+        //     return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
+        // case BlockTypeNumber.BlockType3M:
+        //     return <BlockMType3M data={block} />
+        // case BlockTypeNumber.BlockType6:
+        //     return <BlockType6 data={block} />
+        // case BlockTypeNumber.BlockType8:
+        //     return <BlockType8 data={block} />
+        // case BlockTypeNumber.BlockType2:
+        //     return <>{isMobile ? <BlockType2Mobile data={block} /> : <BlockType2 data={block} />}</>
 
-        case BlockTypeNumber.BlockType3:
-            return <>{isMobile ? <BlockType3Mobile data={block} /> : <BlockType3 data={block} />}</>
-        case BlockTypeNumber.BlockType4:
-            return <>{isMobile ? <BlockType4Mobile data={block} /> : <BlockType4 data={block} />}</>
-        case BlockTypeNumber.BlockType7:
-            return <>{isMobile ? <BlockType7Mobile data={block} /> : <BlockType7 data={block} />}</>
-        case BlockTypeNumber.BlockType5:
-            return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
+        // case BlockTypeNumber.BlockType3:
+        //     return <>{isMobile ? <BlockType3Mobile data={block} /> : <BlockType3 data={block} />}</>
+        // case BlockTypeNumber.BlockType4:
+        //     return <>{isMobile ? <BlockType4Mobile data={block} /> : <BlockType4 data={block} />}</>
+        // case BlockTypeNumber.BlockType7:
+        //     return <>{isMobile ? <BlockType7Mobile data={block} /> : <BlockType7 data={block} />}</>
+        // case BlockTypeNumber.BlockType5:
+        //     return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
 
         default:
             return null
