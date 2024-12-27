@@ -134,8 +134,19 @@ export default function Home() {
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
 
-     const firstThreeBlocks = blocksToRender?.slice(0, 3) || []
-     const remainingBlocks = blocksToRender?.slice(3) || []
+     const firstThreeBlocks = blocksToRender?.slice(0, 2) || []
+     const remainingBlocks = blocksToRender?.slice(2) || []
+
+
+     const [showRemainingBlocks, setShowRemainingBlocks] = useState(false)
+
+     useEffect(() => {
+         const timer = setTimeout(() => {
+             setShowRemainingBlocks(true) // После 1 секунды показываем оставшиеся блоки
+         }, 2000)
+
+         return () => clearTimeout(timer) // Очищаем таймер при размонтировании компонента
+     }, [])
 
     if (!blocksToRender?.length) return (
             <LogoLoader />
@@ -156,8 +167,9 @@ export default function Home() {
                     </div> */}
                     {firstThreeBlocks?.map((block, index) => renderBlock(block, index, isMobile))}
 
+                    {showRemainingBlocks && <Suspense fallback={<LogoLoader />}>{remainingBlocks?.map((block, index) => renderBlock(block, index + 3, isMobile))}</Suspense>}
                     {/* Лениво загружаем оставшиеся блоки */}
-                    <Suspense >{remainingBlocks?.map((block, index) => renderBlock(block, index + 3, isMobile))}</Suspense>
+
                     {/* <FastestPayoutCasinos /> */}
                     {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
                         <WhatWeArePlayingNow />
