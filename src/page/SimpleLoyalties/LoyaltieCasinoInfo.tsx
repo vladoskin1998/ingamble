@@ -4,9 +4,13 @@ import like from '../../assets/img/icons/like.svg'
 import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
-
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import { Link } from 'react-router-dom'
+import giftIcon from '../../assets/img/icons/gift.svg'
+import { useFilterContext } from '../../context/FilterContext'
 export const LoyaltieCasinoInfo = ({ data, geoLocation }: { data: LoyaltieProgramDataResponse | undefined; geoLocation: GeoLocationAllowdType }) => {
 
+    const { setCasinoFilters } = useFilterContext()
 
     return (
         <section className={`loyaltie__casino-info casino-info ${!geoLocation?.isAllowed && 'casino-info_not-available'} `}>
@@ -50,19 +54,35 @@ export const LoyaltieCasinoInfo = ({ data, geoLocation }: { data: LoyaltieProgra
                                     </div>
                                     <span className="main-get-bonus__btn main-get-bonus__btn_apply">T&C Apply</span>
                                 </div>
-                                <a
-                                    href={cloacingLink(data?.casino_name)}
-                                    onClick={(e) => {
-                                        e.stopPropagation()
-                                        e.preventDefault()
-                                        cloacingFetch(data?.casino_affiliate_link)
-                                        window.open(data?.casino_affiliate_link || data?.url_casino, '_blank', 'noopener,noreferrer')
-                                    }}
-                                    aria-label="Put your description here."
-                                    className="main-get-bonus__btn main-get-bonus__btn_bonus"
-                                >
-                                    Play and Enjoy
-                                </a>
+                                {geoLocation.isAllowed ? (
+                                    <a
+                                        href={cloacingLink(data?.casino_name)}
+                                        onClick={(e) => {
+                                            e.stopPropagation()
+                                            e.preventDefault()
+                                            cloacingFetch(data?.casino_affiliate_link)
+                                            window.open(data?.casino_affiliate_link || data?.url_casino, '_blank', 'noopener,noreferrer')
+                                        }}
+                                        aria-label="Put your description here."
+                                        className="main-get-bonus__btn main-get-bonus__btn_bonus"
+                                    >
+                                        Play and Enjoy
+                                    </a>
+                                ) : (
+                                    <Link
+                                        to={'/filter-casinos'}
+                                        onClick={() => {
+                                            setCasinoFilters((s) => ({ ...s, selected_countries: [geoLocation?.idCountry as number] }))
+                                        }}
+                                        aria-label="Put your description here."
+                                        className="main-get-bonus__btn main-get-bonus__btn_bonus"
+                                    >
+                                        <span>
+                                            <LazyLoadImage src={giftIcon} alt="gift" />
+                                        </span>
+                                        Browse Recommended Casinos
+                                    </Link>
+                                )}
                             </div>
                             <div className="content-casino-info__features features-content-casino-info">
                                 <div className="features-content-casino-info__row">

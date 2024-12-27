@@ -22,6 +22,8 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { useFilterContext } from '../../context/FilterContext'
 import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
 import { COUNTRIES } from '../../helper/Country'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import giftIcon from '../../assets/img/icons/gift.svg'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 // import { sanitizeLink } from "../../helper"
 
@@ -41,7 +43,7 @@ const getCurrentCasinosFetchData = async (queryId: string) => {
 
 export default function SimpleCasinos() {
     // document.title = "Review"
-
+ 
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const [openModal, setOpenModal] = useState(false)
     const [searchParams] = useSearchParams()
@@ -64,7 +66,7 @@ export default function SimpleCasinos() {
         }
     }, [qid])
 
-    const { data: Country } = useFilterContext()
+    const { data: Country, setCasinoFilters } = useFilterContext()
 
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: '',
@@ -187,18 +189,34 @@ export default function SimpleCasinos() {
                                                         T&C Apply
                                                     </a>
                                                 </div>
-                                                <a
-                                                    href={cloacingLink(data?.dataCurrentCasinos.name)}
-                                                    onClick={(e) => {
-                                                        e.stopPropagation()
-                                                        e.preventDefault()
-                                                        cloacingFetch(data?.dataCurrentCasinos?.casino_affiliate_link)
-                                                        window.open(data?.dataCurrentCasinos?.casino_affiliate_link || data?.dataCurrentCasinos?.url, '_blank', 'noopener,noreferrer')
-                                                    }}
-                                                    className="main-get-bonus__btn main-get-bonus__btn_bonus"
-                                                >
-                                                    Visit Casino
-                                                </a>
+                                                {geoLocation?.isAllowed ? (
+                                                    <a
+                                                        href={cloacingLink(data?.dataCurrentCasinos.name)}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            e.preventDefault()
+                                                            cloacingFetch(data?.dataCurrentCasinos?.casino_affiliate_link)
+                                                            window.open(data?.dataCurrentCasinos?.casino_affiliate_link || data?.dataCurrentCasinos?.url, '_blank', 'noopener,noreferrer')
+                                                        }}
+                                                        className="main-get-bonus__btn main-get-bonus__btn_bonus"
+                                                    >
+                                                        Visit Casino
+                                                    </a>
+                                                ) : (
+                                                    <Link
+                                                        to={'/filter-casinos'}
+                                                        onClick={() => {
+                                                            setCasinoFilters((s) => ({ ...s, selected_countries: [geoLocation?.idCountry as number] }))
+                                                        }}
+                                                        aria-label="Put your description here."
+                                                        className="main-get-bonus__btn main-get-bonus__btn_bonus"
+                                                    >
+                                                        <span>
+                                                            <LazyLoadImage src={giftIcon} alt="gift" />
+                                                        </span>
+                                                        Browse Recommended Casinos
+                                                    </Link>
+                                                )}
                                             </div>
                                             <div className="content-casino-info__features features-content-casino-info">
                                                 <div className="features-content-casino-info__row">
