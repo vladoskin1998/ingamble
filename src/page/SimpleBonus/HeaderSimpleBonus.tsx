@@ -217,7 +217,7 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
                                                 <div className="item-features-content-casino-info__label">Wager</div>
                                             </div>
                                             <div className="item-features-content-casino-info__body">
-                                                <div className="item-features-content-casino-info__number">{wagerValue?.value && '-'}</div>
+                                                <div className="item-features-content-casino-info__number">{wagerValue?.value ? wagerValue?.value : '-'}</div>
                                                 <div className="item-features-content-casino-info__value">{wagerValue?.label || ''}</div>
                                             </div>
                                         </div>
