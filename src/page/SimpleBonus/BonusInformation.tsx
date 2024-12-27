@@ -369,7 +369,7 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information ''">
                                             <div className="item-content-bonus-information__label">Wager for free spins:</div>
-                                            <div className="item-content-bonus-information__value">{typeof data?.wager?.value === 'number'  ? `${data?.wager?.value}` : '-'}</div>
+                                            <div className="item-content-bonus-information__value">{typeof data?.wager?.value === 'number'  ? `${data?.wager?.value}x` : '-'}</div>
                                         </div>
                                     </div>
                                 </div>
