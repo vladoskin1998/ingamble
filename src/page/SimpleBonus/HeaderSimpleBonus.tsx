@@ -27,7 +27,7 @@ export const WagerPrettier = (wager: WageringBonusPlusDepositType | undefined): 
 
     for (const key in wager) {
         if (typeof wager[key as keyof WageringBonusPlusDepositType] === 'number') {
-            res = { label: subtitleLabelWager[key as keyof WageringBonusPlusDepositType], value: wager[key as keyof WageringBonusPlusDepositType] + "X" }
+            res = { label: subtitleLabelWager[key as keyof WageringBonusPlusDepositType], value: wager[key as keyof WageringBonusPlusDepositType] + "x" }
             break
         }
     }
