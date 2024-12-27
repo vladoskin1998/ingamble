@@ -93,7 +93,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                     <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" imgLoading={!index ? 'eager' : 'lazy'} />
                                                                 </Link>
                                                                 <Link
-                                                                    to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                                    to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info.casino_id}`}
                                                                     onClick={(e) => e.stopPropagation()}
                                                                     aria-label="Put your description here."
                                                                     className="item-baner-row-block__row"
@@ -130,7 +130,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                         </div>
                                                                         <Link
                                                                             rel="nofollow noopener"
-                                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info.casino_id}`}
                                                                             aria-label="Put your description here."
                                                                             className="item-baner-row-block__title"
                                                                         >

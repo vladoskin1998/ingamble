@@ -25,6 +25,13 @@ type BlockCountryType = {
     code: string,
 }
 
+export type WageringBonusPlusDepositType = {
+    bonus_only: number | null,
+    bonus_plus_deposit: number | null,
+    deposit_only: number | null,
+    winnings_only: number | null,
+}
+
 export interface GetDataBonusResponse {
     id: number,
     blocked_countries: BlockCountryType[]
@@ -65,10 +72,7 @@ export interface GetDataBonusResponse {
     bonus_expiration: {
         days: number;
     };
-    wagering_bonus_plus_deposit: {
-        bonus_plus_deposit: number;
-        bonus_only: null | number;
-    };
+    wagering_bonus_plus_deposit: WageringBonusPlusDepositType;
     bonus_only?: null;
     bonus_plus_freespins_value?: number;
     bonus_plus_deposit?: number;

@@ -1,7 +1,7 @@
 import starIcon from '../../assets/img/icons/star.svg'
 import likeIcon from '../../assets/img/icons/like.svg'
 
-import { GeoLocationAllowdType, GetDataBonusResponse } from '../../types'
+import { GeoLocationAllowdType, GetDataBonusResponse, WageringBonusPlusDepositType } from '../../types'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import giftIcon from '../../assets/img/icons/gift.svg'
 import { useState, useEffect } from 'react'
@@ -11,6 +11,31 @@ import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '.
 import { useFilterContext } from '../../context/FilterContext'
 
 const color_label = ['tags-casino-card__item_green', 'tags-casino-card__item_blue', 'tags-casino-card__item_purple', 'tags-casino-card__item_grass', 'tags-casino-card__item_orange']
+
+const subtitleLabelWager: Record<keyof WageringBonusPlusDepositType, string> = {
+    bonus_only: 'Bonus Only',
+    bonus_plus_deposit: 'Bonus + Deposit',
+    deposit_only: 'Deposit Only',
+    winnings_only: 'Winnings Only',
+}
+
+export const WagerPrettier = (wager: WageringBonusPlusDepositType | undefined): null | { label: string; value: number } => {
+    let res: null | { label: string; value: number } = null
+    if (!wager) {
+        return res
+    }
+
+    for (const key in wager) {
+        if (typeof wager[key as keyof WageringBonusPlusDepositType] === 'number') {
+            res = { label: subtitleLabelWager[key as keyof WageringBonusPlusDepositType], value: wager[key as keyof WageringBonusPlusDepositType] as number }
+            break
+        }
+    }
+
+    return res
+}
+
+
 export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusResponse | undefined; geoLocation: GeoLocationAllowdType }) => {
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(window.innerWidth <= 1023.98)
 
@@ -27,6 +52,13 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
             window.removeEventListener('resize', handleResize)
         }
     }, [])
+
+
+
+    const wagerValue = WagerPrettier(data?.wagering_bonus_plus_deposit)
+
+    console.log('wagerValue', wagerValue)
+    
 
     return (
         <section className={`simple-bonus__casino-info casino-info ${!geoLocation?.isAllowed && 'casino-info_not-available'} `}>
@@ -185,18 +217,8 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
                                                 <div className="item-features-content-casino-info__label">Wager</div>
                                             </div>
                                             <div className="item-features-content-casino-info__body">
-                                                <div className="item-features-content-casino-info__number">
-                                                    {data?.wagering_bonus_plus_deposit?.bonus_plus_deposit || data?.wagering_bonus_plus_deposit?.bonus_only
-                                                        ? (data?.wagering_bonus_plus_deposit?.bonus_plus_deposit || data?.wagering_bonus_plus_deposit?.bonus_only) + 'x'
-                                                        : '-'}
-                                                </div>
-                                                <div className="item-features-content-casino-info__value">
-                                                    {data?.wagering_bonus_plus_deposit?.bonus_plus_deposit || data?.wagering_bonus_plus_deposit?.bonus_only
-                                                        ? data?.wagering_bonus_plus_deposit?.bonus_plus_deposit
-                                                            ? 'Bonus + Deposit'
-                                                            : 'Bonus Only'
-                                                        : ''}
-                                                </div>
+                                                <div className="item-features-content-casino-info__number">{wagerValue?.value && '-'}</div>
+                                                <div className="item-features-content-casino-info__value">{wagerValue?.label || ''}</div>
                                             </div>
                                         </div>
                                     </div>

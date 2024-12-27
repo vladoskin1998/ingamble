@@ -6,6 +6,7 @@ import slotsIcon from '../../assets/img/games/01.svg'
 import { GetDataBonusResponse } from '../../types'
 import moment from 'moment'
 import { AccordionItem } from '../../components/acordion/Acordion'
+import { WagerPrettier } from './HeaderSimpleBonus'
 
 export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefined }) => {
     const [BonusInfoIsOpen, setIsBonusInfoOpen] = useState({
@@ -69,6 +70,9 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
             setOverflow((s) => ({ ...s, WageringInfo: false }))
         }
     }, [BonusInfoIsOpen])
+
+      const wagerValue = WagerPrettier(data?.wagering_bonus_plus_deposit)
+    
     return (
         <div className="bonus-information__body">
             <div className="bonus-information__row">
@@ -220,10 +224,7 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                                 </span> */}
                                             </div>
                                             <div className="item-content-bonus-information__value">
-                                                {data?.wagering_bonus_plus_deposit?.bonus_plus_deposit || data?.wagering_bonus_plus_deposit?.bonus_only
-                                                    ? `${data?.wagering_bonus_plus_deposit?.bonus_plus_deposit || data?.wagering_bonus_plus_deposit?.bonus_only}x ${
-                                                          data?.wagering_bonus_plus_deposit?.bonus_plus_deposit ? 'Bonus + Deposit' : 'Bonus Only'
-                                                      }`
+                                                { wagerValue? `${wagerValue.value}x ${wagerValue.label}`
                                                     : '-'}
                                             </div>
                                         </div>
@@ -368,7 +369,7 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information ''">
                                             <div className="item-content-bonus-information__label">Wager for free spins:</div>
-                                            <div className="item-content-bonus-information__value">{data?.wager?.value ? `${data?.wager?.value}x` : '-'}</div>
+                                            <div className="item-content-bonus-information__value">{typeof data?.wager?.value === 'number'  ? `${data?.wager?.value}x` : '-'}</div>
                                         </div>
                                     </div>
                                 </div>

@@ -98,8 +98,6 @@ export default function SimpleBonus() {
         // window.history.pushState({}, "", newUrl)
     }, [data, Country, COUNTRIES])
 
-
-
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [geoLocation])
@@ -137,28 +135,24 @@ export default function SimpleBonus() {
                         ]}
                     />
                     <HeaderSimpleBonus data={data?.dataBonus} geoLocation={geoLocation} />
-                    {geoLocation.isAllowed && (
-                        <>
-                            <BonusSubType bonus_subtype={data?.dataBonus?.bonus_subtype || []} />
-                            <LastUpdate data={data?.dataBonus} />
-                            <HowToGetBonus data={data?.dataBonus} />
-                            <SiblingBonus
-                                casinoName={data?.dataBonus.casino_name}
-                                sibling_bonuses={data?.dataBonus.sibling_bonuses}
-                                casino_rank={data?.dataBonus?.casino_rank}
-                                casino_affiliate_link={data?.dataBonus.casino_affiliate_link || data?.dataBonus?.url_casino}
-                                casino_id={data?.dataBonus?.casino_id}
-                            />
-                        </>
-                    )}
+
+                    <BonusSubType bonus_subtype={data?.dataBonus?.bonus_subtype || []} />
+                    <LastUpdate data={data?.dataBonus} />
+                    <HowToGetBonus data={data?.dataBonus} />
+                    <SiblingBonus
+                        casinoName={data?.dataBonus.casino_name}
+                        sibling_bonuses={data?.dataBonus.sibling_bonuses}
+                        casino_rank={data?.dataBonus?.casino_rank}
+                        casino_affiliate_link={data?.dataBonus.casino_affiliate_link || data?.dataBonus?.url_casino}
+                        casino_id={data?.dataBonus?.casino_id}
+                    />
+
                     <OtherBestReloadBonus />
                     <EssentialVIPLoyaltyPrograms />
-                    {geoLocation.isAllowed && (
-                        <>
-                            <HarryStyles img={ASHLINGOBRIEN} title="ASHLING O'BRIEN" subtitle="Content Maker, Casino Promotions Analyst" />
-                            <CheckMoreWhatSuitsYouBest />
-                        </>
-                    )}
+
+                    <HarryStyles img={ASHLINGOBRIEN} title="ASHLING O'BRIEN" subtitle="Content Maker, Casino Promotions Analyst" />
+                    <CheckMoreWhatSuitsYouBest />
+
                     <SubscribeForm />
                     <BottomInfo />
                 </div>
