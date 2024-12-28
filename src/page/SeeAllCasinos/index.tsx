@@ -66,6 +66,7 @@ export default function SeeAllCasinos() {
 
     const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(['get-see-all-loyalties', currentPage, queryId], () => getAllCasinosFetchData(currentPage, queryId), {
         keepPreviousData: true,
+        cacheTime: 1000 * 60 * 5,
     })
     useEffect(() => {
         if (isMobile && !data?.casino?.results) {

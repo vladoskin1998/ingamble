@@ -33,7 +33,10 @@ export default function SeeAllEssentialsLoyalty() {
 
     const { data, isLoading } = useQuery(['get-see-all-loyalties', currentPage], () => getAllEssentialsLoyalty(currentPage), {
         keepPreviousData: true,
+        cacheTime: 1000 * 60 * 5,
     })
+
+     
 
     useEffect(() => {
         initializeAdaptiveBehavior()

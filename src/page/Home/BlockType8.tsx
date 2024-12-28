@@ -45,8 +45,8 @@ export default function BlockType8({ data }: { data: HomeDataBlock | undefined }
                         tags: (
                             <>
                                 {item?.bonus_info?.labels?.length ? (
-                                    item?.bonus_info?.labels.map((item, index) => (
-                                        <div className={`tags-casino-card__item ${COLORS_TAGS[index % 4]}`}>
+                                    item?.bonus_info?.labels.map((item, cindex) => (
+                                        <div key={cindex} className={`tags-casino-card__item ${COLORS_TAGS[cindex % 4]}`}>
                                             <span className="tags-casino-card__item-label">{item}</span>
                                         </div>
                                     ))

@@ -16,7 +16,6 @@ import { LogoLoader } from '../../components/loader/LogoLoader'
 import { lazy, useEffect, useState } from 'react'
 import { useFilterContext } from '../../context/FilterContext'
 import { SiblingBonus } from '../SimpleBonus/SiblingBonus'
-import { COUNTRIES } from '../../helper/Country'
 import { OtherBestReloadBonus } from '../SimpleBonus/OtherBestBonus'
 import { EssentialVIPLoyaltyPrograms } from '../SimpleBonus/EssentialVIPLoyaltyPrograms'
 import JEFFMURPHY from '../../assets/img/casino-person/4.webp'
@@ -71,7 +70,7 @@ export default function SimpleLoyalties() {
             const countryCode = data?.headers?.['cf-ipcountry-code']
             const countryName = data?.headers?.['cf-ipcountry']
 
-            const countryImg = (Country?.general?.countries || COUNTRIES)?.find((it) => {
+            const countryImg = (Country?.general?.countries )?.find((it) => {
                 return it.code === countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase()
             })?.flag_image
 
@@ -86,7 +85,7 @@ export default function SimpleLoyalties() {
                 idCountry,
             })
         }
-    }, [data, Country, COUNTRIES])
+    }, [data, Country])
 
     useEffect(() => {
         initializeAdaptiveBehavior()

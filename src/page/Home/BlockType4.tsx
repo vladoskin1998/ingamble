@@ -76,7 +76,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                     {data.items_block.data_cards
                                         .sort((a, b) => a.order - b.order)
                                         .map((item, index) => (
-                                            <SwiperSlide  key={index}>
+                                            <SwiperSlide key={index}>
                                                 <div className="slider__slide slide-slider swiper-slide">
                                                     <div aria-label="Put your description here." className="slide-slider__item casino-big-card">
                                                         <Link
@@ -105,8 +105,10 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                                                         {item?.casino_info?.casino_name}
                                                                     </Link>
                                                                     <div className="casino-small-card__info">
-                                                                        {item?.casino_info?.additional_casino_params?.map((item) => (
-                                                                            <span className="casino-small-card__info-link">{item}</span>
+                                                                        {item?.casino_info?.additional_casino_params?.map((item, cindex) => (
+                                                                            <span key={cindex} className="casino-small-card__info-link">
+                                                                                {item}
+                                                                            </span>
                                                                         ))}
                                                                     </div>
                                                                     <div className="casino-small-card__rating">

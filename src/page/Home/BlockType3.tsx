@@ -103,7 +103,6 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                         .map((item) => (
                                             //////main slide
                                             <SwiperSlide
-                                                
                                                 className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide"
                                                 style={{
                                                     minHeight: '260px',
@@ -136,8 +135,8 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                         </Link>
                                                                         {item?.[0]?.bonus_info?.labels?.length && (
                                                                             <div className="different-casino-standart__tags tags-casino-card">
-                                                                                {item?.[0]?.bonus_info?.labels?.map((item, index) => (
-                                                                                    <div className={`tags-casino-card__item ${COLORS_TAGS[index % 4]}`}>
+                                                                                {item?.[0]?.bonus_info?.labels?.map((item, cindex) => (
+                                                                                    <div key={cindex} className={`tags-casino-card__item ${COLORS_TAGS[cindex % 4]}`}>
                                                                                         <span className="tags-casino-card__item-label">{item}</span>
                                                                                     </div>
                                                                                 ))}
@@ -190,8 +189,8 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                             </Link>
                                                                             {item?.[1].bonus_info?.labels?.length && (
                                                                                 <div className="different-casino-standart__tags tags-casino-card">
-                                                                                    {item?.[1]?.bonus_info?.labels?.map((item, index) => (
-                                                                                        <div className={`tags-casino-card__item ${COLORS_TAGS[index % 4]}`}>
+                                                                                    {item?.[1]?.bonus_info?.labels?.map((item, cindex) => (
+                                                                                        <div key={cindex} className={`tags-casino-card__item ${COLORS_TAGS[cindex % 4]}`}>
                                                                                             <span className="tags-casino-card__item-label">{item}</span>
                                                                                             {/* <span className="tags-casino-card__item-value">
                                                                                                  4.0x
@@ -256,8 +255,8 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                         >
                                             {data.items_block.data_cards
                                                 .filter((item) => item.big_card)
-                                                .map((item) => (
-                                                    <SwiperSlide className="baner-row-block__slide slide-baner-row-block ">
+                                                .map((item, index) => (
+                                                    <SwiperSlide key={index} className="baner-row-block__slide slide-baner-row-block ">
                                                         <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}>
                                                             <div className="slide-baner-row-block__item item-baner-row-block">
                                                                 <div className="item-baner-row-block__image ibg--custom">

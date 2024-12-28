@@ -155,7 +155,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                                                                     </Link>
                                                                     <div className="casino-small-card__info">
                                                                         {item?.casino_info?.additional_casino_params?.map((it, id) => (
-                                                                            <span key={id + 100} className="casino-small-card__info-link">
+                                                                            <span key={id } className="casino-small-card__info-link">
                                                                                 {it}
                                                                             </span>
                                                                         ))}

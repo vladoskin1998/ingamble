@@ -79,8 +79,8 @@ export default function BlockMType3M({ data, lazyLoadImg = 'lazy' }: { data: Hom
                                     data.items_block.data_cards
                                         .sort((a, b) => a.order - b.order)
                                         //@ts-ignore
-                                        .map((item) => (
-                                            <SwiperSlide  className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                        .map((item, index) => (
+                                            <SwiperSlide key={index} className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
@@ -106,7 +106,7 @@ export default function BlockMType3M({ data, lazyLoadImg = 'lazy' }: { data: Hom
                                                                     {item?.bonus_info?.labels?.length && (
                                                                         <div className="different-casino-standart__tags tags-casino-card">
                                                                             {item?.bonus_info?.labels.map((item, index) => (
-                                                                                <div className={`tags-casino-card__item ${COLORS_TAGS[index % 4]}`}>
+                                                                                <div key={index} className={`tags-casino-card__item ${COLORS_TAGS[index % 4]}`}>
                                                                                     <span className="tags-casino-card__item-label">{item}</span>
                                                                                 </div>
                                                                             ))}

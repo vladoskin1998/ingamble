@@ -78,57 +78,55 @@ const MainSlider = ({
                         >
                             {data?.map((item, index) => (
                                 <SwiperSlide key={index} >
-                                
-                                        <div className="slide-slider__item casino-card">
-                                            <Link to={item?.imageLink || '/'} onClick={(e) => navToImageLink(e, item?.imageLink || '')} aria-label="Put your description here." className="casino-card__image-block">
-                                                <div className="casino-card__image">
-                                                    <LazyCardImg img={item.img || ''} width="100%" height="100%" imgLoading={!index ? 'eager' : 'lazy'} />
-                                                </div>
-
-                                                <a
-                                                    rel="nofollow noopener"
-                                                    href={cloacingLink(item.casinoName)}
-                                                    target="_blank"
-                                                    aria-label="Put your description here."
-                                                    className="casino-card__bnt"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation()
-                                                        e.preventDefault()
-                                                        cloacingFetch(item.playLink)
-                                                        window.open(item.playLink, '_blank', 'noopener,noreferrer')
-                                                    }}
-                                                >
-                                                    Play
-                                                </a>
-                                            </Link>
-                                            {item?.tags && <div className="casino-card__tags tags-casino-card">{item.tags}</div>}
-                                            <div className="casino-card__content">
-                                                <div className="casino-card__info info-casino-card">
-                                                    <div className="info-casino-card__stake">
-                                                        <Link rel="nofollow noopener" to={item?.casinoLink ? item?.casinoLink : '#'} aria-label="Put your description here." className="info-casino-card__stake-link">
-                                                            {item.casinoName}
-                                                        </Link>
-                                                        <div className="info-casino-card__stake-rating">
-                                                            <span className="info-casino-card__stake-rating-icon casino-small-card__rating-icon">
-                                                                <img src={starIcon} alt="star" />
-                                                            </span>
-                                                            <span>{item.raiting}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="info-casino-card__likes">
-                                                        <span className="info-casino-card__likes-icon">
-                                                            <img src={likeIcon} alt="like" />
-                                                        </span>
-                                                        <span className="info-casino-card__likes-number">{sanitizeNumberLike(item?.likes || 0)}</span>
-                                                    </div>
-                                                </div>
-
-                                                <Link rel="nofollow noopener" to={item?.bonuseLink ? item?.bonuseLink : '#'} aria-label="Put your description here." className="casino-card__name">
-                                                    {item?.bonuseName}
-                                                </Link>
+                                    <div className="slide-slider__item casino-card">
+                                        <Link to={item?.imageLink || '/'} onClick={(e) => navToImageLink(e, item?.imageLink || '')} aria-label="Put your description here." className="casino-card__image-block">
+                                            <div className="casino-card__image">
+                                                <LazyCardImg img={item.img || ''} width="100%" height="100%" imgLoading={!index ? 'eager' : 'lazy'} />
                                             </div>
+
+                                            <a
+                                                rel="nofollow noopener"
+                                                href={cloacingLink(item.casinoName)}
+                                                target="_blank"
+                                                aria-label="Put your description here."
+                                                className="casino-card__bnt"
+                                                onClick={(e) => {
+                                                    e.stopPropagation()
+                                                    e.preventDefault()
+                                                    cloacingFetch(item.playLink)
+                                                    window.open(item.playLink, '_blank', 'noopener,noreferrer')
+                                                }}
+                                            >
+                                                Play
+                                            </a>
+                                        </Link>
+                                        {item?.tags && <div className="casino-card__tags tags-casino-card">{item.tags}</div>}
+                                        <div className="casino-card__content">
+                                            <div className="casino-card__info info-casino-card">
+                                                <div className="info-casino-card__stake">
+                                                    <Link rel="nofollow noopener" to={item?.casinoLink ? item?.casinoLink : '#'} aria-label="Put your description here." className="info-casino-card__stake-link">
+                                                        {item.casinoName}
+                                                    </Link>
+                                                    <div className="info-casino-card__stake-rating">
+                                                        <span className="info-casino-card__stake-rating-icon casino-small-card__rating-icon">
+                                                            <img src={starIcon} alt="star" />
+                                                        </span>
+                                                        <span>{item.raiting}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="info-casino-card__likes">
+                                                    <span className="info-casino-card__likes-icon">
+                                                        <img src={likeIcon} alt="like" />
+                                                    </span>
+                                                    <span className="info-casino-card__likes-number">{sanitizeNumberLike(item?.likes || 0)}</span>
+                                                </div>
+                                            </div>
+
+                                            <Link rel="nofollow noopener" to={item?.bonuseLink ? item?.bonuseLink : '#'} aria-label="Put your description here." className="casino-card__name">
+                                                {item?.bonuseName}
+                                            </Link>
                                         </div>
-                                    
+                                    </div>
                                 </SwiperSlide>
                             ))}
                         </Swiper>

@@ -75,7 +75,7 @@ export default function BlockType5Mobile({ data }: { data: HomeDataBlock | undef
                                     {[...data?.items_block.data_cards]
                                         ?.sort((a, b) => a?.order - b?.order)
                                         ?.map((item, index) => (
-                                            <SwiperSlide  className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
+                                            <SwiperSlide  key={index} className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
                                                 <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
                                                     <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-medium__image-block">
                                                         <span className="different-casino-medium__image ibg--custom">

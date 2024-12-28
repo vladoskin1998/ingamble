@@ -19,7 +19,6 @@ import { useAdaptiveBehavior } from '../../context/AppContext'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { useFilterContext } from '../../context/FilterContext'
 import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
-import { COUNTRIES } from '../../helper/Country'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import giftIcon from '../../assets/img/icons/gift.svg'
 
@@ -83,7 +82,7 @@ export default function SimpleCasinos() {
             const countryCode = data?.headers?.['cf-ipcountry-code']
             const countryName = data?.headers?.['cf-ipcountry']
 
-            const countryImg = (Country?.general?.countries || COUNTRIES)?.find((it) => {
+            const countryImg = (Country?.general?.countries)?.find((it) => {
                 return it.code === countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase()
             })?.flag_image
 

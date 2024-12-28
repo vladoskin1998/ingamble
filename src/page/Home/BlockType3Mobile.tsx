@@ -83,9 +83,9 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
                                         }
                                         return acc
                                     }, [])
-                                    ?.map((item) => {
+                                    ?.map((item, index) => {
                                         return (
-                                            <SwiperSlide  className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
+                                            <SwiperSlide key={index} className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
@@ -108,8 +108,8 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
 
                                                                     {item?.[0].bonus_info?.labels?.length && (
                                                                         <div className="different-casino-standart__tags tags-casino-card">
-                                                                            {item?.[0]?.bonus_info?.labels?.map((item, index) => (
-                                                                                <div className={`tags-casino-card__item ${COLORS_TAGS[index % 4]}`}>
+                                                                            {item?.[0]?.bonus_info?.labels?.map((item, cindex) => (
+                                                                                <div key={cindex} className={`tags-casino-card__item ${COLORS_TAGS[cindex % 4]}`}>
                                                                                     <span className="tags-casino-card__item-label">{item}</span>
                                                                                 </div>
                                                                             ))}
@@ -158,8 +158,8 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
 
                                                                         {item?.[1].bonus_info?.labels?.length && (
                                                                             <div className="different-casino-standart__tags tags-casino-card">
-                                                                                {item?.[1]?.bonus_info?.labels?.map((item, index) => (
-                                                                                    <div className={`tags-casino-card__item ${COLORS_TAGS[index % 4]}`}>
+                                                                                {item?.[1]?.bonus_info?.labels?.map((item, cindex) => (
+                                                                                    <div key={cindex} className={`tags-casino-card__item ${COLORS_TAGS[cindex % 4]}`}>
                                                                                         <span className="tags-casino-card__item-label">{item}</span>
                                                                                     </div>
                                                                                 ))}

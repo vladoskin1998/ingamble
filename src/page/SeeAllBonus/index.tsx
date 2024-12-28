@@ -46,8 +46,11 @@ export default function SeeAllBonus() {
         window.scrollTo(0, 0)
     }, [qid])
 
+
+
     const { data, isLoading } = useQuery<SeeAllBonusResponse>(['get-see-all-bonus-category/', currentPage, queryId], () => getAllBonusFetchData(currentPage, queryId), {
         keepPreviousData: true,
+        cacheTime: 1000 * 60 * 5,
     })
 
     useEffect(() => {

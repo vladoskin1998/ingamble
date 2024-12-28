@@ -94,8 +94,8 @@ export default function BlockMType2M({
                                         }
                                         return acc
                                     }, [])
-                                    .map((item) => (
-                                        <SwiperSlide >
+                                    .map((item,index) => (
+                                        <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">

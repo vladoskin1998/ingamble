@@ -19,7 +19,7 @@ import { useSearchParams } from 'react-router-dom'
 import { EssentialVIPLoyaltyPrograms } from './EssentialVIPLoyaltyPrograms'
 import { useFilterContext } from '../../context/FilterContext'
 import { SiblingBonus } from './SiblingBonus'
-import { COUNTRIES } from '../../helper/Country'
+
 import { OtherBestReloadBonus } from './OtherBestBonus'
 import ASHLINGOBRIEN from '../../assets/img/casino-person/5.webp'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
@@ -66,6 +66,7 @@ export default function SimpleBonus() {
         keepPreviousData: true,
         staleTime: Infinity,
         enabled: !!queryId,
+        
     })
 
     useEffect(() => {
@@ -74,7 +75,7 @@ export default function SimpleBonus() {
             const countryCode = headers?.['cf-ipcountry-code']
             const countryName = headers?.['cf-ipcountry']
 
-            const countryImg = (Country?.general?.countries || COUNTRIES)?.find((it) => {
+            const countryImg = (Country?.general?.countries )?.find((it) => {
                 return it.code === countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase()
             })?.flag_image
 
@@ -98,7 +99,7 @@ export default function SimpleBonus() {
         //     .toLocaleLowerCase()}`f
 
         // window.history.pushState({}, "", newUrl)
-    }, [data, Country, COUNTRIES])
+    }, [data, Country])
 
     useEffect(() => {
         initializeAdaptiveBehavior()

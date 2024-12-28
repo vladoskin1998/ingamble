@@ -77,7 +77,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                 ?.filter((item) => item?.big_card)
                                                 .sort((a, b) => a?.order - b?.order)
                                                 .map((item, index) => (
-                                                    <SwiperSlide key={index} >
+                                                    <SwiperSlide key={index}>
                                                         <div
                                                             className="baner-row-block__slide slide-baner-row-block swiper-slide"
                                                             style={{
@@ -115,8 +115,10 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                                     {item?.casino_info?.casino_name}
                                                                                 </Link>
                                                                                 <div className="casino-small-card__info">
-                                                                                    {item.casino_info.additional_casino_params.map((it) => (
-                                                                                        <span className="casino-small-card__info-link">{it}</span>
+                                                                                    {item.casino_info.additional_casino_params.map((it, cindex) => (
+                                                                                        <span key={cindex} className="casino-small-card__info-link">
+                                                                                            {it}
+                                                                                        </span>
                                                                                     ))}
                                                                                 </div>
                                                                             </div>
@@ -190,7 +192,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                             .filter((item) => !item.big_card)
                                             .sort((a, b) => a.order - b.order)
                                             .map((item, index) => (
-                                                <SwiperSlide  key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
+                                                <SwiperSlide key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
                                                     <div className="slide-slider__item different-casino-bg">
                                                         <Link
                                                             rel="nofollow noopener"
@@ -212,8 +214,10 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                 {item.casino_info.casino_name}
                                                             </Link>
                                                             <div className="different-casino-bg__info">
-                                                                {item.casino_info.additional_casino_params.map((it) => (
-                                                                    <span className="different-casino-bg__info-link">{it}</span>
+                                                                {item.casino_info.additional_casino_params.map((it, cindex) => (
+                                                                    <span key={cindex} className="different-casino-bg__info-link">
+                                                                        {it}
+                                                                    </span>
                                                                 ))}
                                                             </div>
                                                             <div className="different-casino-bg__rating">
