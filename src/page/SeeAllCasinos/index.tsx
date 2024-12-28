@@ -131,7 +131,7 @@ export default function SeeAllCasinos() {
                                     </div>
                                 </div>
                             </div>
-                            {displayedData?.length ? <>
+                          
                               <div className="main-loyaltie-programs__items loyaltie-programs__items">
                                 {displayedData?.map((item) => (
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
@@ -254,10 +254,7 @@ export default function SeeAllCasinos() {
                                     </div>
                                 ))}
                             </div>
-                            </> : 
-                                isLoading && <NoResult/>
-                            
-                            }
+                              {!displayedData?.length && isLoading && <NoResult />}
                           
                             <PaginationPage
                                 countElem={data?.casino?.count}

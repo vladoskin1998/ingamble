@@ -136,7 +136,7 @@ export default function FilterLoyalty() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            {displayedData?.length ? (
+                            
                                 <>
                                     <LisDisplayedData displayedData={displayedData} />
 
@@ -155,9 +155,7 @@ export default function FilterLoyalty() {
                                         }}
                                     />
                                 </>
-                            ) : (
-                                isLoading && <NoResult />
-                            )}
+                              {!displayedData?.length && isLoading && <NoResult />}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />

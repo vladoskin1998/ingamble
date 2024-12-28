@@ -138,27 +138,22 @@ export default function FilterBonus() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            {displayedData?.length ? (
-                                <>
-                                    <ListDisplayData displayedData={displayedData} />
-                                    <PaginationPage
-                                        countElem={data?.count}
-                                        currentPage={currentPage}
-                                        countPageElem={countPageSize}
-                                        setCurrentPage={(s) => {
-                                            setCurrentPage(s)
-                                            if (!isMobile) {
-                                                window.scrollTo({
-                                                    behavior: 'smooth',
-                                                    top: 0,
-                                                })
-                                            }
-                                        }}
-                                    />{' '}
-                                </>
-                            ) : (
-                               isLoading && <NoResult />
-                            )}
+                            <ListDisplayData displayedData={displayedData} />
+                            <PaginationPage
+                                countElem={data?.count}
+                                currentPage={currentPage}
+                                countPageElem={countPageSize}
+                                setCurrentPage={(s) => {
+                                    setCurrentPage(s)
+                                    if (!isMobile) {
+                                        window.scrollTo({
+                                            behavior: 'smooth',
+                                            top: 0,
+                                        })
+                                    }
+                                }}
+                            />
+                            {!displayedData?.length && isLoading && <NoResult />}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />

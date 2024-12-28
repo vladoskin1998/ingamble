@@ -175,8 +175,7 @@ export default function FilterCasino() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            {displayedData?.length ? (
-                                <>
+                         
                                     <ListDisplayData displayedData={displayedData} filtersDataLicenses={filtersData?.casino?.licenses} casinoFiltersLicenses={casinoFilters?.licenses} />
                                     <PaginationPage
                                         countElem={data?.count}
@@ -192,10 +191,8 @@ export default function FilterCasino() {
                                             }
                                         }}
                                     />
-                                </>
-                            ) : (
-                                isLoading && <NoResult />
-                            )}
+                              
+                              {!displayedData?.length && isLoading && <NoResult />}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />
