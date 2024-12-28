@@ -123,13 +123,15 @@ export default function Home() {
 
       useEffect(() => {
           setTimeout(() => {
-              window.scrollTo(0, 0)
+             window.scrollTo({
+                 behavior: 'smooth',
+                 top: 0,
+             })
           })
       }, [])
 
     useEffect(() => {
-        
-        window.scrollTo(0, 0)
+       
         const handleResize = () => setIsMobile(window.innerWidth <= 480)
         window.addEventListener('resize', handleResize)
 
@@ -147,14 +149,14 @@ export default function Home() {
      const remainingBlocks = blocksToRender?.slice(2) || []
 
 
-    // if (!blocksToRender?.length) return (
-    //         <LogoLoader />
-    // )
+    if (!blocksToRender?.length) return (
+            <LogoLoader />
+    )
     
 
     return (
         <>
-            {!blocksToRender?.length && <LogoLoader />}
+            {/* {!blocksToRender?.length && <LogoLoader />} */}
             <Wraper>
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
