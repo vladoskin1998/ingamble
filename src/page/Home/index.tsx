@@ -1,63 +1,33 @@
-// import { lazy, useEffect, useState, Suspense } from 'react'
-// import { Wraper } from '../Wraper'
-// import { useAdaptiveBehavior } from '../../context/AppContext'
-// import { Categories } from '../../components/categories/Categories'
-// import BlockType1 from './BlockType1'
-// import BlockType2Mobile from './BlockType2Mobile'
-// import BlockType3Mobile from './BlockType3Mobile'
-// import BlockType4Mobile from './BlockType4Mobile'
-// import BlockType5Mobile from './BlockType5Mobile'
-// import BlockType6 from './BlockType6'
-// import BlockType7Mobile from './BlockType7Mobile'
-// import BlockType9 from './BlockType9'
-// import BlockType8 from './BlockType8'
-// import $api from '../../http'
-// import { useQuery } from 'react-query'
-// import { LogoLoader } from '../../components/loader/LogoLoader'
-// import { BlockTypeNumber, HomeDataBlock, HomeDataBlockMobile } from '../../types'
-// import BlockType2 from './BlockType2'
-// import BlockType3 from './BlockType3'
-// import BlockType4 from './BlockType4'
-// import BlockType7 from './BlockType7'
-// import BlockType5 from './BlockType5'
-// import BlockMType2M from './BlockMType2M'
-// import BlockMType3M from './BlockMType3M'
-// const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
-// const SubscribeForm = lazy(() => import('../SimpleBonus/SubscribeForm'))
-// const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-// const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
-
-import { lazy, useEffect, useState, Suspense } from 'react'
+import {  useEffect, useState } from 'react'
 import { Wraper } from '../Wraper'
 import { useAdaptiveBehavior } from '../../context/AppContext'
-
-
+import { Categories } from '../../components/categories/Categories'
 import BlockType1 from './BlockType1'
-const BlockType2Mobile = lazy(() => import('./BlockType2Mobile'))
-const BlockType3Mobile = lazy(() => import('./BlockType3Mobile'))
-const BlockType4Mobile = lazy(() => import('./BlockType4Mobile'))
-const BlockType5Mobile = lazy(() => import('./BlockType5Mobile'))
-const BlockType6 = lazy(() => import('./BlockType6'))
-const BlockType7Mobile = lazy(() => import('./BlockType7Mobile'))
-const BlockType9 = lazy(() => import('./BlockType9'))
-const BlockType8 = lazy(() => import('./BlockType8'))
-const BlockType2 = lazy(() => import('./BlockType2'))
-const BlockType3 = lazy(() => import('./BlockType3'))
-const BlockType4 = lazy(() => import('./BlockType4'))
-const BlockType7 = lazy(() => import('./BlockType7'))
-const BlockType5 = lazy(() => import('./BlockType5'))
-const BlockMType2M = lazy(() => import('./BlockMType2M'))
-const BlockMType3M = lazy(() => import('./BlockMType3M'))
-const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
-const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
-const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
-
+import BlockType2Mobile from './BlockType2Mobile'
+import BlockType3Mobile from './BlockType3Mobile'
+import BlockType4Mobile from './BlockType4Mobile'
+import BlockType5Mobile from './BlockType5Mobile'
+import BlockType6 from './BlockType6'
+import BlockType7Mobile from './BlockType7Mobile'
+import BlockType9 from './BlockType9'
+import BlockType8 from './BlockType8'
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { BlockTypeNumber, HomeDataBlock, HomeDataBlockMobile } from '../../types'
-import { Categories } from '../../components/categories/Categories'
+import BlockType2 from './BlockType2'
+import BlockType3 from './BlockType3'
+import BlockType4 from './BlockType4'
+import BlockType7 from './BlockType7'
+import BlockType5 from './BlockType5'
+import BlockMType2M from './BlockMType2M'
+import BlockMType3M from './BlockMType3M'
+import MoreBonusesForYourChoise from './MoreBonusesForYourChoise'
+import CheckMoreWhatSuitsYouBest from '../../components/categories/CheckMoreWhatSuitsYouBest'
+import SubscribeForm from '../../components/subscribe/SubscribeForm'
+import BottomInfo from '../../components/footer/BottomInfo'
+
+
 
 
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
@@ -136,14 +106,9 @@ export default function Home() {
 
     const blocksToRender = isMobile ? (data?.dataHomeMobile )  : data?.dataHome
 
-     const firstThreeBlocks = (blocksToRender)?.slice(0, 2) || []
-     const remainingBlocks = blocksToRender?.slice(2) || []
-
-
     if (!blocksToRender?.length) return (
             <LogoLoader />
     )
-    
 
     return (
         <>
@@ -159,9 +124,8 @@ export default function Home() {
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
                     </div> */}
-                        {firstThreeBlocks?.map((block, index) => renderBlock(block, index, isMobile))}
+                        {blocksToRender?.map((block, index) => renderBlock(block, index, isMobile))}
 
-                        <Suspense>{remainingBlocks?.map((block, index) => renderBlock(block, index + 3, isMobile))}</Suspense>
                         {/* Лениво загружаем оставшиеся блоки */}
 
                         {/* <FastestPayoutCasinos /> */}

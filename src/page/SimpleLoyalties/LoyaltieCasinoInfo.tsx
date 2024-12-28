@@ -4,12 +4,11 @@ import like from '../../assets/img/icons/like.svg'
 import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 import { Link } from 'react-router-dom'
 import giftIcon from '../../assets/img/icons/gift.svg'
 import { useFilterContext } from '../../context/FilterContext'
 export const LoyaltieCasinoInfo = ({ data, geoLocation }: { data: LoyaltieProgramDataResponse | undefined; geoLocation: GeoLocationAllowdType }) => {
-
     const { setCasinoFilters } = useFilterContext()
 
     return (
@@ -78,7 +77,7 @@ export const LoyaltieCasinoInfo = ({ data, geoLocation }: { data: LoyaltieProgra
                                         className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                     >
                                         <span>
-                                            <LazyLoadImage src={giftIcon} alt="gift" />
+                                            <img loading="lazy" src={giftIcon} alt="gift" />
                                         </span>
                                         Browse Recommended Casinos
                                     </Link>

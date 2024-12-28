@@ -11,11 +11,11 @@ import { Wagering } from "./Wagering"
 //@ts-ignore
 const DataWageringDifficulty = ["Easy", "Medium", "Hard"]
 
-export const BonusFilter = ({
+export default function BonusFilter ({
     datasFilterBonus,
 }: {
     datasFilterBonus: (GeneralFilterDataType & BonusFilterDataType) | undefined
-}) => {
+})  {
     const { bonusFilters, setBonusFilters } = useFilterContext()
 
     return (

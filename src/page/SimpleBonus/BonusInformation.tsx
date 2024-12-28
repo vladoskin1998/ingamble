@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 import arrowYellowIcon from '../../assets/img/icons/arrow-yellow.svg'
 import closeIcon from '../../assets/img/icons/close.svg'
 import slotsIcon from '../../assets/img/games/01.svg'
@@ -71,8 +71,8 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
         }
     }, [BonusInfoIsOpen])
 
-      const wagerValue = WagerPrettier(data?.wagering_bonus_plus_deposit)
-    
+    const wagerValue = WagerPrettier(data?.wagering_bonus_plus_deposit)
+
     return (
         <div className="bonus-information__body">
             <div className="bonus-information__row">
@@ -223,10 +223,7 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                                     </span>
                                                 </span> */}
                                             </div>
-                                            <div className="item-content-bonus-information__value">
-                                                { wagerValue? `${wagerValue.value} ${wagerValue.label}`
-                                                    : '-'}
-                                            </div>
+                                            <div className="item-content-bonus-information__value">{wagerValue ? `${wagerValue.value} ${wagerValue.label}` : '-'}</div>
                                         </div>
                                         {data?.wagering?.wagering_difficulty === 'easy' && (
                                             <div className="content-bonus-information__item item-content-bonus-information">
@@ -369,7 +366,7 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                         </div>
                                         <div className="content-bonus-information__item item-content-bonus-information ''">
                                             <div className="item-content-bonus-information__label">Wager for free spins:</div>
-                                            <div className="item-content-bonus-information__value">{typeof data?.wager?.value === 'number'  ? `${data?.wager?.value}x` : '-'}</div>
+                                            <div className="item-content-bonus-information__value">{typeof data?.wager?.value === 'number' ? `${data?.wager?.value}x` : '-'}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -505,7 +502,7 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                                                                 className="popup-item-content-bonus-information__game game-popup-item-content-bonus-information popup-item-content-bonus-information__column"
                                                                             >
                                                                                 <span className="game-popup-item-content-bonus-information__icon">
-                                                                                    <LazyLoadImage src={item?.image || slotsIcon} alt="Slots" />
+                                                                                    <img loading="lazy" src={item?.image || slotsIcon} alt="Slots" />
                                                                                 </span>
                                                                                 <span className="game-popup-item-content-bonus-information__name">{item.name || 'slot'}</span>
                                                                             </a>

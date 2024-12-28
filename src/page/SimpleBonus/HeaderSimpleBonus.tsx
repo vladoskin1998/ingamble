@@ -2,7 +2,7 @@ import starIcon from '../../assets/img/icons/star.svg'
 import likeIcon from '../../assets/img/icons/like.svg'
 
 import { GeoLocationAllowdType, GetDataBonusResponse, WageringBonusPlusDepositType } from '../../types'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 import giftIcon from '../../assets/img/icons/gift.svg'
 import { useState, useEffect } from 'react'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
@@ -19,7 +19,7 @@ const subtitleLabelWager: Record<keyof WageringBonusPlusDepositType, string> = {
     winnings_only: 'Winnings Only',
 }
 
-export const WagerPrettier = (wager: WageringBonusPlusDepositType | undefined): null | { label: string; value: string  } => {
+export const WagerPrettier = (wager: WageringBonusPlusDepositType | undefined): null | { label: string; value: string } => {
     let res: null | { label: string; value: string } = null
     if (!wager) {
         return res
@@ -27,14 +27,13 @@ export const WagerPrettier = (wager: WageringBonusPlusDepositType | undefined): 
 
     for (const key in wager) {
         if (typeof wager[key as keyof WageringBonusPlusDepositType] === 'number') {
-            res = { label: subtitleLabelWager[key as keyof WageringBonusPlusDepositType], value: wager[key as keyof WageringBonusPlusDepositType] + "x" }
+            res = { label: subtitleLabelWager[key as keyof WageringBonusPlusDepositType], value: wager[key as keyof WageringBonusPlusDepositType] + 'x' }
             break
         }
     }
 
     return res
 }
-
 
 export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusResponse | undefined; geoLocation: GeoLocationAllowdType }) => {
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(window.innerWidth <= 1023.98)
@@ -53,12 +52,9 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
         }
     }, [])
 
-
-
     const wagerValue = WagerPrettier(data?.wagering_bonus_plus_deposit)
 
     console.log('wagerValue', wagerValue)
-    
 
     return (
         <section className={`simple-bonus__casino-info casino-info ${!geoLocation?.isAllowed && 'casino-info_not-available'} `}>
@@ -162,7 +158,7 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
                                         className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                     >
                                         <span>
-                                            <LazyLoadImage src={giftIcon} alt="gift" />
+                                            <img loading="lazy" src={giftIcon} alt="gift" />
                                         </span>
                                         Get Bonus and Play
                                     </a>
@@ -176,7 +172,7 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
                                         className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                     >
                                         <span>
-                                            <LazyLoadImage src={giftIcon} alt="gift" />
+                                            <img loading="lazy" src={giftIcon} alt="gift" />
                                         </span>
                                         Browse Recommended Bonuses
                                     </Link>
@@ -193,19 +189,19 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
                                                 <div className="item-features-content-casino-info__number">{data?.bonus_rank || 0}</div>
                                                 <div className="item-features-content-casino-info__rating">
                                                     <div className="item-features-content-casino-info__star">
-                                                        <LazyLoadImage src={starIcon} alt="star" />
+                                                        <img loading="lazy" src={starIcon} alt="star" />
                                                     </div>
                                                     <div className="item-features-content-casino-info__star">
-                                                        <LazyLoadImage src={starIcon} alt="star" />
+                                                        <img loading="lazy" src={starIcon} alt="star" />
                                                     </div>
                                                     <div className="item-features-content-casino-info__star">
-                                                        <LazyLoadImage src={starIcon} alt="star" />
+                                                        <img loading="lazy" src={starIcon} alt="star" />
                                                     </div>
                                                     <div className="item-features-content-casino-info__star">
-                                                        <LazyLoadImage src={starIcon} alt="star" />
+                                                        <img loading="lazy" src={starIcon} alt="star" />
                                                     </div>
                                                     <div className="item-features-content-casino-info__star">
-                                                        <LazyLoadImage src={starIcon} alt="star" />
+                                                        <img loading="lazy" src={starIcon} alt="star" />
                                                     </div>
                                                 </div>
                                             </div>

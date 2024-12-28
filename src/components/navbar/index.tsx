@@ -1,26 +1,19 @@
-import { LazyLoadImage } from "react-lazy-load-image-component"
-import logoIcon from "../../assets/img/logo-icon.svg"
+import logoIcon from '../../assets/img/logo-icon.svg'
 
-import clearAll from "../../assets/img/icons/clear-all.svg"
-import { useLayoutEffect, useMemo, useState } from "react"
-import { AccordionItem } from "../acordion/Acordion"
-import { CasinoFilterContent } from "./CasinoFilter"
-import {
-    RouteToNextFilter,
-    useFilterContext,
-} from "../../context/FilterContext"
-import { Link } from "react-router-dom"
+import clearAll from '../../assets/img/icons/clear-all.svg'
+import { useLayoutEffect, useMemo, useState } from 'react'
+import { AccordionItem } from '../acordion/Acordion'
 
-import { BonusFilter } from "./BonusFilter"
-import { LoyaltiesFilter } from "./LoyaltiesFilter"
-import { makeListFilterHeader } from "../filter-components/FilterHeaderList"
-import {
-    BonusFilterBodyType,
-    CasinoFilterBodyType,
-    LoyaltiesFilterBodyType,
-} from "../../types"
+import { RouteToNextFilter, useFilterContext } from '../../context/FilterContext'
+import { Link } from 'react-router-dom'
 
-type DefaultOpenType = "casinos" | "bonuses" | "loyalties" | "slots" | ""
+import { makeListFilterHeader } from '../filter-components/FilterHeaderList'
+import { BonusFilterBodyType, CasinoFilterBodyType, LoyaltiesFilterBodyType } from '../../types'
+import CasinoFilterContent from './CasinoFilter'
+import BonusFilter from './BonusFilter'
+import LoyaltiesFilter from './LoyaltiesFilter'
+
+type DefaultOpenType = 'casinos' | 'bonuses' | 'loyalties' | 'slots' | ''
 
 const LengthApplyFilter = ({
     currentRouteFilter,
@@ -40,7 +33,7 @@ const LengthApplyFilter = ({
 
     if (currentRouteFilter === RouteToNextFilter.CASINOS) {
         const cl = makeListFilterHeader(casinoFilters).length
-        return  cl ? `(${cl})` : ''
+        return cl ? `(${cl})` : ''
     }
 
     if (currentRouteFilter === RouteToNextFilter.LOYALTIES) {
@@ -48,63 +41,44 @@ const LengthApplyFilter = ({
         return ll ? `(${ll})` : ''
     }
 
-    return ""
+    return ''
 }
 
-export default function Navbar  ({
-    isSidebarActive,
-    setSidebarActive,
-}: {
-    isSidebarActive: boolean
-    setSidebarActive: (s: boolean) => void
-})  {
+export default function Navbar({ isSidebarActive, setSidebarActive }: { isSidebarActive: boolean; setSidebarActive: (s: boolean) => void }) {
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
-    const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>("")
+    const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>('')
 
-    const {
-        casinoFilters,
-        bonusFilters,
-        loyaltiesFilters,
-        currentRouteFilter,
-        handlerCurrentRouteFilter,
-        handlerClearAllFilters,
-        data,
-    } = useFilterContext()
+    const { casinoFilters, bonusFilters, loyaltiesFilters, currentRouteFilter, handlerCurrentRouteFilter, handlerClearAllFilters, data } = useFilterContext()
 
     useLayoutEffect(() => {
-        const sidebarGamble = document.querySelector(
-            ".sidebar-gamble"
-        ) as HTMLElement
+        const sidebarGamble = document.querySelector('.sidebar-gamble') as HTMLElement
 
-        const header = document.querySelector(".header") as HTMLElement
-        const footer = document.querySelector(".footer") as HTMLElement
-        const main = document.querySelector("main") as HTMLElement
+        const header = document.querySelector('.header') as HTMLElement
+        const footer = document.querySelector('.footer') as HTMLElement
+        const main = document.querySelector('main') as HTMLElement
 
         if (sidebarGamble) {
-            sidebarGamble.classList.toggle("active", isSidebarActive)
+            sidebarGamble.classList.toggle('active', isSidebarActive)
         }
         // if (gambleBody && window.innerWidth <= 650.98) {
         //     gambleBody.classList.toggle("hide", isGambleBodyHidden)
         // }
 
         if (header && window.innerWidth > 650.98) {
-            header?.classList.toggle("resize", isSidebarActive)
+            header?.classList.toggle('resize', isSidebarActive)
         }
         if (footer && window.innerWidth > 650.98) {
-            footer?.classList.toggle("resize", isSidebarActive)
+            footer?.classList.toggle('resize', isSidebarActive)
         }
         if (main && window.innerWidth > 650.98) {
-            main?.classList.toggle("resize", isSidebarActive)
+            main?.classList.toggle('resize', isSidebarActive)
         }
         if (!isSidebarActive) {
-            setIsDefaultOpen(() => "")
+            setIsDefaultOpen(() => '')
         }
     }, [isSidebarActive, isGambleBodyHidden])
 
-    const handleFilterOpenBtnClick = (
-        event: React.MouseEvent,
-        s: DefaultOpenType
-    ) => {
+    const handleFilterOpenBtnClick = (event: React.MouseEvent, s: DefaultOpenType) => {
         setIsDefaultOpen(s)
         event.preventDefault()
         event.stopPropagation()
@@ -123,36 +97,20 @@ export default function Navbar  ({
         setGambleBodyHidden(false)
     }
 
-    const randomKey = useMemo(
-        () => Math.random().toString(36).substring(2, 9),
-        [isSidebarActive]
-    )
+    const randomKey = useMemo(() => Math.random().toString(36).substring(2, 9), [isSidebarActive])
 
     let datasFilter = data
 
     return (
         <aside className="gamble__sidebar sidebar-gamble">
-            <div
-                className="sidebar-gamble__top top-sidebar-gamble"
-                data-da="mobile-header__top, 0, 650.98"
-            >
-                <Link
-                    rel="nofollow noopener"
-                       to="/"
-                 
-                    className="top-sidebar-gamble__logo"
-                >
-                    <img alt={"logo-icon"} src={logoIcon} />
+            <div className="sidebar-gamble__top top-sidebar-gamble" data-da="mobile-header__top, 0, 650.98">
+                <Link rel="nofollow noopener" to="/" className="top-sidebar-gamble__logo">
+                    <img alt={'logo-icon'} src={logoIcon} />
                 </Link>
             </div>
             <div className="sidebar-gamble__filters filters-sidebar-gamble">
                 <div className="filters-sidebar-gamble__title title-filters-sidebar-gamble">
-                    <button
-                        onClick={() => setSidebarActive(!isSidebarActive)}
-                        aria-label="Put your description here."
-                        className="title-filters-sidebar-gamble__btn"
-                        data-da="header__row-mobile1, 1, 650.98"
-                    >
+                    <button onClick={() => setSidebarActive(!isSidebarActive)} aria-label="Put your description here." className="title-filters-sidebar-gamble__btn" data-da="header__row-mobile1, 1, 650.98">
                         <span className="title-filters-sidebar-gamble__btn-icon_main">
                             <svg>
                                 <use xlinkHref="#filter"></use>
@@ -164,14 +122,8 @@ export default function Navbar  ({
                             </svg>
                         </span>
                     </button>
-                    <h2 className="title-filters-sidebar-gamble__text">
-                        Filters
-                    </h2>
-                    <button
-                        onClick={handleFilterOpenDeleteClick}
-                        aria-label="Put your description here."
-                        className="title-filters-sidebar-gamble__btn-delete"
-                    >
+                    <h2 className="title-filters-sidebar-gamble__text">Filters</h2>
+                    <button onClick={handleFilterOpenDeleteClick} aria-label="Put your description here." className="title-filters-sidebar-gamble__btn-delete">
                         <span className="title-filters-sidebar-gamble__btn-delete-icon_close">
                             <svg>
                                 <use xlinkHref="#delete"></use>
@@ -186,44 +138,29 @@ export default function Navbar  ({
                                 className={`form-filters__item item-form-filters`}
                                 style={{
                                     zIndex: 12,
-                                    position: "relative",
-                                    backgroundColor: "#171719",
+                                    position: 'relative',
+                                    backgroundColor: '#171719',
                                 }}
-                                onClick={() =>
-                                    handlerCurrentRouteFilter(
-                                        RouteToNextFilter.CASINOS
-                                    )
-                                }
+                                onClick={() => handlerCurrentRouteFilter(RouteToNextFilter.CASINOS)}
                             >
                                 <AccordionItem
-                                    defaultOpen={isDefaultOpen === "casinos"}
+                                    defaultOpen={isDefaultOpen === 'casinos'}
                                     key={randomKey}
                                     heading={
-                                        <div
-                                            className={`item-form-filters__title title-item-form-filters  accordion--title--element`}
-                                        >
+                                        <div className={`item-form-filters__title title-item-form-filters  accordion--title--element`}>
                                             <span
                                                 className="title-item-form-filters__icon"
                                                 onClick={(e) => {
-                                                    handleFilterOpenBtnClick(
-                                                        e,
-                                                        "casinos"
-                                                    )
-                                                    handlerCurrentRouteFilter(
-                                                        RouteToNextFilter.CASINOS
-                                                    )
+                                                    handleFilterOpenBtnClick(e, 'casinos')
+                                                    handlerCurrentRouteFilter(RouteToNextFilter.CASINOS)
                                                 }}
                                             >
                                                 <svg>
                                                     <use xlinkHref="#casinos"></use>
                                                 </svg>
                                             </span>
-                                            <span className="title-item-form-filters__icon-name">
-                                                Casinos
-                                            </span>
-                                            <h2 className="title-item-form-filters__text">
-                                                Casinos
-                                            </h2>
+                                            <span className="title-item-form-filters__icon-name">Casinos</span>
+                                            <h2 className="title-item-form-filters__text">Casinos</h2>
                                             <span className="title-item-form-filters__arrow">
                                                 <svg>
                                                     <use xlinkHref="#arrow"></use>
@@ -249,44 +186,29 @@ export default function Navbar  ({
                                 className={`form-filters__item item-form-filters`}
                                 style={{
                                     zIndex: 11,
-                                    position: "relative",
-                                    backgroundColor: "#171719",
+                                    position: 'relative',
+                                    backgroundColor: '#171719',
                                 }}
-                                onClick={() =>
-                                    handlerCurrentRouteFilter(
-                                        RouteToNextFilter.BONUS
-                                    )
-                                }
+                                onClick={() => handlerCurrentRouteFilter(RouteToNextFilter.BONUS)}
                             >
                                 <AccordionItem
-                                    defaultOpen={isDefaultOpen === "bonuses"}
+                                    defaultOpen={isDefaultOpen === 'bonuses'}
                                     key={randomKey}
                                     heading={
-                                        <div
-                                            className={`item-form-filters__title title-item-form-filters accordion--title--element`}
-                                        >
+                                        <div className={`item-form-filters__title title-item-form-filters accordion--title--element`}>
                                             <span
                                                 className="title-item-form-filters__icon"
                                                 onClick={(e) => {
-                                                    handleFilterOpenBtnClick(
-                                                        e,
-                                                        "bonuses"
-                                                    )
-                                                    handlerCurrentRouteFilter(
-                                                        RouteToNextFilter.BONUS
-                                                    )
+                                                    handleFilterOpenBtnClick(e, 'bonuses')
+                                                    handlerCurrentRouteFilter(RouteToNextFilter.BONUS)
                                                 }}
                                             >
                                                 <svg>
                                                     <use xlinkHref="#bonuses"></use>
                                                 </svg>
                                             </span>
-                                            <span className="title-item-form-filters__icon-name">
-                                                Bonuses
-                                            </span>
-                                            <h2 className="title-item-form-filters__text">
-                                                Bonuses
-                                            </h2>
+                                            <span className="title-item-form-filters__icon-name">Bonuses</span>
+                                            <h2 className="title-item-form-filters__text">Bonuses</h2>
                                             <span className="title-item-form-filters__arrow">
                                                 <svg>
                                                     <use xlinkHref="#arrow"></use>
@@ -312,42 +234,29 @@ export default function Navbar  ({
                                 className={`form-filters__item item-form-filters `}
                                 style={{
                                     zIndex: 10,
-                                    backgroundColor: "#171719",
-                                    position: "relative",
+                                    backgroundColor: '#171719',
+                                    position: 'relative',
                                 }}
-                                onClick={() =>
-                                    handlerCurrentRouteFilter(
-                                        RouteToNextFilter.LOYALTIES
-                                    )
-                                }
+                                onClick={() => handlerCurrentRouteFilter(RouteToNextFilter.LOYALTIES)}
                             >
                                 <AccordionItem
-                                    defaultOpen={isDefaultOpen === "loyalties"}
+                                    defaultOpen={isDefaultOpen === 'loyalties'}
                                     key={randomKey}
                                     heading={
                                         <div className="item-form-filters__title title-item-form-filters accordion--title--element">
                                             <span
                                                 className="title-item-form-filters__icon"
                                                 onClick={(e) => {
-                                                    handleFilterOpenBtnClick(
-                                                        e,
-                                                        "loyalties"
-                                                    )
-                                                    handlerCurrentRouteFilter(
-                                                        RouteToNextFilter.LOYALTIES
-                                                    )
+                                                    handleFilterOpenBtnClick(e, 'loyalties')
+                                                    handlerCurrentRouteFilter(RouteToNextFilter.LOYALTIES)
                                                 }}
                                             >
                                                 <svg>
                                                     <use xlinkHref="#loyalties"></use>
                                                 </svg>
                                             </span>
-                                            <span className="title-item-form-filters__icon-name">
-                                                Loyalties
-                                            </span>
-                                            <h2 className="title-item-form-filters__text">
-                                                Loyalties
-                                            </h2>
+                                            <span className="title-item-form-filters__icon-name">Loyalties</span>
+                                            <h2 className="title-item-form-filters__text">Loyalties</h2>
                                             <span className="title-item-form-filters__arrow">
                                                 <svg>
                                                     <use xlinkHref="#arrow"></use>
@@ -402,30 +311,17 @@ export default function Navbar  ({
                     <div className="form-filters__bottom bottom-form-filters">
                         <div className="bottom-form-filters__row">
                             <div className="bottom-form-filters__column">
-                                <button
-                                    onClick={handlerClearAllFilters}
-                                    className="bottom-form-filters__btn bottom-form-filters__btn_reset"
-                                >
+                                <button onClick={handlerClearAllFilters} className="bottom-form-filters__btn bottom-form-filters__btn_reset">
                                     <span className="bottom-form-filters__btn-icon">
-                                        <LazyLoadImage
-                                            alt={"clear-all.svg"}
-                                            src={clearAll}
-                                            width={20}
-                                            height={20}
-                                        />
+                                        <img alt={'clear-all.svg'} src={clearAll} width={20} height={20} loading='lazy'/>
                                     </span>
                                     <span>Clear All</span>
                                 </button>
                             </div>
                             <div className="bottom-form-filters__column">
                                 <Link
-                                onClick={() => setSidebarActive(false)}
-                                    to={
-                                        currentRouteFilter ===
-                                        RouteToNextFilter.DEFAULT
-                                            ? "/" + currentRouteFilter
-                                            : `/filter-${currentRouteFilter}`
-                                    }
+                                    onClick={() => setSidebarActive(false)}
+                                    to={currentRouteFilter === RouteToNextFilter.DEFAULT ? '/' + currentRouteFilter : `/filter-${currentRouteFilter}`}
                                     className="bottom-form-filters__btn bottom-form-filters__btn_submit"
                                 >
                                     <span>{`Apply Filters ${LengthApplyFilter({
@@ -433,7 +329,7 @@ export default function Navbar  ({
                                         casinoFilters,
                                         bonusFilters,
                                         loyaltiesFilters,
-                                    }) }`}</span>
+                                    })}`}</span>
                                 </Link>
                             </div>
                         </div>

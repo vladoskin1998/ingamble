@@ -1,4 +1,4 @@
-import { LazyLoadImage } from "react-lazy-load-image-component"
+
 import { useAdaptiveBehavior } from "../../context/AppContext"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
 import { Link } from "react-router-dom"
@@ -27,7 +27,7 @@ export default function CheckMoreWhatSuitsYouBest  ()  {
                 <div className="bottom-filter-tags__top top">
                     <div className="top__title-block">
                         <span className="top__title-icon">
-                            <LazyLoadImage
+                            <img loading="lazy"
                                 src={searchFilterIcon}
                                 alt="search"
                             />

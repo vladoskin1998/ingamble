@@ -1,9 +1,9 @@
 //@ts-ignore
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import { LineLoader } from "../loader/LineLoader"
 import { LazyImgHomeType } from "../../page/Home"
 
-export const LazyCardImg = ({
+export const LazyCardImg = memo(({
     img,
     size,
     width = "auto",
@@ -42,4 +42,4 @@ export const LazyCardImg = ({
             />
         </>
     )
-}
+})

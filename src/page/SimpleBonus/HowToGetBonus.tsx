@@ -1,6 +1,6 @@
 import giftIcon from '../../assets/img/icons/gift.svg'
 import bg08 from '../../assets/img/bg/08.webp'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 import { GetDataBonusResponse } from '../../types'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -50,13 +50,13 @@ export const HowToGetBonus = ({ data }: { data: GetDataBonusResponse | undefined
                                             onClick={(e) => {
                                                 e.stopPropagation()
                                                 e.preventDefault()
-                                                     cloacingFetch(data?.casino_affiliate_link)
+                                                cloacingFetch(data?.casino_affiliate_link)
                                                 window.open(data?.casino_affiliate_link || data?.url_casino, '_blank', 'noopener,noreferrer')
                                             }}
                                             className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                         >
                                             <span>
-                                                <LazyLoadImage src={giftIcon} alt="gift" />
+                                                <img loading="lazy" src={giftIcon} alt="gift" />
                                             </span>
                                             Get Bonus
                                         </a>

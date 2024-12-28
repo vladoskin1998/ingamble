@@ -84,7 +84,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                         onClick={(e) => e.stopPropagation()}
                                                         to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                     >
-                                                        <LazyCardImg img={item.bonus_info.bonus_image || ''} imgLoading={!index ? 'eager' : 'lazy'} />
+                                                        <LazyCardImg img={item.bonus_info.bonus_image || ''}  />
                                                     </Link>
                                                     <a
                                                         href={cloacingLink(item?.casino_info?.casino_name)}
@@ -119,7 +119,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                                 }}
                                                                 to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
                                                             >
-                                                                <LazyCardImg img={item.casino_info.casino_image || ''} size="medium" imgLoading={!index ? 'eager' : 'lazy'} />
+                                                                <LazyCardImg img={item.casino_info.casino_image || ''} size="medium" />
                                                             </Link>
                                                         </a>
                                                         <div className="casino-small-card__body">

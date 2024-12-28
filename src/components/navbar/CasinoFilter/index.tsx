@@ -15,13 +15,13 @@ import { MinimumDeposit } from "./MinimumDeposit"
 import { getFilterContentHeight } from "../../../helper"
 import { UnlimitedCheckBox } from "../../filter-components/UnlimitedCheckBox"
 
-export const CasinoFilterContent = ({
+export default function CasinoFilterContent ({
     datasFilterCasino,
 }: {
     datasFilterCasino:
         | (GeneralFilterDataType & CasinoFilterDataType)
         | undefined
-}) => {
+})  {
     const { casinoFilters, setCasinoFilters } = useFilterContext()
 
     return (

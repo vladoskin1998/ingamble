@@ -19,7 +19,7 @@ import { useAdaptiveBehavior } from '../../context/AppContext'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { useFilterContext } from '../../context/FilterContext'
 import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 import giftIcon from '../../assets/img/icons/gift.svg'
 
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
@@ -43,7 +43,7 @@ const getCurrentCasinosFetchData = async (queryId: string) => {
 
 export default function SimpleCasinos() {
     // document.title = "Review"
- 
+
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const [openModal, setOpenModal] = useState(false)
     const [searchParams] = useSearchParams()
@@ -82,11 +82,11 @@ export default function SimpleCasinos() {
             const countryCode = data?.headers?.['cf-ipcountry-code']
             const countryName = data?.headers?.['cf-ipcountry']
 
-            const countryImg = (Country?.general?.countries)?.find((it) => {
+            const countryImg = Country?.general?.countries?.find((it) => {
                 return it.code === countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase()
             })?.flag_image
 
-            const idCountry = data.dataCurrentCasinos?.blocked_countries?.find((item) => item?.code?.toLocaleLowerCase() === countryCode?.toLocaleLowerCase())?.id            
+            const idCountry = data.dataCurrentCasinos?.blocked_countries?.find((item) => item?.code?.toLocaleLowerCase() === countryCode?.toLocaleLowerCase())?.id
 
             setGeoLocation({
                 countryCode,
@@ -208,7 +208,7 @@ export default function SimpleCasinos() {
                                                         className="main-get-bonus__btn main-get-bonus__btn_bonus"
                                                     >
                                                         <span>
-                                                            <LazyLoadImage src={giftIcon} alt="gift" />
+                                                            <img loading="lazy" src={giftIcon} alt="gift" />
                                                         </span>
                                                         Browse Recommended Casinos
                                                     </Link>

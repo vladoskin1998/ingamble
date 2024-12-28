@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 import logoIcon from '../../assets/img/logo-icon.svg'
 import checkIcon from '../../assets/img/icons/check-icon.svg'
 import errorIcon from '../../assets/img/icons/error-icon.svg'
@@ -60,13 +60,13 @@ export default function SubscribeForm() {
             <div className="subscribe__container container">
                 <div className="subscribe__body">
                     <div className="subscribe__bg">
-                        <LazyLoadImage src={bgImage08} alt="bg" />
-                        <LazyLoadImage src={bgImage11} alt="bg" />
+                        <img loading="lazy" src={bgImage08} alt="bg" />
+                        <img loading="lazy" src={bgImage11} alt="bg" />
                     </div>
                     <div className="subscribe__row">
                         <div className="subscribe__column">
                             <Link to="/" aria-label="Put your description here." rel="noopener noreferrer" className="subscribe__logo">
-                                <LazyLoadImage src={logoIcon} alt="logo" />
+                                <img loading="lazy" src={logoIcon} alt="logo" />
                             </Link>
                             <div className="subscribe__content">
                                 <div className="subscribe__title">
@@ -107,12 +107,12 @@ export default function SubscribeForm() {
 
                                         {isSubscribed && (
                                             <span className="form-item__icon form-item__icon_confired">
-                                                <LazyLoadImage src={checkIcon} alt="check" />
+                                                <img loading="lazy" src={checkIcon} alt="check" />
                                             </span>
                                         )}
 
                                         <span className="form-item__icon form-item__icon_error">
-                                            <LazyLoadImage src={errorIcon} alt="error" />
+                                            <img loading="lazy" src={errorIcon} alt="error" />
                                         </span>
                                     </div>
                                     <button type="submit" className="form-subscribe__btn">

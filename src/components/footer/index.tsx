@@ -12,7 +12,7 @@ import logos10 from '../../assets/img/logos/10.svg'
 import socialsIcon from '../../assets/img/icons/socials-icon.svg'
 import '../../assets/css/footer.css'
 
-import { LazyLoadImage } from 'react-lazy-load-image-component'
+
 
 export default function Footer() {
     return (
@@ -467,52 +467,52 @@ export default function Footer() {
                         <div className="bottom-footer__logos logos-bottom-footer">
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos01} alt="logo" />
+                                    <img src={logos01} alt="logo" loading="lazy" />
                                 </div>
                             </div>
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos02} alt="logo" />
+                                    <img loading="lazy" src={logos02} alt="logo" />
                                 </div>
                             </div>
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos03} alt="logo" />
+                                    <img loading="lazy" src={logos03} alt="logo" />
                                 </div>
                             </div>
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos04} alt="logo" />
+                                    <img loading="lazy" src={logos04} alt="logo" />
                                 </div>
                             </div>
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos05} alt="logo" />
+                                    <img loading="lazy" src={logos05} alt="logo" />
                                 </div>
                             </div>
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos06} alt="logo" />
+                                    <img loading="lazy" src={logos06} alt="logo" />
                                 </div>
                             </div>
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos07} alt="logo" />
+                                    <img loading="lazy" src={logos07} alt="logo" />
                                 </div>
                             </div>
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos08} alt="logo" />
+                                    <img loading="lazy" src={logos08} alt="logo" />
                                 </div>
                             </div>
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos09} alt="logo" />
+                                    <img loading="lazy" src={logos09} alt="logo" />
                                 </div>
                             </div>
                             <div className="logos-bottom-footer__column">
                                 <div className="logos-bottom-footer__item">
-                                    <LazyLoadImage src={logos10} alt="logo" />
+                                    <img loading="lazy" src={logos10} alt="logo" />
                                 </div>
                             </div>
                         </div>

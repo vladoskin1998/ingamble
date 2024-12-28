@@ -3,7 +3,7 @@ import { AccordionItem } from "../../acordion/Acordion"
 import { RangeSlider } from "../../filter-components/RangeSlider"
 import { YesNoDoubleCheckbox } from "../../filter-components/YesNoDoubleCheckbox"
 
-export const LoyaltiesFilter = () => {
+export default function LoyaltiesFilter  ()  {
     const { loyaltiesFilters, setLoyaltiesFilters } = useFilterContext()
     return (
         <div

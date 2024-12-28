@@ -10,9 +10,8 @@ import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { COLORS_TAGS, sanitizeLink } from '../../helper'
 import { Link } from 'react-router-dom'
-import { LazyImgHomeType } from '.'
 
-export default function BlockMType3M({ data, lazyLoadImg = 'lazy' }: { data: HomeDataBlock | undefined; lazyLoadImg?: LazyImgHomeType }) {
+export default function BlockMType3M({ data }: { data: HomeDataBlock | undefined;  }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -90,7 +89,7 @@ export default function BlockMType3M({ data, lazyLoadImg = 'lazy' }: { data: Hom
                                                                 className="different-casino-standart__image-block"
                                                             >
                                                                 <span className="different-casino-standart__image ibg--custom">
-                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%" imgLoading={lazyLoadImg} />
+                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%"  />
                                                                 </span>
                                                             </Link>
                                                             <div className="different-casino-standart__content">

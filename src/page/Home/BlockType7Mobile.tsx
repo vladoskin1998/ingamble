@@ -60,7 +60,7 @@ export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undef
                                                 <div className="slide-slider__item different-casino-medium">
                                                     <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-medium__image-block">
                                                         <span className="different-casino-medium__image ibg--custom">
-                                                            <LazyCardImg img={item.casino_info.casino_image || ''} size="medium" imgLoading={!index ? 'eager' : 'lazy'} />
+                                                            <LazyCardImg img={item.casino_info.casino_image || ''} size="medium"  />
                                                         </span>
                                                     </Link>
                                                     <div className="different-casino-medium__content">

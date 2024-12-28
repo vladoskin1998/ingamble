@@ -1,5 +1,4 @@
 import { useState, useMemo, useEffect, memo } from "react"
-import { LazyLoadImage } from "react-lazy-load-image-component"
 import { FixedSizeList as List } from "react-window"
 import { BonusFilterBodyType, CasinoFilterBodyType } from "../../types"
 
@@ -134,7 +133,7 @@ const ListCheck = <M extends CasinoFilterBodyType | BonusFilterBodyType>({
                                         {isImageShow && (itemFilter?.image ||
                                             itemFilter?.flag_image) && (
                                             <span className="flag">
-                                                <LazyLoadImage
+                                                <img loading="lazy"
                                                     alt={itemFilter?.name}
                                                     src={
                                                         itemFilter?.image ||

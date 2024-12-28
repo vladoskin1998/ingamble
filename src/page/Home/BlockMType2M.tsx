@@ -105,8 +105,7 @@ export default function BlockMType2M({
                                                                     <LazyCardImg
                                                                         img={item?.[0].casino_info.casino_image || ''}
                                                                         size="medium"
-                                                                        // imgLoading={lazyLoadImg}
-                                                                        imgLoading="lazy"
+                                                                     
                                                                     />
                                                                 </span>
                                                             </Link>

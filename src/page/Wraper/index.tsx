@@ -1,11 +1,12 @@
-import { lazy, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 import { Header } from '../../components/header'
 
 import { useAdaptiveBehavior } from '../../context/AppContext'
-const Icons = lazy(() => import('./Icons'))
-const Navbar = lazy(() => import('../../components/navbar'))
-const Footer = lazy(() => import('../../components/footer'))
+import Navbar from '../../components/navbar'
+import Icons from './Icons'
+import Footer from '../../components/footer'
+
 
 export const Wraper = ({ children }: { children: ReactNode }) => {
     const { isSidebarActive, setSidebarActive } = useAdaptiveBehavior()
@@ -24,7 +25,6 @@ export const Wraper = ({ children }: { children: ReactNode }) => {
                     <div className="gamble__body">
                         <Header isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
                         <>{children}</>
-
                         <Footer />
                     </div>
                 </div>
