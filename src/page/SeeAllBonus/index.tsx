@@ -26,7 +26,7 @@ const getAllBonusFetchData = async (page: number, queryId: string | null) => {
     return response.data
 }
 
-const countPageSize = 20
+ const countPageSize = window.innerWidth < 900 ? 10 : 20
 
 export default function SeeAllBonus() {
     // // document.title = "All Bonus"

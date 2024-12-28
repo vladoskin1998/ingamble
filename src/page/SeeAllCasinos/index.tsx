@@ -44,7 +44,7 @@ export const WithdrawalSeeAllCasinos = (n: { daily: number | null; weekly: numbe
     return ''
 }
 
-const countPageSize = 10
+ const countPageSize = window.innerWidth < 900 ? 8 : 15
 
 export default function SeeAllCasinos() {
     // document.title = "All Casino"

@@ -22,7 +22,7 @@ import { NoResult } from '../../components/no-result'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
-const countPageSize = 20
+const countPageSize = window.innerWidth < 900 ? 10 :20
 
 const debouncedFetchFilter = debounce((filters, fetchFunction) => fetchFunction(filters), 700)
 

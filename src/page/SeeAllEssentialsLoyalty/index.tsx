@@ -18,7 +18,7 @@ const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeFor
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
-const countPageSize = 10
+const countPageSize = window.innerWidth < 900 ? 8 : 15
 
 export default function SeeAllEssentialsLoyalty() {
     // document.title = "All Essentials Loyalty"

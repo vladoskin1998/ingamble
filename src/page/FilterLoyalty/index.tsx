@@ -22,7 +22,7 @@ import searchImg from '../../assets/img/icons/search-filter.svg'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
-const countPageSize = 15
+ const countPageSize = window.innerWidth < 900 ? 8 : 15
 
 const debouncedFetchFilter = debounce((filters, fetchFunction) => fetchFunction(filters), 700)
 
