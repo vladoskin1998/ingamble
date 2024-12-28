@@ -58,6 +58,7 @@ import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { BlockTypeNumber, HomeDataBlock, HomeDataBlockMobile } from '../../types'
 import { Categories } from '../../components/categories/Categories'
+import { useLocation } from 'react-router-dom'
 
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 
@@ -109,7 +110,7 @@ export default function Home() {
     // // document.title = "Home"
     //@ts-ignore
     const { isSidebarActive, setSidebarActive, initializeAdaptiveBehavior } = useAdaptiveBehavior()
-
+    const location = useLocation()
     const { data, isLoading } = useQuery<{
         dataHome: { data_blocks: HomeDataBlock[] }[]
         dataHomeMobile: { data_blocks_m: HomeDataBlockMobile[] }[]
@@ -121,8 +122,13 @@ export default function Home() {
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
 
+       useEffect(() => {
+           window.scrollTo(0, 0)
+         
+       }, [location.pathname])
+
     useEffect(() => {
-        console.log('scrollTo')
+        
         window.scrollTo(0, 0)
         const handleResize = () => setIsMobile(window.innerWidth <= 480)
         window.addEventListener('resize', handleResize)
