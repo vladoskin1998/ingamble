@@ -1,8 +1,6 @@
 import { Wraper } from '../Wraper'
 import starIcon from '../../assets/img/icons/star.svg'
 import likeIcon from '../../assets/img/icons/like.svg'
-const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 import { Categories } from '../../components/categories/Categories'
 import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 import { CasinoBonuses } from './CasinoBonuses'
@@ -24,7 +22,10 @@ import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '.
 import { COUNTRIES } from '../../helper/Country'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import giftIcon from '../../assets/img/icons/gift.svg'
+
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 // import { sanitizeLink } from "../../helper"
 
 const SafetyIndexRatingLevel = (n: number) => {
@@ -71,9 +72,10 @@ export default function SimpleCasinos() {
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: '',
         countryName: '',
-        isAllowed: false,
+        isAllowed: true,
         isLoadedGeo: false,
         countryImg: undefined,
+        idCountry: null,
     })
 
     useEffect(() => {
@@ -85,20 +87,15 @@ export default function SimpleCasinos() {
                 return it.code === countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase()
             })?.flag_image
 
-            const isAllowed = !data.dataCurrentCasinos?.blocked_countries?.find((item) => item?.code?.toLocaleLowerCase() === countryCode?.toLocaleLowerCase())
-
-            // !data.dataBonus?.restriction_country?.country.find(
-            //     (item) =>
-            //         item?.code?.toLocaleLowerCase() ===
-            //         countryCode?.toLocaleLowerCase()
-            // )
+            const idCountry = data.dataCurrentCasinos?.blocked_countries?.find((item) => item?.code?.toLocaleLowerCase() === countryCode?.toLocaleLowerCase())?.id            
 
             setGeoLocation({
                 countryCode,
                 countryName,
-                isAllowed,
+                isAllowed: !idCountry,
                 isLoadedGeo: true,
                 countryImg,
+                idCountry,
             })
         }
     }, [data, Country])

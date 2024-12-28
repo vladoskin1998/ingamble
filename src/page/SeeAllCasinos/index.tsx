@@ -13,6 +13,7 @@ import { LogoLoader } from '../../components/loader/LogoLoader'
 import { PAYOUTSPEED, SeeAllCasinosType, SeeAllCasinosCategoryResponse } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, NumberAssociaty, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { NoResult } from '../../components/no-result'
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
@@ -130,7 +131,8 @@ export default function SeeAllCasinos() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="main-loyaltie-programs__items loyaltie-programs__items">
+                            {displayedData?.length ? <>
+                              <div className="main-loyaltie-programs__items loyaltie-programs__items">
                                 {displayedData?.map((item) => (
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
@@ -252,6 +254,11 @@ export default function SeeAllCasinos() {
                                     </div>
                                 ))}
                             </div>
+                            </> : 
+                                isLoading && <NoResult/>
+                            
+                            }
+                          
                             <PaginationPage
                                 countElem={data?.casino?.count}
                                 currentPage={currentPage}

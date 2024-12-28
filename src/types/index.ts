@@ -149,7 +149,7 @@ export type GeoLocationAllowdType = {
     isAllowed: boolean;
     isLoadedGeo: boolean;
     countryImg: string | undefined | null;
-    idCountry?: number | null
+    idCountry: number | null | undefined
 }
 
 

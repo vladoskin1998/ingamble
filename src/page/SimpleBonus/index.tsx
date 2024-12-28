@@ -9,11 +9,11 @@ import { Categories } from '../../components/categories/Categories'
 import { LastUpdate } from './LastUpdate'
 import { Wraper } from '../Wraper'
 import { useAdaptiveBehavior } from '../../context/AppContext'
-const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
+
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { HeaderSimpleBonus } from './HeaderSimpleBonus'
 import { HowToGetBonus } from './HowToGetBonus'
-const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
+
 import { HarryStyles } from './HarryStyles'
 import { useSearchParams } from 'react-router-dom'
 import { EssentialVIPLoyaltyPrograms } from './EssentialVIPLoyaltyPrograms'
@@ -23,6 +23,8 @@ import { COUNTRIES } from '../../helper/Country'
 import { OtherBestReloadBonus } from './OtherBestBonus'
 import ASHLINGOBRIEN from '../../assets/img/casino-person/5.webp'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 
 const getBonusDataFetch = async ({ queryId }: { queryId: string | null }) => {
     const response = await $api.get(`get-data-bonus/${queryId}/`)

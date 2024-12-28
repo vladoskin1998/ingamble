@@ -9,9 +9,11 @@ import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '.
 import { Link } from 'react-router-dom'
 
 const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | undefined }) {
-    ;('BlockType9')
+   
 
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9) return <></>
+
+    console.log('BlockTypeNumber.BlockType9')
     return (
         <section aria-label="BlockTypeNumber.BlockType9" className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
             <div className="essential-programs-gamble__container container">

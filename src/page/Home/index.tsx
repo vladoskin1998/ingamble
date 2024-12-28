@@ -116,7 +116,7 @@ export default function Home() {
         headers: any
     }>('get-data-home-page/ ', getHomeDataFetch, {
         staleTime: Infinity,
-        cacheTime: 1000 * 60 * 5,
+        cacheTime: 1000 * 60 * 10,
     })
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
@@ -137,9 +137,6 @@ export default function Home() {
 
      const firstThreeBlocks = blocksToRender?.slice(0, 2) || []
      const remainingBlocks = blocksToRender?.slice(2) || []
-
-
-
 
 
     if (!blocksToRender?.length) return (

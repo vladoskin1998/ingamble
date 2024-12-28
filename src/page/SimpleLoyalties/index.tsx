@@ -6,7 +6,6 @@ import { LoyaltyRewnew } from './LoyaltyRewnew'
 import { LoyaltyText } from './LoyaltyText'
 import { HowToStartVipJorney } from './HowToStartVipJorney'
 import { HarryStyles } from '../SimpleBonus/HarryStyles'
-
 import { LoyaltyAcordeon } from './LoyaltyAcordeon'
 import $api from '../../http'
 import { useAdaptiveBehavior } from '../../context/AppContext'
@@ -15,13 +14,13 @@ import { useQuery } from 'react-query'
 import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from '../../types'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { lazy, useEffect, useState } from 'react'
-
 import { useFilterContext } from '../../context/FilterContext'
 import { SiblingBonus } from '../SimpleBonus/SiblingBonus'
 import { COUNTRIES } from '../../helper/Country'
 import { OtherBestReloadBonus } from '../SimpleBonus/OtherBestBonus'
 import { EssentialVIPLoyaltyPrograms } from '../SimpleBonus/EssentialVIPLoyaltyPrograms'
 import JEFFMURPHY from '../../assets/img/casino-person/4.webp'
+
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
@@ -43,6 +42,7 @@ export default function SimpleLoyalties() {
         isAllowed: true,
         isLoadedGeo: false,
         countryImg: undefined,
+        idCountry: null
     })
 
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
@@ -75,14 +75,15 @@ export default function SimpleLoyalties() {
                 return it.code === countryCode || it.name.toLocaleLowerCase() === countryName.toLocaleLowerCase()
             })?.flag_image
 
-            const isAllowed = !data.dataCurrentLoyaltie?.blocked_countries?.find((item) => item?.code?.toLocaleLowerCase() === countryCode?.toLocaleLowerCase())
+            const idCountry = data?.dataCurrentLoyaltie?.blocked_countries?.find((item) => item?.code?.toLocaleLowerCase() === countryCode?.toLocaleLowerCase())?.id            
 
             setGeoLocation({
                 countryCode,
                 countryName,
-                isAllowed,
+                isAllowed: !idCountry,
                 isLoadedGeo: true,
                 countryImg,
+                idCountry,
             })
         }
     }, [data, Country, COUNTRIES])

@@ -17,12 +17,11 @@ import { LogoLoader } from '../../components/loader/LogoLoader'
 import searchImg from '../../assets/img/icons/search-filter.svg'
 import '../SeeAllBonus/style.css'
 import { v4 as uuidv4 } from 'uuid'
-const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 import { Link } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
-
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const countPageSize = 20
 
 const debouncedFetchFilter = debounce((filters, fetchFunction) => fetchFunction(filters), 700)
@@ -158,7 +157,7 @@ export default function FilterBonus() {
                                     />{' '}
                                 </>
                             ) : (
-                                <NoResult />
+                               isLoading && <NoResult />
                             )}
                         </div>
                     </section>

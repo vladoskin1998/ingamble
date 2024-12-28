@@ -192,15 +192,11 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
 
 
 
-    const { data: dataCategories } =
-        useQuery<AllCategoriesHomeDataResponse>(
-            "get-data-home-page-categories/",
-            getDataHomePageCategories,
-            {
-                keepPreviousData: true,
-                staleTime: Infinity,
-            }
-        )
+    const { data: dataCategories } = useQuery<AllCategoriesHomeDataResponse>('get-data-home-page-categories/', getDataHomePageCategories, {
+        keepPreviousData: true,
+        staleTime: Infinity,
+        cacheTime: 1000 * 60 * 100,
+    })
 
         const category = useMemo(() => {
             return shuffleArray([
