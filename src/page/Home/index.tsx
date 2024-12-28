@@ -110,7 +110,6 @@ export default function Home() {
     // // document.title = "Home"
     //@ts-ignore
     const { isSidebarActive, setSidebarActive, initializeAdaptiveBehavior } = useAdaptiveBehavior()
-   
     const { data, isLoading } = useQuery<{
         dataHome: { data_blocks: HomeDataBlock[] }[]
         dataHomeMobile: { data_blocks_m: HomeDataBlockMobile[] }[]
@@ -123,7 +122,7 @@ export default function Home() {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
 
       useEffect(() => {
-          requestAnimationFrame(() => {
+          setTimeout(() => {
               window.scrollTo(0, 0)
           })
       }, [])
@@ -148,60 +147,63 @@ export default function Home() {
      const remainingBlocks = blocksToRender?.slice(2) || []
 
 
-    if (!blocksToRender?.length) return (
-            <LogoLoader />
-    )
+    // if (!blocksToRender?.length) return (
+    //         <LogoLoader />
+    // )
     
 
     return (
-        <Wraper>
-            <main className="gamble__main main-gamble">
-                <div className="main-gamble__body">
-                    <Categories />
-                    {/* <div className="home--main--pc">
+        <>
+            {!blocksToRender?.length && <LogoLoader />}
+            <Wraper>
+                <main className="gamble__main main-gamble">
+                    <div className="main-gamble__body">
+                        <Categories />
+                        {/* <div className="home--main--pc">
                     {data?.dataHome?.map((block) => renderBlock(block))}
                     </div>
                     <div className="home--main--mob">
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
                     </div> */}
-                    {firstThreeBlocks?.map((block, index) => renderBlock(block, index, isMobile))}
+                        {firstThreeBlocks?.map((block, index) => renderBlock(block, index, isMobile))}
 
-                     <Suspense >{remainingBlocks?.map((block, index) => renderBlock(block, index + 3, isMobile))}</Suspense>
-                    {/* Лениво загружаем оставшиеся блоки */}
+                        <Suspense>{remainingBlocks?.map((block, index) => renderBlock(block, index + 3, isMobile))}</Suspense>
+                        {/* Лениво загружаем оставшиеся блоки */}
 
-                    {/* <FastestPayoutCasinos /> */}
-                    {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
+                        {/* <FastestPayoutCasinos /> */}
+                        {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
                         <WhatWeArePlayingNow />
                     </div> */}
-                    {/* <FastestWithdrawalCasinos />
+                        {/* <FastestWithdrawalCasinos />
                     <WeeksFavoiritesBonuses /> */}
-                    {/* <TheBestCasinosYear /> */}
-                    {/* <PopularFree /> */}
-                    {/* <HighrollerCasinoBonuses />
+                        {/* <TheBestCasinosYear /> */}
+                        {/* <PopularFree /> */}
+                        {/* <HighrollerCasinoBonuses />
                     <NewlyOpenedCasinos />
                     <div className="main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
                         <WhatWeArePlayingNow />
                     </div> */}
-                    {/* <ExploreTheBestCryptoCasinos />
+                        {/* <ExploreTheBestCryptoCasinos />
                     <GetStartedWithPowerfulWelcomeBonusPacks /> */}
-                    {/* <VPNFriendlyCasinos /> */}
-                    {/* <NonStickyBonus />
+                        {/* <VPNFriendlyCasinos /> */}
+                        {/* <NonStickyBonus />
                     <TopReloadBonuses /> */}
-                    {/* <BlockType7Mobile
+                        {/* <BlockType7Mobile
                         data={data?.dataHome?.data_blocks?.find(
                             (item) =>
                                 item.items_block.type_block ===
                                 BlockTypeNumber.BlockType7
                         )}
                     /> */}
-                    {/* <GreatLiveCasinoBonuses /> */}
-                    <MoreBonusesForYourChoise />
-                    <CheckMoreWhatSuitsYouBest />
-                    <SubscribeForm />
-                    <BottomInfo />
-                </div>
-            </main>
-        </Wraper>
+                        {/* <GreatLiveCasinoBonuses /> */}
+                        <MoreBonusesForYourChoise />
+                        <CheckMoreWhatSuitsYouBest />
+                        <SubscribeForm />
+                        <BottomInfo />
+                    </div>
+                </main>
+            </Wraper>
+        </>
     )
 }
