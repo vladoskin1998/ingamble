@@ -58,6 +58,7 @@ import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { BlockTypeNumber, HomeDataBlock, HomeDataBlockMobile } from '../../types'
 import { Categories } from '../../components/categories/Categories'
+import { initData } from './init'
 
 
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
@@ -134,9 +135,9 @@ export default function Home() {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
-    const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
+    const blocksToRender = isMobile ? (data?.dataHomeMobile || initData.data_blocks_m)  : (data?.dataHome || initData.data_blocks_m) 
 
-     const firstThreeBlocks = blocksToRender?.slice(0, 2) || []
+     const firstThreeBlocks = (blocksToRender)?.slice(0, 2) || []
      const remainingBlocks = blocksToRender?.slice(2) || []
 
 
