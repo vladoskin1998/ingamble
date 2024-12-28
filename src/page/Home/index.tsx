@@ -122,6 +122,10 @@ export default function Home() {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
 
     useEffect(() => {
+         window.scrollTo({
+             behavior: 'smooth',
+             top: 0,
+         })
         const handleResize = () => setIsMobile(window.innerWidth <= 480)
         window.addEventListener('resize', handleResize)
 
