@@ -7,9 +7,9 @@ import { LogoLoader } from '../../components/loader/LogoLoader'
 import $api from '../../http'
 //@ts-ignore
 import { BlockTypeNumber, HomeDataBlock, HomeDataBlockMobile } from '../../types'
-const HomeMob = lazy(() => import('./HomeMob'))
-const HomePc = lazy(() => import('./HomePc'))
-
+import HomeMob from './HomeMob'
+// import HomePc from './HomePc'
+ const HomePc = lazy(() => import('./HomePc'))
 // const BlockType1 = lazy(() => import('./BlockType1'))
 // const BlockType2Mobile = lazy(() => import('./BlockType2Mobile'))
 // const BlockType3Mobile = lazy(() => import('./BlockType3Mobile'))
@@ -122,8 +122,11 @@ export default function Home() {
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
                     </div> */}
-                        {isMobile ? <HomeMob blocksToRender={blocksToRender} /> : <HomePc blocksToRender={blocksToRender} />}
                         {/* {blocksToRender?.map((block, index) => renderBlock(block, index, isMobile))} */}
+                            {
+                                            isMobile ? <HomeMob blocksToRender={blocksToRender} /> : <HomePc blocksToRender={blocksToRender} />
+                            }
+                
 
                         {/* Лениво загружаем оставшиеся блоки */}
 
