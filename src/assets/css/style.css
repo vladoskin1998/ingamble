@@ -18701,17 +18701,17 @@ h3 {
 }
 
 .cristmas-style{
-  width:29px !important;
-  height:31px !important;
-   padding-bottom:5.5px;
+  width:39px !important;
+  height:35px !important;
+  
     flex:0 0 29px !important;
 }
 
 @media (max-width: 480.98px) {
   .cristmas-style {
     width:19px !important;
-    height:19px !important;
-     padding-bottom:2px;
-      flex:0 0 19px !important;
+    height:23px !important;
+    
+      flex:0 0 23px !important;
   }
 }

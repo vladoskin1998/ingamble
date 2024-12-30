@@ -329,7 +329,7 @@ export default function Footer() {
                                 </div>
                                 <div className="socials-top-footer__label-text">
                                     You need help?
-                                    <a rel="nofollow noopener" href="#" aria-label="Put your description here." target="_blank">
+                                    <a rel="nofollow noopener" href="https://t.me/CryptoGamblersSupport" aria-label="Put your description here." target="_blank">
                                         <span>Get in touch with us</span>
                                     </a>
                                 </div>
