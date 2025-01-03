@@ -1,12 +1,12 @@
 import bg07 from "../../assets/img/bg/07.webp"
 
 import girl from "../../assets/img/girls/03.png"
-import { useAdaptiveBehavior } from "../../context/AppContext"
+// import { useAdaptiveBehavior } from "../../context/AppContext"
 
 export default function MoreBonusesForYourChoise ()  {
 
-    const { isSidebarActive, setSidebarActive } =
-    useAdaptiveBehavior()
+    // const { isSidebarActive, setSidebarActive } =
+    // useAdaptiveBehavior()
 
   return (
     <section className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble best-live-dealer-casinos-gamble_mobile main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
@@ -40,9 +40,9 @@ export default function MoreBonusesForYourChoise ()  {
                     <button
                  
                         className="best-live-dealer-casinos-gamble__btn filter-open"
-                        onClick={() =>
-                            setSidebarActive(!isSidebarActive)
-                        }
+                        // onClick={() =>
+                        //     // setSidebarActive(!isSidebarActive)
+                        // }
                     >
                         <span>
                             <svg>

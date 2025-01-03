@@ -50,7 +50,7 @@ export const Categories = () =>
                             },
                         }}
                         spaceBetween={8}
-                        style={{ margin: 0 }}
+                        style={{ margin: 0, display:'flex' }}
                     >
                         { CristmasCategory && 
                         <SwiperSlide  style={{ width: "auto" }}>

@@ -1,6 +1,6 @@
 import { useEffect, useState, lazy } from 'react'
 import { Wraper } from '../Wraper'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+// import { useAdaptiveBehavior } from '../../context/AppContext'
 import { Categories } from '../../components/categories/Categories'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
@@ -77,7 +77,7 @@ const renderBlock = (block: any, index: number, isMobile: boolean) => {
 export default function Home() {
     // // document.title = "Home"
     //@ts-ignore
-    const { isSidebarActive, setSidebarActive, initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    // const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const { data, isLoading } = useQuery<{
         dataHome: { data_blocks: HomeDataBlock[] }[]
         dataHomeMobile: { data_blocks_m: HomeDataBlockMobile[] }[]
@@ -97,9 +97,9 @@ export default function Home() {
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
-    useEffect(() => {
-        initializeAdaptiveBehavior()
-    }, [isLoading])
+    // useEffect(() => {
+    //     initializeAdaptiveBehavior()
+    // }, [isLoading])
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
 
