@@ -258,12 +258,9 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                 .filter((item) => item.big_card)
                                                 .map((item, index) => (
                                                     <SwiperSlide key={index} className="baner-row-block__slide slide-baner-row-block ">
-                                                        <div>
+                                                        <a>
                                                             <div className="slide-baner-row-block__item item-baner-row-block">
-                                                                <Link
-                                                                    to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
-                                                                    className="item-baner-row-block__image ibg--custom"
-                                                                >
+                                                                <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`} className="item-baner-row-block__image ibg--custom">
                                                                     <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
                                                                 </Link>
                                                                 <div className="item-baner-row-block__row">
@@ -310,7 +307,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </a>
                                                     </SwiperSlide>
                                                 ))}
                                         </Swiper>
