@@ -69,7 +69,7 @@ export const OtherBestReloadBonus = ({ casinoName }: { casinoName?: string }) =>
                                     <>
                                         {typeof b !== 'string'
                                             ? b?.labels.map((l, ct) => (
-                                                  <div className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
+                                                  <div key={ct} className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
                                                       <span className="tags-casino-card__item-label">{typeof l !== 'string' && 'name' in l ? l?.name : ''}</span>
                                                   </div>
                                               ))

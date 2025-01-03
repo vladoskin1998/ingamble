@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import { SwiperRef } from "swiper/react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from "../../helper"
 import { LazyCardImg } from "../lazy-img/LazyCardImg"
 
@@ -43,7 +43,12 @@ const MainSlider = ({
         }
     }, [])
 
-  
+    const navigate = useNavigate()
+
+    const navToImageLink = (e:React.MouseEvent,l:string) => {
+        e.preventDefault()
+        navigate(l)
+    }
     return (
         <div className="more-staket-simple-bonus__slider slider">
             <div className="slider__body">
@@ -73,9 +78,9 @@ const MainSlider = ({
                                 <SwiperSlide key={index}>
                                     <div className="slide-slider__item casino-card">
                                         <div className="casino-card__image-block">
-                                            <div className="casino-card__image">
+                                            <Link to={item?.imageLink || '/'} onClick={(e) => navToImageLink(e, item?.imageLink || '')} aria-label="Put your description here." className="casino-card__image">
                                                 <LazyCardImg img={item.img || ''} width="100%" height="100%" />
-                                            </div>
+                                            </Link>
 
                                             <a
                                                 rel="nofollow noopener"

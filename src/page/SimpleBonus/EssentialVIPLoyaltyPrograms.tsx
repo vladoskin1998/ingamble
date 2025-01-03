@@ -61,9 +61,9 @@ export const EssentialVIPLoyaltyPrograms = ({ casinoName }: { casinoName?: strin
                                 }}
                                 className="slider__wrapper swiper-wrapper"
                             >
-                                {LoyaltieDataHigh?.map((item) => (
+                                {LoyaltieDataHigh?.map((item, index) => (
                                     <SwiperSlide>
-                                        <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
+                                        <div key={index} className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                             <div className="item-essential-programs-gamble__top">
                                                 <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`} aria-label="Put your description here." className="item-essential-programs-gamble__logo">
                                                     <LazyCardImg img={item.card_logo || ''} />
@@ -115,7 +115,7 @@ export const EssentialVIPLoyaltyPrograms = ({ casinoName }: { casinoName?: strin
                                                 </div>
                                                 <div className="item-essential-programs-gamble__features features-essential-programs-gamble">
                                                     {item.keypoints.map((itp, idk) => (
-                                                        <div className="features-essential-programs-gamble__item" key={idk + 222}>
+                                                        <div className="features-essential-programs-gamble__item" key={idk }>
                                                             <div className="features-essential-programs-gamble__icon">
                                                                 <LazyCardImg img={itp.image || ''} size="medium" />
                                                             </div>
