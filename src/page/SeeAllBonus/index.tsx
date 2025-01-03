@@ -89,7 +89,7 @@ export default function SeeAllBonus() {
         <Wraper>
             <main className="gamble__see-all main-gamble see-all">
                 <div className="main-gamble__body">
-                    <Categories />
+                    <Categories type_category={'bonus'}/>
                     <BreadCrumb
                         path={[
                             {

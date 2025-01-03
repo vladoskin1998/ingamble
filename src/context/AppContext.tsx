@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { AllCategoriesHomeDataResponse } from '../types';
 import $api from '../http';
 import { sanitizeLink, shuffleArray } from '../helper';
+import { CategorySwiperType } from '../components/categories/Categories';
 
 const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
 
@@ -23,7 +24,7 @@ interface AdaptiveContextType {
     setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
     initializeAdaptiveBehavior: () => void;
     lastUpdate: string
-    category: { link: string; name: string; bonus_id?:number ; casino_id?:number}[]
+    category: { link: string; name: string; bonus_id?:number ; casino_id?:number, categoryType:CategorySwiperType}[]
 }
 
 const getRandomDate = (startDate: Date, endDate: Date): Date => {
@@ -203,14 +204,16 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
                 ...(dataCategories?.bonus_categories?.map((item) => ({
                     name: item.name,
                     link: `${window.location.origin}/all-bonuses/${sanitizeLink(item?.name)}?queryId=${item.id}`,
-                    bonus_id: item.id
+                    bonus_id: item.id,
+                    categoryType: 'bonus' as CategorySwiperType,
                 })) || []),
                 ...(dataCategories?.casino_categories?.map((item) => ({
                     name: item.name,
                     link: `${window.location.origin}/all-casinos/${sanitizeLink(item?.name)}?queryId=${item.id}`,
-                    casino_id: item.id
+                    casino_id: item.id,
+                    categoryType: 'casino' as CategorySwiperType,
                 })) || []),
-            ]);
+            ])
         }, [dataCategories])
 
 

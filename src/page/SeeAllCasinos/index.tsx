@@ -104,7 +104,7 @@ export default function SeeAllCasinos() {
         <Wraper>
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
-                    <Categories />
+                    <Categories type_category={'casino'} />
                     <BreadCrumb
                         path={[
                             {
@@ -132,8 +132,8 @@ export default function SeeAllCasinos() {
                                     </div>
                                 </div>
                             </div>
-                          
-                              <div className="main-loyaltie-programs__items loyaltie-programs__items">
+
+                            <div className="main-loyaltie-programs__items loyaltie-programs__items">
                                 {displayedData?.map((item) => (
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
@@ -255,8 +255,8 @@ export default function SeeAllCasinos() {
                                     </div>
                                 ))}
                             </div>
-                              {!displayedData?.length && isLoading && <NoResult />}
-                          
+                            {!displayedData?.length && isLoading && <NoResult />}
+
                             <PaginationPage
                                 countElem={data?.casino?.count}
                                 currentPage={currentPage}
