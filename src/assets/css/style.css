@@ -18715,3 +18715,7 @@ h3 {
       flex:0 0 23px !important;
   }
 }
+
+.categorie--tags .swiper-wrapper{
+  display:flex;
+}
