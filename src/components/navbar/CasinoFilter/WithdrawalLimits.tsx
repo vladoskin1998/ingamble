@@ -22,7 +22,7 @@ const renderLimit = (
                 <input
                     className="field__input field__input_only"
                     type="number"
-                    defaultValue={max}
+                    
                     value={value || ""}
                     onChange={(e) => onChange(Number(e.target.value))}
                 />

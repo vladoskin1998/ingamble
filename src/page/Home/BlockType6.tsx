@@ -75,7 +75,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                 }}
                             >
                                 {dataCard?.slice(0, 8)?.map((item, index) => (
-                                    <SwiperSlide key={index} >
+                                    <SwiperSlide key={index}>
                                         <div className="slider__slide slide-slider swiper-slide">
                                             <div className="slide-slider__item casino-card">
                                                 <div className="casino-card__image-block">
@@ -84,7 +84,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                         onClick={(e) => e.stopPropagation()}
                                                         to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
                                                     >
-                                                        <LazyCardImg img={item.bonus_info.bonus_image || ''}  />
+                                                        <LazyCardImg img={item.bonus_info.bonus_image || ''} />
                                                     </Link>
                                                     <a
                                                         href={cloacingLink(item?.casino_info?.casino_name)}
@@ -102,16 +102,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                 </div>
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__small-card casino-small-card">
-                                                        <a
-                                                            href={cloacingLink(item?.casino_info?.casino_name)}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation()
-                                                                e.preventDefault()
-                                                                cloacingFetch(item?.casino_info?.casino_affiliate_link)
-                                                                window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
-                                                            }}
-                                                            className="casino-small-card__image-block"
-                                                        >
+                                                        <div className="casino-small-card__image-block">
                                                             <Link
                                                                 className="casino-small-card__image ibg--custom"
                                                                 style={{
@@ -121,7 +112,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                             >
                                                                 <LazyCardImg img={item.casino_info.casino_image || ''} size="medium" />
                                                             </Link>
-                                                        </a>
+                                                        </div>
                                                         <div className="casino-small-card__body">
                                                             <Link
                                                                 to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}

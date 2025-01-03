@@ -100,7 +100,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                             }
                                             return acc
                                         }, [])
-                                        .map((item) => (
+                                        .map((item, index) => (
                                             //////main slide
                                             <SwiperSlide
                                                 className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide"
@@ -108,6 +108,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                     minHeight: '260px',
                                                     height: '100%',
                                                 }}
+                                                key={index}
                                             >
                                                 <>
                                                     <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
@@ -257,11 +258,14 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                 .filter((item) => item.big_card)
                                                 .map((item, index) => (
                                                     <SwiperSlide key={index} className="baner-row-block__slide slide-baner-row-block ">
-                                                        <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}>
+                                                        <div>
                                                             <div className="slide-baner-row-block__item item-baner-row-block">
-                                                                <div className="item-baner-row-block__image ibg--custom">
+                                                                <Link
+                                                                    to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                                    className="item-baner-row-block__image ibg--custom"
+                                                                >
                                                                     <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
-                                                                </div>
+                                                                </Link>
                                                                 <div className="item-baner-row-block__row">
                                                                     <div className="item-baner-row-block__column">
                                                                         <div className="item-baner-row-block__small-card casino-small-card">
@@ -306,7 +310,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </Link>
+                                                        </div>
                                                     </SwiperSlide>
                                                 ))}
                                         </Swiper>

@@ -92,11 +92,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                 >
                                                                     <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%"  />
                                                                 </Link>
-                                                                <Link
-                                                                    to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info.casino_id}`}
-                                                                    onClick={(e) => e.stopPropagation()}
-                                                                    aria-label="Put your description here."
-                                                                    className="item-baner-row-block__row"
+                                                                <div className="item-baner-row-block__row"
                                                                 >
                                                                     <div className="item-baner-row-block__column">
                                                                         <div className="item-baner-row-block__small-card casino-small-card">
@@ -155,7 +151,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                             Play
                                                                         </a>
                                                                     </div>
-                                                                </Link>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </SwiperSlide>

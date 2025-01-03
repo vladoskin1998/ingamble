@@ -8,7 +8,7 @@ export default function BlockType8({ data }: { data: HomeDataBlock | undefined }
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
 
-    console.log("BlockTypeNumber.BlockType8")
+
     
     return (
         <section aria-label="BlockTypeNumber.BlockType8" className="main-gamble__low-wager-bonuses low-wager-bonuses-gamble ">

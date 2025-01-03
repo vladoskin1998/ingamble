@@ -39,7 +39,7 @@ export default function BlockMType2M({
 
     if (!data || data?.items_block?.type_block !== BlockTypeNumber.BlockType2M) return <></>
 
-      console.log('BlockTypeNumber.BlockType2M')
+  
     return (
         <section aria-label="BlockTypeNumber.BlockType2M" className="main-gamble__payn-play-casinos payn-play-casinos-gamble">
             <div className="payn-play-casinos-gamble__container container">

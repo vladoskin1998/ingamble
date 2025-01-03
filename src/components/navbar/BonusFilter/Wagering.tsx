@@ -61,7 +61,7 @@ export const Wagering = ({
                     <input
                         className="field__input field__input_only"
                         type="number"
-                        defaultValue={100}
+                        
                         value={value || ''}
                         onChange={(e) =>
                             onChange(

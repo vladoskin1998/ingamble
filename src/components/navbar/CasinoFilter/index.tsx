@@ -25,24 +25,10 @@ export default function CasinoFilterContent ({
     const { casinoFilters, setCasinoFilters } = useFilterContext()
 
     return (
-        <div
-            className={`item-form-filters__body custom-item-form-filters__body`}
-        >
-            {/* <div
-                style={{
-                    position: "fixed",
-                    top: 0,
-                    right: 0,
-                    width: "600px",
-                    height: "100vh",
-                    background: "white",
-                    zIndex: 9999,
-                }}
-            >
-                {JSON.stringify(casinoFilters).replace(/,/g, "\n")}
-            </div> */}
+        <div className={`item-form-filters__body custom-item-form-filters__body`}>
             <div className="item-form-filters__filter form-filter">
                 <AccordionItem
+                    defaultOpen
                     heading={
                         <h3 className="form-filter__title title-form-filter accordion--title--element">
                             <span className="title-form-filter__icon">
@@ -50,76 +36,55 @@ export default function CasinoFilterContent ({
                                     <use xlinkHref="#arrow"></use>
                                 </svg>
                             </span>
-                            <span>Casinos Rank</span>
-                            <span className="title-form-filter__count">1</span>
-                        </h3>
-                    }
-                    content={
-                        <RangeSlider
-                            initState={casinoFilters.casino_rank}
-                            field="casino_rank"
-                            minmax={[1, 10]}
-                            setLocalFilters={setCasinoFilters}
-                        />
-                    }
-                />
-            </div>
-            <div className="item-form-filters__filter form-filter">
-                <AccordionItem
-                    heading={
-                        <h3 className="form-filter__title title-form-filter accordion--title--element">
-                            <span className="title-form-filter__icon">
-                                <svg>
-                                    <use xlinkHref="#arrow"></use>
-                                </svg>
-                            </span>
-                            <span>Casinos Likes</span>
-                            <span className="title-form-filter__count">1</span>
-                        </h3>
-                    }
-                    content={
-                        <RangeSlider
-                            initState={casinoFilters.casino_likes}
-                            field="casino_likes"
-                            minmax={[1, 10000]}
-                            setLocalFilters={setCasinoFilters}
-                        />
-                    }
-                />
-            </div>
-            <div className="item-form-filters__filter form-filter">
-                <AccordionItem
-                    heading={
-                        <h3 className="form-filter__title title-form-filter accordion--title--element">
-                            <span className="title-form-filter__icon">
-                                <svg>
-                                    <use xlinkHref="#arrow"></use>
-                                </svg>
-                            </span>
-                            <span>Casinos For Players From</span>
+                            <span>Allowed Countries</span>
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
                     content={
-                        // <CasinoPlayersFromContent
-                        //     initState={casinoFilters?.selected_countries}
-                        //     countries={datasFilterCasino?.countries}
-                        //     setLocalCasinoFilters={setCasinoFilters}
-                        // />
-
                         <ListCheckBox
                             initState={casinoFilters.selected_countries}
                             field="selected_countries"
                             placeholder="Search (Country)"
                             list={datasFilterCasino?.countries}
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.countries?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.countries?.length)}
                         />
                     }
                 />
             </div>
+            <div className="item-form-filters__filter form-filter">
+                <AccordionItem
+                    heading={
+                        <h3 className="form-filter__title title-form-filter accordion--title--element">
+                            <span className="title-form-filter__icon">
+                                <svg>
+                                    <use xlinkHref="#arrow"></use>
+                                </svg>
+                            </span>
+                            <span>Casino Rank</span>
+                            <span className="title-form-filter__count">1</span>
+                        </h3>
+                    }
+                    content={<RangeSlider initState={casinoFilters.casino_rank} field="casino_rank" minmax={[1, 10]} setLocalFilters={setCasinoFilters} />}
+                />
+            </div>
+            <div className="item-form-filters__filter form-filter">
+                <AccordionItem
+                    heading={
+                        <h3 className="form-filter__title title-form-filter accordion--title--element">
+                            <span className="title-form-filter__icon">
+                                <svg>
+                                    <use xlinkHref="#arrow"></use>
+                                </svg>
+                            </span>
+                            <span>Casino Likes</span>
+                            <span className="title-form-filter__count">1</span>
+                        </h3>
+                    }
+                    content={<RangeSlider initState={casinoFilters.casino_likes} field="casino_likes" minmax={[1, 10000]} setLocalFilters={setCasinoFilters} />}
+                />
+            </div>
+
             <div className="item-form-filters__filter form-filter">
                 <AccordionItem
                     heading={
@@ -133,17 +98,7 @@ export default function CasinoFilterContent ({
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
-                    content={
-                        <RangeSlider
-                            initState={casinoFilters.established}
-                            field="established"
-                            minmax={[
-                                new Date().getFullYear() - 10,
-                                new Date().getFullYear(),
-                            ]}
-                            setLocalFilters={setCasinoFilters}
-                        />
-                    }
+                    content={<RangeSlider initState={casinoFilters.established} field="established" minmax={[new Date().getFullYear() - 10, new Date().getFullYear()]} setLocalFilters={setCasinoFilters} />}
                 />
             </div>
             <div className="item-form-filters__filter form-filter">
@@ -167,9 +122,7 @@ export default function CasinoFilterContent ({
                             placeholder="Search (License )"
                             list={datasFilterCasino?.licenses}
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.licenses?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.licenses?.length)}
                         />
 
                         // <ByLicenses
@@ -193,14 +146,7 @@ export default function CasinoFilterContent ({
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
-                    content={
-                        <YesNoDoubleCheckbox
-                            initState={casinoFilters.vpn_usage}
-                            field="vpn_usage"
-                            setLocalCasinoFilters={setCasinoFilters}
-                            nameFiled={["Allowed", "Not Allowed"]}
-                        />
-                    }
+                    content={<YesNoDoubleCheckbox initState={casinoFilters.vpn_usage} field="vpn_usage" setLocalCasinoFilters={setCasinoFilters} nameFiled={['Allowed', 'Not Allowed']} />}
                 />
             </div>
             <div className="item-form-filters__filter form-filter">
@@ -224,9 +170,7 @@ export default function CasinoFilterContent ({
                             placeholder="Search (Game Providers)"
                             list={datasFilterCasino?.game_providers}
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.game_providers?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.game_providers?.length)}
                         />
                     }
                 />
@@ -252,9 +196,7 @@ export default function CasinoFilterContent ({
                             placeholder="Search (Game Types)"
                             list={datasFilterCasino?.game_types}
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.game_types?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.game_types?.length)}
                         />
                     }
                 />
@@ -279,9 +221,7 @@ export default function CasinoFilterContent ({
                             placeholder="Search (Game)"
                             list={datasFilterCasino?.games}
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.games?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.games?.length)}
                         />
                     }
                 />
@@ -299,13 +239,7 @@ export default function CasinoFilterContent ({
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
-                    content={
-                        <YesNoDoubleCheckbox
-                            initState={casinoFilters.tournaments}
-                            field="tournaments"
-                            setLocalCasinoFilters={setCasinoFilters}
-                        />
-                    }
+                    content={<YesNoDoubleCheckbox initState={casinoFilters.tournaments} field="tournaments" setLocalCasinoFilters={setCasinoFilters} />}
                 />
             </div>
             <div className="item-form-filters__filter form-filter">
@@ -321,13 +255,7 @@ export default function CasinoFilterContent ({
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
-                    content={
-                        <YesNoDoubleCheckbox
-                            initState={casinoFilters.sportsbook}
-                            field="sportsbook"
-                            setLocalCasinoFilters={setCasinoFilters}
-                        />
-                    }
+                    content={<YesNoDoubleCheckbox initState={casinoFilters.sportsbook} field="sportsbook" setLocalCasinoFilters={setCasinoFilters} />}
                 />
             </div>
             <div className="item-form-filters__filter form-filter">
@@ -350,9 +278,7 @@ export default function CasinoFilterContent ({
                             field="language_website"
                             placeholder="Search (Language)"
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.language?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.language?.length)}
                         />
                     }
                 />
@@ -405,9 +331,7 @@ export default function CasinoFilterContent ({
                             field="payment_methods"
                             placeholder="Search (Payment Methods)"
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.payment_methods?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.payment_methods?.length)}
                         />
                     }
                 />
@@ -432,9 +356,7 @@ export default function CasinoFilterContent ({
                             field="accepted_currencies"
                             placeholder="Search (Currencies)"
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.classic_currency?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.classic_currency?.length)}
                         />
                     }
                 />
@@ -459,9 +381,7 @@ export default function CasinoFilterContent ({
                             field="accepted_currencies"
                             placeholder="Search (Crypto Currencies)"
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.crypto_currencies?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.crypto_currencies?.length)}
                         />
                     }
                 />
@@ -482,18 +402,14 @@ export default function CasinoFilterContent ({
                     content={
                         <ListCheckBox
                             initState={casinoFilters.casino_owner}
-                            list={datasFilterCasino?.casino_owner.map(
-                                (item) => ({
-                                    id: item as string,
-                                    name: item,
-                                })
-                            )}
+                            list={datasFilterCasino?.casino_owner.map((item) => ({
+                                id: item as string,
+                                name: item,
+                            }))}
                             field="casino_owner"
                             placeholder="Search (Casino Owner)"
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.casino_owner?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.casino_owner?.length)}
                         />
                     }
                 />
@@ -515,18 +431,14 @@ export default function CasinoFilterContent ({
                     content={
                         <ListCheckBox
                             initState={casinoFilters?.responsible_gambling}
-                            list={datasFilterCasino?.responsible_gambling.map(
-                                (item) => ({
-                                    id: item?.value as any,
-                                    name: item?.label,
-                                })
-                            )}
+                            list={datasFilterCasino?.responsible_gambling.map((item) => ({
+                                id: item?.value as any,
+                                name: item?.label,
+                            }))}
                             field="responsible_gambling"
                             placeholder="Search (Responsible Gambling)"
                             setLocalFilters={setCasinoFilters}
-                            height={getFilterContentHeight(
-                                datasFilterCasino?.responsible_gambling?.length
-                            )}
+                            height={getFilterContentHeight(datasFilterCasino?.responsible_gambling?.length)}
                         />
                     }
                 />
@@ -545,12 +457,7 @@ export default function CasinoFilterContent ({
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
-                    content={
-                        <WithdrawalLimits
-                            initState={casinoFilters.withdrawal_limits}
-                            setLocalCasinoFilters={setCasinoFilters}
-                        />
-                    }
+                    content={<WithdrawalLimits initState={casinoFilters.withdrawal_limits} setLocalCasinoFilters={setCasinoFilters} />}
                 />
             </div>
             <div className="item-form-filters__filter form-filter">
@@ -572,10 +479,7 @@ export default function CasinoFilterContent ({
                                 initState={casinoFilters.min_deposit}
                                 label="Minimum Deposit"
                                 field="min_deposit"
-                                max={
-                                    datasFilterCasino?.max_min_deposit_value ||
-                                    2222
-                                }
+                                max={datasFilterCasino?.max_min_deposit_value || 2222}
                                 setLocalCasinoFilters={setCasinoFilters}
                                 unlimitedInitStateField="unlimited_min_deposit"
                             />
@@ -631,12 +535,7 @@ export default function CasinoFilterContent ({
                             </span>
                             <span>Minimum Wagering</span>
                             <span className="title-form-filter__count">1</span>
-                            <a
-                                rel="nofollow noopener"
-                                href=""
-                                aria-label="Put your description here."
-                                className="title-form-filter__info-icon info-info"
-                            >
+                            <a rel="nofollow noopener" href="" aria-label="Put your description here." className="title-form-filter__info-icon info-info">
                                 <svg>
                                     <use xlinkHref="#info"></use>
                                 </svg>
@@ -649,12 +548,9 @@ export default function CasinoFilterContent ({
                                 initState={casinoFilters.min_wager}
                                 label="Minimum Wagering"
                                 field="min_wager"
-                                max={
-                                    datasFilterCasino?.max_min_wagering_value ||
-                                    100000
-                                }
+                                max={datasFilterCasino?.max_min_wagering_value || 100000}
                                 setLocalCasinoFilters={setCasinoFilters}
-                                keyToValue={"X"}
+                                keyToValue={'X'}
                                 unlimitedInitStateField="unlimited_min_wager"
                             />
 
@@ -686,15 +582,7 @@ export default function CasinoFilterContent ({
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
-                    content={
-                        <YesNoDoubleCheckbox
-                            initState={
-                                casinoFilters.bonus_hunt_with_active_bonus
-                            }
-                            field="bonus_hunt_with_active_bonus"
-                            setLocalCasinoFilters={setCasinoFilters}
-                        />
-                    }
+                    content={<YesNoDoubleCheckbox initState={casinoFilters.bonus_hunt_with_active_bonus} field="bonus_hunt_with_active_bonus" setLocalCasinoFilters={setCasinoFilters} />}
                 />
             </div>
             <div className="item-form-filters__filter form-filter">
@@ -710,13 +598,7 @@ export default function CasinoFilterContent ({
                             <span className="title-form-filter__count"></span>
                         </h3>
                     }
-                    content={
-                        <YesNoDoubleCheckbox
-                            initState={casinoFilters.social_bonus}
-                            field="social_bonus"
-                            setLocalCasinoFilters={setCasinoFilters}
-                        />
-                    }
+                    content={<YesNoDoubleCheckbox initState={casinoFilters.social_bonus} field="social_bonus" setLocalCasinoFilters={setCasinoFilters} />}
                 />
             </div>
         </div>

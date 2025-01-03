@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import { SwiperRef } from "swiper/react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from "../../helper"
 import { LazyCardImg } from "../lazy-img/LazyCardImg"
 
@@ -43,12 +43,7 @@ const MainSlider = ({
         }
     }, [])
 
-    const navigate = useNavigate()
-
-    const navToImageLink = (e:React.MouseEvent,l:string) => {
-        e.preventDefault()
-        navigate(l)
-    }
+  
     return (
         <div className="more-staket-simple-bonus__slider slider">
             <div className="slider__body">
@@ -75,11 +70,11 @@ const MainSlider = ({
                             }}
                         >
                             {data?.map((item, index) => (
-                                <SwiperSlide key={index} >
+                                <SwiperSlide key={index}>
                                     <div className="slide-slider__item casino-card">
-                                        <Link to={item?.imageLink || '/'} onClick={(e) => navToImageLink(e, item?.imageLink || '')} aria-label="Put your description here." className="casino-card__image-block">
+                                        <div className="casino-card__image-block">
                                             <div className="casino-card__image">
-                                                <LazyCardImg img={item.img || ''} width="100%" height="100%"  />
+                                                <LazyCardImg img={item.img || ''} width="100%" height="100%" />
                                             </div>
 
                                             <a
@@ -97,7 +92,7 @@ const MainSlider = ({
                                             >
                                                 Play
                                             </a>
-                                        </Link>
+                                        </div>
                                         {item?.tags && <div className="casino-card__tags tags-casino-card">{item.tags}</div>}
                                         <div className="casino-card__content">
                                             <div className="casino-card__info info-casino-card">
