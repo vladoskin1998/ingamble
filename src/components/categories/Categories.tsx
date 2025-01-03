@@ -47,7 +47,7 @@ export const Categories = () =>
                         style={{ margin: 0 }}
                     >
                         {CristmasCategory && (
-                            <SwiperSlide style={{ width: 'auto' }}>
+                            <SwiperSlide style={{ width: 'auto' }} key={0}>
                                 <Link rel="nofollow noopener" to={CristmasCategory?.link || '/'} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
                                     {CristmasCategory?.name}
                                 </Link>
@@ -56,7 +56,7 @@ export const Categories = () =>
                         {category
                             ?.filter((item) => item.bonus_id !== 11)
                             .map((item, index) => (
-                                <SwiperSlide key={index} style={{ width: 'auto' }}>
+                                <SwiperSlide key={index+1} style={{ width: 'auto' }}>
                                     <Link rel="nofollow noopener" to={item?.link || '/'} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
                                         {item?.name}
                                     </Link>
