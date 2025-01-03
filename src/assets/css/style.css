@@ -18718,4 +18718,5 @@ h3 {
 
 .categorie--tags .swiper-wrapper{
   display:flex;
+white-space: nowrap;
 }
