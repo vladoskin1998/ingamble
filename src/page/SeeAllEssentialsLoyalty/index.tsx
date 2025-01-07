@@ -12,7 +12,7 @@ import './style.css'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { lazy, useEffect, useState } from 'react'
-import { cloacingFetch, cloacingLink, sanitizeLink } from '../../helper'
+import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
@@ -91,11 +91,7 @@ export default function SeeAllEssentialsLoyalty() {
                         path={[
                             {
                                 name: 'Home',
-                                link: 'https://cryptogamblers.pro',
-                            },
-                            {
-                                name: 'Gambling Hub',
-                                link: 'https://cryptogamblers.pro/bonuses',
+                                link: '/',
                             },
                             {
                                 name: 'Essential VIP Loyalty Programs',
@@ -119,7 +115,7 @@ export default function SeeAllEssentialsLoyalty() {
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
-                                                <Link to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`} className="item-loyaltie-programs__image loyalty-img-custom">
+                                                <Link to={`/casino/${item.casino_slug}`} className="item-loyaltie-programs__image loyalty-img-custom">
                                                     <LazyCardImg img={item?.casino_image || ''} width="100%" />
                                                 </Link>
                                             </div>
@@ -186,7 +182,7 @@ export default function SeeAllEssentialsLoyalty() {
                                                             Visit Casino
                                                         </a>
                                                         <Link
-                                                            to={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item?.loyalty_program?.id}`}
+                                                            to={`/casino/${item.loyalty_program.loyalty_slug}/loyalty`}
                                                             aria-label="Put your description here."
                                                             className="bottom-content-item-loyaltie-programs__btn-more"
                                                         >

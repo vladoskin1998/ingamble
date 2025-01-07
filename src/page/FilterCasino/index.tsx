@@ -10,7 +10,7 @@ import like from '../../assets/img/icons/like.svg'
 import { lazy, memo, useEffect, useState } from 'react'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from '../SeeAllCasinos'
-import { cloacingFetch, cloacingLink, filterEmptyValues, NumberAssociaty, sanitizeLink, sanitizeNumberLike, sliceString } from '../../helper'
+import { cloacingFetch, cloacingLink, filterEmptyValues, NumberAssociaty, sanitizeNumberLike, sliceString } from '../../helper'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
 import { debounce } from 'lodash'
 import { LogoLoader } from '../../components/loader/LogoLoader'
@@ -19,6 +19,7 @@ import '../SeeAllCasinos/style.css'
 import { v4 as uuidv4 } from 'uuid'
 import { Link } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
+import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
@@ -164,6 +165,18 @@ export default function FilterCasino() {
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
                     <Categories />
+                      <BreadCrumb
+                                            path={[
+                                                {
+                                                    name: 'Home',
+                                                    link: '/',
+                                                },
+                                                {
+                                                    name: 'Casinos Filters',
+                                                    link: '#',
+                                                },
+                                            ]}
+                                        />
                     <FilterHeaderList initList={casinoFilters} clearAll={clearAll} clearOne={(v) => handlerClearOne(v)} />
                     <section className="casinos-filtered__main main-loyaltie-programs">
                         <div className="main-loyaltie-programs__container container">
@@ -226,7 +239,7 @@ const ListDisplayData = memo(
                                     aria-label="Put your description here."
                                     className="item-loyaltie-programs__image item-loyaltie-programs__image-custom "
                                     key={uuidv4()}
-                                    to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
+                                    to={`/casino/${item.casino_slug}`}
                                 >
                                     <LazyCardImg img={item?.casino_image || ''} height="100%" width="100%" />
                                 </Link>
@@ -299,7 +312,7 @@ const ListDisplayData = memo(
                                                 >
                                                     Visit Casino
                                                 </a>
-                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`} aria-label="Put your description here." className="bottom-content-item-loyaltie-programs__btn-more">
+                                                <Link to={`/casino/${item?.casino_slug}`} aria-label="Put your description here." className="bottom-content-item-loyaltie-programs__btn-more">
                                                     Read More
                                                 </Link>
                                             </div>

@@ -1,48 +1,29 @@
 
+import { Link } from 'react-router-dom'
 import './style.css'
 
 //@ts-ignore
-export const BreadCrumb = (path: any) => {
-
-    return <></>
-
-    //@ts-ignore
-    const parsePath = (url: string): { name: string; link: string }[] => {
-        const urlSegments = url.split("?")[0] // Убираем query-параметры
-            .split("/") // Разделяем части пути
-            .filter(segment => segment); // Убираем пустые части
-
-        return urlSegments.map((segment, index) => {
-            // Преобразуем slug в читаемую строку
-            const readableName = segment
-                .replace(/-/g, " ") // Заменяем тире на пробелы
-                .replace(/\b\w/g, char => char.toUpperCase()); // Первую букву делаем заглавной
-
-            // Восстанавливаем ссылку для каждой части
-            const link = "/" + urlSegments.slice(0, index + 1).join("/");
-
-            return { name: readableName, link };
-        });
-    };
-//@ts-ignore
-    const crumbs = parsePath(window.location.pathname);
-//@ts-ignore
+export const BreadCrumb = ({
+    path,
+}: {
+    path: {
+        name: string
+        link: string
+    }[]
+}) => {
+    
     return (
         <div className="simple-bonus__breadcrumbs breadcrumbs">
             <div className="breadcrumbs__container container">
                 <div className="breadcrumbs__list">
-                    {crumbs.map((item, index) => (
+                    {path.map((item, index) => (
                         <div className="breadcrumbs__item" key={index}>
-                            {index < crumbs.length - 1 ? (
-                                <div
-                                    rel="nofollow noopener"
-                                   
-                                    aria-label={item.name}
-                                    className="breadcrumbs__link"
-                                    
-                                >
-                                    {item.name}
-                                </div>
+                            {index < path.length - 1 ? (
+                            
+                                    <Link className="breadcrumbs__link"  to={item.link} rel="nofollow noopener" aria-label={item.name}>
+                                        {item.name}
+                                    </Link>
+                          
                             ) : (
                                 <span className="breadcrumbs__link">{item.name}</span>
                             )}
@@ -51,5 +32,5 @@ export const BreadCrumb = (path: any) => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}

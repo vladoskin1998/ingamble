@@ -8,7 +8,7 @@ import { useRef, useEffect } from 'react'
 import { BlockTypeNumber, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { COLORS_TAGS, sanitizeLink } from '../../helper'
+import { COLORS_TAGS } from '../../helper'
 import { Link } from 'react-router-dom'
 
 export default function BlockMType3M({ data }: { data: HomeDataBlock | undefined;  }) {
@@ -45,7 +45,7 @@ export default function BlockMType3M({ data }: { data: HomeDataBlock | undefined
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug}  />
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ export default function BlockMType3M({ data }: { data: HomeDataBlock | undefined
                                                         <div className="different-casino-standart__body">
                                                             <Link
                                                                 rel="nofollow noopener"
-                                                                to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                to={`/casino/${item?.casino_info?.casino_slug}`}
                                                                 className="different-casino-standart__image-block"
                                                             >
                                                                 <span className="different-casino-standart__image ibg--custom">
@@ -96,7 +96,7 @@ export default function BlockMType3M({ data }: { data: HomeDataBlock | undefined
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
                                                                         rel="nofollow noopener"
-                                                                        to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                                        to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}
                                                                         aria-label="Put your description here."
                                                                         className="different-casino-standart__name"
                                                                     >
@@ -115,7 +115,7 @@ export default function BlockMType3M({ data }: { data: HomeDataBlock | undefined
                                                                     <div className="info-casino-card__stake">
                                                                         <Link
                                                                             rel="nofollow noopener"
-                                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                            to={`/casino/${item?.casino_info?.casino_slug}`}
                                                                             aria-label="Put your description here."
                                                                             className="info-casino-card__stake-link"
                                                                         >

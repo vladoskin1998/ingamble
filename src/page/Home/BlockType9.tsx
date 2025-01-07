@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { BlockTypeNumber, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 import { Link } from 'react-router-dom'
 
 const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | undefined }) {
@@ -64,7 +64,7 @@ const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | un
                                 <SwiperSlide key={index} className="slider__slide slide-slider " >
                                     <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                         <div className="item-essential-programs-gamble__top">
-                                            <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`} aria-label="Put your description here." className="item-essential-programs-gamble__logo">
+                                            <Link to={`/casino/${item?.casino_slug}`} aria-label="Put your description here." className="item-essential-programs-gamble__logo">
                                                 <LazyCardImg img={item.card_logo || ''}  />
                                             </Link>
                                         </div>
@@ -145,7 +145,7 @@ const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | un
                                                 </a>
                                             </div>
                                             <div className="item-essential-programs-gamble__bottom-column">
-                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item?.loyalty_id}`} aria-label="Put your description here." className="item-essential-programs-gamble__btn">
+                                                <Link to={`/casino/${item?.loyalty_slug}/loyalty`} aria-label="Put your description here." className="item-essential-programs-gamble__btn">
                                                     Read More
                                                 </Link>
                                             </div>

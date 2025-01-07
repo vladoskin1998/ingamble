@@ -4,7 +4,7 @@ import { PaginationPage } from '../../components/pagination/PaginationPage'
 import { Wraper } from '../Wraper'
 import like from '../../assets/img/icons/like.svg'
 import './style.css'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { lazy, useEffect, useState } from 'react'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import $api from '../../http'
@@ -12,14 +12,26 @@ import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { PAYOUTSPEED, SeeAllCasinosType, SeeAllCasinosCategoryResponse } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { cloacingFetch, cloacingLink, NumberAssociaty, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { cloacingFetch, cloacingLink, NumberAssociaty, sanitizeNumberLike } from '../../helper'
 import { NoResult } from '../../components/no-result'
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
-const getAllCasinosFetchData = async (page: number, queryId: string | null) => {
-    const response = await $api.get(`get-see-all-casinos-category${queryId ? '/' + queryId : ''}/?page=${page}&page_size=${countPageSize}`)
+
+const pathBreadCrumb = [
+    {
+        name: 'Home',
+        link: '/    ',
+    },
+    {
+        name: 'All Casinos',
+        link: '/all-casinos',
+    },
+]
+
+const getAllCasinosFetchData = async (page: number, slug: string | null) => {
+    const response = await $api.get(`get-see-all-casinos-category${slug ? '/' + slug : ''}/?page=${page}&page_size=${countPageSize}`)
     return response.data
 }
 
@@ -52,19 +64,18 @@ export default function SeeAllCasinos() {
     const [allData, setAllData] = useState<SeeAllCasinosType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
 
-    const [searchParams] = useSearchParams()
-    const qid = searchParams.get('queryId')
+     const { casino_slug } = useParams()
 
-    const [queryId, setQueryId] = useState<string>(qid || '')
+    const [slug, setSlug] = useState<string>(casino_slug || '')
 
     useEffect(() => {
-        setQueryId(qid || '')
+        setSlug(casino_slug || '')
         window.scrollTo(0, 0)
-    }, [qid])
+    }, [casino_slug])
 
     const { initializeAdaptiveBehavior, category } = useAdaptiveBehavior()
 
-    const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(['get-see-all-loyalties', currentPage, queryId], () => getAllCasinosFetchData(currentPage, queryId), {
+    const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(['get-see-all-loyalties', currentPage, slug], () => getAllCasinosFetchData(currentPage, slug), {
         keepPreviousData: true,
         cacheTime: 1000 * 60 * 5,
     })
@@ -84,7 +95,7 @@ export default function SeeAllCasinos() {
             })
             return
         }
-    }, [data, queryId])
+    }, [data, slug])
 
     useEffect(() => {
         initializeAdaptiveBehavior()
@@ -96,6 +107,7 @@ export default function SeeAllCasinos() {
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
+        const titlePage = slug ? data?.category_name || category?.find((item) => item?.slug === slug)?.name : 'Casino List'
     const displayedData = isMobile ? allData : data?.casino?.results
 
     if (isLoading) return <LogoLoader />
@@ -106,20 +118,17 @@ export default function SeeAllCasinos() {
                 <div className="main-gamble__body">
                     <Categories type_category={'casino'} />
                     <BreadCrumb
-                        path={[
-                            {
-                                name: 'Home',
-                                link: 'https://cryptogamblers.pro',
-                            },
-                            {
-                                name: 'All Bonuses',
-                                link: 'https://cryptogamblers.pro/bonuses',
-                            },
-                            // {
-                            //     name:   DataArray.find(item => Number(item?.key) === key)?.name || 'not found',
-                            //     link: "#",
-                            // },
-                        ]}
+                        path={
+                            slug
+                                ? [
+                                      ...pathBreadCrumb,
+                                      {
+                                          name: titlePage || 'Categories',
+                                          link: `/all-bonuses/${slug}`,
+                                      },
+                                  ]
+                                : pathBreadCrumb
+                        }
                     />
                     <section className="casinos-filtered__main main-loyaltie-programs">
                         <div className="main-loyaltie-programs__container container">
@@ -127,7 +136,7 @@ export default function SeeAllCasinos() {
                                 <div className="top__row">
                                     <div className="top__column">
                                         <div className="top__title-block">
-                                            <h2 className="top__title">{queryId ? data?.category_name || category?.find((item) => item?.casino_id === Number(queryId))?.name : 'Casino List'}</h2>
+                                            <h2 className="top__title">{titlePage}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -138,11 +147,7 @@ export default function SeeAllCasinos() {
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
-                                                <Link
-                                                    to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`}
-                                                    aria-label="Put your description here."
-                                                    className="item-loyaltie-programs__image item-loyaltie-programs__image-custom"
-                                                >
+                                                <Link to={`/casino/${item.casino_slug}`} aria-label="Put your description here." className="item-loyaltie-programs__image item-loyaltie-programs__image-custom">
                                                     <LazyCardImg img={item?.casino_image || ''} height="auto" width="100%" />
                                                 </Link>
                                             </div>
@@ -222,11 +227,7 @@ export default function SeeAllCasinos() {
                                                                 >
                                                                     Visit Casino
                                                                 </a>
-                                                                <Link
-                                                                    to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`}
-                                                                    aria-label="Put your description here."
-                                                                    className="bottom-content-item-loyaltie-programs__btn-more"
-                                                                >
+                                                                <Link to={`/casino/${item?.casino_slug}`} aria-label="Put your description here." className="bottom-content-item-loyaltie-programs__btn-more">
                                                                     Read More
                                                                 </Link>
                                                             </div>

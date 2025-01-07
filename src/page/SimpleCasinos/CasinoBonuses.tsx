@@ -3,7 +3,7 @@ import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { RewievCasinoDataResponse } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { cloacingFetch, cloacingLink, sanitizeLink } from '../../helper'
+import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 
 const nameArray = ['Welcome Bonus', 'Cashback bonus']
@@ -132,7 +132,7 @@ export const CasinoBonuses = ({ data }: { data: undefined | RewievCasinoDataResp
                                         <SwiperSlide className="slider__slide slide-slider swiper-slide" aria-label={b?.bonus_type?.name}>
                                             <div className="slide-slider__item casino-card">
                                                 <div className="casino-card__image-block casino-card__image-block_yellow">
-                                                    <Link className="casino-card__image ibg--custom" to={b.special_side_bar ? data?.url : `/casino/${sanitizeLink(data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
+                                                    <Link className="casino-card__image ibg--custom" to={b.special_side_bar ? data?.url : `/casino/${data?.casino_slug}/bonuses/${b?.bonus_slug}`}>
                                                         <LazyCardImg img={b?.bonus_image || ''} height="100%" width="100%" imgLoading={'lazy'} />
                                                     </Link>
                                                     <a
@@ -150,7 +150,7 @@ export const CasinoBonuses = ({ data }: { data: undefined | RewievCasinoDataResp
                                                         Play
                                                     </a>
                                                 </div>
-                                                <Link className="casino-card__content" to={b.special_side_bar ? data?.url : `/casino/${sanitizeLink(data?.name)}/bonuses/${sanitizeLink(b?.name)}?queryId=${b?.id}`}>
+                                                <Link className="casino-card__content" to={b.special_side_bar ? data?.url : `/casino/${data?.casino_slug}/bonuses/${b?.bonus_slug}`}>
                                                     <div
                                                         className="casino-card__name"
                                                         dangerouslySetInnerHTML={{

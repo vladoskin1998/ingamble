@@ -2,8 +2,6 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { lazy } from 'react'
 import Home from '../page/Home'
 
-// import { PreloaderPuls, PreloaderSpin } from "../components/loader/Preloader"
-
 const SimpleCasinos = lazy(() => import('../page/SimpleCasinos'))
 const SimpleLoyalties = lazy(() => import('../page/SimpleLoyalties'))
 const SimpleBonus = lazy(() => import('../page/SimpleBonus'))
@@ -22,8 +20,6 @@ const FilterLoyalty = lazy(() => import('../page/FilterLoyalty'))
 export const PublicRouter = () => {
     return (
         <Routes>
-            {/* <Route path="pr3" element={<PreloaderPuls/>}/>
-            <Route path="pr2" element={<PreloaderSpin/>}/> */}
 
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
 
@@ -32,19 +28,19 @@ export const PublicRouter = () => {
             <Route path="/filter-loyalties" element={<FilterLoyalty />} />
 
             {/* Страница категорий (see all) по казино  */}
-            <Route path="/all-casinos/:casino_categories?" element={<SeeAllCasinos />} />
+            <Route path="/all-casinos/:casino_slug?" element={<SeeAllCasinos />} />
             {/* Страница категорий  (see all) по бонусам */}
-            <Route path="/all-bonuses/:bonus_categories?" element={<SeeAllBonus />} />
+            <Route path="/all-bonuses/:bonus_slug?" element={<SeeAllBonus />} />
 
             {/* Страница лоялки ("Loyalties")*/}
             <Route path="/all-loyalties" element={<SeeAllEssentialsLoyalty />} />
 
             {/* //Страница конкретного казино */}
-            <Route path="/casino/:casino_name" element={<SimpleCasinos />} />
+            <Route path="/casino/:casino_slug" element={<SimpleCasinos />} />
             {/* //Страница конкретного бонуса */}
-            <Route path="/casino/:casino_name/bonuses/:bonus_type" element={<SimpleBonus />} />
+            <Route path="/casino/:casino_slug/bonuses/:bonus_slug" element={<SimpleBonus />} />
             {/* Страница конкретной лоялки */}
-            <Route path="/casino/:casino_name/loyalty" element={<SimpleLoyalties />} />
+            <Route path="/casino/:loyaltie_slug/loyalty" element={<SimpleLoyalties />} />
 
             <Route path="/" element={<Home />} />
             <Route path="/" element={<Navigate to="/" />} />
@@ -62,6 +58,3 @@ export const PublicRouter = () => {
     )
 }
 
-//  `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`
-
-// `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`

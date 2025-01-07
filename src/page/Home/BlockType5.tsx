@@ -11,7 +11,7 @@ import gift from '../../assets/img/icons/gift.svg'
 import { BlockTypeNumber, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
-import { cloacingFetch, cloacingLink, sanitizeLink } from '../../helper'
+import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 
 export default function BlockType5({ data }: { data: HomeDataBlock | undefined }) {
@@ -73,7 +73,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
+                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug }/>
                         </div>
                     </div>
                 </div>
@@ -130,32 +130,25 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                                         {data.items_block.data_cards
                                             ?.sort((a, b) => a.order - b.order)
                                             ?.map((item, index) => (
-                                                <SwiperSlide  key={index} className="slider__slide slide-slider swiper-slide">
+                                                <SwiperSlide key={index} className="slider__slide slide-slider swiper-slide">
                                                     <div aria-label="Put your description here." className="slide-slider__item casino-big-card">
-                                                        <Link
-                                                            className="casino-big-card__image ibg--custom"
-                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
-                                                        >
-                                                            <LazyCardImg img={item?.bonus_info?.bonus_image || ''} width="100%"  />
+                                                        <Link className="casino-big-card__image ibg--custom" to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}>
+                                                            <LazyCardImg img={item?.bonus_info?.bonus_image || ''} width="100%" />
                                                         </Link>
                                                         <div className="casino-big-card__top">
                                                             <div className="casino-big-card__top-small-card casino-small-card">
-                                                                <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="casino-small-card__image-block">
+                                                                <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="casino-small-card__image-block">
                                                                     <div className="casino-small-card__image ibg--custom">
-                                                                        <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium"  />
+                                                                        <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" />
                                                                     </div>
                                                                 </Link>
                                                                 <div className="casino-small-card__body">
-                                                                    <Link
-                                                                        to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
-                                                                        aria-label="Put your description here."
-                                                                        className="casino-small-card__name"
-                                                                    >
+                                                                    <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="casino-small-card__name">
                                                                         {item?.casino_info?.casino_name}
                                                                     </Link>
                                                                     <div className="casino-small-card__info">
                                                                         {item?.casino_info?.additional_casino_params?.map((it, id) => (
-                                                                            <span key={id } className="casino-small-card__info-link">
+                                                                            <span key={id} className="casino-small-card__info-link">
                                                                                 {it}
                                                                             </span>
                                                                         ))}
@@ -170,11 +163,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                                                             </div>
                                                         </div>
                                                         <div className="casino-big-card__bottom">
-                                                            <Link
-                                                                to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
-                                                                aria-label="Put your description here."
-                                                                className="casino-big-card__title"
-                                                            >
+                                                            <Link to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`} aria-label="Put your description here." className="casino-big-card__title">
                                                                 <span className="casino-big-card__title-label">{item?.bonus_info?.bonus_name}</span>
                                                             </Link>
                                                             <a
@@ -216,20 +205,8 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                                 <span>Live Dealers</span>
                             </div>
                             <Link
-                                to={'/all-bonuses/best-live-bonuses?queryId=10'}
-                                // to={`/all-${
-                                //     SeeAllRoutes[
-                                //         data?.items_block?.type_category
-                                //     ] || SeeAllRoutes?.bonus_category
-                                // }${
-                                //     data?.items_block?.category?.name
-                                //         ? `/${sanitizeLink(
-                                //               data?.items_block?.category?.name
-                                //           )}?queryId=${
-                                //               data?.items_block?.category?.id
-                                //           }`
-                                //         : ""
-                                // }`}
+                                to={'/all-bonuses/best-live-bonuses'}
+                              
                                 className="best-live-dealer-casinos-gamble__btn "
                             >
                                 <span>

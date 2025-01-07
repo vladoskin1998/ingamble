@@ -9,6 +9,7 @@ interface MinimumDeposit {
 
 export interface SiblingBonuses {
     id: number;
+    slug2: string;
     name: string;
     likes: number;
     bonus_image: string;
@@ -37,7 +38,6 @@ export interface GetDataBonusResponse {
     blocked_countries: BlockCountryType[]
     bonus_blocked_countries: BlockCountryType[]
     sibling_bonuses: SiblingBonuses[]
-    slug?: string;
     link_tc: string;
     casino_name: string;
     casino_logo: string;
@@ -45,13 +45,22 @@ export interface GetDataBonusResponse {
     casino_affiliate_link: string;
     url_casino: string;
     casino_id: number,
+    casino_slug: string,
+    bonus_slug: string,
     name: string;
     likes: number;
     bonus_rank: string;
     bonus_image: string | null;
     bonus_value?: number;
-    category?: { name: string }[];
+    category: 
+        {
+            id: number,
+            slug: string,
+            name: string
+        }[]
+    ,
     bonus_type: string;
+    bonus_type_slug: string;
     bonus_subtype?: { name: string }[];
     labels: { name: string }[];
     bonus_amount: MinimumDeposit[];
@@ -179,6 +188,7 @@ export interface HomeCasinoInfo {
     casino_affiliate_link?: string;
     additional_casino_params: string[];
     url_casino: string;
+    casino_slug: string;
 }
 
 export interface HomeBonusInfo {
@@ -187,6 +197,7 @@ export interface HomeBonusInfo {
     bonus_likes: number;
     bonus_image: string | null;
     labels: string[] | null;
+    bonus_slug: string;
 }
 
 export interface HomeDataCard {
@@ -210,6 +221,7 @@ interface EssentialCard {
     card_number: string;
     casino_name: string;
     casino_rank: string;
+    casino_slug: string;
     loyalty_rank: string;
     loyalty_likes: number;
     loyalty_count_levels: number;
@@ -217,6 +229,7 @@ interface EssentialCard {
     url_casino?: string;
     loyalty_level_description: string;
     loyalty_id?: number;
+    loyalty_slug?: string;
 }
 
 export enum DataHomeItemsBlockTypeCategory {
@@ -226,7 +239,7 @@ export enum DataHomeItemsBlockTypeCategory {
 
 export interface DataHomeItemsBlock {
     type_category: DataHomeItemsBlockTypeCategory,
-    category: { id: number, name: string }
+    category: { id: number, name: string, slug?: string }
     block_title: string;
     subtitle: string | null;
     title_image: string | null;
@@ -267,6 +280,8 @@ export type SeeAllBonusResponse = {
 
 export type SeeAllBonus = {
     bonus_id: number;
+    bonus_slug: string;
+    casino_slug: string;
     bonus_name: string;
     bonus_image: string;
     casino_rank: string;
@@ -288,6 +303,7 @@ export interface SeeAllEssentialLoyaltyKeypoint {
 
 export interface SeeAllEssentialLoyaltyProgram {
     id?: number;
+    loyalty_slug: string;
     count_levels?: number;
     loyalty_level_description?: string;
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
@@ -297,6 +313,7 @@ export interface SeeAllEssentialLoyaltyProgram {
 
 export interface SeeAllEssentialLoyaltyCasino {
     casino_id: number;
+    casino_slug:string;
     casino_name: string;
     casino_rank: string;
     casino_image?: string;
@@ -335,6 +352,7 @@ interface WithdrawalLimit {
 
 export interface SeeAllCasinosType {
     casino_id: number;
+    casino_slug: string;
     casino_name: string;
     casino_rank: string;
     bonuses: { bonus_id: number, labels: { name: string }[] }[],
@@ -375,11 +393,13 @@ export interface SeeAllCasinosCategoryResponse {
 export type AllCategoriesHomeBonusCategory = {
     id: number;
     name: string;
+    slug: string
 };
 
 export type AllCategoriesHomeCasinoCategory = {
     id: number;
     name: string;
+    slug:string
 };
 
 export type AllCategoriesHomeDataResponse = {
@@ -582,9 +602,10 @@ export type FilterLoyaltiesPostResponse = {
 export interface RewievCasinoDataResponse {
     id: number;
     casino_affiliate_link: string
-
+    casino_slug: string;
     link_tc: null | string;
     loyaltie_id: number | string;
+    loyalty_slug?: string;
     loyalty_program: {
         loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
     };
@@ -594,6 +615,7 @@ export interface RewievCasinoDataResponse {
         name: string;
         labels: Array<{ name: string }>;
         bonus_type: { name: string };
+        bonus_slug?: string;
         bonus_subtype: Array<{ name: string }>;
         special_promo_category: boolean;
         special_side_bar: boolean;
@@ -718,6 +740,7 @@ export interface LoyaltieProgramDataResponse {
     casino_name: string;
     casino_image: string;
     casino_id: number;
+    casino_slug: string;
     link_tc: string | null;
     casino_affiliate_link: string;
     loyalty_keypoint: SeeAllEssentialLoyaltyKeypoint[];
@@ -792,6 +815,7 @@ export interface LoyaltieProgramDataResponse {
 
 export interface СasinosInRankRangeResponse {
     casino_affiliate_link: string;
+    casino_slug: string;
     casino_rank: string;
     id: number;
     image: string;
@@ -803,10 +827,12 @@ export interface СasinosInRankRangeResponse {
 
 export interface BonusInRankRangeResponse {
     bonus_id: number;
+    bonus_slug: string;
     bonus_name: string;
     bonus_image: string;
     bonus_type: { name: string } | null;
     casino_id: number;
+    casino_slug: string;
     casino_name: string;
     casino_rank: string;
     bonus_rank: string;
@@ -818,6 +844,7 @@ export interface BonusInRankRangeResponse {
 
 export interface LoyaltyInRankRangeResponse {
     loyalty_id: number;
+    loyalty_slug: string;
     loyalty_rank: string;
     loyalty_likes: number;
     loyalty_count_levels: number;
@@ -826,6 +853,7 @@ export interface LoyaltyInRankRangeResponse {
     card_logo: string | null;
     stars: number[];
     casino_id: number;
+    casino_slug: string;
     casino_name: string;
     casino_rank: string;
     casino_affiliate_link: string;

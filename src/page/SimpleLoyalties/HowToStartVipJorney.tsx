@@ -1,10 +1,10 @@
 import bg08 from '../../assets/img/bg/08.webp'
 
 import { useEffect, useState } from 'react'
-import { cloacingFetch, cloacingLink, getLikeByIdAndType, sanitizeLink, sanitizeNumberLike, saveLikesToStorage } from '../../helper'
+import { cloacingFetch, cloacingLink, getLikeByIdAndType, sanitizeNumberLike, saveLikesToStorage } from '../../helper'
 import { Link } from 'react-router-dom'
 
-export const HowToStartVipJorney = (data: { casino_affiliate_link?: string; casino_name?: string; likes?: number; queryId: string | number | undefined; link_tc: string | undefined , id:number | undefined }) => {
+export const HowToStartVipJorney = (data: { casino_affiliate_link?: string; casino_name?: string; likes?: number; slug: string | number | undefined; link_tc: string | undefined , id:number | undefined }) => {
         const [like, setLike] = useState<'' | 'like' | 'dislike'>('')
     
         useEffect(() => {
@@ -59,12 +59,7 @@ export const HowToStartVipJorney = (data: { casino_affiliate_link?: string; casi
                                         </a>
                                     </div>
                                     <div className="main-get-bonus__btns-item">
-                                        <Link
-                                            rel="nofollow noopener"
-                                            to={`/casino/${sanitizeLink(data.casino_name)}?queryId=${data.queryId}`}
-                                            aria-label="Put your description here."
-                                            className="main-get-bonus__btn main-get-bonus__btn_review"
-                                        >
+                                        <Link rel="nofollow noopener" to={`/casino/${data.slug}`} aria-label="Put your description here." className="main-get-bonus__btn main-get-bonus__btn_review">
                                             <span>
                                                 <svg>
                                                     <use xlinkHref="#review"></use>

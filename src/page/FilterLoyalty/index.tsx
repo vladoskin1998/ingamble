@@ -6,7 +6,7 @@ import { initialLoyaltiesFilters, useFilterContext } from '../../context/FilterC
 import { Wraper } from '../Wraper'
 import { FilterLoyaltiesPostResponse, LoyaltiesFilterBodyType, SeeAllEssentialLoyaltyCasino } from '../../types'
 import { useQuery } from 'react-query'
-import { cloacingFetch, cloacingLink, filterEmptyValues, sanitizeLink } from '../../helper'
+import { cloacingFetch, cloacingLink, filterEmptyValues } from '../../helper'
 import $api from '../../http'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { debounce } from 'lodash'
@@ -18,6 +18,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { Link } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
 import searchImg from '../../assets/img/icons/search-filter.svg'
+import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
@@ -125,6 +126,18 @@ export default function FilterLoyalty() {
             <main className="gamble__casinos-filtered main-gamble casinos-filtered loyaltie-filtered__main">
                 <div className="main-gamble__body">
                     <Categories />
+                    <BreadCrumb
+                        path={[
+                            {
+                                name: 'Home',
+                                link: '/',
+                            },
+                            {
+                                name: 'Loyalties Filters',
+                                link: '#',
+                            },
+                        ]}
+                    />
                     <FilterHeaderList initList={loyaltiesFilters} clearAll={clearAll} clearOne={(v) => handlerClearOne(v)} />
                     <section className="loyaltie-programs__main main-loyaltie-programs">
                         <div className="main-loyaltie-programs__container container">
@@ -136,26 +149,26 @@ export default function FilterLoyalty() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            
-                                <>
-                                    <LisDisplayedData displayedData={displayedData} />
 
-                                    <PaginationPage
-                                        countElem={data?.count}
-                                        currentPage={currentPage}
-                                        countPageElem={countPageSize}
-                                        setCurrentPage={(s) => {
-                                            setCurrentPage(s)
-                                            if (!isMobile) {
-                                                window.scrollTo({
-                                                    behavior: 'smooth',
-                                                    top: 0,
-                                                })
-                                            }
-                                        }}
-                                    />
-                                </>
-                              {!displayedData?.length && isLoading && <NoResult />}
+                            <>
+                                <LisDisplayedData displayedData={displayedData} />
+
+                                <PaginationPage
+                                    countElem={data?.count}
+                                    currentPage={currentPage}
+                                    countPageElem={countPageSize}
+                                    setCurrentPage={(s) => {
+                                        setCurrentPage(s)
+                                        if (!isMobile) {
+                                            window.scrollTo({
+                                                behavior: 'smooth',
+                                                top: 0,
+                                            })
+                                        }
+                                    }}
+                                />
+                            </>
+                            {!displayedData?.length && isLoading && <NoResult />}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />
@@ -174,7 +187,7 @@ const LisDisplayedData = memo(({ displayedData }: { displayedData: SeeAllEssenti
                 <div className="loyaltie-programs__item item-loyaltie-programs">
                     <div className="item-loyaltie-programs__row">
                         <div className="item-loyaltie-programs__main">
-                            <Link rel="nofollow noopener" to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`} className="item-loyaltie-programs__image loyalty-img-custom " key={uuidv4()}>
+                            <Link rel="nofollow noopener" to={`/casino/${item.casino_slug}`} className="item-loyaltie-programs__image loyalty-img-custom " key={uuidv4()}>
                                 <LazyCardImg img={item?.casino_image || ''} height="100%" width="100%" />
                             </Link>
                         </div>
@@ -240,7 +253,7 @@ const LisDisplayedData = memo(({ displayedData }: { displayedData: SeeAllEssenti
                                     >
                                         Visit Casino
                                     </a>
-                                    <Link to={`/casino/${sanitizeLink(item.casino_name)}/loyalty?queryId=${item?.loyalty_program?.id}`} aria-label="Put your description here." className="bottom-content-item-loyaltie-programs__btn-more">
+                                    <Link to={`/casino/${item?.loyalty_program?.loyalty_slug}/loyalty`} aria-label="Put your description here." className="bottom-content-item-loyaltie-programs__btn-more">
                                         Read More
                                     </Link>
                                 </div>

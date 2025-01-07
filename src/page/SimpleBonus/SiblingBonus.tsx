@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom'
 import { SiblingBonuses } from '../../types'
-import { COLORS_TAGS, sanitizeLink } from '../../helper'
+import { COLORS_TAGS } from '../../helper'
 import MainSlider from '../../components/swiper/MainSlider'
 
 export const SiblingBonus = ({
     casinoName,
     casino_rank,
     casino_affiliate_link,
-    casino_id,
+    casino_slug,
     sibling_bonuses,
 }: {
     casinoName: string | undefined
     sibling_bonuses: SiblingBonuses[] | undefined
     casino_rank: string | undefined
     casino_affiliate_link: string | undefined
-    casino_id: number | undefined
+    casino_slug: string | undefined
 }) => {
     return (
         <section className="simple-bonus__more-stake more-staket-simple-bonus">
@@ -46,9 +46,9 @@ export const SiblingBonus = ({
                         casinoName: casinoName || '',
                         bonuseName: c?.name || '',
                         playLink: casino_affiliate_link,
-                        imageLink: `/casino/${sanitizeLink(c.name)}/bonuses/${sanitizeLink(c?.name)}?queryId=${c?.id}` || '',
-                        casinoLink: `/casino/${sanitizeLink(casinoName)}?queryId=${casino_id}` || '',
-                        bonuseLink: `/casino/${sanitizeLink(c.name)}/bonuses/${sanitizeLink(c?.name)}?queryId=${c?.id}` || '',
+                        imageLink: `/casino/${casino_slug}/bonuses/${c?.slug2}` ,
+                        casinoLink: `/casino/${casino_slug}`,
+                        bonuseLink: `/casino/${casino_slug}/bonuses/${c?.slug2}` ,
                         tags: (
                             <>
                                 {c.labels.map((l, ct) => (

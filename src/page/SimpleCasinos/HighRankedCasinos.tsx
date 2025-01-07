@@ -8,7 +8,7 @@ import $api from '../../http'
 import { СasinosInRankRangeResponse } from '../../types'
 import { useQuery } from 'react-query'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { COLORS_TAGS, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { COLORS_TAGS, sanitizeNumberLike } from '../../helper'
 import { Link } from 'react-router-dom'
 
 const getFilteringCasinoList = async () => {
@@ -148,13 +148,13 @@ export const HighRankedCasinos = () => {
                                         .map((item) => (
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link to={`/casino/${sanitizeLink(item?.[0]?.name)}?queryId=${item?.[0]?.id}`} aria-label="Put your description here." className="item-slide-slider__image-block">
+                                                    <Link to={`/casino/${item?.[0]?.casino_slug}}`} aria-label="Put your description here." className="item-slide-slider__image-block">
                                                         <span className="item-slide-slider__image ibg--custom">
                                                             <LazyCardImg img={item?.[0].image || ''} height="auto" width="100%" />
                                                         </span>
                                                     </Link>
                                                     <div className="item-slide-slider__content">
-                                                        <Link to={`/casino/${sanitizeLink(item?.[0]?.name)}?queryId=${item?.[0]?.id}`} aria-label="Put your description here." className="item-slide-slider__name">
+                                                        <Link to={`/casino/${item?.[0]?.casino_slug}}`} aria-label="Put your description here." className="item-slide-slider__name">
                                                             {item?.[0]?.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
@@ -181,13 +181,13 @@ export const HighRankedCasinos = () => {
                                                     </div>
                                                 </div>
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link to={`/casino/${sanitizeLink(item?.[1]?.name)}?queryId=${item?.[1]?.id}`} aria-label="Put your description here." className="item-slide-slider__image-block">
+                                                    <Link to={`/casino/${item?.[1]?.casino_slug}`} aria-label="Put your description here." className="item-slide-slider__image-block">
                                                         <span className="item-slide-slider__image ibg--custom">
                                                             <LazyCardImg img={item?.[1]?.image || ''} height="auto" width="100%" />
                                                         </span>
                                                     </Link>
                                                     <div className="item-slide-slider__content">
-                                                        <Link to={`/casino/${sanitizeLink(item?.[1]?.name)}?queryId=${item?.[1]?.id}`} aria-label="Put your description here." className="item-slide-slider__name">
+                                                        <Link to={`/casino/${item?.[1]?.casino_slug}`} aria-label="Put your description here." className="item-slide-slider__name">
                                                             {item?.[1]?.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
@@ -249,14 +249,13 @@ export const HighRankedCasinos = () => {
                                         {dataCasino?.map((item) => (
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link to={`/casino/${sanitizeLink(item?.name)}?queryId=${item?.id}`} aria-label="Put your description here." className="item-slide-slider__image-block">
+                                                    <Link to={`/casino/${item?.casino_slug}`} aria-label="Put your description here." className="item-slide-slider__image-block">
                                                         <span className="item-slide-slider__image ibg--custom">
                                                             <LazyCardImg img={item?.image || ''} height="auto" width="100%" />
                                                         </span>
                                                     </Link>
-
                                                     <div className="item-slide-slider__content">
-                                                        <Link to={`/casino/${sanitizeLink(item?.name)}?queryId=${item?.id}`} aria-label="Put your description here." target="_blank" className="item-slide-slider__name">
+                                                        <Link to={`/casino/${item?.casino_slug}`} aria-label="Put your description here." target="_blank" className="item-slide-slider__name">
                                                             {item.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">

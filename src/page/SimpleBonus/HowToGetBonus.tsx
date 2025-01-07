@@ -4,7 +4,7 @@ import bg08 from '../../assets/img/bg/08.webp'
 import { GetDataBonusResponse } from '../../types'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { cloacingFetch, cloacingLink, getLikeByIdAndType, sanitizeLink, sanitizeNumberLike, saveLikesToStorage } from '../../helper'
+import { cloacingFetch, cloacingLink, getLikeByIdAndType, sanitizeNumberLike, saveLikesToStorage } from '../../helper'
 
 export const HowToGetBonus = ({ data }: { data: GetDataBonusResponse | undefined }) => {
     const [like, setLike] = useState<'' | 'like' | 'dislike'>('')
@@ -64,7 +64,7 @@ export const HowToGetBonus = ({ data }: { data: GetDataBonusResponse | undefined
                                     <div className="main-get-bonus__btns-item">
                                         <Link
                                             rel="nofollow noopener"
-                                            to={`/casino/${sanitizeLink(data?.casino_name)}?queryId=${data?.casino_id}`}
+                                            to={`/casino/${data?.casino_slug}`}
                                             aria-label="Put your description here."
                                             className="main-get-bonus__btn main-get-bonus__btn_review"
                                         >

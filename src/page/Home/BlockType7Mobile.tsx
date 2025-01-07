@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { BlockTypeNumber, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { sanitizeLink } from '../../helper'
 import { Link } from 'react-router-dom'
 
 export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undefined }) {
@@ -29,7 +28,7 @@ export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undef
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -58,14 +57,14 @@ export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undef
                                         <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item different-casino-medium">
-                                                    <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-medium__image-block">
+                                                    <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="different-casino-medium__image-block">
                                                         <span className="different-casino-medium__image ibg--custom">
                                                             <LazyCardImg img={item.casino_info.casino_image || ''} size="medium"  />
                                                         </span>
                                                     </Link>
                                                     <div className="different-casino-medium__content">
                                                         <Link
-                                                            to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                            to={`/casino/${item?.casino_info?.casino_slug}`}
                                                             aria-label="Put your descripton here."
                                                             className="different-casino-medium__name"
                                                         >

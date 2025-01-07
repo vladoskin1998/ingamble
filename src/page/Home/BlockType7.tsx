@@ -8,7 +8,7 @@ import shieldIcon from '../../assets/img/icons/shield.svg'
 import { BlockTypeNumber, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
-import { sanitizeLink, shuffleArray } from '../../helper'
+import {  shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
 
 export default function BlockType7({ data }: { data: HomeDataBlock | undefined }) {
@@ -48,7 +48,7 @@ export default function BlockType7({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -81,13 +81,13 @@ export default function BlockType7({ data }: { data: HomeDataBlock | undefined }
                                     ?.map((item, index) => (
                                         <SwiperSlide  key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
                                             <div className="slide-slider__item different-casino-bg">
-                                                <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} className="different-casino-bg__image-block">
+                                                <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="different-casino-bg__image-block">
                                                     <span className="different-casino-bg__image ibg--custom">
                                                         <LazyCardImg img={item.casino_info.casino_image || ''}  />
                                                     </span>
                                                 </Link>
                                                 <div className="different-casino-bg__content">
-                                                    <Link to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`} aria-label="Put your description here." className="different-casino-bg__name">
+                                                    <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="different-casino-bg__name">
                                                         {item.casino_info.casino_name}
                                                     </Link>
                                                     <div className="different-casino-bg__info">

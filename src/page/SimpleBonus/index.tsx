@@ -15,7 +15,7 @@ import { HeaderSimpleBonus } from './HeaderSimpleBonus'
 import { HowToGetBonus } from './HowToGetBonus'
 
 import { HarryStyles } from './HarryStyles'
-import { useSearchParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { EssentialVIPLoyaltyPrograms } from './EssentialVIPLoyaltyPrograms'
 import { useFilterContext } from '../../context/FilterContext'
 import { SiblingBonus } from './SiblingBonus'
@@ -26,8 +26,8 @@ const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 
-const getBonusDataFetch = async ({ queryId }: { queryId: string | null }) => {
-    const response = await $api.get(`get-data-bonus/${queryId}/`)
+const getBonusDataFetch = async ({ slug }: { slug: string | null }) => {
+    const response = await $api.get(`get-data-bonus/${slug}/`)
     const headers = response.headers
 
     return { dataBonus: response.data, headers }
@@ -38,17 +38,16 @@ export default function SimpleBonus() {
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const { data: Country } = useFilterContext()
 
-    const [searchParams] = useSearchParams()
-    const qid = searchParams.get('queryId')
+     const { bonus_slug } = useParams()
 
-    const [queryId, setQueryId] = useState<string>(qid || '')
+    const [slug, setSlug] = useState<string>(bonus_slug || '')
 
     useEffect(() => {
-        if (qid) {
-            setQueryId(qid)
+        if (bonus_slug) {
+            setSlug(bonus_slug)
             window.scrollTo(0, 0)
         }
-    }, [qid])
+    }, [bonus_slug])
 
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: '',
@@ -62,11 +61,10 @@ export default function SimpleBonus() {
     const { data, isLoading } = useQuery<{
         dataBonus: GetDataBonusResponse
         headers: any
-    }>(['get-data-bonus', queryId], () => getBonusDataFetch({ queryId }), {
+    }>(['get-data-bonus', slug], () => getBonusDataFetch({ slug }), {
         keepPreviousData: true,
         staleTime: Infinity,
-        enabled: !!queryId,
-        
+        enabled: !!slug,
     })
 
     useEffect(() => {
@@ -105,40 +103,43 @@ export default function SimpleBonus() {
         initializeAdaptiveBehavior()
     }, [geoLocation])
 
-    if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
-    // if (isLoading ) return <LogoLoader />
+     if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
+
     return (
         <Wraper>
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
                     <Categories />
-
+                 
                     <BreadCrumb
                         path={[
                             {
                                 name: 'Home',
-                                link: 'https://cryptogamblers.pro',
+                                link: '/    ',
                             },
                             {
-                                name: 'Casino Bonuses',
-                                link: 'https://cryptogamblers.pro/bonuses',
+                                name: 'Casino',
+                                link: '/all-casinos',
                             },
                             {
                                 name: data?.dataBonus?.casino_name || 'Casino Name',
-                                link: 'https://cryptogamblers.pro/casino/iwild-casino',
+                                link: `/casino/${data?.dataBonus.casino_slug}`,
                             },
                             {
                                 name: 'Bonuses',
-                                link: 'https://cryptogamblers.pro/casino/iwild-casino/bonuses',
+                                link: '/all-bonuses',
                             },
+                            // {
+                            //     name: data?.dataBonus?.bonus_type || 'Bonus Type',
+                            //     link: `/all-bonuses/${data?.dataBonus?.bonus_type_slug}`,
+                            // },
                             {
-                                name: data?.dataBonus?.bonus_type || 'Bonus Type',
-                                link: '#',
+                                name: data?.dataBonus?.name || 'Bonus Type',
+                                link: `#`,
                             },
                         ]}
                     />
                     <HeaderSimpleBonus data={data?.dataBonus} geoLocation={geoLocation} />
-
                     <BonusSubType bonus_subtype={data?.dataBonus?.bonus_subtype || []} />
                     <LastUpdate data={data?.dataBonus} />
                     <HowToGetBonus data={data?.dataBonus} />
@@ -147,15 +148,12 @@ export default function SimpleBonus() {
                         sibling_bonuses={data?.dataBonus.sibling_bonuses}
                         casino_rank={data?.dataBonus?.casino_rank}
                         casino_affiliate_link={data?.dataBonus.casino_affiliate_link || data?.dataBonus?.url_casino}
-                        casino_id={data?.dataBonus?.casino_id}
+                        casino_slug={data?.dataBonus?.casino_slug}
                     />
-
                     <OtherBestReloadBonus />
                     <EssentialVIPLoyaltyPrograms />
-
                     <HarryStyles img={ASHLINGOBRIEN} title="ASHLING O'BRIEN" subtitle="Content Maker, Casino Promotions Analyst" />
                     <CheckMoreWhatSuitsYouBest />
-
                     <SubscribeForm />
                     <BottomInfo />
                 </div>

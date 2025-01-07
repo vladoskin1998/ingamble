@@ -1,5 +1,5 @@
 import MainSlider from '../../components/swiper/MainSlider'
-import { COLORS_TAGS, sanitizeLink, shuffleArray } from '../../helper'
+import { COLORS_TAGS, shuffleArray } from '../../helper'
 import { BlockTypeNumber, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 
@@ -27,7 +27,7 @@ export default function BlockType8({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -39,9 +39,9 @@ export default function BlockType8({ data }: { data: HomeDataBlock | undefined }
                         likes: item.bonus_info.bonus_likes,
                         casinoName: item.casino_info.casino_name,
                         bonuseName: item.bonus_info.bonus_name,
-                        imageLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`,
-                        casinoLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`,
-                        bonuseLink: `/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`,
+                        imageLink: `/casino/${item?.casino_info?.casino_slug}/bonuses/${ item?.bonus_info?.bonus_slug}`,
+                        casinoLink: `/casino/${item?.casino_info?.casino_slug}`,
+                        bonuseLink: `/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`,
                         tags: (
                             <>
                                 {item?.bonus_info?.labels?.length ? (

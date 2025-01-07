@@ -7,7 +7,7 @@ import giftIcon from '../../assets/img/icons/gift.svg'
 import { useState, useEffect } from 'react'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
-import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 import { useFilterContext } from '../../context/FilterContext'
 
 const color_label = ['tags-casino-card__item_green', 'tags-casino-card__item_blue', 'tags-casino-card__item_purple', 'tags-casino-card__item_grass', 'tags-casino-card__item_orange']
@@ -73,11 +73,11 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
                             </div>
                             {!isSmallScreen ? (
                                 <div className="main-casino-info__name name-main-casino-info">
-                                    <Link className="name-main-casino-info__logo" to={`/casino/${sanitizeLink(data?.casino_name)}?queryId=${data?.casino_id}`}>
+                                    <Link className="name-main-casino-info__logo" to={`/casino/${data?.casino_slug}`}>
                                         <LazyCardImg img={data?.casino_logo || ''} />
                                     </Link>
                                     <div className="name-main-casino-info__content">
-                                        <Link to={`/casino/${sanitizeLink(data?.casino_name)}?queryId=${data?.casino_id}`} rel="noopener noreferrer" className="name-main-casino-info__title">
+                                        <Link to={`/casino/${data?.casino_slug}`} rel="noopener noreferrer" className="name-main-casino-info__title">
                                             {data?.casino_name}
                                         </Link>
                                         <div className="info-casino-card__stake-rating name-main-casino-info__stake-rating">
@@ -102,7 +102,7 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
                                         </span>
                                         <span className="info-casino-card__stake__rating-number">{data?.bonus_rank || '4.8'}</span>
                                     </div>
-                                    <Link className="name-main-casino-info__logo" to={`/casino/${sanitizeLink(data?.casino_name)}?queryId=${data?.casino_id}`}>
+                                    <Link className="name-main-casino-info__logo" to={`/casino/${data?.casino_slug}`}>
                                         <img src={data?.casino_logo} alt="stake" />
                                     </Link>
                                     <div className="info-casino-card__likes name-main-casino-info__likes">
@@ -112,7 +112,7 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
                                         <span className="info-casino-card__likes-number">{sanitizeNumberLike(data?.likes)}</span>
                                     </div>
                                     <div className="name-main-casino-info__content">
-                                        <Link to={`/casino/${sanitizeLink(data?.casino_name)}?queryId=${data?.casino_id}`} rel="noopener noreferrer" className="name-main-casino-info__title">
+                                        <Link to={`/casino/${data?.casino_slug}`} rel="noopener noreferrer" className="name-main-casino-info__title">
                                             {data?.casino_name}
                                         </Link>
                                     </div>

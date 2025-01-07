@@ -7,7 +7,7 @@ import { useRef, useEffect } from 'react'
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { cloacingFetch, cloacingLink, sanitizeLink } from '../../helper'
+import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { LazyImgHomeType } from '.'
 
@@ -34,12 +34,8 @@ export default function BlockMType2M({
         }
     }, [])
 
-  
-    
-
     if (!data || data?.items_block?.type_block !== BlockTypeNumber.BlockType2M) return <></>
 
-  
     return (
         <section aria-label="BlockTypeNumber.BlockType2M" className="main-gamble__payn-play-casinos payn-play-casinos-gamble">
             <div className="payn-play-casinos-gamble__container container">
@@ -57,7 +53,7 @@ export default function BlockMType2M({
                             {data.items_block.subtitle && <div className="top__subtitle">{data?.items_block?.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
+                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug }  />
                         </div>
                     </div>
                 </div>
@@ -94,26 +90,22 @@ export default function BlockMType2M({
                                         }
                                         return acc
                                     }, [])
-                                    .map((item,index) => (
+                                    .map((item, index) => (
                                         <SwiperSlide key={index}>
                                             <div className="slider__slide slide-slider slide-slider-column slide-slider-column_standart swiper-slide">
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <Link to={`/casino/${sanitizeLink(item?.[0]?.casino_info?.casino_name)}?queryId=${item?.[0]?.casino_info?.casino_id}`} className="different-casino-standart__image-block">
+                                                            <Link to={`/casino/${item?.[0]?.casino_info?.casino_slug}`} className="different-casino-standart__image-block">
                                                                 <span className="different-casino-standart__image ibg--custom">
-                                                                    <LazyCardImg
-                                                                        img={item?.[0].casino_info.casino_image || ''}
-                                                                        size="medium"
-                                                                     
-                                                                    />
+                                                                    <LazyCardImg img={item?.[0].casino_info.casino_image || ''} size="medium" />
                                                                 </span>
                                                             </Link>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
                                                                         rel="nofollow noopener"
-                                                                        to={`/casino/${sanitizeLink(item?.[0]?.casino_info?.casino_name)}?queryId=${item?.[0]?.casino_info?.casino_id}`}
+                                                                        to={`/casino/${item?.[0]?.casino_info?.casino_slug}`}
                                                                         aria-label="Put your description here."
                                                                         className="different-casino-standart__name"
                                                                     >
@@ -121,9 +113,7 @@ export default function BlockMType2M({
                                                                     </Link>
                                                                     <div className="different-casino-standart__info">
                                                                         <Link
-                                                                            to={`/casino/${sanitizeLink(item?.[0]?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.[0]?.bonus_info?.bonus_name)}?queryId=${
-                                                                                item?.[0]?.bonus_info?.bonus_id
-                                                                            }`}
+                                                                            to={`/casino/${item?.[0]?.casino_info?.casino_slug}/bonuses/${item?.[0]?.bonus_info?.bonus_slug}`}
                                                                             rel="nofollow noopener"
                                                                             aria-label="Put your description here."
                                                                             className="different-casino-standart__info-link"
@@ -152,7 +142,7 @@ export default function BlockMType2M({
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <Link to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}?queryId=${item?.[1]?.casino_info?.casino_id}`} className="different-casino-standart__image-block">
+                                                            <Link to={`/casino/${item?.[1]?.casino_info?.casino_slug}`} className="different-casino-standart__image-block">
                                                                 <span className="different-casino-standart__image ibg--custom">
                                                                     <LazyCardImg img={item?.[1]?.casino_info?.casino_image || ''} size="medium" />
                                                                 </span>
@@ -160,7 +150,7 @@ export default function BlockMType2M({
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
-                                                                        to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}?queryId=${item?.[1]?.casino_info?.casino_id}`}
+                                                                        to={`/casino/${item?.[1]?.casino_info?.casino_slug}`}
                                                                         rel="nofollow noopener"
                                                                         aria-label="Put your description here."
                                                                         className="different-casino-standart__name"
@@ -170,9 +160,7 @@ export default function BlockMType2M({
                                                                     <div className="different-casino-standart__info">
                                                                         <Link
                                                                             rel="nofollow noopener"
-                                                                            to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.[1]?.bonus_info?.bonus_name)}?queryId=${
-                                                                                item?.[1]?.bonus_info?.bonus_id
-                                                                            }`}
+                                                                            to={`/casino/${item?.[1]?.casino_info?.casino_slug}/bonuses/${item?.[1]?.bonus_info?.bonus_slug}`}
                                                                             aria-label="Put your description here."
                                                                             className="different-casino-standart__info-link"
                                                                         >
@@ -200,7 +188,7 @@ export default function BlockMType2M({
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column_standart">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <Link to={`/casino/${sanitizeLink(item?.[2]?.casino_info?.casino_name)}?queryId=${item?.[2]?.casino_info?.casino_id}`} className="different-casino-standart__image-block">
+                                                            <Link to={`/casino/${item?.[2]?.casino_info?.casino_slug}`} className="different-casino-standart__image-block">
                                                                 <span className="different-casino-standart__image ibg--custom">
                                                                     <LazyCardImg img={item?.[2]?.casino_info?.casino_image || ''} size="medium" />
                                                                 </span>
@@ -209,7 +197,7 @@ export default function BlockMType2M({
                                                                 <div className="different-casino-standart__content-row">
                                                                     <Link
                                                                         rel="nofollow noopener"
-                                                                        to={`/casino/${sanitizeLink(item?.[2]?.casino_info?.casino_name)}?queryId=${item?.[2]?.casino_info?.casino_id}`}
+                                                                        to={`/casino/${item?.[2]?.casino_info?.casino_slug}`}
                                                                         aria-label="Put your description here."
                                                                         className="different-casino-standart__name"
                                                                     >
@@ -218,9 +206,7 @@ export default function BlockMType2M({
                                                                     <div className="different-casino-standart__info">
                                                                         <Link
                                                                             rel="nofollow noopener"
-                                                                            to={`/casino/${sanitizeLink(item?.[1]?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.[2]?.bonus_info?.bonus_name)}?queryId=${
-                                                                                item?.[2]?.bonus_info?.bonus_id
-                                                                            }`}
+                                                                            to={`/casino/${item?.[1]?.casino_info?.casino_slug}/bonuses/${item?.[2]?.bonus_info?.bonus_slug}`}
                                                                             aria-label="Put your description here."
                                                                             className="different-casino-standart__info-link"
                                                                         >

@@ -9,7 +9,7 @@ import { HarryStyles } from '../SimpleBonus/HarryStyles'
 import { LoyaltyAcordeon } from './LoyaltyAcordeon'
 import $api from '../../http'
 import { useAdaptiveBehavior } from '../../context/AppContext'
-import { useSearchParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from '../../types'
 import { LogoLoader } from '../../components/loader/LogoLoader'
@@ -24,8 +24,8 @@ const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
-const getCurrentLoyaltiesFetchData = async (queryId: string) => {
-    const response = await $api.get(`get-data-loyalty-program/${queryId}/`)
+const getCurrentLoyaltiesFetchData = async (slug: string) => {
+    const response = await $api.get(`get-data-loyalty-program/${slug}/`)
 
     const headers = response.headers
 
@@ -34,7 +34,7 @@ const getCurrentLoyaltiesFetchData = async (queryId: string) => {
 
 export default function SimpleLoyalties() {
     // document.title = " Loyaltie"
-    const [queryId, setQueryId] = useState<string>('')
+    const [slug, setSlug] = useState<string>('')
     const [geoLocation, setGeoLocation] = useState<GeoLocationAllowdType>({
         countryCode: '',
         countryName: '',
@@ -46,24 +46,23 @@ export default function SimpleLoyalties() {
 
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
 
-    const [searchParams] = useSearchParams()
-    const qid = searchParams.get('queryId')
+   const { loyaltie_slug } = useParams()
 
     const { data: Country } = useFilterContext()
     const { data, isLoading } = useQuery<{
         dataCurrentLoyaltie: LoyaltieProgramDataResponse
         headers: any
-    }>(['get-data-casino', queryId], () => getCurrentLoyaltiesFetchData(queryId!), {
+    }>(['get-data-casino', slug], () => getCurrentLoyaltiesFetchData(slug), {
         keepPreviousData: true,
-        enabled: !!queryId,
+        enabled: !!slug,
     })
 
     useEffect(() => {
-        if (qid) {
-            setQueryId(qid)
+        if (loyaltie_slug) {
+            setSlug(loyaltie_slug)
             window.scrollTo(0, 0)
         }
-    }, [qid])
+    }, [loyaltie_slug])
 
     useEffect(() => {
         if (data?.headers) {
@@ -102,23 +101,23 @@ export default function SimpleLoyalties() {
                         path={[
                             {
                                 name: 'Home',
-                                link: 'https://cryptogamblers.pro',
+                                link: '/    ',
                             },
                             {
-                                name: 'Casino Bonuses',
-                                link: 'https://cryptogamblers.pro/bonuses',
+                                name: 'Casino',
+                                link: '/all-casinos',
                             },
                             {
-                                name: 'Casino Name',
-                                link: 'https://cryptogamblers.pro/casino/iwild-casino',
+                                name: data?.dataCurrentLoyaltie?.casino_name || 'Casino Name',
+                                link: `/casino/${data?.dataCurrentLoyaltie?.casino_slug}`,
                             },
                             {
-                                name: 'Bonuses',
-                                link: 'https://cryptogamblers.pro/casino/iwild-casino/bonuses',
+                                name: 'Loyalties',
+                                link: `/all-loyalties`,
                             },
                             {
-                                name: 'Bonus Type',
-                                link: '#',
+                                name: `${data?.dataCurrentLoyaltie?.casino_name} Vip Loyalty Program`,
+                                link: `/all-loyalties`,
                             },
                         ]}
                     />
@@ -132,7 +131,7 @@ export default function SimpleLoyalties() {
                         casino_affiliate_link={data?.dataCurrentLoyaltie?.casino_affiliate_link || data?.dataCurrentLoyaltie.url_casino}
                         casino_name={data?.dataCurrentLoyaltie?.casino_name}
                         likes={data?.dataCurrentLoyaltie?.likes}
-                        queryId={data?.dataCurrentLoyaltie?.casino_id}
+                        slug={data?.dataCurrentLoyaltie?.casino_slug}
                         link_tc={data?.dataCurrentLoyaltie?.link_tc || ''}
                         id={data?.dataCurrentLoyaltie.id}
                     />
@@ -144,7 +143,7 @@ export default function SimpleLoyalties() {
                         sibling_bonuses={data?.dataCurrentLoyaltie.sibling_bonuses}
                         casino_rank={data?.dataCurrentLoyaltie?.casino_rank}
                         casino_affiliate_link={data?.dataCurrentLoyaltie?.casino_affiliate_link || data?.dataCurrentLoyaltie.url_casino}
-                        casino_id={data?.dataCurrentLoyaltie?.casino_id}
+                        casino_slug={data?.dataCurrentLoyaltie?.casino_slug}
                     />
 
                     <OtherBestReloadBonus />

@@ -13,20 +13,31 @@ import { LogoLoader } from '../../components/loader/LogoLoader'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { SeeAllBonus as SeeAllBonusType, SeeAllBonusResponse } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { cloacingFetch, cloacingLink, COLORS_TAGS, sanitizeLink, sanitizeNumberLike } from '../../helper'
-import { Link, useSearchParams } from 'react-router-dom'
+import { cloacingFetch, cloacingLink, COLORS_TAGS, sanitizeNumberLike } from '../../helper'
+import { Link, useParams } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
+
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
-const getAllBonusFetchData = async (page: number, queryId: string | null) => {
-    const response = await $api.get(`get-see-all-bonus-category${queryId ? '/' + queryId : ''}/?page=${page}&page_size=${countPageSize}`)
+const pathBreadCrumb = [
+    {
+        name: 'Home',
+        link: '/    ',
+    },
+    {
+        name: 'All Bonuses',
+        link: '/all-bonuses',
+    },
+]
+
+const getAllBonusFetchData = async (page: number, slug: string | null) => {
+    const response = await $api.get(`get-see-all-bonus-category${slug ? '/' + slug : ''}/?page=${page}&page_size=${countPageSize}`)
     return response.data
 }
 
- const countPageSize = window.innerWidth < 900 ? 10 : 20
+const countPageSize = window.innerWidth < 900 ? 10 : 20
 
 export default function SeeAllBonus() {
     // // document.title = "All Bonus"
@@ -36,19 +47,16 @@ export default function SeeAllBonus() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
     const { initializeAdaptiveBehavior, category } = useAdaptiveBehavior()
 
-    const [searchParams] = useSearchParams()
-    const qid = searchParams.get('queryId')
+    const { bonus_slug } = useParams()
 
-    const [queryId, setQueryId] = useState<string>(qid || '')
+    const [slug, setSlug] = useState<string>(bonus_slug || '')
 
     useEffect(() => {
-        setQueryId(qid || '')
+        setSlug(bonus_slug || '')
         window.scrollTo(0, 0)
-    }, [qid])
+    }, [bonus_slug])
 
-
-
-    const { data, isLoading } = useQuery<SeeAllBonusResponse>(['get-see-all-bonus-category/', currentPage, queryId], () => getAllBonusFetchData(currentPage, queryId), {
+    const { data, isLoading } = useQuery<SeeAllBonusResponse>(['get-see-all-bonus-category/', currentPage, slug], () => getAllBonusFetchData(currentPage, slug), {
         keepPreviousData: true,
         cacheTime: 1000 * 60 * 5,
     })
@@ -69,7 +77,7 @@ export default function SeeAllBonus() {
             })
             return
         }
-    }, [data, queryId])
+    }, [data, slug])
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
@@ -83,28 +91,27 @@ export default function SeeAllBonus() {
         initializeAdaptiveBehavior()
     }, [isLoading])
 
+    const titlePage = slug ? data?.category_name || category?.find((item) => item?.slug === slug)?.name : 'All Bonuses'
+
     if (isLoading) return <LogoLoader />
 
     return (
         <Wraper>
             <main className="gamble__see-all main-gamble see-all">
                 <div className="main-gamble__body">
-                    <Categories type_category={'bonus'}/>
+                    <Categories type_category={'bonus'} />
                     <BreadCrumb
-                        path={[
-                            {
-                                name: 'Home',
-                                link: 'https://cryptogamblers.pro',
-                            },
-                            {
-                                name: 'All Bonuses',
-                                link: 'https://cryptogamblers.pro/bonuses',
-                            },
-                            // {
-                            //     name:   DataArray.find(item => Number(item?.key) === key)?.name || 'not found',
-                            //     link: "#",
-                            // },
-                        ]}
+                        path={
+                            slug
+                                ? [
+                                      ...pathBreadCrumb,
+                                      {
+                                          name: titlePage || 'Categories',
+                                          link: `/all-bonuses/${slug}`,
+                                      },
+                                  ]
+                                : pathBreadCrumb
+                        }
                     />
                     <section className="see-all__main main-see-all">
                         <div className="main-see-all__container container">
@@ -112,7 +119,7 @@ export default function SeeAllBonus() {
                                 <div className="top__row">
                                     <div className="top__column">
                                         <div className="top__title-block">
-                                            <h2 className="top__title">{queryId ? data?.category_name || category?.find((item) => item?.bonus_id === Number(queryId))?.name : 'All Bonuses'}</h2>
+                                            <h2 className="top__title">{titlePage}</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +136,7 @@ export default function SeeAllBonus() {
                                                     }}
                                                     className="casino-card__image-block"
                                                 >
-                                                    <Link to={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`} className="casino-card__image see-all-custom__image-custom">
+                                                    <Link to={`/casino/${item.casino_slug}/bonuses/${item.bonus_slug}`} className="casino-card__image see-all-custom__image-custom">
                                                         <LazyCardImg img={item.bonus_image} width="100%" />
                                                     </Link>
                                                     <a
@@ -157,7 +164,7 @@ export default function SeeAllBonus() {
                                                 </div>
                                                 <div className="casino-card__info info-casino-card">
                                                     <div className="info-casino-card__stake">
-                                                        <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`} aria-label="Put your description here." className="info-casino-card__stake-link">
+                                                        <Link to={`/casino/${item?.casino_slug}`} aria-label="Put your description here." className="info-casino-card__stake-link">
                                                             {item?.casino_name}
                                                         </Link>
                                                         <div className="info-casino-card__stake-rating">
@@ -174,7 +181,7 @@ export default function SeeAllBonus() {
                                                         <span className="info-casino-card__likes-number">{sanitizeNumberLike(item?.bonus_likes)}</span>
                                                     </div>
                                                 </div>
-                                                <Link to={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`} className="casino-card__name">
+                                                <Link to={`/casino/${item.casino_slug}/bonuses/${item.bonus_slug}`} className="casino-card__name">
                                                     {item.bonus_name}
                                                 </Link>
                                             </div>

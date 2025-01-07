@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react'
 import { BlockTypeNumber, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
-import { cloacingFetch, cloacingLink, sanitizeLink, shuffleArray } from '../../helper'
+import { cloacingFetch, cloacingLink, shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
 
 export default function BlockType6({ data }: { data: HomeDataBlock | undefined }) {
@@ -46,7 +46,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} parameter={data?.items_block?.category?.name || ''} id={data?.items_block?.category?.id} />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                     <Link
                                                         className="casino-card__image ibg--custom"
                                                         onClick={(e) => e.stopPropagation()}
-                                                        to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}/bonuses/${sanitizeLink(item?.bonus_info?.bonus_name)}?queryId=${item?.bonus_info?.bonus_id}`}
+                                                        to={`/casino/${item?.casino_info?.casino_name}/bonuses/${item?.bonus_info?.bonus_slug}`}
                                                     >
                                                         <LazyCardImg img={item.bonus_info.bonus_image || ''} />
                                                     </Link>
@@ -108,14 +108,14 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                                 style={{
                                                                     backgroundSize: '125% auto',
                                                                 }}
-                                                                to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                to={`/casino/${item?.casino_info?.casino_slug}`}
                                                             >
                                                                 <LazyCardImg img={item.casino_info.casino_image || ''} size="medium" />
                                                             </Link>
                                                         </div>
                                                         <div className="casino-small-card__body">
                                                             <Link
-                                                                to={`/casino/${sanitizeLink(item?.casino_info?.casino_name)}?queryId=${item?.casino_info?.casino_id}`}
+                                                                to={`/casino/${item?.casino_info?.casino_slug}`}
                                                                 aria-label="Put your description here."
                                                                 className="casino-small-card__name"
                                                             >

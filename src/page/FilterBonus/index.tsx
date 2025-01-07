@@ -10,7 +10,7 @@ import like from '../../assets/img/icons/like.svg'
 import { lazy, memo, useEffect, useState } from 'react'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import star from '../../assets/img/icons/star.svg'
-import { cloacingFetch, cloacingLink, COLORS_TAGS, filterEmptyValues, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { cloacingFetch, cloacingLink, COLORS_TAGS, filterEmptyValues, sanitizeNumberLike } from '../../helper'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
 import { debounce } from 'lodash'
 import { LogoLoader } from '../../components/loader/LogoLoader'
@@ -19,6 +19,7 @@ import '../SeeAllBonus/style.css'
 import { v4 as uuidv4 } from 'uuid'
 import { Link } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
+import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
@@ -126,6 +127,18 @@ export default function FilterBonus() {
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
                     <Categories />
+                    <BreadCrumb
+                        path={[
+                            {
+                                name: 'Home',
+                                link: '/',
+                            },
+                            {
+                                name: 'Bonuses Filters',
+                                link: '#',
+                            },
+                        ]}
+                    />
                     <FilterHeaderList initList={bonusFilters} clearAll={clearAll} clearOne={(v) => handlerClearOne(v)} />
 
                     <section className="see-all__main main-see-all">
@@ -175,7 +188,7 @@ const ListDisplayData = memo(({ displayedData }: { displayedData: SeeAllBonus[] 
                             <div className="casino-card__image-block" style={{ padding: '0 8px 50.432% 8px' }}>
                                 <Link
                                     rel="nofollow noopener"
-                                    to={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`}
+                                    to={`/casino/${item.casino_slug}/bonuses/${item.bonus_slug}`}
                                     aria-label="Put your description here."
                                     className="casino-card__image see-all-custom__image-custom"
                                     key={uuidv4()}
@@ -208,7 +221,7 @@ const ListDisplayData = memo(({ displayedData }: { displayedData: SeeAllBonus[] 
                             </div>
                             <div className="casino-card__info info-casino-card">
                                 <div className="info-casino-card__stake">
-                                    <Link rel="nofollow noopener" to={`/casino/${sanitizeLink(item.casino_name)}?queryId=${item.casino_id}`} aria-label="Put your description here." className="info-casino-card__stake-link">
+                                    <Link rel="nofollow noopener" to={`/casino/${item.casino_slug}`} aria-label="Put your description here." className="info-casino-card__stake-link">
                                         {item?.casino_name}
                                     </Link>
                                     <div className="info-casino-card__stake-rating">
@@ -227,7 +240,7 @@ const ListDisplayData = memo(({ displayedData }: { displayedData: SeeAllBonus[] 
                             </div>
                             <Link
                                 rel="nofollow noopener"
-                                to={`/casino/${sanitizeLink(item.casino_name)}/bonuses/${sanitizeLink(item.bonus_name)}?queryId=${item.bonus_id}`}
+                                to={`/casino/${item.casino_slug}/bonuses/${item.bonus_slug}`}
                                 aria-label="Put your description here."
                                 className="casino-card__name"
                             >

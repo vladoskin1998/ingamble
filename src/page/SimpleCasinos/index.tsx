@@ -11,21 +11,21 @@ import { Harry } from './Harry'
 import { PopupReadMore } from './PopupReadMore'
 import { lazy, useEffect, useState } from 'react'
 import $api from '../../http'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { GeoLocationAllowdType, RewievCasinoDataResponse } from '../../types'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { useFilterContext } from '../../context/FilterContext'
-import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 
 import giftIcon from '../../assets/img/icons/gift.svg'
 
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
-// import { sanitizeLink } from "../../helper"
+
 
 const SafetyIndexRatingLevel = (n: number) => {
     if (n < 3) return 'low'
@@ -33,8 +33,8 @@ const SafetyIndexRatingLevel = (n: number) => {
     else return 'high'
 }
 
-const getCurrentCasinosFetchData = async (queryId: string) => {
-    const response = await $api.get(`get-data-casino/${queryId}/`)
+const getCurrentCasinosFetchData = async (slug: string) => {
+    const response = await $api.get(`get-data-casino/${slug}/`)
 
     const headers = response.headers
 
@@ -46,25 +46,24 @@ export default function SimpleCasinos() {
 
     const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const [openModal, setOpenModal] = useState(false)
-    const [searchParams] = useSearchParams()
-    const qid = searchParams.get('queryId')
+   const { casino_slug } = useParams()
 
-    const [queryId, setQueryId] = useState<string>(qid || '')
+    const [slug, setSlug] = useState<string>(casino_slug || '')
 
     const { data, isLoading } = useQuery<{
         dataCurrentCasinos: RewievCasinoDataResponse
         headers: any
-    }>(['get-data-casino', queryId], () => getCurrentCasinosFetchData(queryId!), {
+    }>(['get-data-casino', slug], () => getCurrentCasinosFetchData(slug), {
         staleTime: Infinity,
-        enabled: !!queryId,
+        enabled: !!slug,
     })
 
     useEffect(() => {
-        if (qid) {
-            setQueryId(qid)
+        if (casino_slug) {
+            setSlug(casino_slug)
             window.scrollTo(0, 0)
         }
-    }, [qid])
+    }, [casino_slug])
 
     const { data: Country, setCasinoFilters } = useFilterContext()
 
@@ -133,15 +132,15 @@ export default function SimpleCasinos() {
                             path={[
                                 {
                                     name: 'Home',
-                                    link: 'https://cryptogamblers.pro',
+                                    link: '/    ',
                                 },
                                 {
-                                    name: 'Gambling Hub',
-                                    link: 'https://cryptogamblers.pro/bonuses',
+                                    name: 'Casino',
+                                    link: '/all-casinos',
                                 },
                                 {
-                                    name: 'Review',
-                                    link: '#',
+                                    name: data?.dataCurrentCasinos?.name || 'Casino Name',
+                                    link: `/casino/${data?.dataCurrentCasinos?.casino_slug}`,
                                 },
                             ]}
                         />
@@ -308,12 +307,7 @@ export default function SimpleCasinos() {
                                                 </div>
                                             </div>
                                             <div className="top__column">
-                                                <Link
-                                                    to={`/casino/${sanitizeLink(data?.dataCurrentCasinos?.name)}/loyalty?queryId=${data?.dataCurrentCasinos?.loyaltie_id}`}
-                                                    aria-label="Put your description here."
-                                                    className="top__btn "
-                                                    style={{ display: 'flex' }}
-                                                >
+                                                <Link to={`/casino/${data?.dataCurrentCasinos?.loyalty_slug}/loyalty`} aria-label="Put your description here." className="top__btn " style={{ display: 'flex' }}>
                                                     <span>View More</span>
                                                     <span className="top__btn-arrow">
                                                         <svg>

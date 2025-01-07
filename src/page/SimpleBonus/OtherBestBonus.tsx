@@ -2,9 +2,9 @@ import MainSlider from '../../components/swiper/MainSlider'
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { BonusInRankRangeResponse } from '../../types'
-import { COLORS_TAGS, sanitizeLink, shuffleArray } from '../../helper'
+import { COLORS_TAGS, shuffleArray } from '../../helper'
 
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 const getFilteringBonusList = async () => {
@@ -14,16 +14,15 @@ const getFilteringBonusList = async () => {
 
 //@ts-ignore
 export const OtherBestReloadBonus = ({ casinoName }: { casinoName?: string }) => {
-    const [searchParams] = useSearchParams()
-    const qid = searchParams.get('queryId')
+       const { bonus_slug } = useParams()
 
-    const [queryId, setQueryId] = useState<string>(qid || '')
+    const [slug, setSlug] = useState<string>(bonus_slug || '')
 
     useEffect(() => {
-        if (qid) {
-            setQueryId(qid)
+        if (bonus_slug) {
+            setSlug(bonus_slug)
         }
-    }, [qid])
+    }, [bonus_slug])
     const { data: BonusDataHigh } = useQuery<BonusInRankRangeResponse[]>(['bonuses-in-rank-range/'], () => getFilteringBonusList(), {
         keepPreviousData: true,
         staleTime: Infinity,
@@ -53,7 +52,7 @@ export const OtherBestReloadBonus = ({ casinoName }: { casinoName?: string }) =>
                         </div>
                     </div>
                     <MainSlider
-                        data={shuffleArray(BonusDataHigh?.filter((item) => item.bonus_id !== Number(queryId)))
+                        data={shuffleArray(BonusDataHigh?.filter((item) => item.bonus_slug !== slug))
                             ?.slice(0, 10)
                             .map((b: BonusInRankRangeResponse) => ({
                                 img: b?.bonus_image || '',
@@ -61,10 +60,10 @@ export const OtherBestReloadBonus = ({ casinoName }: { casinoName?: string }) =>
                                 likes: b?.bonus_likes,
                                 casinoName: b?.casino_name,
                                 bonuseName: b?.bonus_name,
-                                imageLink: `/casino/${sanitizeLink(b?.casino_name)}/bonuses/${sanitizeLink(b?.bonus_name)}?queryId=${b?.bonus_id}`,
+                                imageLink: `/casino/${b?.casino_slug}/bonuses/${b?.bonus_slug}`,
                                 playLink: b?.casino_affiliate_link || b?.url_casino,
-                                casinoLink: `/casino/${sanitizeLink(b?.casino_name)}?queryId=${b?.casino_id}`,
-                                bonuseLink: b?.bonus_type === null ? '' : `/casino/${sanitizeLink(b?.casino_name)}/bonuses/${sanitizeLink(b?.bonus_name)}?queryId=${b?.bonus_id}`,
+                                casinoLink: `/casino/${b?.casino_slug}`,
+                                bonuseLink: b?.bonus_type === null ? '' : `/casino/${b?.casino_slug}/bonuses/${b?.bonus_slug}`,
                                 tags: (
                                     <>
                                         {typeof b !== 'string'

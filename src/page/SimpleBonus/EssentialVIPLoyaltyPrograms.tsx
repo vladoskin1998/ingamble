@@ -1,7 +1,7 @@
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { LoyaltyInRankRangeResponse } from '../../types'
-import { cloacingFetch, cloacingLink, sanitizeLink, sanitizeNumberLike } from '../../helper'
+import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import star from '../../assets/img/icons/star.svg'
@@ -65,7 +65,7 @@ export const EssentialVIPLoyaltyPrograms = ({ casinoName }: { casinoName?: strin
                                     <SwiperSlide>
                                         <div key={index} className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                             <div className="item-essential-programs-gamble__top">
-                                                <Link to={`/casino/${sanitizeLink(item?.casino_name)}?queryId=${item?.casino_id}`} aria-label="Put your description here." className="item-essential-programs-gamble__logo">
+                                                <Link to={`/casino/${item?.casino_slug}`} aria-label="Put your description here." className="item-essential-programs-gamble__logo">
                                                     <LazyCardImg img={item.card_logo || ''} />
                                                 </Link>
                                             </div>
@@ -143,7 +143,7 @@ export const EssentialVIPLoyaltyPrograms = ({ casinoName }: { casinoName?: strin
                                                     </a>
                                                 </div>
                                                 <div className="item-essential-programs-gamble__bottom-column">
-                                                    <Link to={`/casino/${sanitizeLink(item?.casino_name)}/loyalty?queryId=${item?.loyalty_id}`} aria-label="Put your description here." className="item-essential-programs-gamble__btn">
+                                                    <Link to={`/casino/${ item?.loyalty_slug}/loyalty`} aria-label="Put your description here." className="item-essential-programs-gamble__btn">
                                                         Read More
                                                     </Link>
                                                 </div>
