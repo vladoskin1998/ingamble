@@ -15,6 +15,34 @@ export const COLORS_TAGS = [
     "tags-casino-card__item_grass",
 ]
 
+export const LOYALTIECATEGORYIES = [
+    {
+        name: 'Top Ranked',
+        slug: 'loyalty-rank',
+    },
+    {
+        name: 'Access to VIP Manager',
+        slug: 'vip-manager',
+    },
+    {
+        name: 'Level-Up Rewards',
+        slug: 'level-up-bonus',
+    },
+    {
+        name: 'Unlimited Cashouts',
+        slug: 'withdrawals',
+    },
+    {
+        name: 'Exclusive Gifts & Prizes ',
+        slug: 'special-prizes',
+    },
+    {
+        name: 'Gifts',
+        slug: 'gifts',
+    },
+]
+
+
 export const NumberAssociaty = (n:number | string) => {
     if(typeof n === "string") return n
     const s = String(n)

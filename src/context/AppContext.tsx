@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
 import { AllCategoriesHomeDataResponse } from '../types';
 import $api from '../http';
-import {  shuffleArray } from '../helper';
+import {  LOYALTIECATEGORYIES, shuffleArray } from '../helper';
 import { CategorySwiperType } from '../components/categories/Categories';
 
 const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
@@ -24,7 +24,7 @@ interface AdaptiveContextType {
     setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
     initializeAdaptiveBehavior: () => void;
     lastUpdate: string
-    category: { link: string; name: string; bonus_id?:number ; casino_id?:number, categoryType:CategorySwiperType, slug:string}[]
+    category: { link: string; name: string;  categoryType:CategorySwiperType, slug:string, callback?: () => void}[]
 }
 
 const getRandomDate = (startDate: Date, endDate: Date): Date => {
@@ -203,18 +203,22 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
             return shuffleArray([
                 ...(dataCategories?.bonus_categories?.map((item) => ({
                     name: item.name,
-                    link: `${window.location.origin}/all-bonuses/${item?.slug}`,
-                    bonus_id: item.id,
+                    link: `/all-bonuses/${item?.slug}`,
                     slug: item.slug,
                     categoryType: 'bonus' as CategorySwiperType,
                 })) || []),
                 ...(dataCategories?.casino_categories?.map((item) => ({
                     name: item.name,
                     slug: item.slug,
-                    link: `${window.location.origin}/all-casinos/${item?.slug}`,
-                    casino_id: item.id,
+                    link: `/all-casinos/${item?.slug}`,
                     categoryType: 'casino' as CategorySwiperType,
                 })) || []),
+                ...LOYALTIECATEGORYIES.map((item) => ({
+                    name: item.name,
+                    slug: item.slug,
+                    link: `/all-loyalties/${item?.slug}`,
+                    categoryType: 'loyaltie' as CategorySwiperType,
+                })),
             ])
         }, [dataCategories])
 

@@ -6,37 +6,88 @@ import { PaginationPage } from '../../components/pagination/PaginationPage'
 
 import $api from '../../http'
 import { useQuery } from 'react-query'
-import { SeeAllEssentialCasinoResponse, SeeAllEssentialLoyaltyCasino } from '../../types'
+import { LoyaltiesFilterBodyType, SeeAllEssentialLoyaltyCasino } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import './style.css'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { lazy, useEffect, useState } from 'react'
-import { cloacingFetch, cloacingLink } from '../../helper'
-import { Link } from 'react-router-dom'
+import { cloacingFetch, cloacingLink, filterEmptyValues, LOYALTIECATEGORYIES } from '../../helper'
+import { Link, useParams } from 'react-router-dom'
+import { initialLoyaltiesFilters, useFilterContext } from '../../context/FilterContext'
+
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
 const countPageSize = window.innerWidth < 900 ? 8 : 15
 
+const pathBreadCrumb = [
+    {
+        name: 'Home',
+        link: '/    ',
+    },
+    {
+        name: 'Essential VIP Loyalty Programs',
+        link: '/all-loyalties',
+    },
+]
+
+
+interface NAMETITLECATEGORYSLUGType {
+    [key: string]: {
+        key: string
+        value: boolean | { min: number; max: number }
+    }
+}
+
+// Define NAMETITLECATEGORYSLUG with type safety
+const NAMETITLECATEGORYSLUG: NAMETITLECATEGORYSLUGType = {
+    'loyalty-rank': { key: 'loyalty_rank', value: { min: 8, max: 10 } },
+    'vip-manager': { key: 'vip_manager', value: true },
+    'level-up-bonus': { key: 'level_up_bonus', value: true },
+    withdrawals: { key: 'withdrawals', value: true },
+    'special-prizes': { key: 'special_prizes', value: true },
+    gifts: { key: 'gifts', value: true },
+}
+
+const getFilteringLoyaltiesList = async (payload: LoyaltiesFilterBodyType, page: number) => {
+    const body = filterEmptyValues(payload)
+    const response = await $api.post(`filter/loyalty/?page=${page}&page_size=${countPageSize}`, body)
+    return response.data
+}
+
 export default function SeeAllEssentialsLoyalty() {
     // document.title = "All Essentials Loyalty"
+    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const { loyaltiesFilters, setLoyaltiesFilters } = useFilterContext()
+    const { loyaltie_slug } = useParams()
 
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllEssentialLoyaltyCasino[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
-    const getAllEssentialsLoyalty = async (page: number): Promise<SeeAllEssentialCasinoResponse> => {
-        const response = await $api.get(`get-see-all-loyalties/?page=${page}&page_size=${countPageSize}`)
-        return response.data
-    }
 
-    const { data, isLoading } = useQuery(['get-see-all-loyalties', currentPage], () => getAllEssentialsLoyalty(currentPage), {
+    const { data, isLoading } = useQuery(['filter/loyalty', loyaltiesFilters, currentPage], () => getFilteringLoyaltiesList(loyaltiesFilters, currentPage), {
         keepPreviousData: true,
         cacheTime: 1000 * 60 * 5,
     })
 
-     
+    useEffect(() => {
+        if (loyaltie_slug) {
+            const { key, value } = NAMETITLECATEGORYSLUG[loyaltie_slug]
+
+            setLoyaltiesFilters({
+                ...initialLoyaltiesFilters,
+                [key]: value,
+            })
+        }
+
+        window.scrollTo(0, 0)
+
+        return () => {
+            setLoyaltiesFilters(initialLoyaltiesFilters)
+        }
+    }, [loyaltie_slug])
 
     useEffect(() => {
         initializeAdaptiveBehavior()
@@ -72,8 +123,6 @@ export default function SeeAllEssentialsLoyalty() {
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
-
     useEffect(() => {
         initializeAdaptiveBehavior()
     }, [isLoading])
@@ -86,18 +135,19 @@ export default function SeeAllEssentialsLoyalty() {
         <Wraper>
             <main className="gamble__loyaltie-programs main-gamble loyaltie-programs loyaltie-filtered__main">
                 <div className="main-gamble__body">
-                    <Categories/>
+                    <Categories type_category="loyaltie" />
                     <BreadCrumb
-                        path={[
-                            {
-                                name: 'Home',
-                                link: '/',
-                            },
-                            {
-                                name: 'Essential VIP Loyalty Programs',
-                                link: '#',
-                            },
-                        ]}
+                        path={
+                            loyaltie_slug
+                                ? [
+                                      ...pathBreadCrumb,
+                                      {
+                                          name: LOYALTIECATEGORYIES.find((item) => item.slug === loyaltie_slug)?.name || 'Loyalty Programs',
+                                          link: `/all-bonuses/${loyaltie_slug}`,
+                                      },
+                                  ]
+                                : pathBreadCrumb
+                        }
                     />
                     <section className="loyaltie-programs__main main-loyaltie-programs">
                         <div className="main-loyaltie-programs__container container">
@@ -105,13 +155,13 @@ export default function SeeAllEssentialsLoyalty() {
                                 <div className="top__row">
                                     <div className="top__column">
                                         <div className="top__title-block">
-                                            <h2 className="top__title">Essential VIP Loyalty Programs</h2>
+                                            <h2 className="top__title">{loyaltie_slug ? LOYALTIECATEGORYIES.find((item) => item.slug === loyaltie_slug)?.name : 'Essential VIP Loyalty Programs'}</h2>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="main-loyaltie-programs__items loyaltie-programs__items">
-                                {displayedData?.map((item) => (
+                                {displayedData?.map((item: any) => (
                                     <div className="loyaltie-programs__item item-loyaltie-programs">
                                         <div className="item-loyaltie-programs__row">
                                             <div className="item-loyaltie-programs__main">
@@ -130,7 +180,7 @@ export default function SeeAllEssentialsLoyalty() {
                                                     </div>
                                                 </div>
                                                 <div className="content-item-loyaltie-programs__features features-essential-programs-gamble">
-                                                    {item.loyalty_program.loyalty_keypoint.map((it) => (
+                                                    {item.loyalty_program.loyalty_keypoint.map((it: any) => (
                                                         <div className="features-essential-programs-gamble__column">
                                                             <div className="features-essential-programs-gamble__item">
                                                                 <div className="features-essential-programs-gamble__icon ">
@@ -181,11 +231,7 @@ export default function SeeAllEssentialsLoyalty() {
                                                         >
                                                             Visit Casino
                                                         </a>
-                                                        <Link
-                                                            to={`/casino/${item.loyalty_program.loyalty_slug}/loyalty`}
-                                                            aria-label="Put your description here."
-                                                            className="bottom-content-item-loyaltie-programs__btn-more"
-                                                        >
+                                                        <Link to={`/casino/${item.loyalty_program.loyalty_slug}/loyalty`} aria-label="Put your description here." className="bottom-content-item-loyaltie-programs__btn-more">
                                                             Read More
                                                         </Link>
                                                     </div>

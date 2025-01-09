@@ -20,7 +20,6 @@ const FilterLoyalty = lazy(() => import('../page/FilterLoyalty'))
 export const PublicRouter = () => {
     return (
         <Routes>
-
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
 
             <Route path="/filter-casinos" element={<FilterCasino />} />
@@ -33,7 +32,7 @@ export const PublicRouter = () => {
             <Route path="/all-bonuses/:bonus_slug?" element={<SeeAllBonus />} />
 
             {/* Страница лоялки ("Loyalties")*/}
-            <Route path="/all-loyalties" element={<SeeAllEssentialsLoyalty />} />
+            <Route path="/all-loyalties/:loyaltie_slug?" element={<SeeAllEssentialsLoyalty />} />
 
             {/* //Страница конкретного казино */}
             <Route path="/casino/:casino_slug" element={<SimpleCasinos />} />

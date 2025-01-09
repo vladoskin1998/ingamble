@@ -177,7 +177,7 @@ export const Header = ({
                                         to="/"
                                         aria-label="Put your description here."
                                         onClick={() => setActiveLink('/')}
-                                        className={`menu-header__link ${activeLink === '/all-bonuses' || activeLink === '/all-casinos' || activeLink === '/all-loyalties' ? '' : 'current'}`}
+                                        className={`menu-header__link ${activeLink.includes('/all-bonuses') || activeLink.includes('/all-casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                     >
                                         <span>Gambling Hub</span>
                                     </Link>
@@ -188,7 +188,7 @@ export const Header = ({
                                         to="/all-bonuses"
                                         aria-label="Put your description here."
                                         onClick={() => setActiveLink('/all-bonuses')}
-                                        className={`menu-header__link ${activeLink === '/all-bonuses' && 'current'}`}
+                                        className={`menu-header__link ${activeLink.includes('/all-bonuses') && 'current'}`}
                                     >
                                         <span>All Bonuses</span>
                                     </Link>
@@ -199,7 +199,7 @@ export const Header = ({
                                         to="/all-casinos"
                                         aria-label="Put your description here."
                                         onClick={() => setActiveLink('/all-casinos')}
-                                        className={`menu-header__link ${activeLink === '/all-casinos' && 'current'}`}
+                                        className={`menu-header__link ${activeLink.includes('/all-casinos') && 'current'}`}
                                     >
                                         <span>Casinos</span>
                                     </Link>
@@ -210,7 +210,7 @@ export const Header = ({
                                         to="/all-loyalties"
                                         aria-label="Put your description here."
                                         onClick={() => setActiveLink('/all-loyalties')}
-                                        className={`menu-header__link ${activeLink === '/all-loyalties' && 'current'}`}
+                                        className={`menu-header__link ${activeLink.includes('/all-loyalties') && 'current'}`}
                                     >
                                         <span>Loyalties</span>
                                     </Link>
@@ -360,7 +360,6 @@ export const Header = ({
                                     <button
                                         className="form-item__icon form-item__icon_delete"
                                         onClick={() => {
-                                            
                                             setSearchShow(true)
                                             setCasinoFilters((s) => ({
                                                 ...s,
@@ -407,7 +406,7 @@ export const Header = ({
                                             to="/"
                                             aria-label="Put your description here."
                                             onClick={() => setActiveLink('/')}
-                                            className={`menu-header__link ${activeLink === '/all-bonuses' || activeLink === '/all-casinos' || activeLink === '/all-loyalties' ? '' : 'current'}`}
+                                            className={`menu-header__link ${activeLink.includes('/all-bonuses') || activeLink.includes('/all-casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                         >
                                             <span>Gambling Hub</span>
                                         </Link>
@@ -419,18 +418,18 @@ export const Header = ({
                                             onClick={() => {
                                                 setActiveLink('/all-bonuses')
                                             }}
-                                            className={`menu-header__link ${activeLink === '/all-bonuses' && 'current'}`}
+                                            className={`menu-header__link ${activeLink.includes('/all-bonuses') && 'current'}`}
                                         >
                                             <span>All Bonuses</span>
                                         </Link>
                                     </li>
                                     <li className="menu-header__item">
-                                        <Link to="/all-casinos" aria-label="Put your description here." onClick={() => setActiveLink('/all-casinos')} className={`menu-header__link ${activeLink === '/all-casinos' && 'current'}`}>
+                                        <Link to="/all-casinos" aria-label="Put your description here." onClick={() => setActiveLink('/all-casinos')} className={`menu-header__link ${activeLink.includes('/all-casinos') && 'current'}`}>
                                             <span>Casinos</span>
                                         </Link>
                                     </li>
                                     <li className="menu-header__item">
-                                        <Link to="/all-loyalties" aria-label="Put your description here." onClick={() => setActiveLink('/all-loyalties')} className={`menu-header__link ${activeLink === '/all-loyalties' && 'current'}`}>
+                                        <Link to="/all-loyalties" aria-label="Put your description here." onClick={() => setActiveLink('/all-loyalties')} className={`menu-header__link ${activeLink.includes('/all-loyalties') && 'current'}`}>
                                             <span>Loyalties</span>
                                         </Link>
                                     </li>
