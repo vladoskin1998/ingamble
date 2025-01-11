@@ -177,7 +177,7 @@ export const Header = ({
                                         to="/"
                                         aria-label="Put your description here."
                                         onClick={() => setActiveLink('/')}
-                                        className={`menu-header__link ${activeLink.includes('/all-bonuses') || activeLink.includes('/all-casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
+                                        className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                     >
                                         <span>Gambling Hub</span>
                                     </Link>
@@ -185,21 +185,21 @@ export const Header = ({
                                 <li className="menu-header__item">
                                     <Link
                                         rel="nofollow noopener"
-                                        to="/all-bonuses"
+                                        to="/bonuses"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/all-bonuses')}
-                                        className={`menu-header__link ${activeLink.includes('/all-bonuses') && 'current'}`}
+                                        onClick={() => setActiveLink('/bonuses')}
+                                        className={`menu-header__link ${activeLink.includes('/bonuses') && 'current'}`}
                                     >
-                                        <span>All Bonuses</span>
+                                        <span>Bonuses</span>
                                     </Link>
                                 </li>
                                 <li className="menu-header__item">
                                     <Link
                                         rel="nofollow noopener"
-                                        to="/all-casinos"
+                                        to="/casinos"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/all-casinos')}
-                                        className={`menu-header__link ${activeLink.includes('/all-casinos') && 'current'}`}
+                                        onClick={() => setActiveLink('/casinos')}
+                                        className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}
                                     >
                                         <span>Casinos</span>
                                     </Link>
@@ -406,25 +406,26 @@ export const Header = ({
                                             to="/"
                                             aria-label="Put your description here."
                                             onClick={() => setActiveLink('/')}
-                                            className={`menu-header__link ${activeLink.includes('/all-bonuses') || activeLink.includes('/all-casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
+                                            className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                         >
                                             <span>Gambling Hub</span>
                                         </Link>
                                     </li>
+                                  
                                     <li className="menu-header__item">
                                         <Link
-                                            to="/all-bonuses"
+                                            to="/bonuses"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                                setActiveLink('/all-bonuses')
+                                                setActiveLink('/bonuses')
                                             }}
-                                            className={`menu-header__link ${activeLink.includes('/all-bonuses') && 'current'}`}
+                                            className={`menu-header__link ${activeLink.includes('/bonuses') && 'current'}`}
                                         >
-                                            <span>All Bonuses</span>
+                                            <span>Bonuses</span>
                                         </Link>
                                     </li>
                                     <li className="menu-header__item">
-                                        <Link to="/all-casinos" aria-label="Put your description here." onClick={() => setActiveLink('/all-casinos')} className={`menu-header__link ${activeLink.includes('/all-casinos') && 'current'}`}>
+                                        <Link to="/casinos" aria-label="Put your description here." onClick={() => setActiveLink('/casinos')} className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}>
                                             <span>Casinos</span>
                                         </Link>
                                     </li>

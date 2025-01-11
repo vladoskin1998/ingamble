@@ -52,12 +52,12 @@ export interface GetDataBonusResponse {
     bonus_rank: string;
     bonus_image: string | null;
     bonus_value?: number;
-    category: 
-        {
-            id: number,
-            slug: string,
-            name: string
-        }[]
+    category:
+    {
+        id: number,
+        slug: string,
+        name: string
+    }[]
     ,
     bonus_type: string;
     bonus_type_slug: string;
@@ -243,7 +243,7 @@ export interface DataHomeItemsBlock {
     block_title: string;
     subtitle: string | null;
     title_image: string | null;
-    type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5 | BlockTypeNumber.BlockType3 | BlockTypeNumber.BlockType8 | BlockTypeNumber.BlockType3M | BlockTypeNumber.BlockType2M;
+    type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5 | BlockTypeNumber.BlockType3 | BlockTypeNumber.BlockType8 | BlockTypeNumber.BlockType3M | BlockTypeNumber.BlockType2M | BlockTypeNumber.BlockType10;
     data_cards: (HomeDataCard)[];
 }
 
@@ -313,7 +313,7 @@ export interface SeeAllEssentialLoyaltyProgram {
 
 export interface SeeAllEssentialLoyaltyCasino {
     casino_id: number;
-    casino_slug:string;
+    casino_slug: string;
     casino_name: string;
     casino_rank: string;
     casino_image?: string;
@@ -399,7 +399,7 @@ export type AllCategoriesHomeBonusCategory = {
 export type AllCategoriesHomeCasinoCategory = {
     id: number;
     name: string;
-    slug:string
+    slug: string
 };
 
 export type AllCategoriesHomeDataResponse = {

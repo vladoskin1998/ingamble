@@ -1,6 +1,6 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 
-const baseURL = "https://adm.incasinowetrust.com/api/v1/";
+const baseURL = window.location.origin === '' ? 'https://cg-prod.incasinowetrust.com/api/v1/' :`https://cg-prod.incasinowetrust.com/api/v1/`;
 
 
 const $api = axios.create({

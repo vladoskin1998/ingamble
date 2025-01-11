@@ -22,16 +22,18 @@ import BlockType7Mobile from './BlockType7Mobile'
 import BlockType7 from './BlockType7'
 import BlockType5 from './BlockType5'
 import BlockType5Mobile from './BlockType5Mobile'
+import BlockType10 from './BlockType10'
 import MoreBonusesForYourChoise from './MoreBonusesForYourChoise'
 import CheckMoreWhatSuitsYouBest from '../../components/categories/CheckMoreWhatSuitsYouBest'
 import SubscribeForm from '../../components/subscribe/SubscribeForm'
 import BottomInfo from '../../components/footer/BottomInfo'
 
 
+
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 
-const getHomeDataFetch = async () => {
-    const response = await $api.get('get-data-home-page/')
+const getHomeDataFetch = async (src:string) => {
+    const response = await $api.get(src)
     const headers = response.headers
 
     return {
@@ -41,8 +43,8 @@ const getHomeDataFetch = async () => {
     }
 }
 
-const renderBlock = (block: any, index: number, isMobile: boolean) => {
-    const lazyLoadImg: LazyImgHomeType = index < 3 ? 'eager' : 'lazy'
+const renderBlock = (block: any,  isMobile: boolean) => {
+
 
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
@@ -50,7 +52,7 @@ const renderBlock = (block: any, index: number, isMobile: boolean) => {
         case BlockTypeNumber.BlockType9:
             return <BlockType9 data={block} />
         case BlockTypeNumber.BlockType2M:
-            return <BlockMType2M data={block} lazyLoadImg={lazyLoadImg} />
+            return <BlockMType2M data={block}  />
         case BlockTypeNumber.BlockType3M:
             return <BlockMType3M data={block} />
         case BlockTypeNumber.BlockType6:
@@ -68,21 +70,22 @@ const renderBlock = (block: any, index: number, isMobile: boolean) => {
             return <>{isMobile ? <BlockType7Mobile data={block} /> : <BlockType7 data={block} />}</>
         case BlockTypeNumber.BlockType5:
             return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
-
+        case BlockTypeNumber.BlockType10:
+            return <BlockType10 data={block} />
         default:
             return null
     }
 }
 
-export default function Home() {
+export default function Home({ src = 'get-data-home-page/' }: { src?: string }) {
     // // document.title = "Home"
     //@ts-ignore
     // const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const { data, isLoading } = useQuery<{
-        dataHome: { data_blocks: HomeDataBlock[] }[]
-        dataHomeMobile: { data_blocks_m: HomeDataBlockMobile[] }[]
+        dataHome: HomeDataBlock[]
+        dataHomeMobile: HomeDataBlockMobile[]
         headers: any
-    }>('get-data-home-page/ ', getHomeDataFetch, {
+    }>(['get-data-home-page/', src], () => getHomeDataFetch(src), {
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 10,
     })
@@ -119,7 +122,7 @@ export default function Home() {
                     {data?.dataHomeMobile?.map((block) => renderBlock(block))}
 
                     </div> */}
-                        {blocksToRender?.map((block, index) => renderBlock(block, index, isMobile))}
+                        {blocksToRender?.map((block) => renderBlock(block,  isMobile))}
 
                         {/* Лениво загружаем оставшиеся блоки */}
 
