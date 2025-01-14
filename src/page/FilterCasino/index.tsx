@@ -234,13 +234,7 @@ const ListDisplayData = memo(
                     <div className="loyaltie-programs__item item-loyaltie-programs">
                         <div className="item-loyaltie-programs__row">
                             <div className="item-loyaltie-programs__main">
-                                <Link
-                                    rel="nofollow noopener"
-                                    aria-label="Put your description here."
-                                    className="item-loyaltie-programs__image item-loyaltie-programs__image-custom "
-                                    key={uuidv4()}
-                                    to={`/casino/${item.casino_slug}`}
-                                >
+                                <Link rel="nofollow noopener" aria-label="Put your description here." className="item-loyaltie-programs__image item-loyaltie-programs__image-custom " key={uuidv4()} to={`/casino/${item.casino_slug}`}>
                                     <LazyCardImg img={item?.casino_image || ''} height="100%" width="100%" />
                                 </Link>
                             </div>
@@ -268,7 +262,9 @@ const ListDisplayData = memo(
                                                     </div>
                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
                                                         <div className="item-info-content-item-loyaltie-programs__label">Min Dep</div>
-                                                        <div className="item-info-content-item-loyaltie-programs__value">{item.min_dep?.[0]?.value ? `${item.min_dep?.[0]?.value} ${'$ USDT'}` : 'Unlimited'}</div>
+                                                        <div className="item-info-content-item-loyaltie-programs__value">
+                                                            {item.min_dep?.[0]?.value ? `${item.min_dep?.[0]?.value} ${window.location.origin.includes('ingamble.com') ? '$' : '$ USDT'}` : 'Unlimited'}
+                                                        </div>
                                                     </div>
                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
                                                         <div className="item-info-content-item-loyaltie-programs__label">License</div>

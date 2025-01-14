@@ -175,7 +175,9 @@ export default function SeeAllCasinos() {
                                                                     </div>
                                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
                                                                         <div className="item-info-content-item-loyaltie-programs__label">Min Dep</div>
-                                                                        <div className="item-info-content-item-loyaltie-programs__value">{`${item.min_dep?.[0]?.value} ${'$ USDT'}`}</div>
+                                                                        <div className="item-info-content-item-loyaltie-programs__value">{`${item.min_dep?.[0]?.value} ${
+                                                                            window.location.origin.includes('ingamble.com') ? '$' : '$ USDT'
+                                                                        }`}</div>
                                                                     </div>
                                                                     <div className="info-content-item-loyaltie-programs__item item-info-content-item-loyaltie-programs">
                                                                         <div className="item-info-content-item-loyaltie-programs__label">License</div>

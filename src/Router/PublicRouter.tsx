@@ -24,12 +24,12 @@ export const PublicRouter = () => {
         <Routes>
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
 
-            {/* <Route path="/casinos" element={<Home src={'get-data-hub-page-casino/'} />} />
-            <Route path="/bonuses" element={<Home src={'get-data-hub-page-bonus/'} />} /> */}
+            <Route path="/casinos" element={<Home src={'get-data-hub-page-casino/'} />} />
+            <Route path="/bonuses" element={<Home src={'get-data-hub-page-bonus/'} />} />
 
-            <Route path="/casinos/:casino_slug?" element={<SeeAllCasinos />} />
-            {/* Страница категорий  (see all) по бонусам */}
-            <Route path="/bonuses/:bonus_slug?" element={<SeeAllBonus />} />
+            {/* <Route path="/casinos/:casino_slug?" element={<SeeAllCasinos />} />
+ 
+            <Route path="/bonuses/:bonus_slug?" element={<SeeAllBonus />} /> */}
 
             <Route path="/filter-casinos" element={<FilterCasino />} />
             <Route path="/filter-bonus" element={<FilterBonus />} />

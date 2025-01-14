@@ -23,10 +23,13 @@ import BlockType7 from './BlockType7'
 import BlockType5 from './BlockType5'
 import BlockType5Mobile from './BlockType5Mobile'
 import BlockType10 from './BlockType10'
+import BlockType11 from './BlockType11'
 import MoreBonusesForYourChoise from './MoreBonusesForYourChoise'
 import CheckMoreWhatSuitsYouBest from '../../components/categories/CheckMoreWhatSuitsYouBest'
 import SubscribeForm from '../../components/subscribe/SubscribeForm'
 import BottomInfo from '../../components/footer/BottomInfo'
+import BlockType10Mobile from './BlockType10Mobile'
+
 
 
 
@@ -52,7 +55,7 @@ const renderBlock = (block: any,  isMobile: boolean) => {
         case BlockTypeNumber.BlockType9:
             return <BlockType9 data={block} />
         case BlockTypeNumber.BlockType2M:
-            return <BlockMType2M data={block}  />
+            return <BlockMType2M data={block} />
         case BlockTypeNumber.BlockType3M:
             return <BlockMType3M data={block} />
         case BlockTypeNumber.BlockType6:
@@ -70,17 +73,18 @@ const renderBlock = (block: any,  isMobile: boolean) => {
             return <>{isMobile ? <BlockType7Mobile data={block} /> : <BlockType7 data={block} />}</>
         case BlockTypeNumber.BlockType5:
             return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
+  
         case BlockTypeNumber.BlockType10:
-            return <BlockType10 data={block} />
+            return <> <BlockType10Mobile data={block} />  <BlockType10 data={block} /></>
+        case BlockTypeNumber.BlockType11:
+            return <BlockType11 data={block} />
         default:
             return null
     }
 }
 
 export default function Home({ src = 'get-data-home-page/' }: { src?: string }) {
-    // // document.title = "Home"
-    //@ts-ignore
-    // const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+  
     const { data, isLoading } = useQuery<{
         dataHome: HomeDataBlock[]
         dataHomeMobile: HomeDataBlockMobile[]
@@ -100,58 +104,21 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
-    // useEffect(() => {
-    //     initializeAdaptiveBehavior()
-    // }, [isLoading])
+
 
     const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
-
+//   const blocksToRender =  data?.dataHome
     if (isLoading) return <LogoLoader />
 
     return (
         <>
-            {/* {!blocksToRender?.length && <LogoLoader />} */}
             <Wraper>
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
                         <Categories />
-                        {/* <div className="home--main--pc">
-                    {data?.dataHome?.map((block) => renderBlock(block))}
-                    </div>
-                    <div className="home--main--mob">
-                    {data?.dataHomeMobile?.map((block) => renderBlock(block))}
-
-                    </div> */}
+                      
                         {blocksToRender?.map((block) => renderBlock(block,  isMobile))}
 
-                        {/* Лениво загружаем оставшиеся блоки */}
-
-                        {/* <FastestPayoutCasinos /> */}
-                        {/* <div className="main-gamble__different-casino-bg main-gamble__baner-block">
-                        <WhatWeArePlayingNow />
-                    </div> */}
-                        {/* <FastestWithdrawalCasinos />
-                    <WeeksFavoiritesBonuses /> */}
-                        {/* <TheBestCasinosYear /> */}
-                        {/* <PopularFree /> */}
-                        {/* <HighrollerCasinoBonuses />
-                    <NewlyOpenedCasinos />
-                    <div className="main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
-                        <WhatWeArePlayingNow />
-                    </div> */}
-                        {/* <ExploreTheBestCryptoCasinos />
-                    <GetStartedWithPowerfulWelcomeBonusPacks /> */}
-                        {/* <VPNFriendlyCasinos /> */}
-                        {/* <NonStickyBonus />
-                    <TopReloadBonuses /> */}
-                        {/* <BlockType7Mobile
-                        data={data?.dataHome?.data_blocks?.find(
-                            (item) =>
-                                item.items_block.type_block ===
-                                BlockTypeNumber.BlockType7
-                        )}
-                    /> */}
-                        {/* <GreatLiveCasinoBonuses /> */}
                         <MoreBonusesForYourChoise />
                         <CheckMoreWhatSuitsYouBest />
                         <SubscribeForm />
