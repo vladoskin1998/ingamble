@@ -2,7 +2,6 @@ import axios, { InternalAxiosRequestConfig } from "axios";
 
 const baseURL = window.location.origin === 'ingamble.com' ? 'https://ig-api-prod.incasinowetrust.com/api/v1/' : `https://cg-api-prod.incasinowetrust.com/api/v1/`;
 
-
 const $api = axios.create({
     //   withCredentials: true,
     baseURL: baseURL,
