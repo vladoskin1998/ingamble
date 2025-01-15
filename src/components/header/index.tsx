@@ -91,15 +91,10 @@ export const Header = ({
         }
     }, [])
 
-    const handleBurgerClick = (event: React.MouseEvent, isClose: boolean) => {
+    const handleBurgerOpen = (event: React.MouseEvent, isClose: boolean, isLocked: boolean) => {
         event.preventDefault()
         setIsMenuOpen(isClose)
-        setIsBodyLocked(!isBodyLocked)
-        // if (!isBodyLocked) {
-        //     document.body.classList.add("lock")
-        // } else {
-        //     document.body.classList.remove("lock")
-        // }
+        setIsBodyLocked(isLocked)
     }
 
     useEffect(() => {
@@ -156,7 +151,7 @@ export const Header = ({
                 <div className="header__row header--row-pc">
                     {
                         <div className={`header__column header__column-logo ${isSidebarActive && 'header__column-active'}`}>
-                            <a rel="nofollow noopener" href="" aria-label="Put your description here." className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={(e) => handleBurgerClick(e, true)}>
+                            <a rel="nofollow noopener" href="" aria-label="Put your description here." className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={(e) => handleBurgerOpen(e, true, true)}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -387,7 +382,7 @@ export const Header = ({
                                 </a>
                             </div>
 
-                            <a href="" aria-label="Put your description here." className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={(e) => handleBurgerClick(e, true)}>
+                            <a href="" aria-label="Put your description here." className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={(e) => handleBurgerOpen(e, true, true)}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -407,9 +402,9 @@ export const Header = ({
                                         <Link
                                             to="/"
                                             aria-label="Put your description here."
-                                            onClick={() => {
+                                            onClick={(e) => {
                                                 setActiveLink('/')
-                                                setIsMenuOpen(false)
+                                                handleBurgerOpen(e, false, false)
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                         >
@@ -421,9 +416,9 @@ export const Header = ({
                                         <Link
                                             to="/bonuses"
                                             aria-label="Put your description here."
-                                            onClick={() => {
+                                            onClick={(e) => {
                                                 setActiveLink('/bonuses')
-                                                setIsMenuOpen(false)
+                                                handleBurgerOpen(e, false, false)
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/bonuses') && 'current'}`}
                                         >
@@ -434,8 +429,8 @@ export const Header = ({
                                         <Link
                                             to="/casinos"
                                             aria-label="Put your description here."
-                                            onClick={() => {
-                                                setIsMenuOpen(false)
+                                            onClick={(e) => {
+                                                handleBurgerOpen(e, false, false)
                                                 setActiveLink('/casinos')
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}
@@ -447,9 +442,9 @@ export const Header = ({
                                         <Link
                                             to="/all-loyalties"
                                             aria-label="Put your description here."
-                                            onClick={() => {
+                                            onClick={(e) => {
                                                 setActiveLink('/all-loyalties')
-                                                setIsMenuOpen(false)
+                                                handleBurgerOpen(e, false, false)
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/all-loyalties') && 'current'}`}
                                         >
