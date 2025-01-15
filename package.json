@@ -6,7 +6,8 @@
     "homepage": "https://cryptogamblers.pro",
     "scripts": {
         "dev": "vite",
-        "build": "tsc -b && vite build",
+        "build-cg": "tsc -b && vite build --mode cryptogamblers",
+        "build-ig": "tsc -b && vite build --mode ingamble",
         "lint": "eslint .",
         "preview": "vite preview"
     },

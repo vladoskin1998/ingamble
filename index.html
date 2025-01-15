@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <!-- Yandex.Metrika counter -->
         <script type="text/javascript">
+            const metrikaId = import.meta.env.VITE_METRIKA_ID;
             let isMetrikaLoaded = false
 
             function loadYandexMetrika(id) {
@@ -35,16 +36,13 @@
 
             window.addEventListener('scroll', function () {
                 if (!isMetrikaLoaded) {
-                    if (window.location.hostname.includes('ingamble')) {
-                        loadYandexMetrika(99533185)
-                    } else {
-                        loadYandexMetrika(99347212)
-                    }
+                    loadYandexMetrika(metrikaId)
+                  
                 }
             })
         </script>
         <link rel="icon" href="/src/assets/img/favicon.png" type="image/x-icon" />
-        <title>inGamble</title>
+        <title><%= VITE_TITLE %></title>
         <base href="/" />
     </head>
     <body>
