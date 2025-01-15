@@ -5,7 +5,7 @@
     "type": "module",
     "homepage": "https://cryptogamblers.pro",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --mode ingamble",
         "build-cg": "tsc -b && vite build --mode cryptogamblers",
         "build-ig": "tsc -b && vite build --mode ingamble",
         "lint": "eslint .",

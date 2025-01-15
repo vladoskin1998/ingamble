@@ -15316,14 +15316,14 @@ h3 {
     margin: 0 0 40px 0;
   }
 }
-.main-gamble__low-risk-bonuses:not(:last-child) {
+/* .main-gamble__low-risk-bonuses:not(:last-child) {
   margin: 0 0 93px 0;
 }
 @media (max-width: 1650.98px) {
   .main-gamble__low-risk-bonuses:not(:last-child) {
     margin: 0 0 60px 0;
   }
-}
+} */
 .main-gamble__low-risk-bonuses .different-casino-bg::before {
   /* filter: blur(168px);
   -webkit-filter: blur(168px); */
@@ -18398,7 +18398,7 @@ h3 {
   }
 }
 
-.cristmas-style{
+/* .cristmas-style{
   width:33px !important;
   height:35px !important;
   
@@ -18412,7 +18412,7 @@ h3 {
     
       flex:0 0 23px !important;
   }
-}
+} */
 
 .categorie--tags .swiper-wrapper{
   display:flex;

@@ -215,3 +215,5 @@ export const getLikeByIdAndType = (type: 'bonus_like' | 'casino_like' | 'loyalty
     // Проверяем наличие типа и ID в данных
     return likesData[type]?.[id] || null;
 };
+
+

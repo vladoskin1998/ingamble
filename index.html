@@ -4,9 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <!-- Yandex.Metrika counter -->
-        <script type="module" >
-            const metrikaId = import.meta.env.VITE_METRIKA_ID;;
-            console.log('Metrika ID:', metrikaId);
+        <script type="module">
+            const metrikaId = import.meta.env.VITE_METRIKA_ID
+            console.log('Metrika ID:', metrikaId)
             let isMetrikaLoaded = false
 
             function loadYandexMetrika(id) {
@@ -38,16 +38,30 @@
             window.addEventListener('scroll', function () {
                 if (!isMetrikaLoaded) {
                     loadYandexMetrika(metrikaId)
-                  
                 }
             })
         </script>
         <link rel="icon" href="/src/assets/img/favicon.png" type="image/x-icon" />
+
+        <meta name="description" content="%VITE_META_DESCRIPTION%" />
+        <meta name="keywords" content="%VITE_META_KEYWORDS%" />
+        <meta name="author" content="%VITE_META_AUTHOR%" />
         <title>%VITE_TITLE%</title>
         <base href="/" />
     </head>
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.tsx"></script>
+        <div style="display: none">
+            <h2 className="bottom-info-gamble__title">%VITE_FOOTER_BLOCK_H1%</h2>
+
+            <p>%VITE_FOOTER_BLOCK_P1_1%</p>
+            <p>%VITE_FOOTER_BLOCK_P1_2%</p>
+
+            <h2 className="bottom-info-gamble__title">%VITE_FOOTER_BLOCK_H2%</h2>
+
+            <p>%VITE_FOOTER_BLOCK_P2_1%</p>
+            <p>%VITE_FOOTER_BLOCK_P2_2%</p>
+        </div>
     </body>
 </html>

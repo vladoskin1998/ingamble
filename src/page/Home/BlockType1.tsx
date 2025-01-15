@@ -17,7 +17,7 @@ export default function BlockType1({ data }: { data: HomeDataBlock | undefined }
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon ibg--custom cristmas-style">
+                                    <span className="top__title-icon ibg--custom ">
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}

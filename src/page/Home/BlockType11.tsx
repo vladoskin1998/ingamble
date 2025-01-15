@@ -40,8 +40,8 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                 </div>
                             </div>
                             <div className="top-bonuses-gamble__body">
-                                {arr1.map((item) => (
-                                    <div className="top-bonuses-gamble__deposit deposit-top-bonuses-gamble">
+                                {arr1.map((item, index) => (
+                                    <div className="top-bonuses-gamble__deposit deposit-top-bonuses-gamble" key={index}>
                                         <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="deposit-top-bonuses-gamble__image-block">
                                             <span className="deposit-top-bonuses-gamble__image ibg--custom">
                                                 <LazyCardImg img={item?.casino_info?.casino_image || ''} width="auto" />
@@ -116,8 +116,8 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                 </div>
                             </div>
                             <div className="top-bonuses-gamble__body">
-                                {arr2.map((item) => (
-                                    <div className="top-bonuses-gamble__deposit deposit-top-bonuses-gamble">
+                                {arr2.map((item, index) => (
+                                    <div key={index+10} className="top-bonuses-gamble__deposit deposit-top-bonuses-gamble">
                                         <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="deposit-top-bonuses-gamble__image-block">
                                             <span className="deposit-top-bonuses-gamble__image ibg--custom">
                                                 <LazyCardImg img={item?.casino_info?.casino_image || ''} width="auto" />
