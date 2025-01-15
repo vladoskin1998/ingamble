@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
                         path={[
                             {
                                 name: 'Home',
-                                link: 'https://cryptogamblers.pro',
+                                link: '/',
                             },
                             {
                                 name: 'Privacy Policy',

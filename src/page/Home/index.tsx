@@ -83,6 +83,9 @@ const renderBlock = (block: any,  isMobile: boolean) => {
     }
 }
 
+console.log(window.location);
+
+
 export default function Home({ src = 'get-data-home-page/' }: { src?: string }) {
   
     const { data, isLoading } = useQuery<{

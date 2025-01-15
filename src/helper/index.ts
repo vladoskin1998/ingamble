@@ -131,7 +131,7 @@ export const sanitizeLink = (s:string | undefined) => {
 
 export const cloacingLink = (s: string | undefined): string => {
     if (!s) {
-        return 'https://cryptogamblers.pro';
+        return `https://${window.location.host}`;
     }
   
     // const parsedUrl = new URL(s);
@@ -139,7 +139,7 @@ export const cloacingLink = (s: string | undefined): string => {
     // const parts = parsedUrl.hostname.split('.');
     // const domen = parts[0] === 'www' ? parts[1] : parts[0];
     const domen = s.toLocaleLowerCase().replace(/\s/gm, '-')
-    return `https://cryptogamblers.pro${domen && '/' + sanitizeLink(domen)}/go`;
+    return `https://${window.location.host}${domen && '/' + sanitizeLink(domen)}/go`;
   };
 
   export const  cloacingFetch = async (link:string | undefined | null) => {
