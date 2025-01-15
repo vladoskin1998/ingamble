@@ -135,7 +135,7 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                                     <span className="deposit-top-bonuses-gamble__stake-icon">
                                                         <img src={star} alt="star" />
                                                     </span>
-                                                    <span className="deposit-top-bonuses-gamble__stake-number">4.7</span>
+                                                    <span className="deposit-top-bonuses-gamble__stake-number">{item.casino_info.casino_rank}</span>
                                                 </div>
                                             </div>
                                             <div className="deposit-top-bonuses-gamble__info info-deposit-top-bonuses-gamble">

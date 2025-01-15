@@ -822,9 +822,9 @@
       flex: 1 1 100%;
     }
   }
-  .deposit-top-bonuses-gamble:nth-child(3) .deposit-top-bonuses-gamble__title, .deposit-top-bonuses-gamble:nth-child(4) .deposit-top-bonuses-gamble__title {
+  /* .deposit-top-bonuses-gamble:nth-child(3) .deposit-top-bonuses-gamble__title, .deposit-top-bonuses-gamble:nth-child(4) .deposit-top-bonuses-gamble__title {
     line-height: 22px;
-  }
+  } */
   .deposit-top-bonuses-gamble__image-block {
     position: relative;
     flex: 0 0 120px;
