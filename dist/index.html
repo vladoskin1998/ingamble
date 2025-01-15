@@ -7,10 +7,9 @@
         <script type="text/javascript">
             let isMetrikaLoaded = false
 
-            function loadYandexMetrika() {
+            function loadYandexMetrika(id) {
                 if (isMetrikaLoaded) return
                 isMetrikaLoaded = true
-
                 ;(function (m, e, t, r, i, k, a) {
                     m[i] =
                         m[i] ||
@@ -26,7 +25,7 @@
                     ;(k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a)
                 })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym')
 
-                ym(99347212, 'init', {
+                ym(id, 'init', {
                     clickmap: true,
                     trackLinks: true,
                     accurateTrackBounce: true,
@@ -35,12 +34,12 @@
             }
 
             window.addEventListener('scroll', function () {
-                   if (window.location.hostname.includes('ingamble')) {
-                    console.log('Yandex.Metrika отключена для домена ingamble');
-                    return;
-                }
                 if (!isMetrikaLoaded) {
-                    loadYandexMetrika()
+                    if (window.location.hostname.includes('ingamble')) {
+                        loadYandexMetrika(99533185)
+                    } else {
+                        loadYandexMetrika(99347212)
+                    }
                 }
             })
         </script>
