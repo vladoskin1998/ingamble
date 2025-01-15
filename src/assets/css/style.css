@@ -16802,13 +16802,6 @@ h3 {
     margin: 0 0 20px 0;
   }
 }
-.top-bonuses-gamble__block {
-  border-radius: var(--SystemCorners-Medium, 12px);
-  overflow: hidden;
-  padding: 24px 24px 0 24px;
-  background: url("../img/menu-bg.webp") center repeat;
-  position: relative;
-}
 
 @media (max-width: 480.98px) {
   .best-casinos-2024-gamble {
