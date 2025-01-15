@@ -35,7 +35,10 @@
             }
 
             window.addEventListener('scroll', function () {
-                if(window.location.origin.includes('ingamble')) return
+                   if (window.location.hostname.includes('ingamble')) {
+                    console.log('Yandex.Metrika отключена для домена ingamble');
+                    return;
+                }
                 if (!isMetrikaLoaded) {
                     loadYandexMetrika()
                 }
@@ -44,7 +47,7 @@
         <link rel="icon" href="/assets/favicon-fS1SDW4B.png" type="image/x-icon" />
 
         <base href="/" />
-      <script type="module" crossorigin src="/assets/index-Ag8NiqO1.js"></script>
+      <script type="module" crossorigin src="/assets/index-DdsEQR8U.js"></script>
       <link rel="stylesheet" crossorigin href="/assets/index-BySUDLyb.css">
     </head>
     <body>

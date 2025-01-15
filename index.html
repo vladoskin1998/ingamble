@@ -35,7 +35,10 @@
             }
 
             window.addEventListener('scroll', function () {
-                if(window.location.origin.includes('ingamble')) return
+                   if (window.location.hostname.includes('ingamble')) {
+                    console.log('Yandex.Metrika отключена для домена ingamble');
+                    return;
+                }
                 if (!isMetrikaLoaded) {
                     loadYandexMetrika()
                 }

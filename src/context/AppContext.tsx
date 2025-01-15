@@ -146,7 +146,7 @@ const initializeAdaptiveBehavior = () => {
 
 
 export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-     document.title =" CryptoGamblers"
+
      //@ts-ignore
     const location = useLocation();
     const [isSidebarActive, setSidebarActive] = useState(false)
