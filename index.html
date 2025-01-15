@@ -4,9 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <!-- Yandex.Metrika counter -->
-        <script type="text/javascript" >
-            const metrikaId = "{{ VITE_METRIKA_ID }}";
-            console.log(metrikaId);
+        <script type="module" >
+            const metrikaId = import.meta.env.VITE_METRIKA_ID;;
+            console.log('Metrika ID:', metrikaId);
             let isMetrikaLoaded = false
 
             function loadYandexMetrika(id) {
