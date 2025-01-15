@@ -169,6 +169,7 @@ export enum BlockTypeNumber {
     BlockType4 = "type_4",
     BlockType5 = "type_5",
     BlockType6 = "type_6",
+    BlockType6c = "type_6c",
     BlockType7 = "type_7",
     BlockType8 = "type_8",
     BlockType9 = "type_9",
@@ -244,7 +245,7 @@ export interface DataHomeItemsBlock {
     block_title: string;
     subtitle: string | null;
     title_image: string | null;
-    type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5 | BlockTypeNumber.BlockType3 | BlockTypeNumber.BlockType8 | BlockTypeNumber.BlockType3M | BlockTypeNumber.BlockType2M | BlockTypeNumber.BlockType10 | BlockTypeNumber.BlockType11;
+    type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType6c | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5 | BlockTypeNumber.BlockType3 | BlockTypeNumber.BlockType8 | BlockTypeNumber.BlockType3M | BlockTypeNumber.BlockType2M | BlockTypeNumber.BlockType10 | BlockTypeNumber.BlockType11;
     data_cards: (HomeDataCard)[];
 }
 

@@ -25,7 +25,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
             }
         }
     }, [])
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType6) return <></>
+    if (!data || !(data.items_block.type_block === BlockTypeNumber.BlockType6 ||  data.items_block.type_block === BlockTypeNumber.BlockType6c)) return <></>
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
 
@@ -45,9 +45,11 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                             </div>
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
-                        <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
-                        </div>
+                        {data.items_block.type_block === BlockTypeNumber.BlockType6 && (
+                            <div className="top__column">
+                                <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="new-bonuses-gamble__slider slider">
@@ -79,11 +81,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                         <div className="slider__slide slide-slider swiper-slide">
                                             <div className="slide-slider__item casino-card">
                                                 <div className="casino-card__image-block">
-                                                    <Link
-                                                        className="casino-card__image ibg--custom"
-                                                        onClick={(e) => e.stopPropagation()}
-                                                        to={`/casino/${item?.casino_info?.casino_name}/bonuses/${item?.bonus_info?.bonus_slug}`}
-                                                    >
+                                                    <Link className="casino-card__image ibg--custom" onClick={(e) => e.stopPropagation()} to={`/casino/${item?.casino_info?.casino_name}/bonuses/${item?.bonus_info?.bonus_slug}`}>
                                                         <LazyCardImg img={item.bonus_info.bonus_image || ''} />
                                                     </Link>
                                                     <a
@@ -114,11 +112,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                             </Link>
                                                         </div>
                                                         <div className="casino-small-card__body">
-                                                            <Link
-                                                                to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                aria-label="Put your description here."
-                                                                className="casino-small-card__name"
-                                                            >
+                                                            <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="casino-small-card__name">
                                                                 {item.casino_info.casino_name}
                                                             </Link>
                                                             <div className="casino-small-card__info">

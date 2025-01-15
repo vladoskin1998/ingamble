@@ -58,7 +58,7 @@ const renderBlock = (block: any,  isMobile: boolean) => {
             return <BlockMType2M data={block} />
         case BlockTypeNumber.BlockType3M:
             return <BlockMType3M data={block} />
-        case BlockTypeNumber.BlockType6:
+        case BlockTypeNumber.BlockType6 || BlockTypeNumber.BlockType6c:
             return <BlockType6 data={block} />
         case BlockTypeNumber.BlockType8:
             return <BlockType8 data={block} />
@@ -72,9 +72,14 @@ const renderBlock = (block: any,  isMobile: boolean) => {
             return <>{isMobile ? <BlockType7Mobile data={block} /> : <BlockType7 data={block} />}</>
         case BlockTypeNumber.BlockType5:
             return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
-  
+
         case BlockTypeNumber.BlockType10:
-            return <> <BlockType10Mobile data={block} />  <BlockType10 data={block} /></>
+            return (
+                <>
+                    {' '}
+                    <BlockType10Mobile data={block} /> <BlockType10 data={block} />
+                </>
+            )
         case BlockTypeNumber.BlockType11:
             return <BlockType11 data={block} />
         default:
