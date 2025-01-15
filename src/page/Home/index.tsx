@@ -64,7 +64,6 @@ const renderBlock = (block: any,  isMobile: boolean) => {
             return <BlockType8 data={block} />
         case BlockTypeNumber.BlockType2:
             return <>{isMobile ? <BlockType2Mobile data={block} /> : <BlockType2 data={block} />}</>
-
         case BlockTypeNumber.BlockType3:
             return <>{isMobile ? <BlockType3Mobile data={block} /> : <BlockType3 data={block} />}</>
         case BlockTypeNumber.BlockType4:
@@ -82,9 +81,6 @@ const renderBlock = (block: any,  isMobile: boolean) => {
             return null
     }
 }
-
-console.log(window.location);
-
 
 export default function Home({ src = 'get-data-home-page/' }: { src?: string }) {
   

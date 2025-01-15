@@ -451,9 +451,13 @@
   }
   .different-casino-big__info {
     max-width: 102px;
+  
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .different-casino-big__info:not(:last-child) {
     margin: 0 0 12px 0;

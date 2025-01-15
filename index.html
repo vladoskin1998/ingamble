@@ -35,13 +35,14 @@
             }
 
             window.addEventListener('scroll', function () {
+                if(window.location.origin.includes('ingamble')) return
                 if (!isMetrikaLoaded) {
                     loadYandexMetrika()
                 }
             })
         </script>
         <link rel="icon" href="/src/assets/img/favicon.png" type="image/x-icon" />
-        <title>CryptoGamblers</title>
+
         <base href="/" />
     </head>
     <body>
