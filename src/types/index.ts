@@ -249,9 +249,15 @@ export interface DataHomeItemsBlock {
     block_title: string;
     subtitle: string | null;
     title_image: string | null;
+    total_casinos_by_filter?: number,
+    country_code?: string,
+    country_name?: string,
     type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType6c | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5 | BlockTypeNumber.BlockType3 | BlockTypeNumber.BlockType8 | BlockTypeNumber.BlockType3M | BlockTypeNumber.BlockType2M | BlockTypeNumber.BlockType10 | BlockTypeNumber.BlockType11;
     data_cards: (HomeDataCard)[];
+ 
 }
+
+
 
 export interface EssentialItemsBlock {
     block_title: string;
@@ -263,7 +269,7 @@ export interface EssentialItemsBlock {
 
 export interface HomeDataBlock {
     blocks_sequence_number: number;
-    items_block: DataHomeItemsBlock | EssentialItemsBlock;
+    items_block: DataHomeItemsBlock | EssentialItemsBlock ;
 }
 
 export interface HomeDataBlockMobile {

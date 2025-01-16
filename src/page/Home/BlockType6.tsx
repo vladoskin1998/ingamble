@@ -9,10 +9,12 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink, shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
+import { useFilterContext } from '../../context/FilterContext'
 
 export default function BlockType6({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
+    const { data: Country, setCasinoFilters } = useFilterContext()
     useEffect(() => {
         if (sliderRef.current && paginationRef.current) {
             const swiper = sliderRef.current.swiper
@@ -25,7 +27,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
             }
         }
     }, [])
-    if (!data || !(data.items_block.type_block === BlockTypeNumber.BlockType6 ||  data.items_block.type_block === BlockTypeNumber.BlockType6c)) return <></>
+    if (!data || !(data.items_block.type_block === BlockTypeNumber.BlockType6 || data.items_block.type_block === BlockTypeNumber.BlockType6c)) return <></>
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
 
@@ -49,6 +51,28 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                             <div className="top__column">
                                 <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                             </div>
+                        )}
+                        {data.items_block.type_block === BlockTypeNumber.BlockType6c && data?.items_block?.total_casinos_by_filter && data?.items_block?.total_casinos_by_filter > 5 ? (
+                            <div className="top__column">
+                                <Link
+                                    className="top__btn"
+                                    to={'/filter-casinos'}
+                                    onClick={() => {
+                                        //@ts-ignore
+                                        const idCountry = Country?.general.countries.find((item) => item?.code === data?.items_block?.country_code as DataHomeItemsBlock )?.id
+                                        setCasinoFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
+                                    }}
+                                >
+                                    <span>See All</span>
+                                    <span className="top__btn-arrow">
+                                        <svg>
+                                            <use xlinkHref="#arrow"></use>
+                                        </svg>
+                                    </span>
+                                </Link>
+                            </div>
+                        ) : (
+                            <></>
                         )}
                     </div>
                 </div>
