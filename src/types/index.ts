@@ -33,6 +33,14 @@ export type WageringBonusPlusDepositType = {
     winnings_only: number | null,
 }
 
+export type BonusMinDepType = {
+    min_value: number;
+    symbol: {
+        symbol: string;
+        name: string;
+    };
+} 
+
 export interface GetDataBonusResponse {
     id: number,
     blocked_countries: BlockCountryType[]
@@ -89,13 +97,7 @@ export interface GetDataBonusResponse {
     calculation_bonus_only?: null;
     special_promo_category?: boolean;
     special_side_bar?: boolean;
-    bonus_min_dep: {
-        min_value: number;
-        symbol: {
-            symbol: string;
-            name: string;
-        };
-    }[];
+    bonus_min_dep: BonusMinDepType[];
     day_of_week: { day: string }[];
     special_note?: {
         description: string;
@@ -200,6 +202,8 @@ export interface HomeBonusInfo {
     bonus_image: string | null;
     labels: string[] | null;
     bonus_slug: string;
+    bonus_min_dep?: BonusMinDepType[],
+    wr?: number,
 }
 
 export interface HomeDataCard {

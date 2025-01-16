@@ -67,7 +67,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                             {data?.items_block?.subtitle && <div className="top__subtitle">{data?.items_block?.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug }  />
+                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -115,10 +115,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                         <div className="different-casino-standart">
                                                             <div className="different-casino-standart__body">
                                                                 <div className="different-casino-standart__image-block">
-                                                                    <Link
-                                                                        to={`/casino/${item?.[0]?.casino_info?.casino_slug}`}
-                                                                        className="different-casino-standart__image ibg--custom"
-                                                                    >
+                                                                    <Link to={`/casino/${item?.[0]?.casino_info?.casino_slug}`} className="different-casino-standart__image ibg--custom">
                                                                         <LazyCardImg img={item?.[0]?.casino_info?.casino_image || ''} width="100%" height="100%" />
                                                                     </Link>
                                                                 </div>
@@ -167,10 +164,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                             <div className="different-casino-standart">
                                                                 <div className="different-casino-standart__body">
                                                                     <div className="different-casino-standart__image-block">
-                                                                        <Link
-                                                                            className="different-casino-standart__image ibg--custom"
-                                                                            to={`/casino/${item?.[1]?.casino_info?.casino_slug}`}
-                                                                        >
+                                                                        <Link className="different-casino-standart__image ibg--custom" to={`/casino/${item?.[1]?.casino_info?.casino_slug}`}>
                                                                             <LazyCardImg img={item?.[1]?.casino_info?.casino_image || ''} height="100%" width="100%" />
                                                                         </Link>
                                                                     </div>
@@ -254,7 +248,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                 .filter((item) => item.big_card)
                                                 .map((item, index) => (
                                                     <SwiperSlide key={index} className="baner-row-block__slide slide-baner-row-block ">
-                                                        <a>
+                                                        <div style={{ height: '100%' }}>
                                                             <div className="slide-baner-row-block__item item-baner-row-block">
                                                                 <Link to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`} className="item-baner-row-block__image ibg--custom">
                                                                     <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
@@ -262,11 +256,11 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                 <div className="item-baner-row-block__row">
                                                                     <div className="item-baner-row-block__column">
                                                                         <div className="item-baner-row-block__small-card casino-small-card">
-                                                                            <div className="casino-small-card__image-block">
-                                                                                <Link className="casino-small-card__image ibg--custom" to={`/casino/${item?.casino_info?.casino_slug}`}>
+                                                                            <Link className="casino-small-card__image-block" to={`/casino/${item?.casino_info?.casino_slug}`}>
+                                                                                <div className="casino-small-card__image ibg--custom">
                                                                                     <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%" />
-                                                                                </Link>
-                                                                            </div>
+                                                                                </div>
+                                                                            </Link>
                                                                             <div className="casino-small-card__body">
                                                                                 <Link className="casino-small-card__name" to={`/casino/${item?.casino_info?.casino_slug}`}>
                                                                                     {item?.casino_info?.casino_name}
@@ -279,10 +273,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <Link
-                                                                            to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}
-                                                                            className="item-baner-row-block__title"
-                                                                        >
+                                                                        <Link to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`} className="item-baner-row-block__title">
                                                                             {item?.bonus_info?.bonus_name}
                                                                         </Link>
                                                                     </div>
@@ -303,7 +294,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </a>
+                                                        </div>
                                                     </SwiperSlide>
                                                 ))}
                                         </Swiper>

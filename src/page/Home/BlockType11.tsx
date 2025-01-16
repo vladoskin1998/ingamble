@@ -68,11 +68,13 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                                         <div className="info-deposit-top-bonuses-gamble__icon">
                                                             <img src={deposit} alt="deposit-icon" />
                                                         </div>
-                                                        <div className="info-deposit-top-bonuses-gamble__text">WR:50X</div>
+                                                        <div className="info-deposit-top-bonuses-gamble__text">{`WR: ${typeof item?.bonus_info?.wr === 'number' ? item?.bonus_info.wr + 'X' : '-'}`}</div>
                                                     </div>
                                                     <div className="info-deposit-top-bonuses-gamble__column">
                                                         <div className="info-deposit-top-bonuses-gamble__label">Min Dep:</div>
-                                                        <div className="info-deposit-top-bonuses-gamble__value">€10</div>
+                                                        <div className="info-deposit-top-bonuses-gamble__value">
+                                                            {typeof item?.bonus_info?.bonus_min_dep?.[0]?.min_value === 'number' ? '$' + item?.bonus_info?.bonus_min_dep?.[0]?.min_value : '-'}
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <a
@@ -117,7 +119,7 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                             </div>
                             <div className="top-bonuses-gamble__body">
                                 {arr2.map((item, index) => (
-                                    <div key={index+10} className="top-bonuses-gamble__deposit deposit-top-bonuses-gamble">
+                                    <div key={index + 10} className="top-bonuses-gamble__deposit deposit-top-bonuses-gamble">
                                         <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="deposit-top-bonuses-gamble__image-block">
                                             <span className="deposit-top-bonuses-gamble__image ibg--custom">
                                                 <LazyCardImg img={item?.casino_info?.casino_image || ''} width="auto" />

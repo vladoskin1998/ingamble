@@ -46,6 +46,12 @@ const getHomeDataFetch = async (src:string) => {
     }
 }
 
+const getBlockByCountry = async () => {
+    const response = await $api.get('get-block-by-country/')
+
+    return response.data
+}
+
 const renderBlock = (block: any,  isMobile: boolean) => {
 
 
@@ -58,7 +64,9 @@ const renderBlock = (block: any,  isMobile: boolean) => {
             return <BlockMType2M data={block} />
         case BlockTypeNumber.BlockType3M:
             return <BlockMType3M data={block} />
-        case BlockTypeNumber.BlockType6 || BlockTypeNumber.BlockType6c:
+        case BlockTypeNumber.BlockType6 :
+            return <BlockType6 data={block} />
+        case  BlockTypeNumber.BlockType6c:
             return <BlockType6 data={block} />
         case BlockTypeNumber.BlockType8:
             return <BlockType8 data={block} />
@@ -74,12 +82,7 @@ const renderBlock = (block: any,  isMobile: boolean) => {
             return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
 
         case BlockTypeNumber.BlockType10:
-            return (
-                <>
-                    {' '}
-                    <BlockType10Mobile data={block} /> <BlockType10 data={block} />
-                </>
-            )
+            return <>{isMobile ? <BlockType10Mobile data={block} /> : <BlockType10 data={block} />}</>
         case BlockTypeNumber.BlockType11:
             return <BlockType11 data={block} />
         default:
@@ -98,6 +101,12 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         cacheTime: 1000 * 60 * 10,
     })
 
+    const { data: blockByCountry, isLoading: isLoadingBlock } = useQuery<HomeDataBlock>('get-block-by-country/', getBlockByCountry, {
+        staleTime: Infinity,
+        cacheTime: 1000 * 60 * 10,
+        enabled: src !== 'get-data-home-page/',
+    })
+
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
 
     useEffect(() => {
@@ -109,10 +118,10 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
     }, [])
 
 
-
-    const blocksToRender = isMobile ? data?.dataHomeMobile : data?.dataHome
+  
+    const blocksToRender = isMobile ? [...(data?.dataHomeMobile || []), src !== 'get-data-home-page/' ? blockByCountry : undefined] : [...(data?.dataHome || []), src !== 'get-data-home-page/' ? blockByCountry : undefined]
 //   const blocksToRender =  data?.dataHome
-    if (isLoading) return <LogoLoader />
+    if (isLoading || isLoadingBlock) return <LogoLoader />
 
     return (
         <>
@@ -121,7 +130,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
                     <div className="main-gamble__body">
                         <Categories />
                       
-                        {blocksToRender?.map((block) => renderBlock(block,  isMobile))}
+                        {blocksToRender?.filter?.(Boolean)?.map((block) => renderBlock(block,  isMobile))}
 
                         <MoreBonusesForYourChoise />
                         <CheckMoreWhatSuitsYouBest />

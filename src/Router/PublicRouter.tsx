@@ -17,19 +17,23 @@ const FilterCasino = lazy(() => import('../page/FilterCasino'))
 const FilterBonus = lazy(() => import('../page/FilterBonus'))
 const FilterLoyalty = lazy(() => import('../page/FilterLoyalty'))
 
-
-
 export const PublicRouter = () => {
     return (
         <Routes>
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
 
-            <Route path="/casinos" element={<Home src={'get-data-hub-page-casino/'} />} />
-            <Route path="/bonuses" element={<Home src={'get-data-hub-page-bonus/'} />} />
+            {import.meta.env.VITE_TITLE === 'CryptoGamblers' ? (
+                <>
+                    <Route path="/casinos/:casino_slug?" element={<SeeAllCasinos />} />
 
-            {/* <Route path="/casinos/:casino_slug?" element={<SeeAllCasinos />} />
- 
-            <Route path="/bonuses/:bonus_slug?" element={<SeeAllBonus />} /> */}
+                    <Route path="/bonuses/:bonus_slug?" element={<SeeAllBonus />} />
+                </>
+            ) : (
+                <>
+                    <Route path="/casinos" element={<Home src={'get-data-hub-page-casino/'} />} />
+                    <Route path="/bonuses" element={<Home src={'get-data-hub-page-bonus/'} />} />
+                </>
+            )}
 
             <Route path="/filter-casinos" element={<FilterCasino />} />
             <Route path="/filter-bonus" element={<FilterBonus />} />
@@ -65,4 +69,3 @@ export const PublicRouter = () => {
         </Routes>
     )
 }
-

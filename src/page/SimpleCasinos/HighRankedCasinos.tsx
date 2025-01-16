@@ -148,7 +148,7 @@ export const HighRankedCasinos = () => {
                                         .map((item) => (
                                             <SwiperSlide className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item item-slide-slider">
-                                                    <Link to={`/casino/${item?.[0]?.casino_slug}}`} aria-label="Put your description here." className="item-slide-slider__image-block">
+                                                    <Link to={`/casino/${item?.[0]?.casino_slug}`} aria-label="Put your description here." className="item-slide-slider__image-block">
                                                         <span className="item-slide-slider__image ibg--custom">
                                                             <LazyCardImg img={item?.[0].image || ''} height="auto" width="100%" />
                                                         </span>
