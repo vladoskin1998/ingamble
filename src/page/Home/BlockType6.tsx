@@ -67,7 +67,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                         )}
                         {data.items_block.type_block === BlockTypeNumber.BlockType6c && data?.items_block?.total_casinos_by_filter && data?.items_block?.total_casinos_by_filter > 5 ? (
                             <div className="top__column">
-                                <Link className="top__btn" to={titleHub ? '/filter-bonus' : '/filter-casinos'} onClick={seeAllType6c}>
+                                <Link className="top__btn" to={titleHub === 'bonuses' ? '/filter-bonus' : '/filter-casinos'} onClick={seeAllType6c}>
                                     <span>See All</span>
                                     <span className="top__btn-arrow">
                                         <svg>
