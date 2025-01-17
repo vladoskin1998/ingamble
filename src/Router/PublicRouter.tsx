@@ -25,7 +25,6 @@ export const PublicRouter = () => {
             {import.meta.env.VITE_TITLE === 'CryptoGamblers' ? (
                 <>
                     <Route path="/casinos/:casino_slug?" element={<SeeAllCasinos />} />
-
                     <Route path="/bonuses/:bonus_slug?" element={<SeeAllBonus />} />
                 </>
             ) : (

@@ -14,7 +14,7 @@ import { useFilterContext } from '../../context/FilterContext'
 export default function BlockType6({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
-    const { data: Country, setCasinoFilters } = useFilterContext()
+    const { data: Country, setCasinoFilters, setBonusFilters } = useFilterContext()
     useEffect(() => {
         if (sliderRef.current && paginationRef.current) {
             const swiper = sliderRef.current.swiper
@@ -31,6 +31,19 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
 
+    const titleHub: 'bonuses' | 'casinos' = window.location.href.includes('bonuses') ? 'bonuses' : 'casinos'
+    const titleBlock = data.items_block.type_block === BlockTypeNumber.BlockType6 ? data.items_block.block_title : data.items_block.block_title.replace('casinos', titleHub)
+
+    const seeAllType6c = () => {
+        //@ts-ignore
+        const idCountry = Country?.general.countries.find((item) => item?.code === (data?.items_block?.country_code as DataHomeItemsBlock))?.id
+        if (titleHub === 'bonuses') {
+            setBonusFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
+            return
+        }
+        setCasinoFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
+    }
+
     return (
         <section aria-label="BlockTypeNumber.BlockType6" className="main-gamble__new-bonuses new-bonuses-gamble">
             <div className="new-bonuses-gamble__container container">
@@ -43,7 +56,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
-                                <h2 className="top__title">{data.items_block.block_title}</h2>
+                                <h2 className="top__title">{titleBlock}</h2>
                             </div>
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
@@ -54,15 +67,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                         )}
                         {data.items_block.type_block === BlockTypeNumber.BlockType6c && data?.items_block?.total_casinos_by_filter && data?.items_block?.total_casinos_by_filter > 5 ? (
                             <div className="top__column">
-                                <Link
-                                    className="top__btn"
-                                    to={'/filter-casinos'}
-                                    onClick={() => {
-                                        //@ts-ignore
-                                        const idCountry = Country?.general.countries.find((item) => item?.code === data?.items_block?.country_code as DataHomeItemsBlock )?.id
-                                        setCasinoFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
-                                    }}
-                                >
+                                <Link className="top__btn" to={titleHub ? '/filter-bonus' : '/filter-casinos'} onClick={seeAllType6c}>
                                     <span>See All</span>
                                     <span className="top__btn-arrow">
                                         <svg>

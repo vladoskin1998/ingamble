@@ -142,7 +142,18 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                             </div>
                                             <div className="deposit-top-bonuses-gamble__info info-deposit-top-bonuses-gamble">
                                                 <div className="info-deposit-top-bonuses-gamble__row">
-                                                    <div className="info-deposit-top-bonuses-gamble__no-deposit">No Deposit</div>
+                                                    <div className="info-deposit-top-bonuses-gamble__column">
+                                                        <div className="info-deposit-top-bonuses-gamble__icon">
+                                                            <img src={deposit} alt="deposit-icon" />
+                                                        </div>
+                                                        <div className="info-deposit-top-bonuses-gamble__text">{`WR: ${typeof item?.bonus_info?.wr === 'number' ? item?.bonus_info.wr + 'X' : '-'}`}</div>
+                                                    </div>
+                                                    <div className="info-deposit-top-bonuses-gamble__column">
+                                                        <div className="info-deposit-top-bonuses-gamble__label">Min Dep:</div>
+                                                        <div className="info-deposit-top-bonuses-gamble__value">
+                                                            {typeof item?.bonus_info?.bonus_min_dep?.[0]?.min_value === 'number' ? '$' + item?.bonus_info?.bonus_min_dep?.[0]?.min_value : '-'}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <a
                                                     href={cloacingLink(item?.casino_info?.casino_name)}
