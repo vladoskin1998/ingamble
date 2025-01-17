@@ -13,7 +13,7 @@ import english from '../../assets/img/flags/english.svg'
 import { useEffect, useRef, useState } from 'react'
 import logoIcon from '../../assets/img/logo-icon.svg'
 import { useFilterContext } from '../../context/FilterContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 type Language = {
     code: string
     name: string
@@ -44,6 +44,7 @@ export const Header = ({
     const inputRefMob = useRef<HTMLInputElement>(null)
 
     const navigate = useNavigate()
+    const location = useLocation()
     const { casinoFilters, setCasinoFilters } = useFilterContext()
 
     const [moonBlink, setBoonBlink] = useState(false)
@@ -149,6 +150,25 @@ export const Header = ({
             document.removeEventListener('keydown', onKeydown)
         }
     }, [casinoFilters, navTo])
+
+
+  useEffect(() => {
+   
+
+      if (location.pathname === '/bonuses' || location.pathname.includes('/all-bonuses')) {
+          setActiveLink('/bonuses')
+          return
+      }
+      if (location.pathname === '/casinos' || location.pathname.includes('/all-casinos')) {
+          setActiveLink('/casinos')
+          return
+      }
+      if (location.pathname.includes('/all-loyalties')) {
+          setActiveLink('/all-loyalties')
+          return
+      }
+      setActiveLink('/')
+  }, [location.pathname]) 
 
     const [activeLink, setActiveLink] = useState<string>(window.location.pathname)
 
@@ -410,7 +430,7 @@ export const Header = ({
                                             to="/"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                                setActiveLink('/')
+                                         
                                                 handleBurgerClose()
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
@@ -424,7 +444,7 @@ export const Header = ({
                                             to="/bonuses"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                                setActiveLink('/bonuses')
+                                
                                                 handleBurgerClose()
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/bonuses') && 'current'}`}
@@ -438,7 +458,7 @@ export const Header = ({
                                             aria-label="Put your description here."
                                             onClick={() => {
                                                 handleBurgerClose()
-                                                setActiveLink('/casinos')
+                                         
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}
                                         >
@@ -450,7 +470,7 @@ export const Header = ({
                                             to="/all-loyalties"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                                setActiveLink('/all-loyalties')
+                                            
                                                 handleBurgerClose()
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/all-loyalties') && 'current'}`}
