@@ -4,7 +4,6 @@ import arrowYellowIcon from '../../assets/img/icons/arrow-yellow.svg'
 import closeIcon from '../../assets/img/icons/close.svg'
 import slotsIcon from '../../assets/img/games/01.svg'
 import { GetDataBonusResponse } from '../../types'
-import moment from 'moment'
 import { AccordionItem } from '../../components/acordion/Acordion'
 import { WagerPrettier } from './HeaderSimpleBonus'
 
@@ -152,7 +151,7 @@ export const BonusInformation = ({ data }: { data: GetDataBonusResponse | undefi
                                             <div className="item-content-bonus-information__label">Bonus period:</div>
                                             <div className="item-content-bonus-information__value">
                                                 {data?.promotion_period?.start_date && data?.promotion_period?.end_date
-                                                    ? `${moment(data?.promotion_period?.start_date).format('DD.MM.YYYY')} - ${moment(data?.promotion_period?.end_date).format('DD.MM.YYYY')}`
+                                                    ? `${new Date(data.promotion_period.start_date).toLocaleDateString('ru-RU')} - ${new Date(data.promotion_period.end_date).toLocaleDateString('ru-RU')}`
                                                     : '-'}
                                             </div>
                                         </div>
