@@ -4,8 +4,7 @@ import { PublicRouter } from './Router/PublicRouter'
 
 function App() {
 
-   if (new Date() > new Date('2025-01-20'))
-        return <></>
+
        return (
            <AdaptiveProvider>
                <FilterProvider>
