@@ -1,4 +1,5 @@
-import logo from '../../assets/img/logo.svg'
+import logoCryptogamblers from '../../assets/img/logo.svg'
+import logoInGamble from '../../assets/img/logo-ingamble.svg'
 import logos01 from '../../assets/img/logos/01.svg'
 import logos02 from '../../assets/img/logos/02.svg'
 import logos03 from '../../assets/img/logos/03.svg'
@@ -12,9 +13,10 @@ import logos10 from '../../assets/img/logos/10.svg'
 import socialsIcon from '../../assets/img/icons/socials-icon.svg'
 import '../../assets/css/footer.css'
 
-
-
 export default function Footer() {
+
+    console.log(window.location);
+    
     return (
         <footer className="footer">
             <div className="footer__top top-footer">
@@ -300,7 +302,7 @@ export default function Footer() {
                             </li>
                             <li className="menu-footer__item">
                                 <a rel="nofollow noopener" href="" aria-label="Put your description here." target="_blank" className="menu-footer__link">
-                                    Highest cashack
+                                    Highest cashback
                                 </a>
                             </li>
                             <li className="menu-footer__item">
@@ -318,9 +320,9 @@ export default function Footer() {
                     <div className="top-footer__socials-block">
                         <a href="" target="_blank" className="footer__logo logo">
                             <div className="logo__img">
-                                <img src={logo} alt="logo" />
+                                <img src={window.origin.includes('cryptogamblers') ? logoCryptogamblers : logoInGamble} alt="logo" />
                             </div>
-                            <div className="logo__text">IN CRYPTO GAMBLE WE TRUST</div>
+                            <div className="logo__text">{import.meta.env.VITE_SUBTITLE_WE_TRUST}</div>
                         </a>
                         <div className="top-footer__socials socials-top-footer">
                             <div className="socials-top-footer__label" data-da="top-footer__socials-block, 1, 1355.98">
@@ -518,14 +520,16 @@ export default function Footer() {
                         </div>
                         <div className="bottom-footer__text">
                             <p>
-                                cryptogamblers.pro is an independent online casino review platform not controlled by any gambling operator. All the reviews and guides on our site are written honestly, based on the best knowledge and
-                                judgment of our independent expert team. Our reviews and information are intended for informative purposes only and should not be interpreted as, nor relied upon as, legal advice. Before engaging in online
-                                gambling, it is essential to be aware of and comply with your local jurisdiction's regulations. cryptogamblers.pro holds no responsibility for actions taken by visitors based on the information provided on
-                                the site. Accessing and using our site is at your sole discretion and risk.
+                                {window.location.origin.includes('cryptogamblers') ? 'cryptogamblers.pro' : 'ingamble.com'} is an independent online casino review platform not controlled by any gambling operator. All the reviews and guides on our
+                                site are written honestly, based on the best knowledge and judgment of our independent expert team. Our reviews and information are intended for informative purposes only and should not be interpreted as, nor
+                                relied upon as, legal advice. Before engaging in online gambling, it is essential to be aware of and comply with your local jurisdiction's regulations. cryptogamblers.pro holds no responsibility for actions
+                                taken by visitors based on the information provided on the site. Accessing and using our site is at your sole discretion and risk.
                             </p>
                         </div>
                         <div className="bottom-footer__copyright">
-                            <p>CryptoGamblers © {new Date().getFullYear()}</p>
+                            <p>
+                                {window.location.origin.includes('cryptogamblers') ? 'CryptoGamblers' : 'inGamble'} © {new Date().getFullYear()}
+                            </p>
                         </div>
                     </div>
                 </div>
