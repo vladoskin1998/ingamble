@@ -199,7 +199,7 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/')}
+                                        
                                         className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                     >
                                         <span>Gambling Hub</span>
@@ -210,7 +210,7 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/bonuses"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/bonuses')}
+                                       
                                         className={`menu-header__link ${activeLink.includes('/bonuses') && 'current'}`}
                                     >
                                         <span>Bonuses</span>
@@ -221,7 +221,7 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/casinos"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/casinos')}
+                       
                                         className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}
                                     >
                                         <span>Casinos</span>
@@ -232,7 +232,7 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/all-loyalties"
                                         aria-label="Put your description here."
-                                        onClick={() => setActiveLink('/all-loyalties')}
+                                 
                                         className={`menu-header__link ${activeLink.includes('/all-loyalties') && 'current'}`}
                                     >
                                         <span>Loyalties</span>
