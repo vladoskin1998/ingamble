@@ -520,15 +520,15 @@ export default function Footer() {
                         </div>
                         <div className="bottom-footer__text">
                             <p>
-                                {window.location.origin.includes('cryptogamblers') ? 'cryptogamblers.pro' : 'ingamble.com'} is an independent online casino review platform not controlled by any gambling operator. All the reviews and guides on our
-                                site are written honestly, based on the best knowledge and judgment of our independent expert team. Our reviews and information are intended for informative purposes only and should not be interpreted as, nor
-                                relied upon as, legal advice. Before engaging in online gambling, it is essential to be aware of and comply with your local jurisdiction's regulations. cryptogamblers.pro holds no responsibility for actions
-                                taken by visitors based on the information provided on the site. Accessing and using our site is at your sole discretion and risk.
+                                {import.meta.env.VITE_DOMEN} is an independent online casino review platform not controlled by any gambling operator. All the reviews and guides on our site are written honestly, based on the best knowledge
+                                and judgment of our independent expert team. Our reviews and information are intended for informative purposes only and should not be interpreted as, nor relied upon as, legal advice. Before engaging in
+                                online gambling, it is essential to be aware of and comply with your local jurisdiction's regulations. {import.meta.env.VITE_DOMEN} holds no responsibility for actions taken by visitors based on the
+                                information provided on the site. Accessing and using our site is at your sole discretion and risk.
                             </p>
                         </div>
                         <div className="bottom-footer__copyright">
                             <p>
-                                {window.location.origin.includes('cryptogamblers') ? 'CryptoGamblers' : 'inGamble'} © {new Date().getFullYear()}
+                                {import.meta.env.VITE_TITLE} © {new Date().getFullYear()}
                             </p>
                         </div>
                     </div>
