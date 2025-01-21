@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Wraper } from '../Wraper'
 // import { useAdaptiveBehavior } from '../../context/AppContext'
-import { Categories } from '../../components/categories/Categories'
+import { Categories, CategorySwiperType } from '../../components/categories/Categories'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import $api from '../../http'
@@ -30,31 +30,37 @@ import SubscribeForm from '../../components/subscribe/SubscribeForm'
 import BottomInfo from '../../components/footer/BottomInfo'
 import BlockType10Mobile from './BlockType10Mobile'
 
-
-
-
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 
-const getHomeDataFetch = async (src:string) => {
+const categoriesTypeBySrc = (src: string): { type_category: CategorySwiperType; blocks_sequence_number: number } => {
+    switch (src) {
+        case 'get-data-hub-page-casino/':
+            return { type_category: 'casino', blocks_sequence_number: 3.5 }
+        case 'get-data-hub-page-bonus/':
+            return { type_category: 'bonus', blocks_sequence_number: 2.5 }
+        default:
+            return { type_category: 'all', blocks_sequence_number: 1.5 }
+    }
+}
+
+const getHomeDataFetch = async (src: string) => {
     const response = await $api.get(src)
     const headers = response.headers
 
     return {
-        dataHome: response?.data?.data_blocks?.sort((a: any, b: any) => a?.blocks_sequence_number - b?.blocks_sequence_number),
-        dataHomeMobile: response?.data?.data_blocks_m?.sort((a: any, b: any) => a?.blocks_sequence_number - b?.blocks_sequence_number),
+        dataHome: response?.data?.data_blocks,
+        dataHomeMobile: response?.data?.data_blocks_m,
         headers,
     }
 }
 
-const getBlockByCountry = async () => {
-    const response = await $api.get('get-block-by-country/')
+const getBlockByCountry = async (): Promise<HomeDataBlock> => {
+    let response = await $api.get('get-block-by-country/')
 
     return response.data
 }
 
-const renderBlock = (block: any,  isMobile: boolean) => {
-
-
+const renderBlock = (block: any, isMobile: boolean) => {
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} />
@@ -64,9 +70,9 @@ const renderBlock = (block: any,  isMobile: boolean) => {
             return <BlockMType2M data={block} />
         case BlockTypeNumber.BlockType3M:
             return <BlockMType3M data={block} />
-        case BlockTypeNumber.BlockType6 :
+        case BlockTypeNumber.BlockType6:
             return <BlockType6 data={block} />
-        case  BlockTypeNumber.BlockType6c:
+        case BlockTypeNumber.BlockType6c:
             return <BlockType6 data={block} />
         case BlockTypeNumber.BlockType8:
             return <BlockType8 data={block} />
@@ -80,7 +86,6 @@ const renderBlock = (block: any,  isMobile: boolean) => {
             return <>{isMobile ? <BlockType7Mobile data={block} /> : <BlockType7 data={block} />}</>
         case BlockTypeNumber.BlockType5:
             return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
-
         case BlockTypeNumber.BlockType10:
             return <>{isMobile ? <BlockType10Mobile data={block} /> : <BlockType10 data={block} />}</>
         case BlockTypeNumber.BlockType11:
@@ -91,7 +96,6 @@ const renderBlock = (block: any,  isMobile: boolean) => {
 }
 
 export default function Home({ src = 'get-data-home-page/' }: { src?: string }) {
-  
     const { data, isLoading } = useQuery<{
         dataHome: HomeDataBlock[]
         dataHomeMobile: HomeDataBlockMobile[]
@@ -101,10 +105,9 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         cacheTime: 1000 * 60 * 10,
     })
 
-    const { data: blockByCountry, isLoading: isLoadingBlock } = useQuery<HomeDataBlock>('get-block-by-country/', getBlockByCountry, {
+    let { data: blockByCountry } = useQuery<HomeDataBlock>(['get-block-by-country/'], getBlockByCountry, {
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 10,
-        enabled: src !== 'get-data-home-page/',
     })
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
@@ -117,21 +120,30 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
+    const { blocks_sequence_number } = categoriesTypeBySrc(src)
+    if (blockByCountry) {
+        blockByCountry = {
+            ...blockByCountry,
+            blocks_sequence_number: blocks_sequence_number,
+        }
+    }
 
-  
-    const blocksToRender = isMobile ? [...(data?.dataHomeMobile || []), src !== 'get-data-home-page/' ? blockByCountry : undefined] : [...(data?.dataHome || []), src !== 'get-data-home-page/' ? blockByCountry : undefined]
-//   const blocksToRender =  data?.dataHome
-    if (isLoading || isLoadingBlock) return <LogoLoader />
+    const blocksToRender = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
+
+    console.log(blocksToRender)
+
+    if (isLoading) return <LogoLoader />
 
     return (
         <>
             <Wraper>
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
-                        <Categories />
-                      
-                        {blocksToRender?.filter?.(Boolean)?.map((block) => renderBlock(block,  isMobile))}
-
+                        <Categories type_category={categoriesTypeBySrc(src).type_category} />
+                        {blocksToRender
+                            ?.filter(Boolean)
+                            .sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
+                            .map((block) => renderBlock(block, isMobile))}
                         <MoreBonusesForYourChoise />
                         <CheckMoreWhatSuitsYouBest />
                         <SubscribeForm />

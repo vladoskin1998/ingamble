@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 
 export default function CheckMoreWhatSuitsYouBest  ()  {
     const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
-    const CristmasCategory = category.find((item) => item.slug === 'christmas-bonuses')
+    
 
      const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
     
@@ -33,13 +33,8 @@ export default function CheckMoreWhatSuitsYouBest  ()  {
                     </div>
                 </div>
                 <div className="bottom-filter-tags__row">
-                    <div className="bottom-filter-tags__column bottom-filter-tags__link">
-                        <Link to={CristmasCategory?.link || '/'} aria-label="Put your description here." className="bottom-filter-tags__btn slide-filter-tags-gamble__btn">
-                            {isMobile ? sliceString(CristmasCategory?.name, 23) : CristmasCategory?.name}
-                        </Link>
-                    </div>
+                
                     {category
-                        ?.filter((item) => item?.slug !== 'christmas-bonuses')
                         ?.map((item, index) => (
                             <div className="bottom-filter-tags__column bottom-filter-tags__link" key={index}>
                                 <Link to={item?.link || '/'} aria-label="Put your description here." className="bottom-filter-tags__btn slide-filter-tags-gamble__btn">

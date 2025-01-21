@@ -39,12 +39,12 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
-                                <h2 className="top__title">{data.items_block.block_title}</h2>
+                                <h2 className="top__title ">{data.items_block.block_title}</h2>
                             </div>
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug }  />
+                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -90,24 +90,18 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                     to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}
                                                                     onClick={(e) => e.stopPropagation()}
                                                                 >
-                                                                    <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%"  />
+                                                                    <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
                                                                 </Link>
-                                                                <div className="item-baner-row-block__row"
-                                                                >
+                                                                <div className="item-baner-row-block__row">
                                                                     <div className="item-baner-row-block__column">
                                                                         <div className="item-baner-row-block__small-card casino-small-card">
                                                                             <div className="casino-small-card__image-block">
                                                                                 <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="casino-small-card__image ibg--custom">
-                                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%"  />
+                                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%" />
                                                                                 </Link>
                                                                             </div>
                                                                             <div className="casino-small-card__body">
-                                                                                <Link
-                                                                                    rel="nofollow noopener"
-                                                                                    to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                                    aria-label="Put your description here."
-                                                                                    className="casino-small-card__name"
-                                                                                >
+                                                                                <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="casino-small-card__name">
                                                                                     {item?.casino_info?.casino_name}
                                                                                 </Link>
                                                                                 <div className="casino-small-card__info">
@@ -126,12 +120,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                             <div className="item-baner-row-block__index-number">{item?.casino_info?.casino_rank}</div>
                                                                             <div className="item-baner-row-block__index-text">Safety Index</div>
                                                                         </div>
-                                                                        <Link
-                                                                            rel="nofollow noopener"
-                                                                            to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                            aria-label="Put your description here."
-                                                                            className="item-baner-row-block__title"
-                                                                        >
+                                                                        <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} className="item-baner-row-block__title top__title-40">
                                                                             {item?.bonus_info?.bonus_name}
                                                                         </Link>
                                                                     </div>
@@ -190,23 +179,13 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                             .map((item, index) => (
                                                 <SwiperSlide key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
                                                     <div className="slide-slider__item different-casino-bg">
-                                                        <Link
-                                                            rel="nofollow noopener"
-                                                            to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                            aria-label="Put your description here."
-                                                            className="different-casino-bg__image-block"
-                                                        >
+                                                        <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="different-casino-bg__image-block">
                                                             <span className="different-casino-bg__image ibg--custom">
                                                                 <LazyCardImg img={item.casino_info.casino_image || ''} height="100%" width="100%" />
                                                             </span>
                                                         </Link>
                                                         <div className="different-casino-bg__content">
-                                                            <Link
-                                                                rel="nofollow noopener"
-                                                                to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                aria-label="Put your description here."
-                                                                className="different-casino-bg__name"
-                                                            >
+                                                            <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="different-casino-bg__name">
                                                                 {item.casino_info.casino_name}
                                                             </Link>
                                                             <div className="different-casino-bg__info">

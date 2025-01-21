@@ -220,7 +220,7 @@ const LisDisplayedData = memo(({ displayedData }: { displayedData: SeeAllEssenti
                                     <div className="features-essential-programs-gamble__item features-essential-programs-gamble__item_rating">
                                         <div className="item-essential-programs-gamble__rating">
                                             <div className="item-essential-programs-gamble__rating-number">
-                                                {item?.loyalty_program?.count_levels || 10}
+                                                {parseInt(String(item?.loyalty_program?.loyalty_rank), 10)}
                                                 /10
                                             </div>
                                             <div className="item-essential-programs-gamble__rating-body">

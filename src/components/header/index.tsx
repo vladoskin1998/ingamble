@@ -1,15 +1,7 @@
 import logoCryptogamblers from '../../assets/img/logo.svg'
 import logoInGamble from '../../assets/img/logo-ingamble.svg'
-// import latviaFlag from '../../assets/img/icons/latvia-flag.svg'
 import english from '../../assets/img/flags/english.svg'
-// import ukraine from '../../assets/img/flags/ukraine.svg'
-// import russian from '../../assets/img/flags/russian.svg'
-// import bulgarian from '../../assets/img/flags/bulgarian.svg'
-// import spanish from '../../assets/img/flags/spanish.svg'
-// import german from '../../assets/img/flags/german.svg'
-// import french from '../../assets/img/flags/french.svg'
-// import italian from '../../assets/img/flags/italian.svg'
-// import slovak from '../../assets/img/flags/slovak.svg'
+
 import { useEffect, useRef, useState } from 'react'
 import logoIcon from '../../assets/img/logo-icon.svg'
 import { useFilterContext } from '../../context/FilterContext'
@@ -199,42 +191,23 @@ export const Header = ({
                                         rel="nofollow noopener"
                                         to="/"
                                         aria-label="Put your description here."
-                                        
                                         className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                     >
                                         <span>Gambling Hub</span>
                                     </Link>
                                 </li>
                                 <li className="menu-header__item">
-                                    <Link
-                                        rel="nofollow noopener"
-                                        to="/bonuses"
-                                        aria-label="Put your description here."
-                                       
-                                        className={`menu-header__link ${activeLink.includes('/bonuses') && 'current'}`}
-                                    >
+                                    <Link rel="nofollow noopener" to="/bonuses" aria-label="Put your description here." className={`menu-header__link ${activeLink.includes('/bonuses') && 'current'}`}>
                                         <span>Bonuses</span>
                                     </Link>
                                 </li>
                                 <li className="menu-header__item">
-                                    <Link
-                                        rel="nofollow noopener"
-                                        to="/casinos"
-                                        aria-label="Put your description here."
-                       
-                                        className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}
-                                    >
+                                    <Link rel="nofollow noopener" to="/casinos" aria-label="Put your description here." className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}>
                                         <span>Casinos</span>
                                     </Link>
                                 </li>
                                 <li className="menu-header__item">
-                                    <Link
-                                        rel="nofollow noopener"
-                                        to="/all-loyalties"
-                                        aria-label="Put your description here."
-                                 
-                                        className={`menu-header__link ${activeLink.includes('/all-loyalties') && 'current'}`}
-                                    >
+                                    <Link rel="nofollow noopener" to="/all-loyalties" aria-label="Put your description here." className={`menu-header__link ${activeLink.includes('/all-loyalties') && 'current'}`}>
                                         <span>Loyalties</span>
                                     </Link>
                                 </li>
@@ -409,7 +382,7 @@ export const Header = ({
                                 </a>
                             </div>
 
-                            <a href="" aria-label="Put your description here." className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={(e) => handleBurgerOpen(e,)}>
+                            <a href="" aria-label="Put your description here." className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={(e) => handleBurgerOpen(e)}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -430,7 +403,6 @@ export const Header = ({
                                             to="/"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                         
                                                 handleBurgerClose()
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
@@ -444,7 +416,6 @@ export const Header = ({
                                             to="/bonuses"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                
                                                 handleBurgerClose()
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/bonuses') && 'current'}`}
@@ -458,7 +429,6 @@ export const Header = ({
                                             aria-label="Put your description here."
                                             onClick={() => {
                                                 handleBurgerClose()
-                                         
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}
                                         >
@@ -470,13 +440,25 @@ export const Header = ({
                                             to="/all-loyalties"
                                             aria-label="Put your description here."
                                             onClick={() => {
-                                            
                                                 handleBurgerClose()
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/all-loyalties') && 'current'}`}
                                         >
                                             <span>Loyalties</span>
                                         </Link>
+                                    </li>
+                                    <li className="menu-header__item">
+                                        <button
+                                            
+                                            aria-label="Put your description here."
+                                            onClick={() => {
+                                                handleBurgerClose()
+                                                setSidebarActive(true)
+                                            }}
+                                        className={`menu-header__link`}
+                                        >
+                                            <span>Filters</span>
+                                        </button>
                                     </li>
                                 </ul>
                             </nav>

@@ -1006,6 +1006,11 @@ h3 {
 .top__column:nth-child(1) {
   flex: 1 1 100%;
 }
+.top__title-40{
+  max-width: 60%;
+  display: block;
+  
+}
 .top__title-block {
   display: flex;
   align-items: center;
@@ -18418,3 +18423,7 @@ h3 {
   display:flex;
 white-space: nowrap;
 }
+/* 
+.emoji {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+} */

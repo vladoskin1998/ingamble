@@ -273,7 +273,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <Link to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`} className="item-baner-row-block__title">
+                                                                        <Link to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`} className="item-baner-row-block__title top__title-40">
                                                                             {item?.bonus_info?.bonus_name}
                                                                         </Link>
                                                                     </div>

@@ -528,7 +528,7 @@ export default function Footer() {
                         </div>
                         <div className="bottom-footer__copyright">
                             <p>
-                                {import.meta.env.VITE_TITLE} © {new Date().getFullYear()}
+                                {import.meta.env.VITE_TITLE_FOOTER} © {new Date().getFullYear()}
                             </p>
                         </div>
                     </div>

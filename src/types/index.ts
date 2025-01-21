@@ -427,6 +427,7 @@ export type GeneralFilterDataType = {
         code: string;
         allowed_casinos_count?: number | null;
         flag_image: string | null;
+        emoji_flag: string;
     }[];
     game_providers: {
         id: number;

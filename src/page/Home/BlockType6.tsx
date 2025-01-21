@@ -11,6 +11,8 @@ import { cloacingFetch, cloacingLink, shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useFilterContext } from '../../context/FilterContext'
 
+
+
 export default function BlockType6({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
@@ -44,6 +46,9 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
         setCasinoFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
     }
 
+    console.log(Country?.general.countries?.[0]?.emoji_flag)
+    
+
     return (
         <section aria-label="BlockTypeNumber.BlockType6" className="main-gamble__new-bonuses new-bonuses-gamble">
             <div className="new-bonuses-gamble__container container">
@@ -56,7 +61,11 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
-                                <h2 className="top__title">{titleBlock}</h2>
+                                <h2 className="top__title">
+                                    {/* <>{Country?.general.countries?.[0]?.emoji_flag && <CountryFlagEmoji code={Country?.general.countries?.[0]?.emoji_flag || ''} />}</>
+                                    <span>{`${Country?.general.countries?.[0]?.emoji_flag}`}</span> */}
+                                    {titleBlock}
+                                </h2>
                             </div>
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>

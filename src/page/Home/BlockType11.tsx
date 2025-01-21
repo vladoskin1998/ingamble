@@ -24,7 +24,7 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                 <div className="top__row">
                                     <div className="top__column">
                                         <div className="top__title-block">
-                                            <h2 className="top__title">Top Low risk Bonuses</h2>
+                                            <h2 className="top__title"> Top Ranked Casinos </h2>
                                         </div>
                                     </div>
                                     <div className="top__column">
@@ -102,7 +102,7 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                 <div className="top__row">
                                     <div className="top__column">
                                         <div className="top__title-block">
-                                            <h2 className="top__title">Top No Deposit Bonuses</h2>
+                                            <h2 className="top__title">Best Crypto Casinos</h2>
                                         </div>
                                     </div>
                                     <div className="top__column">
