@@ -9,6 +9,7 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 
 export default function BlockType2Mobile({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<SwiperRef | null>(null)
@@ -25,7 +26,7 @@ export default function BlockType2Mobile({ data }: { data: HomeDataBlock | undef
             }
         }
     }, [])
-
+            const { isShowPlayButton } = useAdaptiveBehavior()
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType2) return <></>
     return (
         <section aria-label="BlockTypeNumber.BlockType2" className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
@@ -82,6 +83,9 @@ export default function BlockType2Mobile({ data }: { data: HomeDataBlock | undef
                                                         <Link className="casino-card__image ibg--custom" to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}>
                                                             <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
                                                         </Link>
+                                                        {
+                                                            isShowPlayButton &&
+                                                       
                                                         <a
                                                             href={cloacingLink(item?.casino_info?.casino_name)}
                                                             onClick={(e) => {
@@ -94,7 +98,7 @@ export default function BlockType2Mobile({ data }: { data: HomeDataBlock | undef
                                                             className="casino-card__bnt"
                                                         >
                                                             Play
-                                                        </a>
+                                                        </a> }
                                                     </div>
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">

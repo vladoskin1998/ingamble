@@ -10,6 +10,7 @@ import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink, shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useFilterContext } from '../../context/FilterContext'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 
 
 
@@ -46,7 +47,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
         setCasinoFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
     }
 
-    console.log(data.items_block.title_image)
+      const { isShowPlayButton } = useAdaptiveBehavior()
     
 
     return (
@@ -119,6 +120,9 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                     <Link className="casino-card__image ibg--custom" onClick={(e) => e.stopPropagation()} to={`/casino/${item?.casino_info?.casino_name}/bonuses/${item?.bonus_info?.bonus_slug}`}>
                                                         <LazyCardImg img={item.bonus_info.bonus_image || ''} />
                                                     </Link>
+                                                    {
+                                                        isShowPlayButton && 
+                                                   
                                                     <a
                                                         href={cloacingLink(item?.casino_info?.casino_name)}
                                                         onClick={(e) => {
@@ -131,7 +135,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                         className="casino-card__bnt"
                                                     >
                                                         Play
-                                                    </a>
+                                                    </a> }
                                                 </div>
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__small-card casino-small-card">

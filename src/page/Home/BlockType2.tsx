@@ -9,6 +9,7 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 
 export default function BlockType2({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<any>(null)
@@ -26,6 +27,9 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
             }
         }
     }, [])
+
+      const { isShowPlayButton } = useAdaptiveBehavior()
+
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType2) return <></>
     return (
         <section aria-label="BlockTypeNumber.BlockType2" className="main-gamble__safest-casino-2 safest-casino-2-gamble main-gamble__different-casino-bg main-gamble__baner-block">
@@ -126,6 +130,9 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                     </div>
 
                                                                     <div className="item-baner-row-block__column">
+                                                                        {
+                                                                            isShowPlayButton &&
+                                                                       
                                                                         <a
                                                                             href={cloacingLink(item?.casino_info?.casino_name)}
                                                                             onClick={(e) => {
@@ -138,7 +145,7 @@ export default function BlockType2({ data }: { data: HomeDataBlock | undefined }
                                                                             className="item-baner-row-block__btn casino-card__bnt"
                                                                         >
                                                                             Play
-                                                                        </a>
+                                                                        </a> }
                                                                     </div>
                                                                 </div>
                                                             </div>

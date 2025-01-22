@@ -45,7 +45,7 @@ export default function SeeAllBonus() {
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllBonusType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
-    const { initializeAdaptiveBehavior, category } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior, category, isShowPlayButton } = useAdaptiveBehavior()
 
     const { bonus_slug } = useParams()
 
@@ -139,19 +139,21 @@ export default function SeeAllBonus() {
                                                     <Link to={`/casino/${item.casino_slug}/bonuses/${item.bonus_slug}`} className="casino-card__image see-all-custom__image-custom">
                                                         <LazyCardImg img={item.bonus_image} width="100%" />
                                                     </Link>
-                                                    <a
-                                                        href={cloacingLink(item?.casino_name)}
-                                                        onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            e.preventDefault()
-                                                            cloacingFetch(item?.casino_affiliate_link)
-                                                            window.open(item?.casino_affiliate_link || item?.url_casino, '_blank', 'noopener,noreferrer')
-                                                        }}
-                                                        aria-label="Put your description here."
-                                                        className="casino-card__bnt"
-                                                    >
-                                                        Play
-                                                    </a>
+                                                    {isShowPlayButton && (
+                                                        <a
+                                                            href={cloacingLink(item?.casino_name)}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation()
+                                                                e.preventDefault()
+                                                                cloacingFetch(item?.casino_affiliate_link)
+                                                                window.open(item?.casino_affiliate_link || item?.url_casino, '_blank', 'noopener,noreferrer')
+                                                            }}
+                                                            aria-label="Put your description here."
+                                                            className="casino-card__bnt"
+                                                        >
+                                                            Play
+                                                        </a>
+                                                    )}
                                                 </div>
                                             </div>
                                             <div className="casino-card__content">

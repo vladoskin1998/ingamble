@@ -8,7 +8,10 @@ import { CategorySwiperType } from '../components/categories/Categories';
 
 const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
 
-
+const getTogglePlay = async () => {
+       const response = await $api.get('get-toggle-play/')
+       return response.data
+}
 
 const getDataHomePageCategories = async () => {
     const response = await $api.get("get-data-home-page-categories/")
@@ -20,11 +23,12 @@ interface ParentOriginal {
     index: number;
 }
 interface AdaptiveContextType {
-    isSidebarActive: boolean;
-    setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>;
-    initializeAdaptiveBehavior: () => void;
+    isShowPlayButton: boolean
+    isSidebarActive: boolean
+    setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>
+    initializeAdaptiveBehavior: () => void
     lastUpdate: string
-    category: { link: string; name: string;  categoryType:CategorySwiperType, slug:string, callback?: () => void}[]
+    category: { link: string; name: string; categoryType: CategorySwiperType; slug: string; callback?: () => void }[]
 }
 
 const getRandomDate = (startDate: Date, endDate: Date): Date => {
@@ -199,6 +203,14 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
         cacheTime: 1000 * 60 * 100,
     })
 
+      const { data: isTogglePlay } = useQuery<{id: number, is_play: boolean}>('get-toggle-play/', getTogglePlay, {
+          keepPreviousData: true,
+          staleTime: Infinity,
+          cacheTime: 1000 * 60 * 100,
+      })
+
+    
+      
         const category = useMemo(() => {
             return shuffleArray([
                 ...(dataCategories?.bonus_categories?.map((item) => ({
@@ -224,7 +236,7 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
 
 
     return (
-        <AdaptiveContext.Provider value={{ category,isSidebarActive, setSidebarActive, initializeAdaptiveBehavior,lastUpdate }}>
+        <AdaptiveContext.Provider value={{ isShowPlayButton: isTogglePlay?.is_play === undefined && true ,category,isSidebarActive, setSidebarActive, initializeAdaptiveBehavior,lastUpdate }}>
             {children}
         </AdaptiveContext.Provider>
     );

@@ -9,6 +9,7 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink, COLORS_TAGS } from '../../helper'
 import { Link } from 'react-router-dom'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 
 export default function BlockType3({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<any>(null)
@@ -47,7 +48,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
             }
         }
     }, [])
-
+      const { isShowPlayButton } = useAdaptiveBehavior()
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3) return <></>
 
     return (
@@ -278,7 +279,8 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                         </Link>
                                                                     </div>
                                                                     <div className="item-baner-row-block__column">
-                                                                        <a
+                                                                        {
+                                                                            isShowPlayButton && <a
                                                                             rel="nofollow noopener"
                                                                             href={cloacingLink(item?.casino_info?.casino_name)}
                                                                             onClick={(e) => {
@@ -291,6 +293,8 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                                                                         >
                                                                             Play
                                                                         </a>
+                                                                        }
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>

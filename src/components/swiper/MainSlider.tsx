@@ -10,6 +10,7 @@ import { SwiperRef } from "swiper/react"
 import { Link, useNavigate } from "react-router-dom"
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from "../../helper"
 import { LazyCardImg } from "../lazy-img/LazyCardImg"
+import { useAdaptiveBehavior } from "../../context/AppContext"
 
 
 const MainSlider = ({
@@ -49,6 +50,8 @@ const MainSlider = ({
         e.preventDefault()
         navigate(l)
     }
+
+    const { isShowPlayButton } = useAdaptiveBehavior()
     return (
         <div className="more-staket-simple-bonus__slider slider">
             <div className="slider__body">
@@ -81,22 +84,23 @@ const MainSlider = ({
                                             <Link to={item?.imageLink || '/'} onClick={(e) => navToImageLink(e, item?.imageLink || '')} aria-label="Put your description here." className="casino-card__image">
                                                 <LazyCardImg img={item.img || ''} width="100%" height="100%" />
                                             </Link>
-
-                                            <a
-                                                rel="nofollow noopener"
-                                                href={cloacingLink(item.casinoName)}
-                                                target="_blank"
-                                                aria-label="Put your description here."
-                                                className="casino-card__bnt"
-                                                onClick={(e) => {
-                                                    e.stopPropagation()
-                                                    e.preventDefault()
-                                                    cloacingFetch(item.playLink)
-                                                    window.open(item.playLink, '_blank', 'noopener,noreferrer')
-                                                }}
-                                            >
-                                                Play
-                                            </a>
+                                            {isShowPlayButton && (
+                                                <a
+                                                    rel="nofollow noopener"
+                                                    href={cloacingLink(item.casinoName)}
+                                                    target="_blank"
+                                                    aria-label="Put your description here."
+                                                    className="casino-card__bnt"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation()
+                                                        e.preventDefault()
+                                                        cloacingFetch(item.playLink)
+                                                        window.open(item.playLink, '_blank', 'noopener,noreferrer')
+                                                    }}
+                                                >
+                                                    Play
+                                                </a>
+                                            )}
                                         </div>
                                         {item?.tags && <div className="casino-card__tags tags-casino-card">{item.tags}</div>}
                                         <div className="casino-card__content">

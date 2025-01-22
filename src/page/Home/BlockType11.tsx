@@ -6,13 +6,14 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { SeeAllRoutes } from './SeeAllButton'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 export default function BlockType11({ data }: { data: HomeDataBlock | undefined }) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType11) return <></>
 
     const arr1 = data.items_block.data_cards.slice(0, 6)
     const arr2 = data.items_block.data_cards.slice(6, 12)
 
-    console.log(arr1)
+      const { isShowPlayButton } = useAdaptiveBehavior()
 
     return (
         <section className="main-gamble__top-bonuses top-bonuses-gamble">
@@ -77,6 +78,9 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {
+                                                    isShowPlayButton && 
+                                                
                                                 <a
                                                     href={cloacingLink(item?.casino_info?.casino_name)}
                                                     onClick={(e) => {
@@ -88,7 +92,7 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                                     className="deposit-top-bonuses-gamble__btn"
                                                 >
                                                     Play
-                                                </a>
+                                                </a>}
                                             </div>
                                         </div>
                                     </div>
@@ -155,6 +159,9 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {
+                                                    isShowPlayButton && 
+                                               
                                                 <a
                                                     href={cloacingLink(item?.casino_info?.casino_name)}
                                                     onClick={(e) => {
@@ -165,8 +172,8 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                                     }}
                                                     className="deposit-top-bonuses-gamble__btn"
                                                 >
-                                                    Play
-                                                </a>
+                                                    Play 
+                                                </a>}
                                             </div>
                                         </div>
                                     </div>

@@ -5,10 +5,13 @@ import { RewievCasinoDataResponse } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 
 const nameArray = ['Welcome Bonus', 'Cashback bonus']
 
 export const CasinoBonuses = ({ data }: { data: undefined | RewievCasinoDataResponse }) => {
+
+    const {isShowPlayButton} = useAdaptiveBehavior()
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 
@@ -135,20 +138,21 @@ export const CasinoBonuses = ({ data }: { data: undefined | RewievCasinoDataResp
                                                     <Link className="casino-card__image ibg--custom" to={b.special_side_bar ? data?.url : `/casino/${data?.casino_slug}/bonuses/${b?.bonus_slug}`}>
                                                         <LazyCardImg img={b?.bonus_image || ''} height="100%" width="100%" imgLoading={'lazy'} />
                                                     </Link>
-                                                    <a
-                                                        
-                                                        href={cloacingLink(data?.name)}
-                                                        onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            e.preventDefault()
-                                                            cloacingFetch(data?.casino_affiliate_link)
-                                                            window.open(data?.casino_affiliate_link || data?.url, '_blank', 'noopener,noreferrer')
-                                                        }}
-                                                        aria-label="Put your description here."
-                                                        className="casino-card__bnt"
-                                                    >
-                                                        Play
-                                                    </a>
+                                                    {isShowPlayButton && (
+                                                        <a
+                                                            href={cloacingLink(data?.name)}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation()
+                                                                e.preventDefault()
+                                                                cloacingFetch(data?.casino_affiliate_link)
+                                                                window.open(data?.casino_affiliate_link || data?.url, '_blank', 'noopener,noreferrer')
+                                                            }}
+                                                            aria-label="Put your description here."
+                                                            className="casino-card__bnt"
+                                                        >
+                                                            Play
+                                                        </a>
+                                                    )}
                                                 </div>
                                                 <Link className="casino-card__content" to={b.special_side_bar ? data?.url : `/casino/${data?.casino_slug}/bonuses/${b?.bonus_slug}`}>
                                                     <div

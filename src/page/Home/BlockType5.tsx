@@ -13,6 +13,7 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 
 export default function BlockType5({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<SwiperRef | null>(null)
@@ -53,7 +54,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
             handleSlideChange()
         }
     }
-
+      const { isShowPlayButton } = useAdaptiveBehavior()
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5) return <></>
 
     return (
@@ -166,6 +167,9 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                                                             <Link to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`} aria-label="Put your description here." className="casino-big-card__title">
                                                                 <span className="casino-big-card__title-label">{item?.bonus_info?.bonus_name}</span>
                                                             </Link>
+                                                            {
+                                                                isShowPlayButton && 
+                                                            
                                                             <a
                                                                 href={cloacingLink(item?.casino_info?.casino_name)}
                                                                 onClick={(e) => {
@@ -177,7 +181,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                                                                 className="casino-big-card__btn "
                                                             >
                                                                 Play
-                                                            </a>
+                                                            </a>}
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>

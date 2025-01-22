@@ -44,7 +44,7 @@ const getFilteringBonusList = async (payload: BonusFilterBodyType, page: number)
 export default function FilterBonus() {
     // // document.title = "Filter Bonus"
 
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+    const { initializeAdaptiveBehavior, isShowPlayButton } = useAdaptiveBehavior()
 
     const { bonusFilters, setBonusFilters } = useFilterContext()
 
@@ -151,7 +151,7 @@ export default function FilterBonus() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            <ListDisplayData displayedData={displayedData} />
+                            <ListDisplayData displayedData={displayedData} isShowPlayButton={isShowPlayButton}/>
                             <PaginationPage
                                 countElem={data?.count}
                                 currentPage={currentPage}
@@ -178,7 +178,7 @@ export default function FilterBonus() {
     )
 }
 
-const ListDisplayData = memo(({ displayedData }: { displayedData: SeeAllBonus[] | undefined }) => {
+const ListDisplayData = memo(({ displayedData, isShowPlayButton }: { displayedData: SeeAllBonus[] | undefined; isShowPlayButton: boolean}) => {
     return (
         <div className="main-see-all__row custom-main-see-all__row">
             {displayedData?.map((item) => (
@@ -186,29 +186,25 @@ const ListDisplayData = memo(({ displayedData }: { displayedData: SeeAllBonus[] 
                     <div className="slide-slider__item casino-card">
                         <div className="casino-card__top">
                             <div className="casino-card__image-block" style={{ padding: '0 8px 50.432% 8px' }}>
-                                <Link
-                                    rel="nofollow noopener"
-                                    to={`/casino/${item.casino_slug}/bonuses/${item.bonus_slug}`}
-                                    aria-label="Put your description here."
-                                    className="casino-card__image see-all-custom__image-custom"
-                                    key={uuidv4()}
-                                >
+                                <Link rel="nofollow noopener" to={`/casino/${item.casino_slug}/bonuses/${item.bonus_slug}`} aria-label="Put your description here." className="casino-card__image see-all-custom__image-custom" key={uuidv4()}>
                                     <LazyCardImg img={item?.bonus_image} height="100%" width="100%" />
                                 </Link>
-                                <a
-                                    rel="nofollow noopener"
-                                    href={cloacingLink(item?.casino_name)}
-                                    onClick={(e) => {
-                                        e.stopPropagation()
-                                        e.preventDefault()
-                                        cloacingFetch(item?.casino_affiliate_link)
-                                        window.open(item?.casino_affiliate_link || item?.url_casino, '_blank', 'noopener,noreferrer')
-                                    }}
-                                    aria-label="Put your description here."
-                                    className="casino-card__bnt"
-                                >
-                                    Play
-                                </a>
+                                {isShowPlayButton && (
+                                    <a
+                                        rel="nofollow noopener"
+                                        href={cloacingLink(item?.casino_name)}
+                                        onClick={(e) => {
+                                            e.stopPropagation()
+                                            e.preventDefault()
+                                            cloacingFetch(item?.casino_affiliate_link)
+                                            window.open(item?.casino_affiliate_link || item?.url_casino, '_blank', 'noopener,noreferrer')
+                                        }}
+                                        aria-label="Put your description here."
+                                        className="casino-card__bnt"
+                                    >
+                                        Play
+                                    </a>
+                                )}
                             </div>
                         </div>
                         <div className="casino-card__content">
@@ -238,12 +234,7 @@ const ListDisplayData = memo(({ displayedData }: { displayedData: SeeAllBonus[] 
                                     <span className="info-casino-card__likes-number">{sanitizeNumberLike(item?.bonus_likes)}</span>
                                 </div>
                             </div>
-                            <Link
-                                rel="nofollow noopener"
-                                to={`/casino/${item.casino_slug}/bonuses/${item.bonus_slug}`}
-                                aria-label="Put your description here."
-                                className="casino-card__name"
-                            >
+                            <Link rel="nofollow noopener" to={`/casino/${item.casino_slug}/bonuses/${item.bonus_slug}`} aria-label="Put your description here." className="casino-card__name">
                                 {item?.bonus_name}
                             </Link>
                         </div>
