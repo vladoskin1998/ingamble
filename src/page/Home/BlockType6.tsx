@@ -12,8 +12,6 @@ import { Link } from 'react-router-dom'
 import { useFilterContext } from '../../context/FilterContext'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 
-
-
 export default function BlockType6({ data }: { data: HomeDataBlock | undefined }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
@@ -35,7 +33,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
     const dataCard = shuffleArray(data?.items_block?.data_cards)
 
     const titleHub: 'bonuses' | 'casinos' = window.location.href.includes('bonuses') ? 'bonuses' : 'casinos'
-    const titleBlock = data.items_block.type_block === BlockTypeNumber.BlockType6 ? data.items_block.block_title : data.items_block.block_title.replace('casinos', titleHub)
+    let titleBlock = data.items_block.type_block === BlockTypeNumber.BlockType6 ? data.items_block.block_title : data.items_block.block_title.replace('casinos', titleHub)
 
     const seeAllType6c = () => {
         //@ts-ignore
@@ -47,8 +45,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
         setCasinoFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
     }
 
-      const { isShowPlayButton } = useAdaptiveBehavior()
-    
+    const { isShowPlayButton } = useAdaptiveBehavior()
 
     return (
         <section aria-label="BlockTypeNumber.BlockType6" className="main-gamble__new-bonuses new-bonuses-gamble">
@@ -57,11 +54,18 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                              
-                              
                                 <h2 className="top__title">
-                                    {/* <>{Country?.general.countries?.[0]?.emoji_flag && <CountryFlagEmoji code={Country?.general.countries?.[0]?.emoji_flag || ''} />}</>
-                                    <span>{`${Country?.general.countries?.[0]?.emoji_flag}`}</span> */}
+                                    {data.items_block.title_image && data.items_block.type_block === BlockTypeNumber.BlockType6 && (
+                                        <span className="top__title-icon ibg--custom ibg--custom-width-auto">
+                                            <img src={data.items_block.title_image} alt="security" />
+                                        </span>
+                                    )}
+                                    <span className="emoji new-bonuses-gamble-emoji">
+                                        {
+                                            //@ts-ignore
+                                            Country?.general?.countries?.find((item) => item?.code === data?.items_block?.country_code)?.emoji_flag
+                                        }
+                                    </span>
                                     {titleBlock}
                                 </h2>
                             </div>
@@ -120,22 +124,21 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                                                     <Link className="casino-card__image ibg--custom" onClick={(e) => e.stopPropagation()} to={`/casino/${item?.casino_info?.casino_name}/bonuses/${item?.bonus_info?.bonus_slug}`}>
                                                         <LazyCardImg img={item.bonus_info.bonus_image || ''} />
                                                     </Link>
-                                                    {
-                                                        isShowPlayButton && 
-                                                   
-                                                    <a
-                                                        href={cloacingLink(item?.casino_info?.casino_name)}
-                                                        onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            e.preventDefault()
-                                                            cloacingFetch(item?.casino_info?.casino_affiliate_link)
-                                                            window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
-                                                        }}
-                                                        aria-label="Put your description here."
-                                                        className="casino-card__bnt"
-                                                    >
-                                                        Play
-                                                    </a> }
+                                                    {isShowPlayButton && (
+                                                        <a
+                                                            href={cloacingLink(item?.casino_info?.casino_name)}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation()
+                                                                e.preventDefault()
+                                                                cloacingFetch(item?.casino_info?.casino_affiliate_link)
+                                                                window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
+                                                            }}
+                                                            aria-label="Put your description here."
+                                                            className="casino-card__bnt"
+                                                        >
+                                                            Play
+                                                        </a>
+                                                    )}
                                                 </div>
                                                 <div className="casino-card__content">
                                                     <div className="casino-card__small-card casino-small-card">

@@ -5,16 +5,17 @@ import '../../assets/css/style-type-10-11.css'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import { cloacingFetch, cloacingLink } from '../../helper'
-import { SeeAllRoutes } from './SeeAllButton'
+
 import { useAdaptiveBehavior } from '../../context/AppContext'
+import { useFilterContext } from '../../context/FilterContext'
 export default function BlockType11({ data }: { data: HomeDataBlock | undefined }) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType11) return <></>
 
     const arr1 = data.items_block.data_cards.slice(0, 6)
     const arr2 = data.items_block.data_cards.slice(6, 12)
 
-      const { isShowPlayButton } = useAdaptiveBehavior()
-
+    const { isShowPlayButton } = useAdaptiveBehavior()
+ const {  setCasinoFilters } = useFilterContext()
     return (
         <section className="main-gamble__top-bonuses top-bonuses-gamble">
             <div className="top-bonuses-gamble__container container">
@@ -29,7 +30,13 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                         </div>
                                     </div>
                                     <div className="top__column">
-                                        <Link to={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug || '' ? `/${data?.items_block?.category?.slug}` : ''}`} className="top__btn">
+                                        <Link
+                                            to={`/filter-casinos`}
+                                            onClick={() => {
+                                                setCasinoFilters((s) => ({ ...s, casino_rank: { min: 8.5, max: 10 } }))
+                                            }}
+                                            className="top__btn"
+                                        >
                                             <span>See All</span>
                                             <span className="top__btn-arrow">
                                                 <svg>
@@ -78,21 +85,20 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {
-                                                    isShowPlayButton && 
-                                                
-                                                <a
-                                                    href={cloacingLink(item?.casino_info?.casino_name)}
-                                                    onClick={(e) => {
-                                                        e.stopPropagation()
-                                                        e.preventDefault()
-                                                        cloacingFetch(item?.casino_info?.casino_affiliate_link)
-                                                        window.open(item?.casino_info?.casino_affiliate_link, '_blank', 'noopener,noreferrer')
-                                                    }}
-                                                    className="deposit-top-bonuses-gamble__btn"
-                                                >
-                                                    Play
-                                                </a>}
+                                                {isShowPlayButton && (
+                                                    <a
+                                                        href={cloacingLink(item?.casino_info?.casino_name)}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            e.preventDefault()
+                                                            cloacingFetch(item?.casino_info?.casino_affiliate_link)
+                                                            window.open(item?.casino_info?.casino_affiliate_link, '_blank', 'noopener,noreferrer')
+                                                        }}
+                                                        className="deposit-top-bonuses-gamble__btn"
+                                                    >
+                                                        Play
+                                                    </a>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +116,7 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                         </div>
                                     </div>
                                     <div className="top__column">
-                                        <Link to={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug || '' ? `/${data?.items_block?.category?.slug}` : ''}`} className="top__btn">
+                                        <Link to={`/all-casinos/top-crypto-casinos`} className="top__btn">
                                             <span>See All</span>
                                             <span className="top__btn-arrow">
                                                 <svg>
@@ -159,21 +165,20 @@ export default function BlockType11({ data }: { data: HomeDataBlock | undefined 
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {
-                                                    isShowPlayButton && 
-                                               
-                                                <a
-                                                    href={cloacingLink(item?.casino_info?.casino_name)}
-                                                    onClick={(e) => {
-                                                        e.stopPropagation()
-                                                        e.preventDefault()
-                                                        cloacingFetch(item?.casino_info?.casino_affiliate_link)
-                                                        window.open(item?.casino_info?.casino_affiliate_link, '_blank', 'noopener,noreferrer')
-                                                    }}
-                                                    className="deposit-top-bonuses-gamble__btn"
-                                                >
-                                                    Play 
-                                                </a>}
+                                                {isShowPlayButton && (
+                                                    <a
+                                                        href={cloacingLink(item?.casino_info?.casino_name)}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            e.preventDefault()
+                                                            cloacingFetch(item?.casino_info?.casino_affiliate_link)
+                                                            window.open(item?.casino_info?.casino_affiliate_link, '_blank', 'noopener,noreferrer')
+                                                        }}
+                                                        className="deposit-top-bonuses-gamble__btn"
+                                                    >
+                                                        Play
+                                                    </a>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

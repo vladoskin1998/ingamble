@@ -4188,7 +4188,7 @@ h3 {
 }
 
 .emoji {
-  font-family: "Noto Color Emoji", sans-serif;
+  font-family: "Noto Color Emoji", sans-serif !important;
   font-size: 20px;
   position: relative;
   top: -4px;
@@ -18211,6 +18211,10 @@ h3 {
   .new-bonuses-gamble .casino-small-card__rating-icon {
     margin: 0.395px 4px 0 0;
   }
+}
+
+.new-bonuses-gamble-emoji{
+  margin-right: 6px;
 }
 
 @media (min-width: 1650.98px) {
