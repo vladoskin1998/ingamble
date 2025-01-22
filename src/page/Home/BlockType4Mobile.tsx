@@ -34,9 +34,9 @@ export default function BlockType4Mobile({ data }: { data: HomeDataBlock | undef
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                {data?.items_block?.title_image && (
-                                    <span className="top__title-icon">
-                                        <img src={data?.items_block?.title_image} alt="security" />
+                                {data.items_block.title_image && (
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
+                                        <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
                                 <h2 className="top__title">{data?.items_block?.block_title}</h2>
@@ -44,7 +44,7 @@ export default function BlockType4Mobile({ data }: { data: HomeDataBlock | undef
                             {data?.items_block?.subtitle && <div className="top__subtitle">{data?.items_block?.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug } />
+                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -79,11 +79,8 @@ export default function BlockType4Mobile({ data }: { data: HomeDataBlock | undef
                                             <div className="slider__slide slide-slider swiper-slide">
                                                 <div className="slide-slider__item casino-card">
                                                     <div aria-label="Put your description here." className="casino-card__image-block">
-                                                        <Link
-                                                            className="casino-card__image ibg--custom"
-                                                            to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}
-                                                        >
-                                                            <LazyCardImg img={item?.bonus_info?.bonus_image || ''} width="100%"  />
+                                                        <Link className="casino-card__image ibg--custom" to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}>
+                                                            <LazyCardImg img={item?.bonus_info?.bonus_image || ''} width="100%" />
                                                         </Link>
                                                         <a
                                                             href={cloacingLink(item?.casino_info?.casino_name)}
@@ -100,21 +97,13 @@ export default function BlockType4Mobile({ data }: { data: HomeDataBlock | undef
                                                     </div>
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">
-                                                            <Link
-                                                                to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                aria-label="Put your description here."
-                                                                className="casino-small-card__image-block"
-                                                            >
+                                                            <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="casino-small-card__image-block">
                                                                 <div className="casino-small-card__image ibg--custom">
                                                                     <LazyCardImg img={item?.casino_info?.casino_image || ''} />
                                                                 </div>
                                                             </Link>
                                                             <div className="casino-small-card__body">
-                                                                <Link
-                                                                    to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                    aria-label="Put your description here."
-                                                                    className="casino-small-card__name"
-                                                                >
+                                                                <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="casino-small-card__name">
                                                                     {item?.casino_info?.casino_name}
                                                                 </Link>
                                                                 <div className="casino-small-card__info">

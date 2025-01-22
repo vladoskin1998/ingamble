@@ -64,7 +64,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon">
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
@@ -73,7 +73,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug }/>
+                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -204,11 +204,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                                 Bonus from <br />
                                 <span>Live Dealers</span>
                             </div>
-                            <Link
-                                to={'/all-bonuses/best-live-bonuses'}
-                              
-                                className="best-live-dealer-casinos-gamble__btn "
-                            >
+                            <Link to={'/all-bonuses/best-live-bonuses'} className="best-live-dealer-casinos-gamble__btn ">
                                 <span>
                                     <img src={gift} alt="gift" />
                                 </span>

@@ -37,7 +37,7 @@ export default function BlockType5Mobile({ data }: { data: HomeDataBlock | undef
                                 <div className="top__column">
                                     <div className="top__title-block">
                                         {data.items_block.title_image && (
-                                            <span className="top__title-icon">
+                                            <span className="top__title-icon ibg--custom ibg--custom-width-auto">
                                                 <img src={data.items_block.title_image} alt="security" />
                                             </span>
                                         )}
@@ -46,7 +46,7 @@ export default function BlockType5Mobile({ data }: { data: HomeDataBlock | undef
                                     {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                                 </div>
                                 <div className="top__column">
-                                    <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug } />
+                                    <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ export default function BlockType5Mobile({ data }: { data: HomeDataBlock | undef
                                     {[...data?.items_block.data_cards]
                                         ?.sort((a, b) => a?.order - b?.order)
                                         ?.map((item, index) => (
-                                            <SwiperSlide  key={index} className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
+                                            <SwiperSlide key={index} className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
                                                 <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
                                                     <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="different-casino-medium__image-block">
                                                         <span className="different-casino-medium__image ibg--custom">
@@ -82,11 +82,7 @@ export default function BlockType5Mobile({ data }: { data: HomeDataBlock | undef
                                                         </span>
                                                     </Link>
                                                     <div className="different-casino-medium__content">
-                                                        <Link
-                                                            to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                            aria-label="Put your description here."
-                                                            className="different-casino-medium__name"
-                                                        >
+                                                        <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="different-casino-medium__name">
                                                             {item?.casino_info?.casino_name}
                                                         </Link>
                                                         <div className="different-casino-medium__rating">

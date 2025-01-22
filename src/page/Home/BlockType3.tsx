@@ -57,9 +57,9 @@ export default function BlockType3({ data }: { data: HomeDataBlock | undefined }
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                {data?.items_block?.title_image && (
-                                    <span className="top__title-icon">
-                                        <img src={data?.items_block?.title_image} alt="security" />
+                                {data.items_block.title_image && (
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
+                                        <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
                                 <h2 className="top__title">{data?.items_block?.block_title}</h2>

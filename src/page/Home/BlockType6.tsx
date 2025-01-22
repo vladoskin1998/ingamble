@@ -46,7 +46,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
         setCasinoFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
     }
 
-    console.log(Country?.general.countries?.[0]?.emoji_flag)
+    console.log(data.items_block.title_image)
     
 
     return (
@@ -56,11 +56,8 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                {data.items_block.title_image && (
-                                    <span className="top__title-icon">
-                                        <img src={data.items_block.title_image} alt="security" />
-                                    </span>
-                                )}
+                              
+                              
                                 <h2 className="top__title">
                                     {/* <>{Country?.general.countries?.[0]?.emoji_flag && <CountryFlagEmoji code={Country?.general.countries?.[0]?.emoji_flag || ''} />}</>
                                     <span>{`${Country?.general.countries?.[0]?.emoji_flag}`}</span> */}

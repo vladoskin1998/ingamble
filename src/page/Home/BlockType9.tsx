@@ -21,10 +21,11 @@ const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | un
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon">
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
+
                                 <h2 className="top__title">{data.items_block.block_title}</h2>
                             </div>
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
@@ -61,11 +62,11 @@ const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | un
                             className="slider__wrapper swiper-wrapper"
                         >
                             {data.items_block.data_cards?.map((item, index) => (
-                                <SwiperSlide key={index} className="slider__slide slide-slider " >
+                                <SwiperSlide key={index} className="slider__slide slide-slider ">
                                     <div className="slide-slider__item essential-programs-gamble__item item-essential-programs-gamble">
                                         <div className="item-essential-programs-gamble__top">
                                             <Link to={`/casino/${item?.casino_slug}`} aria-label="Put your description here." className="item-essential-programs-gamble__logo">
-                                                <LazyCardImg img={item.card_logo || ''}  />
+                                                <LazyCardImg img={item.card_logo || ''} />
                                             </Link>
                                         </div>
                                         <div className="item-essential-programs-gamble__body">
@@ -116,10 +117,7 @@ const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | un
                                                 {item?.keypoints?.map((itp, idk) => (
                                                     <div className="features-essential-programs-gamble__item" key={idk}>
                                                         <div className="features-essential-programs-gamble__icon">
-                                                            <LazyCardImg
-                                                                img={itp.image || ''}
-                                                                size="medium"
-                                                            />
+                                                            <LazyCardImg img={itp.image || ''} size="medium" />
                                                         </div>
                                                         <div className="features-essential-programs-gamble__info">
                                                             <div className="features-essential-programs-gamble__name">{itp.text_1}</div>

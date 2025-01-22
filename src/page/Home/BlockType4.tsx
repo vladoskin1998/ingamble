@@ -35,7 +35,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon">
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
@@ -44,7 +44,7 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug }  />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -79,29 +79,18 @@ export default function BlockType4({ data }: { data: HomeDataBlock | undefined }
                                             <SwiperSlide key={index}>
                                                 <div className="slider__slide slide-slider swiper-slide">
                                                     <div aria-label="Put your description here." className="slide-slider__item casino-big-card">
-                                                        <Link
-                                                            className="casino-big-card__image ibg--custom"
-                                                            to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}
-                                                        >
-                                                            <LazyCardImg img={item?.bonus_info?.bonus_image || ''} width="100%"  />
+                                                        <Link className="casino-big-card__image ibg--custom" to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}>
+                                                            <LazyCardImg img={item?.bonus_info?.bonus_image || ''} width="100%" />
                                                         </Link>
                                                         <div className="casino-big-card__top">
                                                             <div className="casino-big-card__top-small-card casino-small-card">
-                                                                <Link
-                                                                    to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                    aria-label="Put your description here."
-                                                                    className="casino-small-card__image-block"
-                                                                >
+                                                                <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="casino-small-card__image-block">
                                                                     <div className="casino-small-card__image ibg--custom">
-                                                                        <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium"  />
+                                                                        <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" />
                                                                     </div>
                                                                 </Link>
                                                                 <div className="casino-small-card__body">
-                                                                    <Link
-                                                                        to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                        aria-label="Put your description here."
-                                                                        className="casino-small-card__name"
-                                                                    >
+                                                                    <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="casino-small-card__name">
                                                                         {item?.casino_info?.casino_name}
                                                                     </Link>
                                                                     <div className="casino-small-card__info">

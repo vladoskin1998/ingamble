@@ -35,8 +35,8 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                {data?.items_block.title_image && (
-                                    <span className="top__title-icon">
+                                {data.items_block.title_image && (
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
@@ -45,7 +45,7 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
                             {data?.items_block.subtitle && <div className="top__subtitle">{data?.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug}  />
+                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -114,11 +114,7 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
                                                                         </div>
                                                                     )}
                                                                     <div className="info-casino-card__stake">
-                                                                        <Link
-                                                                            to={`/casino/${item?.[0]?.casino_info?.casino_slug}`}
-                                                                            aria-label="Put your description here."
-                                                                            className="info-casino-card__stake-link"
-                                                                        >
+                                                                        <Link to={`/casino/${item?.[0]?.casino_info?.casino_slug}`} aria-label="Put your description here." className="info-casino-card__stake-link">
                                                                             {item?.[0]?.casino_info?.casino_name}
                                                                         </Link>
                                                                         <div className="info-casino-card__stake-rating">
@@ -162,11 +158,7 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
                                                                             </div>
                                                                         )}
                                                                         <div className="info-casino-card__stake">
-                                                                            <Link
-                                                                                to={`/casino/${item?.[1]?.casino_info?.casino_slug}`}
-                                                                                aria-label="Put your description here."
-                                                                                className="info-casino-card__stake-link"
-                                                                            >
+                                                                            <Link to={`/casino/${item?.[1]?.casino_info?.casino_slug}`} aria-label="Put your description here." className="info-casino-card__stake-link">
                                                                                 {item?.[1]?.casino_info?.casino_name}
                                                                             </Link>
                                                                             <div className="info-casino-card__stake-rating">

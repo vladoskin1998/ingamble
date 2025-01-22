@@ -24,7 +24,7 @@ export default function BlockType10Mobile({ data }: { data: HomeDataBlock | unde
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon">
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
@@ -78,7 +78,7 @@ export default function BlockType10Mobile({ data }: { data: HomeDataBlock | unde
                                     slidesPerView="auto"
                                 >
                                     {data.items_block.data_cards.map((item, index) => (
-                                        <SwiperSlide key={index}  className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
+                                        <SwiperSlide key={index} className="slider-best-casinos-2024-gamble__slide slide-slider-best-casinos-2024-gamble swiper-slide">
                                             <div className="slide-slider-best-casinos-2024-gamble__item different-casino-medium">
                                                 <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} className="different-casino-medium__image-block">
                                                     <span className="different-casino-medium__image ibg--custom">

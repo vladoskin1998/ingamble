@@ -4222,6 +4222,10 @@ h3 {
   overflow: hidden;
 }
 
+.ibg--custom-width-auto img{
+    width: auto;
+}
+
 .ibg-center{
   display: flex;
   justify-content: center;

@@ -19,7 +19,7 @@ export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undef
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon">
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
@@ -59,15 +59,11 @@ export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undef
                                                 <div className="slide-slider__item different-casino-medium">
                                                     <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="different-casino-medium__image-block">
                                                         <span className="different-casino-medium__image ibg--custom">
-                                                            <LazyCardImg img={item.casino_info.casino_image || ''} size="medium"  />
+                                                            <LazyCardImg img={item.casino_info.casino_image || ''} size="medium" />
                                                         </span>
                                                     </Link>
                                                     <div className="different-casino-medium__content">
-                                                        <Link
-                                                            to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                            aria-label="Put your descripton here."
-                                                            className="different-casino-medium__name"
-                                                        >
+                                                        <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your descripton here." className="different-casino-medium__name">
                                                             {item.casino_info.casino_name}
                                                         </Link>
                                                         <div className="different-casino-medium__rating">

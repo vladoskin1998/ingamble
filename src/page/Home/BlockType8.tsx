@@ -18,7 +18,7 @@ export default function BlockType8({ data }: { data: HomeDataBlock | undefined }
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon">
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
@@ -39,7 +39,7 @@ export default function BlockType8({ data }: { data: HomeDataBlock | undefined }
                         likes: item.bonus_info.bonus_likes,
                         casinoName: item.casino_info.casino_name,
                         bonuseName: item.bonus_info.bonus_name,
-                        imageLink: `/casino/${item?.casino_info?.casino_slug}/bonuses/${ item?.bonus_info?.bonus_slug}`,
+                        imageLink: `/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`,
                         casinoLink: `/casino/${item?.casino_info?.casino_slug}`,
                         bonuseLink: `/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`,
                         tags: (

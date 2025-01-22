@@ -20,7 +20,7 @@ export default function BlockType10({ data }: { data: HomeDataBlock | undefined 
                         <div className="top__column">
                             <div className="top__title-block">
                                 {data.items_block.title_image && (
-                                    <span className="top__title-icon">
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
                                         <img src={data.items_block.title_image} alt="security" />
                                     </span>
                                 )}
@@ -75,7 +75,7 @@ export default function BlockType10({ data }: { data: HomeDataBlock | undefined 
                                 </Link>
                                 <div className="different-casino-big__info">
                                     {data.items_block.data_cards?.[1]?.casino_info.additional_casino_params.map((item, index) => (
-                                        <span key={index}  className="different-casino-big__info-link">
+                                        <span key={index} className="different-casino-big__info-link">
                                             {item}
                                         </span>
                                     ))}
