@@ -236,10 +236,10 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
 
 
     return (
-        <AdaptiveContext.Provider value={{ isShowPlayButton: isTogglePlay?.is_play === undefined && true ,category,isSidebarActive, setSidebarActive, initializeAdaptiveBehavior,lastUpdate }}>
+        <AdaptiveContext.Provider value={{ isShowPlayButton: isTogglePlay?.is_play === undefined ? false : isTogglePlay?.is_play, category, isSidebarActive, setSidebarActive, initializeAdaptiveBehavior, lastUpdate }}>
             {children}
         </AdaptiveContext.Provider>
-    );
+    )
 };
 
 export const useAdaptiveBehavior = () => {
