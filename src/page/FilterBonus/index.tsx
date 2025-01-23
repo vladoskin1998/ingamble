@@ -118,6 +118,7 @@ export default function FilterBonus() {
 
     useEffect(() => {
         initializeAdaptiveBehavior()
+  
     }, [isLoading])
 
     if (isDebouncedLoading) return <LogoLoader />
@@ -151,7 +152,7 @@ export default function FilterBonus() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                            <ListDisplayData displayedData={displayedData} isShowPlayButton={isShowPlayButton}/>
+                            <ListDisplayData displayedData={displayedData} isShowPlayButton={isShowPlayButton} />
                             <PaginationPage
                                 countElem={data?.count}
                                 currentPage={currentPage}
@@ -166,7 +167,7 @@ export default function FilterBonus() {
                                     }
                                 }}
                             />
-                            {!displayedData?.length && isLoading && <NoResult />}
+                            {!displayedData?.length && !isLoading && <NoResult />}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />

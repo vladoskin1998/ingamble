@@ -24,7 +24,7 @@ const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 
- const countPageSize = window.innerWidth < 900 ? 8 : 15
+const countPageSize = window.innerWidth < 900 ? 8 : 15
 
 interface License {
     id?: number
@@ -125,12 +125,15 @@ export default function FilterCasino() {
 
     useEffect(() => {
         initializeAdaptiveBehavior()
+        
     }, [isLoading, isSidebarActive])
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 900)
         window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
     }, [])
 
     const displayedData = isMobile ? allData : data?.results
@@ -165,18 +168,18 @@ export default function FilterCasino() {
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
                     <Categories />
-                      <BreadCrumb
-                                            path={[
-                                                {
-                                                    name: 'Home',
-                                                    link: '/',
-                                                },
-                                                {
-                                                    name: 'Casinos Filters',
-                                                    link: '#',
-                                                },
-                                            ]}
-                                        />
+                    <BreadCrumb
+                        path={[
+                            {
+                                name: 'Home',
+                                link: '/',
+                            },
+                            {
+                                name: 'Casinos Filters',
+                                link: '#',
+                            },
+                        ]}
+                    />
                     <FilterHeaderList initList={casinoFilters} clearAll={clearAll} clearOne={(v) => handlerClearOne(v)} />
                     <section className="casinos-filtered__main main-loyaltie-programs">
                         <div className="main-loyaltie-programs__container container">
@@ -188,24 +191,24 @@ export default function FilterCasino() {
                                     <h2 className="top__title">Results</h2>
                                 </div>
                             </div>
-                         
-                                    <ListDisplayData displayedData={displayedData} filtersDataLicenses={filtersData?.casino?.licenses} casinoFiltersLicenses={casinoFilters?.licenses} />
-                                    <PaginationPage
-                                        countElem={data?.count}
-                                        currentPage={currentPage}
-                                        countPageElem={countPageSize}
-                                        setCurrentPage={(s) => {
-                                            setCurrentPage(s)
-                                            if (!isMobile) {
-                                                window.scrollTo({
-                                                    behavior: 'smooth',
-                                                    top: 0,
-                                                })
-                                            }
-                                        }}
-                                    />
-                              
-                              {!displayedData?.length && isLoading && <NoResult />}
+
+                            <ListDisplayData displayedData={displayedData} filtersDataLicenses={filtersData?.casino?.licenses} casinoFiltersLicenses={casinoFilters?.licenses} />
+                            <PaginationPage
+                                countElem={data?.count}
+                                currentPage={currentPage}
+                                countPageElem={countPageSize}
+                                setCurrentPage={(s) => {
+                                    setCurrentPage(s)
+                                    if (!isMobile) {
+                                        window.scrollTo({
+                                            behavior: 'smooth',
+                                            top: 0,
+                                        })
+                                    }
+                                }}
+                            />
+
+                            {!displayedData?.length && !isLoading && <NoResult />}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />

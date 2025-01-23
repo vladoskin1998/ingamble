@@ -5,13 +5,17 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import shieldIcon from '../../assets/img/icons/shield.svg'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import { BlockTypeNumber, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { SeeAllButton } from './SeeAllButton'
-import {  shuffleArray } from '../../helper'
+import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
+import { shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
+import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
+
+const Year = new Date().getFullYear()
 
 export default function BlockType7({ data }: { data: HomeDataBlock | undefined }) {
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7) return <></>
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -27,9 +31,26 @@ export default function BlockType7({ data }: { data: HomeDataBlock | undefined }
         }
     }, [])
 
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7) return <></>
-
     const dataCard = shuffleArray(data?.items_block?.data_cards)
+
+    const { setCasinoFilters } = useFilterContext()
+    const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
+        if (name === 'Newly Opened Casinos') {
+            return {
+                seeAllLink: '/filter-casinos',
+                seeAllFoo: () => {
+                    setCasinoFilters({ ...initialCasinoFilters, established: { min: Year - 2, max: Year } })
+                },
+            }
+        }
+        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
+    }
+
+    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
+        name: data?.items_block?.category?.name,
+        type_category: data.items_block.type_category,
+        slug: data?.items_block?.category?.slug || '',
+    })
 
     return (
         <section aria-label="BlockTypeNumber.BlockType7" className="main-gamble__low-risk-bonuses low-risk-bonuses-gamble main-gamble__different-casino-bg">
@@ -48,7 +69,7 @@ export default function BlockType7({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
+                            <SeeAllButton seeAllLink={seeAllLink} seeAllFoo={seeAllFoo} />
                         </div>
                     </div>
                 </div>

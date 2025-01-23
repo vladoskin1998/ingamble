@@ -1,34 +1,36 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 
-export type  CategorySwiperType = 'bonus' | 'loyaltie' | 'casino' | 'all'
+export type CategorySwiperType = 'bonus' | 'loyaltie' | 'casino' | 'all'
 
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-export const Categories = ({ type_category='all' }: { type_category?: CategorySwiperType }) => {
+
+
+export const Categories = ({ type_category = 'all' }: { type_category?: CategorySwiperType }) => {
     const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
 
-    const listCategory = category.filter(item => {
-        if(type_category === 'all'){
+    const listCategory = category.filter((item) => {
+        if (type_category === 'all') {
             return item
         }
         return item.categoryType === type_category
-    } )
+    })
 
-    if(!listCategory){
+    if (!listCategory) {
         return <></>
     }
 
-        const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
-    
-        useEffect(() => {
-            const handleResize = () => setIsMobile(window.innerWidth <= 480)
-            window.addEventListener('resize', handleResize)
-    
-            handleResize()
-            return () => window.removeEventListener('resize', handleResize)
-        }, [])
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 480)
+        window.addEventListener('resize', handleResize)
+
+        handleResize()
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     return (
         <div className=" filter-tags-gamble main-gamble__filter-tags categorie--tags">

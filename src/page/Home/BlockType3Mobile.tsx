@@ -5,13 +5,15 @@ import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useRef, useEffect } from 'react'
 
-import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from '../../types'
-import { SeeAllButton } from './SeeAllButton'
+import { BlockTypeNumber, DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock, HomeDataCard } from '../../types'
+import {  SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { COLORS_TAGS } from '../../helper'
 import { Link } from 'react-router-dom'
+import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 
-export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undefined }) {
+export default function BlockType3Mobile({ data }: { data: HomeDataBlock<DataHomeItemsBlock> | undefined }) {
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3) return <></>
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -27,7 +29,25 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
         }
     }, [])
 
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3) return <></>
+    const { setCasinoFilters } = useFilterContext()
+    const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
+        if (name === 'VPN Friendly Casinos') {
+            return {
+                seeAllLink: '/filter-casinos',
+                seeAllFoo: () => {
+                    setCasinoFilters({ ...initialCasinoFilters , vpn_usage: true })
+                },
+            }
+        }
+        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
+    }
+
+    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
+        name: data?.items_block?.category?.name,
+        type_category: data.items_block.type_category,
+        slug: data?.items_block?.category?.slug || '',
+    })
+
     return (
         <section aria-label="BlockTypeNumber.BlockType3" className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="vpn-friendly-casinos-2-gamble__container container">
@@ -45,7 +65,7 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock | undef
                             {data?.items_block.subtitle && <div className="top__subtitle">{data?.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug} />
+                              <SeeAllButton seeAllLink={seeAllLink} seeAllFoo={seeAllFoo}/>
                         </div>
                     </div>
                 </div>

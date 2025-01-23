@@ -7,15 +7,15 @@ import bg01 from '../../assets/img/bg/01.webp'
 import girl from '../../assets/img/girls/01.webp'
 
 import { BlockTypeNumber, HomeDataBlock } from '../../types'
-import { SeeAllButton } from './SeeAllButton'
+import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 //@ts-ignore
 export default function BlockType5Mobile({ data }: { data: HomeDataBlock | undefined }) {
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5) return <></>
     const sliderRef = useRef<SwiperRef | null>(null)
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
 
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5) return <></>
     return (
         <div aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-casinos-2024 best-casinos-2024-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="best-casinos-2024-gamble__container container">
@@ -46,7 +46,7 @@ export default function BlockType5Mobile({ data }: { data: HomeDataBlock | undef
                                     {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                                 </div>
                                 <div className="top__column">
-                                    <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
+                                    <SeeAllButton seeAllLink={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug ? `/${data?.items_block?.category?.slug}` : ''}`} />
                                 </div>
                             </div>
                         </div>

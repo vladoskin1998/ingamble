@@ -10,12 +10,13 @@ import bg07 from '../../assets/img/bg/07.webp'
 import gift from '../../assets/img/icons/gift.svg'
 import { BlockTypeNumber, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { SeeAllButton } from './SeeAllButton'
+import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 
 export default function BlockType5({ data }: { data: HomeDataBlock | undefined }) {
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5) return <></>
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -54,8 +55,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
             handleSlideChange()
         }
     }
-      const { isShowPlayButton } = useAdaptiveBehavior()
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5) return <></>
+    const { isShowPlayButton } = useAdaptiveBehavior()
 
     return (
         <section aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble  main-gamble__different-casino-bg main-gamble__baner-block">
@@ -74,7 +74,7 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug} />
+                            <SeeAllButton seeAllLink={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug ? `/${data?.items_block?.category?.slug}` : ''}`} />
                         </div>
                     </div>
                 </div>
@@ -167,21 +167,20 @@ export default function BlockType5({ data }: { data: HomeDataBlock | undefined }
                                                             <Link to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`} aria-label="Put your description here." className="casino-big-card__title">
                                                                 <span className="casino-big-card__title-label">{item?.bonus_info?.bonus_name}</span>
                                                             </Link>
-                                                            {
-                                                                isShowPlayButton && 
-                                                            
-                                                            <a
-                                                                href={cloacingLink(item?.casino_info?.casino_name)}
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation()
-                                                                    e.preventDefault()
-                                                                    cloacingFetch(item?.casino_info?.casino_affiliate_link)
-                                                                    window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
-                                                                }}
-                                                                className="casino-big-card__btn "
-                                                            >
-                                                                Play
-                                                            </a>}
+                                                            {isShowPlayButton && (
+                                                                <a
+                                                                    href={cloacingLink(item?.casino_info?.casino_name)}
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation()
+                                                                        e.preventDefault()
+                                                                        cloacingFetch(item?.casino_info?.casino_affiliate_link)
+                                                                        window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
+                                                                    }}
+                                                                    className="casino-big-card__btn "
+                                                                >
+                                                                    Play
+                                                                </a>
+                                                            )}
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>

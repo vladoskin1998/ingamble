@@ -1,15 +1,33 @@
-import MainSlider from '../../components/swiper/MainSlider'
-import { COLORS_TAGS, shuffleArray } from '../../helper'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
-import { SeeAllButton } from './SeeAllButton'
 
-export default function BlockType8({ data }: { data: HomeDataBlock | undefined }) {
+import MainSlider from '../../components/swiper/MainSlider'
+import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
+import { COLORS_TAGS, shuffleArray } from '../../helper'
+import { BlockTypeNumber, DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
+import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
+
+export default function BlockType8({ data }: { data: HomeDataBlock<DataHomeItemsBlock> | undefined }) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType8) return <></>
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
+    const { setCasinoFilters } = useFilterContext()
+    const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
+        if (name === 'VPN Friendly Casinos') {
+            return {
+                seeAllLink: '/filter-casinos',
+                seeAllFoo: () => {
+                    setCasinoFilters({ ...initialCasinoFilters, vpn_usage: true })
+                },
+            }
+        }
+        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
+    }
 
+    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
+        name: data?.items_block?.category?.name,
+        type_category: data.items_block.type_category,
+        slug: data?.items_block?.category?.slug || '',
+    })
 
-    
     return (
         <section aria-label="BlockTypeNumber.BlockType8" className="main-gamble__low-wager-bonuses low-wager-bonuses-gamble ">
             <div className="low-wager-bonuses-gamble__container container">
@@ -27,7 +45,7 @@ export default function BlockType8({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
+                              <SeeAllButton seeAllLink={seeAllLink}  seeAllFoo={seeAllFoo}/>
                         </div>
                     </div>
                 </div>

@@ -167,6 +167,8 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         }
     )
 
+    console.log('casinoFilters', casinoFilters)
+    
     return (
         <FilterContext.Provider
             value={{

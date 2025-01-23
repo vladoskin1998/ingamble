@@ -6,7 +6,7 @@ import { PaginationPage } from '../../components/pagination/PaginationPage'
 
 import $api from '../../http'
 import { useQuery } from 'react-query'
-import { LoyaltiesFilterBodyType, SeeAllEssentialLoyaltyCasino } from '../../types'
+import { LoyaltiesFilterBodyType, NAMETITLECATEGORYSLUGType, SeeAllEssentialLoyaltyCasino } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import './style.css'
 import { LogoLoader } from '../../components/loader/LogoLoader'
@@ -32,14 +32,6 @@ const pathBreadCrumb = [
         link: '/all-loyalties',
     },
 ]
-
-
-interface NAMETITLECATEGORYSLUGType {
-    [key: string]: {
-        key: string
-        value: boolean | { min: number; max: number }
-    }
-}
 
 // Define NAMETITLECATEGORYSLUG with type safety
 const NAMETITLECATEGORYSLUG: NAMETITLECATEGORYSLUGType = {
@@ -89,9 +81,7 @@ export default function SeeAllEssentialsLoyalty() {
         }
     }, [loyaltie_slug])
 
-    useEffect(() => {
-        initializeAdaptiveBehavior()
-    }, [isLoading])
+
 
     useEffect(() => {
         if (data?.results) {

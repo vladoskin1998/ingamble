@@ -3,13 +3,33 @@ import star from '../../assets/img/icons/star.svg'
 import 'swiper/css'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
-import { SeeAllButton } from './SeeAllButton'
+import { BlockTypeNumber, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
+import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
-
+import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
+const Year = new Date().getFullYear()
 export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undefined }) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7) return <></>
+
+    const { setCasinoFilters } = useFilterContext()
+    const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
+        if (name === 'Newly Opened Casinos') {
+            return {
+                seeAllLink: '/filter-casinos',
+                seeAllFoo: () => {
+            setCasinoFilters({ ...initialCasinoFilters, established: { min: Year - 2, max: Year } })
+                },
+            }
+        }
+        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
+    }
+
+    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
+        name: data?.items_block?.category?.name,
+        type_category: data.items_block.type_category,
+        slug: data?.items_block?.category?.slug || '',
+    })
 
     return (
         <section aria-label=" BlockTypeNumber.BlockType7" className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
@@ -28,7 +48,7 @@ export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undef
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
+                            <SeeAllButton seeAllLink={seeAllLink} seeAllFoo={seeAllFoo} />
                         </div>
                     </div>
                 </div>

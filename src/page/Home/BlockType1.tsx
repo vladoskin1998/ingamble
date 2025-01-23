@@ -1,13 +1,30 @@
 import MainSlider from '../../components/swiper/MainSlider'
+import { initialBonusFilters, useFilterContext } from '../../context/FilterContext'
 import { shuffleArray } from '../../helper'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
-import { SeeAllButton } from './SeeAllButton'
+import { BlockTypeNumber, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
+import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 
 export default function BlockType1({ data }: { data: HomeDataBlock | undefined }) {
     if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType1) return <></>
+    const { setBonusFilters } = useFilterContext()
+    const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
+        if (name === 'Non-Sticky Bonuses') {
+            return {
+                seeAllLink: '/filter-bonus',
+                seeAllFoo: () => {
+                    setBonusFilters({ ...initialBonusFilters, sticky: false })
+                },
+            }
+        }
+        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
+    }
 
-    // const dataCard = !data.blocks_sequence_number ? shuffleArray(data?.items_block.data_cards) : data?.items_block.data_cards
-    // .sort((a, b) => a.order - b.order)
+    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
+        name: data?.items_block?.category?.name,
+        type_category: data.items_block.type_category,
+        slug: data?.items_block?.category?.slug || '',
+    })
+
     const dataCard = shuffleArray(data?.items_block.data_cards).slice(0, 8)
     return (
         <section aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
@@ -26,7 +43,7 @@ export default function BlockType1({ data }: { data: HomeDataBlock | undefined }
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug || ''} />
+                            <SeeAllButton seeAllLink={seeAllLink} seeAllFoo={seeAllFoo} />
                         </div>
                     </div>
                 </div>

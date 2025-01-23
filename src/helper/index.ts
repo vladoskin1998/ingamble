@@ -1,8 +1,8 @@
 import $api from "../http"
 
-export const euroToDolar = (s?:string) => { 
+export const euroToDolar = (s?: string) => {
 
-    if(s === "EUR" || s === "Euro" || !s  ){
+    if (s === "EUR" || s === "Euro" || !s) {
         return '$'
     }
     return s
@@ -13,6 +13,28 @@ export const COLORS_TAGS = [
     "tags-casino-card__item_green",
     "tags-casino-card__item_purple",
     "tags-casino-card__item_grass",
+]
+
+export const CUSTOMFILTERBONUSCATEGORIES = [
+    {
+        name: 'Non-Sticky Bonuses',
+        slug: 'sticky'
+    },
+    {
+        name: 'Unlimited Max Bet Bonuses',
+        slug: 'unlimited_bonus_max_bet',
+    },
+]
+
+export const CUSTOMFILTERCASINOSCATEGORIES = [
+    {
+        name: 'VPN Friendly Casinos',
+        slug: 'vpn_usage'
+    },
+    {
+        name: 'Newly Opened Casinos',
+        slug: 'established'
+    },
 ]
 
 export const LOYALTIECATEGORYIES = [
@@ -43,17 +65,17 @@ export const LOYALTIECATEGORYIES = [
 ]
 
 
-export const NumberAssociaty = (n:number | string) => {
-    if(typeof n === "string") return n
+export const NumberAssociaty = (n: number | string) => {
+    if (typeof n === "string") return n
     const s = String(n)
-    if(n >= 1000000){
+    if (n >= 1000000) {
         return s.replace(/000000$/ig, "M")
     }
-    else if(n >= 1000){
+    else if (n >= 1000) {
         return s.replace(/000$/ig, "K")
     }
     else n
-} 
+}
 
 
 
@@ -62,11 +84,11 @@ export const getFilterContentHeight = (s: number | undefined) => {
     return s * 40 > 240 ? 240 : s * 40
 }
 
-export const sliceString = (s:string | undefined,l:number) => {
-    if(!s) return ''
-    return   s.length > l ? `${ s.slice(0, l)}...` : s
+export const sliceString = (s: string | undefined, l: number) => {
+    if (!s) return ''
+    return s.length > l ? `${s.slice(0, l)}...` : s
 }
-  
+
 export const filterEmptyValues = <T>(body: T): Partial<T> => {
     const isEmptyObject = (value: unknown): boolean => {
         if (typeof value !== "object" || value === null) return false;
@@ -92,7 +114,7 @@ export const filterEmptyValues = <T>(body: T): Partial<T> => {
 };
 
 export function shuffleArray<T>(array: T[] | undefined): T[] {
-    if(!array){
+    if (!array) {
         return []
     }
     for (let i = array.length - 1; i > 0; i--) {
@@ -108,8 +130,8 @@ export const sanitizeMaxInput = (value: string, max: number): number => {
     let sanitized = value.replace(/^0+(?=\d)/, "");
 
     // Если значение пустое или равно "0", заменяем его на "1"
-    if ( sanitized === "0") {
-         sanitized = "1";
+    if (sanitized === "0") {
+        sanitized = "1";
     }
 
 
@@ -120,8 +142,8 @@ export const sanitizeMaxInput = (value: string, max: number): number => {
 };
 
 
-export const sanitizeLink = (s:string | undefined) => {
-    if(!s){
+export const sanitizeLink = (s: string | undefined) => {
+    if (!s) {
         return ''
     }
 
@@ -133,41 +155,41 @@ export const cloacingLink = (s: string | undefined): string => {
     if (!s) {
         return `https://${window.location.host}`;
     }
-  
+
     // const parsedUrl = new URL(s);
-  
+
     // const parts = parsedUrl.hostname.split('.');
     // const domen = parts[0] === 'www' ? parts[1] : parts[0];
     const domen = s.toLocaleLowerCase().replace(/\s/gm, '-')
     return `https://${window.location.host}${domen && '/' + sanitizeLink(domen)}/go`;
-  };
+};
 
-  export const  cloacingFetch = async (link:string | undefined | null) => {
-    if(!link || link === 'undefined undefined' || link === 'undefined'){
-        return 
+export const cloacingFetch = async (link: string | undefined | null) => {
+    if (!link || link === 'undefined undefined' || link === 'undefined') {
+        return
     }
     try {
-        $api.post('/track_link_click/',{
+        $api.post('/track_link_click/', {
             link
         })
     } catch (error) {
         (error);
-        
+
     }
 
-  }
+}
 
 
 
-  export const sanitizeNumberLike = (n: number | string | undefined): string | number => {
+export const sanitizeNumberLike = (n: number | string | undefined): string | number => {
     if (!n) {
-      return '';
+        return '';
     }
     if (Number(n) < 1000) {
-      return n;
+        return n;
     }
     return (Number(n) / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
-  };
+};
 
 export const saveLikesToStorage = (
     type: 'bonus_like' | 'casino_like' | 'loyalty_like',

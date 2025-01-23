@@ -168,7 +168,7 @@ export default function FilterLoyalty() {
                                     }}
                                 />
                             </>
-                            {!displayedData?.length && isLoading && <NoResult />}
+                            {!displayedData?.length && !isLoading && <NoResult />}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />

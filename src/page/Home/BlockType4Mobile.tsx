@@ -4,14 +4,17 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useEffect, useRef } from 'react'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import { BlockTypeNumber, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { SeeAllButton } from './SeeAllButton'
+import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initialBonusFilters, useFilterContext } from '../../context/FilterContext'
 
 export default function BlockType4Mobile({ data }: { data: HomeDataBlock | undefined }) {
+    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType4) return <></>
+
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -26,8 +29,27 @@ export default function BlockType4Mobile({ data }: { data: HomeDataBlock | undef
             }
         }
     }, [])
-      const { isShowPlayButton } = useAdaptiveBehavior()
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType4) return <></>
+    const { isShowPlayButton } = useAdaptiveBehavior()
+
+    const { setBonusFilters } = useFilterContext()
+    const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
+        if (name === 'Unlimited Max Bet Bonuses') {
+            return {
+                seeAllLink: '/filter-bonus',
+                seeAllFoo: () => {
+                    setBonusFilters({ ...initialBonusFilters, unlimited_bonus_max_bet: false })
+                },
+            }
+        }
+        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
+    }
+
+    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
+        name: data?.items_block?.category?.name,
+        type_category: data.items_block.type_category,
+        slug: data?.items_block?.category?.slug || '',
+    })
+
     return (
         <section aria-label="BlockTypeNumber.BlockType4" className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             <div className="new-bonuses-gamble__container container">
@@ -45,7 +67,7 @@ export default function BlockType4Mobile({ data }: { data: HomeDataBlock | undef
                             {data?.items_block?.subtitle && <div className="top__subtitle">{data?.items_block?.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug} />
+                            <SeeAllButton seeAllLink={seeAllLink} seeAllFoo={seeAllFoo} />
                         </div>
                     </div>
                 </div>
@@ -83,21 +105,20 @@ export default function BlockType4Mobile({ data }: { data: HomeDataBlock | undef
                                                         <Link className="casino-card__image ibg--custom" to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}>
                                                             <LazyCardImg img={item?.bonus_info?.bonus_image || ''} width="100%" />
                                                         </Link>
-                                                        {
-                                                            isShowPlayButton && 
-                                                       
-                                                        <a
-                                                            href={cloacingLink(item?.casino_info?.casino_name)}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation()
-                                                                e.preventDefault()
-                                                                cloacingFetch(item?.casino_info?.casino_affiliate_link)
-                                                                window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
-                                                            }}
-                                                            className="casino-card__bnt"
-                                                        >
-                                                            Play
-                                                        </a> }
+                                                        {isShowPlayButton && (
+                                                            <a
+                                                                href={cloacingLink(item?.casino_info?.casino_name)}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation()
+                                                                    e.preventDefault()
+                                                                    cloacingFetch(item?.casino_info?.casino_affiliate_link)
+                                                                    window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
+                                                                }}
+                                                                className="casino-card__bnt"
+                                                            >
+                                                                Play
+                                                            </a>
+                                                        )}
                                                     </div>
                                                     <div className="casino-card__content">
                                                         <div className="casino-card__small-card casino-small-card">

@@ -267,9 +267,9 @@ export interface EssentialItemsBlock {
     data_cards: (EssentialCard)[];
 }
 
-export interface HomeDataBlock {
+export interface HomeDataBlock<T = DataHomeItemsBlock | EssentialItemsBlock> {
     blocks_sequence_number: number;
-    items_block: DataHomeItemsBlock | EssentialItemsBlock ;
+    items_block: T ;
 }
 
 export interface HomeDataBlockMobile {
@@ -875,3 +875,15 @@ export interface LoyaltyInRankRangeResponse {
 
 
 export type LikeFieldType = 'bonus_like' | 'casino_like' | 'loyalty_like'
+
+export interface FooCategorySanitazeLinkType {
+    seeAllLink: string
+    seeAllFoo?: () => void
+}
+
+export interface NAMETITLECATEGORYSLUGType {
+    [key: string]: {
+        key: string
+        value: boolean | { min: number; max: number }
+    }
+}

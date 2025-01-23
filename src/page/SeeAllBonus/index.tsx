@@ -93,6 +93,8 @@ export default function SeeAllBonus() {
 
     const titlePage = slug ? data?.category_name || category?.find((item) => item?.slug === slug)?.name : 'All Bonuses'
 
+    
+
     if (isLoading) return <LogoLoader />
 
     return (
@@ -206,7 +208,7 @@ export default function SeeAllBonus() {
                                 }}
                             />
 
-                            {!displayedData?.length && isLoading && <NoResult />}
+                            {(!displayedData?.length && !isLoading) && <NoResult />}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />

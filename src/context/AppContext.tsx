@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
 import { AllCategoriesHomeDataResponse } from '../types';
 import $api from '../http';
-import {  LOYALTIECATEGORYIES, shuffleArray } from '../helper';
+import {  CUSTOMFILTERBONUSCATEGORIES, CUSTOMFILTERCASINOSCATEGORIES, LOYALTIECATEGORYIES, shuffleArray } from '../helper';
 import { CategorySwiperType } from '../components/categories/Categories';
 
 const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
@@ -213,13 +213,13 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
       
         const category = useMemo(() => {
             return shuffleArray([
-                ...(dataCategories?.bonus_categories?.map((item) => ({
+                ...([...(dataCategories?.bonus_categories || []), ...CUSTOMFILTERBONUSCATEGORIES]?.map((item) => ({
                     name: item.name,
                     link: `/all-bonuses/${item?.slug}`,
                     slug: item.slug,
                     categoryType: 'bonus' as CategorySwiperType,
                 })) || []),
-                ...(dataCategories?.casino_categories?.map((item) => ({
+                ...([...(dataCategories?.casino_categories || []), ...CUSTOMFILTERCASINOSCATEGORIES]?.map((item) => ({
                     name: item.name,
                     slug: item.slug,
                     link: `/all-casinos/${item?.slug}`,

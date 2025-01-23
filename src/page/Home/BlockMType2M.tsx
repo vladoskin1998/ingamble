@@ -5,7 +5,7 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useRef, useEffect } from 'react'
 
 import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from '../../types'
-import { SeeAllButton } from './SeeAllButton'
+import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
@@ -19,6 +19,9 @@ export default function BlockMType2M({
     data: HomeDataBlock | undefined
     lazyLoadImg?: LazyImgHomeType
 }) {
+
+    if (!data || data?.items_block?.type_block !== BlockTypeNumber.BlockType2M) return <></>
+
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -34,8 +37,7 @@ export default function BlockMType2M({
         }
     }, [])
 
-    if (!data || data?.items_block?.type_block !== BlockTypeNumber.BlockType2M) return <></>
-
+    
     return (
         <section aria-label="BlockTypeNumber.BlockType2M" className="main-gamble__payn-play-casinos payn-play-casinos-gamble">
             <div className="payn-play-casinos-gamble__container container">
@@ -53,7 +55,7 @@ export default function BlockMType2M({
                             {data.items_block.subtitle && <div className="top__subtitle">{data?.items_block?.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton type_category={data?.items_block?.type_category} slug={data?.items_block?.category?.slug }  />
+                             <SeeAllButton seeAllLink={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug ? `/${data?.items_block?.category?.slug}` : ''}`} />
                         </div>
                     </div>
                 </div>
