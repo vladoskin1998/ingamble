@@ -3,15 +3,15 @@ import girl2 from '../../assets/img/girls/02.png'
 import bg03 from '../../assets/img/bg/03.jpg'
 import '../../assets/css/style-type-10-11.css'
 import bg02 from '../../assets/img/bg/02.jpg'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import {DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import { SeeAllRoutes } from './SeeAllButton'
 
 const YEAR = new Date().getFullYear()
 
-export default function BlockType10({ data }: { data: HomeDataBlock | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType10) return <></>
+export default function BlockType10({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
+   
     return (
         <div className="main-gamble__best-casinos-2024-2 best-casinos-2024-2-gamble">
             <div className="best-casinos-2024-2-gamble__container container">

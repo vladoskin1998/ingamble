@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { useEffect, useRef, useState } from 'react'
-import { BlockTypeNumber, DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock, HomeDataCard } from '../../types'
+import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock, HomeDataCard } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 
 import { cloacingFetch, cloacingLink, COLORS_TAGS } from '../../helper'
@@ -13,9 +13,7 @@ import { useAdaptiveBehavior } from '../../context/AppContext'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 
-export default function BlockType3({ data }: { data: HomeDataBlock<DataHomeItemsBlock> | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3) return <></>
-
+export default function BlockType3({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     const [screenState, setScreenState] = useState<number | 'auto'>('auto')
@@ -62,7 +60,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock<DataHomeItems
             return {
                 seeAllLink: '/filter-casinos',
                 seeAllFoo: () => {
-                    setCasinoFilters({ ...initialCasinoFilters , vpn_usage: true })
+                    setCasinoFilters({ ...initialCasinoFilters, vpn_usage: true })
                 },
             }
         }

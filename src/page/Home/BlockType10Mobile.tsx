@@ -3,7 +3,7 @@ import girl2 from '../../assets/img/girls/02.png'
 
 import bg01 from '../../assets/img/bg/01.webp'
 
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import '../../assets/css/style-type-10-11.css'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -14,8 +14,8 @@ import { SeeAllRoutes } from './SeeAllButton'
 
 const YEAR = new Date().getFullYear()
 
-export default function BlockType10Mobile({ data }: { data: HomeDataBlock | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType10) return <></>
+export default function BlockType10Mobile({ data }: { data:  HomeDataBlock<DataHomeItemsBlock>}) {
+   
     return (
         <div className="main-gamble__best-casinos-2024 best-casinos-2024-gamble">
             <div className="best-casinos-2024-gamble__container container">

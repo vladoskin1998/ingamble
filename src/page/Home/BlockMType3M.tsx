@@ -5,15 +5,14 @@ import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useRef, useEffect } from 'react'
 
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { COLORS_TAGS } from '../../helper'
 import { Link } from 'react-router-dom'
 
-export default function BlockMType3M({ data }: { data: HomeDataBlock | undefined;  }) {
+export default function BlockMType3M({ data }: { data:  HomeDataBlock<DataHomeItemsBlock>  }) {
 
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3M) return <></>
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {

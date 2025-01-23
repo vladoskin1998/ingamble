@@ -5,15 +5,15 @@ import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useRef, useEffect } from 'react'
 
-import { BlockTypeNumber, DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock, HomeDataCard } from '../../types'
+import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock, HomeDataCard } from '../../types'
 import {  SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { COLORS_TAGS } from '../../helper'
 import { Link } from 'react-router-dom'
 import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 
-export default function BlockType3Mobile({ data }: { data: HomeDataBlock<DataHomeItemsBlock> | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType3) return <></>
+export default function BlockType3Mobile({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
+   
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {

@@ -3,14 +3,13 @@ import star from '../../assets/img/icons/star.svg'
 import 'swiper/css'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { BlockTypeNumber, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 const Year = new Date().getFullYear()
-export default function BlockType7Mobile({ data }: { data: HomeDataBlock | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7) return <></>
+export default function BlockType7Mobile({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
 
     const { setCasinoFilters } = useFilterContext()
     const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {

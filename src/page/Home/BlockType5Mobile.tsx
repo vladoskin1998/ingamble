@@ -6,13 +6,13 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import bg01 from '../../assets/img/bg/01.webp'
 import girl from '../../assets/img/girls/01.webp'
 
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 //@ts-ignore
-export default function BlockType5Mobile({ data }: { data: HomeDataBlock | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5) return <></>
+export default function BlockType5Mobile({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
+   
     const sliderRef = useRef<SwiperRef | null>(null)
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
 

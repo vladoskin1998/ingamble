@@ -5,7 +5,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import shieldIcon from '../../assets/img/icons/shield.svg'
-import { BlockTypeNumber, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { shuffleArray } from '../../helper'
@@ -14,8 +14,8 @@ import { initialCasinoFilters, useFilterContext } from '../../context/FilterCont
 
 const Year = new Date().getFullYear()
 
-export default function BlockType7({ data }: { data: HomeDataBlock | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType7) return <></>
+export default function BlockType7({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
+
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {

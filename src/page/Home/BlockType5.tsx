@@ -8,15 +8,15 @@ import { useRef, useEffect, useState } from 'react'
 import girl from '../../assets/img/girls/03.webp'
 import bg07 from '../../assets/img/bg/07.webp'
 import gift from '../../assets/img/icons/gift.svg'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 
-export default function BlockType5({ data }: { data: HomeDataBlock | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType5) return <></>
+export default function BlockType5({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
+
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {

@@ -3,16 +3,12 @@ import star from '../../assets/img/icons/star.svg'
 import like from '../../assets/img/icons/like.svg'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import { EssentialItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 import { Link } from 'react-router-dom'
 
-const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock | undefined }) {
-   
-
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType9) return <></>
-
+const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock<EssentialItemsBlock> }) {
     return (
         <section aria-label="BlockTypeNumber.BlockType9" className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
             <div className="essential-programs-gamble__container container">

@@ -2,11 +2,11 @@
 import MainSlider from '../../components/swiper/MainSlider'
 import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import { COLORS_TAGS, shuffleArray } from '../../helper'
-import { BlockTypeNumber, DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 
-export default function BlockType8({ data }: { data: HomeDataBlock<DataHomeItemsBlock> | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType8) return <></>
+export default function BlockType8({ data }: { data: HomeDataBlock<DataHomeItemsBlock>  }) {
+   
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
     const { setCasinoFilters } = useFilterContext()

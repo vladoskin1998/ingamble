@@ -1,11 +1,10 @@
 import MainSlider from '../../components/swiper/MainSlider'
 import { initialBonusFilters, useFilterContext } from '../../context/FilterContext'
 import { shuffleArray } from '../../helper'
-import { BlockTypeNumber, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 
-export default function BlockType1({ data }: { data: HomeDataBlock | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType1) return <></>
+export default function BlockType1({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
     const { setBonusFilters } = useFilterContext()
     const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
         if (name === 'Non-Sticky Bonuses') {

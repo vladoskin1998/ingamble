@@ -4,17 +4,15 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { useEffect, useRef } from 'react'
 import shield from '../../assets/img/icons/shield.svg'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 
-export default function BlockType2({ data }: { data: HomeDataBlock | undefined }) {
+export default function BlockType2({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
 
-    
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType2) return <></>
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 

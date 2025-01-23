@@ -4,7 +4,7 @@ import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useRef, useEffect } from 'react'
 
-import { BlockTypeNumber, HomeDataBlock, HomeDataCard } from '../../types'
+import {  DataHomeItemsBlock, HomeDataBlock, HomeDataCard } from '../../types'
 import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink } from '../../helper'
@@ -16,11 +16,11 @@ export default function BlockMType2M({
     //@ts-ignore
     lazyLoadImg = 'lazy',
 }: {
-    data: HomeDataBlock | undefined
+    data:  HomeDataBlock<DataHomeItemsBlock>
     lazyLoadImg?: LazyImgHomeType
 }) {
 
-    if (!data || data?.items_block?.type_block !== BlockTypeNumber.BlockType2M) return <></>
+
 
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)

@@ -1,6 +1,6 @@
 import star from '../../assets/img/icons/star.svg'
 import deposit from '../../assets/img/icons/deposit-icon.svg'
-import { BlockTypeNumber, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import '../../assets/css/style-type-10-11.css'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
@@ -8,14 +8,12 @@ import { cloacingFetch, cloacingLink } from '../../helper'
 
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { useFilterContext } from '../../context/FilterContext'
-export default function BlockType11({ data }: { data: HomeDataBlock | undefined }) {
-    if (!data || data.items_block.type_block !== BlockTypeNumber.BlockType11) return <></>
-
+export default function BlockType11({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
     const arr1 = data.items_block.data_cards.slice(0, 6)
     const arr2 = data.items_block.data_cards.slice(6, 12)
 
     const { isShowPlayButton } = useAdaptiveBehavior()
- const {  setCasinoFilters } = useFilterContext()
+    const { setCasinoFilters } = useFilterContext()
     return (
         <section className="main-gamble__top-bonuses top-bonuses-gamble">
             <div className="top-bonuses-gamble__container container">
