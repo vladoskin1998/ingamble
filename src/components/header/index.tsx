@@ -86,16 +86,14 @@ export const Header = ({
 
     const handleBurgerOpen = (event: React.MouseEvent) => {
         event.preventDefault()
-        setIsMenuOpen(s => !s)
+        setIsMenuOpen((s) => !s)
         setIsBodyLocked((s) => !s)
     }
 
-       const handleBurgerClose = () => {
-      
-           setIsMenuOpen(false)
-           setIsBodyLocked(false)
-       }
-
+    const handleBurgerClose = () => {
+        setIsMenuOpen(false)
+        setIsBodyLocked(false)
+    }
 
     useEffect(() => {
         if (isBodyLocked || isSidebarActive) {
@@ -143,29 +141,45 @@ export const Header = ({
         }
     }, [casinoFilters, navTo])
 
-
-  useEffect(() => {
-   
-
-      if (location.pathname === '/bonuses' || location.pathname.includes('/all-bonuses')) {
-          setActiveLink('/bonuses')
-          return
-      }
-      if (location.pathname === '/casinos' || location.pathname.includes('/all-casinos')) {
-          setActiveLink('/casinos')
-          return
-      }
-      if (location.pathname.includes('/all-loyalties')) {
-          setActiveLink('/all-loyalties')
-          return
-      }
-      setActiveLink('/')
-  }, [location.pathname]) 
+    useEffect(() => {
+        if (location.pathname === '/bonuses' || location.pathname.includes('/all-bonuses')) {
+            setActiveLink('/bonuses')
+            return
+        }
+        if (location.pathname === '/casinos' || location.pathname.includes('/all-casinos')) {
+            setActiveLink('/casinos')
+            return
+        }
+        if (location.pathname.includes('/all-loyalties')) {
+            setActiveLink('/all-loyalties')
+            return
+        }
+        setActiveLink('/')
+    }, [location.pathname])
 
     const [activeLink, setActiveLink] = useState<string>(window.location.pathname)
 
+    const [showHeader, setShowHeader] = useState(true)
+    const [lastScrollY, setLastScrollY] = useState(0)
+
+    const handleScroll = () => {
+        if (window.scrollY > lastScrollY && window.scrollY >  0) {
+            setShowHeader(false)
+        } else {
+            setShowHeader(true)
+        }
+        setLastScrollY(window.scrollY)
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [lastScrollY])
+
     return (
-        <header className="header">
+        <header className={`header header-animated  ${!showHeader && 'header-animated-hide'}`}>
             <div className="header__container container">
                 <div className="header__row header--row-pc">
                     {
@@ -307,7 +321,7 @@ export const Header = ({
                     </div>
                 </div>
                 {/* ///////////  mobile*/}
-                <div className="header__row-mobile header--row-mobile">
+                <div className={`header__row-mobile header--row-mobile`}>
                     <div className="header__row">
                         <div className="header__column header__column_first">
                             <div className="sidebar-gamble__top top-sidebar-gamble">
@@ -449,13 +463,12 @@ export const Header = ({
                                     </li>
                                     <li className="menu-header__item">
                                         <button
-                                            
                                             aria-label="Put your description here."
                                             onClick={() => {
                                                 handleBurgerClose()
                                                 setSidebarActive(true)
                                             }}
-                                        className={`menu-header__link`}
+                                            className={`menu-header__link`}
                                         >
                                             <span>Filters</span>
                                         </button>
