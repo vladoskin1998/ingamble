@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, useEffect, useState } from 'react'
 import { Wraper } from '../Wraper'
 // import { useAdaptiveBehavior } from '../../context/AppContext'
 import { Categories, CategorySwiperType } from '../../components/categories/Categories'
@@ -24,11 +24,12 @@ import BlockType5 from './BlockType5'
 import BlockType5Mobile from './BlockType5Mobile'
 import BlockType10 from './BlockType10'
 import BlockType11 from './BlockType11'
-import MoreBonusesForYourChoise from './MoreBonusesForYourChoise'
-import CheckMoreWhatSuitsYouBest from '../../components/categories/CheckMoreWhatSuitsYouBest'
-import SubscribeForm from '../../components/subscribe/SubscribeForm'
-import BottomInfo from '../../components/footer/BottomInfo'
 import BlockType10Mobile from './BlockType10Mobile'
+
+const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
+const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
+const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
+const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 

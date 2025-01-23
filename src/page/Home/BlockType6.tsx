@@ -12,8 +12,9 @@ import { Link } from 'react-router-dom'
 import { useFilterContext } from '../../context/FilterContext'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 
-export default function BlockType6({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
-  
+export default function BlockType6({ data }: { data: HomeDataBlock<DataHomeItemsBlock> | undefined }) {
+    if (!data || !(data.items_block.type_block === BlockTypeNumber.BlockType6 || data.items_block.type_block === BlockTypeNumber.BlockType6c)) return <></>
+
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     const { data: Country, setCasinoFilters, setBonusFilters } = useFilterContext()
