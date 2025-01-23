@@ -46,7 +46,8 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
     }
 
     const { isShowPlayButton } = useAdaptiveBehavior()
-
+    //@ts-ignore
+    const emojiTitle = Country?.general?.countries?.find((item) => item?.code === data?.items_block?.country_code)?.emoji_flag
     return (
         <section aria-label="BlockTypeNumber.BlockType6" className="main-gamble__new-bonuses new-bonuses-gamble">
             <div className="new-bonuses-gamble__container container">
@@ -54,18 +55,14 @@ export default function BlockType6({ data }: { data: HomeDataBlock | undefined }
                     <div className="top__row">
                         <div className="top__column">
                             <div className="top__title-block">
-                                <h2 className="top__title">
-                                    {data.items_block.title_image && data.items_block.type_block === BlockTypeNumber.BlockType6 && (
-                                        <span className="top__title-icon ibg--custom ibg--custom-width-auto">
-                                            <img src={data.items_block.title_image} alt="security" />
-                                        </span>
-                                    )}
-                                    <span className="emoji new-bonuses-gamble-emoji">
-                                        {
-                                            //@ts-ignore
-                                            Country?.general?.countries?.find((item) => item?.code === data?.items_block?.country_code)?.emoji_flag
-                                        }
+                                {data.items_block.title_image && data.items_block.type_block === BlockTypeNumber.BlockType6 && (
+                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
+                                        <img src={data.items_block.title_image} alt="security" />
                                     </span>
+                                )}
+                                <h2 className="top__title">
+                                    {emojiTitle && <span className="emoji new-bonuses-gamble-emoji new-bonuses-gamble-emoji-mob">{emojiTitle}</span>}
+
                                     {titleBlock}
                                 </h2>
                             </div>

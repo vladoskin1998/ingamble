@@ -18217,6 +18217,14 @@ h3 {
   margin-right: 6px;
 }
 
+@media (max-width: 650.98px) {
+  .new-bonuses-gamble-emoji {
+    top: -2px;
+    font-size: 16px;
+  }
+}
+
+
 @media (min-width: 1650.98px) {
   .fastest-payout-casinos-gamble .casino-small-card__rating-icon {
     margin: 0.1px 4px 0 0;
