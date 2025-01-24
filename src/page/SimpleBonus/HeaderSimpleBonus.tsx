@@ -54,7 +54,7 @@ export const HeaderSimpleBonus = ({ data, geoLocation }: { data?: GetDataBonusRe
 
     const wagerValue = WagerPrettier(data?.wagering_bonus_plus_deposit)
 
-    console.log('wagerValue', wagerValue)
+
 
     return (
         <section className={`simple-bonus__casino-info casino-info ${!geoLocation?.isAllowed && 'casino-info_not-available'} `}>

@@ -7,7 +7,6 @@ export const getCountryFlagEmoji = (countryCode: string) => {
 export const CountryFlagEmoji = ({ code }: { code: string }) => {
     const title = code
 
-    console.log(title)
     return (
         <span role="img" aria-labelledby={title} title={title} className="emoji">
             {code ? getCountryFlagEmoji(code) : '🏳'}

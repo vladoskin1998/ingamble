@@ -110,7 +110,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 10,
     })
-
+    console.log('MyComponent rendered')
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
 
     useEffect(() => {
@@ -131,10 +131,11 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
 
     const blocksToRender = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
 
-    if (isLoading) return <LogoLoader />
+    // if (isLoading) return <LogoLoader />
 
     return (
         <>
+            {isLoading && <LogoLoader />}
             <Wraper>
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">

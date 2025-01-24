@@ -15,7 +15,7 @@ import '../../assets/css/footer.css'
 
 export default function Footer() {
 
-    console.log(window.location);
+  
     
     return (
         <footer className="footer">

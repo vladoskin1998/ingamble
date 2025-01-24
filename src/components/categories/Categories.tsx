@@ -36,8 +36,6 @@ export const Categories = ({ type_category = DataHomeItemsBlockEnumCategory.all_
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
-
-
     return (
         <div className=" filter-tags-gamble main-gamble__filter-tags categorie--tags">
             <div className="filter-tags-gamble__container container" style={{ display: 'flex' }}>

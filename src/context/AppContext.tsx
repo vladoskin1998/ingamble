@@ -232,12 +232,20 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
             ])
         }, [dataCategories])
 
+        const value = useMemo(
+            () => ({
+                isShowPlayButton: isTogglePlay?.is_play ?? false,
+                category,
+                isSidebarActive,
+                setSidebarActive,
+                initializeAdaptiveBehavior,
+                lastUpdate,
+            }),
+            [isTogglePlay, category, isSidebarActive, lastUpdate],
+        )
 
-    return (
-        <AdaptiveContext.Provider value={{ isShowPlayButton: isTogglePlay?.is_play === undefined ? false : isTogglePlay?.is_play, category, isSidebarActive, setSidebarActive, initializeAdaptiveBehavior, lastUpdate }}>
-            {children}
-        </AdaptiveContext.Provider>
-    )
+
+    return <AdaptiveContext.Provider value={value}>{children}</AdaptiveContext.Provider>
 };
 
 export const useAdaptiveBehavior = () => {
