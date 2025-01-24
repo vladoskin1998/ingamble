@@ -8,7 +8,7 @@ import { HowToStartVipJorney } from './HowToStartVipJorney'
 import { HarryStyles } from '../SimpleBonus/HarryStyles'
 import { LoyaltyAcordeon } from './LoyaltyAcordeon'
 import $api from '../../http'
-import { initializeAdaptiveBehavior } from '../../context/AppContext'
+
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from '../../types'
@@ -19,6 +19,7 @@ import { SiblingBonus } from '../SimpleBonus/SiblingBonus'
 import { OtherBestReloadBonus } from '../SimpleBonus/OtherBestBonus'
 import { EssentialVIPLoyaltyPrograms } from '../SimpleBonus/EssentialVIPLoyaltyPrograms'
 import JEFFMURPHY from '../../assets/img/casino-person/4.webp'
+import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))

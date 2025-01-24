@@ -1,7 +1,7 @@
 import logoIcon from '../../assets/img/logo-icon.svg'
 
 import clearAll from '../../assets/img/icons/clear-all.svg'
-import { useLayoutEffect, useMemo, useState } from 'react'
+import { memo, useLayoutEffect, useMemo, useState } from 'react'
 import { AccordionItem } from '../acordion/Acordion'
 
 import { RouteToNextFilter, useFilterContext } from '../../context/FilterContext'
@@ -12,7 +12,10 @@ import { BonusFilterBodyType, CasinoFilterBodyType, LoyaltiesFilterBodyType } fr
 import CasinoFilterContent from './CasinoFilter'
 import BonusFilter from './BonusFilter'
 import LoyaltiesFilter from './LoyaltiesFilter'
-import { initializeAdaptiveBehavior } from '../../context/AppContext'
+// import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
+
+
+
 
 type DefaultOpenType = 'casinos' | 'bonuses' | 'loyalties' | 'slots' | ''
 
@@ -45,7 +48,7 @@ const LengthApplyFilter = ({
     return ''
 }
 
-export default function Navbar({ isSidebarActive, setSidebarActive }: { isSidebarActive: boolean; setSidebarActive: (s: boolean) => void }) {
+const Navbar = ({ isSidebarActive, setSidebarActive }: { isSidebarActive: boolean; setSidebarActive: (s: boolean) => void }) => {
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
     const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>('')
   
@@ -77,7 +80,7 @@ export default function Navbar({ isSidebarActive, setSidebarActive }: { isSideba
         if (!isSidebarActive) {
             setIsDefaultOpen(() => '')
         }
-        initializeAdaptiveBehavior()
+        // initializeAdaptiveBehavior()
     }, [isSidebarActive, isGambleBodyHidden])
 
     const handleFilterOpenBtnClick = (event: React.MouseEvent, s: DefaultOpenType) => {
@@ -341,3 +344,6 @@ export default function Navbar({ isSidebarActive, setSidebarActive }: { isSideba
         </aside>
     )
 }
+
+
+export default memo(Navbar)

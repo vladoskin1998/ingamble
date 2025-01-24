@@ -1,7 +1,7 @@
 import { lazy, memo, useEffect, useState } from 'react'
 import { Categories } from '../../components/categories/Categories'
 import { FilterHeaderList } from '../../components/filter-components/FilterHeaderList'
-import { initializeAdaptiveBehavior, useAdaptiveBehavior } from '../../context/AppContext'
+import {  useAdaptiveBehavior } from '../../context/AppContext'
 import { initialLoyaltiesFilters, useFilterContext } from '../../context/FilterContext'
 import { Wraper } from '../Wraper'
 import { FilterLoyaltiesPostResponse, LoyaltiesFilterBodyType, SeeAllEssentialLoyaltyCasino } from '../../types'
@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
 import searchImg from '../../assets/img/icons/search-filter.svg'
 import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
+import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))

@@ -8,7 +8,7 @@ import { Wraper } from '../Wraper'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import like from '../../assets/img/icons/like.svg'
 import { lazy, memo, useEffect, useState } from 'react'
-import { initializeAdaptiveBehavior, useAdaptiveBehavior } from '../../context/AppContext'
+import {  useAdaptiveBehavior } from '../../context/AppContext'
 import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from '../SeeAllCasinos'
 import { cloacingFetch, cloacingLink, filterEmptyValues, NumberAssociaty, sanitizeNumberLike, sliceString } from '../../helper'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
@@ -20,6 +20,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { Link } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
 import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
+import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))

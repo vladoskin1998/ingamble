@@ -2,7 +2,7 @@ import logoCryptogamblers from '../../assets/img/logo.svg'
 import logoInGamble from '../../assets/img/logo-ingamble.svg'
 import english from '../../assets/img/flags/english.svg'
 
-import { useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import logoIcon from '../../assets/img/logo-icon.svg'
 import { useFilterContext } from '../../context/FilterContext'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
@@ -25,7 +25,7 @@ export const LANGUAGES_WEBSITE: Language[] = [
     // { code: 'ru', name: 'Russian', flag: russian },
 ]
 
-export const Header = ({
+export const Header = memo( ({
     isSidebarActive,
     //@ts-ignore
     setSidebarActive,
@@ -542,4 +542,4 @@ export const Header = ({
             </div>
         </header>
     )
-}
+})

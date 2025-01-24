@@ -8,7 +8,7 @@ import { BonusSubType } from './BonusSubType'
 import { Categories } from '../../components/categories/Categories'
 import { LastUpdate } from './LastUpdate'
 import { Wraper } from '../Wraper'
-import { initializeAdaptiveBehavior } from '../../context/AppContext'
+
 
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { HeaderSimpleBonus } from './HeaderSimpleBonus'
@@ -22,6 +22,7 @@ import { SiblingBonus } from './SiblingBonus'
 
 import { OtherBestReloadBonus } from './OtherBestBonus'
 import ASHLINGOBRIEN from '../../assets/img/casino-person/5.webp'
+import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))

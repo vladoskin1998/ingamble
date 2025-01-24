@@ -15,12 +15,13 @@ import { Link, useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { GeoLocationAllowdType, RewievCasinoDataResponse } from '../../types'
-import { initializeAdaptiveBehavior } from '../../context/AppContext'
+
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { useFilterContext } from '../../context/FilterContext'
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 
 import giftIcon from '../../assets/img/icons/gift.svg'
+import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))

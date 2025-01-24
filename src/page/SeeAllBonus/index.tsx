@@ -10,12 +10,13 @@ import './style.css'
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
-import { initializeAdaptiveBehavior, useAdaptiveBehavior } from '../../context/AppContext'
+import {  useAdaptiveBehavior } from '../../context/AppContext'
 import { SeeAllBonus as SeeAllBonusType, SeeAllBonusResponse, DataHomeItemsBlockEnumCategory } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, COLORS_TAGS, sanitizeNumberLike } from '../../helper'
 import { Link, useParams } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
+import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))

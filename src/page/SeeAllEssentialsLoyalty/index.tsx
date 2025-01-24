@@ -10,11 +10,12 @@ import { DataHomeItemsBlockEnumCategory, LoyaltiesFilterBodyType, NAMETITLECATEG
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import './style.css'
 import { LogoLoader } from '../../components/loader/LogoLoader'
-import { initializeAdaptiveBehavior } from '../../context/AppContext'
+
 import { lazy, useEffect, useState } from 'react'
 import { cloacingFetch, cloacingLink, filterEmptyValues, LOYALTIECATEGORYIES } from '../../helper'
 import { Link, useParams } from 'react-router-dom'
 import { initialLoyaltiesFilters, useFilterContext } from '../../context/FilterContext'
+import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))

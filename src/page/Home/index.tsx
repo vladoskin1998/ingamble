@@ -134,6 +134,9 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
       return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
   }, [isMobile, data, blockByCountry])
 
+
+    console.log('render');
+    
     if (isLoading) return <LogoLoader />
 
     return (

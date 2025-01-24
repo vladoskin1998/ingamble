@@ -6,7 +6,7 @@ import like from '../../assets/img/icons/like.svg'
 import './style.css'
 import { Link, useParams } from 'react-router-dom'
 import { lazy, useEffect, useState } from 'react'
-import { initializeAdaptiveBehavior, useAdaptiveBehavior } from '../../context/AppContext'
+import {  useAdaptiveBehavior } from '../../context/AppContext'
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
@@ -14,6 +14,7 @@ import { PAYOUTSPEED, SeeAllCasinosType, SeeAllCasinosCategoryResponse, DataHome
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, NumberAssociaty, sanitizeNumberLike } from '../../helper'
 import { NoResult } from '../../components/no-result'
+import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
