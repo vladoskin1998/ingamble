@@ -6,7 +6,7 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { useAdaptiveBehavior } from '../../context/AppContext'
-import { useFilterContext } from '../../context/FilterContext'
+import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 export default function BlockType11({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
     const arr1 = data.items_block.data_cards.slice(0, 6)
     const arr2 = data.items_block.data_cards.slice(6, 12)
@@ -30,7 +30,7 @@ export default function BlockType11({ data }: { data: HomeDataBlock<DataHomeItem
                                         <Link
                                             to={`/filter-casinos`}
                                             onClick={() => {
-                                                setCasinoFilters((s) => ({ ...s, casino_rank: { min: 8.5, max: 10 } }))
+                                                 setCasinoFilters({ ...initialCasinoFilters, casino_rank: { min: 8.5, max: 10 } })
                                             }}
                                             className="top__btn"
                                         >

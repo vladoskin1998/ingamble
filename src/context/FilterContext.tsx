@@ -221,6 +221,21 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
             }
         }
 
+
+      
+                                           
+           if (slug === 'top-ranked-casinos') {
+               return {
+                   seeAllLink: '/filter-casinos',
+                   seeAllFoo: () => {
+                       setCasinoFilters({ ...initialCasinoFilters, casino_rank: { min: 8.5, max: 10 } })
+                   },
+               }
+           }
+
+
+     
+
         return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
     }
 

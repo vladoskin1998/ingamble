@@ -12,6 +12,7 @@ import { BonusFilterBodyType, CasinoFilterBodyType, LoyaltiesFilterBodyType } fr
 import CasinoFilterContent from './CasinoFilter'
 import BonusFilter from './BonusFilter'
 import LoyaltiesFilter from './LoyaltiesFilter'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 
 type DefaultOpenType = 'casinos' | 'bonuses' | 'loyalties' | 'slots' | ''
 
@@ -47,7 +48,7 @@ const LengthApplyFilter = ({
 export default function Navbar({ isSidebarActive, setSidebarActive }: { isSidebarActive: boolean; setSidebarActive: (s: boolean) => void }) {
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
     const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>('')
-
+    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
     const { casinoFilters, bonusFilters, loyaltiesFilters, currentRouteFilter, handlerCurrentRouteFilter, handlerClearAllFilters, data } = useFilterContext()
 
     useLayoutEffect(() => {
@@ -76,6 +77,7 @@ export default function Navbar({ isSidebarActive, setSidebarActive }: { isSideba
         if (!isSidebarActive) {
             setIsDefaultOpen(() => '')
         }
+        initializeAdaptiveBehavior()
     }, [isSidebarActive, isGambleBodyHidden])
 
     const handleFilterOpenBtnClick = (event: React.MouseEvent, s: DefaultOpenType) => {

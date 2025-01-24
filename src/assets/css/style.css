@@ -11899,14 +11899,18 @@ h3 {
     cursor: pointer;
   }
 }
+
+
 .title-filter-selected__text {
   color: var(--Text-Txt_Sec, rgba(255, 255, 255, 0.5019607843));
   margin: 0 2px 0 0;
 }
+
 @media (max-width: 650.98px) {
   .title-filter-selected__text {
     color: var(--Text-Txt_Main, #FFFFFF);
   }
+
 }
 .title-filter-selected__nubmer {
   color: var(--Text-Txt_Main, #FFFFFF);
@@ -11915,6 +11919,7 @@ h3 {
   .title-filter-selected__nubmer {
     color: var(--Colors-Yellow, #FFCF23);
   }
+     
 }
 .title-filter-selected__arrow {
   display: none;
