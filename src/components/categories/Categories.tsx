@@ -88,7 +88,7 @@ export const Categories = ({ type_category = DataHomeItemsBlockEnumCategory.all_
 
                             {location.pathname !== '/casinos' && (
                                 <SwiperSlide key={3} style={{ width: 'auto' }}>
-                                    <Link rel="nofollow noopener" to={'casinos '} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
+                                    <Link rel="nofollow noopener" to={'/casinos '} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
                                         Casinos
                                     </Link>
                                 </SwiperSlide>
