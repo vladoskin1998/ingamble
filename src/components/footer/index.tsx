@@ -12,10 +12,14 @@ import logos09 from '../../assets/img/logos/09.svg'
 import logos10 from '../../assets/img/logos/10.svg'
 import socialsIcon from '../../assets/img/icons/socials-icon.svg'
 import '../../assets/css/footer.css'
+import { useEffect } from 'react'
+import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 
 export default function Footer() {
 
-  
+    useEffect(() => {
+        initializeAdaptiveBehavior()
+    }, [])
     
     return (
         <footer className="footer">
