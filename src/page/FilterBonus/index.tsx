@@ -8,7 +8,7 @@ import { Wraper } from '../Wraper'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import like from '../../assets/img/icons/like.svg'
 import { lazy, memo, useEffect, useState } from 'react'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initializeAdaptiveBehavior, useAdaptiveBehavior } from '../../context/AppContext'
 import star from '../../assets/img/icons/star.svg'
 import { cloacingFetch, cloacingLink, COLORS_TAGS, filterEmptyValues, sanitizeNumberLike } from '../../helper'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
@@ -44,7 +44,7 @@ const getFilteringBonusList = async (payload: BonusFilterBodyType, page: number)
 export default function FilterBonus() {
     // // document.title = "Filter Bonus"
 
-    const { initializeAdaptiveBehavior, isShowPlayButton } = useAdaptiveBehavior()
+    const {  isShowPlayButton } = useAdaptiveBehavior()
 
     const { bonusFilters, setBonusFilters } = useFilterContext()
 

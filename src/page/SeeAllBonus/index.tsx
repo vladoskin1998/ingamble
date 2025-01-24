@@ -10,7 +10,7 @@ import './style.css'
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initializeAdaptiveBehavior, useAdaptiveBehavior } from '../../context/AppContext'
 import { SeeAllBonus as SeeAllBonusType, SeeAllBonusResponse, DataHomeItemsBlockEnumCategory } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, COLORS_TAGS, sanitizeNumberLike } from '../../helper'
@@ -45,7 +45,7 @@ export default function SeeAllBonus() {
     const [currentPage, setCurrentPage] = useState(1)
     const [allData, setAllData] = useState<SeeAllBonusType[]>([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900)
-    const { initializeAdaptiveBehavior, category, isShowPlayButton } = useAdaptiveBehavior()
+    const {  category, isShowPlayButton } = useAdaptiveBehavior()
 
     const { bonus_slug } = useParams()
 

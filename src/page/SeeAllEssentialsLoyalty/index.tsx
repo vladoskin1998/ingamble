@@ -10,7 +10,7 @@ import { DataHomeItemsBlockEnumCategory, LoyaltiesFilterBodyType, NAMETITLECATEG
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import './style.css'
 import { LogoLoader } from '../../components/loader/LogoLoader'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initializeAdaptiveBehavior } from '../../context/AppContext'
 import { lazy, useEffect, useState } from 'react'
 import { cloacingFetch, cloacingLink, filterEmptyValues, LOYALTIECATEGORYIES } from '../../helper'
 import { Link, useParams } from 'react-router-dom'
@@ -51,7 +51,7 @@ const getFilteringLoyaltiesList = async (payload: LoyaltiesFilterBodyType, page:
 
 export default function SeeAllEssentialsLoyalty() {
     // document.title = "All Essentials Loyalty"
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+  
     const { loyaltiesFilters, setLoyaltiesFilters } = useFilterContext()
     const { loyaltie_slug } = useParams()
 

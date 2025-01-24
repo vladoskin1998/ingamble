@@ -15,7 +15,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { GeoLocationAllowdType, RewievCasinoDataResponse } from '../../types'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initializeAdaptiveBehavior } from '../../context/AppContext'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { useFilterContext } from '../../context/FilterContext'
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
@@ -44,7 +44,7 @@ const getCurrentCasinosFetchData = async (slug: string) => {
 export default function SimpleCasinos() {
     // document.title = "Review"
 
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+
     const [openModal, setOpenModal] = useState(false)
    const { casino_slug } = useParams()
 

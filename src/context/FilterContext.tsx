@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react"
+import React, { createContext, useContext, useState, ReactNode, useMemo } from "react"
 import {
     BonusFilterBodyType,
     CasinoFilterBodyType,
@@ -233,35 +233,29 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
                }
            }
 
-
-     
-
         return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
     }
 
+      const value = useMemo(
+          () => ({
+              data,
+              searchGlobal,
+              handlerSeachGlobal,
+              casinoFilters,
+              setCasinoFilters,
+              bonusFilters,
+              setBonusFilters,
+              loyaltiesFilters,
+              setLoyaltiesFilters,
+              currentRouteFilter,
+              handlerCurrentRouteFilter,
+              handlerClearAllFilters,
+              fooCategorySanitazeLink,
+          }),
+          [data, searchGlobal, casinoFilters, bonusFilters, loyaltiesFilters, currentRouteFilter],
+      )
     
-    return (
-        <FilterContext.Provider
-            value={{
-                data,
-                searchGlobal,
-                handlerSeachGlobal,
-                casinoFilters,
-                setCasinoFilters,
-                bonusFilters,
-                setBonusFilters,
-                loyaltiesFilters,
-                setLoyaltiesFilters,
-                currentRouteFilter,
-                handlerCurrentRouteFilter,
-                handlerClearAllFilters,
-
-                fooCategorySanitazeLink,
-            }}
-        >
-            {children}
-        </FilterContext.Provider>
-    )
+    return <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
 }
 
 export const useFilterContext = (): FilterContextType => {

@@ -8,7 +8,7 @@ import { Wraper } from '../Wraper'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import like from '../../assets/img/icons/like.svg'
 import { lazy, memo, useEffect, useState } from 'react'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initializeAdaptiveBehavior, useAdaptiveBehavior } from '../../context/AppContext'
 import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from '../SeeAllCasinos'
 import { cloacingFetch, cloacingLink, filterEmptyValues, NumberAssociaty, sanitizeNumberLike, sliceString } from '../../helper'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
@@ -84,7 +84,7 @@ const getFilteringCasinoList = async (payload: CasinoFilterBodyType, page: numbe
 export default function FilterCasino() {
     // // document.title = "Filter Casino"
 
-    const { initializeAdaptiveBehavior, isSidebarActive } = useAdaptiveBehavior()
+    const {  isSidebarActive } = useAdaptiveBehavior()
     const { data: filtersData, casinoFilters, setCasinoFilters } = useFilterContext()
 
     const [currentPage, setCurrentPage] = useState(1)

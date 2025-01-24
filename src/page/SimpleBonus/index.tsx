@@ -8,7 +8,7 @@ import { BonusSubType } from './BonusSubType'
 import { Categories } from '../../components/categories/Categories'
 import { LastUpdate } from './LastUpdate'
 import { Wraper } from '../Wraper'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initializeAdaptiveBehavior } from '../../context/AppContext'
 
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { HeaderSimpleBonus } from './HeaderSimpleBonus'
@@ -35,7 +35,7 @@ const getBonusDataFetch = async ({ slug }: { slug: string | null }) => {
 
 export default function SimpleBonus() {
     // document.title = "Simple Bonus"
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+
     const { data: Country } = useFilterContext()
 
      const { bonus_slug } = useParams()

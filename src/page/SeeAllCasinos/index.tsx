@@ -6,7 +6,7 @@ import like from '../../assets/img/icons/like.svg'
 import './style.css'
 import { Link, useParams } from 'react-router-dom'
 import { lazy, useEffect, useState } from 'react'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initializeAdaptiveBehavior, useAdaptiveBehavior } from '../../context/AppContext'
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
@@ -73,7 +73,7 @@ export default function SeeAllCasinos() {
         window.scrollTo(0, 0)
     }, [casino_slug])
 
-    const { initializeAdaptiveBehavior, category } = useAdaptiveBehavior()
+    const {  category } = useAdaptiveBehavior()
 
     const { data, isLoading } = useQuery<SeeAllCasinosCategoryResponse>(['get-see-all-loyalties', currentPage, slug], () => getAllCasinosFetchData(currentPage, slug), {
         keepPreviousData: true,

@@ -1,7 +1,7 @@
 import { lazy, memo, useEffect, useState } from 'react'
 import { Categories } from '../../components/categories/Categories'
 import { FilterHeaderList } from '../../components/filter-components/FilterHeaderList'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initializeAdaptiveBehavior, useAdaptiveBehavior } from '../../context/AppContext'
 import { initialLoyaltiesFilters, useFilterContext } from '../../context/FilterContext'
 import { Wraper } from '../Wraper'
 import { FilterLoyaltiesPostResponse, LoyaltiesFilterBodyType, SeeAllEssentialLoyaltyCasino } from '../../types'
@@ -44,7 +44,7 @@ const getFilteringLoyaltiesList = async (payload: LoyaltiesFilterBodyType, page:
 export default function FilterLoyalty() {
     // // document.title = "Filter Loyalties"
 
-    const { initializeAdaptiveBehavior, isSidebarActive } = useAdaptiveBehavior()
+    const {  isSidebarActive } = useAdaptiveBehavior()
     const { loyaltiesFilters, setLoyaltiesFilters } = useFilterContext()
 
     const [currentPage, setCurrentPage] = useState(1)

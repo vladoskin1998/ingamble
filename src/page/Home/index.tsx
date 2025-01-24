@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState } from 'react'
+import { lazy, useEffect, useMemo, useState } from 'react'
 import { Wraper } from '../Wraper'
 // import { useAdaptiveBehavior } from '../../context/AppContext'
 import { Categories } from '../../components/categories/Categories'
@@ -129,7 +129,10 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         }
     }
 
-    const blocksToRender = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
+  const blocksToRender = useMemo(() => {
+      const blocks = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
+      return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
+  }, [isMobile, data, blockByCountry])
 
     if (isLoading) return <LogoLoader />
 

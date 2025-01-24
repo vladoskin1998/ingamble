@@ -25,7 +25,6 @@ interface AdaptiveContextType {
     isShowPlayButton: boolean
     isSidebarActive: boolean
     setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>
-    initializeAdaptiveBehavior: () => void
     lastUpdate: string
     category: FormatedCategoryType[]
 }
@@ -101,7 +100,7 @@ const dinamicAdapt = (
 
 
 
-const initializeAdaptiveBehavior = () => {
+export const initializeAdaptiveBehavior = () => {
     const da_elements = document.querySelectorAll('[data-da]') as NodeListOf<HTMLElement>;
     const parents_original: ParentOriginal[] = [];
     const attr_elements: string[] = [];
@@ -197,13 +196,13 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
 
 
     const { data: dataCategories } = useQuery<AllCategoriesHomeDataResponse>('get-data-home-page-categories/', getDataHomePageCategories, {
-        keepPreviousData: true,
+    
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 100,
     })
 
       const { data: isTogglePlay } = useQuery<{id: number, is_play: boolean}>('get-toggle-play/', getTogglePlay, {
-          keepPreviousData: true,
+        
           staleTime: Infinity,
           cacheTime: 1000 * 60 * 100,
       })
@@ -238,7 +237,6 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
                 category,
                 isSidebarActive,
                 setSidebarActive,
-                initializeAdaptiveBehavior,
                 lastUpdate,
             }),
             [isTogglePlay, category, isSidebarActive, lastUpdate],

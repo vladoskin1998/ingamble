@@ -8,7 +8,7 @@ import { HowToStartVipJorney } from './HowToStartVipJorney'
 import { HarryStyles } from '../SimpleBonus/HarryStyles'
 import { LoyaltyAcordeon } from './LoyaltyAcordeon'
 import $api from '../../http'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { initializeAdaptiveBehavior } from '../../context/AppContext'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { GeoLocationAllowdType, LoyaltieProgramDataResponse } from '../../types'
@@ -44,7 +44,7 @@ export default function SimpleLoyalties() {
         idCountry: null
     })
 
-    const { initializeAdaptiveBehavior } = useAdaptiveBehavior()
+   
 
    const { loyaltie_slug } = useParams()
 
