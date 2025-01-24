@@ -3,7 +3,7 @@ import { useAdaptiveBehavior } from '../../context/AppContext'
 
 
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {  DataHomeItemsBlockCategoryType, DataHomeItemsBlockEnumCategory, FormatedCategoryType } from '../../types'
 import { useFilterContext } from '../../context/FilterContext'
@@ -12,6 +12,7 @@ import { useFilterContext } from '../../context/FilterContext'
 
 export const Categories = ({ type_category = DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType }: { type_category?: DataHomeItemsBlockCategoryType }) => {
     
+    const location = useLocation()
 
     const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
 
@@ -77,21 +78,28 @@ export const Categories = ({ type_category = DataHomeItemsBlockEnumCategory.all_
 
                     {isMobile && (
                         <>
-                            <SwiperSlide key={1} style={{ width: 'auto' }}>
-                                <Link rel="nofollow noopener" to={'/all-bonuses'} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
-                                    Bonuses
-                                </Link>
-                            </SwiperSlide>
-                            <SwiperSlide key={2} style={{ width: 'auto' }}>
-                                <Link rel="nofollow noopener" to={'/all-loyalties'} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
-                                    Loyalty
-                                </Link>
-                            </SwiperSlide>
-                            <SwiperSlide key={3} style={{ width: 'auto' }}>
-                                <Link rel="nofollow noopener" to={'/all-casinos '} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
-                                    Casinos
-                                </Link>
-                            </SwiperSlide>
+                            {location.pathname !== '/bonuses' && (
+                                <SwiperSlide key={1} style={{ width: 'auto' }}>
+                                    <Link rel="nofollow noopener" to={'/bonuses'} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
+                                        Bonuses
+                                    </Link>
+                                </SwiperSlide>
+                            )}
+
+                            {location.pathname !== '/casinos' && (
+                                <SwiperSlide key={3} style={{ width: 'auto' }}>
+                                    <Link rel="nofollow noopener" to={'casinos '} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
+                                        Casinos
+                                    </Link>
+                                </SwiperSlide>
+                            )}
+                            {location.pathname !== '/all-loyalties' && (
+                                <SwiperSlide key={2} style={{ width: 'auto' }}>
+                                    <Link rel="nofollow noopener" to={'/all-loyalties'} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
+                                        Loyalty
+                                    </Link>
+                                </SwiperSlide>
+                            )}
                         </>
                     )}
                     {listCategory.map((item, index) => (
