@@ -6,7 +6,7 @@ import { PaginationPage } from '../../components/pagination/PaginationPage'
 
 import $api from '../../http'
 import { useQuery } from 'react-query'
-import { LoyaltiesFilterBodyType, NAMETITLECATEGORYSLUGType, SeeAllEssentialLoyaltyCasino } from '../../types'
+import { DataHomeItemsBlockEnumCategory, LoyaltiesFilterBodyType, NAMETITLECATEGORYSLUGType, SeeAllEssentialLoyaltyCasino } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import './style.css'
 import { LogoLoader } from '../../components/loader/LogoLoader'
@@ -125,7 +125,7 @@ export default function SeeAllEssentialsLoyalty() {
         <Wraper>
             <main className="gamble__loyaltie-programs main-gamble loyaltie-programs loyaltie-filtered__main">
                 <div className="main-gamble__body">
-                    <Categories type_category="loyaltie" />
+                    <Categories type_category={DataHomeItemsBlockEnumCategory.loyaltie_category} />
                     <BreadCrumb
                         path={
                             loyaltie_slug

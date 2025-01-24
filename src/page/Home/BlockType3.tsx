@@ -4,14 +4,14 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { useEffect, useRef, useState } from 'react'
-import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock, HomeDataCard } from '../../types'
+import {  DataHomeItemsBlock, HomeDataBlock, HomeDataCard } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 
 import { cloacingFetch, cloacingLink, COLORS_TAGS } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
-import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
-import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
+import { SeeAllButton } from './SeeAllButton'
+
 
 export default function BlockType3({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
     const sliderRef = useRef<any>(null)
@@ -51,27 +51,8 @@ export default function BlockType3({ data }: { data: HomeDataBlock<DataHomeItems
         }
     }, [])
     const { isShowPlayButton } = useAdaptiveBehavior()
-    const { setCasinoFilters } = useFilterContext()
-    //       /filter-casinos
-    // /filter-bonus
 
-    const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
-        if (name === 'VPN Friendly Casinos') {
-            return {
-                seeAllLink: '/filter-casinos',
-                seeAllFoo: () => {
-                    setCasinoFilters({ ...initialCasinoFilters, vpn_usage: true })
-                },
-            }
-        }
-        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
-    }
 
-    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
-        name: data?.items_block?.category?.name,
-        type_category: data.items_block.type_category,
-        slug: data?.items_block?.category?.slug || '',
-    })
 
     return (
         <section aria-label="BlockTypeNumber.BlockType3" className="main-gamble__top-gainers-casinos top-gainers-casinos-gamble main-gamble__baner-block">
@@ -90,7 +71,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock<DataHomeItems
                             {data?.items_block?.subtitle && <div className="top__subtitle">{data?.items_block?.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton seeAllLink={seeAllLink} seeAllFoo={seeAllFoo} />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>

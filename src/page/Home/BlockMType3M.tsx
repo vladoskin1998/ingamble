@@ -6,7 +6,7 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useRef, useEffect } from 'react'
 
 import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
-import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
+import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { COLORS_TAGS } from '../../helper'
 import { Link } from 'react-router-dom'
@@ -46,7 +46,7 @@ export default function BlockMType3M({ data }: { data:  HomeDataBlock<DataHomeIt
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                             <SeeAllButton seeAllLink={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug ? `/${data?.items_block?.category?.slug}` : ''}`} />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -84,13 +84,9 @@ export default function BlockMType3M({ data }: { data:  HomeDataBlock<DataHomeIt
                                                 <div className="slide-slider__item slide-slider__item-column slide-slider__item-column">
                                                     <div className="different-casino-standart">
                                                         <div className="different-casino-standart__body">
-                                                            <Link
-                                                                rel="nofollow noopener"
-                                                                to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                className="different-casino-standart__image-block"
-                                                            >
+                                                            <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} className="different-casino-standart__image-block">
                                                                 <span className="different-casino-standart__image ibg--custom">
-                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%"  />
+                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%" />
                                                                 </span>
                                                             </Link>
                                                             <div className="different-casino-standart__content">
@@ -114,12 +110,7 @@ export default function BlockMType3M({ data }: { data:  HomeDataBlock<DataHomeIt
                                                                     )}
 
                                                                     <div className="info-casino-card__stake">
-                                                                        <Link
-                                                                            rel="nofollow noopener"
-                                                                            to={`/casino/${item?.casino_info?.casino_slug}`}
-                                                                            aria-label="Put your description here."
-                                                                            className="info-casino-card__stake-link"
-                                                                        >
+                                                                        <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="info-casino-card__stake-link">
                                                                             {item?.casino_info?.casino_name}
                                                                         </Link>
                                                                         <div className="info-casino-card__stake-rating">

@@ -10,9 +10,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
-import { SeeAllRoutes } from './SeeAllButton'
+import { SeeAllRoutes } from '../../context/FilterContext'
+import { CURRENTYEAR } from '../../helper'
 
-const YEAR = new Date().getFullYear()
+
 
 export default function BlockType10Mobile({ data }: { data:  HomeDataBlock<DataHomeItemsBlock>}) {
    
@@ -51,7 +52,7 @@ export default function BlockType10Mobile({ data }: { data:  HomeDataBlock<DataH
                             <div className="top__row">
                                 <div className="top__column">
                                     <div className="top__title-block">
-                                        <div className="top__title-big">The Best Casinos of {YEAR}</div>
+                                        <div className="top__title-big">The Best Casinos of {CURRENTYEAR}</div>
                                     </div>
                                 </div>
                                 <div className="top__column">

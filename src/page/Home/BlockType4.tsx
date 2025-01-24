@@ -4,13 +4,13 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useEffect, useRef } from 'react'
-import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
+import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
-import { initialBonusFilters, useFilterContext } from '../../context/FilterContext'
+
 
 export default function BlockType4({ data }: { data:  HomeDataBlock<DataHomeItemsBlock>}) {
  
@@ -31,25 +31,7 @@ export default function BlockType4({ data }: { data:  HomeDataBlock<DataHomeItem
       const { isShowPlayButton } = useAdaptiveBehavior()
   
 
-       const { setBonusFilters } = useFilterContext()
-        const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
-            if (name === 'Unlimited Max Bet Bonuses') {
-                return {
-                    seeAllLink: '/filter-bonus',
-                    seeAllFoo: () => {
-                        setBonusFilters({ ...initialBonusFilters, unlimited_bonus_max_bet: false })
-                    },
-                }
-            }
-            return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
-        }
-    
-        const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
-            name: data?.items_block?.category?.name,
-            type_category: data.items_block.type_category,
-            slug: data?.items_block?.category?.slug || '',
-        })
-    
+      
     return (
         <section aria-label="BlockTypeNumber.BlockType4" className="main-gamble__highest-max-bet-bonuses-2 highest-max-bet-bonuses-2-gamble main-gamble__casino-big-cards">
             <div className="highest-max-bet-bonuses-2-gamble__container container">
@@ -67,7 +49,7 @@ export default function BlockType4({ data }: { data:  HomeDataBlock<DataHomeItem
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                             <SeeAllButton seeAllLink={seeAllLink}  seeAllFoo={seeAllFoo}/>
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -143,21 +125,20 @@ export default function BlockType4({ data }: { data:  HomeDataBlock<DataHomeItem
                                                             >
                                                                 <span className="casino-big-card__title-label">{item?.bonus_info?.bonus_name}</span>
                                                             </Link>
-                                                            {
-                                                                isShowPlayButton && 
-                                                            
-                                                            <a
-                                                                href={cloacingLink(item?.casino_info?.casino_name)}
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation()
-                                                                    e.preventDefault()
-                                                                    cloacingFetch(item?.casino_info?.casino_affiliate_link)
-                                                                    window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
-                                                                }}
-                                                                className="casino-big-card__btn"
-                                                            >
-                                                                Play
-                                                            </a>}
+                                                            {isShowPlayButton && (
+                                                                <a
+                                                                    href={cloacingLink(item?.casino_info?.casino_name)}
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation()
+                                                                        e.preventDefault()
+                                                                        cloacingFetch(item?.casino_info?.casino_affiliate_link)
+                                                                        window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
+                                                                    }}
+                                                                    className="casino-big-card__btn"
+                                                                >
+                                                                    Play
+                                                                </a>
+                                                            )}
                                                         </div>
                                                     </div>
                                                 </div>

@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useEffect, ReactNode, useState, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
-import { AllCategoriesHomeDataResponse } from '../types';
+import { AllCategoriesHomeDataResponse, DataHomeItemsBlockCategoryType, DataHomeItemsBlockEnumCategory, FormatedCategoryType } from '../types'
 import $api from '../http';
-import {  CUSTOMFILTERBONUSCATEGORIES, CUSTOMFILTERCASINOSCATEGORIES, LOYALTIECATEGORYIES, shuffleArray } from '../helper';
-import { CategorySwiperType } from '../components/categories/Categories';
+import {   LOYALTIECATEGORYIES, shuffleArray } from '../helper';
 
 const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
 
@@ -28,7 +27,7 @@ interface AdaptiveContextType {
     setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>
     initializeAdaptiveBehavior: () => void
     lastUpdate: string
-    category: { link: string; name: string; categoryType: CategorySwiperType; slug: string; callback?: () => void }[]
+    category: FormatedCategoryType[]
 }
 
 const getRandomDate = (startDate: Date, endDate: Date): Date => {
@@ -210,26 +209,25 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
       })
 
     
-      
+        
         const category = useMemo(() => {
             return shuffleArray([
-                ...([...(dataCategories?.bonus_categories || []), ...CUSTOMFILTERBONUSCATEGORIES]?.map((item) => ({
+                ...([...(dataCategories?.bonus_categories || [])]?.map((item) => ({
                     name: item.name,
-                    link: `/all-bonuses/${item?.slug}`,
                     slug: item.slug,
-                    categoryType: 'bonus' as CategorySwiperType,
+                    categoryType: DataHomeItemsBlockEnumCategory.bonus_category as DataHomeItemsBlockCategoryType,
                 })) || []),
-                ...([...(dataCategories?.casino_categories || []), ...CUSTOMFILTERCASINOSCATEGORIES]?.map((item) => ({
+                ...([...(dataCategories?.casino_categories || [])]?.map((item) => ({
                     name: item.name,
                     slug: item.slug,
-                    link: `/all-casinos/${item?.slug}`,
-                    categoryType: 'casino' as CategorySwiperType,
+
+                    categoryType: DataHomeItemsBlockEnumCategory.casino_category as DataHomeItemsBlockCategoryType,
                 })) || []),
                 ...LOYALTIECATEGORYIES.map((item) => ({
                     name: item.name,
                     slug: item.slug,
-                    link: `/all-loyalties/${item?.slug}`,
-                    categoryType: 'loyaltie' as CategorySwiperType,
+
+                    categoryType: DataHomeItemsBlockEnumCategory.loyaltie_category as DataHomeItemsBlockCategoryType,
                 })),
             ])
         }, [dataCategories])

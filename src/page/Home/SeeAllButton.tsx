@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
-import { DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType } from '../../types'
+import { DataHomeItemsBlockCategoryType } from '../../types'
+import {  useFilterContext } from '../../context/FilterContext'
 
-export const SeeAllRoutes = {
-    [DataHomeItemsBlockTypeCategory.bonus_category]: 'bonuses',
-    [DataHomeItemsBlockTypeCategory.casino_category]: 'casinos',
-}
 
-export const SeeAllButton = ({ seeAllLink, seeAllFoo }: FooCategorySanitazeLinkType) => {
+
+export const SeeAllButton = (prop: { type_category: DataHomeItemsBlockCategoryType; slug: string }) => {
+    const { fooCategorySanitazeLink } = useFilterContext()
+
+    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink(prop)
+
     return (
         <Link to={seeAllLink} onClick={seeAllFoo} aria-label="Put your description here." className="top__btn">
             <span>See All</span>
@@ -18,4 +20,3 @@ export const SeeAllButton = ({ seeAllLink, seeAllFoo }: FooCategorySanitazeLinkT
         </Link>
     )
 }
-

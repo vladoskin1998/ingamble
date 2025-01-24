@@ -7,7 +7,7 @@ import bg01 from '../../assets/img/bg/01.webp'
 import girl from '../../assets/img/girls/01.webp'
 
 import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
-import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
+import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 //@ts-ignore
@@ -46,7 +46,7 @@ export default function BlockType5Mobile({ data }: { data:  HomeDataBlock<DataHo
                                     {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                                 </div>
                                 <div className="top__column">
-                                    <SeeAllButton seeAllLink={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug ? `/${data?.items_block?.category?.slug}` : ''}`} />
+                                    <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                                 </div>
                             </div>
                         </div>

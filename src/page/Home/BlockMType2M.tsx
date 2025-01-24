@@ -5,7 +5,7 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useRef, useEffect } from 'react'
 
 import {  DataHomeItemsBlock, HomeDataBlock, HomeDataCard } from '../../types'
-import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
+import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
@@ -55,7 +55,7 @@ export default function BlockMType2M({
                             {data.items_block.subtitle && <div className="top__subtitle">{data?.items_block?.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                             <SeeAllButton seeAllLink={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug ? `/${data?.items_block?.category?.slug}` : ''}`} />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>
@@ -105,12 +105,7 @@ export default function BlockMType2M({
                                                             </Link>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
-                                                                    <Link
-                                                                        rel="nofollow noopener"
-                                                                        to={`/casino/${item?.[0]?.casino_info?.casino_slug}`}
-                                                                        aria-label="Put your description here."
-                                                                        className="different-casino-standart__name"
-                                                                    >
+                                                                    <Link rel="nofollow noopener" to={`/casino/${item?.[0]?.casino_info?.casino_slug}`} aria-label="Put your description here." className="different-casino-standart__name">
                                                                         {item?.[0]?.casino_info?.casino_name}
                                                                     </Link>
                                                                     <div className="different-casino-standart__info">
@@ -151,12 +146,7 @@ export default function BlockMType2M({
                                                             </Link>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
-                                                                    <Link
-                                                                        to={`/casino/${item?.[1]?.casino_info?.casino_slug}`}
-                                                                        rel="nofollow noopener"
-                                                                        aria-label="Put your description here."
-                                                                        className="different-casino-standart__name"
-                                                                    >
+                                                                    <Link to={`/casino/${item?.[1]?.casino_info?.casino_slug}`} rel="nofollow noopener" aria-label="Put your description here." className="different-casino-standart__name">
                                                                         {item?.[1]?.casino_info?.casino_name}
                                                                     </Link>
                                                                     <div className="different-casino-standart__info">
@@ -197,12 +187,7 @@ export default function BlockMType2M({
                                                             </Link>
                                                             <div className="different-casino-standart__content">
                                                                 <div className="different-casino-standart__content-row">
-                                                                    <Link
-                                                                        rel="nofollow noopener"
-                                                                        to={`/casino/${item?.[2]?.casino_info?.casino_slug}`}
-                                                                        aria-label="Put your description here."
-                                                                        className="different-casino-standart__name"
-                                                                    >
+                                                                    <Link rel="nofollow noopener" to={`/casino/${item?.[2]?.casino_info?.casino_slug}`} aria-label="Put your description here." className="different-casino-standart__name">
                                                                         {item?.[2]?.casino_info?.casino_name}
                                                                     </Link>
                                                                     <div className="different-casino-standart__info">

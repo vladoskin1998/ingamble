@@ -4,6 +4,8 @@ import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
 import { Link } from "react-router-dom"
 import { sliceString } from "../../helper"
 import { useEffect, useState } from "react"
+import { FormatedCategoryType } from "../../types"
+import { useFilterContext } from "../../context/FilterContext"
 
 
 
@@ -33,15 +35,11 @@ export default function CheckMoreWhatSuitsYouBest  ()  {
                     </div>
                 </div>
                 <div className="bottom-filter-tags__row">
-                
-                    {category
-                        ?.map((item, index) => (
-                            <div className="bottom-filter-tags__column bottom-filter-tags__link" key={index}>
-                                <Link to={item?.link || '/'} aria-label="Put your description here." className="bottom-filter-tags__btn slide-filter-tags-gamble__btn">
-                                    {isMobile ? sliceString(item?.name, 23) : item?.name}
-                                </Link>
-                            </div>
-                        ))}
+                    {category?.map((item, index) => (
+                        <div className="bottom-filter-tags__column bottom-filter-tags__link" key={index}>
+                            <ItemCategory item={item} isMobile={isMobile}/>
+                        </div>
+                    ))}
                 </div>
                 <button onClick={() => setSidebarActive(!isSidebarActive)} className="bottom-filter-tags__btn-filter">
                     <span>
@@ -53,5 +51,21 @@ export default function CheckMoreWhatSuitsYouBest  ()  {
                 </button>
             </div>
         </section>
+    )
+}
+
+
+const ItemCategory = ({ item, isMobile }: { item: FormatedCategoryType; isMobile: boolean}) => {
+    const { fooCategorySanitazeLink } = useFilterContext()
+
+    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
+        type_category: item.categoryType,
+        slug: item.slug,
+    })
+
+    return (
+        <Link to={seeAllLink} onClick={seeAllFoo} aria-label="Put your description here." className="bottom-filter-tags__btn slide-filter-tags-gamble__btn">
+            {isMobile ? sliceString(item?.name, 23) : item?.name}
+        </Link>
     )
 }

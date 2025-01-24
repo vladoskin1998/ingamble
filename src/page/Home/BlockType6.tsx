@@ -6,10 +6,10 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useEffect, useRef } from 'react'
 import { BlockTypeNumber, DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
+import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink, shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
-import { useFilterContext } from '../../context/FilterContext'
+import { initialBonusFilters, initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 
 export default function BlockType6({ data }: { data: HomeDataBlock<DataHomeItemsBlock> | undefined }) {
@@ -40,10 +40,10 @@ export default function BlockType6({ data }: { data: HomeDataBlock<DataHomeItems
         //@ts-ignore
         const idCountry = Country?.general.countries.find((item) => item?.code === (data?.items_block?.country_code as DataHomeItemsBlock))?.id
         if (titleHub === 'bonuses') {
-            setBonusFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
+            setBonusFilters( { ...initialBonusFilters, selected_countries: [idCountry as number] })
             return
         }
-        setCasinoFilters((s) => ({ ...s, selected_countries: [idCountry as number] }))
+        setCasinoFilters( { ...initialCasinoFilters, selected_countries: [idCountry as number] })
     }
 
     const { isShowPlayButton } = useAdaptiveBehavior()
@@ -71,7 +71,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock<DataHomeItems
                         </div>
                         {data.items_block.type_block === BlockTypeNumber.BlockType6 && (
                             <div className="top__column">
-                                <SeeAllButton seeAllLink={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug ? `/${data?.items_block?.category?.slug}` : ''}`} />
+                                <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                             </div>
                         )}
                         {data.items_block.type_block === BlockTypeNumber.BlockType6c && data?.items_block?.total_casinos_by_filter && data?.items_block?.total_casinos_by_filter > 5 ? (

@@ -11,7 +11,7 @@ import $api from '../../http'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import { useAdaptiveBehavior } from '../../context/AppContext'
-import { SeeAllBonus as SeeAllBonusType, SeeAllBonusResponse } from '../../types'
+import { SeeAllBonus as SeeAllBonusType, SeeAllBonusResponse, DataHomeItemsBlockEnumCategory } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, COLORS_TAGS, sanitizeNumberLike } from '../../helper'
 import { Link, useParams } from 'react-router-dom'
@@ -101,7 +101,7 @@ export default function SeeAllBonus() {
         <Wraper>
             <main className="gamble__see-all main-gamble see-all">
                 <div className="main-gamble__body">
-                    <Categories type_category={'bonus'} />
+                    <Categories type_category={DataHomeItemsBlockEnumCategory.bonus_category} />
                     <BreadCrumb
                         path={
                             slug
@@ -208,7 +208,7 @@ export default function SeeAllBonus() {
                                 }}
                             />
 
-                            {(!displayedData?.length && !isLoading) && <NoResult />}
+                            {!displayedData?.length && !isLoading && <NoResult />}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />

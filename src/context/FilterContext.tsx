@@ -2,12 +2,28 @@ import React, { createContext, useContext, useState, ReactNode } from "react"
 import {
     BonusFilterBodyType,
     CasinoFilterBodyType,
+
+    DataHomeItemsBlockCategoryType,
+
+    DataHomeItemsBlockEnumCategory,
+
+    FooCategorySanitazeLinkPropType,
+    FooCategorySanitazeLinkReturnType,
     GetFilterDataTypeResponse,
     LoyaltiesFilterBodyType,
 } from "../types"
 import { useNavigate } from "react-router-dom"
 import $api from "../http"
 import { useQuery } from "react-query"
+import { CURRENTYEAR } from "../helper"
+
+export const SeeAllRoutes = {
+    [DataHomeItemsBlockEnumCategory.bonus_category as DataHomeItemsBlockCategoryType]: 'bonuses',
+    [DataHomeItemsBlockEnumCategory.casino_category as DataHomeItemsBlockCategoryType]: 'casinos',
+    [DataHomeItemsBlockEnumCategory.loyaltie_category as DataHomeItemsBlockCategoryType]: 'loyalties',
+    [DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType]: '/',
+}
+
 
 const getDatasFilter = async () => {
     const response = await $api.get("get-datas-filter/")
@@ -98,9 +114,8 @@ export enum RouteToNextFilter {
 type FilterContextType = {
     data: GetFilterDataTypeResponse | undefined
 
-
-    searchGlobal:string,
-    handlerSeachGlobal: (v:string) => void
+    searchGlobal: string
+    handlerSeachGlobal: (v: string) => void
 
     casinoFilters: CasinoFilterBodyType
     setCasinoFilters: React.Dispatch<React.SetStateAction<CasinoFilterBodyType>>
@@ -109,14 +124,14 @@ type FilterContextType = {
     setBonusFilters: React.Dispatch<React.SetStateAction<BonusFilterBodyType>>
 
     loyaltiesFilters: LoyaltiesFilterBodyType
-    setLoyaltiesFilters: React.Dispatch<
-        React.SetStateAction<LoyaltiesFilterBodyType>
-    >
+    setLoyaltiesFilters: React.Dispatch<React.SetStateAction<LoyaltiesFilterBodyType>>
 
     currentRouteFilter: RouteToNextFilter
     handlerCurrentRouteFilter: (v: RouteToNextFilter) => void
 
     handlerClearAllFilters: () => void
+
+    fooCategorySanitazeLink: (s: FooCategorySanitazeLinkPropType) => FooCategorySanitazeLinkReturnType
 }
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined)
@@ -167,7 +182,48 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         }
     )
 
-    console.log('casinoFilters', casinoFilters)
+    const fooCategorySanitazeLink = ({ type_category, slug }: FooCategorySanitazeLinkPropType): FooCategorySanitazeLinkReturnType => {
+        if (slug === 'vpn-friendly-casinos') {
+            return {
+                seeAllLink: '/filter-casinos',
+                seeAllFoo: () => {
+                    setCasinoFilters({ ...initialCasinoFilters, vpn_usage: true })
+                },
+            }
+        }
+        if (slug === 'unlimited-max-bet-bonuses') {
+            return {
+                seeAllLink: '/filter-bonus',
+                seeAllFoo: () => {
+                    setBonusFilters({ ...initialBonusFilters, unlimited_bonus_max_bet: false })
+                },
+            }
+        }
+        if (slug === 'non-sticky-bonuses') {
+            return {
+                seeAllLink: '/filter-bonus',
+                seeAllFoo: () => {
+                    setBonusFilters({ ...initialBonusFilters, sticky: false })
+                },
+            }
+        }
+        if (slug === 'casinos-with-best-loyalties') {
+            return {
+                seeAllLink: '/all-loyalties/loyalty-rank',
+            }
+        }
+        if (slug === 'newly-opened-casinos') {
+            return {
+                seeAllLink: '/filter-casinos',
+                seeAllFoo: () => {
+                    setCasinoFilters({ ...initialCasinoFilters, established: { min: CURRENTYEAR - 2, max: CURRENTYEAR } })
+                },
+            }
+        }
+
+        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
+    }
+
     
     return (
         <FilterContext.Provider
@@ -184,6 +240,8 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
                 currentRouteFilter,
                 handlerCurrentRouteFilter,
                 handlerClearAllFilters,
+
+                fooCategorySanitazeLink,
             }}
         >
             {children}

@@ -8,6 +8,8 @@ export const euroToDolar = (s?: string) => {
     return s
 }
 
+export const CURRENTYEAR = new Date().getFullYear()
+
 export const COLORS_TAGS = [
     "tags-casino-card__item_blue",
     "tags-casino-card__item_green",
@@ -15,27 +17,7 @@ export const COLORS_TAGS = [
     "tags-casino-card__item_grass",
 ]
 
-export const CUSTOMFILTERBONUSCATEGORIES = [
-    {
-        name: 'Non-Sticky Bonuses',
-        slug: 'sticky'
-    },
-    {
-        name: 'Unlimited Max Bet Bonuses',
-        slug: 'unlimited_bonus_max_bet',
-    },
-]
 
-export const CUSTOMFILTERCASINOSCATEGORIES = [
-    {
-        name: 'VPN Friendly Casinos',
-        slug: 'vpn_usage'
-    },
-    {
-        name: 'Newly Opened Casinos',
-        slug: 'established'
-    },
-]
 
 export const LOYALTIECATEGORYIES = [
     {

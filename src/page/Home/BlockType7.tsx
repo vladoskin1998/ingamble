@@ -5,14 +5,11 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import shieldIcon from '../../assets/img/icons/shield.svg'
-import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
+import {  DataHomeItemsBlock,  HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
+import { SeeAllButton } from './SeeAllButton'
 import { shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
-import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
-
-const Year = new Date().getFullYear()
 
 export default function BlockType7({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
 
@@ -33,24 +30,6 @@ export default function BlockType7({ data }: { data:  HomeDataBlock<DataHomeItem
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
 
-    const { setCasinoFilters } = useFilterContext()
-    const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
-        if (name === 'Newly Opened Casinos') {
-            return {
-                seeAllLink: '/filter-casinos',
-                seeAllFoo: () => {
-                    setCasinoFilters({ ...initialCasinoFilters, established: { min: Year - 2, max: Year } })
-                },
-            }
-        }
-        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
-    }
-
-    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
-        name: data?.items_block?.category?.name,
-        type_category: data.items_block.type_category,
-        slug: data?.items_block?.category?.slug || '',
-    })
 
     return (
         <section aria-label="BlockTypeNumber.BlockType7" className="main-gamble__low-risk-bonuses low-risk-bonuses-gamble main-gamble__different-casino-bg">
@@ -69,7 +48,7 @@ export default function BlockType7({ data }: { data:  HomeDataBlock<DataHomeItem
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                            <SeeAllButton seeAllLink={seeAllLink} seeAllFoo={seeAllFoo} />
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>

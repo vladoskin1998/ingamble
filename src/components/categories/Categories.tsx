@@ -1,22 +1,21 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 
-export type CategorySwiperType = 'bonus' | 'loyaltie' | 'casino' | 'all'
+
 
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import {  DataHomeItemsBlockCategoryType, DataHomeItemsBlockEnumCategory, FormatedCategoryType } from '../../types'
+import { useFilterContext } from '../../context/FilterContext'
 
 
 
-export const Categories = ({ type_category = 'all' }: { type_category?: CategorySwiperType }) => {
+export const Categories = ({ type_category = DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType }: { type_category?: DataHomeItemsBlockCategoryType }) => {
+    
+
     const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
 
-    const listCategory = category.filter((item) => {
-        if (type_category === 'all') {
-            return item
-        }
-        return item.categoryType === type_category
-    })
+    const listCategory = type_category === (DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType) ? category : category.filter((item) => item.categoryType === type_category)
 
     if (!listCategory) {
         return <></>
@@ -31,6 +30,8 @@ export const Categories = ({ type_category = 'all' }: { type_category?: Category
         handleResize()
         return () => window.removeEventListener('resize', handleResize)
     }, [])
+
+
 
     return (
         <div className=" filter-tags-gamble main-gamble__filter-tags categorie--tags">
@@ -95,13 +96,27 @@ export const Categories = ({ type_category = 'all' }: { type_category?: Category
                     )}
                     {listCategory.map((item, index) => (
                         <SwiperSlide key={index + 10} style={{ width: 'auto' }}>
-                            <Link rel="nofollow noopener" to={item?.link || '/'} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
-                                {item?.name}
-                            </Link>
+                            <ItemCategory item={item} />
                         </SwiperSlide>
                     ))}
                 </Swiper>
             </div>
         </div>
+    )
+}
+
+
+const ItemCategory = ({ item }: { item: FormatedCategoryType }) => {
+    const { fooCategorySanitazeLink } = useFilterContext()
+
+    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
+        type_category: item.categoryType,
+        slug: item.slug,
+    })
+
+    return (
+        <Link rel="nofollow noopener" to={seeAllLink} onClick={seeAllFoo} aria-label="Put your description here." className="slide-filter-tags-gamble__btn">
+            {item?.name}
+        </Link>
     )
 }

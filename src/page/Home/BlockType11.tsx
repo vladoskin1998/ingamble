@@ -5,7 +5,6 @@ import '../../assets/css/style-type-10-11.css'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import { cloacingFetch, cloacingLink } from '../../helper'
-
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { useFilterContext } from '../../context/FilterContext'
 export default function BlockType11({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {

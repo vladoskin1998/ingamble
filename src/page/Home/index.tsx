@@ -1,11 +1,11 @@
 import { lazy, useEffect, useState } from 'react'
 import { Wraper } from '../Wraper'
 // import { useAdaptiveBehavior } from '../../context/AppContext'
-import { Categories, CategorySwiperType } from '../../components/categories/Categories'
+import { Categories } from '../../components/categories/Categories'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import $api from '../../http'
-import { BlockTypeNumber, HomeDataBlock, HomeDataBlockMobile } from '../../types'
+import { BlockTypeNumber, DataHomeItemsBlockCategoryType, DataHomeItemsBlockEnumCategory, HomeDataBlock, HomeDataBlockMobile } from '../../types'
 import BlockType1 from './BlockType1'
 import BlockType9 from './BlockType9'
 import BlockMType2M from './BlockMType2M'
@@ -33,14 +33,14 @@ const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 
-const categoriesTypeBySrc = (src: string): { type_category: CategorySwiperType; blocks_sequence_number: number } => {
+const categoriesTypeBySrc = (src: string): { type_category: DataHomeItemsBlockCategoryType; blocks_sequence_number: number } => {
     switch (src) {
         case 'get-data-hub-page-casino/':
-            return { type_category: 'casino', blocks_sequence_number: 3.5 }
+            return { type_category: DataHomeItemsBlockEnumCategory.casino_category as DataHomeItemsBlockCategoryType, blocks_sequence_number: 3.5 }
         case 'get-data-hub-page-bonus/':
-            return { type_category: 'bonus', blocks_sequence_number: 2.5 }
+            return { type_category: DataHomeItemsBlockEnumCategory.bonus_category as DataHomeItemsBlockCategoryType, blocks_sequence_number: 2.5 }
         default:
-            return { type_category: 'all', blocks_sequence_number: 1.5 }
+            return { type_category: DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType, blocks_sequence_number: 1.5 }
     }
 }
 
@@ -130,8 +130,6 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
     }
 
     const blocksToRender = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
-
-    console.log(blocksToRender)
 
     if (isLoading) return <LogoLoader />
 

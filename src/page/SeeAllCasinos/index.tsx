@@ -10,7 +10,7 @@ import { useAdaptiveBehavior } from '../../context/AppContext'
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { LogoLoader } from '../../components/loader/LogoLoader'
-import { PAYOUTSPEED, SeeAllCasinosType, SeeAllCasinosCategoryResponse } from '../../types'
+import { PAYOUTSPEED, SeeAllCasinosType, SeeAllCasinosCategoryResponse, DataHomeItemsBlockEnumCategory } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, NumberAssociaty, sanitizeNumberLike } from '../../helper'
 import { NoResult } from '../../components/no-result'
@@ -116,7 +116,7 @@ export default function SeeAllCasinos() {
         <Wraper>
             <main className="gamble__casinos-filtered main-gamble casinos-filtered">
                 <div className="main-gamble__body">
-                    <Categories type_category={'casino'} />
+                    <Categories type_category={DataHomeItemsBlockEnumCategory.casino_category} />
                     <BreadCrumb
                         path={
                             slug

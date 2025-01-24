@@ -1,3 +1,5 @@
+
+
 interface MinimumDeposit {
     value: number;
     unlimited: boolean;
@@ -39,7 +41,7 @@ export type BonusMinDepType = {
         symbol: string;
         name: string;
     };
-} 
+}
 
 export interface GetDataBonusResponse {
     id: number,
@@ -238,14 +240,19 @@ interface EssentialCard {
     loyalty_slug?: string;
 }
 
-export enum DataHomeItemsBlockTypeCategory {
+export enum DataHomeItemsBlockEnumCategory {
     bonus_category = "bonus_category",
-    casino_category = "casino_category"
+    casino_category = "casino_category",
+    loyaltie_category = "loyaltie_category",
+    all_category = "all"
 }
 
+export type DataHomeItemsBlockCategoryType = keyof typeof DataHomeItemsBlockEnumCategory;
+
+
 export interface DataHomeItemsBlock {
-    type_category: DataHomeItemsBlockTypeCategory,
-    category: { id: number, name: string, slug?: string }
+    type_category: DataHomeItemsBlockCategoryType,
+    category: { id: number, name: string, slug: string }
     block_title: string;
     subtitle: string | null;
     title_image: string | null;
@@ -254,7 +261,7 @@ export interface DataHomeItemsBlock {
     country_name?: string,
     type_block: BlockTypeNumber.BlockType1 | BlockTypeNumber.BlockType2 | BlockTypeNumber.BlockType6 | BlockTypeNumber.BlockType6c | BlockTypeNumber.BlockType4 | BlockTypeNumber.BlockType7 | BlockTypeNumber.BlockType5 | BlockTypeNumber.BlockType3 | BlockTypeNumber.BlockType8 | BlockTypeNumber.BlockType3M | BlockTypeNumber.BlockType2M | BlockTypeNumber.BlockType10 | BlockTypeNumber.BlockType11;
     data_cards: (HomeDataCard)[];
- 
+
 }
 
 
@@ -269,7 +276,7 @@ export interface EssentialItemsBlock {
 
 export interface HomeDataBlock<T = DataHomeItemsBlock | EssentialItemsBlock> {
     blocks_sequence_number: number;
-    items_block: T ;
+    items_block: T;
 }
 
 export interface HomeDataBlockMobile {
@@ -876,10 +883,19 @@ export interface LoyaltyInRankRangeResponse {
 
 export type LikeFieldType = 'bonus_like' | 'casino_like' | 'loyalty_like'
 
-export interface FooCategorySanitazeLinkType {
+export interface FooCategorySanitazeLinkPropType {
+    type_category: DataHomeItemsBlockCategoryType
+    slug: string
+}
+
+
+export interface FooCategorySanitazeLinkReturnType {
     seeAllLink: string
     seeAllFoo?: () => void
 }
+
+export type FormatedCategoryType = {  name: string; categoryType: DataHomeItemsBlockCategoryType; slug: string; callback?: () => void }
+
 
 export interface NAMETITLECATEGORYSLUGType {
     [key: string]: {

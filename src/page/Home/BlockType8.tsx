@@ -1,32 +1,14 @@
 
 import MainSlider from '../../components/swiper/MainSlider'
-import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
+
 import { COLORS_TAGS, shuffleArray } from '../../helper'
-import {  DataHomeItemsBlock, DataHomeItemsBlockTypeCategory, FooCategorySanitazeLinkType, HomeDataBlock } from '../../types'
-import { SeeAllButton, SeeAllRoutes } from './SeeAllButton'
+import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
+import { SeeAllButton,  } from './SeeAllButton'
 
 export default function BlockType8({ data }: { data: HomeDataBlock<DataHomeItemsBlock>  }) {
    
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
-    const { setCasinoFilters } = useFilterContext()
-    const fooCategorySanitazeLink = ({ type_category, slug, name }: { type_category: DataHomeItemsBlockTypeCategory; slug: string; name: string }): FooCategorySanitazeLinkType => {
-        if (name === 'VPN Friendly Casinos') {
-            return {
-                seeAllLink: '/filter-casinos',
-                seeAllFoo: () => {
-                    setCasinoFilters({ ...initialCasinoFilters, vpn_usage: true })
-                },
-            }
-        }
-        return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
-    }
-
-    const { seeAllLink, seeAllFoo } = fooCategorySanitazeLink({
-        name: data?.items_block?.category?.name,
-        type_category: data.items_block.type_category,
-        slug: data?.items_block?.category?.slug || '',
-    })
 
     return (
         <section aria-label="BlockTypeNumber.BlockType8" className="main-gamble__low-wager-bonuses low-wager-bonuses-gamble ">
@@ -45,7 +27,7 @@ export default function BlockType8({ data }: { data: HomeDataBlock<DataHomeItems
                             {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                         </div>
                         <div className="top__column">
-                              <SeeAllButton seeAllLink={seeAllLink}  seeAllFoo={seeAllFoo}/>
+                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
                         </div>
                     </div>
                 </div>

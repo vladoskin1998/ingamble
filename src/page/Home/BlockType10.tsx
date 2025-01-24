@@ -6,9 +6,9 @@ import bg02 from '../../assets/img/bg/02.jpg'
 import {DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
-import { SeeAllRoutes } from './SeeAllButton'
+import { SeeAllRoutes } from '../../context/FilterContext'
+import { CURRENTYEAR } from '../../helper'
 
-const YEAR = new Date().getFullYear()
 
 export default function BlockType10({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
    
@@ -104,7 +104,7 @@ export default function BlockType10({ data }: { data:  HomeDataBlock<DataHomeIte
                         <div className="best-casinos-2024-2-gamble__content">
                             <div className="best-casinos-2024-2-gamble__text">
                                 <span>The Best</span>
-                                {` Casinos of ${YEAR}`}
+                                {` Casinos of ${CURRENTYEAR}`}
                             </div>
                             <Link to={`/all-${SeeAllRoutes[data?.items_block?.type_category]}${data?.items_block?.category?.slug || '' ? `/${data?.items_block?.category?.slug}` : ''}`} className="best-casinos-2024-2-gamble__btn">
                                 See All
