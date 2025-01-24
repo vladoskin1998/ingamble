@@ -16,10 +16,14 @@ export const Categories = ({ type_category = DataHomeItemsBlockEnumCategory.all_
 
     const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
 
-    const listCategory = type_category === (DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType) ? category : category.filter((item) => item.categoryType === type_category)
-
+    let listCategory = type_category === (DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType) ? category : category.filter((item) => item.categoryType === type_category)
+    
     if (!listCategory) {
         return <></>
+    }
+
+    if(location.pathname === '/'){
+        listCategory = listCategory.filter((item) => item.categoryType !== DataHomeItemsBlockEnumCategory.loyaltie_category)
     }
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
