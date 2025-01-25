@@ -1,4 +1,4 @@
-
+import { useInView } from 'react-intersection-observer'
 import MainSlider from '../../components/swiper/MainSlider'
 
 import { shuffleArray } from '../../helper'
@@ -8,11 +8,15 @@ import { SeeAllButton } from './SeeAllButton'
 export default function BlockType1({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
     const dataCard = shuffleArray(data?.items_block.data_cards).slice(0, 8)
 
-   
+      const { ref, inView } = useInView({
+          threshold: 0.1,
+          triggerOnce: true,
+      })
+
      
           return (
-              <section  aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
-             
+              <section ref={ref} aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
+                  {inView && (
                       <div className="todays-hot-gamble__container container" >
                           <div className="todays-hot-gamble__top top">
                               <div className="top__row">
@@ -46,7 +50,7 @@ export default function BlockType1({ data }: { data: HomeDataBlock<DataHomeItems
                               }))}
                           />
                       </div>
-                  
+                  )}
               </section>
           )
 }

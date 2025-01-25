@@ -8,6 +8,7 @@ import { cloacingFetch, cloacingLink } from '../../helper'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import { useInView } from 'react-intersection-observer'
+
 export default function BlockType11({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
     const arr1 = data.items_block.data_cards.slice(0, 6)
     const arr2 = data.items_block.data_cards.slice(6, 12)

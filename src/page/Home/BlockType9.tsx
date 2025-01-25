@@ -7,14 +7,20 @@ import { EssentialItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 import { Link } from 'react-router-dom'
-
+import { useInView } from 'react-intersection-observer'
 
 const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock<EssentialItemsBlock> }) {
 
+    
+     const { ref, inView } = useInView({
+         threshold: 0.1,
+         triggerOnce: true,
+     })
+
 
     return (
-        <section  aria-label="BlockTypeNumber.BlockType9" className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
-          <div className="essential-programs-gamble__container container">
+        <section ref={ref}aria-label="BlockTypeNumber.BlockType9" className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
+        {   inView && <div className="essential-programs-gamble__container container">
                 <div className="essential-programs-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -153,7 +159,7 @@ const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock<Esse
                         </Swiper>
                     </div>
                 </div>
-            </div>
+            </div>}
         </section>
     )
 })

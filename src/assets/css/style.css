@@ -3378,7 +3378,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   border-radius: var(--SystemCorners-Medium, 12px);
-  background: url("../img/bg/10.png") center repeat;
+  background: url("../img/bg/10.webp") center repeat;
   background-size: 70%;
   /* background-size: 40%; */
   min-height: 290px;
@@ -6899,7 +6899,7 @@ h3 {
 .deposits__block {
   border-radius: var(--SystemCorners-Medium, 12px);
   overflow: hidden;
-  background: url("../img/bg/10.png") center repeat;
+  background: url("../img/bg/10.webp") center repeat;
   background-size: 48%;
   padding: 20px 20px 8px 20px;
 }
@@ -12130,7 +12130,7 @@ h3 {
  /* фон дурацкий */
 .content-item-loyaltie-programs {
   border-radius: var(--SystemCorners-Medium, 12px);
-  background: url("../img/bg/10.png") center ;
+  background: url("../img/bg/10.webp") center ;
 
   background-size: 70%;
   padding: 20px;
@@ -14908,7 +14908,7 @@ h3 {
 @media (max-width: 992.98px) {
   .main-gamble.resize .main-loyaltie-programs .item-loyaltie-programs__row {
     flex-direction: column;
-    background: url("../img/bg/10.jpg") center repeat;
+    background: url("../img/bg/101.webp") center repeat;
     border-radius: var(--SystemCorners-Medium, 12px);
   }
   .main-gamble.resize .main-loyaltie-programs .item-loyaltie-programs__main {

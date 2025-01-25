@@ -1,5 +1,5 @@
 import star from '../../assets/img/icons/star.svg'
-import girl2 from '../../assets/img/girls/02.png'
+import girl2 from '../../assets/img/girls/02.webp'
 
 import bg01 from '../../assets/img/bg/01.webp'
 
