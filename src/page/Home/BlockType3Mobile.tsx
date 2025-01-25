@@ -10,6 +10,7 @@ import {  SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { COLORS_TAGS } from '../../helper'
 import { Link } from 'react-router-dom'
+import { useInView } from 'react-intersection-observer'
 
 
 export default function BlockType3Mobile({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
@@ -30,9 +31,16 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock<DataHom
     }, [])
 
     
+      const { ref, inView } = useInView({
+          threshold: 0.1,
+          triggerOnce: true,
+      })
+
+    
     return (
-        <section aria-label="BlockTypeNumber.BlockType3" className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
-            <div className="vpn-friendly-casinos-2-gamble__container container">
+        <section ref={ref} aria-label="BlockTypeNumber.BlockType3" className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+            {
+              inView &&  <div className="vpn-friendly-casinos-2-gamble__container container">
                 <div className="vpn-friendly-casinos-2-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -186,7 +194,7 @@ export default function BlockType3Mobile({ data }: { data: HomeDataBlock<DataHom
                         <div ref={paginationRef} className="bottom-slider__pagination vpn-friendly-casinos-2-gamble__pagination swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </section>
     )
 }

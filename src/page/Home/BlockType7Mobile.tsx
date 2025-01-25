@@ -8,13 +8,17 @@ import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import {} from '../../context/FilterContext'
+import { useInView } from 'react-intersection-observer'
 
 export default function BlockType7Mobile({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
 
-
+ const { ref, inView } = useInView({
+     threshold: 0.1,
+     triggerOnce: true,
+ })
     return (
-        <section aria-label=" BlockTypeNumber.BlockType7" className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
-            <div className="crypto-casinos-gamble__container container">
+        <section ref={ref} aria-label=" BlockTypeNumber.BlockType7" className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+            {inView && <div className="crypto-casinos-gamble__container container">
                 <div className="crypto-casinos-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -82,7 +86,7 @@ export default function BlockType7Mobile({ data }: { data: HomeDataBlock<DataHom
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </section>
     )
 }

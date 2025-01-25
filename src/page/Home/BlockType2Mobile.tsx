@@ -10,6 +10,7 @@ import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
+import { useInView } from 'react-intersection-observer'
 
 export default function BlockType2Mobile({ data }: { data:  HomeDataBlock<DataHomeItemsBlock>}) {
    
@@ -28,10 +29,17 @@ export default function BlockType2Mobile({ data }: { data:  HomeDataBlock<DataHo
         }
     }, [])
     const { isShowPlayButton } = useAdaptiveBehavior()
+
+       const { ref, inView } = useInView({
+           threshold: 0.1,
+           triggerOnce: true,
+       })
+
+
     
     return (
-        <section aria-label="BlockTypeNumber.BlockType2" className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
-            <div className="new-bonuses-gamble__container container">
+        <section ref={ref}  aria-label="BlockTypeNumber.BlockType2" className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+           { inView && <div className="new-bonuses-gamble__container container">
                 <div className="new-bonuses-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -138,7 +146,7 @@ export default function BlockType2Mobile({ data }: { data:  HomeDataBlock<DataHo
                         <div ref={paginationRef} className="bottom-slider__pagination new-bonuses-gamble__pagination swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </section>
     )
 }

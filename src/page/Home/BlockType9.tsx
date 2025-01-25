@@ -8,10 +8,13 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 import { Link } from 'react-router-dom'
 
+
 const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock<EssentialItemsBlock> }) {
+
+
     return (
-        <section aria-label="BlockTypeNumber.BlockType9" className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
-            <div className="essential-programs-gamble__container container">
+        <section  aria-label="BlockTypeNumber.BlockType9" className="simple-bonus__essential-programs essential-programs-gamble essential-programs-gamble_images">
+          <div className="essential-programs-gamble__container container">
                 <div className="essential-programs-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">

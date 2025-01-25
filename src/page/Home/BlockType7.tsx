@@ -10,6 +10,7 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
 import { shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
+import { useInView } from 'react-intersection-observer'
 
 export default function BlockType7({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
 
@@ -30,10 +31,14 @@ export default function BlockType7({ data }: { data:  HomeDataBlock<DataHomeItem
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
 
+ const { ref, inView } = useInView({
+     threshold: 0.1,
+     triggerOnce: true,
+ })
 
     return (
-        <section aria-label="BlockTypeNumber.BlockType7" className="main-gamble__low-risk-bonuses low-risk-bonuses-gamble main-gamble__different-casino-bg">
-            <div className="low-risk-bonuses-gamble__container container">
+        <section ref={ref} aria-label="BlockTypeNumber.BlockType7" className="main-gamble__low-risk-bonuses low-risk-bonuses-gamble main-gamble__different-casino-bg">
+         {inView &&   <div className="low-risk-bonuses-gamble__container container">
                 <div className="low-risk-bonuses-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -115,7 +120,7 @@ export default function BlockType7({ data }: { data:  HomeDataBlock<DataHomeItem
                         <div ref={paginationRef} className="bottom-slider__pagination low-risk-bonuses-gamble__pagination swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </section>
     )
 }

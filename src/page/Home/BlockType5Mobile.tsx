@@ -10,15 +10,21 @@ import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
+import { useInView } from 'react-intersection-observer'
 //@ts-ignore
 export default function BlockType5Mobile({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
    
     const sliderRef = useRef<SwiperRef | null>(null)
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
 
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+    })
+
     return (
-        <div aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-casinos-2024 best-casinos-2024-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
-            <div className="best-casinos-2024-gamble__container container">
+        <div ref={ref} aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-casinos-2024 best-casinos-2024-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
+           {inView&& <div className="best-casinos-2024-gamble__container container">
                 <div className="best-casinos-2024-gamble__body">
                     <div className="best-casinos-2024-gamble__bg ibg--custom">
                         <img src={bg01} alt="bg" />
@@ -100,7 +106,7 @@ export default function BlockType5Mobile({ data }: { data:  HomeDataBlock<DataHo
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

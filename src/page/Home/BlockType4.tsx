@@ -10,6 +10,7 @@ import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
+import { useInView } from 'react-intersection-observer'
 
 
 export default function BlockType4({ data }: { data:  HomeDataBlock<DataHomeItemsBlock>}) {
@@ -30,11 +31,15 @@ export default function BlockType4({ data }: { data:  HomeDataBlock<DataHomeItem
     }, [])
       const { isShowPlayButton } = useAdaptiveBehavior()
   
+      const { ref, inView } = useInView({
+          threshold: 0.1,
+          triggerOnce: true,
+      })
 
       
     return (
-        <section aria-label="BlockTypeNumber.BlockType4" className="main-gamble__highest-max-bet-bonuses-2 highest-max-bet-bonuses-2-gamble main-gamble__casino-big-cards">
-            <div className="highest-max-bet-bonuses-2-gamble__container container">
+        <section ref={ref}aria-label="BlockTypeNumber.BlockType4" className="main-gamble__highest-max-bet-bonuses-2 highest-max-bet-bonuses-2-gamble main-gamble__casino-big-cards">
+          { inView && <div className="highest-max-bet-bonuses-2-gamble__container container">
                 <div className="highest-max-bet-bonuses-2-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -152,7 +157,7 @@ export default function BlockType4({ data }: { data:  HomeDataBlock<DataHomeItem
                         <div ref={paginationRef} className="bottom-slider__pagination highest-max-bet-bonuses-2-gamble__pagination swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </section>
     )
 }

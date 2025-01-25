@@ -11,6 +11,7 @@ import { cloacingFetch, cloacingLink, COLORS_TAGS } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { SeeAllButton } from './SeeAllButton'
+import { useInView } from 'react-intersection-observer'
 
 
 export default function BlockType3({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
@@ -53,10 +54,16 @@ export default function BlockType3({ data }: { data: HomeDataBlock<DataHomeItems
     const { isShowPlayButton } = useAdaptiveBehavior()
 
 
+      const { ref, inView } = useInView({
+          threshold: 0.1,
+          triggerOnce: true,
+      })
+
+
 
     return (
-        <section aria-label="BlockTypeNumber.BlockType3" className="main-gamble__top-gainers-casinos top-gainers-casinos-gamble main-gamble__baner-block">
-            <div className="top-gainers-casinos-gamble__container container">
+        <section ref={ref} aria-label="BlockTypeNumber.BlockType3" className="main-gamble__top-gainers-casinos top-gainers-casinos-gamble main-gamble__baner-block">
+           { inView && <div className="top-gainers-casinos-gamble__container container">
                 <div className="top-gainers-casinos-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -313,7 +320,7 @@ export default function BlockType3({ data }: { data: HomeDataBlock<DataHomeItems
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </section>
     )
 }

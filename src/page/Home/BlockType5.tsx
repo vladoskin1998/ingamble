@@ -14,6 +14,7 @@ import { SeeAllButton } from './SeeAllButton'
 import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
+import { useInView } from 'react-intersection-observer'
 
 export default function BlockType5({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
 
@@ -57,9 +58,16 @@ export default function BlockType5({ data }: { data:  HomeDataBlock<DataHomeItem
     }
     const { isShowPlayButton } = useAdaptiveBehavior()
 
+    
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+    })
+
+
     return (
-        <section aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble  main-gamble__different-casino-bg main-gamble__baner-block">
-            <div className="best-live-dealer-casinos-gamble__container container">
+        <section ref={ref}aria-label="BlockTypeNumber.BlockType5" className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble  main-gamble__different-casino-bg main-gamble__baner-block">
+          {inView &&  <div className="best-live-dealer-casinos-gamble__container container">
                 <div className="best-live-dealer-casinos-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -216,7 +224,7 @@ export default function BlockType5({ data }: { data:  HomeDataBlock<DataHomeItem
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </section>
     )
 }

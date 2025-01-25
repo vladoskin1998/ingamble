@@ -11,6 +11,7 @@ import { cloacingFetch, cloacingLink, shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
 import { initialBonusFilters, initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import { useAdaptiveBehavior } from '../../context/AppContext'
+import { useInView } from 'react-intersection-observer'
 
 export default function BlockType6({ data }: { data: HomeDataBlock<DataHomeItemsBlock> | undefined }) {
    
@@ -49,9 +50,15 @@ export default function BlockType6({ data }: { data: HomeDataBlock<DataHomeItems
     const { isShowPlayButton } = useAdaptiveBehavior()
 
     const emojiTitle = Country?.general?.countries?.find((item) => item?.code === data?.items_block?.country_code)?.emoji_flag
+
+
+        const { ref, inView } = useInView({
+            threshold: 0.1,
+            triggerOnce: true,
+        })
     return (
-        <section aria-label="BlockTypeNumber.BlockType6" className="main-gamble__new-bonuses new-bonuses-gamble">
-            <div className="new-bonuses-gamble__container container">
+        <section ref={ref} aria-label="BlockTypeNumber.BlockType6" className="main-gamble__new-bonuses new-bonuses-gamble">
+            { inView && <div className="new-bonuses-gamble__container container">
                 <div className="new-bonuses-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -182,7 +189,7 @@ export default function BlockType6({ data }: { data: HomeDataBlock<DataHomeItems
                         <div ref={paginationRef} className="bottom-slider__pagination new-bonuses-gamble__pagination swiper-pagination"></div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </section>
     )
 }
