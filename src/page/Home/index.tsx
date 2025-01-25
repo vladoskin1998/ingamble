@@ -121,7 +121,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         return () => window.removeEventListener('resize', handleResize)
     }, [])
   
-        if (isLoading) return <LogoLoader />
+    
     const { blocks_sequence_number } = categoriesTypeBySrc(src)
     if (blockByCountry) {
         blockByCountry = {
@@ -136,7 +136,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
 
-
+    if (isLoading) return <LogoLoader />
 
     return (
         <>
