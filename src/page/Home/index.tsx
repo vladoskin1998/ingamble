@@ -25,6 +25,7 @@ import BlockType5Mobile from './BlockType5Mobile'
 import BlockType10 from './BlockType10'
 import BlockType11 from './BlockType11'
 import BlockType10Mobile from './BlockType10Mobile'
+import { useInView } from 'react-intersection-observer'
 
 
 const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
@@ -138,20 +139,30 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         const blocks = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
+     const { ref, inView } = useInView({
+         threshold: 0.1,
+         triggerOnce: true,
+     })
+
 
     if (isLoading) return <LogoLoader />
 
+     
     return (
         <>
             <Wraper>
-                <main className="gamble__main main-gamble">
+                <main className="gamble__main main-gamble" ref={ref}>
                     <div className="main-gamble__body">
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
-                        {blocksToRender.map((block,index) => renderBlock(block, isMobile, index))}
-                        <MoreBonusesForYourChoise />
-                        <CheckMoreWhatSuitsYouBest />
-                        <SubscribeForm />
-                        <BottomInfo />
+                        {blocksToRender.map((block, index) => renderBlock(block, isMobile, index))}
+                        {inView && (
+                            <>
+                                <MoreBonusesForYourChoise />
+                                <CheckMoreWhatSuitsYouBest />
+                                <SubscribeForm />
+                                <BottomInfo />
+                            </>
+                        )}
                     </div>
                 </main>
             </Wraper>

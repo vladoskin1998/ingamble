@@ -3,14 +3,21 @@ import { Header } from '../../components/header'
 import Navbar from '../../components/navbar'
 import Icons from './Icons'
 import Footer from '../../components/footer'
+import { useInView } from 'react-intersection-observer'
 
 
 export const Wraper = ({ children }: { children: ReactNode }) => {
     
+            const { ref, inView } = useInView({
+                threshold: 0.1,
+                triggerOnce: true,
+            })
+
+
     return (
         <>
             <Icons />
-            <div className="wrapper">
+            <div className="wrapper" ref={ref}>
                 <div className="lh-gauge__wrapper">
                     <div className="lh-gauge__percentage"></div>
                     <svg className="lh-gauge-arc" viewBox="0 0 100 100">
@@ -18,11 +25,11 @@ export const Wraper = ({ children }: { children: ReactNode }) => {
                     </svg>
                 </div>
                 <div className="gamble">
-                    <Navbar  />
+                    <Navbar />
                     <div className="gamble__body">
-                        <Header  />
+                        <Header />
                         <>{children}</>
-                        <Footer />
+                        {inView && <Footer />}
                     </div>
                 </div>
             </div>
