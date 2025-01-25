@@ -20,7 +20,7 @@ export const LazyCardImg = memo(({
     //@ts-ignore
     const [loading, setLoading] = useState(true)
     const { ref, inView } = useInView({
-        threshold: 0.5,
+        threshold: 0,
         triggerOnce: true
     })
     useEffect(() => {
@@ -39,9 +39,7 @@ export const LazyCardImg = memo(({
                 src={img}
                 alt={img}
                 loading={imgLoading}
-                // onLoad={() => {
-                //     setLoading(false)
-                // }}
+              
                 style={{
                     height,
                     width: loading ? '0px' : width,
