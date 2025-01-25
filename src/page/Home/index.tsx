@@ -111,7 +111,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         cacheTime: 1000 * 60 * 10,
     })
 
-     if (isLoading) return <LogoLoader />
+     
  
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
 
@@ -122,6 +122,8 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         handleResize()
         return () => window.removeEventListener('resize', handleResize)
     }, [])
+
+    if (isLoading) return <LogoLoader />
 
     const { blocks_sequence_number } = categoriesTypeBySrc(src)
     if (blockByCountry) {
