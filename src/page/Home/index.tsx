@@ -63,7 +63,7 @@ const getBlockByCountry = async (): Promise<HomeDataBlock> => {
 }
 
 const renderBlock = (block: any, isMobile: boolean, index: number) => {
-    const initialInView = index < 3 ? true : false
+    const initialInView = index < 2 ? true : false
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} initialInView={initialInView} />
@@ -108,7 +108,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         cacheTime: 1000 * 60 * 10,
     })
 
-    let { data: blockByCountry } = useQuery<HomeDataBlock>(['get-block-by-country/'], getBlockByCountry, {
+    let { data: blockByCountry, isLoading:isLoadingBlock } = useQuery<HomeDataBlock>(['get-block-by-country/'], getBlockByCountry, {
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 10,
     })
@@ -136,7 +136,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
     const { ref, inView } = useInView({
-        threshold: 0.5,
+        threshold: 0,
         triggerOnce: true,
     })
     useEffect(() => {
@@ -144,23 +144,28 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
     }, [src])
 
 
-    if (isLoading) return <LogoLoader />
+    if (isLoading && isLoadingBlock) return <LogoLoader />
 
     return (
         <>
             <Wraper>
                 <main className="gamble__main main-gamble">
-                    <div className="main-gamble__body" ref={ref}>
+                    <div className="main-gamble__body">
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
                         {blocksToRender.map((block, index) => renderBlock(block, isMobile, index))}
-                        {inView && (
-                            <>
-                                <MoreBonusesForYourChoise />
+                      
+                            <div ref={ref}>
+                           {inView && 
+                            <>  <MoreBonusesForYourChoise />
                                 <CheckMoreWhatSuitsYouBest />
                                 <SubscribeForm />
                                 <BottomInfo />
                             </>
-                        )}
+
+                                }
+                              
+                            </div>
+                        
                     </div>
                 </main>
             </Wraper>
