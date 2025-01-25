@@ -8,13 +8,21 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import { SeeAllRoutes } from '../../context/FilterContext'
 import { CURRENTYEAR } from '../../helper'
+import { useInView } from 'react-intersection-observer'
 
 
 export default function BlockType10({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
+
+    
+          const { ref, inView } = useInView({
+              threshold: 0.1,
+              triggerOnce: true,
+          })
+
    
     return (
-        <div className="main-gamble__best-casinos-2024-2 best-casinos-2024-2-gamble">
-            <div className="best-casinos-2024-2-gamble__container container">
+        <div ref={ref} className="main-gamble__best-casinos-2024-2 best-casinos-2024-2-gamble">
+         { inView &&  <div className="best-casinos-2024-2-gamble__container container">
                 <div className="low-wager-bonuses-gamble__top top">
                     <div className="top__row">
                         <div className="top__column">
@@ -170,7 +178,7 @@ export default function BlockType10({ data }: { data:  HomeDataBlock<DataHomeIte
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

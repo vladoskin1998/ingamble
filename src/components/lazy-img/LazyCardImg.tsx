@@ -21,7 +21,8 @@ export const LazyCardImg = memo(({
     const [loading, setLoading] = useState(true)
     const { ref, inView } = useInView({
         threshold: 0,
-        triggerOnce: true
+        triggerOnce: true,
+        initialInView: true,
     })
     useEffect(() => {
         if (img) {

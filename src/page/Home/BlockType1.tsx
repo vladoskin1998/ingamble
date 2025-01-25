@@ -12,7 +12,7 @@ export default function BlockType1({ data }: { data: HomeDataBlock<DataHomeItems
      
           return (
               <section  aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
-                 (
+             
                       <div className="todays-hot-gamble__container container" >
                           <div className="todays-hot-gamble__top top">
                               <div className="top__row">
@@ -46,7 +46,7 @@ export default function BlockType1({ data }: { data: HomeDataBlock<DataHomeItems
                               }))}
                           />
                       </div>
-                  )
+                  
               </section>
           )
 }
