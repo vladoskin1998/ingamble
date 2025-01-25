@@ -101,7 +101,7 @@ export default function BlockType2({ data, initialInView = false }: { data: Home
                                                                         to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}
                                                                         onClick={(e) => e.stopPropagation()}
                                                                     >
-                                                                        <LazyCardImg img={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
+                                                                        <img src={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
                                                                     </Link>
                                                                     <div className="item-baner-row-block__row">
                                                                         <div className="item-baner-row-block__column">
