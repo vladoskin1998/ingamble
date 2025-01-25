@@ -26,6 +26,7 @@ import BlockType10 from './BlockType10'
 import BlockType11 from './BlockType11'
 import BlockType10Mobile from './BlockType10Mobile'
 
+
 const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
@@ -62,6 +63,9 @@ const getBlockByCountry = async (): Promise<HomeDataBlock> => {
 }
 
 const renderBlock = (block: any, isMobile: boolean) => {
+
+    
+
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} />

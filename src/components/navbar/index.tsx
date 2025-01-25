@@ -1,17 +1,20 @@
 import logoIcon from '../../assets/img/logo-icon.svg'
+
 import clearAll from '../../assets/img/icons/clear-all.svg'
-import {  lazy, useLayoutEffect, useMemo, useState } from 'react'
+import {  useLayoutEffect, useMemo, useState } from 'react'
 import { AccordionItem } from '../acordion/Acordion'
+
 import { RouteToNextFilter, useFilterContext } from '../../context/FilterContext'
 import { Link } from 'react-router-dom'
+
 import { makeListFilterHeader } from '../filter-components/FilterHeaderList'
 import { BonusFilterBodyType, CasinoFilterBodyType, LoyaltiesFilterBodyType } from '../../types'
+import CasinoFilterContent from './CasinoFilter'
+import BonusFilter from './BonusFilter'
+import LoyaltiesFilter from './LoyaltiesFilter'
+
+
 import { useAdaptiveBehavior, useHandlerSidebarActive } from '../../context/AppContext'
-
-
-const CasinoFilterContent = lazy(() => import('./CasinoFilter'))
-const BonusFilter = lazy(() => import('./BonusFilter'))
-const LoyaltiesFilter = lazy(() => import('./LoyaltiesFilter'))
 
 type DefaultOpenType = 'casinos' | 'bonuses' | 'loyalties' | 'slots' | ''
 

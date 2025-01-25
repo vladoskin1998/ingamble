@@ -2,6 +2,7 @@
 import { memo, useEffect, useState } from "react"
 import { LineLoader } from "../loader/LineLoader"
 import { LazyImgHomeType } from "../../page/Home"
+import { useInView } from 'react-intersection-observer' 
 
 export const LazyCardImg = memo(({
     img,
@@ -18,7 +19,10 @@ export const LazyCardImg = memo(({
 }) => {
     //@ts-ignore
     const [loading, setLoading] = useState(true)
-
+    const { ref, inView } = useInView({
+        threshold: 0.5,
+        triggerOnce: true
+    })
     useEffect(() => {
         if (img) {
             setLoading(false)
@@ -27,8 +31,11 @@ export const LazyCardImg = memo(({
 
     return (
         <>
-            { !img ? <LineLoader size={size} /> : <></>}
-            <img
+            {!img ? <LineLoader size={size} /> : <></>}
+            <div ref={ref} />
+            
+            {inView && <img
+                
                 src={img}
                 alt={img}
                 loading={imgLoading}
@@ -37,9 +44,10 @@ export const LazyCardImg = memo(({
                 // }}
                 style={{
                     height,
-                    width: loading ? "0px" : width,
+                    width: loading ? '0px' : width,
                 }}
-            />
+            />}
+            
         </>
     )
 })
