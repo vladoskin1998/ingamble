@@ -9,20 +9,19 @@ import { useAdaptiveBehavior } from '../../context/AppContext'
 import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import { useInView } from 'react-intersection-observer'
 
-export default function BlockType11({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
+export default function BlockType11({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
     const arr1 = data.items_block.data_cards.slice(0, 6)
     const arr2 = data.items_block.data_cards.slice(6, 12)
 
     const { isShowPlayButton } = useAdaptiveBehavior()
     const { setCasinoFilters } = useFilterContext()
-    
-          const { ref, inView } = useInView({
-              threshold: 0.1,
-              triggerOnce: true,
-          })
 
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+        initialInView
+    })
 
-          
     return (
         <section ref={ref} className="main-gamble__top-bonuses top-bonuses-gamble">
             {inView && (

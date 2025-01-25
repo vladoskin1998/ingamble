@@ -5,12 +5,13 @@ import { shuffleArray } from '../../helper'
 import { DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 
-export default function BlockType1({ data }: { data: HomeDataBlock<DataHomeItemsBlock> }) {
+export default function BlockType1({ data, initialInView=false }: { data: HomeDataBlock<DataHomeItemsBlock>, initialInView?:boolean }) {
     const dataCard = shuffleArray(data?.items_block.data_cards).slice(0, 8)
 
       const { ref, inView } = useInView({
           threshold: 0.1,
           triggerOnce: true,
+          initialInView
       })
 
      

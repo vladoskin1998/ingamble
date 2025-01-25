@@ -12,8 +12,7 @@ import { shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
 
-export default function BlockType7({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
-
+export default function BlockType7({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -31,96 +30,99 @@ export default function BlockType7({ data }: { data:  HomeDataBlock<DataHomeItem
 
     const dataCard = shuffleArray(data?.items_block?.data_cards)
 
- const { ref, inView } = useInView({
-     threshold: 0.1,
-     triggerOnce: true,
- })
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+        initialInView
+    })
 
     return (
         <section ref={ref} aria-label="BlockTypeNumber.BlockType7" className="main-gamble__low-risk-bonuses low-risk-bonuses-gamble main-gamble__different-casino-bg">
-         {inView &&   <div className="low-risk-bonuses-gamble__container container">
-                <div className="low-risk-bonuses-gamble__top top">
-                    <div className="top__row">
-                        <div className="top__column">
-                            <div className="top__title-block">
-                                {data.items_block.title_image && (
-                                    <span className="top__title-icon ibg--custom ibg--custom-width-auto">
-                                        <img src={data.items_block.title_image} alt="security" />
-                                    </span>
-                                )}
-                                <h2 className="top__title">{data.items_block.block_title}</h2>
+            {inView && (
+                <div className="low-risk-bonuses-gamble__container container">
+                    <div className="low-risk-bonuses-gamble__top top">
+                        <div className="top__row">
+                            <div className="top__column">
+                                <div className="top__title-block">
+                                    {data.items_block.title_image && (
+                                        <span className="top__title-icon ibg--custom ibg--custom-width-auto">
+                                            <img src={data.items_block.title_image} alt="security" />
+                                        </span>
+                                    )}
+                                    <h2 className="top__title">{data.items_block.block_title}</h2>
+                                </div>
+                                {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
                             </div>
-                            {data.items_block.subtitle && <div className="top__subtitle">{data.items_block.subtitle}</div>}
-                        </div>
-                        <div className="top__column">
-                            <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
+                            <div className="top__column">
+                                <SeeAllButton type_category={data.items_block.type_category} slug={data?.items_block?.category?.slug} />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="low-risk-bonuses-gamble__slider slider">
-                    <div className="slider__body">
-                        <div className="low-risk-bonuses-gamble__swiper slider__swiper swiper">
-                            <Swiper
-                                slidesPerView="auto"
-                                modules={[Pagination]}
-                                ref={sliderRef}
-                                pagination={{
-                                    el: paginationRef.current,
-                                    clickable: true,
-                                }}
-                                breakpoints={{
-                                    320: {
-                                        spaceBetween: 16,
-                                    },
-                                    1650.98: {
-                                        spaceBetween: 20,
-                                    },
-                                    1920: {
-                                        spaceBetween: 20,
-                                    },
-                                }}
-                            >
-                                {dataCard
-                                    ?.slice(0, 10)
-                                    ?.sort((a, b) => a.order - b.order)
-                                    ?.map((item, index) => (
-                                        <SwiperSlide key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
-                                            <div className="slide-slider__item different-casino-bg">
-                                                <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="different-casino-bg__image-block">
-                                                    <span className="different-casino-bg__image ibg--custom">
-                                                        <LazyCardImg img={item.casino_info.casino_image || ''} />
-                                                    </span>
-                                                </Link>
-                                                <div className="different-casino-bg__content">
-                                                    <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="different-casino-bg__name">
-                                                        {item.casino_info.casino_name}
-                                                    </Link>
-                                                    <div className="different-casino-bg__info">
-                                                        {item?.casino_info?.additional_casino_params?.map((it, id) => (
-                                                            <span key={id} className="different-casino-bg__info-link">
-                                                                {it}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                    <div className="different-casino-bg__rating">
-                                                        <span className="different-casino-bg__rating-icon">
-                                                            <img src={shieldIcon} alt="shield" />
+                    <div className="low-risk-bonuses-gamble__slider slider">
+                        <div className="slider__body">
+                            <div className="low-risk-bonuses-gamble__swiper slider__swiper swiper">
+                                <Swiper
+                                    slidesPerView="auto"
+                                    modules={[Pagination]}
+                                    ref={sliderRef}
+                                    pagination={{
+                                        el: paginationRef.current,
+                                        clickable: true,
+                                    }}
+                                    breakpoints={{
+                                        320: {
+                                            spaceBetween: 16,
+                                        },
+                                        1650.98: {
+                                            spaceBetween: 20,
+                                        },
+                                        1920: {
+                                            spaceBetween: 20,
+                                        },
+                                    }}
+                                >
+                                    {dataCard
+                                        ?.slice(0, 10)
+                                        ?.sort((a, b) => a.order - b.order)
+                                        ?.map((item, index) => (
+                                            <SwiperSlide key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
+                                                <div className="slide-slider__item different-casino-bg">
+                                                    <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="different-casino-bg__image-block">
+                                                        <span className="different-casino-bg__image ibg--custom">
+                                                            <LazyCardImg img={item.casino_info.casino_image || ''} />
                                                         </span>
-                                                        <span className="different-casino-bg__rating-number">{item.casino_info.casino_rank}</span>
-                                                        <span className="different-casino-bg__rating-text">Safety Index</span>
+                                                    </Link>
+                                                    <div className="different-casino-bg__content">
+                                                        <Link to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="different-casino-bg__name">
+                                                            {item.casino_info.casino_name}
+                                                        </Link>
+                                                        <div className="different-casino-bg__info">
+                                                            {item?.casino_info?.additional_casino_params?.map((it, id) => (
+                                                                <span key={id} className="different-casino-bg__info-link">
+                                                                    {it}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                        <div className="different-casino-bg__rating">
+                                                            <span className="different-casino-bg__rating-icon">
+                                                                <img src={shieldIcon} alt="shield" />
+                                                            </span>
+                                                            <span className="different-casino-bg__rating-number">{item.casino_info.casino_rank}</span>
+                                                            <span className="different-casino-bg__rating-text">Safety Index</span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </SwiperSlide>
-                                    ))}
-                            </Swiper>
+                                            </SwiperSlide>
+                                        ))}
+                                </Swiper>
+                            </div>
+                        </div>
+                        <div className="slider__bottom bottom-slider">
+                            <div ref={paginationRef} className="bottom-slider__pagination low-risk-bonuses-gamble__pagination swiper-pagination"></div>
                         </div>
                     </div>
-                    <div className="slider__bottom bottom-slider">
-                        <div ref={paginationRef} className="bottom-slider__pagination low-risk-bonuses-gamble__pagination swiper-pagination"></div>
-                    </div>
                 </div>
-            </div>}
+            )}
         </section>
     )
 }

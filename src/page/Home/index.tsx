@@ -62,39 +62,38 @@ const getBlockByCountry = async (): Promise<HomeDataBlock> => {
     return response.data
 }
 
-const renderBlock = (block: any, isMobile: boolean) => {
+const renderBlock = (block: any, isMobile: boolean, index: number) => {
 
-    
-
+    const initialInView = index < 3 ? true : false
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
-            return <BlockType1 data={block} />
+            return <BlockType1 data={block} initialInView={initialInView} />
         case BlockTypeNumber.BlockType9:
-            return <BlockType9 data={block} />
+            return <BlockType9 data={block} initialInView={initialInView} />
         case BlockTypeNumber.BlockType2M:
             return <BlockMType2M data={block} />
         case BlockTypeNumber.BlockType3M:
-            return <BlockMType3M data={block} />
+            return <BlockMType3M data={block}  />
         case BlockTypeNumber.BlockType6:
-            return <BlockType6 data={block} />
+            return <BlockType6 data={block} initialInView={initialInView} />
         case BlockTypeNumber.BlockType6c:
-            return <BlockType6 data={block} />
+            return <BlockType6 data={block} initialInView={initialInView} />
         case BlockTypeNumber.BlockType8:
-            return <BlockType8 data={block} />
+            return <BlockType8 data={block} initialInView={initialInView} />
         case BlockTypeNumber.BlockType2:
-            return <>{isMobile ? <BlockType2Mobile data={block} /> : <BlockType2 data={block} />}</>
+            return <>{isMobile ? <BlockType2Mobile data={block} initialInView={initialInView} /> : <BlockType2 data={block} initialInView={initialInView} />}</>
         case BlockTypeNumber.BlockType3:
-            return <>{isMobile ? <BlockType3Mobile data={block} /> : <BlockType3 data={block} />}</>
+            return <>{isMobile ? <BlockType3Mobile data={block} initialInView={initialInView} /> : <BlockType3 data={block} initialInView={initialInView} />}</>
         case BlockTypeNumber.BlockType4:
-            return <>{isMobile ? <BlockType4Mobile data={block} /> : <BlockType4 data={block} />}</>
+            return <>{isMobile ? <BlockType4Mobile data={block} initialInView={initialInView} /> : <BlockType4 data={block} initialInView={initialInView} />}</>
         case BlockTypeNumber.BlockType7:
-            return <>{isMobile ? <BlockType7Mobile data={block} /> : <BlockType7 data={block} />}</>
+            return <>{isMobile ? <BlockType7Mobile data={block} initialInView={initialInView} /> : <BlockType7 data={block} initialInView={initialInView} />}</>
         case BlockTypeNumber.BlockType5:
-            return <>{isMobile ? <BlockType5Mobile data={block} /> : <BlockType5 data={block} />}</>
+            return <>{isMobile ? <BlockType5Mobile data={block} initialInView={initialInView} /> : <BlockType5 data={block} initialInView={initialInView} />}</>
         case BlockTypeNumber.BlockType10:
-            return <>{isMobile ? <BlockType10Mobile data={block} /> : <BlockType10 data={block} />}</>
+            return <>{isMobile ? <BlockType10Mobile data={block} initialInView={initialInView} /> : <BlockType10 data={block} initialInView={initialInView} />}</>
         case BlockTypeNumber.BlockType11:
-            return <BlockType11 data={block} />
+            return <BlockType11 data={block} initialInView={initialInView} />
         default:
             return null
     }
@@ -148,7 +147,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
-                        {blocksToRender.map((block) => renderBlock(block, isMobile))}
+                        {blocksToRender.map((block,index) => renderBlock(block, isMobile, index))}
                         <MoreBonusesForYourChoise />
                         <CheckMoreWhatSuitsYouBest />
                         <SubscribeForm />

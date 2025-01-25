@@ -9,12 +9,13 @@ import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
 
-const BlockType9 = memo(function BlockType9({ data }: { data: HomeDataBlock<EssentialItemsBlock> }) {
+const BlockType9 = memo(function BlockType9({ data,initialInView=false  }: { initialInView?:boolean, data: HomeDataBlock<EssentialItemsBlock> }) {
 
     
      const { ref, inView } = useInView({
          threshold: 0.1,
          triggerOnce: true,
+         initialInView,
      })
 
 

@@ -12,8 +12,7 @@ import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { useInView } from 'react-intersection-observer'
 
-export default function BlockType2({ data }: { data:  HomeDataBlock<DataHomeItemsBlock> }) {
-
+export default function BlockType2({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 
@@ -32,12 +31,11 @@ export default function BlockType2({ data }: { data:  HomeDataBlock<DataHomeItem
 
     const { isShowPlayButton } = useAdaptiveBehavior()
 
-      const { ref, inView } = useInView({
-          threshold: 0.1,
-          triggerOnce: true,
-      })
-
-
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+        initialInView
+    })
 
     return (
         <section ref={ref} aria-label="BlockTypeNumber.BlockType2" className="main-gamble__safest-casino-2 safest-casino-2-gamble main-gamble__different-casino-bg main-gamble__baner-block">
