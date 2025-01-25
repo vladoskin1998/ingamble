@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState } from 'react'
+import { lazy, useEffect, useMemo, useState } from 'react'
 import { Wraper } from '../Wraper'
 // import { useAdaptiveBehavior } from '../../context/AppContext'
 import { Categories } from '../../components/categories/Categories'
@@ -131,8 +131,12 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
     }
 
 
-    let blocksToRender = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
-  
+    const blocksToRender = useMemo(() => {
+        const blocks = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
+        return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
+    }, [isMobile, data, blockByCountry])
+
+
 
     return (
         <>
@@ -140,10 +144,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
-                        {blocksToRender
-                            ?.filter(Boolean)
-                            .sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
-                            .map((block) => renderBlock(block, isMobile))}
+                        {blocksToRender.map((block) => renderBlock(block, isMobile))}
                         <MoreBonusesForYourChoise />
                         <CheckMoreWhatSuitsYouBest />
                         <SubscribeForm />

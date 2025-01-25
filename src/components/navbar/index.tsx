@@ -1,17 +1,11 @@
 import logoIcon from '../../assets/img/logo-icon.svg'
-
 import clearAll from '../../assets/img/icons/clear-all.svg'
 import {  lazy, useLayoutEffect, useMemo, useState } from 'react'
 import { AccordionItem } from '../acordion/Acordion'
-
 import { RouteToNextFilter, useFilterContext } from '../../context/FilterContext'
 import { Link } from 'react-router-dom'
-
 import { makeListFilterHeader } from '../filter-components/FilterHeaderList'
 import { BonusFilterBodyType, CasinoFilterBodyType, LoyaltiesFilterBodyType } from '../../types'
-
-
-
 import { useAdaptiveBehavior, useHandlerSidebarActive } from '../../context/AppContext'
 
 
