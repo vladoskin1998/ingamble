@@ -4,7 +4,7 @@ import english from '../../assets/img/flags/english.svg'
 
 import { useEffect, useRef, useState } from 'react'
 import logoIcon from '../../assets/img/logo-icon.svg'
-import { useFilterContext } from '../../context/FilterContext'
+import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAdaptiveBehavior, useHandlerSidebarActive } from '../../context/AppContext'
 type Language = {
@@ -243,8 +243,8 @@ export const Header =  () => {
                                     className="form-item__input form-item__input_search"
                                     value={casinoFilters.casino_name || ''}
                                     onChange={(e) =>
-                                        setCasinoFilters((s) => ({
-                                            ...s,
+                                        setCasinoFilters(({
+                                            ...initialCasinoFilters,
                                             casino_name: e.target.value || undefined,
                                         }))
                                     }
@@ -254,10 +254,9 @@ export const Header =  () => {
                                 <button
                                     className="form-item__icon form-item__icon_delete"
                                     onClick={() =>
-                                        setCasinoFilters((s) => ({
-                                            ...s,
-                                            casino_name: undefined,
-                                        }))
+                                        setCasinoFilters(
+                                            initialCasinoFilters
+                                        )
                                     }
                                 >
                                     <svg>
@@ -357,8 +356,8 @@ export const Header =  () => {
                                         className="form-item__input form-item__input_search"
                                         value={casinoFilters.casino_name || ''}
                                         onChange={(e) =>
-                                            setCasinoFilters((s) => ({
-                                                ...s,
+                                            setCasinoFilters(({
+                                                ...initialCasinoFilters,
                                                 casino_name: e.target.value || undefined,
                                             }))
                                         }
@@ -369,10 +368,7 @@ export const Header =  () => {
                                         className="form-item__icon form-item__icon_delete"
                                         onClick={() => {
                                             setSearchShow(true)
-                                            setCasinoFilters((s) => ({
-                                                ...s,
-                                                casino_name: undefined,
-                                            }))
+                                            setCasinoFilters(initialCasinoFilters)
                                             setSearchFocus(false)
                                         }}
                                     >
