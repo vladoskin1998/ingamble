@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useMemo } from 'react'
 import { SwiperRef } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
 import 'swiper/css'
@@ -28,7 +28,9 @@ export default function BlockType7({ data, initialInView = false }: { data: Home
         }
     }, [])
 
-    const dataCard = shuffleArray(data?.items_block?.data_cards)
+   const dataCard = useMemo(() => {
+        return shuffleArray(data?.items_block.data_cards).slice(0, 8)
+    }, [data?.items_block.data_cards])
 
     const { ref, inView } = useInView({
         threshold: 0.1,

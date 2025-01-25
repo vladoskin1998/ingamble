@@ -3,7 +3,7 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { BlockTypeNumber, DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { SeeAllButton } from './SeeAllButton'
@@ -31,7 +31,9 @@ export default function BlockType6({ data, initialInView = false }: { data: Home
     }, [])
     if (!data || !(data.items_block.type_block === BlockTypeNumber.BlockType6 || data.items_block.type_block === BlockTypeNumber.BlockType6c)) return
 
-    const dataCard = shuffleArray(data?.items_block?.data_cards)
+    const dataCard = useMemo(() => {
+        return shuffleArray(data?.items_block.data_cards).slice(0, 8)
+    }, [data?.items_block.data_cards])
 
     const titleHub: 'bonuses' | 'casinos' = window.location.href.includes('bonuses') ? 'bonuses' : 'casinos'
     let titleBlock = data.items_block.type_block === BlockTypeNumber.BlockType6 ? data.items_block.block_title : data.items_block.block_title.replace('casinos', titleHub)

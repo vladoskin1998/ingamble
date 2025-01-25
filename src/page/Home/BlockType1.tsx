@@ -4,9 +4,12 @@ import MainSlider from '../../components/swiper/MainSlider'
 import { shuffleArray } from '../../helper'
 import { DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
+import { useMemo } from 'react'
 
 export default function BlockType1({ data, initialInView=false }: { data: HomeDataBlock<DataHomeItemsBlock>, initialInView?:boolean }) {
-    const dataCard = shuffleArray(data?.items_block.data_cards).slice(0, 8)
+    const dataCard = useMemo(() => {
+        return shuffleArray(data?.items_block.data_cards).slice(0, 8)
+    }, [data?.items_block.data_cards])
 
       const { ref, inView } = useInView({
           threshold: 0.1,
