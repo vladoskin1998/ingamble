@@ -1,12 +1,8 @@
-import { ReactNode } from 'react'
-
+import { lazy, ReactNode } from 'react'
 import { Header } from '../../components/header'
-
-
 import Navbar from '../../components/navbar'
-import Icons from './Icons'
 import Footer from '../../components/footer'
-
+const Icons = lazy(() => import('./Icons'))
 
 export const Wraper = ({ children }: { children: ReactNode }) => {
     
