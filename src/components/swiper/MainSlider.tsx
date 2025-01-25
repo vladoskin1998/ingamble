@@ -58,6 +58,7 @@ const MainSlider = ({
                 <div className="more-staket-simple-bonus__swiper slider__swiper swiper">
                     <div className="slider__wrapper">
                         <Swiper
+                            lazyPreloadPrevNext={1}
                             slidesPerView="auto"
                             ref={sliderRef}
                             pagination={{

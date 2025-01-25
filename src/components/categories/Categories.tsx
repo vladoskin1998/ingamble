@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { useAdaptiveBehavior } from '../../context/AppContext'
+import { useAdaptiveBehavior, useHandlerSidebarActive } from '../../context/AppContext'
 
 
 
@@ -14,7 +14,8 @@ export const Categories = ({ type_category = DataHomeItemsBlockEnumCategory.all_
     
     const location = useLocation()
 
-    const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
+    const { isSidebarActive, category } = useAdaptiveBehavior()
+    const { handlerSidebarActive } = useHandlerSidebarActive()
 
     let listCategory = type_category === (DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType) ? category : category.filter((item) => item.categoryType === type_category)
     
@@ -43,7 +44,7 @@ export const Categories = ({ type_category = DataHomeItemsBlockEnumCategory.all_
                     className="filter-tags-gamble__slide slide-filter-tags-gamble slide-filter-tags-gamble_first slide-filter-tags-gamble_mob "
                     style={{ marginRight: '4px' }}
                     onClick={() => {
-                        setSidebarActive(!isSidebarActive)
+                        handlerSidebarActive(!isSidebarActive)
                     }}
                 >
                     <button className="title-filters-sidebar-gamble__btn filter-open" style={{ display: 'block', padding: '12px' }}>

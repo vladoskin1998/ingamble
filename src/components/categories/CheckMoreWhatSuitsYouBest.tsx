@@ -1,5 +1,5 @@
 
-import { useAdaptiveBehavior } from "../../context/AppContext"
+import { useAdaptiveBehavior, useHandlerSidebarActive } from "../../context/AppContext"
 import searchFilterIcon from "../../assets/img/icons/search-filter.svg"
 import { Link } from "react-router-dom"
 import { sliceString } from "../../helper"
@@ -10,8 +10,8 @@ import { useFilterContext } from "../../context/FilterContext"
 
 
 export default function CheckMoreWhatSuitsYouBest  ()  {
-    const { isSidebarActive, setSidebarActive, category } = useAdaptiveBehavior()
-    
+    const { isSidebarActive, category } = useAdaptiveBehavior()
+        const { handlerSidebarActive } = useHandlerSidebarActive()
 
      const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
     
@@ -41,7 +41,7 @@ export default function CheckMoreWhatSuitsYouBest  ()  {
                         </div>
                     ))}
                 </div>
-                <button onClick={() => setSidebarActive(!isSidebarActive)} className="bottom-filter-tags__btn-filter">
+                <button onClick={() => handlerSidebarActive(!isSidebarActive)} className="bottom-filter-tags__btn-filter">
                     <span>
                         <svg>
                             <use xlinkHref="#filter"></use>

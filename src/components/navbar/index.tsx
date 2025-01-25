@@ -1,7 +1,7 @@
 import logoIcon from '../../assets/img/logo-icon.svg'
 
 import clearAll from '../../assets/img/icons/clear-all.svg'
-import { memo, useLayoutEffect, useMemo, useState } from 'react'
+import {  useLayoutEffect, useMemo, useState } from 'react'
 import { AccordionItem } from '../acordion/Acordion'
 
 import { RouteToNextFilter, useFilterContext } from '../../context/FilterContext'
@@ -12,10 +12,8 @@ import { BonusFilterBodyType, CasinoFilterBodyType, LoyaltiesFilterBodyType } fr
 import CasinoFilterContent from './CasinoFilter'
 import BonusFilter from './BonusFilter'
 import LoyaltiesFilter from './LoyaltiesFilter'
+import { useAdaptiveBehavior, useHandlerSidebarActive } from '../../context/AppContext'
 // import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
-
-
-
 
 type DefaultOpenType = 'casinos' | 'bonuses' | 'loyalties' | 'slots' | ''
 
@@ -48,10 +46,12 @@ const LengthApplyFilter = ({
     return ''
 }
 
-const Navbar = ({ isSidebarActive, setSidebarActive }: { isSidebarActive: boolean; setSidebarActive: (s: boolean) => void }) => {
+const Navbar = () => {
+    const { isSidebarActive } = useAdaptiveBehavior()
+        const { handlerSidebarActive } = useHandlerSidebarActive()
     const [isGambleBodyHidden, setGambleBodyHidden] = useState(false)
     const [isDefaultOpen, setIsDefaultOpen] = useState<DefaultOpenType>('')
-  
+
     const { casinoFilters, bonusFilters, loyaltiesFilters, currentRouteFilter, handlerCurrentRouteFilter, handlerClearAllFilters, data } = useFilterContext()
 
     useLayoutEffect(() => {
@@ -89,16 +89,16 @@ const Navbar = ({ isSidebarActive, setSidebarActive }: { isSidebarActive: boolea
         event.stopPropagation()
 
         if (document.documentElement.clientWidth > 650.98) {
-            setSidebarActive(true)
+            handlerSidebarActive(true)
         } else {
-            setSidebarActive(true)
+            handlerSidebarActive(true)
             setGambleBodyHidden(true)
         }
     }
 
     const handleFilterOpenDeleteClick = (event: React.MouseEvent) => {
         event.preventDefault()
-        setSidebarActive(false)
+        handlerSidebarActive(false)
         setGambleBodyHidden(false)
     }
 
@@ -115,7 +115,7 @@ const Navbar = ({ isSidebarActive, setSidebarActive }: { isSidebarActive: boolea
             </div>
             <div className="sidebar-gamble__filters filters-sidebar-gamble">
                 <div className="filters-sidebar-gamble__title title-filters-sidebar-gamble">
-                    <button onClick={() => setSidebarActive(!isSidebarActive)} aria-label="Put your description here." className="title-filters-sidebar-gamble__btn" data-da="header__row-mobile1, 1, 650.98">
+                    <button onClick={() => handlerSidebarActive(!isSidebarActive)} aria-label="Put your description here." className="title-filters-sidebar-gamble__btn" data-da="header__row-mobile1, 1, 650.98">
                         <span className="title-filters-sidebar-gamble__btn-icon_main">
                             <svg>
                                 <use xlinkHref="#filter"></use>
@@ -318,14 +318,14 @@ const Navbar = ({ isSidebarActive, setSidebarActive }: { isSidebarActive: boolea
                             <div className="bottom-form-filters__column">
                                 <button onClick={handlerClearAllFilters} className="bottom-form-filters__btn bottom-form-filters__btn_reset">
                                     <span className="bottom-form-filters__btn-icon">
-                                        <img alt={'clear-all.svg'} src={clearAll} width={20} height={20} loading='lazy'/>
+                                        <img alt={'clear-all.svg'} src={clearAll} width={20} height={20} loading="lazy" />
                                     </span>
                                     <span>Clear All</span>
                                 </button>
                             </div>
                             <div className="bottom-form-filters__column">
                                 <Link
-                                    onClick={() => setSidebarActive(false)}
+                                    onClick={() => handlerSidebarActive(false)}
                                     to={currentRouteFilter === RouteToNextFilter.DEFAULT ? '/' + currentRouteFilter : `/filter-${currentRouteFilter}`}
                                     className="bottom-form-filters__btn bottom-form-filters__btn_submit"
                                 >
@@ -345,5 +345,4 @@ const Navbar = ({ isSidebarActive, setSidebarActive }: { isSidebarActive: boolea
     )
 }
 
-
-export default memo(Navbar)
+export default Navbar

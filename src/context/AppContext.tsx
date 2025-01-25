@@ -1,11 +1,23 @@
-import React, { createContext, useContext, useEffect, ReactNode, useState, useMemo } from 'react';
+import React, { createContext, useContext, useEffect, ReactNode, useState, useMemo, useCallback } from 'react';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
 import { AllCategoriesHomeDataResponse, DataHomeItemsBlockCategoryType, DataHomeItemsBlockEnumCategory, FormatedCategoryType } from '../types'
 import $api from '../http';
 import {   LOYALTIECATEGORYIES, shuffleArray } from '../helper';
 
+interface AdaptiveContextType {
+    isShowPlayButton: boolean
+    isSidebarActive: boolean
+    lastUpdate: string
+    category: FormatedCategoryType[]
+}
+
+interface HandlerSidebarActiveContextType {
+    handlerSidebarActive: (b: boolean) => void
+}
+
 const AdaptiveContext = createContext<AdaptiveContextType | undefined>(undefined);
+const HandlerSidebarActiveContext = createContext<HandlerSidebarActiveContextType | undefined>(undefined)
 
 const getTogglePlay = async () => {
        const response = await $api.get('get-toggle-play/')
@@ -18,13 +30,7 @@ const getDataHomePageCategories = async () => {
 }
 
 
-interface AdaptiveContextType {
-    isShowPlayButton: boolean
-    isSidebarActive: boolean
-    setSidebarActive: React.Dispatch<React.SetStateAction<boolean>>
-    lastUpdate: string
-    category: FormatedCategoryType[]
-}
+
 
 const getRandomDate = (startDate: Date, endDate: Date): Date => {
     const randomTime = Math.floor(Math.random() * (endDate.getTime() - startDate.getTime() + 1)) + startDate.getTime();
@@ -161,19 +167,34 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
             ])
         }, [dataCategories])
 
+        const handlerSidebarActive = useCallback((b:boolean) => {
+            setSidebarActive(b)
+        },  [] )
+
         const value = useMemo(
             () => ({
                 isShowPlayButton: isTogglePlay?.is_play ?? false,
                 category,
                 isSidebarActive,
-                setSidebarActive,
+                handlerSidebarActive,
                 lastUpdate,
             }),
             [isTogglePlay, category, isSidebarActive, lastUpdate],
         )
 
+            const actions = useMemo(
+                () => ({
+                    handlerSidebarActive,
+                }),
+                [handlerSidebarActive],
+            )
 
-    return <AdaptiveContext.Provider value={value}>{children}</AdaptiveContext.Provider>
+
+    return (
+        <AdaptiveContext.Provider value={value}>
+            <HandlerSidebarActiveContext.Provider value={actions}>{children}</HandlerSidebarActiveContext.Provider>
+        </AdaptiveContext.Provider>
+    )
 };
 
 export const useAdaptiveBehavior = () => {
@@ -183,3 +204,15 @@ export const useAdaptiveBehavior = () => {
     }
     return context;
 };
+
+
+export const useHandlerSidebarActive = () => {
+    const context = useContext(HandlerSidebarActiveContext)
+    if (!context) {
+        throw new Error('useAdaptiveBehavior must be used within an AdaptiveProvider')
+    }
+    return context
+}
+
+
+

@@ -2,10 +2,11 @@ import logoCryptogamblers from '../../assets/img/logo.svg'
 import logoInGamble from '../../assets/img/logo-ingamble.svg'
 import english from '../../assets/img/flags/english.svg'
 
-import { memo, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import logoIcon from '../../assets/img/logo-icon.svg'
 import { useFilterContext } from '../../context/FilterContext'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useAdaptiveBehavior, useHandlerSidebarActive } from '../../context/AppContext'
 type Language = {
     code: string
     name: string
@@ -25,14 +26,10 @@ export const LANGUAGES_WEBSITE: Language[] = [
     // { code: 'ru', name: 'Russian', flag: russian },
 ]
 
-export const Header = memo( ({
-    isSidebarActive,
-    //@ts-ignore
-    setSidebarActive,
-}: {
-    isSidebarActive: boolean
-    setSidebarActive: (s: boolean) => void
-}) => {
+export const Header =  () => {
+
+    const { isSidebarActive } = useAdaptiveBehavior()
+        const { handlerSidebarActive } = useHandlerSidebarActive()
     const inputRefMob = useRef<HTMLInputElement>(null)
 
     const navigate = useNavigate()
@@ -466,7 +463,7 @@ export const Header = memo( ({
                                             aria-label="Put your description here."
                                             onClick={() => {
                                                 handleBurgerClose()
-                                                setSidebarActive(true)
+                                                handlerSidebarActive(true)
                                             }}
                                             className={`menu-header__link`}
                                         >
@@ -542,4 +539,4 @@ export const Header = memo( ({
             </div>
         </header>
     )
-})
+}

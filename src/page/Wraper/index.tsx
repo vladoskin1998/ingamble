@@ -2,14 +2,14 @@ import { ReactNode } from 'react'
 
 import { Header } from '../../components/header'
 
-import { useAdaptiveBehavior } from '../../context/AppContext'
+
 import Navbar from '../../components/navbar'
 import Icons from './Icons'
 import Footer from '../../components/footer'
 
 
 export const Wraper = ({ children }: { children: ReactNode }) => {
-    const { isSidebarActive, setSidebarActive } = useAdaptiveBehavior()
+    
     return (
         <>
             <Icons />
@@ -21,9 +21,9 @@ export const Wraper = ({ children }: { children: ReactNode }) => {
                     </svg>
                 </div>
                 <div className="gamble">
-                    <Navbar isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
+                    <Navbar  />
                     <div className="gamble__body">
-                        <Header isSidebarActive={isSidebarActive} setSidebarActive={setSidebarActive} />
+                        <Header  />
                         <>{children}</>
                         <Footer />
                     </div>

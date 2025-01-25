@@ -1,13 +1,13 @@
 import bg07 from "../../assets/img/bg/07.webp"
 
 import girl from "../../assets/img/girls/03.png"
-import { useAdaptiveBehavior } from "../../context/AppContext"
+import { useAdaptiveBehavior, useHandlerSidebarActive } from "../../context/AppContext"
 
 export default function MoreBonusesForYourChoise ()  {
 
-    const { isSidebarActive, setSidebarActive } =
+    const { isSidebarActive } =
     useAdaptiveBehavior()
-
+    const { handlerSidebarActive } = useHandlerSidebarActive()
   return (
     <section className="main-gamble__best-live-dealer-casinos best-live-dealer-casinos-gamble best-live-dealer-casinos-gamble_mobile main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
     <div className="best-live-dealer-casinos-gamble__container container">
@@ -41,7 +41,7 @@ export default function MoreBonusesForYourChoise ()  {
                  
                         className="best-live-dealer-casinos-gamble__btn filter-open"
                         onClick={() =>
-                            setSidebarActive(!isSidebarActive)
+                            handlerSidebarActive(!isSidebarActive)
                         }
                     >
                         <span>
