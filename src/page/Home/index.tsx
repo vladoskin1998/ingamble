@@ -110,6 +110,8 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 10,
     })
+
+     if (isLoading) return <LogoLoader />
  
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
 
@@ -137,7 +139,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
 
     console.log('render');
     
-    if (isLoading) return <LogoLoader />
+   
 
     return (
         <>
