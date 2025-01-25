@@ -63,7 +63,7 @@ const getBlockByCountry = async (): Promise<HomeDataBlock> => {
 }
 
 const renderBlock = (block: any, isMobile: boolean, index: number) => {
-    const initialInView = index < 2 ? true : false
+    const initialInView = index < 3 ? true : false
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} initialInView={initialInView} />
@@ -136,14 +136,14 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
     const { ref, inView } = useInView({
-        threshold: 0.1,
+        threshold: 0.5,
         triggerOnce: true,
     })
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [src])
 
-    
+
     if (isLoading) return <LogoLoader />
 
     return (
