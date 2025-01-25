@@ -3,13 +3,10 @@ import { Header } from '../../components/header'
 import Navbar from '../../components/navbar'
 import Icons from './Icons'
 import Footer from '../../components/footer'
-import { useInView } from 'react-intersection-observer'
+
 
 export const Wraper = ({ children }: { children: ReactNode }) => {
-    const { ref, inView } = useInView({
-        threshold: 0.1,
-        triggerOnce: true,
-    })
+ 
 
     return (
         <>
@@ -23,10 +20,10 @@ export const Wraper = ({ children }: { children: ReactNode }) => {
                 </div>
                 <div className="gamble">
                     <Navbar />
-                    <div className="gamble__body" ref={ref}>
+                    <div className="gamble__body" >
                         <Header />
                         <>{children}</>
-                        {inView && <Footer />}
+                        <Footer />
                     </div>
                 </div>
             </div>
