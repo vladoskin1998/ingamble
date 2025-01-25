@@ -1,4 +1,4 @@
-import { lazy, useEffect, useMemo, useState } from 'react'
+import { lazy, useEffect, useState } from 'react'
 import { Wraper } from '../Wraper'
 // import { useAdaptiveBehavior } from '../../context/AppContext'
 import { Categories } from '../../components/categories/Categories'
@@ -111,8 +111,6 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         cacheTime: 1000 * 60 * 10,
     })
 
-     
- 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
 
     useEffect(() => {
@@ -122,9 +120,8 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         handleResize()
         return () => window.removeEventListener('resize', handleResize)
     }, [])
-
-    if (isLoading) return <LogoLoader />
-
+  
+        if (isLoading) return <LogoLoader />
     const { blocks_sequence_number } = categoriesTypeBySrc(src)
     if (blockByCountry) {
         blockByCountry = {
@@ -133,19 +130,12 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         }
     }
 
-  const blocksToRender = useMemo(() => {
-      const blocks = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
-      return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
-  }, [isMobile, data, blockByCountry])
 
-
-    console.log('render');
-    
-   
+    let blocksToRender = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
+  
 
     return (
         <>
-      
             <Wraper>
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
