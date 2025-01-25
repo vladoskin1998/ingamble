@@ -64,7 +64,7 @@ const getBlockByCountry = async (): Promise<HomeDataBlock> => {
 
 const renderBlock = (block: any, isMobile: boolean, index: number) => {
 
-    const initialInView = index < 3 ? true : false
+    const initialInView = index < 2 ? true : false
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} initialInView={initialInView} />
