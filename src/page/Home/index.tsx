@@ -27,7 +27,6 @@ import BlockType11 from './BlockType11'
 import BlockType10Mobile from './BlockType10Mobile'
 import { useInView } from 'react-intersection-observer'
 
-
 const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
@@ -64,7 +63,6 @@ const getBlockByCountry = async (): Promise<HomeDataBlock> => {
 }
 
 const renderBlock = (block: any, isMobile: boolean, index: number) => {
-
     const initialInView = index < 2 ? true : false
     switch (block.items_block.type_block) {
         case BlockTypeNumber.BlockType1:
@@ -74,7 +72,7 @@ const renderBlock = (block: any, isMobile: boolean, index: number) => {
         case BlockTypeNumber.BlockType2M:
             return <BlockMType2M data={block} />
         case BlockTypeNumber.BlockType3M:
-            return <BlockMType3M data={block}  />
+            return <BlockMType3M data={block} />
         case BlockTypeNumber.BlockType6:
             return <BlockType6 data={block} initialInView={initialInView} />
         case BlockTypeNumber.BlockType6c:
@@ -124,8 +122,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         handleResize()
         return () => window.removeEventListener('resize', handleResize)
     }, [])
-  
-    
+
     const { blocks_sequence_number } = categoriesTypeBySrc(src)
     if (blockByCountry) {
         blockByCountry = {
@@ -134,25 +131,24 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         }
     }
 
-
     const blocksToRender = useMemo(() => {
         const blocks = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
-     const { ref, inView } = useInView({
-         threshold: 0.1,
-         triggerOnce: true,
-     })
-
-
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+    })
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [src])
     if (isLoading) return <LogoLoader />
 
-     
     return (
         <>
             <Wraper>
-                <main className="gamble__main main-gamble" ref={ref}>
-                    <div className="main-gamble__body">
+                <main className="gamble__main main-gamble">
+                    <div className="main-gamble__body" ref={ref}>
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
                         {blocksToRender.map((block, index) => renderBlock(block, isMobile, index))}
                         {inView && (
