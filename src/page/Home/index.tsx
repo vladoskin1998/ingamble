@@ -142,6 +142,8 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [src])
+
+    
     if (isLoading) return <LogoLoader />
 
     return (
