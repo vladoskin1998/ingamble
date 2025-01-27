@@ -1,6 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { lazy } from 'react'
-import Home from '../page/Home'
+
+
+const Home = lazy(() => import('../page/Home'))
 
 const SimpleCasinos = lazy(() => import('../page/SimpleCasinos'))
 const SimpleLoyalties = lazy(() => import('../page/SimpleLoyalties'))
@@ -20,7 +22,14 @@ const FilterLoyalty = lazy(() => import('../page/FilterLoyalty'))
 export const PublicRouter = () => {
     return (
         <Routes>
-            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route
+                path="privacy-policy"
+                element={
+                 
+                        <PrivacyPolicy />
+              
+                }
+            />
 
             {import.meta.env.VITE_TITLE === 'CryptoGamblers' ? (
                 <>
@@ -53,7 +62,8 @@ export const PublicRouter = () => {
             {/* Страница конкретной лоялки */}
             <Route path="/casino/:loyaltie_slug/loyalty" element={<SimpleLoyalties />} />
 
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={
+                <Home />} />
             <Route path="/" element={<Navigate to="/" />} />
             {/* <Route
                 path="*"
