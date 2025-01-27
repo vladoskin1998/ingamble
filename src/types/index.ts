@@ -551,7 +551,6 @@ export interface CasinoFilterBodyType {
     games: number[];
     live_chat_competence: string[];
     responsible_gambling: [],
-
     unlimited_min_wager: boolean | undefined,
     unlimited_min_deposit: boolean | undefined,
     casino_name: string | undefined,

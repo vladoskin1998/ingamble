@@ -1,21 +1,18 @@
-import React, { createContext, useContext, useState, ReactNode, useMemo } from "react"
+import React, { createContext, useContext, useState, ReactNode, useMemo } from 'react'
 import {
     BonusFilterBodyType,
     CasinoFilterBodyType,
-
     DataHomeItemsBlockCategoryType,
-
     DataHomeItemsBlockEnumCategory,
-
     FooCategorySanitazeLinkPropType,
     FooCategorySanitazeLinkReturnType,
     GetFilterDataTypeResponse,
     LoyaltiesFilterBodyType,
-} from "../types"
-import { useNavigate } from "react-router-dom"
-import $api from "../http"
-import { useQuery } from "react-query"
-import { CURRENTYEAR } from "../helper"
+} from '../types'
+import { useNavigate } from 'react-router-dom'
+import $api from '../http'
+import { useQuery } from 'react-query'
+import { CURRENTYEAR } from '../helper'
 
 export const SeeAllRoutes = {
     [DataHomeItemsBlockEnumCategory.bonus_category as DataHomeItemsBlockCategoryType]: 'bonuses',
@@ -24,9 +21,8 @@ export const SeeAllRoutes = {
     [DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType]: '/',
 }
 
-
 const getDatasFilter = async () => {
-    const response = await $api.get("get-datas-filter/")
+    const response = await $api.get('get-datas-filter/')
     return response.data
 }
 
@@ -46,7 +42,6 @@ export const initialCasinoFilters: CasinoFilterBodyType = {
         weekly: null,
         monthly: null,
         unlimited: undefined,
-
     },
     min_wager: null,
     min_deposit: null,
@@ -105,10 +100,10 @@ export const initialLoyaltiesFilters: LoyaltiesFilterBodyType = {
 }
 
 export enum RouteToNextFilter {
-    CASINOS = "casinos",
-    BONUS = "bonus",
-    LOYALTIES = "loyalties",
-    DEFAULT = "",
+    CASINOS = 'casinos',
+    BONUS = 'bonus',
+    LOYALTIES = 'loyalties',
+    DEFAULT = '',
 }
 
 type FilterContextType = {
@@ -136,12 +131,9 @@ type FilterContextType = {
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined)
 
-export const FilterProvider: React.FC<{ children: ReactNode }> = ({
-    children,
-}) => {
+export const FilterProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const navigation = useNavigate()
-    const [currentRouteFilter, setCurrentRouteFilter] =
-        useState<RouteToNextFilter>(RouteToNextFilter.DEFAULT)
+    const [currentRouteFilter, setCurrentRouteFilter] = useState<RouteToNextFilter>(RouteToNextFilter.DEFAULT)
 
     const handlerCurrentRouteFilter = (v: RouteToNextFilter) => {
         if (currentRouteFilter !== v) {
@@ -149,43 +141,32 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         }
     }
 
-    const [searchGlobal,setSeachGlobal] = useState('')
+    const [searchGlobal, setSeachGlobal] = useState('')
 
-    const handlerSeachGlobal = (v:string) => setSeachGlobal(v)
+    const handlerSeachGlobal = (v: string) => setSeachGlobal(v)
 
-    const [casinoFilters, setCasinoFilters] =
-        useState<CasinoFilterBodyType>(initialCasinoFilters)
+    const [casinoFilters, setCasinoFilters] = useState<CasinoFilterBodyType>(initialCasinoFilters)
 
-    const [bonusFilters, setBonusFilters] =
-        useState<BonusFilterBodyType>(initialBonusFilters)
+    const [bonusFilters, setBonusFilters] = useState<BonusFilterBodyType>(initialBonusFilters)
 
-
-        
-    const [loyaltiesFilters, setLoyaltiesFilters] =
-        useState<LoyaltiesFilterBodyType>(initialLoyaltiesFilters)
+    const [loyaltiesFilters, setLoyaltiesFilters] = useState<LoyaltiesFilterBodyType>(initialLoyaltiesFilters)
 
     const handlerClearAllFilters = () => {
         handlerCurrentRouteFilter(RouteToNextFilter.DEFAULT)
         setCasinoFilters(initialCasinoFilters)
         setBonusFilters(initialBonusFilters)
         setLoyaltiesFilters(initialLoyaltiesFilters)
-        navigation("/")
+        navigation('/')
     }
 
-    
-    
-    const { data } = useQuery<GetFilterDataTypeResponse>(
-        "get-datas-filter",
-        getDatasFilter,
-        {
-            staleTime: Infinity,
-        }
-    )
+    const { data } = useQuery<GetFilterDataTypeResponse>('get-datas-filter', getDatasFilter, {
+        staleTime: Infinity,
+    })
 
     const fooCategorySanitazeLink = ({ type_category, slug }: FooCategorySanitazeLinkPropType): FooCategorySanitazeLinkReturnType => {
         if (slug === 'vpn-friendly-casinos') {
             return {
-                seeAllLink: '/filter-casinos',
+                seeAllLink: '/filter-casinos/vpn-friendly-casinos',
                 seeAllFoo: () => {
                     setCasinoFilters({ ...initialCasinoFilters, vpn_usage: true })
                 },
@@ -193,7 +174,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         }
         if (slug === 'unlimited-max-bet-bonuses') {
             return {
-                seeAllLink: '/filter-bonus',
+                seeAllLink: '/filter-bonus/unlimited-max-bet-bonuses',
                 seeAllFoo: () => {
                     setBonusFilters({ ...initialBonusFilters, unlimited_bonus_max_bet: false })
                 },
@@ -201,7 +182,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         }
         if (slug === 'non-sticky-bonuses') {
             return {
-                seeAllLink: '/filter-bonus',
+                seeAllLink: '/filter-bonus/non-sticky-bonuses',
                 seeAllFoo: () => {
                     setBonusFilters({ ...initialBonusFilters, sticky: false })
                 },
@@ -214,54 +195,51 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({
         }
         if (slug === 'newly-opened-casinos') {
             return {
-                seeAllLink: '/filter-casinos',
+                seeAllLink: '/filter-casinos/newly-opened-casinos',
                 seeAllFoo: () => {
                     setCasinoFilters({ ...initialCasinoFilters, established: { min: CURRENTYEAR - 2, max: CURRENTYEAR } })
                 },
             }
         }
 
-
-      
-                                           
-           if (slug === 'top-ranked-casinos') {
-               return {
-                   seeAllLink: '/filter-casinos',
-                   seeAllFoo: () => {
-                       setCasinoFilters({ ...initialCasinoFilters, casino_rank: { min: 8.5, max: 10 } })
-                   },
-               }
-           }
+        if (slug === 'top-ranked-casinos') {
+            return {
+                seeAllLink: '/filter-casinos/top-ranked-casinos',
+                seeAllFoo: () => {
+                    setCasinoFilters({ ...initialCasinoFilters, casino_rank: { min: 8.5, max: 10 } })
+                },
+            }
+        }
 
         return { seeAllLink: `/all-${SeeAllRoutes[type_category]}${slug ? `/${slug}` : ''}`, seeAllFoo: () => {} }
     }
 
-      const value = useMemo(
-          () => ({
-              data,
-              searchGlobal,
-              handlerSeachGlobal,
-              casinoFilters,
-              setCasinoFilters,
-              bonusFilters,
-              setBonusFilters,
-              loyaltiesFilters,
-              setLoyaltiesFilters,
-              currentRouteFilter,
-              handlerCurrentRouteFilter,
-              handlerClearAllFilters,
-              fooCategorySanitazeLink,
-          }),
-          [data, searchGlobal, casinoFilters, bonusFilters, loyaltiesFilters, currentRouteFilter],
-      )
-    
+    const value = useMemo(
+        () => ({
+            data,
+            searchGlobal,
+            handlerSeachGlobal,
+            casinoFilters,
+            setCasinoFilters,
+            bonusFilters,
+            setBonusFilters,
+            loyaltiesFilters,
+            setLoyaltiesFilters,
+            currentRouteFilter,
+            handlerCurrentRouteFilter,
+            handlerClearAllFilters,
+            fooCategorySanitazeLink,
+        }),
+        [data, searchGlobal, casinoFilters, bonusFilters, loyaltiesFilters, currentRouteFilter],
+    )
+
     return <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
 }
 
 export const useFilterContext = (): FilterContextType => {
     const context = useContext(FilterContext)
     if (!context) {
-        throw new Error("useFilterContext must be used within a FilterProvider")
+        throw new Error('useFilterContext must be used within a FilterProvider')
     }
     return context
 }

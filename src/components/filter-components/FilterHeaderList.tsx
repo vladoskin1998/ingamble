@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { BonusFilterBodyType, CasinoFilterBodyType, LoyaltiesFilterBodyType } from '../../types'
 import { sliceString } from '../../helper'
 
-interface MakeListFilterHeaderType {
+export interface MakeListFilterHeaderType {
     value: string
     field: string
 }

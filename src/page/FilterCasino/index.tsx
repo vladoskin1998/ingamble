@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import { Categories } from '../../components/categories/Categories'
-import { FilterHeaderList } from '../../components/filter-components/FilterHeaderList'
+import { FilterHeaderList, makeListFilterHeader } from '../../components/filter-components/FilterHeaderList'
 import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import $api from '../../http'
 import { CasinoFilterBodyType, FilterCasinoPostResponse, SeeAllCasinosType } from '../../types'
@@ -8,16 +8,16 @@ import { Wraper } from '../Wraper'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import like from '../../assets/img/icons/like.svg'
 import { lazy, memo, useEffect, useState } from 'react'
-import {  useAdaptiveBehavior } from '../../context/AppContext'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 import { rankCasinosSeeAll, WithdrawalSeeAllCasinos } from '../SeeAllCasinos'
-import { cloacingFetch, cloacingLink, filterEmptyValues, NumberAssociaty, sanitizeNumberLike, sliceString } from '../../helper'
+import { cloacingFetch, cloacingLink, filterEmptyValues, getTitleFilterCategories, NumberAssociaty, sanitizeNumberLike, sliceString } from '../../helper'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
 import { debounce } from 'lodash'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import searchImg from '../../assets/img/icons/search-filter.svg'
 import '../SeeAllCasinos/style.css'
 import { v4 as uuidv4 } from 'uuid'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
 import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
@@ -66,7 +66,7 @@ const LicenseElem: React.FC<LicenseElemProps> = ({ filtersDataLicenses, casinoFi
     )
 }
 
-const debouncedFetchFilter = debounce((filters, fetchFunction) => fetchFunction(filters), 1000)
+const debouncedFetchFilter = debounce((filters, fetchFunction) => fetchFunction(filters), 500)
 
 const debouncedFetchPagination = debounce((filters, fetchFunction, setLoading, isMobile) => {
     if (!isMobile) {
@@ -82,10 +82,11 @@ const getFilteringCasinoList = async (payload: CasinoFilterBodyType, page: numbe
     return response.data
 }
 
-export default function FilterCasino() {
-    // // document.title = "Filter Casino"
 
-    const {  isSidebarActive } = useAdaptiveBehavior()
+export default function FilterCasino() {
+   
+
+    const { isSidebarActive } = useAdaptiveBehavior()
     const { data: filtersData, casinoFilters, setCasinoFilters } = useFilterContext()
 
     const [currentPage, setCurrentPage] = useState(1)
@@ -97,6 +98,15 @@ export default function FilterCasino() {
         keepPreviousData: true,
         enabled: false,
     })
+
+    const { casino_slug } = useParams()
+      
+   
+    // const [slug, setSlug] = useState<string>('')
+
+    // useEffect(() => {
+    //     setSlug(casino_slug )
+    // }, [casino_slug])
 
     useEffect(() => {
         debouncedFetchPagination(casinoFilters, refetch, setIsDebouncedLoading, isMobile)
@@ -126,7 +136,6 @@ export default function FilterCasino() {
 
     useEffect(() => {
         initializeAdaptiveBehavior()
-        
     }, [isLoading, isSidebarActive])
 
     useEffect(() => {
@@ -162,6 +171,7 @@ export default function FilterCasino() {
         }))
     }
 
+    const title = getTitleFilterCategories({ slug: casino_slug, item: makeListFilterHeader(casinoFilters) })
     if (isDebouncedLoading) return <LogoLoader />
 
     return (
@@ -189,7 +199,7 @@ export default function FilterCasino() {
                                     <span className="top__title-icon">
                                         <img src={searchImg} alt="search" />
                                     </span>
-                                    <h2 className="top__title">Results</h2>
+                                    <h2 className="top__title">{`${title} `}Results</h2>
                                 </div>
                             </div>
 

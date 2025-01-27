@@ -72,7 +72,7 @@ export const PublicRouter = () => {
             )}
 
             <Route
-                path="/filter-casinos"
+                path="/filter-casinos/:casino_slug?"
                 element={
                     <Suspense>
                         <FilterCasino />
@@ -80,7 +80,7 @@ export const PublicRouter = () => {
                 }
             />
             <Route
-                path="/filter-bonus"
+                path="/filter-bonus/:bonus_slug?"
                 element={
                     <Suspense>
                         <FilterBonus />
@@ -171,7 +171,14 @@ export const PublicRouter = () => {
                     />
                 }
             /> */}
-            <Route path="*" element={<Suspense><NotFound /></Suspense>} />
+            <Route
+                path="*"
+                element={
+                    <Suspense>
+                        <NotFound />
+                    </Suspense>
+                }
+            />
         </Routes>
     )
 }

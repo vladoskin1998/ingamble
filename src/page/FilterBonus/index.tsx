@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import { Categories } from '../../components/categories/Categories'
-import { FilterHeaderList } from '../../components/filter-components/FilterHeaderList'
+import { FilterHeaderList, makeListFilterHeader } from '../../components/filter-components/FilterHeaderList'
 import { initialBonusFilters, initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import $api from '../../http'
 import { BonusFilterBodyType, CasinoFilterBodyType, FilterBonusPostResponse, SeeAllBonus } from '../../types'
@@ -10,14 +10,14 @@ import like from '../../assets/img/icons/like.svg'
 import { lazy, memo, useEffect, useState } from 'react'
 import {  useAdaptiveBehavior } from '../../context/AppContext'
 import star from '../../assets/img/icons/star.svg'
-import { cloacingFetch, cloacingLink, COLORS_TAGS, filterEmptyValues, sanitizeNumberLike } from '../../helper'
+import { cloacingFetch, cloacingLink, COLORS_TAGS, filterEmptyValues, getTitleFilterCategories, sanitizeNumberLike } from '../../helper'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
 import { debounce } from 'lodash'
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import searchImg from '../../assets/img/icons/search-filter.svg'
 import '../SeeAllBonus/style.css'
 import { v4 as uuidv4 } from 'uuid'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { NoResult } from '../../components/no-result'
 import { BreadCrumb } from '../../components/breadcrumb/BreadCrumb'
 import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
@@ -26,7 +26,7 @@ const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
 const countPageSize = window.innerWidth < 900 ? 10 :20
 
-const debouncedFetchFilter = debounce((filters, fetchFunction) => fetchFunction(filters), 700)
+const debouncedFetchFilter = debounce((filters, fetchFunction) => fetchFunction(filters), 500)
 
 const debouncedFetchPagination = debounce((filters, fetchFunction, setLoading, isMobile) => {
     if (!isMobile) {
@@ -59,6 +59,14 @@ export default function FilterBonus() {
         keepPreviousData: true,
         enabled: false,
     })
+
+        const { bonus_slug } = useParams()
+    
+        const [slug, setSlug] = useState<string>(bonus_slug || '')
+    
+        useEffect(() => {
+            setSlug(bonus_slug || '')
+        }, [bonus_slug])
 
     useEffect(() => {
         debouncedFetchPagination(bonusFilters, refetch, setIsDebouncedLoading, isMobile)
@@ -122,6 +130,7 @@ export default function FilterBonus() {
   
     }, [isLoading])
 
+       const title = getTitleFilterCategories({ slug, item: makeListFilterHeader(bonusFilters) })
     if (isDebouncedLoading) return <LogoLoader />
 
     return (
@@ -150,7 +159,7 @@ export default function FilterBonus() {
                                     <span className="top__title-icon">
                                         <img src={searchImg} alt="search" />
                                     </span>
-                                    <h2 className="top__title">Results</h2>
+                                    <h2 className="top__title">{`${title} `}Results</h2>
                                 </div>
                             </div>
                             <ListDisplayData displayedData={displayedData} isShowPlayButton={isShowPlayButton} />

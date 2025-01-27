@@ -1,3 +1,4 @@
+import { MakeListFilterHeaderType } from "../components/filter-components/FilterHeaderList"
 import $api from "../http"
 
 export const euroToDolar = (s?: string) => {
@@ -221,3 +222,28 @@ export const getLikeByIdAndType = (type: 'bonus_like' | 'casino_like' | 'loyalty
 };
 
 
+
+
+export const getTitleFilterCategories = ({
+    slug,
+    item,
+}: {
+    slug?: string;
+    item?: MakeListFilterHeaderType[];
+}): string => {
+    if (!slug || !item || item.length !== 1) {
+        return '';
+    }
+
+    const { field } = item[0];
+
+    const categories: Record<string, string> = {
+        'vpn-friendly-casinos': field === 'vpn_usage' ? 'VPN Allowed' : '',
+        'unlimited-max-bet-bonuses': field === 'unlimited_bonus_max_bet' ? 'Maximum Bet' : '',
+        'non-sticky-bonuses': field ===  'sticky' ? "Sticky" :' ',
+        'newly-opened-casinos': field === 'established' ? 'Newly Opened' : ' ',
+        'top-ranked-casinos': field === 'casino_rank' ? 'Top Ranked' : ' ',
+    };
+
+    return categories[slug] || '';
+};
