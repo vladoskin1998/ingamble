@@ -1,7 +1,7 @@
 import { useInView } from 'react-intersection-observer'
 import MainSlider from '../../components/swiper/MainSlider'
 
-import { shuffleArray } from '../../helper'
+import { COLORS_TAGS, shuffleArray } from '../../helper'
 import { DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 import { useMemo } from 'react'
@@ -17,7 +17,6 @@ export default function BlockType1({ data, initialInView=false }: { data: HomeDa
           initialInView
       })
 
-     
           return (
               <section ref={ref} aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
                   {inView && (
@@ -51,6 +50,19 @@ export default function BlockType1({ data, initialInView=false }: { data: HomeDa
                                   imageLink: `/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`,
                                   casinoLink: `/casino/${item?.casino_info?.casino_slug}`,
                                   bonuseLink: `/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`,
+                                    tags: (
+                                                                  <>
+                                                                      {item?.bonus_info?.labels?.length ? (
+                                                                          item?.bonus_info?.labels.map((item, cindex) => (
+                                                                              <div key={cindex} className={`tags-casino-card__item ${COLORS_TAGS[cindex % 4]}`}>
+                                                                                  <span className="tags-casino-card__item-label">{item}</span>
+                                                                              </div>
+                                                                          ))
+                                                                      ) : (
+                                                                          <></>
+                                                                      )}
+                                                                  </>
+                                                              ),
                               }))}
                           />
                       </div>

@@ -2,7 +2,6 @@ import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
-//@ts-ignore
 import { useEffect, useRef } from 'react'
 import shield from '../../assets/img/icons/shield.svg'
 import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
@@ -17,7 +16,7 @@ export default function BlockType2({ data, initialInView = false }: { data: Home
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 
-
+    useEffect(() => {
         if (sliderRef.current && paginationRef.current) {
             const swiper = sliderRef.current.swiper
             if (swiper && paginationRef.current) {
@@ -28,7 +27,7 @@ export default function BlockType2({ data, initialInView = false }: { data: Home
                 swiper.pagination.update()
             }
         }
-   
+    }, [])
 
     const { isShowPlayButton } = useAdaptiveBehavior()
 

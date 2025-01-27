@@ -3,7 +3,6 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
-//@ts-ignore
 import { useEffect, useRef } from 'react'
 import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
@@ -16,7 +15,7 @@ import { useInView } from 'react-intersection-observer'
 export default function BlockType2Mobile({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
-    
+    useEffect(() => {
         if (sliderRef.current && paginationRef.current) {
             const swiper = sliderRef.current.swiper
             if (swiper && paginationRef.current) {
@@ -27,7 +26,7 @@ export default function BlockType2Mobile({ data, initialInView = false }: { data
                 swiper.pagination.update()
             }
         }
-  
+    }, [])
     const { isShowPlayButton } = useAdaptiveBehavior()
 
     const { ref, inView } = useInView({

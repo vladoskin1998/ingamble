@@ -12,7 +12,7 @@ import BlockType9 from './BlockType9'
 import BlockMType2M from './BlockMType2M'
 import BlockMType3M from './BlockMType3M'
 import BlockType6 from './BlockType6'
-import BlockType8 from './BlockType8'
+//  
 import BlockType2Mobile from './BlockType2Mobile'
 import BlockType2 from './BlockType2'
 import BlockType3Mobile from './BlockType3Mobile'
@@ -83,7 +83,7 @@ const renderBlock = (block: any, isMobile: boolean, index: number) => {
         case BlockTypeNumber.BlockType6c:
             return <BlockType6 data={block} initialInView={initialInView} />
         case BlockTypeNumber.BlockType8:
-            return <BlockType8 data={block} initialInView={initialInView} />
+            return <BlockType1 data={block} initialInView={initialInView} />
         case BlockTypeNumber.BlockType2:
             return <>{isMobile ? <BlockType2Mobile data={block} initialInView={initialInView} /> : <BlockType2 data={block} initialInView={initialInView} />}</>
         case BlockTypeNumber.BlockType3:
