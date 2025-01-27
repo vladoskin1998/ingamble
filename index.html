@@ -8,8 +8,8 @@
         <noscript>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" />
         </noscript>
-        <script type="module" defer >
-            const metrikaId = import.meta.env.VITE_METRIKA_ID
+        <!-- <script type="module" defer >
+           
 
             let isMetrikaLoaded = false
 
@@ -44,6 +44,17 @@
                     loadYandexMetrika(metrikaId)
                 }
             })
+        </script> -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-42W5MNLRR0"></script>
+        <script >
+             const metrikaId = import.meta.env.VITE_METRIKA_ID
+            window.dataLayer = window.dataLayer || []
+            function gtag() {
+                dataLayer.push(arguments)
+            }
+            gtag('js', new Date())
+
+            gtag('config', 'G-42W5MNLRR0')
         </script>
         <link rel="icon" href="/src/assets/img/favicon.png" type="image/x-icon" />
 
