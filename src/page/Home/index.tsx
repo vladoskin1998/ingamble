@@ -1,4 +1,4 @@
-import { lazy, useEffect, useMemo, useState } from 'react'
+import {  useEffect, useMemo, useState } from 'react'
 import { Wraper } from '../Wraper'
 // import { useAdaptiveBehavior } from '../../context/AppContext'
 import { Categories } from '../../components/categories/Categories'
@@ -27,11 +27,15 @@ import BlockType10 from './BlockType10'
 import BlockType11 from './BlockType11'
 import BlockType10Mobile from './BlockType10Mobile'
 import { useInView } from 'react-intersection-observer'
+import MoreBonusesForYourChoise from './MoreBonusesForYourChoise'
+import CheckMoreWhatSuitsYouBest from '../../components/categories/CheckMoreWhatSuitsYouBest'
+import SubscribeForm from '../../components/subscribe/SubscribeForm'
+import BottomInfo from '../../components/footer/BottomInfo'
 
-const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
-const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
-const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
+// const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
+// const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
+// const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
+// const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 
@@ -149,14 +153,14 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
 
     return (
         <>
-            <Wraper>
+            <Wraper >
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
                         {blocksToRender.map((block, index) => renderBlock(block, isMobile, index))}
 
                         <div ref={ref}>
-                            {(inView && isLoading && isLoadingBlock) && (
+                            {(inView && !isLoading && !isLoadingBlock) && (
                                 <>
                                     <MoreBonusesForYourChoise />
                                     <CheckMoreWhatSuitsYouBest />
