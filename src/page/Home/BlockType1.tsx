@@ -21,14 +21,14 @@ export default function BlockType1({ data, initialInView=false }: { data: HomeDa
           return (
               <section ref={ref} aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
                   {inView && (
-                      <div className="todays-hot-gamble__container container" >
+                      <div className="todays-hot-gamble__container container">
                           <div className="todays-hot-gamble__top top">
                               <div className="top__row">
                                   <div className="top__column">
                                       <div className="top__title-block">
                                           {data.items_block.title_image && (
                                               <span className="top__title-icon ibg--custom ibg--custom-width-auto">
-                                                  <img src={data.items_block.title_image} alt="security" />
+                                                  <img src={data.items_block.title_image} alt="security" loading="lazy" />
                                               </span>
                                           )}
                                           <h2 className="top__title">{data.items_block.block_title}</h2>

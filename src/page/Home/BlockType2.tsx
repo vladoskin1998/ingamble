@@ -47,7 +47,7 @@ export default function BlockType2({ data, initialInView = false }: { data: Home
                                 <div className="top__title-block">
                                     {data.items_block.title_image && (
                                         <span className="top__title-icon ibg--custom ibg--custom-width-auto">
-                                            <img src={data.items_block.title_image} alt="security" />
+                                            <img src={data.items_block.title_image} alt="security" loading="lazy" />
                                         </span>
                                     )}
                                     <h2 className="top__title ">{data.items_block.block_title}</h2>

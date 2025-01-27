@@ -156,9 +156,8 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
                         {blocksToRender.map((block, index) => renderBlock(block, isMobile, index))}
 
                         <div ref={ref}>
-                            {inView && (
+                            {(inView && isLoading && isLoadingBlock) && (
                                 <>
-                                    {' '}
                                     <MoreBonusesForYourChoise />
                                     <CheckMoreWhatSuitsYouBest />
                                     <SubscribeForm />
