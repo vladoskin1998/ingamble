@@ -29,7 +29,7 @@ export default function Footer() {
 
     return (
         <footer className="footer" ref={ref}>
-            {inView && (
+            {true && (
                 <>
                     <div className="footer__top top-footer">
                         <div className="top-footer__container container">

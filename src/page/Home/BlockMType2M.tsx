@@ -27,7 +27,7 @@ export default function BlockMType2M({ data, initialInView = false }: { data: Ho
         }
     }, [])
     const { ref, inView } = useInView({
-        threshold: 0.1,
+        threshold: 0,
         triggerOnce: true,
         initialInView,
     })

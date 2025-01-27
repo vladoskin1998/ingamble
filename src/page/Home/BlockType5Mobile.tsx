@@ -17,7 +17,7 @@ export default function BlockType5Mobile({ data, initialInView = false }: { data
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
 
     const { ref, inView } = useInView({
-        threshold: 0.1,
+        threshold: 0,
         triggerOnce: true,
         initialInView
     })

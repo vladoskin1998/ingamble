@@ -30,7 +30,7 @@ export default function BlockType3Mobile({ data, initialInView = false }: { data
     }, [])
 
     const { ref, inView } = useInView({
-        threshold: 0.1,
+        threshold: 0,
         triggerOnce: true,
         initialInView
     })

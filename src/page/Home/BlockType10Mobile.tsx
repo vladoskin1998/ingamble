@@ -18,7 +18,7 @@ import { useInView } from 'react-intersection-observer'
 
 export default function BlockType10Mobile({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
     const { ref, inView } = useInView({
-        threshold: 0.1,
+        threshold: 0,
         triggerOnce: true,
         initialInView
     })

@@ -13,7 +13,7 @@ const BlockType9 = memo(function BlockType9({ data,initialInView=false  }: { ini
 
     
      const { ref, inView } = useInView({
-         threshold: 0.1,
+         threshold: 0,
          triggerOnce: true,
          initialInView,
      })

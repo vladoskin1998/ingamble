@@ -142,8 +142,9 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
     const { ref, inView } = useInView({
-        threshold: 0,
+        threshold: 0.1,
         triggerOnce: true,
+        
     })
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -151,16 +152,17 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
 
     if (isLoading && isLoadingBlock &&  src !== 'get-data-home-page/') return <LogoLoader />
 
+
     return (
         <>
-            <Wraper >
+            <Wraper footerInView={inView && !isLoading && !isLoadingBlock }>
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
                         {blocksToRender.map((block, index) => renderBlock(block, isMobile, index))}
 
                         <div ref={ref}>
-                            {(inView && !isLoading && !isLoadingBlock) && (
+                            {inView && !isLoading && !isLoadingBlock && (
                                 <>
                                     <MoreBonusesForYourChoise />
                                     <CheckMoreWhatSuitsYouBest />

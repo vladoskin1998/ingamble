@@ -5,9 +5,7 @@ import Icons from './Icons'
 import Footer from '../../components/footer'
 
 
-export const Wraper = ({ children }: { children: ReactNode }) => {
- 
-
+export const Wraper = ({ children, footerInView=true }: { children: ReactNode; footerInView?:boolean  }) => {
     return (
         <>
             <Icons />
@@ -20,10 +18,10 @@ export const Wraper = ({ children }: { children: ReactNode }) => {
                 </div>
                 <div className="gamble">
                     <Navbar />
-                    <div className="gamble__body" >
+                    <div className="gamble__body">
                         <Header />
                         <>{children}</>
-                        <Footer />
+                        {footerInView && <Footer />}
                     </div>
                 </div>
             </div>

@@ -53,7 +53,7 @@ export default function BlockType6({ data, initialInView = false }: { data: Home
     const emojiTitle = Country?.general?.countries?.find((item) => item?.code === data?.items_block?.country_code)?.emoji_flag
 
     const { ref, inView } = useInView({
-        threshold: 0.1,
+        threshold: 0,
         triggerOnce: true,
         initialInView
     })

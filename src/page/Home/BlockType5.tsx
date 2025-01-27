@@ -58,7 +58,7 @@ export default function BlockType5({ data, initialInView = false }: { data: Home
     const { isShowPlayButton } = useAdaptiveBehavior()
 
     const { ref, inView } = useInView({
-        threshold: 0.1,
+        threshold: 0,
         triggerOnce: true,
         initialInView
     })

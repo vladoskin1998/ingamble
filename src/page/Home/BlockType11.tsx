@@ -17,7 +17,7 @@ export default function BlockType11({ data, initialInView = false }: { data: Hom
     const { setCasinoFilters } = useFilterContext()
 
     const { ref, inView } = useInView({
-        threshold: 0.1,
+        threshold: 0,
         triggerOnce: true,
         initialInView
     })

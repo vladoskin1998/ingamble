@@ -12,7 +12,7 @@ export default function BlockType1({ data, initialInView=false }: { data: HomeDa
     }, [data?.items_block.data_cards])
 
       const { ref, inView } = useInView({
-          threshold: 0.1,
+          threshold: 0,
           triggerOnce: true,
           initialInView
       })
