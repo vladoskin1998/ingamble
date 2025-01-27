@@ -2,7 +2,6 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import { LogoLoader } from '../components/loader/LogoLoader'
 
-
 const Home = lazy(() => import('../page/Home'))
 
 const SimpleCasinos = lazy(() => import('../page/SimpleCasinos'))
@@ -34,30 +33,107 @@ export const PublicRouter = () => {
 
             {import.meta.env.VITE_TITLE === 'CryptoGamblers' ? (
                 <>
-                    <Route path="/casinos/:casino_slug?" element={  <Suspense><SeeAllCasinos /></Suspense>} />
-                    <Route path="/bonuses/:bonus_slug?" element={  <Suspense><SeeAllBonus /></Suspense>} />
+                    <Route
+                        path="/casinos/:casino_slug?"
+                        element={
+                            <Suspense>
+                                <SeeAllCasinos />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="/bonuses/:bonus_slug?"
+                        element={
+                            <Suspense>
+                                <SeeAllBonus />
+                            </Suspense>
+                        }
+                    />
                 </>
             ) : (
                 <>
-                    <Route path="/casinos" element={<Home src={'get-data-hub-page-casino/'} />} />
-                    <Route path="/bonuses" element={  <Suspense><Home src={'get-data-hub-page-bonus/'} /></Suspense>} />
+                    <Route
+                        path="/casinos"
+                        element={
+                            <Suspense>
+                                <Home src={'get-data-hub-page-casino/'} />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="/bonuses"
+                        element={
+                            <Suspense>
+                                <Home src={'get-data-hub-page-bonus/'} />
+                            </Suspense>
+                        }
+                    />
                 </>
             )}
 
-            <Route path="/filter-casinos" element={<FilterCasino />} />
-            <Route path="/filter-bonus" element={<FilterBonus />} />
-            <Route path="/filter-loyalties" element={  <Suspense><FilterLoyalty /></Suspense>} />
+            <Route
+                path="/filter-casinos"
+                element={
+                    <Suspense>
+                        <FilterCasino />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/filter-bonus"
+                element={
+                    <Suspense>
+                        <FilterBonus />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/filter-loyalties"
+                element={
+                    <Suspense>
+                        <FilterLoyalty />
+                    </Suspense>
+                }
+            />
 
             {/* Страница категорий (see all) по казино  */}
-            <Route path="/all-casinos/:casino_slug?" element={  <Suspense><SeeAllCasinos /></Suspense>} />
+            <Route
+                path="/all-casinos/:casino_slug?"
+                element={
+                    <Suspense>
+                        <SeeAllCasinos />
+                    </Suspense>
+                }
+            />
             {/* Страница категорий  (see all) по бонусам */}
-            <Route path="/all-bonuses/:bonus_slug?" element={  <Suspense><SeeAllBonus /></Suspense>} />
+            <Route
+                path="/all-bonuses/:bonus_slug?"
+                element={
+                    <Suspense>
+                        <SeeAllBonus />
+                    </Suspense>
+                }
+            />
 
             {/* Страница лоялки ("Loyalties")*/}
-            <Route path="/all-loyalties/:loyaltie_slug?" element={  <Suspense><SeeAllEssentialsLoyalty /></Suspense>} />
+            <Route
+                path="/all-loyalties/:loyaltie_slug?"
+                element={
+                    <Suspense>
+                        <SeeAllEssentialsLoyalty />
+                    </Suspense>
+                }
+            />
 
             {/* //Страница конкретного казино */}
-            <Route path="/casino/:casino_slug" element={  <Suspense><SimpleCasinos /></Suspense>} />
+            <Route
+                path="/casino/:casino_slug"
+                element={
+                    <Suspense>
+                        <SimpleCasinos />
+                    </Suspense>
+                }
+            />
             {/* //Страница конкретного бонуса */}
             <Route
                 path="/casino/:casino_slug/bonuses/:bonus_slug"
@@ -95,7 +171,7 @@ export const PublicRouter = () => {
                     />
                 }
             /> */}
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<Suspense><NotFound /></Suspense>} />
         </Routes>
     )
 }

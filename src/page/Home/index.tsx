@@ -26,16 +26,7 @@ import BlockType5Mobile from './BlockType5Mobile'
 import BlockType10 from './BlockType10'
 import BlockType11 from './BlockType11'
 import BlockType10Mobile from './BlockType10Mobile'
-import { useInView } from 'react-intersection-observer'
-import MoreBonusesForYourChoise from './MoreBonusesForYourChoise'
-import CheckMoreWhatSuitsYouBest from '../../components/categories/CheckMoreWhatSuitsYouBest'
-import SubscribeForm from '../../components/subscribe/SubscribeForm'
-import BottomInfo from '../../components/footer/BottomInfo'
-
-// const MoreBonusesForYourChoise = lazy(() => import('./MoreBonusesForYourChoise'))
-// const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
-// const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
-// const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
+import { BlockFooter } from './BlockFooter'
 
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 
@@ -68,8 +59,10 @@ const getBlockByCountry = async (): Promise<HomeDataBlock> => {
 }
 
 const renderBlock = (block: any, isMobile: boolean, index: number) => {
+    console.log('block', block)
+    
     const initialInView = index < 2 ? true : false
-    switch (block.items_block.type_block) {
+    switch (block?.items_block?.type_block) {
         case BlockTypeNumber.BlockType1:
             return <BlockType1 data={block} initialInView={initialInView} />
         case BlockTypeNumber.BlockType9:
@@ -99,7 +92,7 @@ const renderBlock = (block: any, isMobile: boolean, index: number) => {
         case BlockTypeNumber.BlockType11:
             return <BlockType11 data={block} initialInView={initialInView} />
         default:
-            return null
+            return <BlockFooter initialInView={initialInView} />
     }
 }
 
@@ -138,39 +131,27 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
     }
 
     const blocksToRender = useMemo(() => {
-        const blocks = isMobile ? [...(data?.dataHomeMobile || []), blockByCountry] : [...(data?.dataHome || []), blockByCountry]
+        if (!data?.dataHome.length || (isMobile && !data?.dataHome.length)) return []
+            const blocks = isMobile
+                ? [...(data?.dataHomeMobile || []), blockByCountry, { blocks_sequence_number: (data?.dataHomeMobile?.length || 0) + 3 }]
+                : [...(data?.dataHome || []), blockByCountry, { blocks_sequence_number: (data?.dataHomeMobile?.length || 0) + 3 }]
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
-    const { ref, inView } = useInView({
-        threshold: 0.5,
-        triggerOnce: true,
-        
-    })
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [src])
 
     if (isLoading && isLoadingBlock &&  src !== 'get-data-home-page/') return <LogoLoader />
-
+  
 
     return (
         <>
-            <Wraper footerInView={inView && !isLoading && !isLoadingBlock }>
+            <Wraper footerInView={!isLoading && !isLoadingBlock}>
                 <main className="gamble__main main-gamble">
                     <div className="main-gamble__body">
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
                         {blocksToRender.map((block, index) => renderBlock(block, isMobile, index))}
-
-                        <div ref={ref} >
-                            {inView && !isLoading && !isLoadingBlock && (
-                                <>
-                                    <MoreBonusesForYourChoise />
-                                    <CheckMoreWhatSuitsYouBest />
-                                    <SubscribeForm />
-                                    <BottomInfo />
-                                </>
-                            )}
-                        </div>
                     </div>
                 </main>
             </Wraper>

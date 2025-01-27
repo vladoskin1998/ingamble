@@ -2,7 +2,7 @@ import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import shield from '../../assets/img/icons/shield.svg'
 import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
@@ -36,6 +36,11 @@ export default function BlockType2({ data, initialInView = false }: { data: Home
         triggerOnce: true,
         initialInView
     })
+
+    const bigCards = useMemo(() => data.items_block.data_cards.filter((item) => item.big_card).sort((a, b) => a.order - b.order), [data.items_block.data_cards])
+
+    const smallCards = useMemo(() => data.items_block.data_cards.filter((item) => !item.big_card).sort((a, b) => a.order - b.order), [data.items_block.data_cards])
+
 
     return (
         <section ref={ref} aria-label="BlockTypeNumber.BlockType2" className="main-gamble__safest-casino-2 safest-casino-2-gamble main-gamble__different-casino-bg main-gamble__baner-block">
@@ -84,80 +89,77 @@ export default function BlockType2({ data, initialInView = false }: { data: Home
                                                     },
                                                 }}
                                             >
-                                                {data?.items_block?.data_cards
-                                                    ?.filter((item) => item?.big_card)
-                                                    .sort((a, b) => a?.order - b?.order)
-                                                    .map((item, index) => (
-                                                        <SwiperSlide key={index}>
-                                                            <div
-                                                                className="baner-row-block__slide slide-baner-row-block swiper-slide"
-                                                                style={{
-                                                                    width: '100%',
-                                                                }}
-                                                            >
-                                                                <div className="slide-baner-row-block__item item-baner-row-block">
-                                                                    <Link
-                                                                        className="item-baner-row-block__image ibg--custom"
-                                                                        to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}
-                                                                        onClick={(e) => e.stopPropagation()}
-                                                                    >
-                                                                        <img src={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
-                                                                    </Link>
-                                                                    <div className="item-baner-row-block__row">
-                                                                        <div className="item-baner-row-block__column">
-                                                                            <div className="item-baner-row-block__small-card casino-small-card">
-                                                                                <div className="casino-small-card__image-block">
-                                                                                    <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="casino-small-card__image ibg--custom">
-                                                                                        <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%" />
-                                                                                    </Link>
-                                                                                </div>
-                                                                                <div className="casino-small-card__body">
-                                                                                    <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="casino-small-card__name">
-                                                                                        {item?.casino_info?.casino_name}
-                                                                                    </Link>
-                                                                                    <div className="casino-small-card__info">
-                                                                                        {item.casino_info.additional_casino_params.map((it, cindex) => (
-                                                                                            <span key={cindex} className="casino-small-card__info-link">
-                                                                                                {it}
-                                                                                            </span>
-                                                                                        ))}
-                                                                                    </div>
+                                                {bigCards?.map((item, index) => (
+                                                    <SwiperSlide key={index}>
+                                                        <div
+                                                            className="baner-row-block__slide slide-baner-row-block swiper-slide"
+                                                            style={{
+                                                                width: '100%',
+                                                            }}
+                                                        >
+                                                            <div className="slide-baner-row-block__item item-baner-row-block">
+                                                                <Link
+                                                                    className="item-baner-row-block__image ibg--custom"
+                                                                    to={`/casino/${item?.casino_info?.casino_slug}/bonuses/${item?.bonus_info?.bonus_slug}`}
+                                                                    onClick={(e) => e.stopPropagation()}
+                                                                >
+                                                                    <img src={item?.bonus_info?.bonus_image || ''} height="100%" width="100%" />
+                                                                </Link>
+                                                                <div className="item-baner-row-block__row">
+                                                                    <div className="item-baner-row-block__column">
+                                                                        <div className="item-baner-row-block__small-card casino-small-card">
+                                                                            <div className="casino-small-card__image-block">
+                                                                                <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="casino-small-card__image ibg--custom">
+                                                                                    <LazyCardImg img={item?.casino_info?.casino_image || ''} size="medium" height="100%" width="100%" />
+                                                                                </Link>
+                                                                            </div>
+                                                                            <div className="casino-small-card__body">
+                                                                                <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} aria-label="Put your description here." className="casino-small-card__name">
+                                                                                    {item?.casino_info?.casino_name}
+                                                                                </Link>
+                                                                                <div className="casino-small-card__info">
+                                                                                    {item.casino_info.additional_casino_params.map((it, cindex) => (
+                                                                                        <span key={cindex} className="casino-small-card__info-link">
+                                                                                            {it}
+                                                                                        </span>
+                                                                                    ))}
                                                                                 </div>
                                                                             </div>
-                                                                            <div className="item-baner-row-block__index">
-                                                                                <div className="item-baner-row-block__index-icon">
-                                                                                    <img src={shield} alt="shield" />
-                                                                                </div>
-                                                                                <div className="item-baner-row-block__index-number">{item?.casino_info?.casino_rank}</div>
-                                                                                <div className="item-baner-row-block__index-text">Safety Index</div>
-                                                                            </div>
-                                                                            <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} className="item-baner-row-block__title top__title-40">
-                                                                                {item?.bonus_info?.bonus_name}
-                                                                            </Link>
                                                                         </div>
+                                                                        <div className="item-baner-row-block__index">
+                                                                            <div className="item-baner-row-block__index-icon">
+                                                                                <img src={shield} alt="shield" />
+                                                                            </div>
+                                                                            <div className="item-baner-row-block__index-number">{item?.casino_info?.casino_rank}</div>
+                                                                            <div className="item-baner-row-block__index-text">Safety Index</div>
+                                                                        </div>
+                                                                        <Link rel="nofollow noopener" to={`/casino/${item?.casino_info?.casino_slug}`} className="item-baner-row-block__title top__title-40">
+                                                                            {item?.bonus_info?.bonus_name}
+                                                                        </Link>
+                                                                    </div>
 
-                                                                        <div className="item-baner-row-block__column">
-                                                                            {isShowPlayButton && (
-                                                                                <a
-                                                                                    href={cloacingLink(item?.casino_info?.casino_name)}
-                                                                                    onClick={(e) => {
-                                                                                        e.stopPropagation()
-                                                                                        e.preventDefault()
-                                                                                        cloacingFetch(item?.casino_info?.casino_affiliate_link)
-                                                                                        window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
-                                                                                    }}
-                                                                                    aria-label="Put your description here."
-                                                                                    className="item-baner-row-block__btn casino-card__bnt"
-                                                                                >
-                                                                                    Play
-                                                                                </a>
-                                                                            )}
-                                                                        </div>
+                                                                    <div className="item-baner-row-block__column">
+                                                                        {isShowPlayButton && (
+                                                                            <a
+                                                                                href={cloacingLink(item?.casino_info?.casino_name)}
+                                                                                onClick={(e) => {
+                                                                                    e.stopPropagation()
+                                                                                    e.preventDefault()
+                                                                                    cloacingFetch(item?.casino_info?.casino_affiliate_link)
+                                                                                    window.open(item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino, '_blank', 'noopener,noreferrer')
+                                                                                }}
+                                                                                aria-label="Put your description here."
+                                                                                className="item-baner-row-block__btn casino-card__bnt"
+                                                                            >
+                                                                                Play
+                                                                            </a>
+                                                                        )}
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </SwiperSlide>
-                                                    ))}
+                                                        </div>
+                                                    </SwiperSlide>
+                                                ))}
                                             </Swiper>
                                         </div>
                                     </div>
@@ -186,9 +188,7 @@ export default function BlockType2({ data, initialInView = false }: { data: Home
                                                 },
                                             }}
                                         >
-                                            {data.items_block.data_cards
-                                                .filter((item) => !item.big_card)
-                                                .sort((a, b) => a.order - b.order)
+                                            {smallCards
                                                 .map((item, index) => (
                                                     <SwiperSlide key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
                                                         <div className="slide-slider__item different-casino-bg">

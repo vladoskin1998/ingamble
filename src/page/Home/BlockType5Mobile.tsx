@@ -28,7 +28,7 @@ export default function BlockType5Mobile({ data, initialInView = false }: { data
                 <div className="best-casinos-2024-gamble__container container">
                     <div className="best-casinos-2024-gamble__body">
                         <div className="best-casinos-2024-gamble__bg ibg--custom">
-                            <img src={bg01} alt="bg" />
+                            <img src={bg01} alt="bg" loading="lazy" />
                         </div>
                         <div className="best-casinos-2024-gamble__waves">
                             <span></span>
@@ -45,7 +45,7 @@ export default function BlockType5Mobile({ data, initialInView = false }: { data
                                         <div className="top__title-block">
                                             {data.items_block.title_image && (
                                                 <span className="top__title-icon ibg--custom ibg--custom-width-auto">
-                                                    <img src={data.items_block.title_image} alt="security" />
+                                                    <img src={data.items_block.title_image} alt="security" loading="lazy" />
                                                 </span>
                                             )}
                                             <h2 className="top__title">{data.items_block.block_title}</h2>
@@ -94,7 +94,7 @@ export default function BlockType5Mobile({ data, initialInView = false }: { data
                                                             </Link>
                                                             <div className="different-casino-medium__rating">
                                                                 <span className="different-casino-medium__rating-icon">
-                                                                    <img src={star} alt="star" />
+                                                                    <img src={star} alt="star" loading="lazy" />
                                                                 </span>
                                                                 <span className="different-casino-medium__rationg-number">{item?.casino_info?.casino_rank}</span>
                                                             </div>

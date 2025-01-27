@@ -72,7 +72,7 @@ export default function BlockType11({ data, initialInView = false }: { data: Hom
                                                             {item?.casino_info?.casino_name}
                                                         </Link>
                                                         <span className="deposit-top-bonuses-gamble__stake-icon">
-                                                            <img src={star} alt="star" />
+                                                            <img src={star} alt="star" loading="lazy" />
                                                         </span>
                                                         <span className="deposit-top-bonuses-gamble__stake-number">{item?.casino_info?.casino_rank}</span>
                                                     </div>
@@ -81,7 +81,7 @@ export default function BlockType11({ data, initialInView = false }: { data: Hom
                                                     <div className="info-deposit-top-bonuses-gamble__row">
                                                         <div className="info-deposit-top-bonuses-gamble__column">
                                                             <div className="info-deposit-top-bonuses-gamble__icon">
-                                                                <img src={deposit} alt="deposit-icon" />
+                                                                <img src={deposit} alt="deposit-icon" loading="lazy" />
                                                             </div>
                                                             <div className="info-deposit-top-bonuses-gamble__text">{`WR: ${typeof item?.bonus_info?.wr === 'number' ? item?.bonus_info.wr + 'X' : '-'}`}</div>
                                                         </div>
@@ -152,7 +152,7 @@ export default function BlockType11({ data, initialInView = false }: { data: Hom
                                                             {item.casino_info.casino_name}
                                                         </Link>
                                                         <span className="deposit-top-bonuses-gamble__stake-icon">
-                                                            <img src={star} alt="star" />
+                                                            <img src={star} alt="star" loading="lazy" />
                                                         </span>
                                                         <span className="deposit-top-bonuses-gamble__stake-number">{item.casino_info.casino_rank}</span>
                                                     </div>
@@ -161,7 +161,7 @@ export default function BlockType11({ data, initialInView = false }: { data: Hom
                                                     <div className="info-deposit-top-bonuses-gamble__row">
                                                         <div className="info-deposit-top-bonuses-gamble__column">
                                                             <div className="info-deposit-top-bonuses-gamble__icon">
-                                                                <img src={deposit} alt="deposit-icon" />
+                                                                <img src={deposit} alt="deposit-icon" loading="lazy" />
                                                             </div>
                                                             <div className="info-deposit-top-bonuses-gamble__text">{`WR: ${typeof item?.bonus_info?.wr === 'number' ? item?.bonus_info.wr + 'X' : '-'}`}</div>
                                                         </div>

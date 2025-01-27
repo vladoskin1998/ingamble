@@ -73,7 +73,7 @@ export default function BlockType5({ data, initialInView = false }: { data: Home
                                 <div className="top__title-block">
                                     {data.items_block.title_image && (
                                         <span className="top__title-icon ibg--custom ibg--custom-width-auto">
-                                            <img src={data.items_block.title_image} alt="security" />
+                                            <img src={data.items_block.title_image} alt="security" loading="lazy" />
                                         </span>
                                     )}
                                     <h2 className="top__title">{data.items_block.block_title}</h2>
@@ -87,13 +87,13 @@ export default function BlockType5({ data, initialInView = false }: { data: Home
                     </div>
                     <div className="best-live-dealer-casinos-gamble__row">
                         <div className="best-live-dealer-casinos-gamble__bg ibg--custom">
-                            <img src={bg07} alt="bg" />
+                            <img src={bg07} alt="bg" loading="lazy" />
                         </div>
                         <div className="best-live-dealer-casinos-gamble__slider slider-best-live-dealer-casinos-gamble">
                             <div className="slider-best-live-dealer-casinos-gamble__top">
                                 <div className="slider-best-live-dealer-casinos-gamble__title">
                                     <span>
-                                        <img src={roulette} alt="roulette" />
+                                        <img src={roulette} alt="roulette" loading="lazy" />
                                     </span>
                                     Blackjack, Roulette, Table Games
                                 </div>
@@ -163,7 +163,7 @@ export default function BlockType5({ data, initialInView = false }: { data: Home
                                                                         </div>
                                                                         <div className="casino-small-card__rating">
                                                                             <span className="casino-small-card__rating-icon">
-                                                                                <img src={star} alt="star" />
+                                                                                <img src={star} alt="star" loading="lazy" />
                                                                             </span>
                                                                             <span className="casino-small-card__rating-number">{item?.casino_info?.casino_rank}</span>
                                                                         </div>
@@ -216,7 +216,7 @@ export default function BlockType5({ data, initialInView = false }: { data: Home
                                 </div>
                                 <Link to={'/all-bonuses/best-live-bonuses'} className="best-live-dealer-casinos-gamble__btn ">
                                     <span>
-                                        <img src={gift} alt="gift" />
+                                        <img src={gift} alt="gift" loading="lazy" />
                                     </span>
                                     Get Bonus
                                 </Link>

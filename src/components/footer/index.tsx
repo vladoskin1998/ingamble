@@ -20,7 +20,9 @@ export default function Footer() {
     const { ref, inView } = useInView({
         threshold: 0.1,
         triggerOnce: true,
+        delay: 1000
     })
+    
     useEffect(() => {
         if (inView) {
             initializeAdaptiveBehavior()
@@ -29,8 +31,7 @@ export default function Footer() {
 
     return (
         <footer className="footer" ref={ref}>
-            {true && (
-                <>
+     
                     <div className="footer__top top-footer">
                         <div className="top-footer__container container">
                             <nav className="top-footer__menu menu-footer">
@@ -546,8 +547,8 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-                </>
-            )}
+              
+            
         </footer>
     )
 }

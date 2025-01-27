@@ -106,7 +106,7 @@ export default function BlockType10({ data, initialInView = false }: { data: Hom
                                 <span></span>
                             </div>
                             <div className="best-casinos-2024-2-gamble__girl">
-                                <img src={girl2} alt="girl" />
+                                <img src={girl2} alt="girl" loading="lazy" />
                             </div>
                             <div className="best-casinos-2024-2-gamble__content">
                                 <div className="best-casinos-2024-2-gamble__text">
@@ -121,7 +121,7 @@ export default function BlockType10({ data, initialInView = false }: { data: Hom
                         <div className="best-casinos-2024-2-gamble__column best-casinos-2024-2-gamble__column_small">
                             <div className="best-casinos-2024-2-gamble__item different-casino-big">
                                 <div className="different-casino-big__bg ibg--custom">
-                                    <img src={bg03} alt="bg" />
+                                    <img src={bg03} alt="bg" loading="lazy" />
                                 </div>
                                 <Link rel="nofollow noopener" to={`/casino/${data.items_block.data_cards?.[2]?.casino_info?.casino_slug}`} className="different-casino-big__image-block">
                                     <span className="different-casino-big__image ibg--custom">
@@ -141,7 +141,7 @@ export default function BlockType10({ data, initialInView = false }: { data: Hom
                                     </div>
                                     <div className="different-casino-big__rating">
                                         <span className="different-casino-big__rating-icon">
-                                            <img src={star} alt="star" />
+                                            <img src={star} alt="star" loading="lazy" />
                                         </span>
                                         <span className="different-casino-big__rating-number"> {data.items_block.data_cards?.[2]?.casino_info?.casino_rank}</span>
                                     </div>
@@ -149,7 +149,7 @@ export default function BlockType10({ data, initialInView = false }: { data: Hom
                             </div>
                             <div className="best-casinos-2024-2-gamble__item different-casino-big">
                                 <div className="different-casino-big__bg ibg--custom">
-                                    <img src={bg03} alt="bg" />
+                                    <img src={bg03} alt="bg" loading="lazy" />
                                 </div>
                                 <Link rel="nofollow noopener" to={`/casino/${data.items_block.data_cards?.[3]?.casino_info?.casino_slug}`} className="different-casino-big__image-block">
                                     <span className="different-casino-big__image ibg--custom">
