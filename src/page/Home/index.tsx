@@ -145,7 +145,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         window.scrollTo(0, 0)
     }, [src])
 
-    // if (isLoading && isLoadingBlock) return <LogoLoader />
+    if (isLoading && isLoadingBlock &&  src !== 'get-data-home-page/') return <LogoLoader />
 
     return (
         <>
