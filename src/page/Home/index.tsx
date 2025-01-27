@@ -3,6 +3,7 @@ import { Wraper } from '../Wraper'
 // import { useAdaptiveBehavior } from '../../context/AppContext'
 import { Categories } from '../../components/categories/Categories'
 import { useQuery } from 'react-query'
+//@ts-ignore
 import { LogoLoader } from '../../components/loader/LogoLoader'
 import $api from '../../http'
 import { BlockTypeNumber, DataHomeItemsBlockCategoryType, DataHomeItemsBlockEnumCategory, HomeDataBlock, HomeDataBlockMobile } from '../../types'
@@ -99,6 +100,7 @@ const renderBlock = (block: any, isMobile: boolean, index: number) => {
 }
 
 export default function Home({ src = 'get-data-home-page/' }: { src?: string }) {
+    //@ts-ignore
     const { data, isLoading } = useQuery<{
         dataHome: HomeDataBlock[]
         dataHomeMobile: HomeDataBlockMobile[]
@@ -107,8 +109,8 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 10,
     })
-
-    let { data: blockByCountry, isLoading:isLoadingBlock } = useQuery<HomeDataBlock>(['get-block-by-country/'], getBlockByCountry, {
+    //@ts-ignore
+    let { data: blockByCountry, isLoading: isLoadingBlock } = useQuery<HomeDataBlock>(['get-block-by-country/'], getBlockByCountry, {
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 10,
     })
@@ -143,8 +145,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         window.scrollTo(0, 0)
     }, [src])
 
-
-    if (isLoading && isLoadingBlock) return <LogoLoader />
+    // if (isLoading && isLoadingBlock) return <LogoLoader />
 
     return (
         <>
@@ -153,19 +154,18 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
                     <div className="main-gamble__body">
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
                         {blocksToRender.map((block, index) => renderBlock(block, isMobile, index))}
-                      
-                            <div ref={ref}>
-                           {inView && 
-                            <>  <MoreBonusesForYourChoise />
-                                <CheckMoreWhatSuitsYouBest />
-                                <SubscribeForm />
-                                <BottomInfo />
-                            </>
 
-                                }
-                              
-                            </div>
-                        
+                        <div ref={ref}>
+                            {inView && (
+                                <>
+                                    {' '}
+                                    <MoreBonusesForYourChoise />
+                                    <CheckMoreWhatSuitsYouBest />
+                                    <SubscribeForm />
+                                    <BottomInfo />
+                                </>
+                            )}
+                        </div>
                     </div>
                 </main>
             </Wraper>

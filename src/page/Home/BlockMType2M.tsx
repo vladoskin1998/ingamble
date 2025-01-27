@@ -42,7 +42,7 @@ export default function BlockMType2M({ data, initialInView = false }: { data: Ho
                                 <div className="top__title-block">
                                     {data?.items_block?.title_image && (
                                         <span className="top__title-icon">
-                                            <img src={data?.items_block?.title_image} alt="security" />
+                                            <img src={data?.items_block?.title_image} alt="security" loading='lazy'/>
                                         </span>
                                     )}
                                     <h2 className="top__title">{data?.items_block?.block_title}</h2>
