@@ -159,7 +159,7 @@ export default function FilterBonus() {
                                     <span className="top__title-icon">
                                         <img src={searchImg} alt="search" />
                                     </span>
-                                    <h2 className="top__title">{`${title} `}Results</h2>
+                                    <h2 className="top__title">{`${title || 'Results'}`}</h2>
                                 </div>
                             </div>
                             <ListDisplayData displayedData={displayedData} isShowPlayButton={isShowPlayButton} />

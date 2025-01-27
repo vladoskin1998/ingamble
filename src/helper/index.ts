@@ -238,11 +238,11 @@ export const getTitleFilterCategories = ({
     const { field } = item[0];
 
     const categories: Record<string, string> = {
-        'vpn-friendly-casinos': field === 'vpn_usage' ? 'VPN Allowed' : '',
-        'unlimited-max-bet-bonuses': field === 'unlimited_bonus_max_bet' ? 'Maximum Bet' : '',
-        'non-sticky-bonuses': field ===  'sticky' ? "Sticky" :' ',
-        'newly-opened-casinos': field === 'established' ? 'Newly Opened' : ' ',
-        'top-ranked-casinos': field === 'casino_rank' ? 'Top Ranked' : ' ',
+        'vpn-friendly-casinos': field === 'vpn_usage' ? 'VPN Allowed Casinos' : '',
+        'unlimited-max-bet-bonuses': field === 'unlimited_bonus_max_bet' ? 'Unlimited Max Bet Bonuses' : '',
+        'non-sticky-bonuses': field === 'sticky' ? "Non Sticky Bonuses" :' ',
+        'newly-opened-casinos': field === 'established' ? 'Newly Opened Casinos' : ' ',
+        'top-ranked-casinos': field === 'casino_rank' ? 'Top Ranked Casinos' : ' ',
     };
 
     return categories[slug] || '';
