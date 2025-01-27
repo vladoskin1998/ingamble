@@ -142,7 +142,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
     const { ref, inView } = useInView({
-        threshold: 0.1,
+        threshold: 0.5,
         triggerOnce: true,
         
     })
@@ -161,7 +161,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
                         <Categories type_category={categoriesTypeBySrc(src).type_category} />
                         {blocksToRender.map((block, index) => renderBlock(block, isMobile, index))}
 
-                        <div ref={ref}>
+                        <div ref={ref} >
                             {inView && !isLoading && !isLoadingBlock && (
                                 <>
                                     <MoreBonusesForYourChoise />

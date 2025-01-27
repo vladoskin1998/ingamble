@@ -1,17 +1,17 @@
-import React, { useEffect, useRef } from "react"
-import starIcon from "../../assets/img/icons/star.svg"
-import likeIcon from "../../assets/img/icons/like.svg"
+//@ts-ignore
+import React, { useEffect, useRef } from 'react'
+import starIcon from '../../assets/img/icons/star.svg'
+import likeIcon from '../../assets/img/icons/like.svg'
 
-import { Pagination } from "swiper/modules"
-import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
-import "swiper/css/pagination"
-import { SwiperRef } from "swiper/react"
-import { Link, useNavigate } from "react-router-dom"
-import { cloacingFetch, cloacingLink, sanitizeNumberLike } from "../../helper"
-import { LazyCardImg } from "../lazy-img/LazyCardImg"
-import { useAdaptiveBehavior } from "../../context/AppContext"
-
+import { Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { SwiperRef } from 'swiper/react'
+import { Link, useNavigate } from 'react-router-dom'
+import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
+import { LazyCardImg } from '../lazy-img/LazyCardImg'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 
 const MainSlider = ({
     data,
@@ -23,30 +23,29 @@ const MainSlider = ({
         raiting: string | number
         likes: string | number
         tags?: React.ReactNode
-        imageLink?: string;
-        playLink?: string;
-        casinoLink?: string,
-        bonuseLink?: string,
+        imageLink?: string
+        playLink?: string
+        casinoLink?: string
+        bonuseLink?: string
     }[]
 }) => {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
-    useEffect(() => {
-        if (sliderRef.current && paginationRef.current) {
-            const swiper = sliderRef.current.swiper
-            if (swiper && paginationRef.current) {
-                //@ts-ignore
-                swiper.params.pagination.el = paginationRef.current
-                swiper.pagination.init()
-                swiper.pagination.render()
-                swiper.pagination.update()
-            }
+
+    if (sliderRef.current && paginationRef.current) {
+        const swiper = sliderRef.current.swiper
+        if (swiper && paginationRef.current) {
+            //@ts-ignore
+            swiper.params.pagination.el = paginationRef.current
+            swiper.pagination.init()
+            swiper.pagination.render()
+            swiper.pagination.update()
         }
-    }, [])
+    }
 
     const navigate = useNavigate()
 
-    const navToImageLink = (e:React.MouseEvent,l:string) => {
+    const navToImageLink = (e: React.MouseEvent, l: string) => {
         e.preventDefault()
         navigate(l)
     }

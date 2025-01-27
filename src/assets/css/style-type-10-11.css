@@ -555,16 +555,7 @@
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
   }
-  .gamble__main {
-    flex: 1 1 100%;
-    padding: 90px 0 0 0;
-  }
-  @media (max-width: 650.98px) {
-    .gamble__main {
-      padding: 122px 0 0 0;
-    }
-  }
-  
+ 
   .main-gamble {
     flex: 1 1 100%;
     display: flex;

@@ -39,7 +39,7 @@ export default function BlockType3({ data, initialInView = false }: { data: Home
         }
     }, [])
 
-    useEffect(() => {
+  
         if (sliderRef?.current && paginationRef?.current) {
             const swiper = sliderRef?.current?.swiper
             if (swiper && paginationRef?.current) {
@@ -50,7 +50,7 @@ export default function BlockType3({ data, initialInView = false }: { data: Home
                 swiper.pagination.update()
             }
         }
-    }, [])
+  
     const { isShowPlayButton } = useAdaptiveBehavior()
 
     const { ref, inView } = useInView({

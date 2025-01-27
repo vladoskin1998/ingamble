@@ -2,7 +2,7 @@ import { Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 
 import {  DataHomeItemsBlock, HomeDataBlock, HomeDataCard } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
@@ -14,7 +14,7 @@ import { useInView } from 'react-intersection-observer'
 export default function BlockMType2M({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
-    useEffect(() => {
+
         if (sliderRef?.current && paginationRef?.current) {
             const swiper = sliderRef?.current?.swiper
             if (swiper && paginationRef?.current) {
@@ -25,7 +25,7 @@ export default function BlockMType2M({ data, initialInView = false }: { data: Ho
                 swiper.pagination.update()
             }
         }
-    }, [])
+ 
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
