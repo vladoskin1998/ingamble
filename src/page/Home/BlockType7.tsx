@@ -11,8 +11,9 @@ import { SeeAllButton } from './SeeAllButton'
 import { shuffleArray } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
+import { Autoplay } from 'swiper/modules'
 
-export default function BlockType7({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
+export default function BlockType7({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -28,14 +29,14 @@ export default function BlockType7({ data, initialInView = false }: { data: Home
         }
     }, [])
 
-   const dataCard = useMemo(() => {
+    const dataCard = useMemo(() => {
         return shuffleArray(data?.items_block.data_cards).slice(0, 8)
     }, [data?.items_block.data_cards])
 
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
-        initialInView
+        initialInView,
     })
 
     return (
@@ -65,7 +66,13 @@ export default function BlockType7({ data, initialInView = false }: { data: Home
                             <div className="low-risk-bonuses-gamble__swiper slider__swiper swiper">
                                 <Swiper
                                     slidesPerView="auto"
-                                    modules={[Pagination]}
+                                    modules={[Pagination, Autoplay]}
+                                                               autoplay={
+                                                                   isAutoPlay && {
+                                                                       delay: 2000,
+                                                                       disableOnInteraction: false,
+                                                                   }
+                                                               }
                                     ref={sliderRef}
                                     pagination={{
                                         el: paginationRef.current,

@@ -59,36 +59,37 @@ const getBlockByCountry = async (): Promise<HomeDataBlock> => {
 }
 
 const renderBlock = (block: any, isMobile: boolean, index: number) => {
-    console.log('block', block)
+  
     
+    const isAutoPlay = !index
     const initialInView = index < 2 ? true : false
     switch (block?.items_block?.type_block) {
         case BlockTypeNumber.BlockType1:
-            return <BlockType1 data={block} initialInView={initialInView} />
+            return <BlockType1 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />
         case BlockTypeNumber.BlockType9:
-            return <BlockType9 data={block} initialInView={initialInView} />
+            return <BlockType9 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />
         case BlockTypeNumber.BlockType2M:
-            return <BlockMType2M data={block} />
+            return <BlockMType2M data={block} isAutoPlay={isAutoPlay} />
         case BlockTypeNumber.BlockType3M:
-            return <BlockMType3M data={block} />
+            return <BlockMType3M data={block} isAutoPlay={isAutoPlay} />
         case BlockTypeNumber.BlockType6:
-            return <BlockType6 data={block} initialInView={initialInView} />
+            return <BlockType6 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />
         case BlockTypeNumber.BlockType6c:
-            return <BlockType6 data={block} initialInView={initialInView} />
+            return <BlockType6 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />
         case BlockTypeNumber.BlockType8:
-            return <BlockType1 data={block} initialInView={initialInView} />
+            return <BlockType1 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />
         case BlockTypeNumber.BlockType2:
-            return <>{isMobile ? <BlockType2Mobile data={block} initialInView={initialInView} /> : <BlockType2 data={block} initialInView={initialInView} />}</>
+            return <>{isMobile ? <BlockType2Mobile data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} /> : <BlockType2 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />}</>
         case BlockTypeNumber.BlockType3:
-            return <>{isMobile ? <BlockType3Mobile data={block} initialInView={initialInView} /> : <BlockType3 data={block} initialInView={initialInView} />}</>
+            return <>{isMobile ? <BlockType3Mobile data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} /> : <BlockType3 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />}</>
         case BlockTypeNumber.BlockType4:
-            return <>{isMobile ? <BlockType4Mobile data={block} initialInView={initialInView} /> : <BlockType4 data={block} initialInView={initialInView} />}</>
+            return <>{isMobile ? <BlockType4Mobile data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} /> : <BlockType4 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />}</>
         case BlockTypeNumber.BlockType7:
-            return <>{isMobile ? <BlockType7Mobile data={block} initialInView={initialInView} /> : <BlockType7 data={block} initialInView={initialInView} />}</>
+            return <>{isMobile ? <BlockType7Mobile data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} /> : <BlockType7 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />}</>
         case BlockTypeNumber.BlockType5:
-            return <>{isMobile ? <BlockType5Mobile data={block} initialInView={initialInView} /> : <BlockType5 data={block} initialInView={initialInView} />}</>
+            return <>{isMobile ? <BlockType5Mobile data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} /> : <BlockType5 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />}</>
         case BlockTypeNumber.BlockType10:
-            return <>{isMobile ? <BlockType10Mobile data={block} initialInView={initialInView} /> : <BlockType10 data={block} initialInView={initialInView} />}</>
+            return <>{isMobile ? <BlockType10Mobile data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} /> : <BlockType10 data={block} initialInView={initialInView} isAutoPlay={isAutoPlay} />}</>
         case BlockTypeNumber.BlockType11:
             return <BlockType11 data={block} initialInView={initialInView} />
         default:
@@ -142,7 +143,9 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
         window.scrollTo(0, 0)
     }, [src])
 
-    if (isLoading && isLoadingBlock &&  src !== 'get-data-home-page/') return <LogoLoader />
+    console.log(isLoading , isLoadingBlock , src !== 'get-data-home-page/')
+    
+    if ((isLoading || isLoadingBlock) &&  src !== 'get-data-home-page/') return <LogoLoader />
   
 
     return (

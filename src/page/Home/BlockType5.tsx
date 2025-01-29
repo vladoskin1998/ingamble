@@ -15,8 +15,9 @@ import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { useInView } from 'react-intersection-observer'
+import { Autoplay } from 'swiper/modules'
 
-export default function BlockType5({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
+export default function BlockType5({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -60,7 +61,7 @@ export default function BlockType5({ data, initialInView = false }: { data: Home
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
-        initialInView
+        initialInView,
     })
 
     return (
@@ -117,7 +118,13 @@ export default function BlockType5({ data, initialInView = false }: { data: Home
                                             onSlideChange={handleSlideChange}
                                             className="slider__wrapper swiper-wrapper"
                                             slidesPerView="auto"
-                                            modules={[Pagination]}
+                                            modules={[Pagination, Autoplay]}
+                                                                       autoplay={
+                                                                           isAutoPlay && {
+                                                                               delay: 2000,
+                                                                               disableOnInteraction: false,
+                                                                           }
+                                                                       }
                                             ref={sliderRef}
                                             pagination={{
                                                 el: paginationRef.current,

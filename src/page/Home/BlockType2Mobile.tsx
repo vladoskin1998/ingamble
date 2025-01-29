@@ -11,8 +11,8 @@ import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { useInView } from 'react-intersection-observer'
-
-export default function BlockType2Mobile({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
+import { Autoplay } from 'swiper/modules'
+export default function BlockType2Mobile({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function BlockType2Mobile({ data, initialInView = false }: { data
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
-        initialInView
+        initialInView,
     })
 
     return (
@@ -64,7 +64,13 @@ export default function BlockType2Mobile({ data, initialInView = false }: { data
                                     ref={sliderRef}
                                     className="slider__wrapper swiper-wrapper"
                                     slidesPerView="auto"
-                                    modules={[Pagination]}
+                                    modules={[Pagination, Autoplay]}
+                                                               autoplay={
+                                                                   isAutoPlay && {
+                                                                       delay: 2000,
+                                                                       disableOnInteraction: false,
+                                                                   }
+                                                               }
                                     pagination={{
                                         el: paginationRef.current,
                                         clickable: true,

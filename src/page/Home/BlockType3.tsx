@@ -12,9 +12,9 @@ import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { SeeAllButton } from './SeeAllButton'
 import { useInView } from 'react-intersection-observer'
+import { Autoplay } from 'swiper/modules'
 
-
-export default function BlockType3({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
+export default function BlockType3({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     const [screenState, setScreenState] = useState<number | 'auto'>('auto')
@@ -56,7 +56,7 @@ export default function BlockType3({ data, initialInView = false }: { data: Home
     const { ref, inView } = useInView({
         threshold: 0.1,
         triggerOnce: true,
-        initialInView
+        initialInView,
     })
 
     return (
@@ -237,7 +237,13 @@ export default function BlockType3({ data, initialInView = false }: { data: Home
                                             <Swiper
                                                 slidesPerView={1}
                                                 ref={sliderRef}
-                                                modules={[Pagination]}
+                                              modules={[Pagination, Autoplay]}
+                                                                         autoplay={
+                                                                             isAutoPlay && {
+                                                                                 delay: 2000,
+                                                                                 disableOnInteraction: false,
+                                                                             }
+                                                                         }
                                                 pagination={{
                                                     el: paginationRef.current,
                                                     clickable: true,

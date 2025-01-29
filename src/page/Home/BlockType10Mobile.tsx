@@ -13,14 +13,14 @@ import { Link } from 'react-router-dom'
 import { SeeAllRoutes } from '../../context/FilterContext'
 import { CURRENTYEAR } from '../../helper'
 import { useInView } from 'react-intersection-observer'
+import { Autoplay } from 'swiper/modules'
 
 
-
-export default function BlockType10Mobile({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
+export default function BlockType10Mobile({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
-        initialInView
+        initialInView,
     })
 
     return (
@@ -78,6 +78,13 @@ export default function BlockType10Mobile({ data, initialInView = false }: { dat
                                 <div className="slider-best-casinos-2024-gamble__swiper swiper">
                                     <Swiper
                                         className="slider-best-casinos-2024-gamble__wrapper swiper-wrapper"
+                                        modules={[ Autoplay]}
+                                        autoplay={
+                                            isAutoPlay && {
+                                                delay: 2000,
+                                                disableOnInteraction: false,
+                                            }
+                                        }
                                         breakpoints={{
                                             320: {
                                                 spaceBetween: 16,

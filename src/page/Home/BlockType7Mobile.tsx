@@ -9,12 +9,14 @@ import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import {} from '../../context/FilterContext'
 import { useInView } from 'react-intersection-observer'
+import { Autoplay } from 'swiper/modules'
 
-export default function BlockType7Mobile({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
+
+export default function BlockType7Mobile({ data, initialInView = false, isAutoPlay=false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
-        initialInView
+        initialInView,
     })
     return (
         <section ref={ref} aria-label=" BlockTypeNumber.BlockType7" className="main-gamble__crypto-casinos crypto-casinos-gamble main-gamble__different-casino-medium main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
@@ -44,6 +46,13 @@ export default function BlockType7Mobile({ data, initialInView = false }: { data
                                 <Swiper
                                     className="slider__wrapper swiper-wrapper"
                                     slidesPerView="auto"
+                                    modules={[ Autoplay]}
+                                    autoplay={
+                                        isAutoPlay && {
+                                            delay: 2000,
+                                            disableOnInteraction: false,
+                                        }
+                                    }
                                     breakpoints={{
                                         320: {
                                             spaceBetween: 16,

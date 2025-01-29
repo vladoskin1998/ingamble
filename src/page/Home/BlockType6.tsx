@@ -12,8 +12,9 @@ import { Link } from 'react-router-dom'
 import { initialBonusFilters, initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { useInView } from 'react-intersection-observer'
+import { Autoplay } from 'swiper/modules'
 
-export default function BlockType6({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
+export default function BlockType6({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
     const { data: Country, setCasinoFilters, setBonusFilters } = useFilterContext()
@@ -55,7 +56,7 @@ export default function BlockType6({ data, initialInView = false }: { data: Home
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
-        initialInView
+        initialInView,
     })
     return (
         <section ref={ref} aria-label="BlockTypeNumber.BlockType6" className="main-gamble__new-bonuses new-bonuses-gamble">
@@ -106,7 +107,13 @@ export default function BlockType6({ data, initialInView = false }: { data: Home
                                     ref={sliderRef}
                                     className="slider__wrapper swiper-wrapper"
                                     slidesPerView="auto"
-                                    modules={[Pagination]}
+                              modules={[Pagination, Autoplay]}
+                                                         autoplay={
+                                                             isAutoPlay && {
+                                                                 delay: 2000,
+                                                                 disableOnInteraction: false,
+                                                             }
+                                                         }
                                     pagination={{
                                         el: paginationRef.current,
                                         clickable: true,

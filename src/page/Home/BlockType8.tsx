@@ -7,15 +7,16 @@ import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton,  } from './SeeAllButton'
 import { useMemo } from 'react'
 
-export default function BlockType8({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
-      const dataCard = useMemo(() => {
-           return shuffleArray(data?.items_block.data_cards).slice(0, 8)
-       }, [data?.items_block.data_cards])
+
+export default function BlockType8({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
+    const dataCard = useMemo(() => {
+        return shuffleArray(data?.items_block.data_cards).slice(0, 8)
+    }, [data?.items_block.data_cards])
 
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
-        initialInView
+        initialInView,
     })
 
     return (
@@ -41,6 +42,7 @@ export default function BlockType8({ data, initialInView = false }: { data: Home
                         </div>
                     </div>
                     <MainSlider
+                    isAutoPlay={isAutoPlay}
                         data={dataCard?.slice(0, 8)?.map((item) => ({
                             playLink: item?.casino_info?.casino_affiliate_link || item?.casino_info?.url_casino,
                             img: item.bonus_info.bonus_image,

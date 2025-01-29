@@ -6,20 +6,21 @@ import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import bg01 from '../../assets/img/bg/01.webp'
 import girl from '../../assets/img/girls/01.webp'
 
-import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
+import { DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import { Link } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
-//@ts-ignore
-export default function BlockType5Mobile({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
+import { Autoplay } from 'swiper/modules'
+
+export default function BlockType5Mobile({ data, initialInView = false, isAutoPlay=false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const [isScrolled, setIsScrolled] = useState<boolean>(false)
 
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
-        initialInView
+        initialInView,
     })
 
     return (
@@ -63,6 +64,13 @@ export default function BlockType5Mobile({ data, initialInView = false }: { data
                                         className="slider-best-casinos-2024-gamble__wrapper swiper-wrapper"
                                         ref={sliderRef}
                                         slidesPerView="auto"
+                                        modules={[ Autoplay]}
+                                        autoplay={
+                                            isAutoPlay && {
+                                                delay: 2000,
+                                                disableOnInteraction: false,
+                                            }
+                                        }
                                         onSlideChange={(swiper) => {
                                             setIsScrolled(!swiper.isBeginning)
                                         }}

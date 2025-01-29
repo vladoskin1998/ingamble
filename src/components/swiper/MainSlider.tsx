@@ -12,9 +12,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 import { LazyCardImg } from '../lazy-img/LazyCardImg'
 import { useAdaptiveBehavior } from '../../context/AppContext'
+import { Autoplay } from 'swiper/modules'
 
 const MainSlider = ({
     data,
+    isAutoPlay=false,
 }: {
     data?: {
         img: string | null
@@ -28,6 +30,7 @@ const MainSlider = ({
         casinoLink?: string
         bonuseLink?: string
     }[]
+    isAutoPlay?: boolean
 }) => {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
@@ -64,7 +67,13 @@ const MainSlider = ({
                                 el: paginationRef.current,
                                 clickable: true,
                             }}
-                            modules={[Pagination]}
+                            modules={[Pagination, Autoplay]}
+                            autoplay={
+                                isAutoPlay && {
+                                    delay: 2000,
+                                    disableOnInteraction: false,
+                                }
+                            }
                             breakpoints={{
                                 320: {
                                     spaceBetween: 16,

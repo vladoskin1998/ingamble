@@ -3,7 +3,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { useRef } from 'react'
-
+import { Autoplay } from 'swiper/modules'
 import {  DataHomeItemsBlock, HomeDataBlock, HomeDataCard } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
@@ -11,21 +11,21 @@ import { cloacingFetch, cloacingLink } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
 
-export default function BlockMType2M({ data, initialInView = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean }) {
+export default function BlockMType2M({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
 
-        if (sliderRef?.current && paginationRef?.current) {
-            const swiper = sliderRef?.current?.swiper
-            if (swiper && paginationRef?.current) {
-                //@ts-ignore
-                swiper.params.pagination.el = paginationRef?.current
-                swiper.pagination.init()
-                swiper.pagination.render()
-                swiper.pagination.update()
-            }
+    if (sliderRef?.current && paginationRef?.current) {
+        const swiper = sliderRef?.current?.swiper
+        if (swiper && paginationRef?.current) {
+            //@ts-ignore
+            swiper.params.pagination.el = paginationRef?.current
+            swiper.pagination.init()
+            swiper.pagination.render()
+            swiper.pagination.update()
         }
- 
+    }
+
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
@@ -42,7 +42,7 @@ export default function BlockMType2M({ data, initialInView = false }: { data: Ho
                                 <div className="top__title-block">
                                     {data?.items_block?.title_image && (
                                         <span className="top__title-icon">
-                                            <img src={data?.items_block?.title_image} alt="security" loading='lazy'/>
+                                            <img src={data?.items_block?.title_image} alt="security" loading="lazy" />
                                         </span>
                                     )}
                                     <h2 className="top__title">{data?.items_block?.block_title}</h2>
@@ -61,7 +61,13 @@ export default function BlockMType2M({ data, initialInView = false }: { data: Ho
                                     ref={sliderRef}
                                     className="slider__wrapper swiper-wrapper"
                                     slidesPerView="auto"
-                                    modules={[Pagination]}
+                                     modules={[Pagination, Autoplay]}
+                                                                autoplay={
+                                                                    isAutoPlay && {
+                                                                        delay: 2000,
+                                                                        disableOnInteraction: false,
+                                                                    }
+                                                                }
                                     pagination={{
                                         el: paginationRef.current,
                                         clickable: true,
