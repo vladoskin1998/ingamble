@@ -189,7 +189,7 @@ export const Header =  () => {
 
                             <Link rel="nofollow noopener" to="/" className="header__logo logo">
                                 <div className="logo__img">
-                                    <img alt={'logo'} src={window.origin.includes('cryptogamblers') ? logoCryptogamblers : logoInGamble} />
+                                    <img alt={'logo'} src={import.meta.env.VITE_TITLE === 'CryptoGamblers' ? logoCryptogamblers : logoInGamble} />
                                 </div>
                             </Link>
                         </div>
@@ -243,22 +243,15 @@ export const Header =  () => {
                                     className="form-item__input form-item__input_search"
                                     value={casinoFilters.casino_name || ''}
                                     onChange={(e) =>
-                                        setCasinoFilters(({
+                                        setCasinoFilters({
                                             ...initialCasinoFilters,
                                             casino_name: e.target.value || undefined,
-                                        }))
+                                        })
                                     }
                                     onBlur={() => setSearchFocus(false)}
                                     onFocus={() => setSearchFocus(true)}
                                 />
-                                <button
-                                    className="form-item__icon form-item__icon_delete"
-                                    onClick={() =>
-                                        setCasinoFilters(
-                                            initialCasinoFilters
-                                        )
-                                    }
-                                >
+                                <button className="form-item__icon form-item__icon_delete" onClick={() => setCasinoFilters(initialCasinoFilters)}>
                                     <svg>
                                         <g>
                                             <path d="M0.346973 0.132108C0.0653443 0.280883 -0.0718153 0.633765 0.0376309 0.927996C0.0601456 0.988482 0.978282 1.93763 2.07982 3.03916L4.08116 5.04039L2.10136 7.02211C1.01244 8.11203 0.0934485 9.06005 0.0591293 9.12878C-0.0700563 9.38755 0.0270772 9.7484 0.273058 9.92338C0.406035 10.018 0.671715 10.0636 0.844562 10.0215C0.919689 10.0032 1.5938 9.35694 2.9772 7.97692L5 5.95905L7.0228 7.97665C9.20875 10.157 9.12143 10.0841 9.47811 10.0262C9.87333 9.96215 10.119 9.48564 9.94087 9.12878C9.90655 9.06005 8.98756 8.11203 7.89864 7.02211L5.91884 5.04039L7.92018 3.03916C9.02172 1.93763 9.93985 0.988482 9.96237 0.927996C10.0718 0.633765 9.93466 0.280883 9.65303 0.132108C9.45391 0.0269117 9.31355 0.0191801 9.11275 0.102393C9.01277 0.143823 8.34831 0.780431 6.98371 2.14217L5 4.1217L3.01629 2.14217C1.65169 0.780431 0.987233 0.143823 0.887246 0.102393C0.686451 0.0191801 0.546087 0.0269117 0.346973 0.132108Z" />
@@ -327,7 +320,7 @@ export const Header =  () => {
                             </div>
                             <Link to="/" className="header__logo logo">
                                 <div className="logo__img">
-                                    <img src={window.origin.includes('cryptogamblers') ? logoCryptogamblers : logoInGamble} alt={'logo'} />
+                                    <img src={import.meta.env.VITE_TITLE === 'CryptoGamblers' ? logoCryptogamblers : logoInGamble} alt={'logo'} />
                                 </div>
                             </Link>
                         </div>
@@ -356,10 +349,10 @@ export const Header =  () => {
                                         className="form-item__input form-item__input_search"
                                         value={casinoFilters.casino_name || ''}
                                         onChange={(e) =>
-                                            setCasinoFilters(({
+                                            setCasinoFilters({
                                                 ...initialCasinoFilters,
                                                 casino_name: e.target.value || undefined,
-                                            }))
+                                            })
                                         }
                                         onBlur={() => setSearchFocus(false)}
                                         onFocus={() => setSearchFocus(true)}

@@ -7,7 +7,6 @@ import './components/loader/loader.css'
 import './assets/css/header.css'
 import './assets/css/style.css'
 
-
 import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -15,11 +14,10 @@ const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <BrowserRouter >
+         
+        <BrowserRouter>
             <QueryClientProvider client={queryClient}>
-    
-                    <App />
-      
+                <App />
             </QueryClientProvider>
         </BrowserRouter>
     </StrictMode>,

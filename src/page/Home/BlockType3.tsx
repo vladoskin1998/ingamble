@@ -14,6 +14,7 @@ import { SeeAllButton } from './SeeAllButton'
 import { useInView } from 'react-intersection-observer'
 import { Autoplay } from 'swiper/modules'
 
+
 export default function BlockType3({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<any>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
@@ -60,6 +61,9 @@ export default function BlockType3({ data, initialInView = false, isAutoPlay = f
     })
 
     return (
+           <>
+             
+               
         <section ref={ref} aria-label="BlockTypeNumber.BlockType3" className="main-gamble__top-gainers-casinos top-gainers-casinos-gamble main-gamble__baner-block">
             {inView && (
                 <div className="top-gainers-casinos-gamble__container container">
@@ -327,6 +331,6 @@ export default function BlockType3({ data, initialInView = false, isAutoPlay = f
                     </div>
                 </div>
             )}
-        </section>
+        </section> </>
     )
 }

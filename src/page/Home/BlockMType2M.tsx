@@ -33,7 +33,9 @@ export default function BlockMType2M({ data, initialInView = false, isAutoPlay =
     })
 
     return (
-        <section ref={ref} aria-label="BlockTypeNumber.BlockType2M" className="main-gamble__payn-play-casinos payn-play-casinos-gamble">
+        <>
+  
+          <section ref={ref} aria-label="BlockTypeNumber.BlockType2M" className="main-gamble__payn-play-casinos payn-play-casinos-gamble">
             {inView && (
                 <div className="payn-play-casinos-gamble__container container">
                     <div className="vpn-friendly-casinos-2-gamble__top top">
@@ -232,5 +234,7 @@ export default function BlockMType2M({ data, initialInView = false, isAutoPlay =
                 </div>
             )}
         </section>
+        </>
+      
     )
 }

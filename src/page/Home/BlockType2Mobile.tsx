@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { useInView } from 'react-intersection-observer'
 import { Autoplay } from 'swiper/modules'
+
 export default function BlockType2Mobile({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<SwiperRef | null>(null)
     const paginationRef = useRef<HTMLDivElement | null>(null)
@@ -36,6 +37,9 @@ export default function BlockType2Mobile({ data, initialInView = false, isAutoPl
     })
 
     return (
+        <>
+     
+       
         <section ref={ref} aria-label="BlockTypeNumber.BlockType2" className="main-gamble__new-bonuses new-bonuses-gamble playing-now-gamble  main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
             {inView && (
                 <div className="new-bonuses-gamble__container container">
@@ -153,6 +157,6 @@ export default function BlockType2Mobile({ data, initialInView = false, isAutoPl
                     </div>
                 </div>
             )}
-        </section>
+        </section> </>
     )
 }
