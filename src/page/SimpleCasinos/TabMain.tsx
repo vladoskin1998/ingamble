@@ -61,7 +61,7 @@ export const TabMain = ({
     }
 
     const handleClickOutside = (event: MouseEvent): void => {
-        ;('handleClickOutside')
+       
 
         Object.keys(modalRefs).forEach((key) => {
             //@ts-ignore

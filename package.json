@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "homepage": "https://cryptogamblers.pro",
+    "homepage": ".",
     "scripts": {
         "dev": "vite --mode ingamble",
         "devcg": "vite --mode cryptogamblers",

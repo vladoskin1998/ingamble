@@ -79,6 +79,11 @@ pre {
   --color-pass-secondary: lightgreen;
   --f-button-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
 }
+.container {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 40px;
+}
 
 * {
   padding: 0px;

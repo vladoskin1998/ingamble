@@ -22,7 +22,8 @@ import { cloacingFetch, cloacingLink, sanitizeNumberLike } from '../../helper'
 
 import giftIcon from '../../assets/img/icons/gift.svg'
 import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
-
+import 'swiper/css'
+import 'swiper/css/pagination'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
@@ -76,6 +77,12 @@ export default function SimpleCasinos() {
         countryImg: undefined,
         idCountry: null,
     })
+     useEffect(() => {
+        console.log('initializeAdaptiveBehavior')
+        
+         initializeAdaptiveBehavior()
+     }, [])
+
 
     useEffect(() => {
         if (data?.headers) {
@@ -115,10 +122,7 @@ export default function SimpleCasinos() {
         }
     }, [openModal])
 
-  useEffect(() => {
-          initializeAdaptiveBehavior()
-      }, [geoLocation])
-
+ 
     if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
  
     return (

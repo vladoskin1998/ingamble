@@ -31,24 +31,22 @@ export const PublicRouter = () => {
                 }
             />
 
-          
-                    <Route
-                        path="/casinos"
-                        element={
-                            <Suspense>
-                                <Home src={'get-data-hub-page-casino/'} />
-                            </Suspense>
-                        }
-                    />
-                    <Route
-                        path="/bonuses"
-                        element={
-                            <Suspense>
-                                <Home src={'get-data-hub-page-bonus/'} />
-                            </Suspense>
-                        }
-                    />
-             
+            <Route
+                path="/casinos"
+                element={
+                    <Suspense>
+                        <Home src={'get-data-hub-page-casino/'} />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/bonuses"
+                element={
+                    <Suspense>
+                        <Home src={'get-data-hub-page-bonus/'} />
+                    </Suspense>
+                }
+            />
 
             <Route
                 path="/filter-casinos/:casino_slug?"
@@ -108,7 +106,7 @@ export const PublicRouter = () => {
             <Route
                 path="/casino/:casino_slug"
                 element={
-                    <Suspense>
+                    <Suspense >
                         <SimpleCasinos />
                     </Suspense>
                 }
