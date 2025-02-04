@@ -153,7 +153,10 @@ export default function FilterLoyalty() {
 
                             <>
                                 <LisDisplayedData displayedData={displayedData} />
-
+                            </>
+                            {!displayedData?.length && !isLoading ? (
+                                <NoResult />
+                            ) : (
                                 <PaginationPage
                                     countElem={data?.count}
                                     currentPage={currentPage}
@@ -168,8 +171,7 @@ export default function FilterLoyalty() {
                                         }
                                     }}
                                 />
-                            </>
-                            {!displayedData?.length && !isLoading && <NoResult />}
+                            )}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />

@@ -263,22 +263,24 @@ export default function SeeAllCasinos() {
                                     </div>
                                 ))}
                             </div>
-                            {!displayedData?.length && !isLoading && <NoResult />}
-
-                            <PaginationPage
-                                countElem={data?.casino?.count}
-                                currentPage={currentPage}
-                                countPageElem={countPageSize}
-                                setCurrentPage={(s) => {
-                                    setCurrentPage(s)
-                                    if (!isMobile) {
-                                        window.scrollTo({
-                                            behavior: 'smooth',
-                                            top: 0,
-                                        })
-                                    }
-                                }}
-                            />
+                            {!displayedData?.length && !isLoading ? (
+                                <NoResult />
+                            ) : (
+                                <PaginationPage
+                                    countElem={data?.casino?.count}
+                                    currentPage={currentPage}
+                                    countPageElem={countPageSize}
+                                    setCurrentPage={(s) => {
+                                        setCurrentPage(s)
+                                        if (!isMobile) {
+                                            window.scrollTo({
+                                                behavior: 'smooth',
+                                                top: 0,
+                                            })
+                                        }
+                                    }}
+                                />
+                            )}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />

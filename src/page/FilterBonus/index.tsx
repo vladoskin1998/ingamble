@@ -8,7 +8,7 @@ import { Wraper } from '../Wraper'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 import like from '../../assets/img/icons/like.svg'
 import { lazy, memo, useEffect, useState } from 'react'
-import {  useAdaptiveBehavior } from '../../context/AppContext'
+import { useAdaptiveBehavior } from '../../context/AppContext'
 import star from '../../assets/img/icons/star.svg'
 import { cloacingFetch, cloacingLink, COLORS_TAGS, filterEmptyValues, getTitleFilterCategories, sanitizeNumberLike } from '../../helper'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
@@ -24,7 +24,7 @@ import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 const BottomInfo = lazy(() => import('../../components/footer/BottomInfo'))
 const CheckMoreWhatSuitsYouBest = lazy(() => import('../../components/categories/CheckMoreWhatSuitsYouBest'))
 const SubscribeForm = lazy(() => import('../../components/subscribe/SubscribeForm'))
-const countPageSize = window.innerWidth < 900 ? 10 :20
+const countPageSize = window.innerWidth < 900 ? 10 : 20
 
 const debouncedFetchFilter = debounce((filters, fetchFunction) => fetchFunction(filters), 500)
 
@@ -45,7 +45,7 @@ const getFilteringBonusList = async (payload: BonusFilterBodyType, page: number)
 export default function FilterBonus() {
     // // document.title = "Filter Bonus"
 
-    const {  isShowPlayButton } = useAdaptiveBehavior()
+    const { isShowPlayButton } = useAdaptiveBehavior()
 
     const { bonusFilters, setBonusFilters } = useFilterContext()
 
@@ -60,13 +60,13 @@ export default function FilterBonus() {
         enabled: false,
     })
 
-        const { bonus_slug } = useParams()
-    
-        const [slug, setSlug] = useState<string>(bonus_slug || '')
-    
-        useEffect(() => {
-            setSlug(bonus_slug || '')
-        }, [bonus_slug])
+    const { bonus_slug } = useParams()
+
+    const [slug, setSlug] = useState<string>(bonus_slug || '')
+
+    useEffect(() => {
+        setSlug(bonus_slug || '')
+    }, [bonus_slug])
 
     useEffect(() => {
         debouncedFetchPagination(bonusFilters, refetch, setIsDebouncedLoading, isMobile)
@@ -123,14 +123,11 @@ export default function FilterBonus() {
         }))
     }
 
-
-
     useEffect(() => {
         initializeAdaptiveBehavior()
-  
     }, [isLoading])
 
-       const title = getTitleFilterCategories({ slug, item: makeListFilterHeader(bonusFilters) })
+    const title = getTitleFilterCategories({ slug, item: makeListFilterHeader(bonusFilters) })
     if (isDebouncedLoading) return <LogoLoader />
 
     return (
@@ -163,21 +160,25 @@ export default function FilterBonus() {
                                 </div>
                             </div>
                             <ListDisplayData displayedData={displayedData} isShowPlayButton={isShowPlayButton} />
-                            <PaginationPage
-                                countElem={data?.count}
-                                currentPage={currentPage}
-                                countPageElem={countPageSize}
-                                setCurrentPage={(s) => {
-                                    setCurrentPage(s)
-                                    if (!isMobile) {
-                                        window.scrollTo({
-                                            behavior: 'smooth',
-                                            top: 0,
-                                        })
-                                    }
-                                }}
-                            />
-                            {!displayedData?.length && !isLoading && <NoResult />}
+
+                            {!displayedData?.length && !isLoading ? (
+                                <NoResult />
+                            ) : (
+                                <PaginationPage
+                                    countElem={data?.count}
+                                    currentPage={currentPage}
+                                    countPageElem={countPageSize}
+                                    setCurrentPage={(s) => {
+                                        setCurrentPage(s)
+                                        if (!isMobile) {
+                                            window.scrollTo({
+                                                behavior: 'smooth',
+                                                top: 0,
+                                            })
+                                        }
+                                    }}
+                                />
+                            )}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />
@@ -189,7 +190,7 @@ export default function FilterBonus() {
     )
 }
 
-const ListDisplayData = memo(({ displayedData, isShowPlayButton }: { displayedData: SeeAllBonus[] | undefined; isShowPlayButton: boolean}) => {
+const ListDisplayData = memo(({ displayedData, isShowPlayButton }: { displayedData: SeeAllBonus[] | undefined; isShowPlayButton: boolean }) => {
     return (
         <div className="main-see-all__row custom-main-see-all__row">
             {displayedData?.map((item) => (

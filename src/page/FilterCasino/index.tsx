@@ -204,22 +204,25 @@ export default function FilterCasino() {
                             </div>
 
                             <ListDisplayData displayedData={displayedData} filtersDataLicenses={filtersData?.casino?.licenses} casinoFiltersLicenses={casinoFilters?.licenses} />
-                            <PaginationPage
-                                countElem={data?.count}
-                                currentPage={currentPage}
-                                countPageElem={countPageSize}
-                                setCurrentPage={(s) => {
-                                    setCurrentPage(s)
-                                    if (!isMobile) {
-                                        window.scrollTo({
-                                            behavior: 'smooth',
-                                            top: 0,
-                                        })
-                                    }
-                                }}
-                            />
 
-                            {!displayedData?.length && !isLoading && <NoResult />}
+                            {!displayedData?.length && !isLoading ? (
+                                <NoResult />
+                            ) : (
+                                <PaginationPage
+                                    countElem={data?.count}
+                                    currentPage={currentPage}
+                                    countPageElem={countPageSize}
+                                    setCurrentPage={(s) => {
+                                        setCurrentPage(s)
+                                        if (!isMobile) {
+                                            window.scrollTo({
+                                                behavior: 'smooth',
+                                                top: 0,
+                                            })
+                                        }
+                                    }}
+                                />
+                            )}
                         </div>
                     </section>
                     <CheckMoreWhatSuitsYouBest />
