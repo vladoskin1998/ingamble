@@ -241,21 +241,6 @@ h2 {
   overflow: visible;
 }
 
-.slider__body .swiper-slide {
-  width: 336px;
-}
-
-@media (max-width: 1650.98px) {
-  .slider__body .swiper-slide {
-    width: 282px;
-  }
-}
-
-@media (max-width: 480.98px) {
-  .slider__body .swiper-slide {
-    width: 300px;
-  }
-}
 
 @media (max-width: 480.98px) {
   .slider__body:not(:last-child) {
