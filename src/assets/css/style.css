@@ -834,20 +834,37 @@ input[type=number]::-webkit-inner-spin-button {
 .logo__img {
   width: 233px;
 }
+
+.logo__img.logo__img-15 {
+  width: 260px !important;
+}
 .logo__img:not(:last-child) {
   margin: 0 0 3px 0;
 }
 .logo__img img {
   max-width: 100%;
 }
+
+
+
 @media (max-width: 1650.98px) {
   .logo__img {
     width: 174px;
   }
 }
+@media (max-width: 1650.98px) {
+  .logo__img.logo__img-15 {
+    width: 194px !important;
+  }
+}
 @media (max-width: 650.98px) {
   .logo__img {
     width: 153px;
+  }
+}
+@media (max-width: 1650.98px) {
+  .logo__img.logo__img-15 {
+    width: 174px !important;
   }
 }
 .logo__text {

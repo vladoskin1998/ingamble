@@ -8,6 +8,7 @@ import { initialCasinoFilters, useFilterContext } from '../../context/FilterCont
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAdaptiveBehavior, useHandlerSidebarActive } from '../../context/AppContext'
 const ViteTitle = import.meta.env.VITE_TITLE
+const isDeger = ViteTitle.includes('DegenCatapult')
 type Language = {
     code: string
     name: string
@@ -188,8 +189,8 @@ export const Header = () => {
                             </a>
 
                             <Link rel="nofollow noopener" to="/" className="header__logo logo">
-                                <div className="logo__img">
-                                    <img alt={'logo'} src={ViteTitle.includes('DegenCatapult') ? logoDegenCatapult : logoInGamble} />
+                                <div className={`logo__img `}>
+                                    <img alt={'logo'} src={isDeger ? logoDegenCatapult : logoInGamble} />
                                 </div>
                             </Link>
                         </div>
@@ -204,7 +205,7 @@ export const Header = () => {
                                         aria-label="Put your description here."
                                         className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                     >
-                                        <span>Gambling Hub</span>
+                                        <span>{isDeger ? 'Crypto Gambling' : 'Gambling Hub'}</span>
                                     </Link>
                                 </li>
                                 <li className="menu-header__item">
@@ -274,7 +275,7 @@ export const Header = () => {
                                 </svg>
                             </button>
                         </div>
-                        {!ViteTitle.includes('DegenCatapult') && (
+                        {!isDeger && (
                             <div className="header__language language-header">
                                 <div className="dropdown language-header__dropdown dropdown-language-header">
                                     <div
@@ -321,8 +322,8 @@ export const Header = () => {
                                 </Link>
                             </div>
                             <Link to="/" className="header__logo logo">
-                                <div className="logo__img">
-                                    <img src={ViteTitle.includes('DegenCatapult') ? logoDegenCatapult : logoInGamble} alt={'logo'} />
+                                <div className={`logo__img`}>
+                                    <img src={isDeger ? logoDegenCatapult : logoInGamble} alt={'logo'} />
                                 </div>
                             </Link>
                         </div>
@@ -409,7 +410,7 @@ export const Header = () => {
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                         >
-                                            <span>Gambling Hub</span>
+                                            <span>{isDeger ? 'Crypto Gambling' : 'Gambling Hub'}</span>
                                         </Link>
                                     </li>
 
@@ -508,7 +509,7 @@ export const Header = () => {
                                         </span>
                                         Back
                                     </button>
-                                    {!ViteTitle.includes('DegenCatapult') && (
+                                    {!isDeger && (
                                         <ul className="dropdown__list dropdown-language-header__list">
                                             {LANGUAGES_WEBSITE.map((item) => (
                                                 <li

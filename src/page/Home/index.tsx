@@ -28,6 +28,8 @@ import BlockType11 from './BlockType11'
 import BlockType10Mobile from './BlockType10Mobile'
 import { BlockFooter } from './BlockFooter'
 
+const ViteTitle = import.meta.env.VITE_TITLE
+const isDeger = ViteTitle.includes('DegenCatapult')
 
 export type LazyImgHomeType = 'lazy' | 'eager' | undefined
 
@@ -38,7 +40,7 @@ const categoriesTypeBySrc = (src: string): { type_category: DataHomeItemsBlockCa
         case 'get-data-hub-page-bonus/':
             return { type_category: DataHomeItemsBlockEnumCategory.bonus_category as DataHomeItemsBlockCategoryType, blocks_sequence_number: 2.5 }
         default:
-            return { type_category: DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType, blocks_sequence_number: 1.5 }
+            return { type_category: DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType, blocks_sequence_number: 9.5 }
     }
 }
 
@@ -96,6 +98,9 @@ const renderBlock = (block: any, isMobile: boolean, index: number) => {
     }
 }
 
+console.log();
+
+
 export default function Home({ src = 'get-data-home-page/' }: { src?: string }) {
     //@ts-ignore
     const { data, isLoading } = useQuery<{
@@ -110,6 +115,7 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
     let { data: blockByCountry, isLoading: isLoadingBlock } = useQuery<HomeDataBlock>(['get-block-by-country/'], getBlockByCountry, {
         staleTime: Infinity,
         cacheTime: 1000 * 60 * 10,
+        enabled: !!!isDeger,
     })
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)

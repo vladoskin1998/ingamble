@@ -263,7 +263,7 @@ export default function SeeAllCasinos() {
                                     </div>
                                 ))}
                             </div>
-                            {!displayedData?.length && !isLoading ? (
+                            {false ? (
                                 <NoResult />
                             ) : (
                                 <PaginationPage
