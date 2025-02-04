@@ -18,7 +18,7 @@ const NotFound = lazy(() => import('../page/NotFound'))
 const FilterCasino = lazy(() => import('../page/FilterCasino'))
 const FilterBonus = lazy(() => import('../page/FilterBonus'))
 const FilterLoyalty = lazy(() => import('../page/FilterLoyalty'))
-
+const ViteTitle = import.meta.env.VITE_TITLE
 export const PublicRouter = () => {
     return (
         <Routes>
@@ -31,7 +31,7 @@ export const PublicRouter = () => {
                 }
             />
 
-            {import.meta.env.VITE_TITLE === 'CryptoGamblers' ? (
+            {ViteTitle.includes('CryptoGamblers') ? (
                 <>
                     <Route
                         path="/casinos/:casino_slug?"

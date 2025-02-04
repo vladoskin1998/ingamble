@@ -176,7 +176,7 @@ export const Header =  () => {
         }
     }, [lastScrollY])
 
-    console.log('ViteTitle', ViteTitle)
+
     
 
     return (
