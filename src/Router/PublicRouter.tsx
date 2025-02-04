@@ -18,7 +18,7 @@ const NotFound = lazy(() => import('../page/NotFound'))
 const FilterCasino = lazy(() => import('../page/FilterCasino'))
 const FilterBonus = lazy(() => import('../page/FilterBonus'))
 const FilterLoyalty = lazy(() => import('../page/FilterLoyalty'))
-const ViteTitle = import.meta.env.VITE_TITLE
+
 export const PublicRouter = () => {
     return (
         <Routes>
@@ -31,27 +31,7 @@ export const PublicRouter = () => {
                 }
             />
 
-            {ViteTitle.includes('DegenCatapult') ? (
-                <>
-                    <Route
-                        path="/casinos/:casino_slug?"
-                        element={
-                            <Suspense>
-                                <SeeAllCasinos />
-                            </Suspense>
-                        }
-                    />
-                    <Route
-                        path="/bonuses/:bonus_slug?"
-                        element={
-                            <Suspense>
-                                <SeeAllBonus />
-                            </Suspense>
-                        }
-                    />
-                </>
-            ) : (
-                <>
+          
                     <Route
                         path="/casinos"
                         element={
@@ -68,8 +48,7 @@ export const PublicRouter = () => {
                             </Suspense>
                         }
                     />
-                </>
-            )}
+             
 
             <Route
                 path="/filter-casinos/:casino_slug?"
