@@ -111,6 +111,10 @@ export default function SeeAllCasinos() {
         const titlePage = slug ? data?.category_name || category?.find((item) => item?.slug === slug)?.name : 'Casino List'
     const displayedData = isMobile ? allData : data?.casino?.results
 
+
+    console.log(!displayedData?.length && isLoading)
+    
+
     if (isLoading) return <LogoLoader />
 
     return (
@@ -259,7 +263,7 @@ export default function SeeAllCasinos() {
                                     </div>
                                 ))}
                             </div>
-                            {!displayedData?.length && isLoading && <NoResult />}
+                            {!displayedData?.length && !isLoading && <NoResult />}
 
                             <PaginationPage
                                 countElem={data?.casino?.count}
