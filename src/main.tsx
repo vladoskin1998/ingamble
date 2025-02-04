@@ -6,9 +6,8 @@ import './assets/css/style.css'
 import './components/loader/loader.css'
 import './assets/css/header.css'
 import App from './App.tsx'
-
-
-
+import 'swiper/css'
+import 'swiper/css/pagination'
 import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
