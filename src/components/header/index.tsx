@@ -1,4 +1,4 @@
-import logoCryptogamblers from '../../assets/img/logo.svg'
+import logoDegenCatapult from '../../assets/img/logo-degencatapult.svg'
 import logoInGamble from '../../assets/img/logo-ingamble.svg'
 import english from '../../assets/img/flags/english.svg'
 
@@ -27,10 +27,9 @@ export const LANGUAGES_WEBSITE: Language[] = [
     // { code: 'ru', name: 'Russian', flag: russian },
 ]
 
-export const Header =  () => {
-
+export const Header = () => {
     const { isSidebarActive } = useAdaptiveBehavior()
-        const { handlerSidebarActive } = useHandlerSidebarActive()
+    const { handlerSidebarActive } = useHandlerSidebarActive()
     const inputRefMob = useRef<HTMLInputElement>(null)
 
     const navigate = useNavigate()
@@ -176,9 +175,6 @@ export const Header =  () => {
         }
     }, [lastScrollY])
 
-
-    
-
     return (
         <header className={`header header-animated  ${!showHeader && 'header-animated-hide'}`}>
             <div className="header__container container">
@@ -193,7 +189,7 @@ export const Header =  () => {
 
                             <Link rel="nofollow noopener" to="/" className="header__logo logo">
                                 <div className="logo__img">
-                                    <img alt={'logo'} src={ViteTitle.includes('CryptoGamblers') ? logoCryptogamblers : logoInGamble} />
+                                    <img alt={'logo'} src={ViteTitle.includes('DegenCatapult') ? logoDegenCatapult : logoInGamble} />
                                 </div>
                             </Link>
                         </div>
@@ -278,39 +274,41 @@ export const Header =  () => {
                                 </svg>
                             </button>
                         </div>
-                        <div className="header__language language-header">
-                            <div className="dropdown language-header__dropdown dropdown-language-header">
-                                <div
-                                    className="dropdown__btn dropdown-language-header__btn dropdown-language-header__btn-icon"
-                                    // onClick={() => setIsLanguageOpen(true)}
-                                >
-                                    <img alt={selectedLanguage.name} src={selectedLanguage.flag} width={20} height={20} />
-                                </div>
+                        {!ViteTitle.includes('DegenCatapult') && (
+                            <div className="header__language language-header">
+                                <div className="dropdown language-header__dropdown dropdown-language-header">
+                                    <div
+                                        className="dropdown__btn dropdown-language-header__btn dropdown-language-header__btn-icon"
+                                        // onClick={() => setIsLanguageOpen(true)}
+                                    >
+                                        <img alt={selectedLanguage.name} src={selectedLanguage.flag} width={20} height={20} />
+                                    </div>
 
-                                <div
-                                    className={`dropdown__body dropdown-language-header__body `}
-                                    style={{
-                                        display: isLanguageOpen ? 'block' : 'none',
-                                    }}
-                                    ref={modalLanguageRef}
-                                >
-                                    <ul className="dropdown__list dropdown-language-header__list">
-                                        {LANGUAGES_WEBSITE.map((language) => (
-                                            <li
-                                                key={language.code}
-                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${language.code === selectedLanguage.code ? 'active' : ''}`}
-                                                onClick={() => handleLanguageSelect(language)}
-                                            >
-                                                <span className="list-item-dropdown-language-header__icon">
-                                                    <img alt={language.name} src={language.flag} width={20} height={20} />
-                                                </span>
-                                                <span className="list-item-dropdown-language-header__text">{language.name}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <div
+                                        className={`dropdown__body dropdown-language-header__body `}
+                                        style={{
+                                            display: isLanguageOpen ? 'block' : 'none',
+                                        }}
+                                        ref={modalLanguageRef}
+                                    >
+                                        <ul className="dropdown__list dropdown-language-header__list">
+                                            {LANGUAGES_WEBSITE.map((language) => (
+                                                <li
+                                                    key={language.code}
+                                                    className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${language.code === selectedLanguage.code ? 'active' : ''}`}
+                                                    onClick={() => handleLanguageSelect(language)}
+                                                >
+                                                    <span className="list-item-dropdown-language-header__icon">
+                                                        <img alt={language.name} src={language.flag} width={20} height={20} />
+                                                    </span>
+                                                    <span className="list-item-dropdown-language-header__text">{language.name}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
                 {/* ///////////  mobile*/}
@@ -324,7 +322,7 @@ export const Header =  () => {
                             </div>
                             <Link to="/" className="header__logo logo">
                                 <div className="logo__img">
-                                    <img src={ViteTitle.includes('CryptoGamblers') ? logoCryptogamblers : logoInGamble} alt={'logo'} />
+                                    <img src={ViteTitle.includes('DegenCatapult') ? logoDegenCatapult : logoInGamble} alt={'logo'} />
                                 </div>
                             </Link>
                         </div>
@@ -510,20 +508,21 @@ export const Header =  () => {
                                         </span>
                                         Back
                                     </button>
-
-                                    <ul className="dropdown__list dropdown-language-header__list">
-                                        {LANGUAGES_WEBSITE.map((item) => (
-                                            <li
-                                                onClick={() => handleLanguageSelect(item)}
-                                                className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${item.code === selectedLanguage.code && 'active'}`}
-                                            >
-                                                <span className="list-item-dropdown-language-header__icon">
-                                                    <img src={item.flag} loading="lazy" width="20" height="20" alt={item.name} />
-                                                </span>
-                                                <span className="list-item-dropdown-language-header__text">{item.name}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    {!ViteTitle.includes('DegenCatapult') && (
+                                        <ul className="dropdown__list dropdown-language-header__list">
+                                            {LANGUAGES_WEBSITE.map((item) => (
+                                                <li
+                                                    onClick={() => handleLanguageSelect(item)}
+                                                    className={`dropdown__list-item dropdown-language-header__list-item list-item-dropdown-language-header ${item.code === selectedLanguage.code && 'active'}`}
+                                                >
+                                                    <span className="list-item-dropdown-language-header__icon">
+                                                        <img src={item.flag} loading="lazy" width="20" height="20" alt={item.name} />
+                                                    </span>
+                                                    <span className="list-item-dropdown-language-header__text">{item.name}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             )}
                         </div>

@@ -1,5 +1,6 @@
-import logoCryptogamblers from '../../assets/img/logo.svg'
 import logoInGamble from '../../assets/img/logo-ingamble.svg'
+import logoDegenCatapult from '../../assets/img/logo-degencatapult.svg'
+
 import logos01 from '../../assets/img/logos/01.svg'
 import logos02 from '../../assets/img/logos/02.svg'
 import logos03 from '../../assets/img/logos/03.svg'
@@ -15,6 +16,7 @@ import '../../assets/css/footer.css'
 import { useEffect } from 'react'
 import initializeAdaptiveBehavior from '../../helper/adaprive-bahavior'
 import { useInView } from 'react-intersection-observer'
+const ViteTitle = import.meta.env.VITE_TITLE
 
 export default function Footer() {
     const { ref, inView } = useInView({
@@ -332,7 +334,7 @@ export default function Footer() {
                     <div className="top-footer__socials-block">
                         <a href="" target="_blank" className="footer__logo logo">
                             <div className="logo__img">
-                                <img src={(import.meta.env.VITE_TITLE === 'CryptoGamblers' ? logoCryptogamblers : logoInGamble)} alt="logo" />
+                                <img src={ViteTitle.includes('DegenCatapult') ? logoDegenCatapult : logoInGamble} alt="logo" />
                             </div>
                             <div className="logo__text">{import.meta.env.VITE_SUBTITLE_WE_TRUST}</div>
                         </a>

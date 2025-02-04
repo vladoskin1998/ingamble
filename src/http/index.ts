@@ -1,6 +1,6 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 const ViteTitle = import.meta.env.VITE_TITLE
-const baseURL = ViteTitle.includes('CryptoGamblers') ? `https://cg-api-prod.incasinowetrust.com/api/v1/` : 'https://ig-api-prod.incasinowetrust.com/api/v1/' ;
+const baseURL = ViteTitle.includes('DegenCatapult') ? `https://cg-api-prod.incasinowetrust.com/api/v1/` : 'https://ig-api-prod.incasinowetrust.com/api/v1/' ;
 // const baseURL = 'https://ig-api-prod.incasinowetrust.com/api/v1/'
 const $api = axios.create({
     //   withCredentials: true,

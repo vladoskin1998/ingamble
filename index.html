@@ -9,33 +9,14 @@
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" />
         </noscript>
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-42W5MNLRR0"></script>
+      
         <script defer type="module">
-            const title = import.meta.env.VITE_TITLE
+            const googleId = import.meta.env.VITE_GOOGLE_ID
 
-            if (title === 'CryptoGamblers') {
-                ;(function (m, e, t, r, i, k, a) {
-                    console.log('-----------> yandex');
-                    m[i] =
-                        m[i] ||
-                        function () {
-                            ;(m[i].a = m[i].a || []).push(arguments)
-                        }
-                    m[i].l = 1 * new Date()
-                    for (var j = 0; j < document.scripts.length; j++) {
-                        if (document.scripts[j].src === r) {
-                            return
-                        }
-                    }
-                    ;(k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a)
-                })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym')
-                ym(99347212, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true })
-            } else {
-                console.log('-----------> google');
                 
                 let script = document.createElement('script')
                 script.async = true
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-42W5MNLRR0'
+                script.src = `https://www.googletagmanager.com/gtag/js?id=${googleId}`
                 document.head.appendChild(script)
 
                 script.onload = function () {
@@ -44,9 +25,9 @@
                         dataLayer.push(arguments)
                     }
                     gtag('js', new Date())
-                    gtag('config', 'G-42W5MNLRR0')
+                    gtag('config', googleId)
                 }
-            }
+            
         </script>
 
         <link rel="icon" href="/src/assets/img/favicon.png" type="image/x-icon" />

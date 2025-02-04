@@ -31,7 +31,7 @@ export const PublicRouter = () => {
                 }
             />
 
-            {ViteTitle.includes('CryptoGamblers') ? (
+            {ViteTitle.includes('DegenCatapult') ? (
                 <>
                     <Route
                         path="/casinos/:casino_slug?"
