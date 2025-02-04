@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import { LogoLoader } from '../components/loader/LogoLoader'
-
+import '../assets/css/style.css'
 const Home = lazy(() => import('../page/Home'))
 
 const SimpleCasinos = lazy(() => import('../page/SimpleCasinos'))

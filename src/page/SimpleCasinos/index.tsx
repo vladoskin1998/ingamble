@@ -115,12 +115,12 @@ export default function SimpleCasinos() {
         }
     }, [openModal])
 
-    useEffect(() => {
-        initializeAdaptiveBehavior()
-    }, [isLoading])
+  useEffect(() => {
+          initializeAdaptiveBehavior()
+      }, [geoLocation])
 
     if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
-    // if (isLoading) return <LogoLoader />
+ 
     return (
         <>
             <PopupReadMore openModal={openModal} handlerOpen={handlerOpen} data={data?.dataCurrentCasinos} />

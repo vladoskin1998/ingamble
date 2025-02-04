@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { AllCategoriesHomeDataResponse, DataHomeItemsBlockCategoryType, DataHomeItemsBlockEnumCategory, FormatedCategoryType } from '../types'
 import $api from '../http';
 import {   LOYALTIECATEGORYIES, shuffleArray } from '../helper';
+import initializeAdaptiveBehavior from '../helper/adaprive-bahavior';
 
 interface AdaptiveContextType {
     isShowPlayButton: boolean
@@ -89,18 +90,18 @@ export const AdaptiveProvider: React.FC<{ children: ReactNode }> = ({ children }
     const location = useLocation();
     const [isSidebarActive, setSidebarActive] = useState(false)
     
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         initializeAdaptiveBehavior();
-    //     };
+    useEffect(() => {
+        const handleResize = () => {
+            initializeAdaptiveBehavior();
+        };
      
-    //     initializeAdaptiveBehavior();
-    //     window.addEventListener('resize', handleResize);
+        initializeAdaptiveBehavior();
+        window.addEventListener('resize', handleResize);
 
-    //     return () => {
-    //         window.removeEventListener('resize', handleResize);
-    //     };
-    // }, [location]);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [location]);
 
     const [lastUpdate, setLastUpdate] = useState<string>('');
 

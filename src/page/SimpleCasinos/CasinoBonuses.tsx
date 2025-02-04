@@ -98,7 +98,7 @@ export const CasinoBonuses = ({ data }: { data: undefined | RewievCasinoDataResp
                         <div className="iwild-casino-bonuses__swiper slider__swiper swiper">
                             <Swiper
                                 slidesPerView="auto"
-                                className="slider__wrapper swiper-wrapper"
+                                
                                 ref={sliderRef}
                                 pagination={{
                                     el: paginationRef.current,

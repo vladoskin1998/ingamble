@@ -111,7 +111,6 @@ export default function SimpleBonus() {
             <main className="gamble__simple-bonus main-gamble simple-bonus">
                 <div className="main-gamble__body">
                     <Categories />
-                 
                     <BreadCrumb
                         path={[
                             {

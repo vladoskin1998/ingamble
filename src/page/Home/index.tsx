@@ -40,7 +40,7 @@ const categoriesTypeBySrc = (src: string): { type_category: DataHomeItemsBlockCa
         case 'get-data-hub-page-bonus/':
             return { type_category: DataHomeItemsBlockEnumCategory.bonus_category as DataHomeItemsBlockCategoryType, blocks_sequence_number: 2.5 }
         default:
-            return { type_category: DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType, blocks_sequence_number: 9.5 }
+            return { type_category: DataHomeItemsBlockEnumCategory.all_category as DataHomeItemsBlockCategoryType, blocks_sequence_number: 7.5 }
     }
 }
 
