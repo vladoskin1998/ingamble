@@ -7,6 +7,7 @@ import logoIcon from '../../assets/img/logo-icon.svg'
 import { initialCasinoFilters, useFilterContext } from '../../context/FilterContext'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAdaptiveBehavior, useHandlerSidebarActive } from '../../context/AppContext'
+const ViteTitle = import.meta.env.VITE_TITLE
 type Language = {
     code: string
     name: string
@@ -175,6 +176,9 @@ export const Header =  () => {
         }
     }, [lastScrollY])
 
+    console.log('ViteTitle', ViteTitle)
+    
+
     return (
         <header className={`header header-animated  ${!showHeader && 'header-animated-hide'}`}>
             <div className="header__container container">
@@ -189,7 +193,7 @@ export const Header =  () => {
 
                             <Link rel="nofollow noopener" to="/" className="header__logo logo">
                                 <div className="logo__img">
-                                    <img alt={'logo'} src={import.meta.env.VITE_TITLE === 'CryptoGamblers' ? logoCryptogamblers : logoInGamble} />
+                                    <img alt={'logo'} src={ViteTitle.includes('CryptoGamblers') ? logoCryptogamblers : logoInGamble} />
                                 </div>
                             </Link>
                         </div>
@@ -320,7 +324,7 @@ export const Header =  () => {
                             </div>
                             <Link to="/" className="header__logo logo">
                                 <div className="logo__img">
-                                    <img src={import.meta.env.VITE_TITLE === 'CryptoGamblers' ? logoCryptogamblers : logoInGamble} alt={'logo'} />
+                                    <img src={ViteTitle.includes('CryptoGamblers') ? logoCryptogamblers : logoInGamble} alt={'logo'} />
                                 </div>
                             </Link>
                         </div>
