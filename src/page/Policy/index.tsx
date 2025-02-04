@@ -37,8 +37,8 @@ export default function PrivacyPolicy() {
                                 <div className="main-privacy-policy__item">
                                     <p>
                                         At{' '}
-                                        <a href="" target="_blank" aria-label="Put your description here.">
-                                            inGamble.com
+                                        <a href={`https://${import.meta.env.VITE_DOMEN}`} target="_blank" aria-label="Put your description here.">
+                                            {import.meta.env.VITE_DOMEN}
                                         </a>
                                         , we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, disclose, and protect the information you
                                         provide to us when you visit our website.
