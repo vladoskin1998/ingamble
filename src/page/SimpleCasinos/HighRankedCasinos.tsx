@@ -8,7 +8,7 @@ import $api from '../../http'
 import { СasinosInRankRangeResponse } from '../../types'
 import { useQuery } from 'react-query'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { COLORS_TAGS, sanitizeNumberLike } from '../../helper'
+import {  getTagColorByindex, sanitizeNumberLike } from '../../helper'
 import { Link } from 'react-router-dom'
 
 const getFilteringCasinoList = async () => {
@@ -158,11 +158,13 @@ export const HighRankedCasinos = () => {
                                                             {item?.[0]?.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[0]?.additional_casino_params?.map((l, ct) => (
-                                                                <div className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
-                                                                    <span className="tags-casino-card__item-label">{l}</span>
-                                                                </div>
-                                                            ))}
+                                                            {item?.[0]?.additional_casino_params
+                                                                ?.sort((a, b) => a.localeCompare(b))
+                                                                ?.map((l, ct) => (
+                                                                    <div className={`tags-casino-card__item ${getTagColorByindex(ct)}`}>
+                                                                        <span className="tags-casino-card__item-label">{l}</span>
+                                                                    </div>
+                                                                ))}
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
                                                             <div className="info-casino-card__stake-rating">
@@ -191,11 +193,13 @@ export const HighRankedCasinos = () => {
                                                             {item?.[1]?.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.[1]?.additional_casino_params?.map((l, ct) => (
-                                                                <div className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
-                                                                    <span className="tags-casino-card__item-label">{l}</span>
-                                                                </div>
-                                                            ))}
+                                                            {item?.[1]?.additional_casino_params
+                                                                ?.sort((a, b) => a.localeCompare(b))
+                                                                ?.map((l, ct) => (
+                                                                    <div className={`tags-casino-card__item ${getTagColorByindex(ct)}`}>
+                                                                        <span className="tags-casino-card__item-label">{l}</span>
+                                                                    </div>
+                                                                ))}
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
                                                             <div className="info-casino-card__stake-rating">
@@ -259,11 +263,13 @@ export const HighRankedCasinos = () => {
                                                             {item.name}
                                                         </Link>
                                                         <div className="item-slide-slider__tags tags-casino-card">
-                                                            {item?.additional_casino_params?.map((l, ct) => (
-                                                                <div className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
-                                                                    <span className="tags-casino-card__item-label">{l}</span>
-                                                                </div>
-                                                            ))}
+                                                            {item?.additional_casino_params
+                                                                ?.sort((a, b) => a.localeCompare(b))
+                                                                ?.map((l, ct) => (
+                                                                    <div className={`tags-casino-card__item ${getTagColorByindex(ct)}`}>
+                                                                        <span className="tags-casino-card__item-label">{l}</span>
+                                                                    </div>
+                                                                ))}
                                                         </div>
                                                         <div className="item-slide-slider__bottom">
                                                             <div className="info-casino-card__stake-rating">

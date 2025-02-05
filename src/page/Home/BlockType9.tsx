@@ -57,7 +57,7 @@ const BlockType9 = memo(function BlockType9({ data, initialInView = false, isAut
                                 modules={[Autoplay]}
                                 autoplay={
                                     isAutoPlay && {
-                                        delay: 2000,
+                                        delay: 4000,
                                         disableOnInteraction: false,
                                     }
                                 }

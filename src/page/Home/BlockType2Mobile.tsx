@@ -70,7 +70,7 @@ export default function BlockType2Mobile({ data, initialInView = false, isAutoPl
                                         modules={[Pagination, Autoplay]}
                                         autoplay={
                                             isAutoPlay && {
-                                                delay: 2000,
+                                                delay: 4000,
                                                 disableOnInteraction: false,
                                             }
                                         }

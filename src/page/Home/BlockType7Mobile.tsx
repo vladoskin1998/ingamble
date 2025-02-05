@@ -50,7 +50,7 @@ export default function BlockType7Mobile({ data, initialInView = false, isAutoPl
                                     modules={[Autoplay]}
                                     autoplay={
                                         isAutoPlay && {
-                                            delay: 2000,
+                                            delay: 4000,
                                             disableOnInteraction: false,
                                         }
                                     }

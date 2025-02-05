@@ -2,7 +2,7 @@ import MainSlider from '../../components/swiper/MainSlider'
 import $api from '../../http'
 import { useQuery } from 'react-query'
 import { BonusInRankRangeResponse } from '../../types'
-import { COLORS_TAGS, shuffleArray } from '../../helper'
+import {  getTagColorByindex, shuffleArray } from '../../helper'
 
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -67,11 +67,17 @@ export const OtherBestReloadBonus = ({ casinoName }: { casinoName?: string }) =>
                                 tags: (
                                     <>
                                         {typeof b !== 'string'
-                                            ? b?.labels.map((l, ct) => (
-                                                  <div key={ct} className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
-                                                      <span className="tags-casino-card__item-label">{typeof l !== 'string' && 'name' in l ? l?.name : ''}</span>
-                                                  </div>
-                                              ))
+                                            ? b?.labels
+                                                  ?.sort((a, b) => {
+                                                      const labelA = typeof a === 'string' ? a : a?.name || ''
+                                                      const labelB = typeof b === 'string' ? b : b?.name || ''
+                                                      return labelA.localeCompare(labelB)
+                                                  })
+                                                  .map((l, ct) => (
+                                                      <div key={ct} className={`tags-casino-card__item ${getTagColorByindex(ct)}`}>
+                                                          <span className="tags-casino-card__item-label">{typeof l !== 'string' && 'name' in l ? l?.name : ''}</span>
+                                                      </div>
+                                                  ))
                                             : []}
                                     </>
                                 ),

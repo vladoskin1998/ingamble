@@ -10,7 +10,7 @@ import like from '../../assets/img/icons/like.svg'
 import { lazy, memo, useEffect, useState } from 'react'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import star from '../../assets/img/icons/star.svg'
-import { cloacingFetch, cloacingLink, COLORS_TAGS, filterEmptyValues, getTitleFilterCategories, sanitizeNumberLike } from '../../helper'
+import { cloacingFetch, cloacingLink, filterEmptyValues, getTagColorByindex, getTitleFilterCategories, sanitizeNumberLike } from '../../helper'
 import { PaginationPage } from '../../components/pagination/PaginationPage'
 import { debounce } from 'lodash'
 import { LogoLoader } from '../../components/loader/LogoLoader'
@@ -221,11 +221,17 @@ const ListDisplayData = memo(({ displayedData, isShowPlayButton }: { displayedDa
                         </div>
                         <div className="casino-card__content">
                             <div className="casino-card__tags tags-casino-card">
-                                {item?.labels?.map((it, id) => (
-                                    <div key={id} className={`tags-casino-card__item ${COLORS_TAGS[id % 4]}`}>
-                                        <span className="tags-casino-card__item-label">{typeof it === 'string' ? it : it?.name}</span>
-                                    </div>
-                                ))}
+                                {item?.labels
+                                    ?.sort((a, b) => {
+                                        const labelA = typeof a === 'string' ? a : a?.name || ''
+                                        const labelB = typeof b === 'string' ? b : b?.name || ''
+                                        return labelA.localeCompare(labelB)
+                                    })
+                                    .map((it, id) => (
+                                        <div key={id} className={`tags-casino-card__item ${getTagColorByindex(id)}`}>
+                                            <span className="tags-casino-card__item-label">{typeof it === 'string' ? it : it?.name}</span>
+                                        </div>
+                                    ))}
                             </div>
                             <div className="casino-card__info info-casino-card">
                                 <div className="info-casino-card__stake">

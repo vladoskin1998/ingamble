@@ -65,7 +65,7 @@ export default function BlockMType2M({ data, initialInView = false, isAutoPlay =
                                         modules={[Pagination, Autoplay]}
                                         autoplay={
                                             isAutoPlay && {
-                                                delay: 2000,
+                                                delay: 4000,
                                                 disableOnInteraction: false,
                                             }
                                         }

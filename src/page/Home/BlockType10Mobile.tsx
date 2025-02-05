@@ -82,7 +82,7 @@ export default function BlockType10Mobile({ data, initialInView = false, isAutoP
                                         modules={[Autoplay]}
                                         autoplay={
                                             isAutoPlay && {
-                                                delay: 2000,
+                                                delay: 4000,
                                                 disableOnInteraction: false,
                                             }
                                         }

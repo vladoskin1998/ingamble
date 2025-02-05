@@ -111,7 +111,7 @@ export default function BlockType6({ data, initialInView = false, isAutoPlay = f
                                     modules={[Pagination, Autoplay]}
                                     autoplay={
                                         isAutoPlay && {
-                                            delay: 2000,
+                                            delay: 4000,
                                             disableOnInteraction: false,
                                         }
                                     }

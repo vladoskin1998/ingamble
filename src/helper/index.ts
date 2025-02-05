@@ -16,7 +16,12 @@ export const COLORS_TAGS = [
     "tags-casino-card__item_green",
     "tags-casino-card__item_purple",
     "tags-casino-card__item_grass",
+    "tags-casino-card__item_orange",
 ]
+
+export const getTagColorByindex = (id:number) => {
+    return COLORS_TAGS[id % 5]
+}
 
 
 

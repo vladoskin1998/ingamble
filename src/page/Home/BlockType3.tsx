@@ -4,16 +4,15 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { useEffect, useRef, useState } from 'react'
-import {  DataHomeItemsBlock, HomeDataBlock, HomeDataCard } from '../../types'
+import { DataHomeItemsBlock, HomeDataBlock, HomeDataCard } from '../../types'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
 
-import { cloacingFetch, cloacingLink, COLORS_TAGS } from '../../helper'
+import { cloacingFetch, cloacingLink, getTagColorByindex } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useAdaptiveBehavior } from '../../context/AppContext'
 import { SeeAllButton } from './SeeAllButton'
 import { useInView } from 'react-intersection-observer'
 import { Autoplay } from 'swiper/modules'
-
 
 export default function BlockType3({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const sliderRef = useRef<any>(null)
@@ -144,11 +143,13 @@ export default function BlockType3({ data, initialInView = false, isAutoPlay = f
                                                                                 </Link>
                                                                                 {item?.[0]?.bonus_info?.labels?.length && (
                                                                                     <div className="different-casino-standart__tags tags-casino-card">
-                                                                                        {item?.[0]?.bonus_info?.labels?.map((item, cindex) => (
-                                                                                            <div key={cindex} className={`tags-casino-card__item ${COLORS_TAGS[cindex % 4]}`}>
-                                                                                                <span className="tags-casino-card__item-label">{item}</span>
-                                                                                            </div>
-                                                                                        ))}
+                                                                                        {item?.[0]?.bonus_info?.labels
+                                                                                            ?.sort((a: string, b: string) => a.localeCompare(b))
+                                                                                            ?.map((item, cindex) => (
+                                                                                                <div key={cindex} className={`tags-casino-card__item ${getTagColorByindex(cindex)}`}>
+                                                                                                    <span className="tags-casino-card__item-label">{item}</span>
+                                                                                                </div>
+                                                                                            ))}
                                                                                     </div>
                                                                                 )}
                                                                                 <div className="info-casino-card__stake">
@@ -193,14 +194,16 @@ export default function BlockType3({ data, initialInView = false, isAutoPlay = f
                                                                                     </Link>
                                                                                     {item?.[1].bonus_info?.labels?.length && (
                                                                                         <div className="different-casino-standart__tags tags-casino-card">
-                                                                                            {item?.[1]?.bonus_info?.labels?.map((item, cindex) => (
-                                                                                                <div key={cindex} className={`tags-casino-card__item ${COLORS_TAGS[cindex % 4]}`}>
-                                                                                                    <span className="tags-casino-card__item-label">{item}</span>
-                                                                                                    {/* <span className="tags-casino-card__item-value">
+                                                                                            {item?.[1]?.bonus_info?.labels
+                                                                                                ?.sort((a: string, b: string) => a.localeCompare(b))
+                                                                                                ?.map((item, cindex) => (
+                                                                                                    <div key={cindex} className={`tags-casino-card__item ${getTagColorByindex(cindex)}`}>
+                                                                                                        <span className="tags-casino-card__item-label">{item}</span>
+                                                                                                        {/* <span className="tags-casino-card__item-value">
                                                                                                  4.0x
                                                                                              </span> */}
-                                                                                                </div>
-                                                                                            ))}
+                                                                                                    </div>
+                                                                                                ))}
                                                                                         </div>
                                                                                     )}
                                                                                     <div className="info-casino-card__stake">
@@ -244,7 +247,7 @@ export default function BlockType3({ data, initialInView = false, isAutoPlay = f
                                                     modules={[Pagination, Autoplay]}
                                                     autoplay={
                                                         isAutoPlay && {
-                                                            delay: 2000,
+                                                            delay: 4000,
                                                             disableOnInteraction: false,
                                                         }
                                                     }

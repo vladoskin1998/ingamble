@@ -1735,6 +1735,8 @@ h3 {
   color: var(--Colors-Orange, #F96B2F);
   background: var(--Colors-Orange_Transp, rgba(249, 107, 47, 0.1607843137));
 }
+
+
 .casino-small-card {
   display: flex;
   align-items: center;

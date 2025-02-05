@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { SiblingBonuses } from '../../types'
-import { COLORS_TAGS } from '../../helper'
+import { getTagColorByindex } from '../../helper'
 import MainSlider from '../../components/swiper/MainSlider'
 
 export const SiblingBonus = ({
@@ -46,16 +46,18 @@ export const SiblingBonus = ({
                         casinoName: casinoName || '',
                         bonuseName: c?.name || '',
                         playLink: casino_affiliate_link,
-                        imageLink: `/casino/${casino_slug}/bonuses/${c?.slug2}` ,
+                        imageLink: `/casino/${casino_slug}/bonuses/${c?.slug2}`,
                         casinoLink: `/casino/${casino_slug}`,
-                        bonuseLink: `/casino/${casino_slug}/bonuses/${c?.slug2}` ,
+                        bonuseLink: `/casino/${casino_slug}/bonuses/${c?.slug2}`,
                         tags: (
                             <>
-                                {c.labels.map((l, ct) => (
-                                    <div className={`tags-casino-card__item ${COLORS_TAGS[ct % 4]}`}>
-                                        <span className="tags-casino-card__item-label">{l.name}</span>
-                                    </div>
-                                ))}
+                                {c.labels
+                                    ?.sort((a, b) => a?.name.localeCompare(b?.name))
+                                    ?.map((l, ct) => (
+                                        <div className={`tags-casino-card__item ${getTagColorByindex(ct)}`}>
+                                            <span className="tags-casino-card__item-label">{l.name}</span>
+                                        </div>
+                                    ))}
                             </>
                         ),
                     }))}

@@ -8,7 +8,7 @@ import { useRef, useEffect } from 'react'
 import { DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 import { LazyCardImg } from '../../components/lazy-img/LazyCardImg'
-import { COLORS_TAGS } from '../../helper'
+import {  getTagColorByindex } from '../../helper'
 import { Link } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
 import { Autoplay } from 'swiper/modules'
@@ -69,7 +69,7 @@ export default function BlockMType3M({ data, initialInView = false, isAutoPlay =
                                         modules={[Pagination, Autoplay]}
                                         autoplay={
                                             isAutoPlay && {
-                                                delay: 2000,
+                                                delay: 4000,
                                                 disableOnInteraction: false,
                                             }
                                         }
@@ -116,11 +116,13 @@ export default function BlockMType3M({ data, initialInView = false, isAutoPlay =
                                                                             </Link>
                                                                             {item?.bonus_info?.labels?.length && (
                                                                                 <div className="different-casino-standart__tags tags-casino-card">
-                                                                                    {item?.bonus_info?.labels.map((item, index) => (
-                                                                                        <div key={index} className={`tags-casino-card__item ${COLORS_TAGS[index % 4]}`}>
-                                                                                            <span className="tags-casino-card__item-label">{item}</span>
-                                                                                        </div>
-                                                                                    ))}
+                                                                                    {item?.bonus_info?.labels
+                                                                                        ?.sort((a: string, b: string) => a.localeCompare(b))
+                                                                                        ?.map((item, index) => (
+                                                                                            <div key={index} className={`tags-casino-card__item ${getTagColorByindex(index)}`}>
+                                                                                                <span className="tags-casino-card__item-label">{item}</span>
+                                                                                            </div>
+                                                                                        ))}
                                                                                 </div>
                                                                             )}
 

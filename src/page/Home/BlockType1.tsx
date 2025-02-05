@@ -1,7 +1,7 @@
 import { useInView } from 'react-intersection-observer'
 import MainSlider from '../../components/swiper/MainSlider'
 
-import { COLORS_TAGS, shuffleArray } from '../../helper'
+import {  getTagColorByindex, shuffleArray } from '../../helper'
 import { DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import { SeeAllButton } from './SeeAllButton'
 import { useMemo } from 'react'
@@ -58,8 +58,8 @@ export default function BlockType1({ data, initialInView = false, isAutoPlay = f
                                 tags: (
                                     <>
                                         {item?.bonus_info?.labels?.length ? (
-                                            item?.bonus_info?.labels.map((item, cindex) => (
-                                                <div key={cindex} className={`tags-casino-card__item ${COLORS_TAGS[cindex % 4]}`}>
+                                            item?.bonus_info?.labels?.sort((a:string,b:string) => a.localeCompare(b)).map((item, cindex) => (
+                                                <div key={cindex} className={`tags-casino-card__item ${getTagColorByindex(cindex)}`}>
                                                     <span className="tags-casino-card__item-label">{item}</span>
                                                 </div>
                                             ))
