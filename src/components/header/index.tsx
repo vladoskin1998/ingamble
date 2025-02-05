@@ -190,7 +190,7 @@ export const Header = () => {
 
                             <Link rel="nofollow noopener" to="/" className="header__logo logo">
                                 <div className={`logo__img `}>
-                                    <img alt={'logo'} src={isDeger ? logoDegenCatapult : logoInGamble} />
+                                    <img alt={isDeger ? 'logo-dc-pc1' : 'logo-ig-pc1'} src={isDeger ? logoDegenCatapult : logoInGamble} />
                                 </div>
                             </Link>
                         </div>
@@ -323,7 +323,7 @@ export const Header = () => {
                             </div>
                             <Link to="/" className="header__logo logo">
                                 <div className={`logo__img`}>
-                                    <img src={isDeger ? logoDegenCatapult : logoInGamble} alt={'logo'} />
+                                    <img src={isDeger ? logoDegenCatapult : logoInGamble} alt={isDeger ? 'logo-dc1' : 'logo-ig1'} />
                                 </div>
                             </Link>
                         </div>

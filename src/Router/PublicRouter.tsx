@@ -140,15 +140,7 @@ export const PublicRouter = () => {
                     }
                 />
                 <Route path="/" element={<Navigate to="/" />} />
-                {/* <Route
-                path="*"
-                element={
-                    <Navigate
-                        to="/casino/default-casino/bonuses/default-bonus"
-                        replace
-                    />
-                }
-            /> */}
+             
                 <Route
                     path="*"
                     element={
