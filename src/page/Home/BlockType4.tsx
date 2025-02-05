@@ -63,15 +63,16 @@ export default function BlockType4({ data, initialInView = false, isAutoPlay = f
                             <div className="highest-max-bet-bonuses-2-gamble__swiper slider__swiper swiper">
                                 <div className="slider__wrapper swiper-wrapper">
                                     <Swiper
+                                        speed={1000}
                                         className="slider__wrapper swiper-wrapper"
                                         slidesPerView="auto"
-                                       modules={[Pagination, Autoplay]}
-                                                                  autoplay={
-                                                                      isAutoPlay && {
-                                                                          delay: 2000,
-                                                                          disableOnInteraction: false,
-                                                                      }
-                                                                  }
+                                        modules={[Pagination, Autoplay]}
+                                        autoplay={
+                                            isAutoPlay && {
+                                                delay: 2000,
+                                                disableOnInteraction: false,
+                                            }
+                                        }
                                         ref={sliderRef}
                                         pagination={{
                                             el: paginationRef.current,

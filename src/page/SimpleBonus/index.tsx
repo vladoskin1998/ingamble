@@ -102,7 +102,7 @@ export default function SimpleBonus() {
 
     useEffect(() => {
         initializeAdaptiveBehavior()
-    }, [geoLocation])
+    }, [isLoading])
 
      if (isLoading || !geoLocation.isLoadedGeo) return <LogoLoader />
 
@@ -129,10 +129,7 @@ export default function SimpleBonus() {
                                 name: 'Bonuses',
                                 link: '/all-bonuses',
                             },
-                            // {
-                            //     name: data?.dataBonus?.bonus_type || 'Bonus Type',
-                            //     link: `/all-bonuses/${data?.dataBonus?.bonus_type_slug}`,
-                            // },
+                         
                             {
                                 name: data?.dataBonus?.name || 'Bonus Type',
                                 link: `#`,

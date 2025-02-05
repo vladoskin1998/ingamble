@@ -44,7 +44,6 @@ export default function BlockType2({ data, initialInView = false, isAutoPlay = f
 
     return (
         <>
-           
             <section ref={ref} aria-label="BlockTypeNumber.BlockType2" className="main-gamble__safest-casino-2 safest-casino-2-gamble main-gamble__different-casino-bg main-gamble__baner-block">
                 {inView && (
                     <div className="safest-casino-2-gamble__container container">
@@ -73,6 +72,7 @@ export default function BlockType2({ data, initialInView = false, isAutoPlay = f
                                         <div className="baner-row-block__swiper safest-casino-2-baner__swiper swiper">
                                             <div className="baner-row-block__wrapper swiper-wrapper">
                                                 <Swiper
+                                                    speed={1000}
                                                     ref={sliderRef}
                                                     modules={[Pagination]}
                                                     pagination={{
@@ -176,6 +176,7 @@ export default function BlockType2({ data, initialInView = false, isAutoPlay = f
                                     <div className="safest-casino-2-gamble__swiper slider__swiper swiper">
                                         <div>
                                             <Swiper
+                                                speed={1000}
                                                 slidesPerView="auto"
                                                 modules={[Pagination, Autoplay]}
                                                 autoplay={

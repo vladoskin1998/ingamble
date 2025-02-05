@@ -44,9 +44,10 @@ export default function BlockType7Mobile({ data, initialInView = false, isAutoPl
                         <div className="slider__body">
                             <div className="crypto-casinos-gamble__swiper slider__swiper swiper">
                                 <Swiper
+                                    speed={1000}
                                     className="slider__wrapper swiper-wrapper"
                                     slidesPerView="auto"
-                                    modules={[ Autoplay]}
+                                    modules={[Autoplay]}
                                     autoplay={
                                         isAutoPlay && {
                                             delay: 2000,

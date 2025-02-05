@@ -37,7 +37,6 @@ export default function BlockMType3M({ data, initialInView = false, isAutoPlay =
 
     return (
         <>
-         
             <section ref={ref} aria-label="BlockTypeNumber.BlockType3M" className="main-gamble__vpn-friendly-casinos-2 vpn-friendly-casinos-2-gamble main-gamble__fastest-payout-casinos fastest-payout-casinos-gamble">
                 {inView && (
                     <div className="vpn-friendly-casinos-2-gamble__container container">
@@ -63,6 +62,7 @@ export default function BlockMType3M({ data, initialInView = false, isAutoPlay =
                             <div className="slider__body">
                                 <div className="vpn-friendly-casinos-2-gamble__swiper slider__swiper swiper">
                                     <Swiper
+                                        speed={1000}
                                         ref={sliderRef}
                                         className="slider__wrapper swiper-wrapper"
                                         slidesPerView="auto"

@@ -70,7 +70,7 @@ const MainSlider = ({
                             modules={[Pagination, Autoplay]}
                             autoplay={
                                 isAutoPlay && {
-                                    delay: 2000,
+                                    delay: 4000,
                                     disableOnInteraction: false,
                                 }
                             }
@@ -85,6 +85,7 @@ const MainSlider = ({
                                     spaceBetween: 20,
                                 },
                             }}
+                            speed={1000}
                         >
                             {data?.map((item, index) => (
                                 <SwiperSlide key={index}>

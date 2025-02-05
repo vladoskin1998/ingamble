@@ -51,9 +51,10 @@ const BlockType9 = memo(function BlockType9({ data, initialInView = false, isAut
                     <div className="essential-programs-gamble__slider slider">
                         <div className="essential-programs-gamble__swiper slider__swiper swiper">
                             <Swiper
+                                speed={1000}
                                 slidesPerView="auto"
                                 allowTouchMove={true}
-                                modules={[ Autoplay]}
+                                modules={[Autoplay]}
                                 autoplay={
                                     isAutoPlay && {
                                         delay: 2000,

@@ -65,14 +65,15 @@ export default function BlockType7({ data, initialInView = false, isAutoPlay = f
                         <div className="slider__body">
                             <div className="low-risk-bonuses-gamble__swiper slider__swiper swiper">
                                 <Swiper
+                                    speed={1000}
                                     slidesPerView="auto"
                                     modules={[Pagination, Autoplay]}
-                                                               autoplay={
-                                                                   isAutoPlay && {
-                                                                       delay: 2000,
-                                                                       disableOnInteraction: false,
-                                                                   }
-                                                               }
+                                    autoplay={
+                                        isAutoPlay && {
+                                            delay: 2000,
+                                            disableOnInteraction: false,
+                                        }
+                                    }
                                     ref={sliderRef}
                                     pagination={{
                                         el: paginationRef.current,
