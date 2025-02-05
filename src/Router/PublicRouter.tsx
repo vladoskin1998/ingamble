@@ -21,125 +21,126 @@ const FilterLoyalty = lazy(() => import('../page/FilterLoyalty'))
 
 export const PublicRouter = () => {
     return (
-        <Routes>
-            <Route
-                path="privacy-policy"
-                element={
-                    <Suspense>
-                        <PrivacyPolicy />
-                    </Suspense>
-                }
-            />
+        <Suspense>
+            <Routes>
+                <Route
+                    path="privacy-policy"
+                    element={
+                        <Suspense>
+                            <PrivacyPolicy />
+                        </Suspense>
+                    }
+                />
 
-            <Route
-                path="/casinos"
-                element={
-                    <Suspense>
-                        <Home src={'get-data-hub-page-casino/'} />
-                    </Suspense>
-                }
-            />
-            <Route
-                path="/bonuses"
-                element={
-                    <Suspense>
-                        <Home src={'get-data-hub-page-bonus/'} />
-                    </Suspense>
-                }
-            />
+                <Route
+                    path="/casinos"
+                    element={
+                        <Suspense>
+                            <Home src={'get-data-hub-page-casino/'} />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/bonuses"
+                    element={
+                        <Suspense>
+                            <Home src={'get-data-hub-page-bonus/'} />
+                        </Suspense>
+                    }
+                />
 
-            <Route
-                path="/filter-casinos/:casino_slug?"
-                element={
-                    <Suspense>
-                        <FilterCasino />
-                    </Suspense>
-                }
-            />
-            <Route
-                path="/filter-bonus/:bonus_slug?"
-                element={
-                    <Suspense>
-                        <FilterBonus />
-                    </Suspense>
-                }
-            />
-            <Route
-                path="/filter-loyalties"
-                element={
-                    <Suspense>
-                        <FilterLoyalty />
-                    </Suspense>
-                }
-            />
+                <Route
+                    path="/filter-casinos/:casino_slug?"
+                    element={
+                        <Suspense>
+                            <FilterCasino />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/filter-bonus/:bonus_slug?"
+                    element={
+                        <Suspense>
+                            <FilterBonus />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="/filter-loyalties"
+                    element={
+                        <Suspense>
+                            <FilterLoyalty />
+                        </Suspense>
+                    }
+                />
 
-            {/* Страница категорий (see all) по казино  */}
-            <Route
-                path="/all-casinos/:casino_slug?"
-                element={
-                    <Suspense>
-                        <SeeAllCasinos />
-                    </Suspense>
-                }
-            />
-            {/* Страница категорий  (see all) по бонусам */}
-            <Route
-                path="/all-bonuses/:bonus_slug?"
-                element={
-                    <Suspense>
-                        <SeeAllBonus />
-                    </Suspense>
-                }
-            />
+                {/* Страница категорий (see all) по казино  */}
+                <Route
+                    path="/all-casinos/:casino_slug?"
+                    element={
+                        <Suspense>
+                            <SeeAllCasinos />
+                        </Suspense>
+                    }
+                />
+                {/* Страница категорий  (see all) по бонусам */}
+                <Route
+                    path="/all-bonuses/:bonus_slug?"
+                    element={
+                        <Suspense>
+                            <SeeAllBonus />
+                        </Suspense>
+                    }
+                />
 
-            {/* Страница лоялки ("Loyalties")*/}
-            <Route
-                path="/all-loyalties/:loyaltie_slug?"
-                element={
-                    <Suspense>
-                        <SeeAllEssentialsLoyalty />
-                    </Suspense>
-                }
-            />
+                {/* Страница лоялки ("Loyalties")*/}
+                <Route
+                    path="/all-loyalties/:loyaltie_slug?"
+                    element={
+                        <Suspense>
+                            <SeeAllEssentialsLoyalty />
+                        </Suspense>
+                    }
+                />
 
-            {/* //Страница конкретного казино */}
-            <Route
-                path="/casino/:casino_slug"
-                element={
-                    <Suspense >
-                        <SimpleCasinos />
-                    </Suspense>
-                }
-            />
-            {/* //Страница конкретного бонуса */}
-            <Route
-                path="/casino/:casino_slug/bonuses/:bonus_slug"
-                element={
-                    <Suspense>
-                        <SimpleBonus />
-                    </Suspense>
-                }
-            />
-            {/* Страница конкретной лоялки */}
-            <Route
-                path="/casino/:loyaltie_slug/loyalty"
-                element={
-                    <Suspense>
-                        <SimpleLoyalties />
-                    </Suspense>
-                }
-            />
+                {/* //Страница конкретного казино */}
+                <Route
+                    path="/casino/:casino_slug"
+                    element={
+                        <Suspense>
+                            <SimpleCasinos />
+                        </Suspense>
+                    }
+                />
+                {/* //Страница конкретного бонуса */}
+                <Route
+                    path="/casino/:casino_slug/bonuses/:bonus_slug"
+                    element={
+                        <Suspense>
+                            <SimpleBonus />
+                        </Suspense>
+                    }
+                />
+                {/* Страница конкретной лоялки */}
+                <Route
+                    path="/casino/:loyaltie_slug/loyalty"
+                    element={
+                        <Suspense>
+                            <SimpleLoyalties />
+                        </Suspense>
+                    }
+                />
 
-            <Route
-                path="/"
-                element={
-                    <Suspense fallback={<LogoLoader />}>
-                        <Home />
-                    </Suspense>
-                }
-            />
-            <Route path="/" element={<Navigate to="/" />} />
-            {/* <Route
+                <Route
+                    path="/"
+                    element={
+                        <Suspense fallback={<LogoLoader />}>
+                            <Home />
+                        </Suspense>
+                    }
+                />
+                <Route path="/" element={<Navigate to="/" />} />
+                {/* <Route
                 path="*"
                 element={
                     <Navigate
@@ -148,14 +149,15 @@ export const PublicRouter = () => {
                     />
                 }
             /> */}
-            <Route
-                path="*"
-                element={
-                    <Suspense>
-                        <NotFound />
-                    </Suspense>
-                }
-            />
-        </Routes>
+                <Route
+                    path="*"
+                    element={
+                        <Suspense>
+                            <NotFound />
+                        </Suspense>
+                    }
+                />
+            </Routes>
+        </Suspense>
     )
 }

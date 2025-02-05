@@ -11612,6 +11612,11 @@ h3 {
 .item-inner-information-loyaltie_ace .top-item-inner-information-loyaltie__icons-item {
   fill: var(--Colors-Red, #FF3232);
 }
+@media (max-width:  650.98px) {
+.filter-selected-mob {
+  display: none !important;
+}
+}
 
 .filter-scenarios__filter-selected:not(:last-child) {
   margin: 0 0 16px 0;

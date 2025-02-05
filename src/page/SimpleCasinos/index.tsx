@@ -78,10 +78,8 @@ export default function SimpleCasinos() {
         idCountry: null,
     })
      useEffect(() => {
-        console.log('initializeAdaptiveBehavior')
-        
          initializeAdaptiveBehavior()
-     }, [])
+     }, [geoLocation])
 
 
     useEffect(() => {

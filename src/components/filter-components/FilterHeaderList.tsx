@@ -102,7 +102,7 @@ export const FilterHeaderList = ({ initList, clearAll, clearOne }: { initList: C
     if (!list.length) return <></>
 
     return (
-        <div className="filter-scenarios__filter-selected filter-selected">
+        <div className="filter-scenarios__filter-selected filter-selected filter-selected-mob">
             <div className="filter-selected__container container">
                 <div className="filter-selected__row" data-da="filters-sidebar-gamble__form, 0, 650.98">
                     <div className="filter-selected__title title-filter-selected">
