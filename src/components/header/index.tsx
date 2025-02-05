@@ -48,9 +48,13 @@ export const Header = () => {
     const modalLanguageRef = useRef<HTMLDivElement | null>(null)
 
     const [searchShow, setSearchShow] = useState(false)
+    const [activeLink, setActiveLink] = useState<string>(window.location.pathname)
+
+    const [showHeader, setShowHeader] = useState(true)
+    const [lastScrollY, setLastScrollY] = useState(0)
 
     const handleLanguageSelect = (language: Language) => {
-        ;('handleLanguageSelect')
+ 
 
         setSelectedLanguage(language)
         setIsLanguageOpen(false)
@@ -65,22 +69,19 @@ export const Header = () => {
         }
     }
 
-    //@ts-ignore
-    const [logoHide, setLogoHide] = useState(false)
+    // const handleClickOutside = (event: MouseEvent): void => {
+    //     const isScreenWide = window.innerWidth > 650
+    //     if (modalLanguageRef.current && !modalLanguageRef.current.contains(event.target as Node) && isScreenWide) {
+    //         setIsLanguageOpen(false)
+    //     }
+    // }
 
-    const handleClickOutside = (event: MouseEvent): void => {
-        const isScreenWide = window.innerWidth > 650
-        if (modalLanguageRef.current && !modalLanguageRef.current.contains(event.target as Node) && isScreenWide) {
-            setIsLanguageOpen(false)
-        }
-    }
-
-    useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside)
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
-        }
-    }, [])
+    // useEffect(() => {
+    //     document.addEventListener('mousedown', handleClickOutside)
+    //     return () => {
+    //         document.removeEventListener('mousedown', handleClickOutside)
+    //     }
+    // }, [])
 
     const handleBurgerOpen = (event: React.MouseEvent) => {
         event.preventDefault()
@@ -106,14 +107,6 @@ export const Header = () => {
 
         if (gambleBody && window.innerWidth <= 650.98) {
             gambleBody.classList.toggle('hide', isSidebarActive)
-        } else {
-        }
-        if (isSidebarActive) {
-            setTimeout(() => {
-                setLogoHide(true)
-            }, 50)
-        } else {
-            setLogoHide(false)
         }
     }, [isSidebarActive])
 
@@ -121,6 +114,7 @@ export const Header = () => {
         if (window.location.href.includes('filter-casinos')) {
             return
         } else {
+            setSearchShow(false)
             navigate('/filter-casinos')
         }
     }
@@ -137,7 +131,7 @@ export const Header = () => {
         return () => {
             document.removeEventListener('keydown', onKeydown)
         }
-    }, [casinoFilters, navTo])
+    }, [casinoFilters.casino_name, navTo])
 
     useEffect(() => {
         if (location.pathname === '/bonuses' || location.pathname.includes('/all-bonuses')) {
@@ -154,11 +148,6 @@ export const Header = () => {
         }
         setActiveLink('/')
     }, [location.pathname])
-
-    const [activeLink, setActiveLink] = useState<string>(window.location.pathname)
-
-    const [showHeader, setShowHeader] = useState(true)
-    const [lastScrollY, setLastScrollY] = useState(0)
 
     const handleScroll = () => {
         if (window.scrollY > lastScrollY && window.scrollY > 50) {
