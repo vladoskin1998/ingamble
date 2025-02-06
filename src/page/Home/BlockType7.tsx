@@ -30,7 +30,7 @@ export default function BlockType7({ data, initialInView = false, isAutoPlay = f
     }, [])
 
     const dataCard = useMemo(() => {
-        return shuffleArray(data?.items_block.data_cards)
+        return shuffleArray(data?.items_block.data_cards)?.sort((a, b) => a.order - b.order)
     }, [data?.items_block.data_cards])
 
     const { ref, inView } = useInView({
@@ -91,10 +91,7 @@ export default function BlockType7({ data, initialInView = false, isAutoPlay = f
                                         },
                                     }}
                                 >
-                                    {dataCard
-                                        ?.slice(0, 10)
-                                        ?.sort((a, b) => a.order - b.order)
-                                        ?.map((item, index) => (
+                                    {dataCard?.map((item, index) => (
                                             <SwiperSlide key={index} className="slider__slide slide-slider slide-slider__different-casino-bg swiper-slide">
                                                 <div className="slide-slider__item different-casino-bg">
                                                     <Link to={`/casino/${item?.casino_info?.casino_slug}`} className="different-casino-bg__image-block">
