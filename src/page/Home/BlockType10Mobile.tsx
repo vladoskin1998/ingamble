@@ -3,7 +3,7 @@ import girl2 from '../../assets/img/girls/02.webp'
 
 import bg01 from '../../assets/img/bg/01.webp'
 
-import {  DataHomeItemsBlock, HomeDataBlock } from '../../types'
+import { DataHomeItemsBlock, HomeDataBlock } from '../../types'
 import '../../assets/css/style-type-10-11.css'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -14,8 +14,8 @@ import { SeeAllRoutes } from '../../context/FilterContext'
 import { CURRENTYEAR } from '../../helper'
 import { useInView } from 'react-intersection-observer'
 import { Autoplay } from 'swiper/modules'
-
-
+import ape from '../../assets/img/girls/ape.webp'
+const ViteTitle = import.meta.env.VITE_TITLE
 export default function BlockType10Mobile({ data, initialInView = false, isAutoPlay = false }: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const { ref, inView } = useInView({
         threshold: 0,
@@ -52,7 +52,7 @@ export default function BlockType10Mobile({ data, initialInView = false, isAutoP
                             <span></span>
                         </div>
                         <div className="best-casinos-2024-gamble__girl">
-                            <img src={girl2} alt="girl" loading="lazy" />
+                            <img src={ViteTitle.includes('DegenCatapult') ? ape : girl2} alt="girl" loading="lazy" />
                         </div>
                         <div className="best-casinos-2024-gamble__slider slider-best-casinos-2024-gamble">
                             <div className="slider-best-casinos-2024-gamble__top top">

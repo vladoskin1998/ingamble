@@ -1,5 +1,7 @@
 import star from '../../assets/img/icons/star.svg'
 import girl2 from '../../assets/img/girls/02.webp'
+import ape from '../../assets/img/girls/ape.webp'
+
 import bg03 from '../../assets/img/bg/03.webp'
 import '../../assets/css/style-type-10-11.css'
 import bg02 from '../../assets/img/bg/02.webp'
@@ -9,7 +11,7 @@ import { Link } from 'react-router-dom'
 import { SeeAllRoutes } from '../../context/FilterContext'
 import { CURRENTYEAR } from '../../helper'
 import { useInView } from 'react-intersection-observer'
-
+const ViteTitle = import.meta.env.VITE_TITLE
 
 export default function BlockType10({ data, initialInView = false}: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const { ref, inView } = useInView({
@@ -106,7 +108,7 @@ export default function BlockType10({ data, initialInView = false}: { data: Home
                                 <span></span>
                             </div>
                             <div className="best-casinos-2024-2-gamble__girl">
-                                <img src={girl2} alt="girl" loading="lazy" />
+                                <img src={ViteTitle.includes('DegenCatapult') ? ape : girl2} alt="girl" loading="lazy" />
                             </div>
                             <div className="best-casinos-2024-2-gamble__content">
                                 <div className="best-casinos-2024-2-gamble__text">

@@ -194,7 +194,7 @@ export const Header = () => {
                                         aria-label="Put your description here."
                                         className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                     >
-                                        <span>{isDeger ? 'Crypto Gambling' : 'Gambling Hub'}</span>
+                                        <span>{isDeger ? 'Catapult Hub' : 'Gambling Hub'}</span>
                                     </Link>
                                 </li>
                                 <li className="menu-header__item">
@@ -204,7 +204,8 @@ export const Header = () => {
                                 </li>
                                 <li className="menu-header__item">
                                     <Link rel="nofollow noopener" to="/casinos" aria-label="Put your description here." className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}>
-                                        <span>Casinos</span>
+                                        <span></span>
+                                        <span>{isDeger ? 'Crypto Casinos' : 'Casinos'}</span>
                                     </Link>
                                 </li>
                                 <li className="menu-header__item">

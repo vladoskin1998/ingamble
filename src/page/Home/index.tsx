@@ -140,8 +140,8 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
     const blocksToRender = useMemo(() => {
         if (!data?.dataHome.length || (isMobile && !data?.dataHome.length)) return []
         const blocks = isMobile
-            ? [...(data?.dataHomeMobile || []), blockByCountry, { blocks_sequence_number: (data?.dataHomeMobile?.length || 0) + 10 }]
-            : [...(data?.dataHome || []), blockByCountry, { blocks_sequence_number: (data?.dataHomeMobile?.length || 0) + 10 }]
+            ? [...(data?.dataHomeMobile || []), blockByCountry, { blocks_sequence_number: data?.dataHomeMobile.length + 10 }]
+            : [...(data?.dataHome || []), blockByCountry, { blocks_sequence_number: data?.dataHome?.length + 10 }]
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
 

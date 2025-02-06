@@ -27,7 +27,7 @@ export const getTagColorByindex = (id:number) => {
 
 export const LOYALTIECATEGORYIES = [
     {
-        name: 'Top Ranked',
+        name: 'Top Ranked Loyalties',
         slug: 'loyalty-rank',
     },
     {
@@ -47,7 +47,7 @@ export const LOYALTIECATEGORYIES = [
         slug: 'special-prizes',
     },
     {
-        name: 'Gifts',
+        name: 'Birthday Gifts',
         slug: 'gifts',
     },
 ]
