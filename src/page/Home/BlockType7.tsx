@@ -30,7 +30,7 @@ export default function BlockType7({ data, initialInView = false, isAutoPlay = f
     }, [])
 
     const dataCard = useMemo(() => {
-        return shuffleArray(data?.items_block.data_cards).slice(0, 8)
+        return shuffleArray(data?.items_block.data_cards)
     }, [data?.items_block.data_cards])
 
     const { ref, inView } = useInView({
