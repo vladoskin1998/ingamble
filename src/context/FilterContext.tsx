@@ -176,7 +176,7 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({ children }) 
             return {
                 seeAllLink: '/filter-bonus/unlimited-max-bet-bonuses',
                 seeAllFoo: () => {
-                    setBonusFilters({ ...initialBonusFilters, unlimited_bonus_max_bet: false })
+                    setBonusFilters({ ...initialBonusFilters, unlimited_bonus_max_bet: true })
                 },
             }
         }
