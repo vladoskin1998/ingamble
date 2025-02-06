@@ -400,7 +400,7 @@ export const Header = () => {
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/bonuses') || activeLink.includes('/casinos') || activeLink.includes('/all-loyalties') ? '' : 'current'}`}
                                         >
-                                            <span>{isDeger ? 'Crypto Gambling' : 'Gambling Hub'}</span>
+                                            <span>{isDeger ? 'Catapult Hub' : 'Gambling Hub'}</span>
                                         </Link>
                                     </li>
 
@@ -425,7 +425,8 @@ export const Header = () => {
                                             }}
                                             className={`menu-header__link ${activeLink.includes('/casinos') && 'current'}`}
                                         >
-                                            <span>Casinos</span>
+                                            <span>{isDeger ? 'Crypto Casinos' : 'Casinos'}</span>
+                                            <span></span>
                                         </Link>
                                     </li>
                                     <li className="menu-header__item">
