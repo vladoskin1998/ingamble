@@ -12,6 +12,7 @@ import { SeeAllRoutes } from '../../context/FilterContext'
 import { CURRENTYEAR } from '../../helper'
 import { useInView } from 'react-intersection-observer'
 const ViteTitle = import.meta.env.VITE_TITLE
+const isDeger = ViteTitle.includes('DegenCatapult')
 
 export default function BlockType10({ data, initialInView = false}: { data: HomeDataBlock<DataHomeItemsBlock>; initialInView?: boolean; isAutoPlay?: boolean }) {
     const { ref, inView } = useInView({
@@ -107,8 +108,8 @@ export default function BlockType10({ data, initialInView = false}: { data: Home
                                 <span></span>
                                 <span></span>
                             </div>
-                            <div className="best-casinos-2024-2-gamble__girl">
-                                <img src={ViteTitle.includes('DegenCatapult') ? ape : girl2} alt="girl" loading="lazy" />
+                            <div className={`best-casinos-2024-2-gamble__girl ${isDeger && 'isdegen-img-best-casinos-2024-2-gamble__girl'}`}>
+                                <img src={isDeger ? ape : girl2} alt="girl" loading="lazy" />
                             </div>
                             <div className="best-casinos-2024-2-gamble__content">
                                 <div className="best-casinos-2024-2-gamble__text">

@@ -717,9 +717,11 @@ h2 {
   }
 }
 
+
 .main-gamble.resize .best-casinos-2024-2-gamble__girl {
   left: 11.333%;
 }
+
 
 @media (max-width: 1650.98px) {
   .main-gamble.resize .best-casinos-2024-2-gamble__girl {
@@ -1827,7 +1829,7 @@ h2 {
   max-width: 219px;
   position: absolute;
   top: 58px;
-  right: 19.7%;
+  right: 18.7%;
 }
 
 @media (max-width: 1650.98px) {
@@ -2013,4 +2015,14 @@ h2 {
   .best-casinos-2024-2-gamble .different-casino-big__rating-icon {
     margin: 0px 4px 3.105px 0;
   }
+}
+
+.isdegen-img-best-casinos-2024-2-gamble__girl img {
+  width: 95% ;
+
+}
+
+.isdegen-img-best-casinos-2024-2-gamble__girl {
+  left: 13% ;
+
 }
