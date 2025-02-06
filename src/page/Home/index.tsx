@@ -62,6 +62,8 @@ const getBlockByCountry = async (): Promise<HomeDataBlock> => {
 }
 
 const renderBlock = (block: any, isMobile: boolean, index: number) => {
+    console.log("block",block)
+    
     const isAutoPlay = !index
     const initialInView = index < 2 ? true : false
     switch (block?.items_block?.type_block) {
@@ -98,7 +100,6 @@ const renderBlock = (block: any, isMobile: boolean, index: number) => {
     }
 }
 
-console.log();
 
 
 export default function Home({ src = 'get-data-home-page/' }: { src?: string }) {
@@ -139,8 +140,8 @@ export default function Home({ src = 'get-data-home-page/' }: { src?: string }) 
     const blocksToRender = useMemo(() => {
         if (!data?.dataHome.length || (isMobile && !data?.dataHome.length)) return []
         const blocks = isMobile
-            ? [...(data?.dataHomeMobile || []), blockByCountry, { blocks_sequence_number: (data?.dataHomeMobile?.length || 0) + 3 }]
-            : [...(data?.dataHome || []), blockByCountry, { blocks_sequence_number: (data?.dataHomeMobile?.length || 0) + 3 }]
+            ? [...(data?.dataHomeMobile || []), blockByCountry, { blocks_sequence_number: (data?.dataHomeMobile?.length || 0) + 10 }]
+            : [...(data?.dataHome || []), blockByCountry, { blocks_sequence_number: (data?.dataHomeMobile?.length || 0) + 10 }]
         return blocks.filter(Boolean).sort((a, b) => (a?.blocks_sequence_number || 0) - (b?.blocks_sequence_number || 0))
     }, [isMobile, data, blockByCountry])
 

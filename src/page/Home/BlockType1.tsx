@@ -21,7 +21,6 @@ export default function BlockType1({ data, initialInView = false, isAutoPlay = f
 
     return (
         <>
-           
             <section ref={ref} aria-label="BlockTypeNumber.BlockType1" className="main-gamble__todays-hot todays-hot-gamble">
                 {inView && (
                     <div className="todays-hot-gamble__container container">
