@@ -111,7 +111,7 @@ export default function BlockType10({ data, initialInView = false}: { data: Home
                             <div className={`best-casinos-2024-2-gamble__girl ${isDeger && 'isdegen-img-best-casinos-2024-2-gamble__girl'}`}>
                                 <img src={isDeger ? ape : girl2} alt="girl" loading="lazy" />
                             </div>
-                            <div className="best-casinos-2024-2-gamble__content">
+                            <div className={`best-casinos-2024-2-gamble__content ${isDeger && "isdegen-text-best-casinos-2024-2-gamble__content"}`}>
                                 <div className="best-casinos-2024-2-gamble__text">
                                     <span>The Best</span>
                                     {` Casinos of ${CURRENTYEAR}`}

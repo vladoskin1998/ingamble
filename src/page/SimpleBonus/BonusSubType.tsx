@@ -11,6 +11,9 @@ export const BonusSubType = ({ bonus_subtype }: { bonus_subtype: { name: string 
                 return 'deposits__column_medium'
         }
     }
+
+    console.log('bonus_subtype', bonus_subtype)
+    
     if (!bonus_subtype?.length) return <></>
 
     return (
@@ -19,7 +22,7 @@ export const BonusSubType = ({ bonus_subtype }: { bonus_subtype: { name: string 
                 <div className="deposits__body">
                     <div className="deposits__block">
                         <div className="deposits__row">
-                            {(bonus_subtype || []).map((item, index) => {
+                            {(bonus_subtype || []).sort((a,b) => a?.name.localeCompare(b?.name)).map((item, index) => {
                                 const [part1, part2] = item.name.split('|').map((s) => s.trim())
 
                                 return (
